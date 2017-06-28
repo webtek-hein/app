@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+
+        <title>Inventory</title>
+        <link rel="stylesheet" href="styles.css" type="text/css" />
+</head>
+<body>
 <h2><center> SIGN UP</center></h2>
 		<form name="signupform" method="post" action="">
 			<table border="0" width="500" align="center" class="table">
@@ -48,3 +57,5 @@
 				
 			</table>
 		</form>
+	</body>
+</html>
