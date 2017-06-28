@@ -42,7 +42,7 @@
 
 					<td>Type</td>
 					<td>
-					<select class="type">
+					<select class="type" name="type">
 					  <option value="default"></option>
 					  <option value="Departent Head">Departent Head</option>
 					  <option value="Admin">Admin</option>

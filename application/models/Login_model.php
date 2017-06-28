@@ -10,12 +10,13 @@ class Login_model extends CI_Model {
 	{
     	$this->load->helper('url');
     	$data = array(
-        	'first_name' => $this->input->post('name'),
-            'last_name' => $this->input->post('name'),
-            'email' => $this->input->post('name'),
-            'contact' => $this->input->post('name'),
-            'username' => $this->input->post('name'),
-        	'password' => $this->input->post('quantity')
+        	'first_name' => $this->input->post('FirstName'),
+            'last_name' => $this->input->post('LastName'),
+            'email' => $this->input->post('Email'),
+            'contact' => $this->input->post('contactno'),
+            'username' => $this->input->post('Username'),
+        	'password' => $this->input->post('Password'),
+            'type' => $this->input->post('type')
     	);
     	return $this->db->insert('user', $data);
 	}
