@@ -48,7 +48,7 @@
     
     
         <li class="treeview">
-          <a href="http://localhost/app/rt">
+          <a href="#">
             <i class="fa fa-reply"></i> <span>Return</span>
           </a>
         </li>
@@ -64,7 +64,7 @@
           <ul class="treeview-menu">
       <li><a href="pages/tables/data.html"><i class="fa fa-circle-o"></i> Increase</a></li>
             <li><a href="pages/tables/data.html"><i class="fa fa-circle-o"></i> Decrease</a></li>
-            <li><a href="pages/tables/data.html"><i class="fa fa-circle-o"></i> Return log</a></li>
+            <li><a href="http://localhost/app/returnlog"><i class="fa fa-circle-o"></i> Return log</a></li>
           </ul>
         </li>
        
