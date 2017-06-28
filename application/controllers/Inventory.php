@@ -6,8 +6,6 @@ class Inventory extends CI_Controller {
 	{
 		$this->load->view('templates/header');
 		$this->load->view('inventory');
-		$this->load->view('modals/addbulk');
-		$this->load->view('modals/additem');
 		$this->load->view('templates/footer');
 
 	}
