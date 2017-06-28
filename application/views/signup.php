@@ -8,7 +8,8 @@
 </head>
 <body>
 <h2><center> SIGN UP</center></h2>
-		<form name="signupform" method="post" action="">
+		<?php echo validation_errors(); ?>
+		<?php echo form_open('signup'); ?>
 			<table border="0" width="500" align="center" class="table">
 				<tr>
 					<td>First Name</td>
@@ -56,6 +57,5 @@
 				</tr>
 				
 			</table>
-		</form>
 	</body>
 </html>
