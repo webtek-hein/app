@@ -36,19 +36,11 @@
             <i class="fa fa-building"></i>
             <span>Department</span>
           </a>
-          <ul class="treeview-menu">
-            <li><a href="pages/UI/general.html"><i class="fa fa-circle-o"></i> General</a></li>
-            <li><a href="pages/UI/icons.html"><i class="fa fa-circle-o"></i> Icons</a></li>
-            <li><a href="pages/UI/buttons.html"><i class="fa fa-circle-o"></i> Buttons</a></li>
-            <li><a href="pages/UI/sliders.html"><i class="fa fa-circle-o"></i> Sliders</a></li>
-            <li><a href="pages/UI/timeline.html"><i class="fa fa-circle-o"></i> Timeline</a></li>
-            <li><a href="pages/UI/modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
-          </ul>
         </li>
     
     
         <li class="treeview">
-          <a href="#">
+          <a href="http://localhost/app/returned">
             <i class="fa fa-reply"></i> <span>Return</span>
           </a>
         </li>
@@ -62,8 +54,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-      <li><a href="pages/tables/data.html"><i class="fa fa-circle-o"></i> Increase</a></li>
-            <li><a href="pages/tables/data.html"><i class="fa fa-circle-o"></i> Decrease</a></li>
+      <li><a href="http://localhost/app/increaselog"><i class="fa fa-circle-o"></i> Increase</a></li>
+            <li><a href="http://localhost/app/decreaselog"><i class="fa fa-circle-o"></i> Decrease</a></li>
             <li><a href="http://localhost/app/returnlog"><i class="fa fa-circle-o"></i> Return log</a></li>
           </ul>
         </li>
