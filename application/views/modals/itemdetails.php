@@ -7,7 +7,7 @@
                       <div class="modal-content">
                         <div class="modal-header">
                           <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          <h4 class="modal-title" align="center"><b>Edit Inventory<b></h4>
+                          <h4 class="modal-title" align="center"><b>Item Details<b></h4>
                         </div>
                         <div class="modal-body" align="center">
 
