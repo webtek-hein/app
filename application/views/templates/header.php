@@ -1,5 +1,5 @@
 <html>
 	<head>
-		<link rel="stylesheet" href="assets/bootstrap.min.css">
+		<link rel="stylesheet" href="http://localhost/app/assets/css/styles.css">
 	</head>
 	<body>

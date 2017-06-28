@@ -1,0 +1,67 @@
+.error-message {
+	padding: 7px 10px;
+	background: #fff1f2;
+	border: #ffd5da 1px solid;
+	color: #d6001c;
+	border-radius: 4px;
+}
+.success-message {
+	padding: 7px 10px;
+	background: #cae0c4;
+	border: #c3d0b5 1px solid;
+	color: #027506;
+	border-radius: 4px;
+}
+.table {
+	background: #d9eeff;
+	width: 40%;
+	border-spacing: initial;
+	margin: 2px 0px;
+	word-break: break-word;
+	table-layout: auto;
+	line-height: 1.3em;
+	color: #333;
+	border-radius: 4px;
+	padding: 20px 40px;
+	margin-left: 30%;
+}
+.table td {
+	padding: 15px 0px;
+}
+.InputBox {
+	padding: 10px 30px;
+	border: #a9a9a9 1px solid;
+	border-radius: 4px;
+}
+
+.type{
+	padding: 10px 30px;
+	border-radius: 4px;
+	width: 78%;
+}
+
+.createaccount {
+	padding: 10px 30px;
+	background-color: #97D077;
+	border: 0;
+	color: #000000;
+	cursor: pointer;
+	border-radius: 4px;
+	margin-left: 40%;
+	font-weight: bold;
+}
+
+.cancel {
+	padding: 10px 30px;
+	background-color: #D5739D;
+	border: 0;
+	color: #000000;
+	cursor: pointer;
+	border-radius: 4px;
+	margin-left: 70%;
+	font-weight: bold;
+}
+
+.img-circle{
+	margin-left: 20%;
+}
