@@ -1,6 +1,8 @@
+CREATE DATABASE  IF NOT EXISTS `inventoryy` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `inventoryy`;
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
--- Host: localhost    Database: inventory
+-- Host: localhost    Database: inventoryy
 -- ------------------------------------------------------
 -- Server version	5.7.14
 
@@ -40,29 +42,6 @@ INSERT INTO `account_code` VALUES (11,'1-07- 01-010'),(12,'1-07-02-010'),(13,'1-
 UNLOCK TABLES;
 
 --
--- Table structure for table `decrease_log`
---
-
-DROP TABLE IF EXISTS `decrease_log`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `decrease_log` (
-  `decreas_log_id` int(11) NOT NULL AUTO_INCREMENT,
-  `date` varchar(45) NOT NULL,
-  PRIMARY KEY (`decreas_log_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `decrease_log`
---
-
-LOCK TABLES `decrease_log` WRITE;
-/*!40000 ALTER TABLE `decrease_log` DISABLE KEYS */;
-/*!40000 ALTER TABLE `decrease_log` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `department`
 --
 
@@ -95,6 +74,10 @@ DROP TABLE IF EXISTS `distribution`;
 CREATE TABLE `distribution` (
   `dist_id` int(11) NOT NULL AUTO_INCREMENT,
   `quantity` varchar(45) NOT NULL,
+  `date/time` datetime NOT NULL,
+  `dept_id` int(11) NOT NULL,
+  `recieved` varchar(45) NOT NULL,
+  `user_distribute` varchar(45) NOT NULL,
   PRIMARY KEY (`dist_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -116,6 +99,7 @@ DROP TABLE IF EXISTS `i_ac`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `i_ac` (
+  `item_id` int(11) NOT NULL,
   `ac_id` int(11) NOT NULL AUTO_INCREMENT,
   `usage` varchar(45) NOT NULL,
   PRIMARY KEY (`ac_id`)
@@ -132,30 +116,6 @@ LOCK TABLES `i_ac` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `increase_log`
---
-
-DROP TABLE IF EXISTS `increase_log`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `increase_log` (
-  `increase_log_id` int(11) NOT NULL AUTO_INCREMENT,
-  `date` varchar(45) NOT NULL,
-  `supplier` varchar(45) NOT NULL,
-  PRIMARY KEY (`increase_log_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `increase_log`
---
-
-LOCK TABLES `increase_log` WRITE;
-/*!40000 ALTER TABLE `increase_log` DISABLE KEYS */;
-/*!40000 ALTER TABLE `increase_log` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `item`
 --
 
@@ -166,8 +126,12 @@ CREATE TABLE `item` (
   `item_id` int(11) NOT NULL AUTO_INCREMENT,
   `item_name` varchar(45) NOT NULL,
   `quantity` varchar(45) NOT NULL,
+  `item_description` varchar(45) NOT NULL,
+  `description` varchar(45) NOT NULL,
+  `account_id` int(5) NOT NULL,
+  `i_ac` int(5) NOT NULL,
   PRIMARY KEY (`item_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -176,7 +140,7 @@ CREATE TABLE `item` (
 
 LOCK TABLES `item` WRITE;
 /*!40000 ALTER TABLE `item` DISABLE KEYS */;
-INSERT INTO `item` VALUES (1,'Laptop','2'),(2,'TV','1'),(3,'Router','3'),(4,'Ballpen','2'),(5,'Bond Paper','1');
+INSERT INTO `item` VALUES (1,'Laptop','2','','',0,0),(2,'TV','1','','',0,0),(3,'Router','3','','',0,0),(4,'Ballpen','2','','',0,0),(5,'Bond Paper','1','','',0,0);
 /*!40000 ALTER TABLE `item` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -191,6 +155,8 @@ CREATE TABLE `item_detail` (
   `item_det_id` int(11) NOT NULL AUTO_INCREMENT,
   `serial` int(11) NOT NULL,
   `exp_date` int(11) NOT NULL,
+  `item_id` int(11) NOT NULL,
+  `dist_id` int(11) NOT NULL,
   PRIMARY KEY (`item_det_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -215,6 +181,9 @@ CREATE TABLE `return` (
   `return_id` int(11) NOT NULL AUTO_INCREMENT,
   `date` varchar(45) NOT NULL,
   `reason` varchar(45) NOT NULL,
+  `item_det_id` int(11) NOT NULL,
+  `dept_id` int(11) NOT NULL,
+  `return_person` varchar(45) NOT NULL,
   PRIMARY KEY (`return_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -229,29 +198,6 @@ LOCK TABLES `return` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `returnlog`
---
-
-DROP TABLE IF EXISTS `returnlog`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `returnlog` (
-  `return_id` int(11) NOT NULL AUTO_INCREMENT,
-  `date` varchar(45) NOT NULL,
-  PRIMARY KEY (`return_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `returnlog`
---
-
-LOCK TABLES `returnlog` WRITE;
-/*!40000 ALTER TABLE `returnlog` DISABLE KEYS */;
-/*!40000 ALTER TABLE `returnlog` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `user`
 --
 
@@ -263,8 +209,10 @@ CREATE TABLE `user` (
   `first_name` varchar(45) NOT NULL,
   `last_name` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
+  `contact_no` int(11) NOT NULL,
   `username` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
+  `position` varchar(45) NOT NULL,
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -287,4 +235,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-06-23 15:26:21
+-- Dump completed on 2017-06-28 14:38:57
