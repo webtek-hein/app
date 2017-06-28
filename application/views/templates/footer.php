@@ -18,13 +18,13 @@
         <li class="header">MAIN NAVIGATION</li>
     
         <li class="treeview">
-          <a href="#">
+          <a href="http://localhost/app">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
     
         <li class="treeview">
-          <a href="#">
+          <a href="http://localhost/app/inventory">
             <i class="fa fa-book"></i> <span>Inventory</span>
           </a>
         </li>
@@ -32,7 +32,7 @@
     
     
         <li class="treeview">
-          <a href="#">
+          <a href="http://localhost/app/department">
             <i class="fa fa-building"></i>
             <span>Department</span>
           </a>
