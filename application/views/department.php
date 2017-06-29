@@ -1,12 +1,10 @@
-department
-
  <section class="content">
       <div class="row">
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Department</h3><br>
-			  <button type= "button" class="btn btn-success">Summary of Items</button>			  
+              <br><h3 class="box-title">Department</h3><br><br>
+              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Summary of item</button>
             </div>
             <!-- /.box-header -->
             <div class="box-body">

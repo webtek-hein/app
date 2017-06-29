@@ -1,5 +1,4 @@
-sumofitems
-<button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Summary of item</button>
+
          <!-- Modal --> 
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">

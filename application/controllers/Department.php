@@ -8,6 +8,5 @@ class Department extends CI_Controller {
 		$this->load->view('department');
 		$this->load->view('modals/summaryofitems');
 		$this->load->view('templates/footer');
-
 	}
 }
