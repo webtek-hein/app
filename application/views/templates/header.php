@@ -283,7 +283,68 @@
   </header>
 
   
-
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+      <!-- Sidebar user panel -->
+      <div class="user-panel">
+        <div class="pull-left image">
+          <img src="http://localhost/app/assets/dist/img/admin.jpg" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+          <p>Admin</p>
+          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+        </div>
+      </div>
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+      <ul class="sidebar-menu">
+        <li class="header">MAIN NAVIGATION</li>
+    
+        <li class="treeview">
+          <a href="http://localhost/app">
+            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+          </a>
+        </li>
+    
+        <li class="treeview">
+          <a href="http://localhost/app/inventory">
+            <i class="fa fa-book"></i> <span>Inventory</span>
+          </a>
+        </li>
+    
+    
+    
+        <li class="treeview">
+          <a href="http://localhost/app/department">
+            <i class="fa fa-building"></i>
+            <span>Department</span>
+          </a>
+        </li>
+    
+    
+        <li class="treeview">
+          <a href="http://localhost/app/returned">
+            <i class="fa fa-reply"></i> <span>Return</span>
+          </a>
+        </li>
+    
+    
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-table"></i> <span>Logs</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+      <li><a href="http://localhost/app/increaselog"><i class="fa fa-circle-o"></i> Increase</a></li>
+            <li><a href="http://localhost/app/decreaselog"><i class="fa fa-circle-o"></i> Decrease</a></li>
+            <li><a href="http://localhost/app/returnlog"><i class="fa fa-circle-o"></i> Return log</a></li>
+          </ul>
+        </li>
+       
+    <!-- /.sidebar -->
+  </aside>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
 
