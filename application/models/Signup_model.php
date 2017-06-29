@@ -11,10 +11,10 @@ class Signup_model extends CI_Model {
         	'first_name' => $this->input->post('FirstName'),
             'last_name' => $this->input->post('LastName'),
             'email' => $this->input->post('Email'),
-            'contact' => $this->input->post('contactno'),
+            'contact_no' => $this->input->post('contactno'),
             'username' => $this->input->post('Username'),
         	'password' => $this->input->post('Password'),
-            'type' => $this->input->post('type')
+            'position' => $this->input->post('type')
     	);
     	return $this->db->insert('user', $data);
 	}

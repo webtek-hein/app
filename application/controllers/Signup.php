@@ -18,6 +18,7 @@ class Signup extends CI_Controller {
         $this->form_validation->set_rules('contactno', 'Contact Number', 'required');
         $this->form_validation->set_rules('Username', 'Username', 'required');
         $this->form_validation->set_rules('Password', 'Password', 'required');
+        $this->form_validation->set_rules('confirm_password', 'Confirm Password', 'required|matches[Password]');
         $this->form_validation->set_rules('type', 'User Type', 'required');
         if ($this->form_validation->run() === FALSE)
         {
@@ -26,7 +27,8 @@ class Signup extends CI_Controller {
         else
         {
             $this->signup_model->register();
-            $this->load->view('success');
+             $this->session->set_flashdata('msg', 'Registration success!');
+            $this->load->view('signup');
         }
 	}
 }

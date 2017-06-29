@@ -8,6 +8,9 @@
 </head>
 <body>
 <h2><center> SIGN UP</center></h2>
+		<?php if($this->session->flashdata('msg')): ?>
+    	<p><?php echo $this->session->flashdata('msg'); ?></p>
+		<?php endif; ?>
 		<?php echo validation_errors(); ?>
 		<?php echo form_open('signup'); ?>
 			<table border="0" width="500" align="center" class="table">
