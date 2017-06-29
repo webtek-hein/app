@@ -8,6 +8,8 @@
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
   <link rel="stylesheet" href="http://localhost/app/assets/css/bootstrap.min.css">
+  <!--modal css -->
+  <link rel="stylesheet" href="http://localhost/app/assets/css/modal.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="http://localhost/app/assets/css/font-awesome.min.css">
   <!-- Ionicons -->
