@@ -7,7 +7,6 @@ class Signup_model extends CI_Model {
 
 	public function register()
 	{
-    	$this->load->helper('url');
     	$data = array(
         	'first_name' => $this->input->post('FirstName'),
             'last_name' => $this->input->post('LastName'),

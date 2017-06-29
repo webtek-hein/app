@@ -61,20 +61,6 @@
                   </td>
                 </tr>
                 </tbody>
-                <tfoot>
-                <tr>
-                  <th>Item name</th>
-                  <th> Account Code</th>
-                  <th> Official Receipt</th>
-                  <th> Delivery Date</th>
-                  <th> Date received</th>
-                  <th> Quantity</th>
-                  <th> Received by </th>
-                  <th>Cost</th>
-                  <th> Unit</th>
-                  <th> Action</th>
-                </tr>
-                </tfoot>
               </table>
             </div>
             <!-- /.box-body -->
