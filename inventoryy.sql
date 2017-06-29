@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 28, 2017 at 03:27 AM
+-- Generation Time: Jun 29, 2017 at 06:05 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `inventory`
+-- Database: `inventoryy`
 --
 
 -- --------------------------------------------------------
@@ -45,17 +45,6 @@ INSERT INTO `account_code` (`ac_id`, `account_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `decrease_log`
---
-
-CREATE TABLE `decrease_log` (
-  `decreas_log_id` int(11) NOT NULL,
-  `date` varchar(45) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `department`
 --
 
@@ -72,19 +61,11 @@ CREATE TABLE `department` (
 
 CREATE TABLE `distribution` (
   `dist_id` int(11) NOT NULL,
-  `quantity` varchar(45) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `increase_log`
---
-
-CREATE TABLE `increase_log` (
-  `increase_log_id` int(11) NOT NULL,
-  `date` varchar(45) NOT NULL,
-  `supplier` varchar(45) NOT NULL
+  `quantity` varchar(45) NOT NULL,
+  `date/time` datetime NOT NULL,
+  `dept_id` int(11) NOT NULL,
+  `recieved` varchar(45) NOT NULL,
+  `user_distribute` varchar(45) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -96,19 +77,23 @@ CREATE TABLE `increase_log` (
 CREATE TABLE `item` (
   `item_id` int(11) NOT NULL,
   `item_name` varchar(45) NOT NULL,
-  `quantity` varchar(45) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `quantity` varchar(45) NOT NULL,
+  `item_description` varchar(45) NOT NULL,
+  `description` varchar(45) NOT NULL,
+  `account_id` int(5) NOT NULL,
+  `i_ac` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `item`
 --
 
-INSERT INTO `item` (`item_id`, `item_name`, `quantity`) VALUES
-(1, 'Laptop', '2'),
-(2, 'TV', '1'),
-(3, 'Router', '3'),
-(4, 'Ballpen', '2'),
-(5, 'Bond Paper', '1');
+INSERT INTO `item` (`item_id`, `item_name`, `quantity`, `item_description`, `description`, `account_id`, `i_ac`) VALUES
+(1, 'Laptop', '2', '', '', 0, 0),
+(2, 'TV', '1', '', '', 0, 0),
+(3, 'Router', '3', '', '', 0, 0),
+(4, 'Ballpen', '2', '', '', 0, 0),
+(5, 'Bond Paper', '1', '', '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -119,7 +104,9 @@ INSERT INTO `item` (`item_id`, `item_name`, `quantity`) VALUES
 CREATE TABLE `item_detail` (
   `item_det_id` int(11) NOT NULL,
   `serial` int(11) NOT NULL,
-  `exp_date` int(11) NOT NULL
+  `exp_date` int(11) NOT NULL,
+  `item_id` int(11) NOT NULL,
+  `dist_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -129,6 +116,7 @@ CREATE TABLE `item_detail` (
 --
 
 CREATE TABLE `i_ac` (
+  `item_id` int(11) NOT NULL,
   `ac_id` int(11) NOT NULL,
   `usage` varchar(45) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -142,18 +130,10 @@ CREATE TABLE `i_ac` (
 CREATE TABLE `return` (
   `return_id` int(11) NOT NULL,
   `date` varchar(45) NOT NULL,
-  `reason` varchar(45) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `returnlog`
---
-
-CREATE TABLE `returnlog` (
-  `return_id` int(11) NOT NULL,
-  `date` varchar(45) NOT NULL
+  `reason` varchar(45) NOT NULL,
+  `item_det_id` int(11) NOT NULL,
+  `dept_id` int(11) NOT NULL,
+  `return_person` varchar(45) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -167,19 +147,11 @@ CREATE TABLE `user` (
   `first_name` varchar(45) NOT NULL,
   `last_name` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
-  `contact` varchar(45) NOT NULL,
+  `contact_no` int(11) NOT NULL,
   `username` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
-  `type` varchar(45) NOT NULL
+  `position` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `user`
---
-
-INSERT INTO `user` (`user_id`, `first_name`, `last_name`, `email`, `contact`, `username`, `password`, `type`) VALUES
-(1, 'Maria', 'Pedro', 'maria@gmail.com', '09164146533', 'maria', '123', 'Admin'),
-(2, 'Maria', 'Pedro', 'maria@gmail.com', '09164146533', 'maria', '123', 'Admin');
 
 --
 -- Indexes for dumped tables
@@ -192,12 +164,6 @@ ALTER TABLE `account_code`
   ADD PRIMARY KEY (`ac_id`);
 
 --
--- Indexes for table `decrease_log`
---
-ALTER TABLE `decrease_log`
-  ADD PRIMARY KEY (`decreas_log_id`);
-
---
 -- Indexes for table `department`
 --
 ALTER TABLE `department`
@@ -208,12 +174,6 @@ ALTER TABLE `department`
 --
 ALTER TABLE `distribution`
   ADD PRIMARY KEY (`dist_id`);
-
---
--- Indexes for table `increase_log`
---
-ALTER TABLE `increase_log`
-  ADD PRIMARY KEY (`increase_log_id`);
 
 --
 -- Indexes for table `item`
@@ -240,12 +200,6 @@ ALTER TABLE `return`
   ADD PRIMARY KEY (`return_id`);
 
 --
--- Indexes for table `returnlog`
---
-ALTER TABLE `returnlog`
-  ADD PRIMARY KEY (`return_id`);
-
---
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -261,11 +215,6 @@ ALTER TABLE `user`
 ALTER TABLE `account_code`
   MODIFY `ac_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
--- AUTO_INCREMENT for table `decrease_log`
---
-ALTER TABLE `decrease_log`
-  MODIFY `decreas_log_id` int(11) NOT NULL AUTO_INCREMENT;
---
 -- AUTO_INCREMENT for table `department`
 --
 ALTER TABLE `department`
@@ -275,11 +224,6 @@ ALTER TABLE `department`
 --
 ALTER TABLE `distribution`
   MODIFY `dist_id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `increase_log`
---
-ALTER TABLE `increase_log`
-  MODIFY `increase_log_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `item`
 --
@@ -301,15 +245,10 @@ ALTER TABLE `i_ac`
 ALTER TABLE `return`
   MODIFY `return_id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `returnlog`
---
-ALTER TABLE `returnlog`
-  MODIFY `return_id` int(11) NOT NULL AUTO_INCREMENT;
---
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
