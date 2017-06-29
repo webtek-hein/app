@@ -2,12 +2,18 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Inventory extends CI_Controller {
+	public function __construct()
+    {
+      	parent::__construct();
+		$this->load->model('inventorymodel');
+		$data['query'] = $this->inventorymodel->get_ac_list();
+    }
 	public function index()
 	{
 		$this->load->view('templates/header');
 		$this->load->view('inventory');
 		$this->load->view('modals/editinventory');
-		$this->load->view('modals/additem');
+		$this->load->view('modals/additem',$data);
 		$this->load->view('modals/addquantity');
 		$this->load->view('modals/addbulk');
 		$this->load->view('modals/subtractquantity');
