@@ -26,7 +26,16 @@ class Signup extends CI_Controller {
         }
         else
         {
-            $this->signup_model->register();
+            $data = array(
+            'first_name' => $this->input->post('FirstName'),
+            'last_name' => $this->input->post('LastName'),
+            'email' => $this->input->post('Email'),
+            'contact_no' => $this->input->post('contactno'),
+            'username' => $this->input->post('Username'),
+            'password' => $this->input->post('Password'),
+            'position' => $this->input->post('type')
+            );
+            $this->signup_model->register($data);
              $this->session->set_flashdata('msg', 'Registration success!');
             $this->load->view('signup');
         }
