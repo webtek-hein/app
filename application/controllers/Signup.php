@@ -14,9 +14,9 @@ class Signup extends CI_Controller {
 	{
         $this->form_validation->set_rules('FirstName', 'First Name', 'required');
         $this->form_validation->set_rules('LastName', 'Last Name', 'required');
-        $this->form_validation->set_rules('Email', 'Email', 'required');
+        $this->form_validation->set_rules('Email', 'Email', 'required|valid_email');
         $this->form_validation->set_rules('contactno', 'Contact Number', 'required');
-        $this->form_validation->set_rules('Username', 'Username', 'required');
+        $this->form_validation->set_rules('Username', 'Username', 'required|is_unique[user.username]');
         $this->form_validation->set_rules('Password', 'Password', 'required');
         $this->form_validation->set_rules('confirm_password', 'Confirm Password', 'required|matches[Password]');
         $this->form_validation->set_rules('type', 'User Type', 'required');
@@ -35,8 +35,9 @@ class Signup extends CI_Controller {
             'password' => $this->input->post('Password'),
             'position' => $this->input->post('type')
             );
+
             $this->signup_model->register($data);
-             $this->session->set_flashdata('msg', 'Registration success!');
+            $this->session->set_flashdata('msg', 'Registration success!');
             $this->load->view('signup');
         }
 	}
