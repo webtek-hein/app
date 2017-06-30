@@ -22,7 +22,12 @@ class InventoryModel extends CI_Model {
 
 	public function get_inventory_list()
 	{
-        
+        $db1 = $this->load->database('inventory', TRUE);
+        $db1->select('*');
+        $db1->from('item');
+        $db1->join('account_code', 'item.account_id = account_code.ac_id', 'left');
+        $query = $db1->get();
+        return $query->result_array();
 	}
     public function get_item_per_dept()
     {

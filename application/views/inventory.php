@@ -30,13 +30,14 @@
                 </tr>
                 </thead>
                 <tbody>
+              <?php foreach ($item as $item_record): ?>
                 <tr>
-                  <td> </td>
-                  <td> </td>
+                  <td><?php echo $item_record['item_name']; ?></td>
+                  <td><?php echo $item_record['account_code']; ?></td>
                   <td></td>
                   <td> </td>
                   <td></td>
-                  <td> </td>
+                  <td><?php echo $item_record['quantity']; ?></td>
                   <td></td>
 				          <td></td>
                   <td> </td>
@@ -60,6 +61,7 @@
                   </div>
                   </td>
                 </tr>
+            <?php endforeach; ?>
                 </tbody>
               </table>
             </div>
