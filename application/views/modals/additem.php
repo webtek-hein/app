@@ -21,9 +21,7 @@
           <td>Account Code</td>
           <td>
           <select class="accountcode">
-            <option value="">...............</option>
-            <option value="">...............</option>
-            <option value="">...............</option>
+            <?php echo $accountcodes?>
             <option value="">...............</option>
           </select>
           </td>

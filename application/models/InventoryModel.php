@@ -11,7 +11,7 @@ class InventoryModel extends CI_Model {
     {
         $db1 = $this->load->database('inventory', TRUE);
         $query = $db1->get('account_code');
-        return $query->result();
+        return $query->result_array();
     }
 
 	public function get_inventory_list()

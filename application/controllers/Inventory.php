@@ -10,12 +10,10 @@ class Inventory extends CI_Controller {
     }
 	public function index()
 	{
-		$data['query'] = $this->inventorymodel->get_ac_list();
-		
 		$this->load->view('templates/header');
 		$this->load->view('inventory');
 		$this->load->view('modals/editinventory');
-		$this->load->view('modals/additem',$data);
+		$this->load->view('modals/additem');
 		$this->load->view('modals/addquantity');
 		$this->load->view('modals/addbulk');
 		$this->load->view('modals/subtractquantity');
