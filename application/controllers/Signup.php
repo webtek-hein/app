@@ -7,7 +7,6 @@ class Signup extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('signup_model');
-        $this->load->helper('url_helper');
     }
 
 	public function index()

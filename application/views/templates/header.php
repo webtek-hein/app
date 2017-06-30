@@ -7,30 +7,30 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
-  <link rel="stylesheet" href="http://localhost/app/assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/bootstrap.min.css">
   <!--modal css -->
-  <link rel="stylesheet" href="http://localhost/app/assets/css/modal.css">
+  <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/modal.css">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="http://localhost/app/assets/css/font-awesome.min.css">
+  <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/font-awesome.min.css">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="http://localhost/app/assets/css/ionicons.min.css">
+  <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/ionicons.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="http://localhost/app/assets/dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="<?php echo base_url() ?>assets/dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="http://localhost/app/assets/dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="<?php echo base_url() ?>assets/dist/css/skins/_all-skins.min.css">
   <!-- iCheck -->
-  <link rel="stylesheet" href="http://localhost/app/assets/plugins/iCheck/flat/blue.css">
+  <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/iCheck/flat/blue.css">
   <!-- Morris chart -->
-  <link rel="stylesheet" href="http://localhost/app/assets/plugins/morris/morris.css">
+  <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/morris/morris.css">
   <!-- jvectormap -->
-  <link rel="stylesheet" href="http://localhost/app/assets/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
+  <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
   <!-- Date Picker -->
-  <link rel="stylesheet" href="http://localhost/app/assets/plugins/datepicker/datepicker3.css">
+  <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/datepicker/datepicker3.css">
   <!-- Daterange picker -->
-  <link rel="stylesheet" href="http://localhost/app/assets/plugins/daterangepicker/daterangepicker.css">
+  <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/daterangepicker/daterangepicker.css">
   <!-- bootstrap wysihtml5 - text editor -->
-  <link rel="stylesheet" href="http://localhost/app/assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+  <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -73,7 +73,7 @@
                   <li><!-- start message -->
                     <a href="#">
                       <div class="pull-left">
-                      <!--<img src="http://localhost/app/assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">-->
+                      <!--<img src="<?php echo base_url() ?>assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">-->
                       </div>
                       <h4>
                         Support Team
@@ -86,7 +86,7 @@
                   <li>
                     <a href="#">
                       <div class="pull-left">
-                        <!--!<img src="http://localhost/app/assets/dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">-->
+                        <!--!<img src="<?php echo base_url() ?>assets/dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">-->
                       </div>
                       <h4>
                         AdminLTE Design Team
@@ -97,7 +97,7 @@
                   <li>
                     <a href="#">
                       <div class="pull-left">
-                        <!--<img src="http://localhost/app/assets/dist/img/dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">-->
+                        <!--<img src="<?php echo base_url() ?>assets/dist/img/dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">-->
                       </div>
                       <h4>
                         Developers
@@ -109,7 +109,7 @@
                   <li>
                     <a href="#">
                       <div class="pull-left">
-                        <!--<img src="http://localhost/app/assets/dist/img/dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">-->
+                        <!--<img src="<?php echo base_url() ?>assets/dist/img/dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">-->
                       </div>
                       <h4>
                         Sales Department
@@ -254,13 +254,13 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <!--<img src="http://localhost/app/assets/dist/img/admin.jpg" class="user-image" alt="User Image">-->
+              <!--<img src="<?php echo base_url() ?>assets/dist/img/admin.jpg" class="user-image" alt="User Image">-->
               <span class="hidden-xs">Admin</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <!--<img src="http://localhost/app/assets/dist/img/admin.jpg" class="img-circle" alt="User Image">-->
+                <!--<img src="<?php echo base_url() ?>assets/dist/img/admin.jpg" class="img-circle" alt="User Image">-->
               </li>
               <!-- Menu Footer-->
               <li class="user-footer">
@@ -289,7 +289,7 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="http://localhost/app/assets/dist/img/admin.jpg" class="img-circle" alt="User Image">
+          <img src="<?php echo base_url() ?>assets/dist/img/admin.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>Admin</p>
@@ -301,13 +301,13 @@
         <li class="header">MAIN NAVIGATION</li>
     
         <li class="treeview">
-          <a href="http://localhost/app">
+          <a href="<?php echo base_url() ?>">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
     
         <li class="treeview">
-          <a href="http://localhost/app/inventory">
+          <a href="<?php echo base_url() ?>inventory">
             <i class="fa fa-book"></i> <span>Inventory</span>
           </a>
         </li>
@@ -315,7 +315,7 @@
     
     
         <li class="treeview">
-          <a href="http://localhost/app/department">
+          <a href="<?php echo base_url() ?>department">
             <i class="fa fa-building"></i>
             <span>Department</span>
           </a>
@@ -323,7 +323,7 @@
     
     
         <li class="treeview">
-          <a href="http://localhost/app/returned">
+          <a href="<?php echo base_url() ?>returned">
             <i class="fa fa-reply"></i> <span>Return</span>
           </a>
         </li>
@@ -337,9 +337,9 @@
             </span>
           </a>
           <ul class="treeview-menu">
-      <li><a href="http://localhost/app/increaselog"><i class="fa fa-circle-o"></i> Increase</a></li>
-            <li><a href="http://localhost/app/decreaselog"><i class="fa fa-circle-o"></i> Decrease</a></li>
-            <li><a href="http://localhost/app/returnlog"><i class="fa fa-circle-o"></i> Return log</a></li>
+      <li><a href="<?php echo base_url() ?>increaselog"><i class="fa fa-circle-o"></i> Increase</a></li>
+            <li><a href="<?php echo base_url() ?>decreaselog"><i class="fa fa-circle-o"></i> Decrease</a></li>
+            <li><a href="<?php echo base_url() ?>returnlog"><i class="fa fa-circle-o"></i> Return log</a></li>
           </ul>
         </li>
        

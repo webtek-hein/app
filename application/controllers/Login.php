@@ -8,15 +8,8 @@ class Login extends CI_Controller {
 	parent::__construct();
         // Load form helper library
         $this->load->helper('form');
-// Load url helper library
-        $this->load->helper('url');
-// Load form validation library
-        $this->load->library('form_validation');
 
-// Load session library
-        $this->load->library('session');
-
-// Load database
+    // Load database
         $this->load->model('user_db');
     }
 
@@ -34,8 +27,8 @@ class Login extends CI_Controller {
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
 
         if ($this->form_validation->run() == FALSE) {
-            if(isset($this->session->userdata['logged_in'])){
-                $this->load->view('templates/header');
+            if($this->session->userdata('logged_in') !== null){
+                header('Location: ' . base_url()); 
             }else{
                 $this->load->view('login');
             }
@@ -57,7 +50,7 @@ class Login extends CI_Controller {
                     );
 // Add user data in session
                     $this->session->set_userdata('logged_in', $session_data);
-                    $this->load->view('templates/header');
+                    header('Location: ' . base_url()); 
                 }
             } else {
                 $data = array(
