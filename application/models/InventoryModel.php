@@ -1,15 +1,15 @@
 <?php
 class InventoryModel extends CI_Model {
 
+    
     public function __construct()
     {
         parent:: __construct();
-        $db1 = $this->load->database('inventory', TRUE);
-        $db2 = $this->load->database('logs', TRUE);
     }
 
     public function get_ac_list()
     {
+        $db1 = $this->load->database('inventory', TRUE);
         $query = $db1->get('account_code');
         return $query->result();
     }

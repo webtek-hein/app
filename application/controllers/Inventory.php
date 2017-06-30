@@ -6,10 +6,12 @@ class Inventory extends CI_Controller {
     {
       	parent::__construct();
 		$this->load->model('inventorymodel');
-		$data['query'] = $this->inventorymodel->get_ac_list();
+
     }
 	public function index()
 	{
+		$data['query'] = $this->inventorymodel->get_ac_list();
+		
 		$this->load->view('templates/header');
 		$this->load->view('inventory');
 		$this->load->view('modals/editinventory');
