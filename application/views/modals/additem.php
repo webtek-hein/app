@@ -20,9 +20,11 @@
         <tr>
           <td>Account Code</td>
           <td>
+          <!-- Display description option value is account id eg. 1-07-01-010 for land -->
           <select class="accountcode">
-            <?php echo $accountcodes?>
-            <option value="">...............</option>
+            <?php foreach ($accountcodes as $ac_record): ?>
+              <option value="<?php echo $ac_record['account_id'] ?>"><?php echo $ac_record['description']; ?></option>
+            <?php endforeach; ?>
           </select>
           </td>
         </tr>
