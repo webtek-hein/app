@@ -35,12 +35,7 @@
         <tr>
           <td>Supplier</td>
           <td>
-          <select class="supplier">
-            <option value="">...............</option>
-            <option value="">...............</option>
-            <option value="">...............</option>
-            <option value="">...............</option>
-          </select>
+            <input type="text" class="InputBox" name="Supplier" value="">
           </td>
         </tr>
         <tr>

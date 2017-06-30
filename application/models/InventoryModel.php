@@ -13,6 +13,12 @@ class InventoryModel extends CI_Model {
         $query = $db1->get('account_code');
         return $query->result_array();
     }
+     public function get_department_list()
+    {
+        $db1 = $this->load->database('inventory', TRUE);
+        $query = $db1->get('department');
+        return $query->result_array();
+    }
 
 	public function get_inventory_list()
 	{

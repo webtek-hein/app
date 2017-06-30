@@ -28,10 +28,9 @@
                               <td>Department</td>
                               <td>
                               <select class="dept">
-                                <option value="">...............</option>
-                                <option value="">...............</option>
-                                <option value="">...............</option>
-                                <option value="">...............</option>
+                                  <?php foreach ($department as $dp_record): ?>
+                                  <option value="<?php echo $dp_record['dept_id']; ?>"><?php echo $dp_record['res_center_code']," ", $dp_record['department']; ?></option>
+                                  <?php endforeach; ?>
                               </select>
                               </td>
                             </tr>
