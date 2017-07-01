@@ -4,12 +4,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Login extends CI_Controller {
 
-	public function __construct() {
-	parent::__construct();
+    public function __construct() {
+        parent::__construct();
         // Load form helper library
         $this->load->helper('form');
+// Load url helper library
+        $this->load->helper('url');
+// Load form validation library
+        $this->load->library('form_validation');
 
-    // Load database
+// Load session library
+        $this->load->library('session');
+
+// Load database
         $this->load->model('user_db');
     }
 
@@ -27,8 +34,8 @@ class Login extends CI_Controller {
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
 
         if ($this->form_validation->run() == FALSE) {
-            if($this->session->userdata('logged_in') !== null){
-                header('Location: ' . base_url()); 
+            if(isset($this->session->userdata['logged_in'])){
+                $this->load->view('templates/header');
             }else{
                 $this->load->view('login');
             }
@@ -50,7 +57,10 @@ class Login extends CI_Controller {
                     );
 // Add user data in session
                     $this->session->set_userdata('logged_in', $session_data);
-                    header('Location: ' . base_url()); 
+                    $this->load->view('templates/header');
+                    $this->load->view('dashboard',@data);
+                    $this->load->view('templates/footer');
+                    // header("Location: //localhost/app/Login/user_login_process/{$username}");
                 }
             } else {
                 $data = array(
@@ -70,6 +80,6 @@ class Login extends CI_Controller {
         );
         $this->session->unset_userdata('logged_in', $sess_array);
         $data['message_display'] = 'Successfully Logout';
-        $this->load->view('login_form', $data);
-	}
+        $this->load->view('login', $data);
+    }
 }
