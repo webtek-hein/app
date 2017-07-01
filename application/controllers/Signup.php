@@ -36,8 +36,8 @@ class Signup extends CI_Controller {
             );
 
             $this->signup_model->register($data);
-            $this->session->set_flashdata('msg', 'Registration success!');
-            $this->load->view('signup');
+            $this->session->set_flashdata('msg', 'Registration success! You may now login.');
+            $this->load->view('login');
         }
 	}
 }

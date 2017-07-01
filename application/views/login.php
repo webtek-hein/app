@@ -25,6 +25,9 @@ if (isset($message_display)) {
     echo "</div>";
 }
 ?>
+<?php if($this->session->flashdata('msg')): ?>
+    <p><?php echo $this->session->flashdata('msg'); ?></p>
+<?php endif; ?>
 <div id="main">
     <div id="login">
         <h2>Login Form</h2>
