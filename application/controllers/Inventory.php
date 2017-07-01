@@ -14,14 +14,19 @@ class Inventory extends CI_Controller {
 		$data['item'] = $this->inventorymodel->get_inventory_list();
 		$this->load->view('templates/header');
 		$this->load->view('inventory',$data);
-		$this->load->view('modals/additem',$data);
 		$this->load->view('modals/editinventory');
+        $this->additem();
 		$this->load->view('modals/addquantity');
 		$this->load->view('modals/addbulk');
-		$this->load->view('modals/subtractquantity',$data);
 		$this->load->view('modals/itemdetails');
 		$this->load->view('templates/footer');
-		$this->form_validation->set_rules('ItemName', 'Item Name', 'required');
+		
+		
+
+	}
+    public function additem()
+    {
+        $this->form_validation->set_rules('ItemName', 'Item Name', 'required');
         $this->form_validation->set_rules('AccountCode', 'Account Code', 'required');
         $this->form_validation->set_rules('OfficialReceipt', 'Official Receipt', 'required');
         $this->form_validation->set_rules('Quantity', 'Quantity', 'required');
@@ -48,13 +53,11 @@ class Inventory extends CI_Controller {
             );
 
             $data2 = array(
-            	'expiration_date' => $this->input->post('ExpirationDate')
+                'expiration_date' => $this->input->post('ExpirationDate')
             );
 
             $this->inventorymodel->add_item($data1, 'item');
             $this->inventorymodel->add_item($data2, 'item_detail');
         }
-		
-
-	}
+    }
 }
