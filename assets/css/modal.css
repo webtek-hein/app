@@ -1,88 +1,36 @@
 .InputBox{
-    width: 50%;
+    width: 90%;
    }
    .datereceived{
-    width: 50%;
+    width: 90%;
    }
 
    .accountcode{
-    width: 50%;
+    width: 90%;
    }
 
    .expdate{
-    width: 50%;
+    width: 90%;
    }
     
    .supplier{
-    width: 50%;
+    width: 90%;
    }
 
    .unit{
-    width: 50%;
+    width: 90%;
    }
    .date{
-    width: 50%;
+    width: 90%;
    }
    .dept{
-    width: 50%;
+    width: 90%;
    }
    .qty{
-   width: 50%; 
+   width: 90%; 
    }
    .usage{
-    width: 50%;
-   }
-
-
-   #save{
-    background-color: #97D077;
-    margin-right: 260px;
-   }
-
-   #cancel{
-    background-color: #D5739D;
-   }
-
-   #save1{
-    background-color: #97D077;
-   }
-
-   #cancel1{
-    background-color: #D5739D;
-=======
-.InputBox{
-    width: 50%;
-   }
-   .datereceived{
-    width: 50%;
-   }
-
-   .accountcode{
-    width: 50%;
-   }
-
-   .expdate{
-    width: 50%;
-   }
-    
-   .supplier{
-    width: 50%;
-   }
-
-   .unit{
-    width: 50%;
-   }
-   .date{
-    width: 50%;
-   }
-   .dept{
-    width: 50%;
-   }
-   .qty{
-   width: 50%; 
-   }
-   .usage{
-    width: 50%;
+    width: 90%;
    }
 
 
