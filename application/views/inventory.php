@@ -34,13 +34,13 @@
                 <tr>
                   <td><?php echo $item_record['item_name']; ?></td>
                   <td><?php echo $item_record['account_code']; ?></td>
-                  <td></td>
-                  <td> </td>
-                  <td></td>
+                  <td><?php echo $item_record['official_receipt']; ?></td>
+                  <td><?php echo $item_record['del_date']; ?></td>
+                  <td><?php echo $item_record['date_rec']; ?></td>
                   <td><?php echo $item_record['quantity']; ?></td>
-                  <td></td>
-				          <td></td>
-                  <td> </td>
+                  <td><?php echo $item_record['receivedby']; ?></td>
+				          <td><?php echo $item_record['account_code']; ?></td>
+                  <td><?php echo $item_record['unit']; ?></td>
 
                 
                   <td> <button type="button" class="fa fa-plus" data-toggle="modal" data-target="#addqty"></button>
