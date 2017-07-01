@@ -1,4 +1,3 @@
-<button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal1">Add Bulk Items</button>
          <!-- Modal-->
         <div class="modal fade" id="myModal1" role="dialog">
     <div class="modal-dialog">

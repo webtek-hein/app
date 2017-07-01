@@ -1,4 +1,3 @@
-<button class="fa fa-minus" data-toggle="modal" data-target="#subqty"></button>
                                           <!-- Modal-->
                         <div class="modal fade" id="subqty" role="dialog">
                     <div class="modal-dialog">

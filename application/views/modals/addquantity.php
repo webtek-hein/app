@@ -1,4 +1,3 @@
-<button type="button" class="fa fa-plus" data-toggle="modal" data-target="#addqty"></button>
                                         <!-- Modal-->
                         <div class="modal fade" id="addqty" role="dialog">
                     <div class="modal-dialog">

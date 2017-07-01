@@ -1,4 +1,3 @@
-<button class="fa fa-info" data-toggle="modal" data-target="#view"></button>
                        <!-- Modal-->
                         <div class="modal fade" id="view" role="dialog">
                     <div class="modal-dialog">

@@ -1,4 +1,3 @@
-<button class="fa fa-pencil" data-toggle="modal" data-target="#edit"></button>
                                <!-- Modal-->
                         <div class="modal fade" id="edit" role="dialog">
                     <div class="modal-dialog">
