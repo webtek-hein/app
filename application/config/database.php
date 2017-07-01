@@ -71,7 +71,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | the query builder class.
 */
 $query_builder = TRUE;
-
+$active_group = 'inventory';
 $db['inventory'] = array(
         'dsn'   => '',
         'hostname' => 'localhost',
