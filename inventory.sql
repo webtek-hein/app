@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 30, 2017 at 07:10 PM
+-- Generation Time: Jul 01, 2017 at 03:12 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -192,10 +192,22 @@ CREATE TABLE `item` (
   `item_id` int(11) NOT NULL,
   `item_name` varchar(45) NOT NULL,
   `quantity` varchar(45) NOT NULL,
-  `item_description` varchar(45) NOT NULL,
   `description` varchar(45) NOT NULL,
+  `official_receipt` varchar(20) NOT NULL,
+  `del_date` datetime NOT NULL,
+  `date_rec` datetime NOT NULL,
+  `receivedby` varchar(60) NOT NULL,
+  `cost` double NOT NULL,
+  `unit` enum('piece','box','set','ream','dozen','bundle','sack','others') NOT NULL DEFAULT 'others',
   `account_id` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `item`
+--
+
+INSERT INTO `item` (`item_id`, `item_name`, `quantity`, `description`, `official_receipt`, `del_date`, `date_rec`, `receivedby`, `cost`, `unit`, `account_id`) VALUES
+(2, 'Laptop', '3', 'black laptops', '0490', '2017-07-17 06:00:00', '2017-07-28 08:00:00', 'Selena Marie', 2500, 'others', 8);
 
 -- --------------------------------------------------------
 
@@ -238,11 +250,18 @@ CREATE TABLE `user` (
   `first_name` varchar(45) NOT NULL,
   `last_name` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
-  `contact_no` int(11) NOT NULL,
+  `contact_no` varchar(12) NOT NULL,
   `username` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
   `position` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`user_id`, `first_name`, `last_name`, `email`, `contact_no`, `username`, `password`, `position`) VALUES
+(2, 'Administration', '', 'selenabrook@gmail.com', '+6392588845', 'admin', 'admin', 'admin');
 
 --
 -- Indexes for dumped tables
@@ -323,7 +342,7 @@ ALTER TABLE `distribution`
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `item_detail`
 --
@@ -338,7 +357,7 @@ ALTER TABLE `return`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- Constraints for dumped tables
 --
