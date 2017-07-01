@@ -43,8 +43,14 @@ class InventoryModel extends CI_Model {
      public function get_decrease_log()
     {
     }
-     public function get_return_log()
+    public function get_return_log()
     {
+    }
+
+    public function add_item($data, $table)
+    {
+        $db1 = $this->load->database('inventory');
+        return $db1->insert($table, $data);
     }
 
 }

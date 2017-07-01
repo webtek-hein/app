@@ -15,7 +15,7 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Item no.</th>
+                  <th>Item name.</th>
                   <th>Serial no.</th>
                   <th>Account Code</th>
                   <th>Expiration Date</th>
