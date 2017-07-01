@@ -29,6 +29,10 @@
           </td>
         </tr>
         <tr>
+          <td>Official Receipt</td>
+          <td><input type="int" class="InputBox" name="Quantity" value=""></td>
+        </tr>
+        <tr>
           <td>Quantity</td>
           <td><input type="int" class="InputBox" name="Quantity" value=""></td>
         </tr>
@@ -37,6 +41,10 @@
           <td>
             <input type="text" class="InputBox" name="Supplier" value="">
           </td>
+        </tr>
+        <tr>
+          <td>Delivery Date</td>
+          <td><input type="date" class="datereceived" name="datereceived" value=""></td>
         </tr>
         <tr>
           <td>Date Received</td>
