@@ -12,17 +12,16 @@ class Inventory extends CI_Controller {
 		$data['accountcodes'] = $this->inventorymodel->get_ac_list();
 		$data['department'] = $this->inventorymodel->get_department_list();
 		$data['item'] = $this->inventorymodel->get_inventory_list();
+        $data['item_detail'] = $this->inventorymodel->get_item_detail('2');
+
 		$this->load->view('templates/header');
 		$this->load->view('inventory',$data);
 		$this->load->view('modals/editinventory');
         $this->additem();
+        $this->item_detail($data);
 		$this->load->view('modals/addquantity');
 		$this->load->view('modals/addbulk');
-		$this->load->view('modals/itemdetails');
 		$this->load->view('templates/footer');
-		
-		
-
 	}
     public function additem()
     {
@@ -59,5 +58,9 @@ class Inventory extends CI_Controller {
             $this->inventorymodel->add_item($data1, 'item');
             $this->inventorymodel->add_item($data2, 'item_detail');
         }
+    }
+    public function item_detail($data)
+    {
+        $this->load->view('modals/itemdetails',$data);
     }
 }

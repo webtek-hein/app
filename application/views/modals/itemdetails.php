@@ -23,13 +23,15 @@
                 </tr>
                 </thead>
                 <tbody>
+              <?php foreach ($item_detail as $details): ?>
                 <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td><?php echo $details['item_name']; ?></td>
+                  <td contenteditable='true'><?php echo $details['serial']; ?></td>
+                  <td><?php echo $details['account_code']; ?></td>
+                  <td><?php echo $details['exp_date']; ?></td>
+                  <td><?php echo $details['description']; ?></td>
                 </tr>
+              <?php endforeach; ?>
                 </tbody>
               </table>
             </div>
