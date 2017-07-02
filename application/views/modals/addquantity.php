@@ -24,10 +24,14 @@
                               <td>Unit</td>
                               <td>
                               <select class="unit">
-                                <option value="">...............</option>
-                                <option value="">...............</option>
-                                <option value="">...............</option>
-                                <option value="">...............</option>
+                                 <option value="piece">piece</option>
+                                 <option value="box">box</option>
+                                 <option value="set">set</option>
+                                 <option value="ream">ream</option>
+                                 <option value="dozen">dozen</option>
+                                 <option value="bundle">bundle</option>
+                                 <option value="sack">sack</option>
+                                 <option value="others">others</option>
                               </select>
                               </td>
                             </tr>
