@@ -44,16 +44,12 @@
 
                 
                   <td> <button type="button" class="fa fa-plus" data-toggle="modal" data-target="#addqty"></button>
-                                        <!-- Insert modal code here for ADD QUANTITY in ACTION-->
                         
                       <button class="fa fa-minus" data-toggle="modal" data-target="#subqty"></button>
-                                          <!-- Insert modal code here for SUBTRACT QUANTITY in ACTION-->
 
                       <button class="fa fa-pencil" data-toggle="modal" data-target="#edit"></button>
-                               <!-- Insert modal code here for EDIT in ACTION-->
 
                       <button class="fa fa-info" data-toggle="modal" data-target="#view"></button>
-                       <!-- Insert modal code here for VIEW in ACTION-->
                         
                         </div>
                       </div>
