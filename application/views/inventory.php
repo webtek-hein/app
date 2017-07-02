@@ -39,7 +39,7 @@
                   <td><?php echo $item_record['date_rec']; ?></td>
                   <td><?php echo $item_record['quantity']; ?></td>
                   <td><?php echo $item_record['receivedby']; ?></td>
-				          <td><?php echo $item_record['account_code']; ?></td>
+				          <td><?php echo $item_record['cost']; ?></td>
                   <td><?php echo $item_record['unit']; ?></td>
 
                 

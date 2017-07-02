@@ -3,19 +3,19 @@
     <div class="modal-dialog">
     
       <!-- Modal content-->
+      <?php echo validation_errors(); ?>
+      <?php echo form_open('inventory/additem'); ?>
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title" align="center"><b>Add Item<b></h4>
         </div>
-        <div class="modal-body">
-
-      <?php if($this->session->flashdata('msg')): ?>
-      <p><?php echo $this->session->flashdata('msg'); ?></p>
+         <?php if($this->session->flashdata('msg')): ?>
+        <p><?php echo $this->session->flashdata('msg'); ?></p>
       <?php endif; ?>
-
-      <?php echo validation_errors(); ?>
-      <?php echo form_open('modals/additem'); ?>
+       
+        <div class="modal-body">
+      
       <table border="0" width="500" align="center" class="table">
         <tr>
           <td>Item Name</td>
@@ -80,10 +80,10 @@
       </table> 
         </div>
         <div class="modal-footer">
-         <button type="submit" formmethod="post" formaction="<?php echo base_url() ?>inventory" class="btn btn-default" id="save1" data-dismiss="modal">Save</button>
-          <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal">Cancel</button>
+         <button type="submit" class="btn btn-default" id="save1" data-dismiss="modal">Save</button>
+         <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal">Cancel</button>
         </div>
       </div>
-      <?php echo form_close(); ?>
     </div>
   </div>
+  
