@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 01, 2017 at 03:12 AM
+-- Generation Time: Jul 03, 2017 at 05:07 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -26,12 +26,18 @@ SET time_zone = "+00:00";
 -- Table structure for table `account_code`
 --
 
+DROP TABLE IF EXISTS `account_code`;
 CREATE TABLE `account_code` (
   `ac_id` int(11) NOT NULL,
   `account_code` varchar(45) NOT NULL,
   `description` varchar(70) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Truncate table before insert `account_code`
+--
+
+TRUNCATE TABLE `account_code`;
 --
 -- Dumping data for table `account_code`
 --
@@ -125,6 +131,7 @@ INSERT INTO `account_code` (`ac_id`, `account_code`, `description`) VALUES
 -- Table structure for table `department`
 --
 
+DROP TABLE IF EXISTS `department`;
 CREATE TABLE `department` (
   `dept_id` int(11) NOT NULL,
   `res_center_code` varchar(11) NOT NULL,
@@ -132,20 +139,15 @@ CREATE TABLE `department` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Truncate table before insert `department`
+--
+
+TRUNCATE TABLE `department`;
+--
 -- Dumping data for table `department`
 --
 
 INSERT INTO `department` (`dept_id`, `res_center_code`, `department`) VALUES
-(1, '1081', 'CITY ACCOUNTANT\'S OFFICE'),
-(2, '1031', 'CITY ADMINISTRATOR\'S OFFICE'),
-(3, '1101', 'CITY ASSESSOR\'S OFFICE'),
-(4, '1111', 'OFFICE OF THE CITY AUDITOR'),
-(5, '1071', 'CITY BUDGET OFFICE'),
-(6, '1101A', 'CITY BUILDING AND ARCHITECTURE OFFICE'),
-(7, '1171', 'CITY JAIL MANAGEMENT & PENOLOGY'),
-(8, '1051', 'OFFICE OF THE LOCAL CIVIL REGISTRAR'),
-(9, '3311', 'DEPARTMENT OF EDUCATION'),
-(10, '8751', 'CITY ENGINEER\'S OFFICE'),
 (11, '8731', 'CITY ENVIRONMENT & PARKS MANAGEMENT OFFICE'),
 (12, '1191', 'BUREAU OF FIRE PREVENTION AND SAFETY'),
 (13, '1061', 'GENERAL SERVICES OFFICE'),
@@ -165,7 +167,17 @@ INSERT INTO `department` (`dept_id`, `res_center_code`, `department`) VALUES
 (27, '1021', 'SANGGUNIANG PANGLUNGSOD'),
 (28, '7611', 'OFFICE OF THE CITY SOCIAL WELFARE DEVELOPMENT'),
 (29, '1091', 'CITY TREASURER\'S OFFICE'),
-(30, '8721', 'CITY VETERINARY OFFICE');
+(30, '8721', 'CITY VETERINARY OFFICE'),
+(110, '8751', 'CITY ENGINEER\'S OFFICE'),
+(111, '1081', 'CITY ACCOUNTANT\'S OFFICE'),
+(112, '1031', 'CITY ADMINISTRATOR\'S OFFICE'),
+(113, '1101', 'CITY ASSESSOR\'S OFFICE'),
+(114, '1111', 'OFFICE OF THE CITY AUDITOR'),
+(115, '1071', 'CITY BUDGET OFFICE'),
+(116, '1101A', 'CITY BUILDING AND ARCHITECTURE OFFICE'),
+(117, '1171', 'CITY JAIL MANAGEMENT & PENOLOGY'),
+(118, '1051', 'OFFICE OF THE LOCAL CIVIL REGISTRAR'),
+(119, '3311', 'DEPARTMENT OF EDUCATION');
 
 -- --------------------------------------------------------
 
@@ -173,6 +185,7 @@ INSERT INTO `department` (`dept_id`, `res_center_code`, `department`) VALUES
 -- Table structure for table `distribution`
 --
 
+DROP TABLE IF EXISTS `distribution`;
 CREATE TABLE `distribution` (
   `dist_id` int(11) NOT NULL,
   `quantity` varchar(45) NOT NULL,
@@ -182,12 +195,34 @@ CREATE TABLE `distribution` (
   `user_distribute` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Truncate table before insert `distribution`
+--
+
+TRUNCATE TABLE `distribution`;
+--
+-- Dumping data for table `distribution`
+--
+
+INSERT INTO `distribution` (`dist_id`, `quantity`, `date`, `dept_id`, `recieved`, `user_distribute`) VALUES
+(441, '3', '2017-07-28 08:00:00', 11, 'Kenneth Lee', 'Heinrch Bangui'),
+(442, '5', '2017-07-20 04:00:00', 12, 'Leo Jung', 'Lovelace Oliva'),
+(443, '20', '2017-07-19 03:00:00', 13, 'Ron Quilang', 'Mark Andawi'),
+(444, '3', '2017-12-19 02:00:00', 14, 'Kyle Atienza', 'Christian Beltran'),
+(445, '50', '2017-12-28 01:00:00', 16, 'Lean Dalin', 'Swira Cogasi'),
+(446, '20', '2017-10-28 11:00:00', 18, 'Anton Lucas', 'Ian Alinso'),
+(447, '15', '2017-11-28 06:00:00', 19, 'Jeco Ramos', 'Ryan Castillo'),
+(448, '50', '2017-11-15 06:00:00', 20, 'Micca Delmedo', 'Mark Andawi'),
+(449, '50', '2017-11-15 06:00:00', 15, 'Daren Dayrit', 'Lovelace Oliva'),
+(450, '20', '2017-11-05 09:00:00', 14, 'Jan Romano', 'Ryan Castillo');
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `item`
 --
 
+DROP TABLE IF EXISTS `item`;
 CREATE TABLE `item` (
   `item_id` int(11) NOT NULL,
   `item_name` varchar(45) NOT NULL,
@@ -203,11 +238,41 @@ CREATE TABLE `item` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Truncate table before insert `item`
+--
+
+TRUNCATE TABLE `item`;
+--
 -- Dumping data for table `item`
 --
 
 INSERT INTO `item` (`item_id`, `item_name`, `quantity`, `description`, `official_receipt`, `del_date`, `date_rec`, `receivedby`, `cost`, `unit`, `account_id`) VALUES
-(2, 'Laptop', '3', 'black laptops', '0490', '2017-07-17 06:00:00', '2017-07-28 08:00:00', 'Selena Marie', 2500, 'others', 8);
+(331, 'Laptop', '3', 'black laptops', '0490', '2017-07-17 06:00:00', '2017-07-28 08:00:00', 'Louie Echave', 2500, 'others', 8),
+(332, 'TV', '5', '14 inches', '0495', '2017-07-18 08:00:00', '2017-07-20 04:00:00', 'Neil Macalanda', 2364, 'others', 7),
+(333, 'Tarpaulin', '20', 'White', '0488', '2017-07-18 09:00:00', '2017-07-19 03:00:00', 'Fernando Lopez', 2549, 'others', 5),
+(334, 'Table', '3', 'Wood', '0485', '2017-12-18 09:00:00', '2017-12-19 02:00:00', 'Christian Luyon', 50000, 'others', 3),
+(335, 'Bulb', '50', 'Circle', '0458', '2017-12-25 09:00:00', '2017-12-28 01:00:00', 'Bernadette Lucas', 3000, 'others', 8),
+(336, 'Bond Paper', '20', 'Short', '1245', '2017-10-25 09:00:00', '2017-10-28 11:00:00', 'Hiacynth Santos', 2000, 'others', 2),
+(337, 'Wires', '15', 'Blue', '1255', '2017-11-25 09:00:00', '2017-11-28 06:00:00', 'Rotsen Bayawa', 2463, 'others', 1),
+(338, 'Ballpen', '50', 'Black', '2551', '2017-11-12 09:00:00', '2017-11-15 06:00:00', 'deczan Pida', 2364, 'others', 8),
+(339, 'Pencil', '50', 'Nyllon', '2145', '2017-11-13 09:00:00', '2017-11-15 06:00:00', 'Ace Rimalos', 600, 'others', 2),
+(340, 'Eraser', '20', 'White', '3369', '2017-11-05 09:00:00', '2017-11-07 06:00:00', 'Ravi Kim', 960, 'others', 2);
+
+--
+-- Triggers `item`
+--
+DROP TRIGGER IF EXISTS `item_detail`;
+DELIMITER $$
+CREATE TRIGGER `item_detail` AFTER INSERT ON `item` FOR EACH ROW BEGIN
+		
+        SET @counter = 0;
+         while @counter < new.quantity do
+         	INSERT INTO item_detail (item_id) VALUES (NEW.item_id);
+		set @counter=@counter+1;
+    	end while ;
+  END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -215,13 +280,261 @@ INSERT INTO `item` (`item_id`, `item_name`, `quantity`, `description`, `official
 -- Table structure for table `item_detail`
 --
 
+DROP TABLE IF EXISTS `item_detail`;
 CREATE TABLE `item_detail` (
   `item_det_id` int(11) NOT NULL,
-  `serial` int(11) NOT NULL,
-  `exp_date` int(11) NOT NULL,
+  `serial` int(11) DEFAULT NULL,
+  `exp_date` int(11) DEFAULT NULL,
   `item_id` int(11) NOT NULL,
-  `dist_id` int(11) NOT NULL
+  `dist_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Truncate table before insert `item_detail`
+--
+
+TRUNCATE TABLE `item_detail`;
+--
+-- Dumping data for table `item_detail`
+--
+
+INSERT INTO `item_detail` (`item_det_id`, `serial`, `exp_date`, `item_id`, `dist_id`) VALUES
+(8, NULL, NULL, 331, NULL),
+(9, NULL, NULL, 331, NULL),
+(10, NULL, NULL, 331, NULL),
+(11, NULL, NULL, 332, NULL),
+(12, NULL, NULL, 332, NULL),
+(13, NULL, NULL, 332, NULL),
+(14, NULL, NULL, 332, NULL),
+(15, NULL, NULL, 332, NULL),
+(16, NULL, NULL, 333, NULL),
+(17, NULL, NULL, 333, NULL),
+(18, NULL, NULL, 333, NULL),
+(19, NULL, NULL, 333, NULL),
+(20, NULL, NULL, 333, NULL),
+(21, NULL, NULL, 333, NULL),
+(22, NULL, NULL, 333, NULL),
+(23, NULL, NULL, 333, NULL),
+(24, NULL, NULL, 333, NULL),
+(25, NULL, NULL, 333, NULL),
+(26, NULL, NULL, 333, NULL),
+(27, NULL, NULL, 333, NULL),
+(28, NULL, NULL, 333, NULL),
+(29, NULL, NULL, 333, NULL),
+(30, NULL, NULL, 333, NULL),
+(31, NULL, NULL, 333, NULL),
+(32, NULL, NULL, 333, NULL),
+(33, NULL, NULL, 333, NULL),
+(34, NULL, NULL, 333, NULL),
+(35, NULL, NULL, 333, NULL),
+(36, NULL, NULL, 334, NULL),
+(37, NULL, NULL, 334, NULL),
+(38, NULL, NULL, 334, NULL),
+(39, NULL, NULL, 335, NULL),
+(40, NULL, NULL, 335, NULL),
+(41, NULL, NULL, 335, NULL),
+(42, NULL, NULL, 335, NULL),
+(43, NULL, NULL, 335, NULL),
+(44, NULL, NULL, 335, NULL),
+(45, NULL, NULL, 335, NULL),
+(46, NULL, NULL, 335, NULL),
+(47, NULL, NULL, 335, NULL),
+(48, NULL, NULL, 335, NULL),
+(49, NULL, NULL, 335, NULL),
+(50, NULL, NULL, 335, NULL),
+(51, NULL, NULL, 335, NULL),
+(52, NULL, NULL, 335, NULL),
+(53, NULL, NULL, 335, NULL),
+(54, NULL, NULL, 335, NULL),
+(55, NULL, NULL, 335, NULL),
+(56, NULL, NULL, 335, NULL),
+(57, NULL, NULL, 335, NULL),
+(58, NULL, NULL, 335, NULL),
+(59, NULL, NULL, 335, NULL),
+(60, NULL, NULL, 335, NULL),
+(61, NULL, NULL, 335, NULL),
+(62, NULL, NULL, 335, NULL),
+(63, NULL, NULL, 335, NULL),
+(64, NULL, NULL, 335, NULL),
+(65, NULL, NULL, 335, NULL),
+(66, NULL, NULL, 335, NULL),
+(67, NULL, NULL, 335, NULL),
+(68, NULL, NULL, 335, NULL),
+(69, NULL, NULL, 335, NULL),
+(70, NULL, NULL, 335, NULL),
+(71, NULL, NULL, 335, NULL),
+(72, NULL, NULL, 335, NULL),
+(73, NULL, NULL, 335, NULL),
+(74, NULL, NULL, 335, NULL),
+(75, NULL, NULL, 335, NULL),
+(76, NULL, NULL, 335, NULL),
+(77, NULL, NULL, 335, NULL),
+(78, NULL, NULL, 335, NULL),
+(79, NULL, NULL, 335, NULL),
+(80, NULL, NULL, 335, NULL),
+(81, NULL, NULL, 335, NULL),
+(82, NULL, NULL, 335, NULL),
+(83, NULL, NULL, 335, NULL),
+(84, NULL, NULL, 335, NULL),
+(85, NULL, NULL, 335, NULL),
+(86, NULL, NULL, 335, NULL),
+(87, NULL, NULL, 335, NULL),
+(88, NULL, NULL, 335, NULL),
+(89, NULL, NULL, 336, NULL),
+(90, NULL, NULL, 336, NULL),
+(91, NULL, NULL, 336, NULL),
+(92, NULL, NULL, 336, NULL),
+(93, NULL, NULL, 336, NULL),
+(94, NULL, NULL, 336, NULL),
+(95, NULL, NULL, 336, NULL),
+(96, NULL, NULL, 336, NULL),
+(97, NULL, NULL, 336, NULL),
+(98, NULL, NULL, 336, NULL),
+(99, NULL, NULL, 336, NULL),
+(100, NULL, NULL, 336, NULL),
+(101, NULL, NULL, 336, NULL),
+(102, NULL, NULL, 336, NULL),
+(103, NULL, NULL, 336, NULL),
+(104, NULL, NULL, 336, NULL),
+(105, NULL, NULL, 336, NULL),
+(106, NULL, NULL, 336, NULL),
+(107, NULL, NULL, 336, NULL),
+(108, NULL, NULL, 336, NULL),
+(109, NULL, NULL, 337, NULL),
+(110, NULL, NULL, 337, NULL),
+(111, NULL, NULL, 337, NULL),
+(112, NULL, NULL, 337, NULL),
+(113, NULL, NULL, 337, NULL),
+(114, NULL, NULL, 337, NULL),
+(115, NULL, NULL, 337, NULL),
+(116, NULL, NULL, 337, NULL),
+(117, NULL, NULL, 337, NULL),
+(118, NULL, NULL, 337, NULL),
+(119, NULL, NULL, 337, NULL),
+(120, NULL, NULL, 337, NULL),
+(121, NULL, NULL, 337, NULL),
+(122, NULL, NULL, 337, NULL),
+(123, NULL, NULL, 337, NULL),
+(124, NULL, NULL, 338, NULL),
+(125, NULL, NULL, 338, NULL),
+(126, NULL, NULL, 338, NULL),
+(127, NULL, NULL, 338, NULL),
+(128, NULL, NULL, 338, NULL),
+(129, NULL, NULL, 338, NULL),
+(130, NULL, NULL, 338, NULL),
+(131, NULL, NULL, 338, NULL),
+(132, NULL, NULL, 338, NULL),
+(133, NULL, NULL, 338, NULL),
+(134, NULL, NULL, 338, NULL),
+(135, NULL, NULL, 338, NULL),
+(136, NULL, NULL, 338, NULL),
+(137, NULL, NULL, 338, NULL),
+(138, NULL, NULL, 338, NULL),
+(139, NULL, NULL, 338, NULL),
+(140, NULL, NULL, 338, NULL),
+(141, NULL, NULL, 338, NULL),
+(142, NULL, NULL, 338, NULL),
+(143, NULL, NULL, 338, NULL),
+(144, NULL, NULL, 338, NULL),
+(145, NULL, NULL, 338, NULL),
+(146, NULL, NULL, 338, NULL),
+(147, NULL, NULL, 338, NULL),
+(148, NULL, NULL, 338, NULL),
+(149, NULL, NULL, 338, NULL),
+(150, NULL, NULL, 338, NULL),
+(151, NULL, NULL, 338, NULL),
+(152, NULL, NULL, 338, NULL),
+(153, NULL, NULL, 338, NULL),
+(154, NULL, NULL, 338, NULL),
+(155, NULL, NULL, 338, NULL),
+(156, NULL, NULL, 338, NULL),
+(157, NULL, NULL, 338, NULL),
+(158, NULL, NULL, 338, NULL),
+(159, NULL, NULL, 338, NULL),
+(160, NULL, NULL, 338, NULL),
+(161, NULL, NULL, 338, NULL),
+(162, NULL, NULL, 338, NULL),
+(163, NULL, NULL, 338, NULL),
+(164, NULL, NULL, 338, NULL),
+(165, NULL, NULL, 338, NULL),
+(166, NULL, NULL, 338, NULL),
+(167, NULL, NULL, 338, NULL),
+(168, NULL, NULL, 338, NULL),
+(169, NULL, NULL, 338, NULL),
+(170, NULL, NULL, 338, NULL),
+(171, NULL, NULL, 338, NULL),
+(172, NULL, NULL, 338, NULL),
+(173, NULL, NULL, 338, NULL),
+(174, NULL, NULL, 339, NULL),
+(175, NULL, NULL, 339, NULL),
+(176, NULL, NULL, 339, NULL),
+(177, NULL, NULL, 339, NULL),
+(178, NULL, NULL, 339, NULL),
+(179, NULL, NULL, 339, NULL),
+(180, NULL, NULL, 339, NULL),
+(181, NULL, NULL, 339, NULL),
+(182, NULL, NULL, 339, NULL),
+(183, NULL, NULL, 339, NULL),
+(184, NULL, NULL, 339, NULL),
+(185, NULL, NULL, 339, NULL),
+(186, NULL, NULL, 339, NULL),
+(187, NULL, NULL, 339, NULL),
+(188, NULL, NULL, 339, NULL),
+(189, NULL, NULL, 339, NULL),
+(190, NULL, NULL, 339, NULL),
+(191, NULL, NULL, 339, NULL),
+(192, NULL, NULL, 339, NULL),
+(193, NULL, NULL, 339, NULL),
+(194, NULL, NULL, 339, NULL),
+(195, NULL, NULL, 339, NULL),
+(196, NULL, NULL, 339, NULL),
+(197, NULL, NULL, 339, NULL),
+(198, NULL, NULL, 339, NULL),
+(199, NULL, NULL, 339, NULL),
+(200, NULL, NULL, 339, NULL),
+(201, NULL, NULL, 339, NULL),
+(202, NULL, NULL, 339, NULL),
+(203, NULL, NULL, 339, NULL),
+(204, NULL, NULL, 339, NULL),
+(205, NULL, NULL, 339, NULL),
+(206, NULL, NULL, 339, NULL),
+(207, NULL, NULL, 339, NULL),
+(208, NULL, NULL, 339, NULL),
+(209, NULL, NULL, 339, NULL),
+(210, NULL, NULL, 339, NULL),
+(211, NULL, NULL, 339, NULL),
+(212, NULL, NULL, 339, NULL),
+(213, NULL, NULL, 339, NULL),
+(214, NULL, NULL, 339, NULL),
+(215, NULL, NULL, 339, NULL),
+(216, NULL, NULL, 339, NULL),
+(217, NULL, NULL, 339, NULL),
+(218, NULL, NULL, 339, NULL),
+(219, NULL, NULL, 339, NULL),
+(220, NULL, NULL, 339, NULL),
+(221, NULL, NULL, 339, NULL),
+(222, NULL, NULL, 339, NULL),
+(223, NULL, NULL, 339, NULL),
+(224, NULL, NULL, 340, NULL),
+(225, NULL, NULL, 340, NULL),
+(226, NULL, NULL, 340, NULL),
+(227, NULL, NULL, 340, NULL),
+(228, NULL, NULL, 340, NULL),
+(229, NULL, NULL, 340, NULL),
+(230, NULL, NULL, 340, NULL),
+(231, NULL, NULL, 340, NULL),
+(232, NULL, NULL, 340, NULL),
+(233, NULL, NULL, 340, NULL),
+(234, NULL, NULL, 340, NULL),
+(235, NULL, NULL, 340, NULL),
+(236, NULL, NULL, 340, NULL),
+(237, NULL, NULL, 340, NULL),
+(238, NULL, NULL, 340, NULL),
+(239, NULL, NULL, 340, NULL),
+(240, NULL, NULL, 340, NULL),
+(241, NULL, NULL, 340, NULL),
+(242, NULL, NULL, 340, NULL),
+(243, NULL, NULL, 340, NULL);
 
 -- --------------------------------------------------------
 
@@ -229,6 +542,7 @@ CREATE TABLE `item_detail` (
 -- Table structure for table `return`
 --
 
+DROP TABLE IF EXISTS `return`;
 CREATE TABLE `return` (
   `return_id` int(11) NOT NULL,
   `date` varchar(45) NOT NULL,
@@ -239,12 +553,18 @@ CREATE TABLE `return` (
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Truncate table before insert `return`
+--
+
+TRUNCATE TABLE `return`;
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `user`
 --
 
+DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `user_id` int(11) NOT NULL,
   `first_name` varchar(45) NOT NULL,
@@ -257,11 +577,26 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Truncate table before insert `user`
+--
+
+TRUNCATE TABLE `user`;
+--
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`user_id`, `first_name`, `last_name`, `email`, `contact_no`, `username`, `password`, `position`) VALUES
-(2, 'Administration', '', 'selenabrook@gmail.com', '+6392588845', 'admin', 'admin', 'admin');
+(221, 'Lovelace ', 'Oliva', 'lv@gmail.com', '+6392588845', 'love', 'password', 'admin'),
+(222, 'Lyra ', 'Ronquillo', 'lyra@yahoo.com', '09254785639', 'lyra', 'password', 'custodian'),
+(223, 'Joy', 'Cabildo', 'Joy@yahoo.com', '09554287136', 'joy', 'password', 'department head'),
+(225, 'Heinrigh', 'Bangui', 'Henry@yahoo.com', '09235987452', 'Henry', 'password', 'admin'),
+(226, 'Mark', 'Andawi', 'Mark@yahoo.com', '09854732156', 'Mark', 'password', 'custodian'),
+(227, 'Ryan', 'Castillo', 'Rye@yahoo.com', '09852145778', 'Ryan', 'password', 'admin'),
+(228, 'Glo', 'Goyo', 'Glo@yahoo.com', '09582145877', 'Glo', 'password', 'department'),
+(229, 'russel', 'Bayote', 'Russel@yahoo.com', '09854731251', 'Russ', 'password', 'admin'),
+(2210, 'Ian', 'Alinso', 'Ian@yahoo.com', '09854564521', 'Ian', 'password', 'custodian'),
+(2211, 'Christian', 'Beltran', 'Chris@yahoo.com', '09855472364', 'Chris', 'password', 'admin'),
+(2212, 'admin', 'admin', 'Joy_Cabildo24@yahoo.com', '09053983127', 'admin', 'admin', 'admin');
 
 --
 -- Indexes for dumped tables
@@ -285,7 +620,8 @@ ALTER TABLE `department`
 -- Indexes for table `distribution`
 --
 ALTER TABLE `distribution`
-  ADD PRIMARY KEY (`dist_id`);
+  ADD PRIMARY KEY (`dist_id`),
+  ADD KEY `depid_idx` (`dept_id`);
 
 --
 -- Indexes for table `item`
@@ -332,22 +668,22 @@ ALTER TABLE `account_code`
 -- AUTO_INCREMENT for table `department`
 --
 ALTER TABLE `department`
-  MODIFY `dept_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `dept_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
 --
 -- AUTO_INCREMENT for table `distribution`
 --
 ALTER TABLE `distribution`
-  MODIFY `dist_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `dist_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=451;
 --
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=346;
 --
 -- AUTO_INCREMENT for table `item_detail`
 --
 ALTER TABLE `item_detail`
-  MODIFY `item_det_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `item_det_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=244;
 --
 -- AUTO_INCREMENT for table `return`
 --
@@ -357,7 +693,7 @@ ALTER TABLE `return`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2213;
 --
 -- Constraints for dumped tables
 --
@@ -366,7 +702,7 @@ ALTER TABLE `user`
 -- Constraints for table `distribution`
 --
 ALTER TABLE `distribution`
-  ADD CONSTRAINT `depid` FOREIGN KEY (`dist_id`) REFERENCES `department` (`dept_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `depid` FOREIGN KEY (`dept_id`) REFERENCES `department` (`dept_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `item`
