@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 03, 2017 at 05:07 AM
+-- Generation Time: Jul 03, 2017 at 11:53 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `inventory`
 --
+CREATE DATABASE IF NOT EXISTS `inventory` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `inventory`;
 
 -- --------------------------------------------------------
 
@@ -247,16 +249,16 @@ TRUNCATE TABLE `item`;
 --
 
 INSERT INTO `item` (`item_id`, `item_name`, `quantity`, `description`, `official_receipt`, `del_date`, `date_rec`, `receivedby`, `cost`, `unit`, `account_id`) VALUES
-(331, 'Laptop', '3', 'black laptops', '0490', '2017-07-17 06:00:00', '2017-07-28 08:00:00', 'Louie Echave', 2500, 'others', 8),
-(332, 'TV', '5', '14 inches', '0495', '2017-07-18 08:00:00', '2017-07-20 04:00:00', 'Neil Macalanda', 2364, 'others', 7),
-(333, 'Tarpaulin', '20', 'White', '0488', '2017-07-18 09:00:00', '2017-07-19 03:00:00', 'Fernando Lopez', 2549, 'others', 5),
-(334, 'Table', '3', 'Wood', '0485', '2017-12-18 09:00:00', '2017-12-19 02:00:00', 'Christian Luyon', 50000, 'others', 3),
-(335, 'Bulb', '50', 'Circle', '0458', '2017-12-25 09:00:00', '2017-12-28 01:00:00', 'Bernadette Lucas', 3000, 'others', 8),
-(336, 'Bond Paper', '20', 'Short', '1245', '2017-10-25 09:00:00', '2017-10-28 11:00:00', 'Hiacynth Santos', 2000, 'others', 2),
-(337, 'Wires', '15', 'Blue', '1255', '2017-11-25 09:00:00', '2017-11-28 06:00:00', 'Rotsen Bayawa', 2463, 'others', 1),
-(338, 'Ballpen', '50', 'Black', '2551', '2017-11-12 09:00:00', '2017-11-15 06:00:00', 'deczan Pida', 2364, 'others', 8),
-(339, 'Pencil', '50', 'Nyllon', '2145', '2017-11-13 09:00:00', '2017-11-15 06:00:00', 'Ace Rimalos', 600, 'others', 2),
-(340, 'Eraser', '20', 'White', '3369', '2017-11-05 09:00:00', '2017-11-07 06:00:00', 'Ravi Kim', 960, 'others', 2);
+(1, 'Laptop', '6', 'black laptops', '0490', '2017-07-17 06:00:00', '2017-07-28 08:00:00', 'Louie Echave', 2500, 'others', 8),
+(2, 'TV', '5', '14 inches', '0495', '2017-07-18 08:00:00', '2017-07-20 04:00:00', 'Neil Macalanda', 2364, 'others', 7),
+(3, 'Tarpaulin', '20', 'White', '0488', '2017-07-18 09:00:00', '2017-07-19 03:00:00', 'Fernando Lopez', 2549, 'others', 5),
+(4, 'Table', '3', 'Wood', '0485', '2017-12-18 09:00:00', '2017-12-19 02:00:00', 'Christian Luyon', 50000, 'others', 3),
+(5, 'Bulb', '50', 'Circle', '0458', '2017-12-25 09:00:00', '2017-12-28 01:00:00', 'Bernadette Lucas', 3000, 'others', 8),
+(6, 'Bond Paper', '20', 'Short', '1245', '2017-10-25 09:00:00', '2017-10-28 11:00:00', 'Hiacynth Santos', 2000, 'others', 2),
+(7, 'Wires', '15', 'Blue', '1255', '2017-11-25 09:00:00', '2017-11-28 06:00:00', 'Rotsen Bayawa', 2463, 'others', 1),
+(8, 'Ballpen', '50', 'Black', '2551', '2017-11-12 09:00:00', '2017-11-15 06:00:00', 'deczan Pida', 2364, 'others', 8),
+(9, 'Pencil', '50', 'Nyllon', '2145', '2017-11-13 09:00:00', '2017-11-15 06:00:00', 'Ace Rimalos', 600, 'others', 2),
+(10, 'Eraser', '20', 'White', '3369', '2017-11-05 09:00:00', '2017-11-07 06:00:00', 'Ravi Kim', 960, 'others', 2);
 
 --
 -- Triggers `item`
@@ -267,6 +269,18 @@ CREATE TRIGGER `item_detail` AFTER INSERT ON `item` FOR EACH ROW BEGIN
 		
         SET @counter = 0;
          while @counter < new.quantity do
+         	INSERT INTO item_detail (item_id) VALUES (NEW.item_id);
+		set @counter=@counter+1;
+    	end while ;
+  END
+$$
+DELIMITER ;
+DROP TRIGGER IF EXISTS `item_detail_update`;
+DELIMITER $$
+CREATE TRIGGER `item_detail_update` AFTER UPDATE ON `item` FOR EACH ROW BEGIN
+        SET @counter = 0;
+        SET @value = new.quantity - old.quantity;
+         while @counter < @value do
          	INSERT INTO item_detail (item_id) VALUES (NEW.item_id);
 		set @counter=@counter+1;
     	end while ;
@@ -299,265 +313,266 @@ TRUNCATE TABLE `item_detail`;
 --
 
 INSERT INTO `item_detail` (`item_det_id`, `serial`, `exp_date`, `item_id`, `dist_id`) VALUES
-(8, NULL, NULL, 331, NULL),
-(9, NULL, NULL, 331, NULL),
-(10, NULL, NULL, 331, NULL),
-(11, NULL, NULL, 332, NULL),
-(12, NULL, NULL, 332, NULL),
-(13, NULL, NULL, 332, NULL),
-(14, NULL, NULL, 332, NULL),
-(15, NULL, NULL, 332, NULL),
-(16, NULL, NULL, 333, NULL),
-(17, NULL, NULL, 333, NULL),
-(18, NULL, NULL, 333, NULL),
-(19, NULL, NULL, 333, NULL),
-(20, NULL, NULL, 333, NULL),
-(21, NULL, NULL, 333, NULL),
-(22, NULL, NULL, 333, NULL),
-(23, NULL, NULL, 333, NULL),
-(24, NULL, NULL, 333, NULL),
-(25, NULL, NULL, 333, NULL),
-(26, NULL, NULL, 333, NULL),
-(27, NULL, NULL, 333, NULL),
-(28, NULL, NULL, 333, NULL),
-(29, NULL, NULL, 333, NULL),
-(30, NULL, NULL, 333, NULL),
-(31, NULL, NULL, 333, NULL),
-(32, NULL, NULL, 333, NULL),
-(33, NULL, NULL, 333, NULL),
-(34, NULL, NULL, 333, NULL),
-(35, NULL, NULL, 333, NULL),
-(36, NULL, NULL, 334, NULL),
-(37, NULL, NULL, 334, NULL),
-(38, NULL, NULL, 334, NULL),
-(39, NULL, NULL, 335, NULL),
-(40, NULL, NULL, 335, NULL),
-(41, NULL, NULL, 335, NULL),
-(42, NULL, NULL, 335, NULL),
-(43, NULL, NULL, 335, NULL),
-(44, NULL, NULL, 335, NULL),
-(45, NULL, NULL, 335, NULL),
-(46, NULL, NULL, 335, NULL),
-(47, NULL, NULL, 335, NULL),
-(48, NULL, NULL, 335, NULL),
-(49, NULL, NULL, 335, NULL),
-(50, NULL, NULL, 335, NULL),
-(51, NULL, NULL, 335, NULL),
-(52, NULL, NULL, 335, NULL),
-(53, NULL, NULL, 335, NULL),
-(54, NULL, NULL, 335, NULL),
-(55, NULL, NULL, 335, NULL),
-(56, NULL, NULL, 335, NULL),
-(57, NULL, NULL, 335, NULL),
-(58, NULL, NULL, 335, NULL),
-(59, NULL, NULL, 335, NULL),
-(60, NULL, NULL, 335, NULL),
-(61, NULL, NULL, 335, NULL),
-(62, NULL, NULL, 335, NULL),
-(63, NULL, NULL, 335, NULL),
-(64, NULL, NULL, 335, NULL),
-(65, NULL, NULL, 335, NULL),
-(66, NULL, NULL, 335, NULL),
-(67, NULL, NULL, 335, NULL),
-(68, NULL, NULL, 335, NULL),
-(69, NULL, NULL, 335, NULL),
-(70, NULL, NULL, 335, NULL),
-(71, NULL, NULL, 335, NULL),
-(72, NULL, NULL, 335, NULL),
-(73, NULL, NULL, 335, NULL),
-(74, NULL, NULL, 335, NULL),
-(75, NULL, NULL, 335, NULL),
-(76, NULL, NULL, 335, NULL),
-(77, NULL, NULL, 335, NULL),
-(78, NULL, NULL, 335, NULL),
-(79, NULL, NULL, 335, NULL),
-(80, NULL, NULL, 335, NULL),
-(81, NULL, NULL, 335, NULL),
-(82, NULL, NULL, 335, NULL),
-(83, NULL, NULL, 335, NULL),
-(84, NULL, NULL, 335, NULL),
-(85, NULL, NULL, 335, NULL),
-(86, NULL, NULL, 335, NULL),
-(87, NULL, NULL, 335, NULL),
-(88, NULL, NULL, 335, NULL),
-(89, NULL, NULL, 336, NULL),
-(90, NULL, NULL, 336, NULL),
-(91, NULL, NULL, 336, NULL),
-(92, NULL, NULL, 336, NULL),
-(93, NULL, NULL, 336, NULL),
-(94, NULL, NULL, 336, NULL),
-(95, NULL, NULL, 336, NULL),
-(96, NULL, NULL, 336, NULL),
-(97, NULL, NULL, 336, NULL),
-(98, NULL, NULL, 336, NULL),
-(99, NULL, NULL, 336, NULL),
-(100, NULL, NULL, 336, NULL),
-(101, NULL, NULL, 336, NULL),
-(102, NULL, NULL, 336, NULL),
-(103, NULL, NULL, 336, NULL),
-(104, NULL, NULL, 336, NULL),
-(105, NULL, NULL, 336, NULL),
-(106, NULL, NULL, 336, NULL),
-(107, NULL, NULL, 336, NULL),
-(108, NULL, NULL, 336, NULL),
-(109, NULL, NULL, 337, NULL),
-(110, NULL, NULL, 337, NULL),
-(111, NULL, NULL, 337, NULL),
-(112, NULL, NULL, 337, NULL),
-(113, NULL, NULL, 337, NULL),
-(114, NULL, NULL, 337, NULL),
-(115, NULL, NULL, 337, NULL),
-(116, NULL, NULL, 337, NULL),
-(117, NULL, NULL, 337, NULL),
-(118, NULL, NULL, 337, NULL),
-(119, NULL, NULL, 337, NULL),
-(120, NULL, NULL, 337, NULL),
-(121, NULL, NULL, 337, NULL),
-(122, NULL, NULL, 337, NULL),
-(123, NULL, NULL, 337, NULL),
-(124, NULL, NULL, 338, NULL),
-(125, NULL, NULL, 338, NULL),
-(126, NULL, NULL, 338, NULL),
-(127, NULL, NULL, 338, NULL),
-(128, NULL, NULL, 338, NULL),
-(129, NULL, NULL, 338, NULL),
-(130, NULL, NULL, 338, NULL),
-(131, NULL, NULL, 338, NULL),
-(132, NULL, NULL, 338, NULL),
-(133, NULL, NULL, 338, NULL),
-(134, NULL, NULL, 338, NULL),
-(135, NULL, NULL, 338, NULL),
-(136, NULL, NULL, 338, NULL),
-(137, NULL, NULL, 338, NULL),
-(138, NULL, NULL, 338, NULL),
-(139, NULL, NULL, 338, NULL),
-(140, NULL, NULL, 338, NULL),
-(141, NULL, NULL, 338, NULL),
-(142, NULL, NULL, 338, NULL),
-(143, NULL, NULL, 338, NULL),
-(144, NULL, NULL, 338, NULL),
-(145, NULL, NULL, 338, NULL),
-(146, NULL, NULL, 338, NULL),
-(147, NULL, NULL, 338, NULL),
-(148, NULL, NULL, 338, NULL),
-(149, NULL, NULL, 338, NULL),
-(150, NULL, NULL, 338, NULL),
-(151, NULL, NULL, 338, NULL),
-(152, NULL, NULL, 338, NULL),
-(153, NULL, NULL, 338, NULL),
-(154, NULL, NULL, 338, NULL),
-(155, NULL, NULL, 338, NULL),
-(156, NULL, NULL, 338, NULL),
-(157, NULL, NULL, 338, NULL),
-(158, NULL, NULL, 338, NULL),
-(159, NULL, NULL, 338, NULL),
-(160, NULL, NULL, 338, NULL),
-(161, NULL, NULL, 338, NULL),
-(162, NULL, NULL, 338, NULL),
-(163, NULL, NULL, 338, NULL),
-(164, NULL, NULL, 338, NULL),
-(165, NULL, NULL, 338, NULL),
-(166, NULL, NULL, 338, NULL),
-(167, NULL, NULL, 338, NULL),
-(168, NULL, NULL, 338, NULL),
-(169, NULL, NULL, 338, NULL),
-(170, NULL, NULL, 338, NULL),
-(171, NULL, NULL, 338, NULL),
-(172, NULL, NULL, 338, NULL),
-(173, NULL, NULL, 338, NULL),
-(174, NULL, NULL, 339, NULL),
-(175, NULL, NULL, 339, NULL),
-(176, NULL, NULL, 339, NULL),
-(177, NULL, NULL, 339, NULL),
-(178, NULL, NULL, 339, NULL),
-(179, NULL, NULL, 339, NULL),
-(180, NULL, NULL, 339, NULL),
-(181, NULL, NULL, 339, NULL),
-(182, NULL, NULL, 339, NULL),
-(183, NULL, NULL, 339, NULL),
-(184, NULL, NULL, 339, NULL),
-(185, NULL, NULL, 339, NULL),
-(186, NULL, NULL, 339, NULL),
-(187, NULL, NULL, 339, NULL),
-(188, NULL, NULL, 339, NULL),
-(189, NULL, NULL, 339, NULL),
-(190, NULL, NULL, 339, NULL),
-(191, NULL, NULL, 339, NULL),
-(192, NULL, NULL, 339, NULL),
-(193, NULL, NULL, 339, NULL),
-(194, NULL, NULL, 339, NULL),
-(195, NULL, NULL, 339, NULL),
-(196, NULL, NULL, 339, NULL),
-(197, NULL, NULL, 339, NULL),
-(198, NULL, NULL, 339, NULL),
-(199, NULL, NULL, 339, NULL),
-(200, NULL, NULL, 339, NULL),
-(201, NULL, NULL, 339, NULL),
-(202, NULL, NULL, 339, NULL),
-(203, NULL, NULL, 339, NULL),
-(204, NULL, NULL, 339, NULL),
-(205, NULL, NULL, 339, NULL),
-(206, NULL, NULL, 339, NULL),
-(207, NULL, NULL, 339, NULL),
-(208, NULL, NULL, 339, NULL),
-(209, NULL, NULL, 339, NULL),
-(210, NULL, NULL, 339, NULL),
-(211, NULL, NULL, 339, NULL),
-(212, NULL, NULL, 339, NULL),
-(213, NULL, NULL, 339, NULL),
-(214, NULL, NULL, 339, NULL),
-(215, NULL, NULL, 339, NULL),
-(216, NULL, NULL, 339, NULL),
-(217, NULL, NULL, 339, NULL),
-(218, NULL, NULL, 339, NULL),
-(219, NULL, NULL, 339, NULL),
-(220, NULL, NULL, 339, NULL),
-(221, NULL, NULL, 339, NULL),
-(222, NULL, NULL, 339, NULL),
-(223, NULL, NULL, 339, NULL),
-(224, NULL, NULL, 340, NULL),
-(225, NULL, NULL, 340, NULL),
-(226, NULL, NULL, 340, NULL),
-(227, NULL, NULL, 340, NULL),
-(228, NULL, NULL, 340, NULL),
-(229, NULL, NULL, 340, NULL),
-(230, NULL, NULL, 340, NULL),
-(231, NULL, NULL, 340, NULL),
-(232, NULL, NULL, 340, NULL),
-(233, NULL, NULL, 340, NULL),
-(234, NULL, NULL, 340, NULL),
-(235, NULL, NULL, 340, NULL),
-(236, NULL, NULL, 340, NULL),
-(237, NULL, NULL, 340, NULL),
-(238, NULL, NULL, 340, NULL),
-(239, NULL, NULL, 340, NULL),
-(240, NULL, NULL, 340, NULL),
-(241, NULL, NULL, 340, NULL),
-(242, NULL, NULL, 340, NULL),
-(243, NULL, NULL, 340, NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `return`
---
-
-DROP TABLE IF EXISTS `return`;
-CREATE TABLE `return` (
-  `return_id` int(11) NOT NULL,
-  `date` varchar(45) NOT NULL,
-  `reason` varchar(45) NOT NULL,
-  `item_det_id` int(11) NOT NULL,
-  `dept_id` int(11) NOT NULL,
-  `return_person` varchar(45) NOT NULL,
-  `user_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+(253, 1, NULL, 1, 441),
+(254, NULL, NULL, 1, NULL),
+(255, NULL, NULL, 1, NULL),
+(256, NULL, NULL, 1, NULL),
+(257, NULL, NULL, 1, NULL),
+(258, NULL, NULL, 1, NULL),
+(259, NULL, NULL, 2, NULL),
+(260, NULL, NULL, 2, NULL),
+(261, NULL, NULL, 2, NULL),
+(262, NULL, NULL, 2, NULL),
+(263, NULL, NULL, 2, NULL),
+(264, NULL, NULL, 3, NULL),
+(265, NULL, NULL, 3, NULL),
+(266, NULL, NULL, 3, NULL),
+(267, NULL, NULL, 3, NULL),
+(268, NULL, NULL, 3, NULL),
+(269, NULL, NULL, 3, NULL),
+(270, NULL, NULL, 3, NULL),
+(271, NULL, NULL, 3, NULL),
+(272, NULL, NULL, 3, NULL),
+(273, NULL, NULL, 3, NULL),
+(274, NULL, NULL, 3, NULL),
+(275, NULL, NULL, 3, NULL),
+(276, NULL, NULL, 3, NULL),
+(277, NULL, NULL, 3, NULL),
+(278, NULL, NULL, 3, NULL),
+(279, NULL, NULL, 3, NULL),
+(280, NULL, NULL, 3, NULL),
+(281, NULL, NULL, 3, NULL),
+(282, NULL, NULL, 3, NULL),
+(283, NULL, NULL, 3, NULL),
+(284, NULL, NULL, 4, NULL),
+(285, NULL, NULL, 4, NULL),
+(286, NULL, NULL, 4, NULL),
+(287, NULL, NULL, 5, NULL),
+(288, NULL, NULL, 5, NULL),
+(289, NULL, NULL, 5, NULL),
+(290, NULL, NULL, 5, NULL),
+(291, NULL, NULL, 5, NULL),
+(292, NULL, NULL, 5, NULL),
+(293, NULL, NULL, 5, NULL),
+(294, NULL, NULL, 5, NULL),
+(295, NULL, NULL, 5, NULL),
+(296, NULL, NULL, 5, NULL),
+(297, NULL, NULL, 5, NULL),
+(298, NULL, NULL, 5, NULL),
+(299, NULL, NULL, 5, NULL),
+(300, NULL, NULL, 5, NULL),
+(301, NULL, NULL, 5, NULL),
+(302, NULL, NULL, 5, NULL),
+(303, NULL, NULL, 5, NULL),
+(304, NULL, NULL, 5, NULL),
+(305, NULL, NULL, 5, NULL),
+(306, NULL, NULL, 5, NULL),
+(307, NULL, NULL, 5, NULL),
+(308, NULL, NULL, 5, NULL),
+(309, NULL, NULL, 5, NULL),
+(310, NULL, NULL, 5, NULL),
+(311, NULL, NULL, 5, NULL),
+(312, NULL, NULL, 5, NULL),
+(313, NULL, NULL, 5, NULL),
+(314, NULL, NULL, 5, NULL),
+(315, NULL, NULL, 5, NULL),
+(316, NULL, NULL, 5, NULL),
+(317, NULL, NULL, 5, NULL),
+(318, NULL, NULL, 5, NULL),
+(319, NULL, NULL, 5, NULL),
+(320, NULL, NULL, 5, NULL),
+(321, NULL, NULL, 5, NULL),
+(322, NULL, NULL, 5, NULL),
+(323, NULL, NULL, 5, NULL),
+(324, NULL, NULL, 5, NULL),
+(325, NULL, NULL, 5, NULL),
+(326, NULL, NULL, 5, NULL),
+(327, NULL, NULL, 5, NULL),
+(328, NULL, NULL, 5, NULL),
+(329, NULL, NULL, 5, NULL),
+(330, NULL, NULL, 5, NULL),
+(331, NULL, NULL, 5, NULL),
+(332, NULL, NULL, 5, NULL),
+(333, NULL, NULL, 5, NULL),
+(334, NULL, NULL, 5, NULL),
+(335, NULL, NULL, 5, NULL),
+(336, NULL, NULL, 5, NULL),
+(337, NULL, NULL, 6, NULL),
+(338, NULL, NULL, 6, NULL),
+(339, NULL, NULL, 6, NULL),
+(340, NULL, NULL, 6, NULL),
+(341, NULL, NULL, 6, NULL),
+(342, NULL, NULL, 6, NULL),
+(343, NULL, NULL, 6, NULL),
+(344, NULL, NULL, 6, NULL),
+(345, NULL, NULL, 6, NULL),
+(346, NULL, NULL, 6, NULL),
+(347, NULL, NULL, 6, NULL),
+(348, NULL, NULL, 6, NULL),
+(349, NULL, NULL, 6, NULL),
+(350, NULL, NULL, 6, NULL),
+(351, NULL, NULL, 6, NULL),
+(352, NULL, NULL, 6, NULL),
+(353, NULL, NULL, 6, NULL),
+(354, NULL, NULL, 6, NULL),
+(355, NULL, NULL, 6, NULL),
+(356, NULL, NULL, 6, NULL),
+(357, NULL, NULL, 7, NULL),
+(358, NULL, NULL, 7, NULL),
+(359, NULL, NULL, 7, NULL),
+(360, NULL, NULL, 7, NULL),
+(361, NULL, NULL, 7, NULL),
+(362, NULL, NULL, 7, NULL),
+(363, NULL, NULL, 7, NULL),
+(364, NULL, NULL, 7, NULL),
+(365, NULL, NULL, 7, NULL),
+(366, NULL, NULL, 7, NULL),
+(367, NULL, NULL, 7, NULL),
+(368, NULL, NULL, 7, NULL),
+(369, NULL, NULL, 7, NULL),
+(370, NULL, NULL, 7, NULL),
+(371, NULL, NULL, 7, NULL),
+(372, NULL, NULL, 8, NULL),
+(373, NULL, NULL, 8, NULL),
+(374, NULL, NULL, 8, NULL),
+(375, NULL, NULL, 8, NULL),
+(376, NULL, NULL, 8, NULL),
+(377, NULL, NULL, 8, NULL),
+(378, NULL, NULL, 8, NULL),
+(379, NULL, NULL, 8, NULL),
+(380, NULL, NULL, 8, NULL),
+(381, NULL, NULL, 8, NULL),
+(382, NULL, NULL, 8, NULL),
+(383, NULL, NULL, 8, NULL),
+(384, NULL, NULL, 8, NULL),
+(385, NULL, NULL, 8, NULL),
+(386, NULL, NULL, 8, NULL),
+(387, NULL, NULL, 8, NULL),
+(388, NULL, NULL, 8, NULL),
+(389, NULL, NULL, 8, NULL),
+(390, NULL, NULL, 8, NULL),
+(391, NULL, NULL, 8, NULL),
+(392, NULL, NULL, 8, NULL),
+(393, NULL, NULL, 8, NULL),
+(394, NULL, NULL, 8, NULL),
+(395, NULL, NULL, 8, NULL),
+(396, NULL, NULL, 8, NULL),
+(397, NULL, NULL, 8, NULL),
+(398, NULL, NULL, 8, NULL),
+(399, NULL, NULL, 8, NULL),
+(400, NULL, NULL, 8, NULL),
+(401, NULL, NULL, 8, NULL),
+(402, NULL, NULL, 8, NULL),
+(403, NULL, NULL, 8, NULL),
+(404, NULL, NULL, 8, NULL),
+(405, NULL, NULL, 8, NULL),
+(406, NULL, NULL, 8, NULL),
+(407, NULL, NULL, 8, NULL),
+(408, NULL, NULL, 8, NULL),
+(409, NULL, NULL, 8, NULL),
+(410, NULL, NULL, 8, NULL),
+(411, NULL, NULL, 8, NULL),
+(412, NULL, NULL, 8, NULL),
+(413, NULL, NULL, 8, NULL),
+(414, NULL, NULL, 8, NULL),
+(415, NULL, NULL, 8, NULL),
+(416, NULL, NULL, 8, NULL),
+(417, NULL, NULL, 8, NULL),
+(418, NULL, NULL, 8, NULL),
+(419, NULL, NULL, 8, NULL),
+(420, NULL, NULL, 8, NULL),
+(421, NULL, NULL, 8, NULL),
+(422, NULL, NULL, 9, NULL),
+(423, NULL, NULL, 9, NULL),
+(424, NULL, NULL, 9, NULL),
+(425, NULL, NULL, 9, NULL),
+(426, NULL, NULL, 9, NULL),
+(427, NULL, NULL, 9, NULL),
+(428, NULL, NULL, 9, NULL),
+(429, NULL, NULL, 9, NULL),
+(430, NULL, NULL, 9, NULL),
+(431, NULL, NULL, 9, NULL),
+(432, NULL, NULL, 9, NULL),
+(433, NULL, NULL, 9, NULL),
+(434, NULL, NULL, 9, NULL),
+(435, NULL, NULL, 9, NULL),
+(436, NULL, NULL, 9, NULL),
+(437, NULL, NULL, 9, NULL),
+(438, NULL, NULL, 9, NULL),
+(439, NULL, NULL, 9, NULL),
+(440, NULL, NULL, 9, NULL),
+(441, NULL, NULL, 9, NULL),
+(442, NULL, NULL, 9, NULL),
+(443, NULL, NULL, 9, NULL),
+(444, NULL, NULL, 9, NULL),
+(445, NULL, NULL, 9, NULL),
+(446, NULL, NULL, 9, NULL),
+(447, NULL, NULL, 9, NULL),
+(448, NULL, NULL, 9, NULL),
+(449, NULL, NULL, 9, NULL),
+(450, NULL, NULL, 9, NULL),
+(451, NULL, NULL, 9, NULL),
+(452, NULL, NULL, 9, NULL),
+(453, NULL, NULL, 9, NULL),
+(454, NULL, NULL, 9, NULL),
+(455, NULL, NULL, 9, NULL),
+(456, NULL, NULL, 9, NULL),
+(457, NULL, NULL, 9, NULL),
+(458, NULL, NULL, 9, NULL),
+(459, NULL, NULL, 9, NULL),
+(460, NULL, NULL, 9, NULL),
+(461, NULL, NULL, 9, NULL),
+(462, NULL, NULL, 9, NULL),
+(463, NULL, NULL, 9, NULL),
+(464, NULL, NULL, 9, NULL),
+(465, NULL, NULL, 9, NULL),
+(466, NULL, NULL, 9, NULL),
+(467, NULL, NULL, 9, NULL),
+(468, NULL, NULL, 9, NULL),
+(469, NULL, NULL, 9, NULL),
+(470, NULL, NULL, 9, NULL),
+(471, NULL, NULL, 9, NULL),
+(472, NULL, NULL, 10, NULL),
+(473, NULL, NULL, 10, NULL),
+(474, NULL, NULL, 10, NULL),
+(475, NULL, NULL, 10, NULL),
+(476, NULL, NULL, 10, NULL),
+(477, NULL, NULL, 10, NULL),
+(478, NULL, NULL, 10, NULL),
+(479, NULL, NULL, 10, NULL),
+(480, NULL, NULL, 10, NULL),
+(481, NULL, NULL, 10, NULL),
+(482, NULL, NULL, 10, NULL),
+(483, NULL, NULL, 10, NULL),
+(484, NULL, NULL, 10, NULL),
+(485, NULL, NULL, 10, NULL),
+(486, NULL, NULL, 10, NULL),
+(487, NULL, NULL, 10, NULL),
+(488, NULL, NULL, 10, NULL),
+(489, NULL, NULL, 10, NULL),
+(490, NULL, NULL, 10, NULL),
+(491, NULL, NULL, 10, NULL);
 
 --
--- Truncate table before insert `return`
+-- Triggers `item_detail`
 --
+DROP TRIGGER IF EXISTS `decrease_log`;
+DELIMITER $$
+CREATE TRIGGER `decrease_log` AFTER UPDATE ON `item_detail` FOR EACH ROW BEGIN	
+   IF (old.serial is not null) THEN
+   	INSERT INTO logs.decrease_log (item_det_id) VALUES (NEW.item_det_id);
+    END IF;
+  END
+$$
+DELIMITER ;
+DROP TRIGGER IF EXISTS `increase_log`;
+DELIMITER $$
+CREATE TRIGGER `increase_log` AFTER INSERT ON `item_detail` FOR EACH ROW BEGIN
+         	INSERT INTO logs.increase_log (item_det_id) VALUES (NEW.item_det_id);
+  END
+$$
+DELIMITER ;
 
-TRUNCATE TABLE `return`;
 -- --------------------------------------------------------
 
 --
@@ -586,6 +601,7 @@ TRUNCATE TABLE `user`;
 --
 
 INSERT INTO `user` (`user_id`, `first_name`, `last_name`, `email`, `contact_no`, `username`, `password`, `position`) VALUES
+(1, 'admin', 'admin', 'Joy_Cabildo24@yahoo.com', '09053983127', 'admin', 'admin', 'admin'),
 (221, 'Lovelace ', 'Oliva', 'lv@gmail.com', '+6392588845', 'love', 'password', 'admin'),
 (222, 'Lyra ', 'Ronquillo', 'lyra@yahoo.com', '09254785639', 'lyra', 'password', 'custodian'),
 (223, 'Joy', 'Cabildo', 'Joy@yahoo.com', '09554287136', 'joy', 'password', 'department head'),
@@ -595,8 +611,7 @@ INSERT INTO `user` (`user_id`, `first_name`, `last_name`, `email`, `contact_no`,
 (228, 'Glo', 'Goyo', 'Glo@yahoo.com', '09582145877', 'Glo', 'password', 'department'),
 (229, 'russel', 'Bayote', 'Russel@yahoo.com', '09854731251', 'Russ', 'password', 'admin'),
 (2210, 'Ian', 'Alinso', 'Ian@yahoo.com', '09854564521', 'Ian', 'password', 'custodian'),
-(2211, 'Christian', 'Beltran', 'Chris@yahoo.com', '09855472364', 'Chris', 'password', 'admin'),
-(2212, 'admin', 'admin', 'Joy_Cabildo24@yahoo.com', '09053983127', 'admin', 'admin', 'admin');
+(2211, 'Christian', 'Beltran', 'Chris@yahoo.com', '09855472364', 'Chris', 'password', 'admin');
 
 --
 -- Indexes for dumped tables
@@ -641,15 +656,6 @@ ALTER TABLE `item_detail`
   ADD KEY `dist` (`dist_id`);
 
 --
--- Indexes for table `return`
---
-ALTER TABLE `return`
-  ADD PRIMARY KEY (`return_id`),
-  ADD KEY `itemdet_idx` (`item_det_id`),
-  ADD KEY `deptid_idx` (`dept_id`),
-  ADD KEY `userid_idx` (`user_id`);
-
---
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -678,17 +684,12 @@ ALTER TABLE `distribution`
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=346;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `item_detail`
 --
 ALTER TABLE `item_detail`
-  MODIFY `item_det_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=244;
---
--- AUTO_INCREMENT for table `return`
---
-ALTER TABLE `return`
-  MODIFY `return_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `item_det_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=492;
 --
 -- AUTO_INCREMENT for table `user`
 --
@@ -716,14 +717,6 @@ ALTER TABLE `item`
 ALTER TABLE `item_detail`
   ADD CONSTRAINT `dist` FOREIGN KEY (`dist_id`) REFERENCES `distribution` (`dist_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `itemid` FOREIGN KEY (`item_id`) REFERENCES `item` (`item_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `return`
---
-ALTER TABLE `return`
-  ADD CONSTRAINT `deptid` FOREIGN KEY (`dept_id`) REFERENCES `department` (`dept_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `itemdet` FOREIGN KEY (`item_det_id`) REFERENCES `item_detail` (`item_det_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `userid` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
