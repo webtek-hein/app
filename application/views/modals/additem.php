@@ -31,6 +31,18 @@
             <?php endforeach; ?>
           </select>
           </td>
+            <tr>
+          <td>Description</td>
+          <td><input type="text" class="InputBox" name="Description" value=""></td>
+        </tr>
+            <tr>
+          <td>Expiration Date</td>
+          <td><input type="text" class="InputBox" name="exp_date" value=""></td>
+        </tr>
+              <tr>
+          <td>Received By</td>
+          <td><input type="text" class="InputBox" name="receivedby" value=""></td>
+        </tr>
         </tr>
         <tr>
           <td>Official Receipt</td>
@@ -80,7 +92,7 @@
       </table> 
         </div>
         <div class="modal-footer">
-         <button type="submit" formaction="/additem" class="btn btn-default" id="save1" data-dismiss="modal">Save</button>
+         <button type="submit" formaction="http://localhost/app/inventory" class="btn btn-default" id="save1" data-dismiss="modal">Save</button>
          <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal">Cancel</button>
         </div>
       </div>

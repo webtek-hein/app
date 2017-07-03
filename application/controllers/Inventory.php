@@ -12,7 +12,7 @@ class Inventory extends CI_Controller {
 		$data['accountcodes'] = $this->inventorymodel->get_ac_list();
 		$data['department'] = $this->inventorymodel->get_department_list();
 		$data['item'] = $this->inventorymodel->get_inventory_list();
-        $data['item_detail'] = $this->inventorymodel->get_item_detail();
+        $data['item_detail'] = $this->inventorymodel->get_item_detail('2');
 
 		$this->load->view('templates/header');
 		$this->load->view('inventory',$data);
@@ -29,6 +29,7 @@ class Inventory extends CI_Controller {
     	$data['accountcodes'] = $this->inventorymodel->get_ac_list();
         $this->form_validation->set_rules('ItemName', 'Item Name', 'required');
         $this->form_validation->set_rules('AccountCode', 'Account Code', 'required');
+        $this->form_validation->set_rules('Description', 'Description', 'required');
         $this->form_validation->set_rules('OfficialReceipt', 'Official Receipt', 'required');
         $this->form_validation->set_rules('Quantity', 'Quantity', 'required');
         $this->form_validation->set_rules('datedelivered', 'Date Delivered', 'required');
@@ -45,20 +46,18 @@ class Inventory extends CI_Controller {
             $data1 = array(
             'item_name' => $this->input->post('ItemName'),
             'account_id' => $this->input->post('AccountCode'),
+            'description' => $this->input->post('Description'),
             'official_receipt' => $this->input->post('OfficialReceipt'),
             'quantity' => $this->input->post('Quantity'),
             'del_date' => $this->input->post('datedelivered'),
             'date_rec' => $this->input->post('datereceived'),
+            'receivedby' => $this->input->post('receivedby'),
+            'exp_date' => $this->input->post('exp_date'),
             'unit' => $this->input->post('Unit'),
             'cost' => $this->input->post('Cost')
             );
 
-            $data2 = array(
-                'expiration_date' => $this->input->post('ExpirationDate')
-            );
-
             $this->inventorymodel->add_item($data1, 'item');
-            $this->inventorymodel->add_item($data2, 'item_detail');
         }
     }
     public function item_detail($data)

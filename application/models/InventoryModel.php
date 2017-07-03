@@ -29,7 +29,7 @@ class InventoryModel extends CI_Model {
         $query = $db1->get();
         return $query->result_array();
 	}
-    public function get_item_detail()
+    public function get_item_detail($item_id)
     {
         $db1 = $this->load->database('inventory', TRUE);
         $db1->select('*');
@@ -55,7 +55,7 @@ class InventoryModel extends CI_Model {
 
     public function add_item($data, $table)
     {
-        $db1 = $this->load->database('inventory');
+        $db1 = $this->load->database('inventory',TRUE);
         return $db1->insert($table, $data);
     }
 
