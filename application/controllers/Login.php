@@ -50,6 +50,7 @@ class Login extends CI_Controller {
                     $this->load->view('templates/header');
                     $this->load->view('dashboard',@data);
                     $this->load->view('templates/footer');
+                    redirect(base_url().'dashboard');
                     // header("Location: //localhost/app/Login/user_login_process/{$username}");
                 }
             } else {
@@ -69,6 +70,7 @@ class Login extends CI_Controller {
             'username' => ''
         );
         $this->session->unset_userdata('logged_in', $sess_array);
+        $this->session->sess_destroy();
         $data['message_display'] = 'Successfully Logout';
         $this->load->view('login', $data);
     }
