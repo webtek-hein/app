@@ -19,7 +19,7 @@
       <table border="0" width="500" align="center" class="table">
         <tr>
           <td>Item Name</td>
-          <td><input type="text" class="InputBox" name="ItemName" value=""></td>
+          <td><input type="text" class="InputBox" name="Item_Name" value=""></td>
         </tr>
         <tr>
           <td>Account Code</td>
@@ -32,20 +32,23 @@
           </select>
           </td>
         </tr>
+
         <tr>
           <td>Official Receipt</td>
           <td><input type="int" class="InputBox" name="OfficialReceipt" value=""></td>
         </tr>
+
         <tr>
           <td>Quantity</td>
-          <td><input type="int" class="InputBox" name="Quantity" value=""></td>
+          <td><input type="int" class="InputBox" name="Item_Quantity" value=""></td>
         </tr>
+
         <tr>
           <td>Supplier</td>
-          <td>
-            <input type="text" class="InputBox" name="Supplier" value="">
+          <td><input type="text" class="InputBox" name="Supplier" value="">
           </td>
         </tr>
+
         <tr>
           <td>Delivery Date</td>
           <td><input type="date" class="datereceived" name="datedelivered" value=""></td>
@@ -80,7 +83,7 @@
       </table> 
         </div>
         <div class="modal-footer">
-         <button type="submit" formaction="/additem" class="btn btn-default" id="save1" data-dismiss="modal">Save</button>
+         <button type="submit" formaction="inventory/additem" class="btn btn-default" id="save1">Save</button>
          <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal">Cancel</button>
         </div>
       </div>

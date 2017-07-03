@@ -5,14 +5,14 @@ class Inventory extends CI_Controller {
 	public function __construct()
     {
       	parent::__construct();
-		$this->load->model('inventorymodel');
+		$this->load->model('InventoryModel');
     }
 	public function index()
 	{
-		$data['accountcodes'] = $this->inventorymodel->get_ac_list();
-		$data['department'] = $this->inventorymodel->get_department_list();
-		$data['item'] = $this->inventorymodel->get_inventory_list();
-        $data['item_detail'] = $this->inventorymodel->get_item_detail();
+		$data['accountcodes'] = $this->InventoryModel->get_ac_list();
+		$data['department'] = $this->InventoryModel->get_department_list();
+		$data['item'] = $this->InventoryModel->get_inventory_list();
+        $data['item_detail'] = $this->InventoryModel->get_item_detail();
 
 		$this->load->view('templates/header');
 		$this->load->view('inventory',$data);
@@ -26,11 +26,11 @@ class Inventory extends CI_Controller {
 	}
     public function additem()
     {
-    	$data['accountcodes'] = $this->inventorymodel->get_ac_list();
-        $this->form_validation->set_rules('ItemName', 'Item Name', 'required');
+    	$data['accountcodes'] = $this->InventoryModel->get_ac_list();
+        $this->form_validation->set_rules('Item_Name', 'Item Name','required');
         $this->form_validation->set_rules('AccountCode', 'Account Code', 'required');
         $this->form_validation->set_rules('OfficialReceipt', 'Official Receipt', 'required');
-        $this->form_validation->set_rules('Quantity', 'Quantity', 'required');
+        $this->form_validation->set_rules('Item_Quantity', 'Quantity','required');
         $this->form_validation->set_rules('datedelivered', 'Date Delivered', 'required');
         $this->form_validation->set_rules('datereceived', 'Date Received', 'required');
         $this->form_validation->set_rules('Unit', 'Unit', 'required');
@@ -57,8 +57,9 @@ class Inventory extends CI_Controller {
                 'expiration_date' => $this->input->post('ExpirationDate')
             );
 
-            $this->inventorymodel->add_item($data1, 'item');
-            $this->inventorymodel->add_item($data2, 'item_detail');
+            $this->InventoryModel->add_item($data1);
+            $this->InventoryModel->add_item($data2);
+            $data['message'] = 'Data Inserted Successfully';
         }
     }
     public function item_detail($data)

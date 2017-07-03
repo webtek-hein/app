@@ -53,10 +53,10 @@ class InventoryModel extends CI_Model {
     {
     }
 
-    public function add_item($data, $table)
+    public function add_item($data)
     {
-        $db1 = $this->load->database('inventory');
-        return $db1->insert($table, $data);
+        $this->load->database();
+        $this->db->insert('item', $data);
     }
 
 }
