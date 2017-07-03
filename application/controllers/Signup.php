@@ -19,6 +19,7 @@ class Signup extends CI_Controller {
         $this->form_validation->set_rules('Password', 'Password', 'required');
         $this->form_validation->set_rules('confirm_password', 'Confirm Password', 'required|matches[Password]');
         $this->form_validation->set_rules('type', 'User Type', 'required');
+        
         if ($this->form_validation->run() === FALSE)
         {
             $this->load->view('signup');
