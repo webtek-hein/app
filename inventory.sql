@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 03, 2017 at 04:57 AM
+-- Generation Time: Jul 03, 2017 at 05:07 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -33,6 +33,11 @@ CREATE TABLE `account_code` (
   `description` varchar(70) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Truncate table before insert `account_code`
+--
+
+TRUNCATE TABLE `account_code`;
 --
 -- Dumping data for table `account_code`
 --
@@ -134,6 +139,11 @@ CREATE TABLE `department` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Truncate table before insert `department`
+--
+
+TRUNCATE TABLE `department`;
+--
 -- Dumping data for table `department`
 --
 
@@ -186,6 +196,11 @@ CREATE TABLE `distribution` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Truncate table before insert `distribution`
+--
+
+TRUNCATE TABLE `distribution`;
+--
 -- Dumping data for table `distribution`
 --
 
@@ -222,6 +237,11 @@ CREATE TABLE `item` (
   `account_id` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Truncate table before insert `item`
+--
+
+TRUNCATE TABLE `item`;
 --
 -- Dumping data for table `item`
 --
@@ -269,6 +289,11 @@ CREATE TABLE `item_detail` (
   `dist_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Truncate table before insert `item_detail`
+--
+
+TRUNCATE TABLE `item_detail`;
 --
 -- Dumping data for table `item_detail`
 --
@@ -528,6 +553,11 @@ CREATE TABLE `return` (
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Truncate table before insert `return`
+--
+
+TRUNCATE TABLE `return`;
 -- --------------------------------------------------------
 
 --
@@ -547,6 +577,11 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Truncate table before insert `user`
+--
+
+TRUNCATE TABLE `user`;
+--
 -- Dumping data for table `user`
 --
 
@@ -560,7 +595,8 @@ INSERT INTO `user` (`user_id`, `first_name`, `last_name`, `email`, `contact_no`,
 (228, 'Glo', 'Goyo', 'Glo@yahoo.com', '09582145877', 'Glo', 'password', 'department'),
 (229, 'russel', 'Bayote', 'Russel@yahoo.com', '09854731251', 'Russ', 'password', 'admin'),
 (2210, 'Ian', 'Alinso', 'Ian@yahoo.com', '09854564521', 'Ian', 'password', 'custodian'),
-(2211, 'Christian', 'Beltran', 'Chris@yahoo.com', '09855472364', 'Chris', 'password', 'admin');
+(2211, 'Christian', 'Beltran', 'Chris@yahoo.com', '09855472364', 'Chris', 'password', 'admin'),
+(2212, 'admin', 'admin', 'Joy_Cabildo24@yahoo.com', '09053983127', 'admin', 'admin', 'admin');
 
 --
 -- Indexes for dumped tables
@@ -657,7 +693,7 @@ ALTER TABLE `return`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2212;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2213;
 --
 -- Constraints for dumped tables
 --
