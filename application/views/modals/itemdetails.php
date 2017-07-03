@@ -13,9 +13,10 @@
                         <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
+
                 <tr>
-                  <th>Item name.</th>
-                  <th>Serial no.</th>
+                  <th>No.</th>
+                  <th>Serial #</th>
                   <th>Account Code</th>
                   <th>Expiration Date</th>
                   <th>Description</th>
@@ -23,9 +24,12 @@
                 </tr>
                 </thead>
                 <tbody>
+                <?php $counter = 0; ?>
               <?php foreach ($item_detail as $details): ?>
                 <tr>
-                  <td><?php echo $details['item_name']; ?></td>
+                  <td><?php 
+                        echo $counter = $counter+1; 
+                    ?></td>
                   <td contenteditable='true'><?php echo $details['serial']; ?></td>
                   <td><?php echo $details['account_code']; ?></td>
                   <td><?php echo $details['exp_date']; ?></td>

@@ -12,20 +12,21 @@ class Inventory extends CI_Controller {
 		$data['accountcodes'] = $this->inventorymodel->get_ac_list();
 		$data['department'] = $this->inventorymodel->get_department_list();
 		$data['item'] = $this->inventorymodel->get_inventory_list();
-        $data['item_detail'] = $this->inventorymodel->get_item_detail('2');
+        $data['item_detail'] = $this->inventorymodel->get_item_detail();
 
 		$this->load->view('templates/header');
 		$this->load->view('inventory',$data);
+        $this->additem();
         $this->load->view('modals/addbulk');
         $this->load->view('modals/addquantity');
         $this->load->view('modals/editinventory',$data);
 		$this->load->view('modals/subtractquantity');
-        $this->additem();
         $this->item_detail($data);
 		$this->load->view('templates/footer');
 	}
     public function additem()
     {
+    	$data['accountcodes'] = $this->inventorymodel->get_ac_list();
         $this->form_validation->set_rules('ItemName', 'Item Name', 'required');
         $this->form_validation->set_rules('AccountCode', 'Account Code', 'required');
         $this->form_validation->set_rules('OfficialReceipt', 'Official Receipt', 'required');
@@ -37,7 +38,7 @@ class Inventory extends CI_Controller {
         $this->form_validation->set_rules('ExpirationDate', 'Expiration Date', 'required');
         if ($this->form_validation->run() === FALSE)
         {
-            $this->load->view('modals/additem');
+            $this->load->view('modals/additem', $data);
         }
         else
         {
