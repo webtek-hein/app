@@ -13,9 +13,12 @@
                   <th>Serial</th>
                   <th> Item name</th>
                   <th> Date</th>
-                  <th> Date receive</th>
+                  <th> Supplier</th>
+                  <th> Status</th>
                   <th> Unit Cost</th>
           <th> Person? </th>
+          <th>Replace Item</th>
+          <th>Reason</th>
           <th>User</th>
                 </tr>
                 </thead>
@@ -23,15 +26,16 @@
                   <?php foreach ($returnlog as $return): ?>
                 <tr>
               
-                  <td></td>
-                  <td>Internet
-                    Explorer 4.0
-                  </td>
+                  <td>312</td>
+                  <td>ballpen</td>
                   <td><?php echo $return['date']; ?></td>
+                  <td>Joy</td>
                   <td> 4</td>
                   <td>X</td>
                   <td> <?php echo $return['return_person']; ?></td>
                   <td>X</td>
+                  <td><?php echo $return['reason']; ?></td>
+                  <td>Lovelace</td>
                 </tr>
                 <?php endforeach; ?>
                 </tbody>

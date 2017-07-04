@@ -19,6 +19,7 @@
                   <th> Unit Cost</th>
 					<th> Supplier </th>
 					<th>User</th>
+          <th>Employee name</th>
                 </tr>
                 </thead>
                 <?php foreach ($decreaselog as $decrease): ?>
@@ -33,6 +34,7 @@
                   <td>X</td>
                   <td>q</td>
                   <td>X</td>
+                  <td>Glo</td>
                 </tr>
                 <?php endforeach; ?>
                 </tbody>
