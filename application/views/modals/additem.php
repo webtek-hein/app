@@ -22,6 +22,10 @@
           <td><input type="text" class="InputBox" name="Item_Name" value=""></td>
         </tr>
         <tr>
+          <td>Item Description</td>
+          <td><input type="text" class="InputBox" name="Description" value=""></td>
+        </tr>
+        <tr>
           <td>Account Code</td>
           <td>
           <!-- Display description, option value is account id eg. 1-07-01-010 for land -->
@@ -36,6 +40,10 @@
         <tr>
           <td>Official Receipt</td>
           <td><input type="int" class="InputBox" name="OfficialReceipt" value=""></td>
+        </tr>
+	<tr>
+          <td>Received By</td>
+          <td><input type="text" class="InputBox" name="ReceivedBy" value=""></td>
         </tr>
 
         <tr>

@@ -43,10 +43,10 @@ class Inventory extends CI_Controller {
         else
         {
             $data1 = array(
-            'item_name' => $this->input->post('ItemName'),
+            'item_name' => $this->input->post('Item_Name'),
             'account_id' => $this->input->post('AccountCode'),
             'official_receipt' => $this->input->post('OfficialReceipt'),
-            'quantity' => $this->input->post('Quantity'),
+            'quantity' => $this->input->post('Item_Quantity'),
             'del_date' => $this->input->post('datedelivered'),
             'date_rec' => $this->input->post('datereceived'),
             'unit' => $this->input->post('Unit'),
@@ -54,12 +54,11 @@ class Inventory extends CI_Controller {
             );
 
             $data2 = array(
-                'expiration_date' => $this->input->post('ExpirationDate')
+                'exp_date' => $this->input->post('ExpirationDate')
             );
 
-            $this->InventoryModel->add_item($data1);
-            $this->InventoryModel->add_item($data2);
-            $data['message'] = 'Data Inserted Successfully';
+            $this->InventoryModel->add_item($data1,$data2);
+            //$this->InventoryModel->add_item($data2);
         }
     }
     public function item_detail($data)
