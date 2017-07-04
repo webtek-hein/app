@@ -43,14 +43,31 @@ class InventoryModel extends CI_Model {
     {
         
     }
-    public function get_increase_logs()
+    public function get_increase_log()
     {
+        $db2=$this->load->database('logs', TRUE);
+        $db2->select('*');
+        $db2->from('increase_log');
+        $query = $db2->get();
+        return $query->result_array();
     }
      public function get_decrease_log()
     {
+        $db2=$this->load->database('logs', TRUE);
+        $db2->select('*');
+        $db2->from('decrease_log');
+        $query = $db2->get();
+        return $query->result_array();
     }
     public function get_return_log()
     {
+
+        $db2=$this->load->database('logs', TRUE);
+        $db2->select('*');
+        $db2->from('return_log');
+        $query = $db2->get();
+        return $query->result_array();
+
     }
 
     public function add_item($data1,$data2)

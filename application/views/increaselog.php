@@ -21,17 +21,19 @@
                 </tr>
                 </thead>
                 <tbody>
+                  <?php foreach ($increaselog as $increase): ?>
                 <tr>
                   <td>Trident</td>
                   <td>Internet
                     Explorer 4.0
                   </td>
-                  <td>Win 95+</td>
+                  <td><?php echo $increase['date']; ?></td>
                   <td> 4</td>
                   <td>X</td>
-                  <td> 4</td>
+                  <td><?php echo $increase['supplier']; ?></td>
                   <td>X</td>
                 </tr>
+                <?php endforeach; ?>
                 </tbody>
                 <tfoot>
                 </tfoot>

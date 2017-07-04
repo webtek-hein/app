@@ -10,6 +10,7 @@
             <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
+
                 <tr>
                   <th>Serial</th>
                   <th> Item name</th>
@@ -20,18 +21,20 @@
 					<th>User</th>
                 </tr>
                 </thead>
+                <?php foreach ($decreaselog as $decrease): ?>
                 <tbody>
                 <tr>
                   <td>Trident</td>
                   <td>Internet
                     Explorer 4.0
                   </td>
-                  <td>Win 95+</td>
+                  <td><?php echo $decrease['date']; ?></td>
                   <td> 4</td>
                   <td>X</td>
-                  <td> 4</td>
+                  <td>q</td>
                   <td>X</td>
                 </tr>
+                <?php endforeach; ?>
                 </tbody>
                 <tfoot>
                 </tfoot>
