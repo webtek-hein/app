@@ -3,9 +3,19 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <br><h3 class="box-title">Department</h3><br><br>
-              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Summary of item</button>
+                <div class="dropdown">
+    <button class="btn btn-primary" type="button" data-toggle="dropdown">Departments
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li><a href="#">GSO</a></li>
+      <li class="#"><a href="#">Budget</a></li>
+      <li class="#"><a href="#">Accounting</a></li>
+      <li><a href="#">Normal</a></li>
+    </ul>
+
+        <button type= "button" class="btn btn-success">Summary of Items</button>        
             </div>
+              </div>
             <!-- /.box-header -->
             <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">
