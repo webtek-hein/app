@@ -23,7 +23,7 @@
         </tr>
         <tr>
           <td>Item Description</td>
-          <td><input type="text" class="Description" name="Description" value=""></td>
+          <td><input type="text" class="InputBox" name="Description" value=""></td>
         </tr>
         <tr>
           <td>Account Code</td>
