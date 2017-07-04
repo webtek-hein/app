@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 03, 2017 at 11:53 PM
+-- Generation Time: Jul 04, 2017 at 03:58 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `inventory`
 --
-CREATE DATABASE IF NOT EXISTS `inventory` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `inventory`;
 
 -- --------------------------------------------------------
 
@@ -28,18 +26,12 @@ USE `inventory`;
 -- Table structure for table `account_code`
 --
 
-DROP TABLE IF EXISTS `account_code`;
 CREATE TABLE `account_code` (
   `ac_id` int(11) NOT NULL,
   `account_code` varchar(45) NOT NULL,
   `description` varchar(70) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Truncate table before insert `account_code`
---
-
-TRUNCATE TABLE `account_code`;
 --
 -- Dumping data for table `account_code`
 --
@@ -130,21 +122,35 @@ INSERT INTO `account_code` (`ac_id`, `account_code`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `decrease_log`
+--
+
+CREATE TABLE `decrease_log` (
+  `dec_log_id` int(11) NOT NULL,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `item_det_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL DEFAULT '1'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `decrease_log`
+--
+
+INSERT INTO `decrease_log` (`dec_log_id`, `date`, `item_det_id`, `user_id`) VALUES
+(2, '2017-07-04 07:51:49', 253, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `department`
 --
 
-DROP TABLE IF EXISTS `department`;
 CREATE TABLE `department` (
   `dept_id` int(11) NOT NULL,
   `res_center_code` varchar(11) NOT NULL,
   `department` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Truncate table before insert `department`
---
-
-TRUNCATE TABLE `department`;
 --
 -- Dumping data for table `department`
 --
@@ -187,7 +193,6 @@ INSERT INTO `department` (`dept_id`, `res_center_code`, `department`) VALUES
 -- Table structure for table `distribution`
 --
 
-DROP TABLE IF EXISTS `distribution`;
 CREATE TABLE `distribution` (
   `dist_id` int(11) NOT NULL,
   `quantity` varchar(45) NOT NULL,
@@ -197,11 +202,6 @@ CREATE TABLE `distribution` (
   `user_distribute` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Truncate table before insert `distribution`
---
-
-TRUNCATE TABLE `distribution`;
 --
 -- Dumping data for table `distribution`
 --
@@ -221,10 +221,269 @@ INSERT INTO `distribution` (`dist_id`, `quantity`, `date`, `dept_id`, `recieved`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `increase_log`
+--
+
+CREATE TABLE `increase_log` (
+  `inc_log_id` int(11) NOT NULL,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `supplier` varchar(45) DEFAULT NULL,
+  `item_det_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL DEFAULT '1'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `increase_log`
+--
+
+INSERT INTO `increase_log` (`inc_log_id`, `date`, `supplier`, `item_det_id`, `user_id`) VALUES
+(1, '2017-07-04 06:55:15', NULL, 252, 1),
+(2, '2017-07-04 07:38:57', NULL, 253, 1),
+(3, '2017-07-04 07:38:57', NULL, 254, 1),
+(4, '2017-07-04 07:38:57', NULL, 255, 1),
+(5, '2017-07-04 07:38:57', NULL, 256, 1),
+(6, '2017-07-04 07:38:57', NULL, 257, 1),
+(7, '2017-07-04 07:38:57', NULL, 258, 1),
+(8, '2017-07-04 07:38:57', NULL, 259, 1),
+(9, '2017-07-04 07:38:57', NULL, 260, 1),
+(10, '2017-07-04 07:38:57', NULL, 261, 1),
+(11, '2017-07-04 07:38:57', NULL, 262, 1),
+(12, '2017-07-04 07:38:57', NULL, 263, 1),
+(13, '2017-07-04 07:38:57', NULL, 264, 1),
+(14, '2017-07-04 07:38:57', NULL, 265, 1),
+(15, '2017-07-04 07:38:57', NULL, 266, 1),
+(16, '2017-07-04 07:38:57', NULL, 267, 1),
+(17, '2017-07-04 07:38:57', NULL, 268, 1),
+(18, '2017-07-04 07:38:57', NULL, 269, 1),
+(19, '2017-07-04 07:38:57', NULL, 270, 1),
+(20, '2017-07-04 07:38:57', NULL, 271, 1),
+(21, '2017-07-04 07:38:57', NULL, 272, 1),
+(22, '2017-07-04 07:38:57', NULL, 273, 1),
+(23, '2017-07-04 07:38:57', NULL, 274, 1),
+(24, '2017-07-04 07:38:57', NULL, 275, 1),
+(25, '2017-07-04 07:38:57', NULL, 276, 1),
+(26, '2017-07-04 07:38:57', NULL, 277, 1),
+(27, '2017-07-04 07:38:57', NULL, 278, 1),
+(28, '2017-07-04 07:38:57', NULL, 279, 1),
+(29, '2017-07-04 07:38:57', NULL, 280, 1),
+(30, '2017-07-04 07:38:57', NULL, 281, 1),
+(31, '2017-07-04 07:38:57', NULL, 282, 1),
+(32, '2017-07-04 07:38:57', NULL, 283, 1),
+(33, '2017-07-04 07:38:57', NULL, 284, 1),
+(34, '2017-07-04 07:38:57', NULL, 285, 1),
+(35, '2017-07-04 07:38:57', NULL, 286, 1),
+(36, '2017-07-04 07:38:57', NULL, 287, 1),
+(37, '2017-07-04 07:38:57', NULL, 288, 1),
+(38, '2017-07-04 07:38:57', NULL, 289, 1),
+(39, '2017-07-04 07:38:57', NULL, 290, 1),
+(40, '2017-07-04 07:38:57', NULL, 291, 1),
+(41, '2017-07-04 07:38:57', NULL, 292, 1),
+(42, '2017-07-04 07:38:57', NULL, 293, 1),
+(43, '2017-07-04 07:38:57', NULL, 294, 1),
+(44, '2017-07-04 07:38:57', NULL, 295, 1),
+(45, '2017-07-04 07:38:57', NULL, 296, 1),
+(46, '2017-07-04 07:38:57', NULL, 297, 1),
+(47, '2017-07-04 07:38:57', NULL, 298, 1),
+(48, '2017-07-04 07:38:57', NULL, 299, 1),
+(49, '2017-07-04 07:38:57', NULL, 300, 1),
+(50, '2017-07-04 07:38:57', NULL, 301, 1),
+(51, '2017-07-04 07:38:57', NULL, 302, 1),
+(52, '2017-07-04 07:38:57', NULL, 303, 1),
+(53, '2017-07-04 07:38:57', NULL, 304, 1),
+(54, '2017-07-04 07:38:57', NULL, 305, 1),
+(55, '2017-07-04 07:38:57', NULL, 306, 1),
+(56, '2017-07-04 07:38:57', NULL, 307, 1),
+(57, '2017-07-04 07:38:57', NULL, 308, 1),
+(58, '2017-07-04 07:38:57', NULL, 309, 1),
+(59, '2017-07-04 07:38:57', NULL, 310, 1),
+(60, '2017-07-04 07:38:57', NULL, 311, 1),
+(61, '2017-07-04 07:38:57', NULL, 312, 1),
+(62, '2017-07-04 07:38:57', NULL, 313, 1),
+(63, '2017-07-04 07:38:57', NULL, 314, 1),
+(64, '2017-07-04 07:38:57', NULL, 315, 1),
+(65, '2017-07-04 07:38:57', NULL, 316, 1),
+(66, '2017-07-04 07:38:57', NULL, 317, 1),
+(67, '2017-07-04 07:38:57', NULL, 318, 1),
+(68, '2017-07-04 07:38:57', NULL, 319, 1),
+(69, '2017-07-04 07:38:57', NULL, 320, 1),
+(70, '2017-07-04 07:38:57', NULL, 321, 1),
+(71, '2017-07-04 07:38:57', NULL, 322, 1),
+(72, '2017-07-04 07:38:57', NULL, 323, 1),
+(73, '2017-07-04 07:38:57', NULL, 324, 1),
+(74, '2017-07-04 07:38:57', NULL, 325, 1),
+(75, '2017-07-04 07:38:57', NULL, 326, 1),
+(76, '2017-07-04 07:38:57', NULL, 327, 1),
+(77, '2017-07-04 07:38:57', NULL, 328, 1),
+(78, '2017-07-04 07:38:57', NULL, 329, 1),
+(79, '2017-07-04 07:38:57', NULL, 330, 1),
+(80, '2017-07-04 07:38:57', NULL, 331, 1),
+(81, '2017-07-04 07:38:57', NULL, 332, 1),
+(82, '2017-07-04 07:38:57', NULL, 333, 1),
+(83, '2017-07-04 07:38:57', NULL, 334, 1),
+(84, '2017-07-04 07:38:57', NULL, 335, 1),
+(85, '2017-07-04 07:38:57', NULL, 336, 1),
+(86, '2017-07-04 07:38:57', NULL, 337, 1),
+(87, '2017-07-04 07:38:57', NULL, 338, 1),
+(88, '2017-07-04 07:38:57', NULL, 339, 1),
+(89, '2017-07-04 07:38:57', NULL, 340, 1),
+(90, '2017-07-04 07:38:57', NULL, 341, 1),
+(91, '2017-07-04 07:38:57', NULL, 342, 1),
+(92, '2017-07-04 07:38:57', NULL, 343, 1),
+(93, '2017-07-04 07:38:57', NULL, 344, 1),
+(94, '2017-07-04 07:38:57', NULL, 345, 1),
+(95, '2017-07-04 07:38:57', NULL, 346, 1),
+(96, '2017-07-04 07:38:57', NULL, 347, 1),
+(97, '2017-07-04 07:38:57', NULL, 348, 1),
+(98, '2017-07-04 07:38:57', NULL, 349, 1),
+(99, '2017-07-04 07:38:57', NULL, 350, 1),
+(100, '2017-07-04 07:38:57', NULL, 351, 1),
+(101, '2017-07-04 07:38:57', NULL, 352, 1),
+(102, '2017-07-04 07:38:57', NULL, 353, 1),
+(103, '2017-07-04 07:38:57', NULL, 354, 1),
+(104, '2017-07-04 07:38:57', NULL, 355, 1),
+(105, '2017-07-04 07:38:57', NULL, 356, 1),
+(106, '2017-07-04 07:38:57', NULL, 357, 1),
+(107, '2017-07-04 07:38:57', NULL, 358, 1),
+(108, '2017-07-04 07:38:57', NULL, 359, 1),
+(109, '2017-07-04 07:38:57', NULL, 360, 1),
+(110, '2017-07-04 07:38:57', NULL, 361, 1),
+(111, '2017-07-04 07:38:57', NULL, 362, 1),
+(112, '2017-07-04 07:38:57', NULL, 363, 1),
+(113, '2017-07-04 07:38:57', NULL, 364, 1),
+(114, '2017-07-04 07:38:57', NULL, 365, 1),
+(115, '2017-07-04 07:38:57', NULL, 366, 1),
+(116, '2017-07-04 07:38:57', NULL, 367, 1),
+(117, '2017-07-04 07:38:57', NULL, 368, 1),
+(118, '2017-07-04 07:38:57', NULL, 369, 1),
+(119, '2017-07-04 07:38:57', NULL, 370, 1),
+(120, '2017-07-04 07:38:57', NULL, 371, 1),
+(121, '2017-07-04 07:38:57', NULL, 372, 1),
+(122, '2017-07-04 07:38:57', NULL, 373, 1),
+(123, '2017-07-04 07:38:57', NULL, 374, 1),
+(124, '2017-07-04 07:38:57', NULL, 375, 1),
+(125, '2017-07-04 07:38:57', NULL, 376, 1),
+(126, '2017-07-04 07:38:57', NULL, 377, 1),
+(127, '2017-07-04 07:38:57', NULL, 378, 1),
+(128, '2017-07-04 07:38:57', NULL, 379, 1),
+(129, '2017-07-04 07:38:57', NULL, 380, 1),
+(130, '2017-07-04 07:38:57', NULL, 381, 1),
+(131, '2017-07-04 07:38:57', NULL, 382, 1),
+(132, '2017-07-04 07:38:57', NULL, 383, 1),
+(133, '2017-07-04 07:38:57', NULL, 384, 1),
+(134, '2017-07-04 07:38:57', NULL, 385, 1),
+(135, '2017-07-04 07:38:57', NULL, 386, 1),
+(136, '2017-07-04 07:38:57', NULL, 387, 1),
+(137, '2017-07-04 07:38:57', NULL, 388, 1),
+(138, '2017-07-04 07:38:57', NULL, 389, 1),
+(139, '2017-07-04 07:38:57', NULL, 390, 1),
+(140, '2017-07-04 07:38:57', NULL, 391, 1),
+(141, '2017-07-04 07:38:57', NULL, 392, 1),
+(142, '2017-07-04 07:38:57', NULL, 393, 1),
+(143, '2017-07-04 07:38:57', NULL, 394, 1),
+(144, '2017-07-04 07:38:57', NULL, 395, 1),
+(145, '2017-07-04 07:38:57', NULL, 396, 1),
+(146, '2017-07-04 07:38:57', NULL, 397, 1),
+(147, '2017-07-04 07:38:57', NULL, 398, 1),
+(148, '2017-07-04 07:38:57', NULL, 399, 1),
+(149, '2017-07-04 07:38:57', NULL, 400, 1),
+(150, '2017-07-04 07:38:57', NULL, 401, 1),
+(151, '2017-07-04 07:38:57', NULL, 402, 1),
+(152, '2017-07-04 07:38:57', NULL, 403, 1),
+(153, '2017-07-04 07:38:57', NULL, 404, 1),
+(154, '2017-07-04 07:38:57', NULL, 405, 1),
+(155, '2017-07-04 07:38:57', NULL, 406, 1),
+(156, '2017-07-04 07:38:57', NULL, 407, 1),
+(157, '2017-07-04 07:38:57', NULL, 408, 1),
+(158, '2017-07-04 07:38:57', NULL, 409, 1),
+(159, '2017-07-04 07:38:57', NULL, 410, 1),
+(160, '2017-07-04 07:38:57', NULL, 411, 1),
+(161, '2017-07-04 07:38:57', NULL, 412, 1),
+(162, '2017-07-04 07:38:57', NULL, 413, 1),
+(163, '2017-07-04 07:38:57', NULL, 414, 1),
+(164, '2017-07-04 07:38:57', NULL, 415, 1),
+(165, '2017-07-04 07:38:57', NULL, 416, 1),
+(166, '2017-07-04 07:38:57', NULL, 417, 1),
+(167, '2017-07-04 07:38:57', NULL, 418, 1),
+(168, '2017-07-04 07:38:57', NULL, 419, 1),
+(169, '2017-07-04 07:38:57', NULL, 420, 1),
+(170, '2017-07-04 07:38:57', NULL, 421, 1),
+(171, '2017-07-04 07:38:57', NULL, 422, 1),
+(172, '2017-07-04 07:38:57', NULL, 423, 1),
+(173, '2017-07-04 07:38:57', NULL, 424, 1),
+(174, '2017-07-04 07:38:57', NULL, 425, 1),
+(175, '2017-07-04 07:38:57', NULL, 426, 1),
+(176, '2017-07-04 07:38:57', NULL, 427, 1),
+(177, '2017-07-04 07:38:57', NULL, 428, 1),
+(178, '2017-07-04 07:38:57', NULL, 429, 1),
+(179, '2017-07-04 07:38:57', NULL, 430, 1),
+(180, '2017-07-04 07:38:57', NULL, 431, 1),
+(181, '2017-07-04 07:38:57', NULL, 432, 1),
+(182, '2017-07-04 07:38:57', NULL, 433, 1),
+(183, '2017-07-04 07:38:57', NULL, 434, 1),
+(184, '2017-07-04 07:38:57', NULL, 435, 1),
+(185, '2017-07-04 07:38:57', NULL, 436, 1),
+(186, '2017-07-04 07:38:57', NULL, 437, 1),
+(187, '2017-07-04 07:38:57', NULL, 438, 1),
+(188, '2017-07-04 07:38:57', NULL, 439, 1),
+(189, '2017-07-04 07:38:57', NULL, 440, 1),
+(190, '2017-07-04 07:38:57', NULL, 441, 1),
+(191, '2017-07-04 07:38:57', NULL, 442, 1),
+(192, '2017-07-04 07:38:57', NULL, 443, 1),
+(193, '2017-07-04 07:38:57', NULL, 444, 1),
+(194, '2017-07-04 07:38:57', NULL, 445, 1),
+(195, '2017-07-04 07:38:57', NULL, 446, 1),
+(196, '2017-07-04 07:38:57', NULL, 447, 1),
+(197, '2017-07-04 07:38:57', NULL, 448, 1),
+(198, '2017-07-04 07:38:57', NULL, 449, 1),
+(199, '2017-07-04 07:38:57', NULL, 450, 1),
+(200, '2017-07-04 07:38:57', NULL, 451, 1),
+(201, '2017-07-04 07:38:57', NULL, 452, 1),
+(202, '2017-07-04 07:38:57', NULL, 453, 1),
+(203, '2017-07-04 07:38:57', NULL, 454, 1),
+(204, '2017-07-04 07:38:57', NULL, 455, 1),
+(205, '2017-07-04 07:38:57', NULL, 456, 1),
+(206, '2017-07-04 07:38:57', NULL, 457, 1),
+(207, '2017-07-04 07:38:57', NULL, 458, 1),
+(208, '2017-07-04 07:38:57', NULL, 459, 1),
+(209, '2017-07-04 07:38:57', NULL, 460, 1),
+(210, '2017-07-04 07:38:57', NULL, 461, 1),
+(211, '2017-07-04 07:38:57', NULL, 462, 1),
+(212, '2017-07-04 07:38:57', NULL, 463, 1),
+(213, '2017-07-04 07:38:57', NULL, 464, 1),
+(214, '2017-07-04 07:38:57', NULL, 465, 1),
+(215, '2017-07-04 07:38:57', NULL, 466, 1),
+(216, '2017-07-04 07:38:57', NULL, 467, 1),
+(217, '2017-07-04 07:38:57', NULL, 468, 1),
+(218, '2017-07-04 07:38:57', NULL, 469, 1),
+(219, '2017-07-04 07:38:57', NULL, 470, 1),
+(220, '2017-07-04 07:38:57', NULL, 471, 1),
+(221, '2017-07-04 07:38:57', NULL, 472, 1),
+(222, '2017-07-04 07:38:57', NULL, 473, 1),
+(223, '2017-07-04 07:38:57', NULL, 474, 1),
+(224, '2017-07-04 07:38:57', NULL, 475, 1),
+(225, '2017-07-04 07:38:57', NULL, 476, 1),
+(226, '2017-07-04 07:38:57', NULL, 477, 1),
+(227, '2017-07-04 07:38:57', NULL, 478, 1),
+(228, '2017-07-04 07:38:57', NULL, 479, 1),
+(229, '2017-07-04 07:38:57', NULL, 480, 1),
+(230, '2017-07-04 07:38:57', NULL, 481, 1),
+(231, '2017-07-04 07:38:57', NULL, 482, 1),
+(232, '2017-07-04 07:38:57', NULL, 483, 1),
+(233, '2017-07-04 07:38:57', NULL, 484, 1),
+(234, '2017-07-04 07:38:57', NULL, 485, 1),
+(235, '2017-07-04 07:38:57', NULL, 486, 1),
+(236, '2017-07-04 07:38:57', NULL, 487, 1),
+(237, '2017-07-04 07:38:57', NULL, 488, 1),
+(238, '2017-07-04 07:38:57', NULL, 489, 1),
+(239, '2017-07-04 07:38:57', NULL, 490, 1),
+(240, '2017-07-04 07:38:57', NULL, 491, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `item`
 --
 
-DROP TABLE IF EXISTS `item`;
 CREATE TABLE `item` (
   `item_id` int(11) NOT NULL,
   `item_name` varchar(45) NOT NULL,
@@ -240,11 +499,6 @@ CREATE TABLE `item` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Truncate table before insert `item`
---
-
-TRUNCATE TABLE `item`;
---
 -- Dumping data for table `item`
 --
 
@@ -258,12 +512,17 @@ INSERT INTO `item` (`item_id`, `item_name`, `quantity`, `description`, `official
 (7, 'Wires', '15', 'Blue', '1255', '2017-11-25 09:00:00', '2017-11-28 06:00:00', 'Rotsen Bayawa', 2463, 'others', 1),
 (8, 'Ballpen', '50', 'Black', '2551', '2017-11-12 09:00:00', '2017-11-15 06:00:00', 'deczan Pida', 2364, 'others', 8),
 (9, 'Pencil', '50', 'Nyllon', '2145', '2017-11-13 09:00:00', '2017-11-15 06:00:00', 'Ace Rimalos', 600, 'others', 2),
-(10, 'Eraser', '20', 'White', '3369', '2017-11-05 09:00:00', '2017-11-07 06:00:00', 'Ravi Kim', 960, 'others', 2);
+(10, 'Eraser', '20', 'White', '3369', '2017-11-05 09:00:00', '2017-11-07 06:00:00', 'Ravi Kim', 960, 'others', 2),
+(11, 'askjdb', '50', 'kjbjkb', 'kjasdbkg', '2017-07-18 00:00:00', '2017-07-28 00:00:00', 'jsjkbckj', 12, 'piece', 1),
+(12, 'jkbkjb', '5', 'jkbjkb', 'jkjkb', '2017-07-13 00:00:00', '2017-07-21 00:00:00', 'jbkjb', 12, 'piece', 1),
+(13, 'dfskb', '5', 'jkbkb', 'kjbkjb', '2017-07-20 00:00:00', '2017-07-21 00:00:00', 'kjbkvbk', 12, 'piece', 1),
+(14, 'dfskb', '5', 'jkbkb', 'kjbkjb', '2017-07-20 00:00:00', '2017-07-21 00:00:00', 'kjbkvbk', 12, 'piece', 1),
+(15, 'dfskb', '5', 'jkbkb', 'kjbkjb', '2017-07-20 00:00:00', '2017-07-21 00:00:00', 'kjbkvbk', 12, 'piece', 1),
+(16, 'dfskb', '5', 'jkbkb', 'kjbkjb', '2017-07-20 00:00:00', '2017-07-21 00:00:00', 'kjbkvbk', 12, 'piece', 1);
 
 --
 -- Triggers `item`
 --
-DROP TRIGGER IF EXISTS `item_detail`;
 DELIMITER $$
 CREATE TRIGGER `item_detail` AFTER INSERT ON `item` FOR EACH ROW BEGIN
 		
@@ -275,7 +534,6 @@ CREATE TRIGGER `item_detail` AFTER INSERT ON `item` FOR EACH ROW BEGIN
   END
 $$
 DELIMITER ;
-DROP TRIGGER IF EXISTS `item_detail_update`;
 DELIMITER $$
 CREATE TRIGGER `item_detail_update` AFTER UPDATE ON `item` FOR EACH ROW BEGIN
         SET @counter = 0;
@@ -294,20 +552,14 @@ DELIMITER ;
 -- Table structure for table `item_detail`
 --
 
-DROP TABLE IF EXISTS `item_detail`;
 CREATE TABLE `item_detail` (
   `item_det_id` int(11) NOT NULL,
   `serial` int(11) DEFAULT NULL,
-  `exp_date` int(11) DEFAULT NULL,
+  `exp_date` date DEFAULT NULL,
   `item_id` int(11) NOT NULL,
   `dist_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Truncate table before insert `item_detail`
---
-
-TRUNCATE TABLE `item_detail`;
 --
 -- Dumping data for table `item_detail`
 --
@@ -551,12 +803,86 @@ INSERT INTO `item_detail` (`item_det_id`, `serial`, `exp_date`, `item_id`, `dist
 (488, NULL, NULL, 10, NULL),
 (489, NULL, NULL, 10, NULL),
 (490, NULL, NULL, 10, NULL),
-(491, NULL, NULL, 10, NULL);
+(491, NULL, NULL, 10, NULL),
+(492, NULL, NULL, 11, NULL),
+(493, NULL, NULL, 11, NULL),
+(494, NULL, NULL, 11, NULL),
+(495, NULL, NULL, 11, NULL),
+(496, NULL, NULL, 11, NULL),
+(497, NULL, NULL, 11, NULL),
+(498, NULL, NULL, 11, NULL),
+(499, NULL, NULL, 11, NULL),
+(500, NULL, NULL, 11, NULL),
+(501, NULL, NULL, 11, NULL),
+(502, NULL, NULL, 11, NULL),
+(503, NULL, NULL, 11, NULL),
+(504, NULL, NULL, 11, NULL),
+(505, NULL, NULL, 11, NULL),
+(506, NULL, NULL, 11, NULL),
+(507, NULL, NULL, 11, NULL),
+(508, NULL, NULL, 11, NULL),
+(509, NULL, NULL, 11, NULL),
+(510, NULL, NULL, 11, NULL),
+(511, NULL, NULL, 11, NULL),
+(512, NULL, NULL, 11, NULL),
+(513, NULL, NULL, 11, NULL),
+(514, NULL, NULL, 11, NULL),
+(515, NULL, NULL, 11, NULL),
+(516, NULL, NULL, 11, NULL),
+(517, NULL, NULL, 11, NULL),
+(518, NULL, NULL, 11, NULL),
+(519, NULL, NULL, 11, NULL),
+(520, NULL, NULL, 11, NULL),
+(521, NULL, NULL, 11, NULL),
+(522, NULL, NULL, 11, NULL),
+(523, NULL, NULL, 11, NULL),
+(524, NULL, NULL, 11, NULL),
+(525, NULL, NULL, 11, NULL),
+(526, NULL, NULL, 11, NULL),
+(527, NULL, NULL, 11, NULL),
+(528, NULL, NULL, 11, NULL),
+(529, NULL, NULL, 11, NULL),
+(530, NULL, NULL, 11, NULL),
+(531, NULL, NULL, 11, NULL),
+(532, NULL, NULL, 11, NULL),
+(533, NULL, NULL, 11, NULL),
+(534, NULL, NULL, 11, NULL),
+(535, NULL, NULL, 11, NULL),
+(536, NULL, NULL, 11, NULL),
+(537, NULL, NULL, 11, NULL),
+(538, NULL, NULL, 11, NULL),
+(539, NULL, NULL, 11, NULL),
+(540, NULL, NULL, 11, NULL),
+(541, NULL, NULL, 11, NULL),
+(542, NULL, NULL, 12, NULL),
+(543, NULL, NULL, 12, NULL),
+(544, NULL, NULL, 12, NULL),
+(545, NULL, NULL, 12, NULL),
+(546, NULL, NULL, 12, NULL),
+(547, NULL, NULL, 13, NULL),
+(548, NULL, NULL, 13, NULL),
+(549, NULL, NULL, 13, NULL),
+(550, NULL, NULL, 13, NULL),
+(551, NULL, NULL, 13, NULL),
+(552, NULL, NULL, 14, NULL),
+(553, NULL, NULL, 14, NULL),
+(554, NULL, NULL, 14, NULL),
+(555, NULL, NULL, 14, NULL),
+(556, NULL, NULL, 14, NULL),
+(557, NULL, NULL, 15, NULL),
+(558, NULL, NULL, 15, NULL),
+(559, NULL, NULL, 15, NULL),
+(560, NULL, NULL, 15, NULL),
+(561, NULL, NULL, 15, NULL),
+(562, NULL, '2017-08-01', 16, NULL),
+(563, NULL, '2017-08-01', 16, NULL),
+(564, NULL, '2017-08-01', 16, NULL),
+(565, NULL, '2017-08-01', 16, NULL),
+(566, NULL, '2017-08-01', 16, NULL);
 
 --
 -- Triggers `item_detail`
 --
-DROP TRIGGER IF EXISTS `decrease_log`;
 DELIMITER $$
 CREATE TRIGGER `decrease_log` AFTER UPDATE ON `item_detail` FOR EACH ROW BEGIN	
    IF (old.serial is not null) THEN
@@ -565,7 +891,6 @@ CREATE TRIGGER `decrease_log` AFTER UPDATE ON `item_detail` FOR EACH ROW BEGIN
   END
 $$
 DELIMITER ;
-DROP TRIGGER IF EXISTS `increase_log`;
 DELIMITER $$
 CREATE TRIGGER `increase_log` AFTER INSERT ON `item_detail` FOR EACH ROW BEGIN
          	INSERT INTO logs.increase_log (item_det_id) VALUES (NEW.item_det_id);
@@ -579,7 +904,6 @@ DELIMITER ;
 -- Table structure for table `user`
 --
 
-DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `user_id` int(11) NOT NULL,
   `first_name` varchar(45) NOT NULL,
@@ -591,11 +915,6 @@ CREATE TABLE `user` (
   `position` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Truncate table before insert `user`
---
-
-TRUNCATE TABLE `user`;
 --
 -- Dumping data for table `user`
 --
@@ -626,6 +945,12 @@ ALTER TABLE `account_code`
   ADD KEY `acid` (`account_code`);
 
 --
+-- Indexes for table `decrease_log`
+--
+ALTER TABLE `decrease_log`
+  ADD PRIMARY KEY (`dec_log_id`);
+
+--
 -- Indexes for table `department`
 --
 ALTER TABLE `department`
@@ -637,6 +962,12 @@ ALTER TABLE `department`
 ALTER TABLE `distribution`
   ADD PRIMARY KEY (`dist_id`),
   ADD KEY `depid_idx` (`dept_id`);
+
+--
+-- Indexes for table `increase_log`
+--
+ALTER TABLE `increase_log`
+  ADD PRIMARY KEY (`inc_log_id`);
 
 --
 -- Indexes for table `item`
@@ -671,6 +1002,11 @@ ALTER TABLE `user`
 ALTER TABLE `account_code`
   MODIFY `ac_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
 --
+-- AUTO_INCREMENT for table `decrease_log`
+--
+ALTER TABLE `decrease_log`
+  MODIFY `dec_log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT for table `department`
 --
 ALTER TABLE `department`
@@ -681,15 +1017,20 @@ ALTER TABLE `department`
 ALTER TABLE `distribution`
   MODIFY `dist_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=451;
 --
+-- AUTO_INCREMENT for table `increase_log`
+--
+ALTER TABLE `increase_log`
+  MODIFY `inc_log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=241;
+--
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `item_detail`
 --
 ALTER TABLE `item_detail`
-  MODIFY `item_det_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=492;
+  MODIFY `item_det_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=567;
 --
 -- AUTO_INCREMENT for table `user`
 --
