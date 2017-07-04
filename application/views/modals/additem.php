@@ -41,6 +41,10 @@
           <td>Official Receipt</td>
           <td><input type="int" class="InputBox" name="OfficialReceipt" value=""></td>
         </tr>
+	<tr>
+          <td>Received By</td>
+          <td><input type="text" class="InputBox" name="ReceivedBy" value=""></td>
+        </tr>
 
         <tr>
           <td>Quantity</td>
