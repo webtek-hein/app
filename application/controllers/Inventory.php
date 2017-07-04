@@ -62,7 +62,8 @@ class Inventory extends CI_Controller {
             );
 
             $this->InventoryModel->add_item($data1,$data2);
-            //$this->InventoryModel->add_item($data2);
+            $data['item'] = $this->InventoryModel->get_inventory_list();
+            header('Location: http://localhost/app/inventory');
         }
     }
     public function item_detail($data)
