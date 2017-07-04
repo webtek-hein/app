@@ -57,8 +57,12 @@ class InventoryModel extends CI_Model {
     {
         $this->load->database();
         $this->db->insert('item', $data1);
-        $data2['item_id'] = $this->db->insert_id();
-        $this->db->insert('item_detail', $data2);
+        $itemid = $this->db->insert_id();
+        $this->db->where('item_id', $itemid);
+        $this->db->update('item_detail', $data2);
+
+        
+
     }
 
 }

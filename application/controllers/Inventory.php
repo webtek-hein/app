@@ -28,8 +28,10 @@ class Inventory extends CI_Controller {
     {
     	$data['accountcodes'] = $this->InventoryModel->get_ac_list();
         $this->form_validation->set_rules('Item_Name', 'Item Name','required');
+        $this->form_validation->set_rules('Description', 'Item Description','required');
         $this->form_validation->set_rules('AccountCode', 'Account Code', 'required');
         $this->form_validation->set_rules('OfficialReceipt', 'Official Receipt', 'required');
+        $this->form_validation->set_rules('ReceivedBy', 'Received By', 'required');
         $this->form_validation->set_rules('Item_Quantity', 'Quantity','required');
         $this->form_validation->set_rules('datedelivered', 'Date Delivered', 'required');
         $this->form_validation->set_rules('datereceived', 'Date Received', 'required');
@@ -44,8 +46,10 @@ class Inventory extends CI_Controller {
         {
             $data1 = array(
             'item_name' => $this->input->post('Item_Name'),
+            'description' => $this->input->post('Description'),
             'account_id' => $this->input->post('AccountCode'),
             'official_receipt' => $this->input->post('OfficialReceipt'),
+            'receivedby' => $this->input->post('ReceivedBy'),
             'quantity' => $this->input->post('Item_Quantity'),
             'del_date' => $this->input->post('datedelivered'),
             'date_rec' => $this->input->post('datereceived'),
