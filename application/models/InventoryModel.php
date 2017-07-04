@@ -81,5 +81,11 @@ class InventoryModel extends CI_Model {
         
 
     }
+    public function add_quantity($data,$itemid)
+    {
+        $this->load->database();
+        $this->db->where('item_id',$itemid);
+        $this->db->update('quantity',$data);
+    }
 
 }
