@@ -22,7 +22,7 @@ class Inventory extends CI_Controller {
         $this->load->view('modals/addbulk');
         $this->addquantity();
         $this->load->view('modals/editinventory',$data);
-        $this->subtractquantity($item_id);
+        $this->subtractquantity();
         $this->load->view('modals/itemdetails',$data);
 		$this->load->view('templates/footer');
 	}
@@ -103,9 +103,9 @@ class Inventory extends CI_Controller {
             header('Location: http://localhost/app/inventory');
         }
     }
-    public function subtractquantity($item_id){
+    public function subtractquantity(){
         $data['department'] = $this->InventoryModel->get_department_list();
-        $data['quantitycount'] = $this->InventoryModel->count_item_with_serial($item_id);
+        //$data['quantitycount'] = $this->InventoryModel->count_item_with_serial($item_id);
         $this->form_validation->set_rules('Quantity', 'Quantity', 'required');
         $this->form_validation->set_rules('department', 'Department', 'required');
         $this->form_validation->set_rules('date', 'Date','required');
@@ -116,17 +116,18 @@ class Inventory extends CI_Controller {
         }
         else
         {
-
             $data1 = array(
+                'quantity' => $this->input->post('quantity')
+                );
+            $data2 =array(
                 'quantity' => $this->input->post('quantity'),
-                'dept_id' => $this->input->post('department'),
                 'distrib_date' => $this->input->post('date'),
-                'receivedby' => $this->input->post('datedelivered1'),
-                'item_usage' => $this->input->post('usage'),
-            );
-            $data2 = $this->input->post('item_id');
-            $this->InventoryModel->subtractquantity($data1,$data2);
-            $data['item'] = $this->InventoryModel->get_inventory_list();
+                'dept_id' => $this->input->post('department'),
+                'receivedby' => $this->input->post('datedelivered1')
+                );
+            $item = $this->input->post('item_id');
+            $this->inventorymodel->subtract_quantity($data1, $data2, $item);
+            //$data['item'] = $this->InventoryModel->get_inventory_list();
             header('Location: http://localhost/app/inventory');
         }
     }

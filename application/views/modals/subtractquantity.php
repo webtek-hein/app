@@ -12,12 +12,12 @@
                         </div>
                         <div class="modal-body" align="center">
                           <input id="item-id" type="hidden" name="item_id" value="">
-                         <form name="additem" method="post" action="">
+                        
                           <table border="0" width="500" align="center" class="table">
                           <tr>
                               <td>Quantity</td>
                               <td>
-                                  <input type="number" min = '0' max="<?php echo $quantitycount; ?>" class="Input" name="Quantity" value="<?php echo $quantitycount; ?>">
+                                  <input type="number" min = '0' max="" class="Input" name="Quantity" value="">
                               </td>
                             </tr>
                             <tr>
@@ -39,7 +39,6 @@
                               <td><input type="text" class="usage" name="usage" value=""></td>
                             </tr>
                           </table>
-                        </form>
                             
                         </div>
                         <div class="modal-footer">
@@ -47,6 +46,6 @@
                           <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal">Cancel</button>
                         </div>
                       </div>
-                      
+                      <?php echo form_close(); ?>
                     </div>
                   </div>
