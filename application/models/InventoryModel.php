@@ -108,6 +108,7 @@ class InventoryModel extends CI_Model {
     }
     public function subtract_quantity()
     {
+        $dbase = $this->load->database('inventory', TRUE);
         
     }
 
