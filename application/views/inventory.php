@@ -40,7 +40,7 @@
 
                       <button class="open-modal-action fa fa-pencil" data-id="<?php echo $item_record['item_id']; ?>" data-toggle="modal" data-target="#edit"></button>
 
-                      <button class="open-modal-action fa fa-info" data-id="<?php echo $item_record['item_id']; ?>" data-toggle="modal" data-target="#view"></button>
+                      <button class="open-modal-action fa fa-info" data-toggle="modal" data-target="#view"></button>
                         
                         </div>
                       </div>
