@@ -17,7 +17,6 @@
                   <th> Date</th>
                   <th> Date receive</th>
                   <th> Unit Cost</th>
-					<th> Supplier </th>
 					<th>User</th>
           <th>Employee name</th>
                 </tr>
@@ -31,7 +30,6 @@
                   </td>
                   <td><?php echo $decrease['date']; ?></td>
                   <td> 4</td>
-                  <td>X</td>
                   <td>q</td>
                   <td>X</td>
                   <td>Glo</td>
