@@ -103,5 +103,6 @@ class InventoryModel extends CI_Model {
         $query = $dbase->get();
         return $query->result_array();
     }
+    
 
 }
