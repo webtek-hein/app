@@ -19,8 +19,13 @@
                   <th>Serial #</th>
                   <th>Account Code</th>
                   <th>Expiration Date</th>
+                  <th>Supplier</th>
                   <th>Description</th>
-                  
+                  <th>Official Receipt #</th>
+                  <th>Date Delivered</th>
+                  <th>Date Received</th>
+                  <th>Received By</th>
+                  <th>Unit Cost</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -33,7 +38,13 @@
                   <td contenteditable='true'><?php echo $details['serial']; ?></td>
                   <td><?php echo $details['account_code']; ?></td>
                   <td><?php echo $details['exp_date']; ?></td>
+                  <td><?php echo $details['supplier']; ?></td>
                   <td><?php echo $details['description']; ?></td>
+                  <td><?php echo $details['official_receipt_no']; ?></td>
+                  <td><?php echo $details['del_date']; ?></td>
+                  <td><?php echo $details['date_rec']; ?></td>
+                  <td><?php echo $details['receivedby']; ?></td>
+                  <td><?php echo $details['unit_cost']; ?></td>
                 </tr>
               <?php endforeach; ?>
                 </tbody>

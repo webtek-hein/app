@@ -15,12 +15,7 @@
                           <tr>
                               <td>Quantity</td>
                               <td>
-                              <select class="qty">
-                                <option value="">...............</option>
-                                <option value="">...............</option>
-                                <option value="">...............</option>
-                                <option value="">...............</option>
-                              </select>
+                                  <input type="int" class="Input" name="Quantity" value="<?php echo $quantitycount; ?>">
                               </td>
                             </tr>
                             <tr>

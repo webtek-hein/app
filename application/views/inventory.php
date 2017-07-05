@@ -18,13 +18,9 @@
                 <thead>
                 <tr>
                   <th>Item name</th>
+                  <th>Description</th>
                   <th> Account Code</th>
-                  <th> Official Receipt</th>
-				          <th> Delivery Date</th>
-                  <th> Date received</th>
                   <th> Quantity</th>
-        					<th> Received by </th>
-        					<th>Cost</th>
         					<th> Unit</th>
         					<th> Action</th>
                 </tr>
@@ -33,16 +29,10 @@
               <?php foreach ($item as $item_record): ?>
                 <tr>
                   <td><?php echo $item_record['item_name']; ?></td>
+                  <td><?php echo $item_record['item_description']; ?></td>
                   <td><?php echo $item_record['account_code']; ?></td>
-                  <td><?php echo $item_record['official_receipt']; ?></td>
-                  <td><?php echo $item_record['del_date']; ?></td>
-                  <td><?php echo $item_record['date_rec']; ?></td>
                   <td><?php echo $item_record['quantity']; ?></td>
-                  <td><?php echo $item_record['receivedby']; ?></td>
-				          <td><?php echo $item_record['cost']; ?></td>
                   <td><?php echo $item_record['unit']; ?></td>
-
-                
                   <td> <button type="button" class="fa fa-plus" data-toggle="modal" data-target="#addqty"></button>
                         
                       <button class="fa fa-minus" data-toggle="modal" data-target="#subqty"></button>

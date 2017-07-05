@@ -23,20 +23,18 @@ class InventoryModel extends CI_Model {
 	public function get_inventory_list()
 	{
         $db1 = $this->load->database('inventory', TRUE);
-        $db1->select('*');
-        $db1->from('item');
-        $db1->join('account_code', 'item.account_id = account_code.ac_id', 'left');
-        $query = $db1->get();
+        $query = $db1->select('*')
+                     ->join('account_code', 'item.account_id = account_code.ac_id', 'left')
+                     ->get('item');
         return $query->result_array();
 	}
-    public function get_item_detail()
+    public function get_item_detail($item_id)
     {
         $db1 = $this->load->database('inventory', TRUE);
-        $db1->select('*');
-        $db1->from('item');
-        $db1->join('item_detail', 'item.item_id = item_detail.item_id', 'left');
-        $db1->join('account_code', 'item.account_id = account_code.ac_id', 'left');
-        $query = $db1->get();
+        $query = $db1->select('*')
+                     ->join('item_detail', 'item.item_id = item_detail.item_id', 'left')
+                     ->join('account_code', 'item.account_id = account_code.ac_id', 'left')
+                     ->get('item');
         return $query->result_array();
     }
     public function get_return_list()
@@ -46,46 +44,54 @@ class InventoryModel extends CI_Model {
     public function get_increase_log()
     {
         $db2=$this->load->database('logs', TRUE);
-        $db2->select('*');
-        $db2->from('increase_log');
-        $query = $db2->get();
+        $query = $db2->get('increase_log');
         return $query->result_array();
     }
      public function get_decrease_log()
     {
         $db2=$this->load->database('logs', TRUE);
-        $db2->select('*');
-        $db2->from('decrease_log');
-        $query = $db2->get();
+        $query = $db2->get('decrease_log');
         return $query->result_array();
     }
     public function get_return_log()
     {
 
         $db2=$this->load->database('logs', TRUE);
-        $db2->select('*');
-        $db2->from('return_log');
-        $query = $db2->get();
+        $query = $db2->get('return_log');
         return $query->result_array();
 
     }
 
     public function add_item($data1,$data2)
     {
-        $this->load->database();
-        $this->db->insert('item', $data1);
-        $itemid = $this->db->insert_id();
-        $this->db->where('item_id', $itemid);
-        $this->db->update('item_detail', $data2);
-
-        
-
+        //load database
+        $db1 = $this->load->database('inventory',TRUE);
+        // insert new item
+        $db1->insert('item', $data1);
+        $itemid = $db1->insert_id();
+       //update item detail table
+        $db1->update('item_detail',$data2);
+        $db1->where('item_id', $itemid);
     }
-    public function add_quantity($data,$itemid)
+    public function add_quantity($data1,$data2,$itemid)
     {
-        $this->load->database();
-        $this->db->where('item_id',$itemid);
-        $this->db->update('quantity',$data);
+         $db1 = $this->load->database('inventory',TRUE);
+        //update item
+        $db1->set('quantity', 'quantity+'.$data1, FALSE);
+        $db1->update('item');
+        $db1->where('item_id',$itemid);
+        //update item_detail
+        $db1->update('item_detail',$data2);
+        $db1->where('item_id', $itemid);
+    }
+    public function count_item_with_serial($item_id)
+    {
+        $db1 = $this->load->database('inventory',TRUE);
+        $where = 'serial is not NULL';
+        $query = $db1->from('item_detail')
+                     ->where('item_id',$item_id)
+                     ->where($where);
+        return $query->count_all_results();
     }
 
 }

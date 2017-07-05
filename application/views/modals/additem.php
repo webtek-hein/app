@@ -51,10 +51,9 @@
           <td><input type="int" class="InputBox" name="Item_Quantity" value=""></td>
         </tr>
 
-        <tr>
+      <tr>
           <td>Supplier</td>
-          <td><input type="text" class="InputBox" name="Supplier" value="">
-          </td>
+          <td><input type="text" class="InputBox" name="Supplier_Name" value=""></td>
         </tr>
 
         <tr>
@@ -81,7 +80,7 @@
           </td>
         </tr>
         <tr>
-          <td>Cost</td>
+          <td>Unit Cost</td>
           <td><input type="int" class="InputBox" name="Cost" value=""></td>
         </tr>
         <tr>
@@ -93,8 +92,9 @@
         <div class="modal-footer">
          <button type="submit" formaction="inventory/additem" class="btn btn-default" id="save1">Save</button>
          <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal">Cancel</button>
-        </div>
+             </div>
       </div>
+       <?php echo form_close(); ?>
     </div>
   </div>
   
