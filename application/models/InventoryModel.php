@@ -79,11 +79,11 @@ class InventoryModel extends CI_Model {
          $db1 = $this->load->database('inventory',TRUE);
         //update item
         $db1->set('quantity', 'quantity+'.$data1, FALSE);
-        $db1->update('item');
         $db1->where('item_id',$itemid);
+        $db1->update('item');
         //update item_detail
-        $db1->update('item_detail',$data2);
         $db1->where('item_id', $itemid);
+        $db1->update('item_detail',$data2);
     }
     public function count_item_with_serial($item_id)
     {
