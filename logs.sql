@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 05, 2017 at 02:05 AM
+-- Generation Time: Jul 05, 2017 at 08:09 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -36,18 +36,6 @@ CREATE TABLE `decrease_log` (
   `user_id` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Truncate table before insert `decrease_log`
---
-
-TRUNCATE TABLE `decrease_log`;
---
--- Dumping data for table `decrease_log`
---
-
-INSERT INTO `decrease_log` (`dec_log_id`, `date`, `item_det_id`, `user_id`) VALUES
-(6, '2017-07-05 07:45:30', 16, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -62,11 +50,6 @@ CREATE TABLE `increase_log` (
   `user_id` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Truncate table before insert `increase_log`
---
-
-TRUNCATE TABLE `increase_log`;
 -- --------------------------------------------------------
 
 --
@@ -84,11 +67,6 @@ CREATE TABLE `return_log` (
   `user_id` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Truncate table before insert `return_log`
---
-
-TRUNCATE TABLE `return_log`;
 --
 -- Indexes for dumped tables
 --
