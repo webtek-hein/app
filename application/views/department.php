@@ -15,6 +15,16 @@
         <button type= "button" class="btn btn-success">Summary of Items</button>        
             </div>
               </div>
+
+                 <div class="container">
+          <div class="row">
+              <div class="span12">
+                  <form id="custom-search-form" class="form-search form-horizontal pull-right">                 
+                      <input type="text" class="search-query" placeholder="search">
+                  </form>
+              </div>
+          </div>
+        </div>
             <!-- /.box-header -->
             <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">
