@@ -23,7 +23,7 @@
                   <th>Item name</th>
                   <th> Account Code</th>
                   <th> Official Receipt</th>
-				  <th> Delivery Date</th>
+				          <th> Delivery Date</th>
                   <th> Date received</th>
                   <th> Quantity</th>
 					<th> Received by </th>
