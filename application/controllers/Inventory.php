@@ -9,9 +9,14 @@ class Inventory extends CI_Controller {
     }
 	public function index()
 	{
+        $item_id = $this->input->post('item_id');
+
 		$data['accountcodes'] = $this->InventoryModel->get_ac_list();
 		$data['department'] = $this->InventoryModel->get_department_list();
 		$data['item'] = $this->InventoryModel->get_inventory_list();
+        $data['item_detail'] = $this->InventoryModel->get_item_detail($item_id);
+
+
 
 		$this->load->view('templates/header');
 		$this->load->view('inventory',$data);
@@ -20,7 +25,7 @@ class Inventory extends CI_Controller {
         $this->addquantity();
         $this->load->view('modals/editinventory',$data);
         $this->subtractquantity();
-        $this->itemdetail();
+        $this->itemdetail($item_id,$data);
 		$this->load->view('templates/footer');
 	}
     public function additem()
@@ -104,14 +109,9 @@ class Inventory extends CI_Controller {
         $data['quantitycount'] = $this->InventoryModel->count_item_with_serial('16');
         $this->load->view('modals/subtractquantity',$data);
     }
-    public function itemdetail()
+    public function itemdetail($item_id,$data)
     {
         
-        $item_id = $this->input->post('item_id');
-        
-        $data['item_detail'] = $this->InventoryModel->get_item_detail($item_id);
-
-
         $this->load->view('modals/itemdetails',$data);
     }
 }

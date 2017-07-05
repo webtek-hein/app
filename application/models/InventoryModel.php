@@ -71,8 +71,8 @@ class InventoryModel extends CI_Model {
         $db1->insert('item', $data1);
         $itemid = $db1->insert_id();
        //update item detail table
-        $db1->update('item_detail',$data2);
         $db1->where('item_id', $itemid);
+        $db1->update('item_detail',$data2);
     }
     public function add_quantity($data1,$data2,$itemid)
     {
