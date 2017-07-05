@@ -94,4 +94,14 @@ class InventoryModel extends CI_Model {
         return $query->count_all_results();
     }
 
+    public function get_item_per_department($dept)
+    {
+        $dbase = $this->load->database('inventory', TRUE);
+        $dbase->select('*');
+        $dbase->from('department');
+        $dbase->where('dept_id', $dept);
+        $query = $dbase->get();
+        return $query->result_array();
+    }
+
 }

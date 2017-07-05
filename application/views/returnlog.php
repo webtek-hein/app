@@ -19,6 +19,7 @@
           <th> Person? </th>
           <th>Replace Item</th>
           <th>Reason</th>
+          <th>Quantity</th>
           <th>User</th>
                 </tr>
                 </thead>
@@ -35,6 +36,7 @@
                   <td> <?php echo $return['return_person']; ?></td>
                   <td>X</td>
                   <td><?php echo $return['reason']; ?></td>
+                  <td>5</td>
                   <td>Lovelace</td>
                 </tr>
                 <?php endforeach; ?>
