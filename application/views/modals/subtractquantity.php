@@ -17,7 +17,7 @@
                           <tr>
                               <td>Quantity</td>
                               <td>
-                                  <input type="int" class="Input" name="Quantity" value="<?php echo $quantitycount; ?>">
+                                  <input type="number" min = '0' max="<?php echo $quantitycount; ?>" class="Input" name="Quantity" value="<?php echo $quantitycount; ?>">
                               </td>
                             </tr>
                             <tr>
@@ -31,7 +31,7 @@
                               </td>
                             </tr>
                          <tr>
-                              <td>Date</td>
+                              <td>Date of Distribution</td>
                               <td><input type="date" class="date" name="date" value=""></td>
                             </tr>
                             <tr>

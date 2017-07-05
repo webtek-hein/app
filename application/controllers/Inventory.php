@@ -116,22 +116,16 @@ class Inventory extends CI_Controller {
         }
         else
         {
-            $quantity = $this->input->post('Quantity');
-            $department = $this->input->post('department');
-            $date = $this->input->post('date');
-            $usage = $this->input->post('usage0]');
 
-            $data2 = array(
-                'official_receipt_no' => $this->input->post('Official_Receipt1'),
-                'receivedby' => $this->input->post('Received_By1'),
-                'exp_date' => $this->input->post('Expiration_Date1'),
-                'del_date' => $this->input->post('datedelivered1'),
-                'date_rec' => $this->input->post('datereceived1'),
-                'supplier' => $this->input->post('Supplier_Name1'),
-                'unit_cost' => $this->input->post('Unit_Cost1')
+            $data1 = array(
+                'quantity' => $this->input->post('quantity'),
+                'dept_id' => $this->input->post('department'),
+                'distrib_date' => $this->input->post('date'),
+                'receivedby' => $this->input->post('datedelivered1'),
+                'item_usage' => $this->input->post('usage'),
             );
-            $data3 = $this->input->post('item_id');
-            $this->InventoryModel->add_quantity($data1,$data2,$data3);
+            $data2 = $this->input->post('item_id');
+            $this->InventoryModel->subtractquantity($data1,$data2);
             $data['item'] = $this->InventoryModel->get_inventory_list();
             header('Location: http://localhost/app/inventory');
         }

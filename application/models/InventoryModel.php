@@ -106,6 +106,9 @@ class InventoryModel extends CI_Model {
         $query = $dbase->get();
         return $query->result_array();
     }
-    
+    public function subtract_quantity()
+    {
+        
+    }
 
 }
