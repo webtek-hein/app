@@ -7,10 +7,9 @@
     <button class="btn btn-primary" type="button" data-toggle="dropdown">Departments
     <span class="caret"></span></button>
     <ul class="dropdown-menu">
-      <li><a href="#">GSO</a></li>
-      <li class="#"><a href="#">Budget</a></li>
-      <li class="#"><a href="#">Accounting</a></li>
-      <li><a href="#">Normal</a></li>
+      <?php foreach ($departments as $depts): ?>
+        <li><a href="#"><?php echo $depts['res_center_code']," ", $depts['department']; ?></a></li>
+      <?php endforeach; ?>
     </ul>
 
         <button type= "button" class="btn btn-success">Summary of Items</button>        
