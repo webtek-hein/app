@@ -30,7 +30,7 @@
                   <td><?php echo $increase['date']; ?></td>
                   <td> 4</td>
                   <td>X</td>
-                  <td></td>
+                  <td>Glo</td>
                   <td>X</td>
                 </tr>
                 <?php endforeach; ?>

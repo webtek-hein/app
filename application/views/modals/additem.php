@@ -15,7 +15,6 @@
       <?php endif; ?>
        
         <div class="modal-body">
-      
       <table border="0" width="500" align="center" class="table">
         <tr>
           <td>Item Name</td>

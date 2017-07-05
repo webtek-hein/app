@@ -1,6 +1,6 @@
                        <!-- Modal-->
                         <div class="modal fade" id="view" role="dialog">
-                    <div class="modal-dialog" style="background-color: rgba(255,255,255, 0.93);position:fixed;
+                    <div class="modal-dialog modal-lg" style="background-color: rgba(255,255,255, 0.93);position:fixed;
                     overflow-x:auto;overflow-y:scroll;bottom:0;left:0;right:0;top:0;
                     z-index:9999;">
                     
@@ -11,7 +11,7 @@
                           <h4 class="modal-title" align="center"><b>Item Details<b></h4>
                         </div>
                         <div class="modal-body" align="center">
-
+                        
                         <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 05, 2017 at 02:04 AM
+-- Generation Time: Jul 05, 2017 at 08:09 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -35,11 +35,6 @@ CREATE TABLE `account_code` (
   `description` varchar(70) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Truncate table before insert `account_code`
---
-
-TRUNCATE TABLE `account_code`;
 --
 -- Dumping data for table `account_code`
 --
@@ -141,11 +136,6 @@ CREATE TABLE `department` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Truncate table before insert `department`
---
-
-TRUNCATE TABLE `department`;
---
 -- Dumping data for table `department`
 --
 
@@ -197,11 +187,6 @@ CREATE TABLE `distribution` (
   `user_distribute` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Truncate table before insert `distribution`
---
-
-TRUNCATE TABLE `distribution`;
 -- --------------------------------------------------------
 
 --
@@ -218,11 +203,6 @@ CREATE TABLE `item` (
   `account_id` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Truncate table before insert `item`
---
-
-TRUNCATE TABLE `item`;
 --
 -- Triggers `item`
 --
@@ -273,11 +253,6 @@ CREATE TABLE `item_detail` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Truncate table before insert `item_detail`
---
-
-TRUNCATE TABLE `item_detail`;
---
 -- Triggers `item_detail`
 --
 DROP TRIGGER IF EXISTS `decrease_log`;
@@ -315,11 +290,6 @@ CREATE TABLE `user` (
   `position` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Truncate table before insert `user`
---
-
-TRUNCATE TABLE `user`;
 --
 -- Dumping data for table `user`
 --
@@ -413,7 +383,7 @@ ALTER TABLE `item`
 -- AUTO_INCREMENT for table `item_detail`
 --
 ALTER TABLE `item_detail`
-  MODIFY `item_det_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `item_det_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `user`
 --

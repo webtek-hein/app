@@ -1,4 +1,22 @@
- <section class="content">
+<style type="text/css">
+.dropdown-menu{
+   background-color: rgba(255,255,255, 0.93);
+   position:fixed;
+  overflow-x:auto;
+  overflow-y:scroll;
+  bottom:0;
+  left:50;
+  right:50;
+  top:0;
+  z-index:9999;
+  margin-left: 270px; 
+  margin-top: 129px;
+  margin-bottom: 10px;
+  }
+</style> 
+
+
+<section class="content">
       <div class="row">
         <div class="col-xs-12">
           <div class="box">
@@ -23,7 +41,7 @@
                   <th>Item name</th>
                   <th> Account Code</th>
                   <th> Official Receipt</th>
-				  <th> Delivery Date</th>
+				          <th> Delivery Date</th>
                   <th> Date received</th>
                   <th> Quantity</th>
 					<th> Received by </th>
