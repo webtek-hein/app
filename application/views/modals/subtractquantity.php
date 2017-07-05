@@ -9,7 +9,7 @@
                           <h4 class="modal-title" align="center"><b>Subtract Quantity<b></h4>
                         </div>
                         <div class="modal-body" align="center">
-
+                          <input id="item-id" type="hidden" name="item_id" value="">
                          <form name="additem" method="post" action="">
                           <table border="0" width="500" align="center" class="table">
                           <tr>

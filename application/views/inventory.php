@@ -33,13 +33,14 @@
                   <td><?php echo $item_record['account_code']; ?></td>
                   <td><?php echo $item_record['quantity']; ?></td>
                   <td><?php echo $item_record['unit']; ?></td>
-                  <td> <button type="button" class="fa fa-plus" data-toggle="modal" data-target="#addqty"></button>
+                  <td> 
+                      <button type="button" class="open-modal-action fa fa-plus" data-id="<?php echo $item_record['item_id']; ?>" data-toggle="modal" data-target="#addqty"></button>
                         
-                      <button class="fa fa-minus" data-toggle="modal" data-target="#subqty"></button>
+                      <button class="open-modal-action fa fa-minus" data-id="<?php echo $item_record['item_id']; ?>" data-toggle="modal" data-target="#subqty"></button>
 
-                      <button class="fa fa-pencil" data-toggle="modal" data-target="#edit"></button>
+                      <button class="open-modal-action fa fa-pencil" data-id="<?php echo $item_record['item_id']; ?>" data-toggle="modal" data-target="#edit"></button>
 
-                      <button class="fa fa-info" data-toggle="modal" data-target="#view"></button>
+                      <button class="open-modal-action fa fa-info" data-id="<?php echo $item_record['item_id']; ?>" data-toggle="modal" data-target="#view"></button>
                         
                         </div>
                       </div>

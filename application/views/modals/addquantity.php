@@ -1,7 +1,7 @@
                                         <!-- Modal-->
                         <div class="modal fade" id="addqty" role="dialog">
-                    <div class="modal-dialog">
-                    
+                    <div class="modal-dialog">  
+
                       <!-- Modal content-->
                       <?php echo validation_errors(); ?>
                        <?php echo form_open('inventory/addquantity'); ?>
@@ -11,6 +11,7 @@
                           <h4 class="modal-title" align="center"><b>Add Quantity<b></h4>
                         </div>
                         <div class="modal-body" align="center">
+                          <input id="item-id" type="hidden" name="item_id" value="">
                          <?php if($this->session->flashdata('msg')): ?>
                          <p><?php echo $this->session->flashdata('msg'); ?></p>
                         <?php endif; ?>
