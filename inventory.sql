@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 05, 2017 at 03:53 AM
+-- Generation Time: Jul 05, 2017 at 08:09 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -35,11 +35,6 @@ CREATE TABLE `account_code` (
   `description` varchar(70) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Truncate table before insert `account_code`
---
-
-TRUNCATE TABLE `account_code`;
 --
 -- Dumping data for table `account_code`
 --
@@ -141,11 +136,6 @@ CREATE TABLE `department` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Truncate table before insert `department`
---
-
-TRUNCATE TABLE `department`;
---
 -- Dumping data for table `department`
 --
 
@@ -197,11 +187,6 @@ CREATE TABLE `distribution` (
   `user_distribute` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Truncate table before insert `distribution`
---
-
-TRUNCATE TABLE `distribution`;
 -- --------------------------------------------------------
 
 --
@@ -217,27 +202,6 @@ CREATE TABLE `item` (
   `unit` enum('piece','box','set','ream','dozen','bundle','sack','others') NOT NULL DEFAULT 'others',
   `account_id` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Truncate table before insert `item`
---
-
-TRUNCATE TABLE `item`;
---
--- Dumping data for table `item`
---
-
-INSERT INTO `item` (`item_id`, `item_name`, `quantity`, `item_description`, `unit`, `account_id`) VALUES
-(1, 'Laptop', '5', 'Black', 'piece', 8),
-(2, 'Cement', '6', 'For the roads', 'sack', 1),
-(3, 'Tube', '20', 'Blue', 'bundle', 2),
-(4, 'Cable', '3', 'Black', 'box', 3),
-(5, 'Window glass', '4', '20 inches', 'others', 4),
-(6, 'Chalk Boards', '2', 'Green', 'piece', 5),
-(7, 'Hospital Beds', '2', 'Electric', 'piece', 6),
-(8, 'Table', '2', 'Wood', 'piece', 8),
-(9, 'Fountain', '1', 'Yellow', 'piece', 9),
-(10, 'Telephone', '5', 'White', 'piece', 10);
 
 --
 -- Triggers `item`
@@ -289,67 +253,6 @@ CREATE TABLE `item_detail` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Truncate table before insert `item_detail`
---
-
-TRUNCATE TABLE `item_detail`;
---
--- Dumping data for table `item_detail`
---
-
-INSERT INTO `item_detail` (`item_det_id`, `serial`, `exp_date`, `supplier`, `official_receipt_no`, `del_date`, `date_rec`, `receivedby`, `unit_cost`, `item_id`, `dist_id`) VALUES
-(26, NULL, '2022-07-30', 'Enigma', 25000, '2017-07-29 00:00:00', '2017-07-30 00:00:00', 'Louie Echave', 5000, 1, NULL),
-(27, NULL, '2022-07-30', 'Enigma', 25000, '2017-07-29 00:00:00', '2017-07-30 00:00:00', 'Louie Echave', 5000, 1, NULL),
-(28, NULL, '2022-07-30', 'Enigma', 25000, '2017-07-29 00:00:00', '2017-07-30 00:00:00', 'Louie Echave', 5000, 1, NULL),
-(29, NULL, '2022-07-30', 'Enigma', 25000, '2017-07-29 00:00:00', '2017-07-30 00:00:00', 'Louie Echave', 5000, 1, NULL),
-(30, NULL, '2022-07-30', 'Enigma', 25000, '2017-07-29 00:00:00', '2017-07-30 00:00:00', 'Louie Echave', 5000, 1, NULL),
-(31, NULL, '2022-07-30', 'Enigma', 25000, '2017-07-29 00:00:00', '2017-07-30 00:00:00', 'Louie Echave', 5000, 2, NULL),
-(32, NULL, '2022-07-30', 'Enigma', 25000, '2017-07-29 00:00:00', '2017-07-30 00:00:00', 'Louie Echave', 5000, 2, NULL),
-(33, NULL, '2022-07-30', 'Enigma', 25000, '2017-07-29 00:00:00', '2017-07-30 00:00:00', 'Louie Echave', 5000, 2, NULL),
-(34, NULL, '2022-07-30', 'Enigma', 25000, '2017-07-29 00:00:00', '2017-07-30 00:00:00', 'Louie Echave', 5000, 2, NULL),
-(35, NULL, '2022-07-30', 'Enigma', 25000, '2017-07-29 00:00:00', '2017-07-30 00:00:00', 'Louie Echave', 5000, 2, NULL),
-(36, NULL, '2022-07-30', 'Enigma', 25000, '2017-07-29 00:00:00', '2017-07-30 00:00:00', 'Louie Echave', 5000, 2, NULL),
-(37, NULL, '2022-07-30', 'Enigma', 25000, '2017-07-29 00:00:00', '2017-07-30 00:00:00', 'Louie Echave', 5000, 3, NULL),
-(38, NULL, '2022-07-30', 'Enigma', 25000, '2017-07-29 00:00:00', '2017-07-30 00:00:00', 'Louie Echave', 5000, 3, NULL),
-(39, NULL, '2022-07-30', 'Enigma', 25000, '2017-07-29 00:00:00', '2017-07-30 00:00:00', 'Louie Echave', 5000, 3, NULL),
-(40, NULL, '2022-07-30', 'Enigma', 25000, '2017-07-29 00:00:00', '2017-07-30 00:00:00', 'Louie Echave', 5000, 3, NULL),
-(41, NULL, '2022-07-30', 'Enigma', 25000, '2017-07-29 00:00:00', '2017-07-30 00:00:00', 'Louie Echave', 5000, 3, NULL),
-(42, NULL, '2022-07-30', 'Enigma', 25000, '2017-07-29 00:00:00', '2017-07-30 00:00:00', 'Louie Echave', 5000, 3, NULL),
-(43, NULL, '2022-07-30', 'Enigma', 25000, '2017-07-29 00:00:00', '2017-07-30 00:00:00', 'Louie Echave', 5000, 3, NULL),
-(44, NULL, '2022-07-30', 'Enigma', 25000, '2017-07-29 00:00:00', '2017-07-30 00:00:00', 'Louie Echave', 5000, 3, NULL),
-(45, NULL, '2022-07-30', 'Enigma', 25000, '2017-07-29 00:00:00', '2017-07-30 00:00:00', 'Louie Echave', 5000, 3, NULL),
-(46, NULL, '2022-07-30', 'Enigma', 25000, '2017-07-29 00:00:00', '2017-07-30 00:00:00', 'Louie Echave', 5000, 3, NULL),
-(47, NULL, '2022-07-30', 'Enigma', 25000, '2017-07-29 00:00:00', '2017-07-30 00:00:00', 'Louie Echave', 5000, 3, NULL),
-(48, NULL, '2022-07-30', 'Enigma', 25000, '2017-07-29 00:00:00', '2017-07-30 00:00:00', 'Louie Echave', 5000, 3, NULL),
-(49, NULL, '2022-07-30', 'Enigma', 25000, '2017-07-29 00:00:00', '2017-07-30 00:00:00', 'Louie Echave', 5000, 3, NULL),
-(50, NULL, '2022-07-30', 'Enigma', 25000, '2017-07-29 00:00:00', '2017-07-30 00:00:00', 'Louie Echave', 5000, 3, NULL),
-(51, NULL, '2022-07-30', 'Enigma', 25000, '2017-07-29 00:00:00', '2017-07-30 00:00:00', 'Louie Echave', 5000, 3, NULL),
-(52, NULL, '2022-07-30', 'Enigma', 25000, '2017-07-29 00:00:00', '2017-07-30 00:00:00', 'Louie Echave', 5000, 3, NULL),
-(53, NULL, '2022-07-30', 'Enigma', 25000, '2017-07-29 00:00:00', '2017-07-30 00:00:00', 'Louie Echave', 5000, 3, NULL),
-(54, NULL, '2022-07-30', 'Enigma', 25000, '2017-07-29 00:00:00', '2017-07-30 00:00:00', 'Louie Echave', 5000, 3, NULL),
-(55, NULL, '2022-07-30', 'Enigma', 25000, '2017-07-29 00:00:00', '2017-07-30 00:00:00', 'Louie Echave', 5000, 3, NULL),
-(56, NULL, '2022-07-30', 'Enigma', 25000, '2017-07-29 00:00:00', '2017-07-30 00:00:00', 'Louie Echave', 5000, 3, NULL),
-(57, NULL, '2022-07-30', 'Enigma', 25000, '2017-07-29 00:00:00', '2017-07-30 00:00:00', 'Louie Echave', 5000, 4, NULL),
-(58, NULL, '2022-07-30', 'Enigma', 25000, '2017-07-29 00:00:00', '2017-07-30 00:00:00', 'Louie Echave', 5000, 4, NULL),
-(59, NULL, '2022-07-30', 'Enigma', 25000, '2017-07-29 00:00:00', '2017-07-30 00:00:00', 'Louie Echave', 5000, 4, NULL),
-(60, NULL, '2022-07-30', 'Enigma', 25000, '2017-07-29 00:00:00', '2017-07-30 00:00:00', 'Louie Echave', 5000, 5, NULL),
-(61, NULL, '2022-07-30', 'Enigma', 25000, '2017-07-29 00:00:00', '2017-07-30 00:00:00', 'Louie Echave', 5000, 5, NULL),
-(62, NULL, '2022-07-30', 'Enigma', 25000, '2017-07-29 00:00:00', '2017-07-30 00:00:00', 'Louie Echave', 5000, 5, NULL),
-(63, NULL, '2022-07-30', 'Enigma', 25000, '2017-07-29 00:00:00', '2017-07-30 00:00:00', 'Louie Echave', 5000, 5, NULL),
-(64, NULL, '2022-07-30', 'Enigma', 25000, '2017-07-29 00:00:00', '2017-07-30 00:00:00', 'Louie Echave', 5000, 6, NULL),
-(65, NULL, '2022-07-30', 'Enigma', 25000, '2017-07-29 00:00:00', '2017-07-30 00:00:00', 'Louie Echave', 5000, 6, NULL),
-(66, NULL, '2022-07-30', 'Enigma', 25000, '2017-07-29 00:00:00', '2017-07-30 00:00:00', 'Louie Echave', 5000, 7, NULL),
-(67, NULL, '2022-07-30', 'Enigma', 25000, '2017-07-29 00:00:00', '2017-07-30 00:00:00', 'Louie Echave', 5000, 7, NULL),
-(68, NULL, '2022-07-30', 'Enigma', 25000, '2017-07-29 00:00:00', '2017-07-30 00:00:00', 'Louie Echave', 5000, 8, NULL),
-(69, NULL, '2022-07-30', 'Enigma', 25000, '2017-07-29 00:00:00', '2017-07-30 00:00:00', 'Louie Echave', 5000, 8, NULL),
-(70, NULL, '2022-07-30', 'Enigma', 25000, '2017-07-29 00:00:00', '2017-07-30 00:00:00', 'Louie Echave', 5000, 9, NULL),
-(71, NULL, '2022-07-30', 'Enigma', 25000, '2017-07-29 00:00:00', '2017-07-30 00:00:00', 'Louie Echave', 5000, 10, NULL),
-(72, NULL, '2022-07-30', 'Enigma', 25000, '2017-07-29 00:00:00', '2017-07-30 00:00:00', 'Louie Echave', 5000, 10, NULL),
-(73, NULL, '2022-07-30', 'Enigma', 25000, '2017-07-29 00:00:00', '2017-07-30 00:00:00', 'Louie Echave', 5000, 10, NULL),
-(74, NULL, '2022-07-30', 'Enigma', 25000, '2017-07-29 00:00:00', '2017-07-30 00:00:00', 'Louie Echave', 5000, 10, NULL),
-(75, NULL, '2022-07-30', 'Enigma', 25000, '2017-07-29 00:00:00', '2017-07-30 00:00:00', 'Louie Echave', 5000, 10, NULL);
-
---
 -- Triggers `item_detail`
 --
 DROP TRIGGER IF EXISTS `decrease_log`;
@@ -387,11 +290,6 @@ CREATE TABLE `user` (
   `position` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Truncate table before insert `user`
---
-
-TRUNCATE TABLE `user`;
 --
 -- Dumping data for table `user`
 --
@@ -480,12 +378,12 @@ ALTER TABLE `distribution`
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `item_detail`
 --
 ALTER TABLE `item_detail`
-  MODIFY `item_det_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `item_det_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `user`
 --

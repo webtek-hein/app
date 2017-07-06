@@ -9,10 +9,10 @@ class Inventory extends CI_Controller {
     }
 	public function index()
 	{
+
 		$data['accountcodes'] = $this->InventoryModel->get_ac_list();
+        $data['item'] = $this->InventoryModel->get_inventory_list();
 		$data['department'] = $this->InventoryModel->get_department_list();
-		$data['item'] = $this->InventoryModel->get_inventory_list();
-        $data['item_detail'] = $this->InventoryModel->get_item_detail('2');
 
 		$this->load->view('templates/header');
 		$this->load->view('inventory',$data);
@@ -21,7 +21,6 @@ class Inventory extends CI_Controller {
         $this->addquantity();
         $this->load->view('modals/editinventory',$data);
         $this->subtractquantity();
-        $this->itemdetail($data);
 		$this->load->view('templates/footer');
 	}
     public function additem()
@@ -70,6 +69,7 @@ class Inventory extends CI_Controller {
     public function addquantity()
     {
         $data['accountcodes'] = $this->InventoryModel->get_ac_list();
+        
         $this->form_validation->set_rules('Official_Receipt1', 'Official Receipt', 'required');
         $this->form_validation->set_rules('Received_By1', 'Received By', 'required');
         $this->form_validation->set_rules('Item_Quantity1', 'Quantity','required');
@@ -95,17 +95,46 @@ class Inventory extends CI_Controller {
                 'supplier' => $this->input->post('Supplier_Name1'),
                 'unit_cost' => $this->input->post('Unit_Cost1')
             );
-            $this->InventoryModel->add_quantity($data1,$data2,'16');
+            $data3 = $this->input->post('item_id');
+            $this->InventoryModel->add_quantity($data1,$data2,$data3);
             $data['item'] = $this->InventoryModel->get_inventory_list();
             header('Location: http://localhost/app/inventory');
         }
     }
     public function subtractquantity(){
-        $data['quantitycount'] = $this->InventoryModel->count_item_with_serial('16');
-        $this->load->view('modals/subtractquantity',$data);
+        $item = $this->input->post('item_id');
+        $data['department'] = $this->InventoryModel->get_department_list();
+        $data['quantitycount'] = $this->InventoryModel->get_item_quantity($item);
+        $this->form_validation->set_rules('Quantity', 'Quantity', 'required');
+        $this->form_validation->set_rules('department', 'Department', 'required');
+        $this->form_validation->set_rules('date', 'Date','required');
+        $this->form_validation->set_rules('usage', 'Usage','required');
+        $this->form_validation->set_rules('receivedby', 'Received By','required');
+        if ($this->form_validation->run() === FALSE)
+        {
+            $this->load->view('modals/subtractquantity', $data);
+        }
+        else
+        {
+            $data1 = $this->input->post('Quantity');
+            $data2 =array(
+                'quantity' => $data1,
+                'distrib_date' => $this->input->post('date'),
+                'dept_id' => $this->input->post('department'),
+                'receivedby' => $this->input->post('receivedby'),
+                //temp
+                'user_distribute' => 'tempuser'
+                );
+            $this->InventoryModel->subtract_quantity($data1, $data2, $item);
+            //$data['item'] = $this->InventoryModel->get_inventory_list();
+            header('Location: http://localhost/app/inventory');
+        }
     }
-    public function itemdetail($data)
+    public function itemdetail()
     {
+        $item_id = $this->input->post('item_id');
+        $data['item_detail'] = $this->InventoryModel->get_item_detail($item_id);
+
         $this->load->view('modals/itemdetails',$data);
     }
 }

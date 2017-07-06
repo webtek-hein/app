@@ -11,7 +11,7 @@
                           <h4 class="modal-title" align="center"><b>Item Details<b></h4>
                         </div>
                         <div class="modal-body" align="center">
-
+                        
                         <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
