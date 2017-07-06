@@ -38,11 +38,15 @@
                               <td>Usage</td>
                               <td><input type="text" class="usage" name="usage" value=""></td>
                             </tr>
+                             <tr>
+                              <td>Received By</td>
+                              <td><input type="text" class="usage" name="receivedby" value=""></td>
+                            </tr>
                           </table>
                             
                         </div>
                         <div class="modal-footer">
-                          <button type="submit" formaction="inventory/subtractquantity" class="btn btn-default" id="save1" data-dismiss="modal">Save</button>
+                          <button type="submit" formaction="inventory/subtractquantity" class="btn btn-default" id="save1" >Save</button>
                           <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal">Cancel</button>
                         </div>
                       </div>

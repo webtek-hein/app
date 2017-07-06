@@ -84,7 +84,7 @@ class InventoryModel extends CI_Model {
         $db1->where('item_id',$itemid);
         $db1->update('item');
         //update item_detail
-        $db1->where('item_id', $itemid);
+        $db1->where('item_id',$itemid);
         $db1->update('item_detail',$data2);
     }
 
@@ -97,7 +97,6 @@ class InventoryModel extends CI_Model {
         $db1->update('item');
         //insert in distribution
         $db1->insert('distribution', $data2);
-
         //update item_detail
         
     }
