@@ -102,8 +102,9 @@ class Inventory extends CI_Controller {
         }
     }
     public function subtractquantity(){
+        $item = $this->input->post('item_id');
         $data['department'] = $this->InventoryModel->get_department_list();
-        //$data['quantitycount'] = $this->InventoryModel->count_item_with_serial($item_id);
+        $data['quantitycount'] = $this->InventoryModel->get_item_quantity($item);
         $this->form_validation->set_rules('Quantity', 'Quantity', 'required');
         $this->form_validation->set_rules('department', 'Department', 'required');
         $this->form_validation->set_rules('date', 'Date','required');
@@ -124,7 +125,6 @@ class Inventory extends CI_Controller {
                 //temp
                 'user_distribute' => 'tempuser'
                 );
-            $item = $this->input->post('item_id');
             $this->InventoryModel->subtract_quantity($data1, $data2, $item);
             //$data['item'] = $this->InventoryModel->get_inventory_list();
             header('Location: http://localhost/app/inventory');
