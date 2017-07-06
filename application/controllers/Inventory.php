@@ -108,24 +108,24 @@ class Inventory extends CI_Controller {
         $this->form_validation->set_rules('department', 'Department', 'required');
         $this->form_validation->set_rules('date', 'Date','required');
         $this->form_validation->set_rules('usage', 'Usage','required');
+        $this->form_validation->set_rules('receivedby', 'Received By','required');
         if ($this->form_validation->run() === FALSE)
         {
             $this->load->view('modals/subtractquantity', $data);
         }
         else
         {
-            $data1 = array(
-                'quantity' => $this->input->post('quantity')
-                );
+            $data1 = $this->input->post('Quantity');
             $data2 =array(
-                'quantity' => $this->input->post('quantity'),
+                'quantity' => $data1,
                 'distrib_date' => $this->input->post('date'),
                 'dept_id' => $this->input->post('department'),
-                'item_usage' => $this->input->post('usage'),
-                'receivedby' => $this->input->post('receivedby')
+                'receivedby' => $this->input->post('receivedby'),
+                //temp
+                'user_distribute' => 'tempuser'
                 );
             $item = $this->input->post('item_id');
-            $this->inventorymodel->subtract_quantity($data1, $data2, $item);
+            $this->InventoryModel->subtract_quantity($data1, $data2, $item);
             //$data['item'] = $this->InventoryModel->get_inventory_list();
             header('Location: http://localhost/app/inventory');
         }

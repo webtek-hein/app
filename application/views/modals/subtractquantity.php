@@ -46,7 +46,7 @@
                             
                         </div>
                         <div class="modal-footer">
-                          <button type="submit" formaction="inventory/subtractquantity" class="btn btn-default" id="save1" >Save</button>
+                          <button type="submit" class="btn btn-default" id="save1" >Save</button>
                           <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal">Cancel</button>
                         </div>
                       </div>
