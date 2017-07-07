@@ -6,7 +6,7 @@ if (isset($this->session->userdata['logged_in'])) {
     $firstname = ($this->session->userdata['logged_in']['firstname']);
     $lastname = ($this->session->userdata['logged_in']['lastname']);
 } else {
-    header("location: login");
+    redirect("");
 }
 ?>
 <head>

@@ -33,6 +33,17 @@
                   <td>Glo</td>
                   <td>X</td>
                 </tr>
+                <tr>
+                  <td>Tasgg</td>
+                  <td>sgsg
+                    sdg 4.0
+                  </td>
+                  <td><?php echo $increase['date']; ?></td>
+                  <td> 4</td>
+                  <td>X</td>
+                  <td>Glo</td>
+                  <td>X</td>
+                </tr>
                 <?php endforeach; ?>
                 </tbody>
                 <tfoot>
