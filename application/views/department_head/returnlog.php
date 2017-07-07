@@ -1,11 +1,12 @@
-    <!-- Main content -->
-    <section class="content">
+ <section class="content">
       <div class="row">
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Increase</h3>
+              <h3 class="box-title">Return log</h3>
             </div>
+
+            
             <!-- /.box-header -->
             <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">
@@ -14,24 +15,31 @@
                   <th>Serial</th>
                   <th> Item name</th>
                   <th> Date</th>
-                  <th> Date Received</th>
+                  <th> Supplier</th>
+                  <th> Status</th>
                   <th> Unit Cost</th>
-					<th> Supplier </th>
-					<th>User</th>
+          <th> Person? </th>
+          <th>Replace Item</th>
+          <th>Reason</th>
+          <th>Quantity</th>
+          <th>User</th>
                 </tr>
                 </thead>
                 <tbody>
-                  <?php foreach ($increaselog as $increase): ?>
+                  <?php foreach ($returnlog as $return): ?>
                 <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 4.0
-                  </td>
-                  <td><?php echo $increase['date']; ?></td>
+              
+                  <td>312</td>
+                  <td>ballpen</td>
+                  <td><?php echo $return['date']; ?></td>
+                  <td>Joy</td>
                   <td> 4</td>
                   <td>X</td>
-                  <td>Glo</td>
+                  <td> <?php echo $return['return_person']; ?></td>
                   <td>X</td>
+                  <td><?php echo $return['reason']; ?></td>
+                  <td>5</td>
+                  <td>Lovelace</td>
                 </tr>
                 <?php endforeach; ?>
                 </tbody>

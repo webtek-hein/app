@@ -4,11 +4,6 @@
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">Inventory</h3><br>
-        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Add item</button>
-         <!-- Insert modal code here for ADD ITEM --> 
- 
-			  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal1">Add Bulk Items</button>
-         <!-- Insert modal code here for ADD BULK ITEMS-->
 
         <div class="container">
           <div class="row">
@@ -32,7 +27,7 @@
                   <th> Account Code</th>
                   <th> Quantity</th>
         					<th> Unit</th>
-        					<th> Action</th>
+        					<th> More Details</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -44,13 +39,8 @@
                   <td><?php echo $item_record['quantity']; ?></td>
                   <td><?php echo $item_record['unit']; ?></td>
                   <td> 
-                      <button type="button" class="open-modal-action fa fa-plus" data-id="<?php echo $item_record['item_id']; ?>" data-toggle="modal" data-target="#addqty"></button>
-                        
-                      <button type="button" class="open-modal-action fa fa-minus" data-id="<?php echo $item_record['item_id']; ?>" data-toggle="modal" data-target="#subqty"></buttton>
 
-                      <button class="open-modal-action fa fa-pencil" data-id="<?php echo $item_record['item_id']; ?>" data-toggle="modal" data-target="#edit"></button>
-
-                      <button class="open-modal-action fa fa-info" data-toggle="modal" data-target="#view"></button>
+                      <button type="button" data-toggle="modal" data-target="#view">View Details</button>
                         
                         </div>
                       </div>

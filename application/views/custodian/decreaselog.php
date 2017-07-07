@@ -15,10 +15,8 @@
                   <th>Serial</th>
                   <th> Item name</th>
                   <th> Date</th>
-                  <th> Date receive</th>
+                  <th> Date Received</th>
                   <th> Unit Cost</th>
-					<th>User</th>
-          <th>Employee name</th>
                 </tr>
                 </thead>
                 <?php foreach ($decreaselog as $decrease): ?>
@@ -31,8 +29,6 @@
                   <td><?php echo $decrease['date']; ?></td>
                   <td> 4</td>
                   <td>q</td>
-                  <td>X</td>
-                  <td>Glo</td>
                 </tr>
                 <?php endforeach; ?>
                 </tbody>
