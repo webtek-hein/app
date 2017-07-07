@@ -128,7 +128,7 @@ class InventoryModel extends CI_Model {
         $dbase->from('item');
         $dbase->where('item_id', $item_id);
         $query = $dbase->get();
-        $row = $query->row();
+        $row = $query->result_array();
         //return $row->quantity;
     }
 }
