@@ -77,27 +77,27 @@ input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgb
 			<table border="0" width="500" align="center" class="table">
 				<tr>
 					<td>First Name</td>
-					<td><input type="text" class="InputBox" name="FirstName" value=""></td>
+					<td><input type="text" class="InputBox" name="FirstName" value="<?php echo isset($_POST["FirstName"]) ? $_POST["FirstName"] : ''; ?>"></td>
 				</tr>
 				<tr>
 					<td>Last Name</td>
-					<td><input type="text" class="InputBox" name="LastName" value=""></td>
+					<td><input type="text" class="InputBox" name="LastName" value="<?php echo isset($_POST["LastName"]) ? $_POST["LastName"] : ''; ?>"></td>
 				</tr>
 				<tr>
 					<td>Email</td>
-					<td><input type="text" class="InputBox" name="Email" value=""></td>
+					<td><input type="text" class="InputBox" name="Email" value="<?php echo isset($_POST["Email"]) ? $_POST["Email"] : ''; ?>"></td>
 				</tr>
 				<tr>
 					<td>Contact no.</td>
-					<td><input type="text" class="InputBox" name="contactno" value=""></td>
+					<td><input type="text" class="InputBox" name="contactno" value="<?php echo isset($_POST["contactno"]) ? $_POST["contactno"] : ''; ?>"></td>
 				</tr>
 				<tr>
 					<td>Username</td>
-					<td><input type="text" class="InputBox" name="Username" value=""></td>
+					<td><input type="text" class="InputBox" name="Username" value="<?php echo isset($_POST["Username"]) ? $_POST["Username"] : ''; ?>"></td>
 				</tr>
 				<tr>
 					<td>Password</td>
-					<td><input type="password" class="InputBox" name="Password" value=""></td>
+					<td><input type="password" class="InputBox" name="Password" value=></td>
 				</tr>
 				<tr>
 					<td>Confirm Password</td>
