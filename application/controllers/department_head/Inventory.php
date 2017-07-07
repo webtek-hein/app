@@ -16,17 +16,17 @@ class Inventory extends CI_Controller {
         
       
 
-		$this->load->view('templates/header');
-		$this->load->view('inventory',$data);
-        $this->load->view('modals/addbulk');
-        $this->load->view('modals/editinventory',$data);
-		$this->load->view('templates/footer');
+		$this->load->view('department_head/templates/header');
+		$this->load->view('department_head/inventory',$data);
+        $this->load->view('department_head/modals/addbulk');
+        $this->load->view('department_head/modals/editinventory',$data);
+		$this->load->view('department_head/templates/footer');
 	}
     public function itemdetail()
     {
         $item_id = $this->input->post('item_id');
         $data['item_detail'] = $this->InventoryModel->get_item_detail($item_id);
 
-        $this->load->view('modals/itemdetails',$data);
+        $this->load->view('department_head/modals/itemdetails',$data);
     }
 }
