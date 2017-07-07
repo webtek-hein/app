@@ -13,13 +13,14 @@ class Inventory extends CI_Controller {
 		$data['accountcodes'] = $this->InventoryModel->get_ac_list();
         $data['item'] = $this->InventoryModel->get_inventory_list();
         $data['department'] = $this->InventoryModel->get_department_list();
-        
+        $data['item_detail'] = $this->InventoryModel->get_item_detail(1);
+
       
 
 		$this->load->view('department_head/templates/header');
 		$this->load->view('department_head/inventory',$data);
-        $this->load->view('department_head/modals/addbulk');
-        $this->load->view('department_head/modals/editinventory',$data);
+        $this->load->view('department_head/modals/itemdetails', $data);
+        $this->load->view('department_head/modals/editinventory',$data);        
 		$this->load->view('department_head/templates/footer');
 	}
     public function itemdetail()

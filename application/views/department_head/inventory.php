@@ -45,7 +45,7 @@
                   <td><?php echo $item_record['unit']; ?></td>
                   <td> 
 
-                      <button data-toggle="modals" data-target="#view">View Details</button>
+                      <button type="button" data-toggle="modal" data-target="#view">View Details</button>
                         
                         </div>
                       </div>
