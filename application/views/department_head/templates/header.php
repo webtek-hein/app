@@ -7,7 +7,7 @@ if (isset($this->session->userdata['logged_in'])) {
     $lastname = ($this->session->userdata['logged_in']['lastname']);
     $position = ($this->session->userdata['logged_in']['position']);
 } else {
-    redirect("");
+    header("location: login");
 }
 ?>
 <head>

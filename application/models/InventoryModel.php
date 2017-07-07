@@ -28,14 +28,21 @@ class InventoryModel extends CI_Model {
                      ->get('item');
         return $query->result_array();
 	}
-    public function get_item_detail($item_id)
+    public function get_item_detail($item)
     {
+print_r($item);
         $db1 = $this->load->database('inventory', TRUE);
         $query = $db1->select('*')
                      ->join('item_detail', 'item.item_id = item_detail.item_id', 'left')
                      ->join('account_code', 'item.account_id = account_code.ac_id', 'left')
+<<<<<<< HEAD
+=======
+                     ->where_in('item.item_id',$item)
+>>>>>>> b6c9bfd6af4fef7e21af9a2e0085f32b42926afd
                      ->get('item');
+
         return $query->result_array();
+
     }
     public function get_return_list()
     {
@@ -111,9 +118,27 @@ class InventoryModel extends CI_Model {
         $db1->update('item');
         $db1->where('item_id',$itemid);
         //update item_detail
+<<<<<<< HEAD
+=======
+        $db1->where('item_id',$itemid);
+>>>>>>> b6c9bfd6af4fef7e21af9a2e0085f32b42926afd
         $db1->update('item_detail',$data2);
         $db1->where('item_id', $itemid);
     }
+
+    public function subtract_quantity($data1,$data2,$itemid)
+    {
+        $db1 = $this->load->database('inventory',TRUE);
+        //update item
+        $db1->set('quantity', 'quantity-'.$data1, FALSE);
+        $db1->where('item_id',$itemid);
+        $db1->update('item');
+        //insert in distribution
+        $db1->insert('distribution', $data2);
+        //update item_detail
+        
+    }
+
     public function count_item_with_serial($item_id)
     {
         $db1 = $this->load->database('inventory',TRUE);
@@ -134,4 +159,14 @@ class InventoryModel extends CI_Model {
         return $query->result_array();
     }
 
+    public function get_item_quantity($item_id)
+    {
+        $dbase = $this->load->database('inventory', TRUE);
+        $dbase->select('quantity');
+        $dbase->from('item');
+        $dbase->where('item_id', $item_id);
+        $query = $dbase->get();
+        $row = $query->result_array();
+        //return $row->quantity;
+    }
 }

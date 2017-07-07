@@ -7,7 +7,7 @@ if (isset($this->session->userdata['logged_in'])) {
     $lastname = ($this->session->userdata['logged_in']['lastname']);
     $position = ($this->session->userdata['logged_in']['position']);
 } else {
-    redirect("");
+    header("location: login");
 }
 ?>
 <head>
@@ -311,10 +311,6 @@ if (isset($this->session->userdata['logged_in'])) {
                 <li class="header">MAIN NAVIGATION</li>
 
                 <li class="treeview">
-                    <?php $position = str_replace(' ', '_', $position) ;
-
-                    ?>
-
                     <a href="<?php echo base_url(). $position. '/' ?>dashboard">
                         <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                     </a>
