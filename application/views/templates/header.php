@@ -278,7 +278,7 @@ if (isset($this->session->userdata['logged_in'])) {
                                     <a href="#" class="btn btn-default btn-flat">Profile</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="logout" class="btn btn-default btn-flat">Sign out</a>
+                                    <a href="<?php echo base_url(). $position. '/' ?>logout" class="btn btn-default btn-flat">Sign out</a>
                                 </div>
                             </li>
                         </ul>
@@ -311,13 +311,13 @@ if (isset($this->session->userdata['logged_in'])) {
                 <li class="header">MAIN NAVIGATION</li>
 
                 <li class="treeview">
-                    <a href="<?php echo base_url() ?>dashboard">
+                    <a href="<?php echo base_url(). $position. '/' ?>dashboard">
                         <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                     </a>
                 </li>
 
                 <li class="treeview">
-                    <a href="<?php echo base_url() ?>inventory">
+                    <a href="<?php echo base_url(). $position. '/' ?>inventory">
                         <i class="fa fa-book"></i> <span>Inventory</span>
                     </a>
                 </li>
@@ -325,7 +325,7 @@ if (isset($this->session->userdata['logged_in'])) {
 
 
                 <li class="treeview">
-                    <a href="<?php echo base_url() ?>department">
+                    <a href="<?php echo base_url(). $position. '/' ?>department">
                         <i class="fa fa-building"></i>
                         <span>Department</span>
                     </a>
@@ -333,7 +333,7 @@ if (isset($this->session->userdata['logged_in'])) {
 
 
                 <li class="treeview">
-                    <a href="<?php echo base_url() ?>returned">
+                    <a href="<?php echo base_url(). $position. '/' ?>returned">
                         <i class="fa fa-reply"></i> <span>Return</span>
                     </a>
                 </li>
@@ -347,9 +347,9 @@ if (isset($this->session->userdata['logged_in'])) {
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="<?php echo base_url() ?>increaselog"><i class="fa fa-circle-o"></i> Increase</a></li>
-                        <li><a href="<?php echo base_url() ?>decreaselog"><i class="fa fa-circle-o"></i> Decrease</a></li>
-                        <li><a href="<?php echo base_url() ?>returnlog"><i class="fa fa-circle-o"></i> Return log</a></li>
+                        <li><a href="<?php echo base_url(). $position. '/' ?>increaselog"><i class="fa fa-circle-o"></i> Increase</a></li>
+                        <li><a href="<?php echo base_url(). $position. '/' ?>decreaselog"><i class="fa fa-circle-o"></i> Decrease</a></li>
+                        <li><a href="<?php echo base_url(). $position. '/' ?>returnlog"><i class="fa fa-circle-o"></i> Return log</a></li>
                     </ul>
                 </li>
 
