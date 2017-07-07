@@ -35,10 +35,7 @@ print_r($item);
         $query = $db1->select('*')
                      ->join('item_detail', 'item.item_id = item_detail.item_id', 'left')
                      ->join('account_code', 'item.account_id = account_code.ac_id', 'left')
-<<<<<<< HEAD
-=======
                      ->where_in('item.item_id',$item)
->>>>>>> b6c9bfd6af4fef7e21af9a2e0085f32b42926afd
                      ->get('item');
 
         return $query->result_array();
@@ -118,10 +115,7 @@ print_r($item);
         $db1->update('item');
         $db1->where('item_id',$itemid);
         //update item_detail
-<<<<<<< HEAD
-=======
         $db1->where('item_id',$itemid);
->>>>>>> b6c9bfd6af4fef7e21af9a2e0085f32b42926afd
         $db1->update('item_detail',$data2);
         $db1->where('item_id', $itemid);
     }
