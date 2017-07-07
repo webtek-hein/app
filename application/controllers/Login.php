@@ -49,6 +49,7 @@ class Login extends CI_Controller {
                         'username' => $result[0]->username,
                         'firstname' => $result[0]->first_name,
                         'lastname' => $result[0]->last_name,
+                        'position' => $result[0]->position,
                     );
 // Add user data in session
                     $this->session->set_userdata('logged_in', $session_data);

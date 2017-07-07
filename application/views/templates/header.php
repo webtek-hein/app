@@ -5,6 +5,7 @@ if (isset($this->session->userdata['logged_in'])) {
     $username = ($this->session->userdata['logged_in']['username']);
     $firstname = ($this->session->userdata['logged_in']['firstname']);
     $lastname = ($this->session->userdata['logged_in']['lastname']);
+    $position = ($this->session->userdata['logged_in']['position']);
 } else {
     header("location: login");
 }
@@ -264,7 +265,7 @@ if (isset($this->session->userdata['logged_in'])) {
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <!--<img src="<?php echo base_url() ?>assets/dist/img/admin.jpg" class="user-image" alt="User Image">-->
-                            <span class="hidden-xs"><?= $firstname?></span>
+                            <span class="hidden-xs"><?= $firstname.' '.$lastname?></span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- User image -->
@@ -301,7 +302,7 @@ if (isset($this->session->userdata['logged_in'])) {
                     <img src="<?php echo base_url() ?>assets/dist/img/admin.jpg" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
-                    <p>Admin</p>
+                    <p><?= $position?></p>
                     <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                 </div>
             </div>
