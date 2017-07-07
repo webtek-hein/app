@@ -42,8 +42,8 @@ if (isset($message_display)) {
         echo validation_errors();
         echo "</div>";
         ?>
-        <input type="text" name="username" id="name" placeholder="username"/>
-        <input type="password" name="password" id="password" placeholder="password"/>
+        <input type="text" name="username" id="name" placeholder="username" required="required"/>
+        <input type="password" name="password" id="password" placeholder="password" required="required"/>
         <input type="submit" class="btn btn-primary btn-block btn-large" value=" Login " name="submit"/><br />
         <a href="<?php echo base_url() ?>signup">To SignUp Click Here</a>
         <?php echo form_close(); ?>

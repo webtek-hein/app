@@ -15,31 +15,31 @@
 			<table align="center">
 				<tr>
 					<td>First Name</td>
-					<td><input type="text" class="InputBox" name="FirstName" value="<?php echo isset($_POST["FirstName"]) ? $_POST["FirstName"] : ''; ?>"></td>
+					<td><input type="text" class="InputBox" name="FirstName" required="required" value="<?php echo isset($_POST["FirstName"]) ? $_POST["FirstName"] : ''; ?>" ></td>
 				</tr>
 				<tr>
 					<td>Last Name</td>
-					<td><input type="text" class="InputBox" name="LastName" value="<?php echo isset($_POST["LastName"]) ? $_POST["LastName"] : ''; ?>"></td>
+					<td><input type="text" class="InputBox" name="LastName" required="required" value="<?php echo isset($_POST["LastName"]) ? $_POST["LastName"] : ''; ?>"></td>
 				</tr>
 				<tr>
 					<td>Email</td>
-					<td><input type="text" class="InputBox" name="Email" value="<?php echo isset($_POST["Email"]) ? $_POST["Email"] : ''; ?>"></td>
+					<td><input type="text" class="InputBox" name="Email" required="required" value="<?php echo isset($_POST["Email"]) ? $_POST["Email"] : ''; ?>"></td>
 				</tr>
 				<tr>
 					<td>Contact no.</td>
-					<td><input type="text" class="InputBox" name="contactno" value="<?php echo isset($_POST["contactno"]) ? $_POST["contactno"] : ''; ?>"></td>
+					<td><input type="text" class="InputBox" name="contactno" required="required" value="<?php echo isset($_POST["contactno"]) ? $_POST["contactno"] : ''; ?>"></td>
 				</tr>
 				<tr>
 					<td>Username</td>
-					<td><input type="text" class="InputBox" name="Username" value="<?php echo isset($_POST["Username"]) ? $_POST["Username"] : ''; ?>"></td>
+					<td><input type="text" class="InputBox" name="Username" required="required" value="<?php echo isset($_POST["Username"]) ? $_POST["Username"] : ''; ?>"></td>
 				</tr>
 				<tr>
 					<td>Password</td>
-					<td><input type="password" class="InputBox" name="Password" value=></td>
+					<td><input type="password" class="InputBox" name="Password" value="" required="required"></td>
 				</tr>
 				<tr>
 					<td>Confirm Password</td>
-					<td><input type="password" class="InputBox" name="confirm_password" value=""></td>
+					<td><input type="password" class="InputBox" name="confirm_password" value="" required="required"></td>
 				</tr>
 				<tr>
 				
