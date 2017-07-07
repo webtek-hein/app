@@ -19,8 +19,7 @@ class Inventory extends CI_Controller {
 
 		$this->load->view('department_head/templates/header');
 		$this->load->view('department_head/inventory',$data);
-        $this->load->view('department_head/modals/itemdetails', $data);
-        $this->load->view('department_head/modals/editinventory',$data);        
+        $this->load->view('department_head/modals/itemdetails', $data);    
 		$this->load->view('department_head/templates/footer');
 	}
     public function itemdetail()
