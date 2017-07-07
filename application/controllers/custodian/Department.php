@@ -11,9 +11,9 @@ class Department extends CI_Controller {
 	{
 		$data['accountcodes'] = $this->inventorymodel->get_ac_list();
 		$data['departments'] = $this->inventorymodel->get_department_list();
-		$this->load->view('templates/header');
-		$this->load->view('department',$data);
+		$this->load->view('custodian/templates/header');
+		$this->load->view('custodian/department',$data);
 		$this->load->view('modals/summaryofitems');
-		$this->load->view('templates/footer');
+		$this->load->view('custodian/templates/footer');
 	}
 }

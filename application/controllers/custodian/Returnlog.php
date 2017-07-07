@@ -10,9 +10,9 @@ class Returnlog extends CI_Controller {
 	public function index()
 	{
 		$data['returnlog'] = $this->inventorymodel->get_return_log();
-		$this->load->view('templates/header');
-		$this->load->view('returnlog',$data);
-		$this->load->view('templates/footer');
+		$this->load->view('custodian/templates/header');
+		$this->load->view('custodian/returnlog',$data);
+		$this->load->view('custodian/templates/footer');
 
 	}
 }
