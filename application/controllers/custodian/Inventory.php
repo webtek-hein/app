@@ -17,9 +17,9 @@ class Inventory extends CI_Controller {
 		$this->load->view('custodian/templates/header');
 		$this->load->view('custodian/inventory',$data);
         $this->additem();
-        $this->load->view('modals/addbulk');
+        $this->load->view('custodian/modals/addbulk');
         $this->addquantity();
-        $this->load->view('modals/editinventory',$data);
+        $this->load->view('custodian/modals/editinventory',$data);
         $this->subtractquantity();
 		$this->load->view('custodian/templates/footer');
 	}
@@ -40,7 +40,7 @@ class Inventory extends CI_Controller {
         $this->form_validation->set_rules('ExpirationDate', 'Expiration Date', 'required');
         if ($this->form_validation->run() === FALSE)
         {
-            $this->load->view('modals/additem', $data);
+            $this->load->view('custodian/modals/additem', $data);
         }
         else
         {
@@ -80,7 +80,7 @@ class Inventory extends CI_Controller {
         $this->form_validation->set_rules('Expiration_Date1', 'Expiration Date', 'required');
         if ($this->form_validation->run() === FALSE)
         {
-            $this->load->view('modals/addquantity', $data);
+            $this->load->view('custodian/modals/addquantity', $data);
         }
         else
         {
@@ -115,7 +115,7 @@ class Inventory extends CI_Controller {
         $this->form_validation->set_rules('item_id', 'Item','required');
         if ($this->form_validation->run() === FALSE)
         {
-            $this->load->view('modals/subtractquantity', $data);
+            $this->load->view('custodian/modals/subtractquantity', $data);
         }
         else
         {
@@ -139,7 +139,7 @@ class Inventory extends CI_Controller {
         $item_id = $this->input->post('item_id');
         $data['item_detail'] = $this->InventoryModel->get_item_detail($item_id);
 
-        $this->load->view('modals/itemdetails',$data);
+        $this->load->view('custodian/modals/itemdetails',$data);
     }
 
     public function get_quantity()
