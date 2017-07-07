@@ -13,7 +13,7 @@
                   <th>Serial no.</th>
                   <th>Item Name</th>
                   <th>Account Code</th>
-                  <th>Date</th>
+                  <th>Date Returned</th>
                   <th>Supplier</th>
                   <th>Department</th>
                   <th>Reason</th>
