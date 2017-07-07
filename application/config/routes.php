@@ -7,5 +7,8 @@ $route['logout'] = 'login/logout';
 //$route['Login'] = 'dashboard';
 
 $route['default_controller'] = 'login';
+$route['admin/dashboard'] = '';
+$route['custodian/dashboard'] = '';
+$route['department_head/dashboard'] = '';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

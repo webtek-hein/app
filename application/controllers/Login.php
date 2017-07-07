@@ -51,12 +51,15 @@ class Login extends CI_Controller {
                         'lastname' => $result[0]->last_name,
                     );
 // Add user data in session
+
                     $this->session->set_userdata('logged_in', $session_data);
-                    $this->load->view('templates/header');
-                    $this->load->view('dashboard',@data);
-                    $this->load->view('templates/footer');
-                    redirect(base_url().'dashboard');
-                    // header("Location: //localhost/app/Login/user_login_process/{$username}");
+                    if($result[0]->position == 'admin'){
+                        redirect(base_url().'admin/dashboard');
+                    }else if($result[0]->position == 'custodian'){
+                        redirect(base_url().'custodian/dashboard');
+                    }else{
+                        redirect(base_url().'department_head/dashboard');
+                    }
                 }
             } else {
                 $data = array(
