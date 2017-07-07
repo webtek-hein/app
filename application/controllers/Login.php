@@ -8,12 +8,17 @@ class Login extends CI_Controller {
         parent::__construct();
     // Load database
         $this->load->model('user_db');
+
     }
 
 // Show login page
     public function index()
     {
-        $this->load->view('login');
+        if (isset($this->session->userdata['logged_in'])) {
+            redirect(base_url().'dashboard');
+        } else {
+            $this->load->view('login');
+        }
     }
 
     // Check for user login process
