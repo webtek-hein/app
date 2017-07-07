@@ -15,7 +15,7 @@ class Inventory extends CI_Controller {
 		$data['department'] = $this->InventoryModel->get_department_list();
 
 		$this->load->view('templates/header');
-		$this->load->view('inventory',$data);
+		$this->load->view('custodian/inventory',$data);
         $this->additem();
         $this->load->view('modals/addbulk');
         $this->addquantity();
