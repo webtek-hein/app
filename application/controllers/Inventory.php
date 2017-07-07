@@ -101,6 +101,7 @@ class Inventory extends CI_Controller {
             header('Location: http://localhost/app/inventory');
         }
     }
+
     public function subtractquantity(){
         $data['department'] = $this->InventoryModel->get_department_list();
         $item_id = $this->input->post('item_id');
@@ -132,6 +133,7 @@ class Inventory extends CI_Controller {
             header('Location: http://localhost/app/inventory');
         }
     }
+    
     public function itemdetail()
     {
         $item_id = $this->input->post('item_id');
