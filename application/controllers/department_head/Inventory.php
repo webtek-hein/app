@@ -14,13 +14,9 @@ class Inventory extends CI_Controller {
         $data['item'] = $this->InventoryModel->get_inventory_list();
         $data['department'] = $this->InventoryModel->get_department_list();
         
-        if($this->session->userdata('position') == 'department head'){
-            $data['position'] = 'department_head';
-        }else{
-            $data['department'] = $this->session->userdata('position');
-        }
+      
 
-		$this->load->view('templates/header',$position);
+		$this->load->view('templates/header');
 		$this->load->view('inventory',$data);
         $this->load->view('modals/addbulk');
         $this->load->view('modals/editinventory',$data);
