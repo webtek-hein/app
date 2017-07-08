@@ -39,7 +39,7 @@ class InventoryModel extends CI_Model {
         $query = $db1->select('*')
                      ->join('item_detail', 'item.item_id = item_detail.item_id', 'left')
                      ->join('account_code', 'item.account_id = account_code.ac_id', 'left')
-                     ->where('item.item_id')
+                     ->where('item.item_id', $item)
                      ->get('item');
 
         return $query->result_array();
@@ -128,7 +128,9 @@ class InventoryModel extends CI_Model {
         $dbase = $this->load->database('inventory', TRUE);
         $dbase->select('*');
         $dbase->from('department');
-        $dbase->where('dept_id', $dept);
+        $dbase->join('distribution','`distribution`.`dept_id` = `department`.`dept_id`','left');
+        $dbase->join('item_detail','`item_detail`.`dist_id` = `distribution`.`dist_id`','left');
+        $dbase->where('department.dept_id', $dept);
         $query = $dbase->get();
         return $query->result_array();
     }
@@ -142,5 +144,16 @@ class InventoryModel extends CI_Model {
         $query = $dbase->get();
         $row = $query->result_array();
         //return $row->quantity;
+    }
+
+    public function get_distributed_items() 
+    {
+        $dbase = $this->load->database('inventory',TRUE);
+        $query = $dbase->query("SELECT item_name, account_code, official_receipt_no, del_date, distrib_date, distribution.quantity, distribution.receivedby, unit_cost, unit FROM department
+    LEFT JOIN distribution ON distribution.dept_id = department.dept_id
+    LEFT JOIN item_detail ON item_detail.dist_id = distribution.dist_id
+    LEFT JOIN item ON item_detail.item_id = item.item_id
+    LEFT JOIN  account_code ON item.account_id = account_code.ac_id WHERE item_detail.dist_id IS NOT NULL");
+        return $query->result_array();
     }
 }
