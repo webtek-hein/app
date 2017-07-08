@@ -33,22 +33,12 @@
 
 <script src="<?php echo base_url() ?>assets/js/sort.js"></script>
 
-
->>>>>>> 628063569ea6628cee4f54f5f0925b723c73d3db
 <section class="content">
       <div class="row">
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
                 <div class="dropdown">
-    <button class="btn btn-primary" type="button" data-toggle="dropdown">Departments
-    <span class="caret"></span></button>
-    <ul class="dropdown-menu">
-      <?php foreach ($departments as $depts): ?>
-        <li><a href="department/<?php echo $depts['dept_id']?>"><?php echo $depts['res_center_code']," ", $depts['department']; ?></a></li>
-        <input type="hidden" value="<?php echo $depts['res_center_code']?>">
-      <?php endforeach; ?>
-    </ul>
     		<select class="selectdept">
         <option>Departments</option>
           <?php foreach ($departments as $dept): ?>
