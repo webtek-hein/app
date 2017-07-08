@@ -39,8 +39,11 @@
     </a>
     <!-- /.col -->
 
+    
+<div class="page-header">
+	<h1>ITEMS REMAINING:</h1>
+</div>
 	<div class="box-body">
-    <label>ITEMS REMAINING:</label>
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
