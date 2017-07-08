@@ -54,23 +54,25 @@
 				          <th> Delivery Date</th>
                   <th> Date received</th>
                   <th> Quantity</th>
-					<th> Received by </th>
+					 <th> Received by </th>
 					<th>Cost</th>
 					<th> Unit</th>
                 </tr>
                 </thead>
                 <tbody>
+                <?php foreach ($distribute as $row): ?>
                 <tr>
-                  <td> </td>
-                  <td> </td>
-                  <td> </td>
-                  <td> </td>
-                  <td> </td>
-                  <td> </td>
-                  <td> </td>
-				  <td> </td>
-                  <td> </td>
+                  <td><?php echo $row['item_name'] ?></td>
+                  <td><?php echo $row['account_code'] ?></td>
+                  <td><?php echo $row['official_receipt_no'] ?></td>
+                  <td><?php echo $row['del_date'] ?></td>
+                  <td><?php echo $row['distrib_date'] ?></td>
+                  <td><?php echo $row['quantity'] ?></td>
+                  <td><?php echo $row['receivedby'] ?></td>
+				          <td><?php echo $row['unit_cost'] ?></td>
+                  <td><?php echo $row['unit'] ?></td>
                 </tr>
+                <?php endforeach; ?>
                 </tbody>
                 <tfoot>
                 </tfoot>
