@@ -45,10 +45,10 @@
 				
 					<td>Type</td>
 					<td>
-					<select>
-					  <option value="Warehouse Officer">Custodian</option>
-					  <option value="Department Head">Department Head</option>
-					  <option value="Admin">Admin</option>
+					<select name="type">
+					  <option value="custodian">Custodian</option>
+					  <option value="department head">Department Head</option>
+					  <option value="admin">Admin</option>
 					</select>
 					</td>
 				</tr>

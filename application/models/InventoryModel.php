@@ -88,17 +88,22 @@ class InventoryModel extends CI_Model {
         $db1->update('item_detail',$data2);
     }
 
-    public function subtract_quantity($data1,$data2,$itemid)
+    public function subtract_quantity($data1,$data2,$itemid, $quantity)
     {
         $db1 = $this->load->database('inventory',TRUE);
         //update item
         $db1->set('quantity', 'quantity-'.$data1, FALSE);
         $db1->where('item_id',$itemid);
         $db1->update('item');
+
         //insert in distribution
         $db1->insert('distribution', $data2);
+        $distid = $db1->insert_id();
         //update item_detail
-        
+        $db1->query("UPDATE item_detail set item_detail.dist_id = $distid
+                    WHERE item_detail.item_id = $itemid 
+                    AND item_detail.dist_id is null
+                    LIMIT $quantity");
     }
 
     public function count_item_with_serial($item_id)

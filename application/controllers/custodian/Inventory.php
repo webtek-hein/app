@@ -98,15 +98,12 @@ class Inventory extends CI_Controller {
             $data3 = $this->input->post('item_id');
             $this->InventoryModel->add_quantity($data1,$data2,$data3);
             $data['item'] = $this->InventoryModel->get_inventory_list();
-            header('Location: http://localhost/app/inventory');
+            header('Location: http://localhost/app/custodian/inventory');
         }
     }
 
     public function subtractquantity(){
         $data['department'] = $this->InventoryModel->get_department_list();
-        $item_id = $this->input->post('item_id');
-        $data['quantitycount'] = $this->InventoryModel->get_item_quantity($item_id);
-        $this->load->view('modals/subtractquantity', $data);
         $this->form_validation->set_rules('Quantity', 'Quantity', 'required');
         $this->form_validation->set_rules('department', 'Department', 'required');
         $this->form_validation->set_rules('date', 'Date','required');
@@ -119,6 +116,8 @@ class Inventory extends CI_Controller {
         }
         else
         {
+            $item_id = $this->input->post('item_id');
+            $data['quantitycount'] = $this->InventoryModel->get_item_quantity($item_id);
             $data1 = $this->input->post('Quantity');
             $data2 =array(
                 'quantity' => $data1,
@@ -128,9 +127,9 @@ class Inventory extends CI_Controller {
                 //temp
                 'user_distribute' => 'tempuser'
                 );
-            $this->InventoryModel->subtract_quantity($data1, $data2, $item);
+            $this->InventoryModel->subtract_quantity($data1, $data2, $item_id, $data1);
             //$data['item'] = $this->InventoryModel->get_inventory_list();
-            header('Location: http://localhost/app/inventory');
+            header('Location: http://localhost/app/custodian/inventory');
         }
     }
     

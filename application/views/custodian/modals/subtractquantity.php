@@ -4,7 +4,7 @@
                     
                       <!-- Modal content-->
                       <?php echo validation_errors(); ?>
-                      <?php echo form_open('inventory/subtractquantity'); ?>
+                      <?php echo form_open('custodian/inventory/subtractquantity'); ?>
                       <div class="modal-content">
                         <div class="modal-header">
                           <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -15,7 +15,7 @@
                         
                           <table border="0" width="500" align="center" class="table">
                           <tr>
-                              <td>Quantity <?php echo $quantitycount; ?></td>
+                              <td>Quantity</td>
                               <td>
                                   <input type="number" min = "1" max="10" class="Input" name="Quantity" value="">
                               </td>
