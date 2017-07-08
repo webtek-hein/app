@@ -22,6 +22,7 @@ class Inventory extends CI_Controller {
         $this->load->view('modals/editinventory',$data);
         $this->subtractquantity();
 		$this->load->view('templates/footer');
+		$this->itemdetail();
 	}
     public function additem()
     {
@@ -127,15 +128,24 @@ class Inventory extends CI_Controller {
                 //temp
                 'user_distribute' => 'tempuser'
                 );
-            $this->InventoryModel->subtract_quantity($data1, $data2, $item);
+            $this->InventoryModel->subtract_quantity($data1, $data2);
             //$data['item'] = $this->InventoryModel->get_inventory_list();
             header('Location: http://localhost/app/inventory');
         }
     }
     public function itemdetail()
     {
-        $item_id = $this->input->post('item_id');
-        $data['item_detail'] = $this->InventoryModel->get_item_detail($item_id);
+        $data = $this->InventoryModel->get_inventory_list();
+        $item[] = array();
+
+        foreach ($data as $item_record) {
+
+            $item = array($item_record['item_id']);
+
+            $data['item_detail'] = $this->InventoryModel->get_item_detail($item);
+print_r( $item);
+        }
+
 
         $this->load->view('modals/itemdetails',$data);
     }
