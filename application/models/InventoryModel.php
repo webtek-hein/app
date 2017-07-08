@@ -68,9 +68,23 @@ class InventoryModel extends CI_Model {
     }
      public function get_decrease_log()
     {
+        $db1=$this->load->database('inventory', TRUE);
         $db2=$this->load->database('logs', TRUE);
+        
+        $result[]= array();
+
         $query = $db2->get('decrease_log');
-        return $query->result_array();
+        $decrease = $query->result_array();
+
+
+        foreach ($decrease as $logs) {
+            $db1->select('*');
+            $db1->from('user');
+            $db1->where('user_id',$logs['user_id']);
+            $result = $db1->get()->result_array();
+        }
+        $data = array_merge($decrease,$result);
+        return $data;
     }
     public function get_return_log()
     {
