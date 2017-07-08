@@ -12,6 +12,7 @@
   }
 </style> 
 
+ 
 
 <section class="content">
       <div class="row">
@@ -19,13 +20,14 @@
           <div class="box">
             <div class="box-header">
                 <div class="dropdown">
-    		<select class="selectdept">
+        <form action="custodian/department/get_item_per_department" method="POST">
+    		<select class="selectdept" name="department" id="depts">
         <option>Departments</option>
           <?php foreach ($departments as $dept): ?>
                 <option class="option" value="<?php echo $dept['dept_id'] ?>"><?php echo $dept['res_center_code'] . ' ' . $dept['department'] ?></option>
           <?php endforeach; ?>
         </select>
-
+        </form>
         <button type= "button" class="btn btn-success">Summary of Items</button>        
             </div>
               </div>
