@@ -1,35 +1,4 @@
-<style type="text/css">
-<<<<<<< HEAD
-.dropdown-menu{
-   background-color: rgba(255,255,255, 0.93);
-   position:fixed;
-  overflow-x:auto;
-  overflow-y:scroll;
-  bottom:0;
-  left:50;
-  right:50;
-  top:0;
-
-  z-index:9999;
-  margin-left: 270px; 
-  margin-top: 129px;
-  margin-bottom: 10px;
-  }
-</style> 
-
-=======
-.selectdept{
-  background-color:#008CBA;
-  color:white;
-  height: 34px;
-  border-radius: 4px;
-  }
-
-  .option{
-    background-color:white;
-    color:black;
-  }
-</style> 
+<link rel = "stylesheet" type = "text/css" href = "assets/css/dept.css"/>
 
 <script src="<?php echo base_url() ?>assets/js/sort.js"></script>
 
