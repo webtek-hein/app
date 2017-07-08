@@ -22,20 +22,22 @@
                 </tr>
                 </thead>
                 <tbody>
+				<?php foreach ($return as $returnlog): ?>
                 <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td><?php echo $returnlog['serial_no']; ?></td>
+                  <td><<?php echo $returnlog['item_name']; ?>/td>
+                  <td><?php echo $returnlog['account_code']; ?></td>
+                  <td><?php echo $returnlog['date']; ?></td>
+                  <td><?php echo $returnlog['supplier']; ?></td>
+                  <td><?php echo $returnlog['department']; ?></td>
+                  <td><?php echo $returnlog['action']; ?></td>
                   <td>
                       
                       <input type="submit" name="Replace" value="Replace" class="Replace">
                       <input type="submit" name="Ignore" value="Ignore" class="Ignore">
                   </td>
                 </tr>
+				<?php endforeach; ?>
                 </tbody>
               </table>
             </div>
