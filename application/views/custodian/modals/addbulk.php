@@ -1,108 +1,53 @@
-         <!-- Modal-->
-        <div class="modal fade" id="myModal1" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title" align="center"><b>How many items?<b></h4>
-        </div>
-        <div class="modal-body" align="center">
 
-  
+<script src="<?php echo base_url() ?>assets/js/addbulk.js"></script>
 
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function(){
-        $(".add-row").click(function(){
-            var itemname = $("#itemname").val();
-            var accountcode = $("#accountcode").val();
-            var quantity = $("quantity").val();
-            
-            
-            
-            var markup = "<tr><td>
-            <input type='checkbox' name='record'></td>
-            <td>
-                  " + itemname + "
-            </td>
-            <td>
-                  " + accountcode + "
-            </td>
-            <td>
-                  " + quantity +"
-            </td>
-            </tr>";
-            $("table tbody").append(markup);
-        });
-        
-        // Find and remove selected table rows
-        $(".delete-row").click(function(){
-            $("table tbody").find('input[name="record"]').each(function(){
-              if($(this).is(":checked")){
-                    $(this).parents("tr").remove();
-                }
-            });
-        });
-    });    
-</script>
-    <form>
-        <input type="text" id="itemname" placeholder="Item Name">
-        <input type="text" id="accountcode" placeholder="Account code">
-        <input type="text" id="quantity" placeholder="Quantity">
-        <input type="text" id="supplier" placeholder="Supplier">
-        <input type="text" id="datereceived" placeholder="Date received">
-        <input type="text" id="unit" placeholder="Unit">
-        <input type="text" id="cost" placeholder="Cost">
-        <input type="text" id="expirationdate" placeholder="Expiration date">
+        <!-- Modal -->
+<div id="myModal1" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg" style="background-color: rgba(255,255,255, 0.93);position:fixed;
+                    overflow-x:auto;overflow-y:scroll;bottom:0;left:0;right:0;top:0;
+                    z-index:9999;">
 
-        <input type="button" class="add-row" value="Add Row">
-    </form>
+    <!-- Modal content-->
+    <div class="container" style="background-color:white; width:1520px; height: 550px; text-align: center; size:50px;">
+        <h4 class="modal-title"><b>Add Many Items</b></h4>
 
+<div class="modal-body">
+       
+       <div id="wrapper">
+<table align='center' cellspacing=2 cellpadding=5 id="data_table" border=1>
+<tr>
+<th >Item Name</th>
+<th>Account Code</th>
+<th>Quantity</th>
+<th>Supplier</th>
+<th>Date Received</th>
+<th>Unit</th>
+<th>Cost</th>
+<th>Expiration Date</th>
+</tr>
 
+<tr>
+<td><input type="text" id="new_itemname"></td>
+<td><input type="text" id="new_accountcode"></td>
+<td><input type="text" id="new_qty"></td>
+<td><input type="text" id="new_supplier"></td>
+<td><input type="text" id="new_datereceived"></td>
+<td><input type="text" id="new_unit"></td>
+<td><input type="text" id="new_cost"></td>
+<td><input type="text" id="new_expdate"></td>
+<td><input type="button" class="add" onclick="add_row();" value="Add Row"></td>
+</tr>
 
+</table>
+</div>
 
-         <table class="table table-striped" id="tblGrid">
-            <thead id="tblHead">
-              <tr>
-                <th>Select</th>
-                <th>Item Name</th>
-                <th>Accound Code</th>
-                <th>Quanity</th>
-                <th>Supplier</th>
-                <th>Date Received</th>
-                <th>Unit</th>        
-                <th>Cost</th>        
-                <th class="text-right">Expiration Date</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td><input type="checkbox" name="record"></td>
-                <td>Long Island, NY, USA</td>
-                <td>3</td>
-                <td>3</td>
-                <td>3</td>
-                <td>3</td>
-                <td>3</td>
-                <td>3</td>
-                <td class="text-right">45001</td>
-              </tr>
-            </tbody>
-          </table>
-        <button type="button" class="delete-row">Delete Row</button>
-        
-        </div>
-        <div class="modal-footer">
-         <button type="button" class="btn btn-default" id="save" data-dismiss="modal">Close</button>
-        </div>
       </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" style>Save</button>
+      </div>
+    </div>
       
     </div>
   </div>
-
-        </div>
-      </div>
+</div>
       
-    </div>
-  </div>

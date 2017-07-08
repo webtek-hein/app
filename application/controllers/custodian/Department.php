@@ -21,4 +21,11 @@ class Department extends CI_Controller {
 		$this->load->view('custodian/modals/summaryofitems');
 		$this->load->view('custodian/templates/footer');
 	}
+
+	public function get_item_per_department()
+	{
+		$dept_id = $this->input->post('department');
+		$data['distribute'] = $this->inventorymodel->get_department_item($dept_id);
+		$this->load->view('custodian/department',$data);
+	}
 }

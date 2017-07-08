@@ -29,7 +29,7 @@ class Inventory extends CI_Controller {
     	$data['accountcodes'] = $this->InventoryModel->get_ac_list();
         $this->form_validation->set_rules('Item_Name', 'Item Name','required');
         $this->form_validation->set_rules('Description', 'Item Description','required');
-        $this->form_validation->set_rules('AccountCode', 'Account Code', 'required|min_length[5]');
+        $this->form_validation->set_rules('AccountCode', 'Account Code', 'required');
         $this->form_validation->set_rules('OfficialReceipt', 'Official Receipt', 'required|integer');
         $this->form_validation->set_rules('ReceivedBy', 'Received By', 'required');
         $this->form_validation->set_rules('Item_Quantity', 'Quantity','required|integer');
