@@ -20,10 +20,11 @@
             <div class="box-header">
                 <div class="dropdown">
     		<select class="selectdept">
-                <option class="option">DEPARTMENT</option>
-                <option class="option">.....</option>
-                <option class="option">.....</option>
-              </select>
+        <option>DEPARTMENTS</option>
+          <?php foreach ($departments as $dept): ?>
+                <option class="option" value="<?php echo $dept['dept_id'] ?>"><?php echo $dept['res_center_code'] . ' ' . $dept['department'] ?></option>
+          <?php endforeach; ?>
+        </select>
 
         <button type= "button" class="btn btn-success">Summary of Items</button>        
             </div>
