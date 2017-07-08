@@ -47,7 +47,16 @@ class InventoryModel extends CI_Model {
     }
     public function get_return_list()
     {
-       
+
+        $db1=$this->laod->database('inventory_log', TRUE);
+        $query=$db1->select('*')
+                ->join('item_detail', 'item_detail.serial','item_detail.supplier','left')
+                ->join('item','item.item_name','left')
+                ->join('account_code','account_code.account_code','left')
+                ->join('department','department.department','left')
+                ->get('item');
+                return $query->result_array();
+
     }
     public function get_increase_log()
     {
