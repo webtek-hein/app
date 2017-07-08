@@ -21,14 +21,14 @@
                 </tr>
                 </thead>
                 <tbody>
-				<?php foreach ($return as $ret): ?>
+				<?php foreach ($return as $return): ?>
                 <tr>
                   <td>1234</td>
-                  <td><<?php echo $ret['item_name']; ?>/td>
+                  <td><<?php echo $return['item_name']; ?>/td>
                   <td>23456</td>
-                  <td><?php echo $ret['date']; ?></td>
-                  <td><?php echo $ret['supplier']; ?></td>
-                  <td><?php echo $ret['department']; ?></td>
+                  <td><?php echo $return['date']; ?></td>
+                  <td><?php echo $return['supplier']; ?></td>
+                  <td><?php echo $return['department']; ?></td>
                   <td>IGNORE</td>
                   <td>
                       

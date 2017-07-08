@@ -54,7 +54,7 @@ class InventoryModel extends CI_Model {
                     ->join('item','item.item_name')
                     ->join('account_code','account_code.account_code')
                     ->join('department','department.department')
-                    ->get(item);
+                    ->get('item');
         
         return $query->result_array();
     }
