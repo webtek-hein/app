@@ -26,7 +26,7 @@
                   <td>Internet
                     Explorer 4.0
                   </td>
-                  <td><?php echo $decrease['date']; ?></td>
+                  <td></td>
                   <td> 4</td>
                   <td>q</td>
                 </tr>

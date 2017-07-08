@@ -37,7 +37,7 @@ class InventoryModel extends CI_Model {
 
         $db1 = $this->load->database('inventory', TRUE);
         $query = $db1->select('*')
-                     ->join('item_detail', 'item.item_id = item_detail.item_id', 'left')
+                     ->join('item_detail', 'item.item_id = item_detail.item_id', 'natural')
                      ->join('account_code', 'item.account_id = account_code.ac_id', 'left')
                      ->where('item.item_id', $item)
                      ->get('item');

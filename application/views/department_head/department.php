@@ -15,7 +15,7 @@
   }
 </style> 
 
-
+<script src="<?php echo base_url() ?>assets/js/sort.js"></script>
 <section class="content">
       <div class="row">
         <div class="col-xs-12">
@@ -48,15 +48,15 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Item name</th>
-                  <th> Account Code</th>
-                  <th> Official Receipt</th>
-				          <th> Delivery Date</th>
-                  <th> Date received</th>
-                  <th> Quantity</th>
-					<th> Received by </th>
-					<th>Cost</th>
-					<th> Unit</th>
+                  <th onclick="sortTable(0)">Item name</th>
+                  <th onclick="sortTable(1)"> Account Code</th>
+                  <th onclick="sortTable(2)"> Official Receipt</th>
+				  <th onclick="sortTable(3)"> Delivery Date</th>
+                  <th onclick="sortTable(4)"> Date received</th>
+                  <th onclick="sortTable(5)"> Quantity</th>
+				  <th onclick="sortTable(6)"> Received by </th>
+				  <th onclick="sortTable(7)">Cost</th>
+				  <th onclick="sortTable(8)"> Unit</th>
                 </tr>
                 </thead>
                 <tbody>

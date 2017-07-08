@@ -13,13 +13,13 @@
                 <thead>
                 <tr>
                   <th>Serial</th>
-                  <th> Item name</th>
-                  <th> Date</th>
-                  <th> Supplier</th>
-                  <th> Status</th>
-                  <th> Unit Cost</th>
-                  <th> Person? </th>
-                  <th>Replace Item</th>
+                  <th>Item name</th>
+                  <th>Date</th>
+                  <th>Supplier</th>
+                  <th>Status</th>
+                  <th>Unit Cost</th>
+                  <th>Returned by</th>
+                  <th>Replaced Item</th>
                   <th>Reason</th>
                   <th>Quantity</th>
                 </tr>
