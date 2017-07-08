@@ -21,6 +21,7 @@
                 </tr>
                 </thead>
                 <tbody>
+                  <?php foreach ($return as $return): ?>
                 <tr>
                   <td></td>
                   <td></td>
@@ -33,6 +34,7 @@
                       <input type="submit" name="Ignore" value="Ignore" class="Ignore">
                   </td>
                 </tr>
+                <?php endforeach; ?>
                 </tbody>
               </table>
             </div>
