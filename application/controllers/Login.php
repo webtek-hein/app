@@ -71,6 +71,7 @@ class Login extends CI_Controller {
         }
     }
 
+
 // Logout from admin page
     public function logout() {
 
