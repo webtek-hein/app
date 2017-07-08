@@ -36,6 +36,8 @@ class InventoryModel extends CI_Model {
 //print_r($item);
 
         $db1 = $this->load->database('inventory', TRUE);
+<<<<<<< HEAD
+=======
         $query = $db1->select('*')
                      ->join('item_detail', 'item.item_id = item_detail.item_id', 'left')
                      ->join('account_code', 'item.account_id = account_code.ac_id', 'left')
@@ -43,20 +45,24 @@ class InventoryModel extends CI_Model {
                      ->get('item');
 
         return $query->result_array();
+>>>>>>> f08917fa173715dee3606308b3e18c0b70c8ae78
 
     }
     public function get_return_list()
     {
-        $db1=$this->load->database('inventory', TRUE);
+<<<<<<< HEAD
+        $db1=$this->laod->database('inventory_log', TRUE);
+        $query=$db1->select('*')
+                ->join('item_detail', 'item_detail.serial','item_detail.supplier','left')
+                ->join('item','item.item_name','left')
+                ->join('account_code','account_code.account_code','left')
+                ->join('department','department.department','left')
+                ->get('item');
+                return $query->result_array();
 
-        $query = $db1->select('*')
-                    ->join('item_detail','item_detail.serial','item_detail.supplier')
-                    ->join('item','item.item_name')
-                    ->join('account_code','account_code.account_code')
-                    ->join('department','department.department')
-                    ->get('item');
-        
-        return $query->result_array();
+=======
+       
+>>>>>>> f08917fa173715dee3606308b3e18c0b70c8ae78
     }
     public function get_increase_log()
     {
