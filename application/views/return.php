@@ -23,13 +23,13 @@
                 <tbody>
                   <?php foreach ($return as $return): ?>
                 <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td><?php echo $return['serial_no']; ?></td>
+                  <td><?php echo $return['item_name']; ?></td>
+                  <td><?php echo $return['account_code']; ?></td>
+                  <td><?php echo $return['date']; ?></td>
+                  <td><?php echo $return['supplier']; ?></td>
+                  <td><?php echo $return['department']; ?></td>
+                  <td><?php echo $return['reason']; ?></td>
                   <td><input type="submit" name="Replace" value="Replace" class="Replace">
                       <input type="submit" name="Ignore" value="Ignore" class="Ignore">
                   </td>
