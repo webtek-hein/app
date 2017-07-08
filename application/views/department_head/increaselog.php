@@ -17,8 +17,8 @@
                   <th onclick="sortTable(2)"> Date</th>
                   <th onclick="sortTable(3)"> Date receive</th>
                   <th onclick="sortTable(4)"> Unit Cost</th>
-					<th> Supplier </th>
-					<th>User</th>
+				  <th onclick="sortTable(5)"> Supplier </th>
+				  <th onclick="sortTable(6)">User</th>
                 </tr>
                 </thead>
                 <tbody>

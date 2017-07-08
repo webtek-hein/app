@@ -1,17 +1,14 @@
 <style type="text/css">
-.dropdown-menu{
-   background-color: rgba(255,255,255, 0.93);
-   position:fixed;
-  overflow-x:auto;
-  overflow-y:scroll;
-  bottom:0;
-  left:50;
-  right:50;
-  top:0;
-  z-index:9999;
-  margin-left: 270px; 
-  margin-top: 129px;
-  margin-bottom: 10px;
+.selectdept{
+  background-color:#008CBA;
+  color:white;
+  height: 34px;
+  border-radius: 4px;
+  }
+
+  .option{
+    background-color:white;
+    color:black;
   }
 </style> 
 
@@ -22,13 +19,12 @@
           <div class="box">
             <div class="box-header">
                 <div class="dropdown">
-    <button class="btn btn-primary" type="button" data-toggle="dropdown">Departments
-    <span class="caret"></span></button>
-    <ul class="dropdown-menu">
-      <?php foreach ($departments as $depts): ?>
-        <li><a href="#"><?php echo $depts['res_center_code']," ", $depts['department']; ?></a></li>
-      <?php endforeach; ?>
-    </ul>
+    		<select class="selectdept">
+        <option>Departments</option>
+          <?php foreach ($departments as $dept): ?>
+                <option class="option" value="<?php echo $dept['dept_id'] ?>"><?php echo $dept['res_center_code'] . ' ' . $dept['department'] ?></option>
+          <?php endforeach; ?>
+        </select>
 
         <button type= "button" class="btn btn-success">Summary of Items</button>        
             </div>
@@ -54,23 +50,25 @@
 				          <th> Delivery Date</th>
                   <th> Date received</th>
                   <th> Quantity</th>
-					<th> Received by </th>
+					 <th> Received by </th>
 					<th>Cost</th>
 					<th> Unit</th>
                 </tr>
                 </thead>
                 <tbody>
+                <?php foreach ($distribute as $row): ?>
                 <tr>
-                  <td> </td>
-                  <td> </td>
-                  <td> </td>
-                  <td> </td>
-                  <td> </td>
-                  <td> </td>
-                  <td> </td>
-				  <td> </td>
-                  <td> </td>
+                  <td><?php echo $row['item_name'] ?></td>
+                  <td><?php echo $row['account_code'] ?></td>
+                  <td><?php echo $row['official_receipt_no'] ?></td>
+                  <td><?php echo $row['del_date'] ?></td>
+                  <td><?php echo $row['distrib_date'] ?></td>
+                  <td><?php echo $row['quantity'] ?></td>
+                  <td><?php echo $row['receivedby'] ?></td>
+				          <td><?php echo $row['unit_cost'] ?></td>
+                  <td><?php echo $row['unit'] ?></td>
                 </tr>
+                <?php endforeach; ?>
                 </tbody>
                 <tfoot>
                 </tfoot>

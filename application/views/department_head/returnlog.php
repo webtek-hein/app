@@ -19,17 +19,26 @@
                   <th onclick="sortTable(3)"> Supplier</th>
                   <th onclick="sortTable(4)"> Status</th>
                   <th onclick="sortTable(5)"> Unit Cost</th>
+<<<<<<< HEAD
                  <th onclick="sortTable(6)"> Person? </th>
                  <th onclick="sortTable(7)">Replace Item</th>
                  <th onclick="sortTable(8)">Reason</th>
                  <th onclick="sortTable(9)">Quantity</th>
                  <th onclick="sortTable(10)">User</th>
+=======
+				  <th onclick="sortTable(6)"> Person? </th>
+				  <th onclick="sortTable(7)">Replace Item</th>
+				  <th onclick="sortTable(8)">Reason</th>
+				  <th onclick="sortTable(9)">Quantity</th>
+				  <th onclick="sortTable(10)">User</th>
+>>>>>>> 4b125a16827f190270772dcc345019b781c599b3
                 </tr>
                 </thead>
                 <tbody>
-                  <?php foreach ($returnlog as $return): ?>
+                  <?php foreach ($returnlog as $returnlog): ?>
                 <tr>
               
+<<<<<<< HEAD
                   <td><?php echo $return['serial']; ?></td>
                   <td><?php echo $return['item_name']; ?></td>
                   <td><?php echo $return['date']; ?></td>
@@ -41,6 +50,19 @@
                   <td><?php echo $return['reason']; ?></td>
                   <td><?php echo $return['quantity']; ?></td>
                   <td><?php echo $return['user']; ?></td>
+=======
+                  <td>312</td>
+                  <td>ballpen</td>
+                  <td><?php echo $returnlog['date']; ?></td>
+                  <td>Joy</td>
+                  <td> 4</td>
+                  <td>X</td>
+                  <td> <?php echo $returnlog['return_person']; ?></td>
+                  <td>X</td>
+                  <td><?php echo $returnlog['reason']; ?></td>
+                  <td>5</td>
+                  <td>Lovelace</td>
+>>>>>>> 4b125a16827f190270772dcc345019b781c599b3
                 </tr>
                 <?php endforeach; ?>
                 </tbody>
