@@ -1,54 +1,13 @@
-<style type="text/css">
-<<<<<<< HEAD
-.dropdown-menu{
-   background-color: rgba(255,255,255, 0.93);
-   position:fixed;
-  overflow-x:auto;
-  overflow-y:scroll;
-  bottom:0;
-  left:50;
-  right:50;
-  top:0;
-
-  z-index:9999;
-  margin-left: 270px; 
-  margin-top: 129px;
-  margin-bottom: 10px;
-  }
-</style> 
-
-=======
-.selectdept{
-  background-color:#008CBA;
-  color:white;
-  height: 34px;
-  border-radius: 4px;
-  }
-
-  .option{
-    background-color:white;
-    color:black;
-  }
-</style> 
+<link rel = "stylesheet" type = "text/css" href = "<?php echo base_url() ?>assets/css/dept.css"/>
 
 <script src="<?php echo base_url() ?>assets/js/sort.js"></script>
 
-
->>>>>>> 628063569ea6628cee4f54f5f0925b723c73d3db
 <section class="content">
       <div class="row">
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
                 <div class="dropdown">
-    <button class="btn btn-primary" type="button" data-toggle="dropdown">Departments
-    <span class="caret"></span></button>
-    <ul class="dropdown-menu">
-      <?php foreach ($departments as $depts): ?>
-        <li><a href="department/<?php echo $depts['dept_id']?>"><?php echo $depts['res_center_code']," ", $depts['department']; ?></a></li>
-        <input type="hidden" value="<?php echo $depts['res_center_code']?>">
-      <?php endforeach; ?>
-    </ul>
     		<select class="selectdept">
         <option>Departments</option>
           <?php foreach ($departments as $dept): ?>
