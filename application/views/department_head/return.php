@@ -21,20 +21,22 @@
                 </tr>
                 </thead>
                 <tbody>
+				<?php foreach ($return as $ret): ?>
                 <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>1234</td>
+                  <td><<?php echo $ret['item_name']; ?>/td>
+                  <td>23456</td>
+                  <td><?php echo $ret['date']; ?></td>
+                  <td><?php echo $ret['supplier']; ?></td>
+                  <td><?php echo $ret['department']; ?></td>
+                  <td>IGNORE</td>
                   <td>
                       
                       <input type="submit" name="Replace" value="Replace" class="Replace">
                       <input type="submit" name="Ignore" value="Ignore" class="Ignore">
                   </td>
                 </tr>
+				<?php endforeach; ?>
                 </tbody>
               </table>
             </div>
