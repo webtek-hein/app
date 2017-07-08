@@ -47,8 +47,9 @@
 
         <tr>
           <td>Quantity</td>
-          <td><input type="int" class="InputBox" name="Item_Quantity" value=""></td>
+          <td><input type="number" class="InputBox" name="Item_Quantity" value=""></td>
         </tr>
+
 
       <tr>
           <td>Supplier</td>
@@ -80,7 +81,7 @@
         </tr>
         <tr>
           <td>Unit Cost</td>
-          <td><input type="int" class="InputBox" name="Cost" value=""></td>
+          <td><input type="number" class="InputBox" name="Cost" value=""></td>
         </tr>
         <tr>
           <td>Expiration Date</td>
@@ -97,7 +98,7 @@
     </div>
   </div>
 
-  <script src="/libraries/jQuery/jquery-2.2.3.min.js"></script>
+  <script src="/libraries/jquery-2.2.3.min.js"></script>
         <!-- Bootstrap 3.3.6 -->
         <script src="/libraries/bootstrap.min.js"></script>
         <!-- iCheck -->
