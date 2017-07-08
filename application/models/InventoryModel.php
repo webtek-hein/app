@@ -137,7 +137,9 @@ class InventoryModel extends CI_Model {
         $dbase = $this->load->database('inventory', TRUE);
         $dbase->select('*');
         $dbase->from('department');
-        $dbase->where('dept_id', $dept);
+        $dbase->join('distribution','`distribution`.`dept_id` = `department`.`dept_id`','left');
+        $dbase->join('item_detail','`item_detail`.`dist_id` = `distribution`.`dist_id`','left');
+        $dbase->where('department.dept_id', $dept);
         $query = $dbase->get();
         return $query->result_array();
     }
