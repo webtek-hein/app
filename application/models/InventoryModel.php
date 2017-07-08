@@ -152,4 +152,14 @@ class InventoryModel extends CI_Model {
         $row = $query->result_array();
         //return $row->quantity;
     }
+
+    public function get_distributed_items() 
+    {
+        $dbase = $this->load->database('inventory',TRUE);
+        $query = $dbase->query("Select item_name FROM `department`
+    LEFT JOIN `distribution` ON `distribution`.`dept_id` = `department`.`dept_id`
+    LEFT JOIN `item_detail` ON `item_detail`.`dist_id` = `distribution`.`dist_id`
+    LEFT JOIN `item` ON `item_detail`.`item_id` = `item`.`item_id`");
+        return $query->result_array();
+    }
 }
