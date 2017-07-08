@@ -1,4 +1,3 @@
-<script src="<?php echo base_url() ?>assets/js/sort.js"></script>
 <section class="content">
       <div class="row">
         <div class="col-xs-12">
@@ -23,6 +22,12 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
+                  <th>Item name</th>
+                  <th>Description</th>
+                  <th> Account Code</th>
+                  <th> Quantity</th>
+        					<th> Unit</th>
+        					<th> More Details</th>
                   <th onclick="sortTable(0)">Item name</th>
                   <th onclick="sortTable(1)">Description</th>
                   <th onclick="sortTable(2)"> Account Code</th>

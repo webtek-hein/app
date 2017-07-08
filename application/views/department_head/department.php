@@ -1,4 +1,3 @@
-<script src="<?php echo base_url() ?>assets/js/sort.js"></script>
 <style type="text/css">
 .dropdown-menu{
    background-color: rgba(255,255,255, 0.93);
@@ -49,12 +48,12 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th onclick="sortTable(0)">Item name</th>
-                  <th onclick="sortTable(1)"> Account Code</th>
-                  <th onclick="sortTable(2)"> Official Receipt</th>
-				          <th onclick="sortTable(3)"> Delivery Date</th>
-                  <th onclick="sortTable(4)"> Date received</th>
-                  <th onclick="sortTable(5)"> Quantity</th>
+                  <th>Item name</th>
+                  <th> Account Code</th>
+                  <th> Official Receipt</th>
+				          <th> Delivery Date</th>
+                  <th> Date received</th>
+                  <th> Quantity</th>
 					<th> Received by </th>
 					<th>Cost</th>
 					<th> Unit</th>
