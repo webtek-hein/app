@@ -20,7 +20,7 @@
             <div class="box-header">
                 <div class="dropdown">
     		<select class="selectdept">
-        <option>DEPARTMENTS</option>
+        <option>Departments</option>
           <?php foreach ($departments as $dept): ?>
                 <option class="option" value="<?php echo $dept['dept_id'] ?>"><?php echo $dept['res_center_code'] . ' ' . $dept['department'] ?></option>
           <?php endforeach; ?>
