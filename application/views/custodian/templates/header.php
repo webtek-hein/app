@@ -361,5 +361,6 @@ if (isset($this->session->userdata['logged_in'])) {
 
         <!-- Main content -->
         <section class="content">
-    
+
+  
   

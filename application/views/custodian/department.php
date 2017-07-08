@@ -8,13 +8,13 @@
   left:50;
   right:50;
   top:0;
+
   z-index:9999;
   margin-left: 270px; 
   margin-top: 129px;
   margin-bottom: 10px;
   }
 </style> 
-
 
 <section class="content">
       <div class="row">
@@ -34,11 +34,12 @@
             </div>
               </div>
 
-                 <div class="container">
+          <div class="container">
           <div class="row">
               <div class="span12">
                   <form id="custom-search-form" class="form-search form-horizontal pull-right">                 
-                      <input type="text" class="search-query" placeholder="search">
+                      <input type="text" id="search-query" placeholder="search">
+
                   </form>
               </div>
           </div>
