@@ -45,7 +45,7 @@
 				
 					<td>Type</td>
 					<td>
-					<select>
+					<select class="type" name="type">
 					  <option value="Warehouse Officer">Custodian</option>
 					  <option value="Department Head">Department Head</option>
 					  <option value="Admin">Admin</option>

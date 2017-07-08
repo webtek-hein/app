@@ -42,6 +42,10 @@
                               <td>Received By</td>
                               <td><input type="text" class="usage" name="receivedby" value=""></td>
                             </tr>
+                              <tr>
+                              <td>Date Received</td>
+                              <td><input type="date" class="date" name="date" value=""></td>
+                            </tr>
                           </table>
                             
                         </div>

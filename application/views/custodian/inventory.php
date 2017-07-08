@@ -10,7 +10,7 @@
 			  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal1">Add Bulk Items</button>
          <!-- Insert modal code here for ADD BULK ITEMS-->
 
-        <div class="container">
+                 <div class="container">
           <div class="row">
               <div class="span12">
                   <form id="custom-search-form" class="form-search form-horizontal pull-right">                 
@@ -20,7 +20,6 @@
           </div>
         </div>
 
-			  
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -48,7 +47,6 @@
                         
                       <button type="button" class="open-modal-action fa fa-minus" data-id="<?php echo $item_record['item_id']; ?>" data-toggle="modal" data-target="#subqty"></button>
 
-                      <button class="open-modal-action fa fa-pencil" data-id="<?php echo $item_record['item_id']; ?>" data-toggle="modal" data-target="#edit"></button>
 
                       <button class="open-modal-action fa fa-info" data-toggle="modal" data-target="#view"></button>
                         
@@ -72,3 +70,6 @@
     </section>
     <!-- /.content -->
   </div>
+
+
+
