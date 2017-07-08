@@ -27,18 +27,18 @@
                 </tr>
                 </thead>
                 <tbody>
-                  <?php foreach ($returnlog as $return): ?>
+                  <?php foreach ($returnlog as $returnlog): ?>
                 <tr>
               
                   <td>312</td>
                   <td>ballpen</td>
-                  <td><?php echo $return['date']; ?></td>
+                  <td><?php echo $returnlog['date']; ?></td>
                   <td>Joy</td>
                   <td> 4</td>
                   <td>X</td>
-                  <td> <?php echo $return['return_person']; ?></td>
+                  <td> <?php echo $returnlog['return_person']; ?></td>
                   <td>X</td>
-                  <td><?php echo $return['reason']; ?></td>
+                  <td><?php echo $returnlog['reason']; ?></td>
                   <td>5</td>
                   <td>Lovelace</td>
                 </tr>

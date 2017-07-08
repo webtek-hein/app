@@ -22,15 +22,15 @@
                 </tr>
                 </thead>
                 <tbody>
-				<?php foreach ($return as $returnlog): ?>
+				<?php foreach ($return as $ret): ?>
                 <tr>
-                  <td><?php echo $returnlog['serial_no']; ?></td>
-                  <td><<?php echo $returnlog['item_name']; ?>/td>
-                  <td><?php echo $returnlog['account_code']; ?></td>
-                  <td><?php echo $returnlog['date']; ?></td>
-                  <td><?php echo $returnlog['supplier']; ?></td>
-                  <td><?php echo $returnlog['department']; ?></td>
-                  <td><?php echo $returnlog['action']; ?></td>
+                  <td>1234</td>
+                  <td><<?php echo $ret['item_name']; ?>/td>
+                  <td>23456</td>
+                  <td><?php echo $ret['date']; ?></td>
+                  <td><?php echo $ret['supplier']; ?></td>
+                  <td><?php echo $ret['department']; ?></td>
+                  <td>IGNORE</td>
                   <td>
                       
                       <input type="submit" name="Replace" value="Replace" class="Replace">
