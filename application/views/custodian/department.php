@@ -26,7 +26,8 @@
     <span class="caret"></span></button>
     <ul class="dropdown-menu">
       <?php foreach ($departments as $depts): ?>
-        <li><a href="#"><?php echo $depts['res_center_code']," ", $depts['department']; ?></a></li>
+        <li><a href="department/<?php echo $depts['dept_id']?>"><?php echo $depts['res_center_code']," ", $depts['department']; ?></a></li>
+        <input type="hidden" value="<?php echo $depts['res_center_code']?>">
       <?php endforeach; ?>
     </ul>
 
