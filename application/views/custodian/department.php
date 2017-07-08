@@ -1,17 +1,14 @@
 <style type="text/css">
-.dropdown-menu{
-   background-color: rgba(255,255,255, 0.93);
-   position:fixed;
-  overflow-x:auto;
-  overflow-y:scroll;
-  bottom:0;
-  left:50;
-  right:50;
-  top:0;
-  z-index:9999;
-  margin-left: 270px; 
-  margin-top: 129px;
-  margin-bottom: 10px;
+.selectdept{
+  background-color:#008CBA;
+  color:white;
+  height: 34px;
+  border-radius: 4px;
+  }
+
+  .option{
+    background-color:white;
+    color:black;
   }
 </style> 
 
@@ -22,13 +19,11 @@
           <div class="box">
             <div class="box-header">
                 <div class="dropdown">
-    <button class="btn btn-primary" type="button" data-toggle="dropdown">Departments
-    <span class="caret"></span></button>
-    <ul class="dropdown-menu">
-      <?php foreach ($departments as $depts): ?>
-        <li><a href="#"><?php echo $depts['res_center_code']," ", $depts['department']; ?></a></li>
-      <?php endforeach; ?>
-    </ul>
+    		<select class="selectdept">
+                <option class="option">DEPARTMENT</option>
+                <option class="option">.....</option>
+                <option class="option">.....</option>
+              </select>
 
         <button type= "button" class="btn btn-success">Summary of Items</button>        
             </div>
