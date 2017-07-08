@@ -19,28 +19,28 @@
                   <th onclick="sortTable(3)"> Supplier</th>
                   <th onclick="sortTable(4)"> Status</th>
                   <th onclick="sortTable(5)"> Unit Cost</th>
-          <th> Person? </th>
-          <th>Replace Item</th>
-          <th>Reason</th>
-          <th>Quantity</th>
-          <th>User</th>
+                 <th onclick="sortTable(6)"> Person? </th>
+                 <th onclick="sortTable(7)">Replace Item</th>
+                 <th onclick="sortTable(8)">Reason</th>
+                 <th onclick="sortTable(9)">Quantity</th>
+                 <th onclick="sortTable(10)">User</th>
                 </tr>
                 </thead>
                 <tbody>
                   <?php foreach ($returnlog as $return): ?>
                 <tr>
               
-                  <td>312</td>
-                  <td>ballpen</td>
+                  <td><?php echo $return['serial']; ?></td>
+                  <td><?php echo $return['item_name']; ?></td>
                   <td><?php echo $return['date']; ?></td>
-                  <td>Joy</td>
-                  <td> 4</td>
-                  <td>X</td>
+                  <td><?php echo $return['supplier']; ?></td>
+                  <td><?php echo $return['status']; ?></td>
+                  <td><?php echo $return['unit_cost']; ?></td>
                   <td> <?php echo $return['return_person']; ?></td>
-                  <td>X</td>
+                  <td><?php echo $return['replace_item']; ?></td>
                   <td><?php echo $return['reason']; ?></td>
-                  <td>5</td>
-                  <td>Lovelace</td>
+                  <td><?php echo $return['quantity']; ?></td>
+                  <td><?php echo $return['user']; ?></td>
                 </tr>
                 <?php endforeach; ?>
                 </tbody>
