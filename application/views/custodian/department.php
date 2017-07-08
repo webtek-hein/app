@@ -1,10 +1,6 @@
 <link rel = "stylesheet" type = "text/css" href = "<?php echo base_url() ?>assets/css/dept.css"/>
 
-<<<<<<< HEAD
- 
-=======
 <script src="<?php echo base_url() ?>assets/js/sort.js"></script>
->>>>>>> d445a34e339cace0a486dfbc2af83d7e59cea38d
 
 <section class="content">
       <div class="row">

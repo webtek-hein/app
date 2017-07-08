@@ -4,7 +4,7 @@
 
                       <!-- Modal content-->
                       <?php echo validation_errors(); ?>
-                      <?php echo form_open('inventory/addquantity'); ?>
+                      <?php echo form_open('custodian/inventory/addquantity'); ?>
                       <div class="modal-content">
                         <div class="modal-header">
                           <button type="button" class="close" data-dismiss="modal">&times;</button>
