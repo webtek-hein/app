@@ -30,7 +30,9 @@
                   <td></td>
                   <td></td>
                   <td></td>
-                  <td><input type="submit" name="Replace" value="Replace" class="Replace">
+                  <td>
+                      
+                      <input type="submit" name="Replace" value="Replace" class="Replace">
                       <input type="submit" name="Ignore" value="Ignore" class="Ignore">
                   </td>
                 </tr>

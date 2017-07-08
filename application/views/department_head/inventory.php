@@ -27,31 +27,26 @@
                   <th onclick="sortTable(1)">Description</th>
                   <th onclick="sortTable(2)"> Account Code</th>
                   <th onclick="sortTable(3)"> Quantity</th>
-        					<th onclick="sortTable(4)"> Unit</th>
-        					<th> More Details</th>
+				  <th onclick="sortTable(4)"> Unit</th>
+        		  <th> More Details</th>
                 </tr>
                 </thead>
                 <tbody>
-              <?php foreach ($item as $item_record): ?>
-                <tr>
-                  <td><?php echo $item_record['item_name']; ?></td>
-                  <td><?php echo $item_record['item_description']; ?></td>
-                  <td><?php echo $item_record['account_code']; ?></td>
-                  <td><?php echo $item_record['quantity']; ?></td>
-                  <td><?php echo $item_record['unit']; ?></td>
-                  <td> 
-
-                      <button type="button" data-toggle="modal" data-target="#view">View Details</button>
+				  <?php foreach ($item as $item_record): ?>
+					<tr>
+					  <td><?php echo $item_record['item_name']; ?></td>
+					  <td><?php echo $item_record['item_description']; ?></td>
+					  <td><?php echo $item_record['account_code']; ?></td>
+					  <td><?php echo $item_record['quantity']; ?></td>
+					  <td><?php echo $item_record['unit']; ?></td>
+					  <td> 
+						  <button type="button" data-toggle="modal" data-target="#view">View Details</button>
+					  </td>
+					 </tr>
+				  <?php endforeach; ?> 
+				</tbody>
+			   </table>
                         
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  </td>
-                </tr>
-            <?php endforeach; ?>
-                </tbody>
-              </table>
             </div>
             <!-- /.box-body -->
           </div>
@@ -60,6 +55,5 @@
         <!-- /.col -->
       </div>
       <!-- /.row -->
-    </section>
+</section>
     <!-- /.content -->
-  </div>
