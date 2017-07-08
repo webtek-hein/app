@@ -1,3 +1,4 @@
+<script src="<?php echo base_url() ?>assets/js/sort.js"></script>
 <section class="content">
       <div class="row">
         <div class="col-xs-12">
@@ -10,29 +11,50 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Serial no.</th>
-                  <th>Item Name</th>
-                  <th>Account Code</th>
-                  <th>Date</th>
-                  <th>Supplier</th>
-                  <th>Department</th>
-                  <th>Reason</th>
-                  <th>Action</th>
+                  <th onclick="sortTable(0)">Serial no.</th>
+                  <th onclick="sortTable(1)">Item Name</th>
+                  <th onclick="sortTable(2)">Account Code</th>
+                  <th onclick="sortTable(3)">Date</th>
+                  <th onclick="sortTable(4)">Supplier</th>
+                  <th onclick="sortTable(5)">Department</th>
+                  <th onclick="sortTable(6)">Reason</th>
+                  <th onclick="sortTable(7)">Action</th>
                 </tr>
                 </thead>
                 <tbody>
+<<<<<<< HEAD
+                  <?php foreach ($return as $return): ?>
                 <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td><?php echo $return['serial_no']; ?></td>
+                  <td><?php echo $return['item_name']; ?></td>
+                  <td><?php echo $return['account_code']; ?></td>
+                  <td><?php echo $return['date']; ?></td>
+                  <td><?php echo $return['supplier']; ?></td>
+                  <td><?php echo $return['department']; ?></td>
+                  <td><?php echo $return['reason']; ?></td>
                   <td><input type="submit" name="Replace" value="Replace" class="Replace">
                       <input type="submit" name="Ignore" value="Ignore" class="Ignore">
                   </td>
                 </tr>
+                 <?php endforeach; ?>
+=======
+				<?php foreach ($return as $return): ?>
+                <tr>
+                  <td>1234</td>
+                  <td><<?php echo $return['item_name']; ?>/td>
+                  <td>23456</td>
+                  <td><?php echo $return['date']; ?></td>
+                  <td><?php echo $return['supplier']; ?></td>
+                  <td><?php echo $return['department']; ?></td>
+                  <td>IGNORE</td>
+                  <td>
+                      
+                      <input type="submit" name="Replace" value="Replace" class="Replace">
+                      <input type="submit" name="Ignore" value="Ignore" class="Ignore">
+                  </td>
+                </tr>
+				<?php endforeach; ?>
+>>>>>>> 4b125a16827f190270772dcc345019b781c599b3
                 </tbody>
               </table>
             </div>
