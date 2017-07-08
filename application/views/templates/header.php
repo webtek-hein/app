@@ -7,7 +7,7 @@ if (isset($this->session->userdata['logged_in'])) {
     $lastname = ($this->session->userdata['logged_in']['lastname']);
     $position = ($this->session->userdata['logged_in']['position']);
 } else {
-    header("location: login");
+    redirect("");
 }
 ?>
 <head>
@@ -278,7 +278,7 @@ if (isset($this->session->userdata['logged_in'])) {
                                     <a href="#" class="btn btn-default btn-flat">Profile</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="<?php echo base_url(). $position. '/' ?>logout" class="btn btn-default btn-flat">Sign out</a>
+                                    <a href="<?php echo base_url()?>logout" class="btn btn-default btn-flat">Sign out</a>
                                 </div>
                             </li>
                         </ul>
