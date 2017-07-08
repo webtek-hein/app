@@ -21,6 +21,7 @@ class Inventory extends CI_Controller {
         $this->addquantity();
         $this->load->view('custodian/modals/editinventory',$data);
         $this->subtractquantity();
+        $this->load->view('custodian/modals/itemdetails', $data);
 		$this->load->view('custodian/templates/footer');
 	}
     public function additem()
@@ -103,6 +104,8 @@ class Inventory extends CI_Controller {
     }
 
     public function subtractquantity(){
+        $firstname = ($this->session->userdata['logged_in']['firstname']);
+        $lastname = ($this->session->userdata['logged_in']['lastname']);
         $data['department'] = $this->InventoryModel->get_department_list();
         $this->form_validation->set_rules('Quantity', 'Quantity', 'required');
         $this->form_validation->set_rules('department', 'Department', 'required');
@@ -125,7 +128,7 @@ class Inventory extends CI_Controller {
                 'dept_id' => $this->input->post('department'),
                 'receivedby' => $this->input->post('receivedby'),
                 //temp
-                'user_distribute' => 'tempuser'
+                'user_distribute' => $firstname . ' ' . $lastname
                 );
             $this->InventoryModel->subtract_quantity($data1, $data2, $item_id, $data1);
             //$data['item'] = $this->InventoryModel->get_inventory_list();
