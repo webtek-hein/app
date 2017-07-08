@@ -136,14 +136,15 @@ class Inventory extends CI_Controller {
     public function itemdetail()
     {
         $data = $this->InventoryModel->get_inventory_list();
-        $item[] = array();
+        $item[][] = array();
 
         foreach ($data as $item_record) {
 
             $item = array($item_record['item_id']);
-
             $data['item_detail'] = $this->InventoryModel->get_item_detail($item);
-print_r( $item);
+//print_r( $item);
+           // echo gettype($item);
+            //echo implode(",",$item);
         }
 
 
