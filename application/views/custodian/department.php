@@ -14,13 +14,13 @@
         <form action="department" method="POST">
 
     		<select class="selectdept" name="department" id="depts">
-        <option>Departments</option>
-
+        <option value="1">Departments</option>
           <?php foreach ($departments as $dept): ?>
                 <option class="option" value="<?php echo $dept['dept_id'] ?>"><?php echo $dept['res_center_code'] . ' ' . $dept['department'] ?></option>
           <?php endforeach; ?>
         </select>
         <button type= "button" class="btn btn-success">Summary of Items</button>        
+
             </div>
               </div>
 
