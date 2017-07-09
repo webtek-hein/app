@@ -17,6 +17,8 @@ class Department extends CI_Controller {
 
         if(isset($dept_id)){
             $data['distribute'] = $this->inventorymodel->get_department_item($dept_id);
+            echo json_encode($dept_id);
+            die();
 
         }else{
             $data['distribute'] = $this->inventorymodel->get_department_item(1);
