@@ -13,6 +13,7 @@ class Department extends CI_Controller {
 		$data['departments'] = $this->inventorymodel->get_department_list();
 
 		$dept_id = $this->input->post('dept_id');
+
 		$data['items'] = $this->inventorymodel->get_item_per_department($dept_id);
 		$data['distribute'] = $this->inventorymodel->get_distributed_items();
 
@@ -26,6 +27,9 @@ class Department extends CI_Controller {
 	{
 		$dept_id = $this->input->post('department');
 		$data['distribute'] = $this->inventorymodel->get_department_item($dept_id);
-		$this->load->view('custodian/department',$data);
+		$this->load->view('templates/header');
+		$this->load->view('custodian/department',$data,$dept_id);
+		$this->load->view('templates/footer');
+
 	}
 }

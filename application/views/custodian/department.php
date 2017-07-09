@@ -1,3 +1,7 @@
+<?php 
+if(isset($dept_id)){
+echo $dept_id;
+} ?>
 <link rel = "stylesheet" type = "text/css" href = "<?php echo base_url() ?>assets/css/dept.css"/>
 
 <script src="<?php echo base_url() ?>assets/js/sort.js"></script>
@@ -8,14 +12,14 @@
           <div class="box">
             <div class="box-header">
                 <div class="dropdown">
-        <form action="custodian/department/get_item_per_department" method="POST">
+                <?php echo form_open('custodian/department/get_item_per_department')?>
     		<select class="selectdept" name="department" id="depts">
         <option>Departments</option>
           <?php foreach ($departments as $dept): ?>
                 <option class="option" value="<?php echo $dept['dept_id'] ?>"><?php echo $dept['res_center_code'] . ' ' . $dept['department'] ?></option>
           <?php endforeach; ?>
         </select>
-        </form>
+        <input type="submit">Test</button>
         <button type= "button" class="btn btn-success">Summary of Items</button>        
             </div>
               </div>
