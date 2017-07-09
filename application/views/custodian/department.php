@@ -1,7 +1,3 @@
-<?php 
-if(isset($dept_id)){
-echo $dept_id;
-} ?>
 <link rel = "stylesheet" type = "text/css" href = "<?php echo base_url() ?>assets/css/dept.css"/>
 
 <script src="<?php echo base_url() ?>assets/js/sort.js"></script>
@@ -12,12 +8,13 @@ echo $dept_id;
             <div class="box-header">
                 <div class="dropdown">
 
-        <form action="" method="POST">
+        <form action="department" method="POST">
     		<select class="selectdept" name="department" id="depts">
           <?php foreach ($departments as $dept): ?>
                 <option class="option" value="<?php echo $dept['dept_id'] ?>"><?php echo $dept['res_center_code'] . ' ' . $dept['department'] ?></option>
           <?php endforeach; ?>
         </select>
+        <button type= "submit" class="btn btn-success">GO</button>
         <button type= "button" class="btn btn-success">Summary of Items</button>
             </div>
               </div>
