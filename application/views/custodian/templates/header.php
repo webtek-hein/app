@@ -18,6 +18,8 @@ if (isset($this->session->userdata['logged_in'])) {
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/bootstrap.min.css">
+    <link rel = "stylesheet" type = "text/css" href = "<?php echo base_url() ?>assets/css/dept.css"/>
+
     <!--modal css -->
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/modal.css">
     <!-- Font Awesome -->

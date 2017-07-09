@@ -12,9 +12,14 @@ echo $dept_id;
           <div class="box">
             <div class="box-header">
                 <div class="dropdown">
+
                 <?php echo form_open('custodian/department/get_item_per_department')?>
+
+        <form action="department" method="POST">
+
     		<select class="selectdept" name="department" id="depts">
         <option>Departments</option>
+
           <?php foreach ($departments as $dept): ?>
                 <option class="option" value="<?php echo $dept['dept_id'] ?>"><?php echo $dept['res_center_code'] . ' ' . $dept['department'] ?></option>
           <?php endforeach; ?>
