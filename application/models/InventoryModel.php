@@ -169,7 +169,7 @@ class InventoryModel extends CI_Model {
         return $query->result_array();
     }
 
-    public function get_department_item($deptid) 
+    public function get_department_item($deptid)
     {
         $dbase = $this->load->database('inventory',TRUE);
         $query = $dbase->query("SELECT item_name, account_code, official_receipt_no, del_date, distrib_date, distribution.quantity, distribution.receivedby, unit_cost, unit FROM department

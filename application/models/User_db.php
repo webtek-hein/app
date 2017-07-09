@@ -8,12 +8,19 @@ class User_db extends CI_Model {
 // Read data using username and password
     public function login($data) {
         $db = $this->load->database("inventory",TRUE);
+
         $condition = "username =" . "'" . $data['username'] . "' AND " . "password =" . "'" . $data['password'] . "'";
         $db->select('*');
         $db->from('user');
         $db->where($condition);
         $db->limit(1);
         $query = $db->get();
+
+        if ($query->num_rows() == 1) {
+            return true;
+        } else {
+            return false;
+        }
 
         if ($query->num_rows() == 1) {
             return true;

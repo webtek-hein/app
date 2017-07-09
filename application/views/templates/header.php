@@ -42,6 +42,11 @@ if (isset($this->session->userdata['logged_in'])) {
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
+    <script src="<?php echo base_url() ?>assets/js/jquery-ui.min.js"></script>
+
+    <script src="<?php echo base_url() ?>assets/plugins/jQuery/jquery-2.2.3.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/js/auto.js"></script>
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -131,7 +136,7 @@ if (isset($this->session->userdata['logged_in'])) {
                                     <li>
                                         <a href="#">
                                             <div class="pull-left">
-                                                <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                                                <!--<img src="dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">-->
                                             </div>
                                             <h4>
                                                 Reviewers
