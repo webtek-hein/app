@@ -1,7 +1,3 @@
-<?php 
-if(isset($dept_id)){
-echo $dept_id;
-} ?>
 <link rel = "stylesheet" type = "text/css" href = "<?php echo base_url() ?>assets/css/dept.css"/>
 
 <script src="<?php echo base_url() ?>assets/js/sort.js"></script>
@@ -24,7 +20,6 @@ echo $dept_id;
                 <option class="option" value="<?php echo $dept['dept_id'] ?>"><?php echo $dept['res_center_code'] . ' ' . $dept['department'] ?></option>
           <?php endforeach; ?>
         </select>
-        <input type="submit">Test</button>
         <button type= "button" class="btn btn-success">Summary of Items</button>        
             </div>
               </div>

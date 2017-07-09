@@ -19,11 +19,11 @@ class Department extends CI_Controller {
 		$data['items'] = $this->inventorymodel->get_item_per_department($dept_id);
 		$data['distribute'] = $this->inventorymodel->get_distributed_items();
 
-        if(isset($dept_id)){
+        /*if(isset($dept_id)){
             $data['distribute'] = $this->inventorymodel->get_department_item($dept_id);
         } else{
             $data['distribute'] = $this->inventorymodel->get_department_item(1);
-        }
+        }*/
 
         $this->load->view('custodian/templates/header');
 		$this->load->view('custodian/department',$data);
