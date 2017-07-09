@@ -14,7 +14,6 @@ echo $dept_id;
                 <div class="dropdown">
 
         <form action="" method="POST">
-
     		<select class="selectdept" name="department" id="depts">
           <?php foreach ($departments as $dept): ?>
                 <option class="option" value="<?php echo $dept['dept_id'] ?>"><?php echo $dept['res_center_code'] . ' ' . $dept['department'] ?></option>
