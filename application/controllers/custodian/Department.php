@@ -17,15 +17,15 @@ class Department extends CI_Controller {
 
         if(isset($dept_id)){
             $data['distribute'] = $this->inventorymodel->get_department_item($dept_id);
-            echo json_encode($dept_id);
+            $operation = $this->load->view('custodian/department',$data);
+            echo $operation;
             die();
 
         }else{
             $data['distribute'] = $this->inventorymodel->get_department_item(1);
-
+            $this->load->view('custodian/department',$data);
         }
 
-        $this->load->view('custodian/department',$data);
         $this->load->view('custodian/modals/summaryofitems');
 		$this->load->view('custodian/templates/footer');
 	}
