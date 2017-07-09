@@ -20,9 +20,11 @@ class Department extends CI_Controller {
 
         }else{
             $data['distribute'] = $this->inventorymodel->get_department_item(1);
+
         }
+
         $this->load->view('custodian/department',$data);
-		$this->load->view('custodian/modals/summaryofitems');
+        $this->load->view('custodian/modals/summaryofitems');
 		$this->load->view('custodian/templates/footer');
 	}
 }

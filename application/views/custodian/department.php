@@ -5,7 +5,6 @@ echo $dept_id;
 <link rel = "stylesheet" type = "text/css" href = "<?php echo base_url() ?>assets/css/dept.css"/>
 
 <script src="<?php echo base_url() ?>assets/js/sort.js"></script>
-
 <section class="content">
       <div class="row">
         <div class="col-xs-12">
