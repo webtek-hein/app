@@ -10,8 +10,6 @@
             <div class="box-header">
                 <div class="dropdown">
 
-                <?php echo form_open('custodian/department/get_item_per_department')?>
-
         <form action="department" method="POST">
 
     		<select class="selectdept" name="department" id="depts">
