@@ -30,9 +30,9 @@ class Inventory extends CI_Controller {
             $row[] = $list['account_code'];
             $row[] = $list['quantity'];
             $row[] = $list['unit'];
-            $row[] = '<button type="button" class="open-modal-action fa fa-plus" data-toggle="modal" data-target="#addqty"></button>'+
-                     '<button type="button" class="open-modal-action fa fa-minus" data-toggle="modal" data-target="#subqty"></button>'+
-                     '<button class="open-modal-action fa fa-info" data-toggle="modal" data-target="#view"></button>';
+            $row[] = "<button type=\"button\" class=\"open-modal-action fa fa-plus\" data-toggle=\"modal\" data-target=\"#addqty\"></button>".
+                     "<button type=\"button\" class=\"open-modal-action fa fa-minus\" data-toggle=\"modal\" data-target=\"#subqty\"></button>".
+                     "<button class=\"open-modal-action fa fa-info\" data-toggle=\"modal\" data-target=\"#view\"></button>";
             $data[] = $row;
            
         }
