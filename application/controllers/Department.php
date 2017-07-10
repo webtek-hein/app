@@ -13,10 +13,10 @@ class Department extends CI_Controller {
 		$data['departments'] = $this->inventorymodel->get_department_list();
 
 
-        $this->load->view('custodian/templates/header');
+        $this->load->view('templates/header');
         $this->load->view('custodian/department',$data);
         $this->load->view('custodian/modals/summaryofitems');
-		$this->load->view('custodian/templates/footer');
+		$this->load->view('templates/footer');
 	}
 	public function get_dept_list($id)
     {
@@ -28,12 +28,11 @@ class Department extends CI_Controller {
             $row[] = $list['item_name'];
             $row[] = $list['account_code'];
             $row[] = $list['official_receipt_no'];
-            $row[] = $list['del_date'];
-            $row[] = $list['date_rec'];
+            $row[] = "";
+            $row[] = "";
             $row[] = $list['receivedby'];
             $row[] = $list['unit_cost'];
             $data[] = $row;
-
         }
         $list = array('data'=>$data);
         echo json_encode($list);

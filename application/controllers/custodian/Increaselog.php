@@ -10,9 +10,9 @@ class Increaselog extends CI_Controller {
 	public function index()
 	{
 		$data['increaselog'] = $this->inventorymodel->get_increase_log();
-		$this->load->view('custodian/templates/header');
+		$this->load->view('templates/header');
 		$this->load->view('custodian/increaselog', $data);
-		$this->load->view('custodian/templates/footer');
+		$this->load->view('templates/footer');
 
 	}
 }

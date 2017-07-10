@@ -14,10 +14,13 @@ class Inventory extends CI_Controller {
         $data['item'] = $this->InventoryModel->get_inventory_list();
 		$data['department'] = $this->InventoryModel->get_department_list();
 
-		$this->load->view('custodian/templates/header');
+		$this->load->view('templates/header');
         $this->load->view('custodian/inventory');
         $this->additem();
-        $this->load->view('custodian/templates/footer');
+        $this->subtractquantity();
+        $this->addquantity();
+        $this->itemdetail();
+        $this->load->view('templates/footer');
 
 	}
 	public function inventory_list()
