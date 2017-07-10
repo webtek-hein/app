@@ -141,7 +141,7 @@ class Inventory extends CI_Controller {
     {
         $item_id = $this->input->post('item_id');
         $data['item_detail'] = $this->InventoryModel->get_item_detail($item_id);
-
+        echo json_encode($data['item_detail']);
         $this->load->view('custodian/modals/itemdetails',$data);
     }
 
