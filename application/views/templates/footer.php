@@ -16,8 +16,10 @@
 
 
     <!-- Morris.js charts -->
-<script src="<?php echo base_url() ?>assets/js/raphael-min.js"></script>
-<script src="<?php echo base_url() ?>assets/plugins/morris/morris.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/js/raphael-min.js"></script>
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/morris/morris.css">
+
+    <script src="<?php echo base_url() ?>assets/plugins/morris/morris.min.js"></script>
 <!-- Sparkline -->
 <script src="<?php echo base_url() ?>assets/plugins/sparkline/jquery.sparkline.min.js"></script>
 <!-- jvectormap -->
