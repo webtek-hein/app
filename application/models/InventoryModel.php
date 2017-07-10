@@ -30,8 +30,6 @@ class InventoryModel extends CI_Model {
 	}
     public function get_item_detail()
     {
-
-
         $db1 = $this->load->database('inventory', TRUE);
         $query = $db1->select('*')
                      ->join('item_detail', 'item.item_id = item_detail.item_id', 'natural')
@@ -139,6 +137,7 @@ class InventoryModel extends CI_Model {
         $dbase->from('department');
         $dbase->join('distribution','`distribution`.`dept_id` = `department`.`dept_id`','left');
         $dbase->join('item_detail','`item_detail`.`dist_id` = `distribution`.`dist_id`','left');
+        $dbase->join('item','`item_detail`.`item_id` = `item`.`item_id`','left');
         $dbase->where('department.dept_id', $dept);
         $query = $dbase->get();
         return $query->result_array();

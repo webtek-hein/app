@@ -15,8 +15,9 @@ class Inventory extends CI_Controller {
 		$data['department'] = $this->InventoryModel->get_department_list();
 
 		$this->load->view('custodian/templates/header');
-		$this->load->view('custodian/inventory');
-		$this->load->view('custodian/templates/footer');
+        $this->load->view('custodian/inventory');
+        $this->additem();
+        $this->load->view('custodian/templates/footer');
 
 	}
 	public function inventory_list()
@@ -32,7 +33,7 @@ class Inventory extends CI_Controller {
             $row[] = $list['unit'];
             $row[] = "<button type=\"button\" class=\"open-modal-action fa fa-plus\" data-toggle=\"modal\" data-target=\"#addqty\"></button>".
                      "<button type=\"button\" class=\"open-modal-action fa fa-minus\" data-toggle=\"modal\" data-target=\"#subqty\"></button>".
-                     "<button class=\"open-modal-action fa fa-info\" data-toggle=\"modal\" data-target=\"#view\"></button>  ";
+                     "<button class=\"open-modal-action fa fa-info\" data-toggle=\"modal\" data-target=\"#view\"></button> ";
             $data[] = $row;
            
         }
