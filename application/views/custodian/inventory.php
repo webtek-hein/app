@@ -49,8 +49,31 @@
                       <button type="button" class="open-modal-action fa fa-minus" data-id="<?php echo $item_record['item_id']; ?>" data-toggle="modal" data-target="#subqty"></button>
 
 
-                      <button class="open-modal-action fa fa-info" data-toggle="modal" data-target="#view"></button>
-                        
+                      <button class="open-modal-action fa fa-info" onclick = 'item_detail(<?php echo $item_record['item_id']; ?>)' data-toggle="modal" data-target="#view"></button>
+                      <script type="text/javascript">
+                          function item_detail(id)
+                          {
+                              $('.modal-body').empty();
+
+                              //Ajax Load data from ajax
+                              $.ajax({
+                                  url : "<?php echo site_url('inventory/itemdetail/')?>",
+                                  type: "GET",
+                                  data: id;
+                                  dataType: "JSON",
+                                  success: function(data)
+                                  {
+
+                                      console.log(data);
+
+                                  },
+                                  error: function (jqXHR, textStatus, errorThrown)
+                                  {
+                                      alert('Error get data from ajax');
+                                  }
+                              });
+                          }
+                      </script>
                         </div>
                       </div>
                     </div>
