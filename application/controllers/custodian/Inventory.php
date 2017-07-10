@@ -20,7 +20,8 @@ class Inventory extends CI_Controller {
         $this->load->view('custodian/modals/addbulk');
         $this->addquantity();
         $this->load->view('custodian/modals/editinventory',$data);
-        $this->subtractquantity();
+        $this->get_quantity();
+        //$this->subtractquantity();
         $this->load->view('custodian/modals/itemdetails', $data);
 		$this->load->view('custodian/templates/footer');
 	}
@@ -135,7 +136,7 @@ class Inventory extends CI_Controller {
             header('Location: http://localhost/app/custodian/inventory');
         }
     }
-    
+
     public function itemdetail()
     {
         $item_id = $this->input->post('item_id');
@@ -149,6 +150,6 @@ class Inventory extends CI_Controller {
         $item = $this->input->post('item_id');
         $data['quantitycount'] = $this->InventoryModel->get_item_quantity($item);
 
-        $this->load->view('modals/subtractquantity',$data);
+        $this->load->view('custodian/modals/subtractquantity',$data);
     }
 }

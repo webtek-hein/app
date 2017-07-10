@@ -154,8 +154,7 @@ class InventoryModel extends CI_Model {
         $dbase->from('item');
         $dbase->where('item_id', $item_id);
         $query = $dbase->get();
-        $row = $query->result_array();
-        //return $row->quantity;
+        return $query->result_array();
     }
 
     public function get_distributed_items() 

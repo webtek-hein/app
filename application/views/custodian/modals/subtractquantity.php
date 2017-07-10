@@ -17,7 +17,9 @@
                           <tr>
                               <td>Quantity</td>
                               <td>
-                                  <input type="number" min = "1" max="10" class="Input" name="Quantity" value="">
+                                  <input type="number" min = "1" max=<?php foreach ($quantitycount as $count): echo $count['quantity']; endforeach; {
+                                    # code...
+                                  } ?> class="Input" name="Quantity">
                               </td>
                             </tr>
                             <tr>
