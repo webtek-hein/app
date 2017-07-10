@@ -107,18 +107,11 @@ input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgb
 
 					<td>Type</td>
 					<td>
-<<<<<<< HEAD
 					<select class="type" name="type">
 					  <option value="Warehouse Officer">Custodian</option>
 					  <option value="Department Head">Department Head</option>
 					  <option value="Admin">Admin</option>
-=======
 
-					<select name="type">
-					  <option value="custodian">Custodian</option>
-					  <option value="department head">Department Head</option>
-					  <option value="admin">Admin</option>
->>>>>>> 628063569ea6628cee4f54f5f0925b723c73d3db
 					</select>
 					</td>
 				</tr>
