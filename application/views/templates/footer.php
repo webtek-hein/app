@@ -16,10 +16,8 @@
 
 
     <!-- Morris.js charts -->
-    <script src="<?php echo base_url() ?>assets/js/raphael-min.js"></script>
-    <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/morris/morris.css">
-
-    <script src="<?php echo base_url() ?>assets/plugins/morris/morris.min.js"></script>
+<script src="<?php echo base_url() ?>assets/js/raphael-min.js"></script>
+<script src="<?php echo base_url() ?>assets/plugins/morris/morris.min.js"></script>
 <!-- Sparkline -->
 <script src="<?php echo base_url() ?>assets/plugins/sparkline/jquery.sparkline.min.js"></script>
 <!-- jvectormap -->
@@ -27,6 +25,9 @@
 <script src="<?php echo base_url() ?>assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
 <!-- jQuery Knob Chart -->
 <script src="<?php echo base_url() ?>assets/plugins/knob/jquery.knob.js"></script>
+    <!-- datatables -->
+    <script src="<?php echo base_url() ?>assets/plugins/datatables/jquery.dataTables.js"></script>
+    <script src="<?php echo base_url() ?>assets/plugins/datatables/datatables.bootstrap.js"></script>
 <!-- daterangepicker -->
 <script src="<?php echo base_url() ?>assets/js/moment.min.js"></script>
 <script src="<?php echo base_url() ?>assets/plugins/daterangepicker/daterangepicker.js"></script>
