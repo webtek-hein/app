@@ -15,16 +15,31 @@ class Inventory extends CI_Controller {
 		$data['department'] = $this->InventoryModel->get_department_list();
 
 		$this->load->view('custodian/templates/header');
-		$this->load->view('custodian/inventory',$data);
-        $this->additem();
-        $this->load->view('custodian/modals/addbulk');
-        $this->addquantity();
-        $this->load->view('custodian/modals/editinventory',$data);
-        $this->get_quantity();
-        //$this->subtractquantity();
-        $this->load->view('custodian/modals/itemdetails', $data);
+		$this->load->view('custodian/inventory');
 		$this->load->view('custodian/templates/footer');
+
 	}
+	public function inventory_list()
+    {
+        $inventory = $this->InventoryModel->get_inventory_list();
+        $data = array();
+        foreach ($inventory as $list) {
+            $row = array();
+            $row[] = $list['item_name'];
+            $row[] = $list['item_description'];
+            $row[] = $list['account_code'];
+            $row[] = $list['quantity'];
+            $row[] = $list['unit'];
+            $row[] = '<button type="button" class="open-modal-action fa fa-plus" data-toggle="modal" data-target="#addqty"></button>'+
+                     '<button type="button" class="open-modal-action fa fa-minus" data-toggle="modal" data-target="#subqty"></button>'+
+                     '<button class="open-modal-action fa fa-info" data-toggle="modal" data-target="#view"></button>';
+
+            $list = array('data'=>$row);
+
+            echo json_encode($list);
+        }
+    }
+
     public function additem()
     {
     	$data['accountcodes'] = $this->InventoryModel->get_ac_list();
