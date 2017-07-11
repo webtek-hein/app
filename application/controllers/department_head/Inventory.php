@@ -2,19 +2,19 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Inventory extends CI_Controller {
-    public function __construct()
+	public function __construct()
     {
-        parent::__construct();
-        $this->load->model('InventoryModel');
+      	parent::__construct();
+		$this->load->model('InventoryModel');
     }
-    public function index()
-    {
+	public function index()
+	{
 
-        $data['accountcodes'] = $this->InventoryModel->get_ac_list();
+		$data['accountcodes'] = $this->InventoryModel->get_ac_list();
         $data['item'] = $this->InventoryModel->get_inventory_list();
-        $data['department'] = $this->InventoryModel->get_department_list();
+		$data['department'] = $this->InventoryModel->get_department_list();
 
-        $this->load->view('templates/header');
+		$this->load->view('templates/header');
         $this->load->view('custodian/inventory');
         $this->additem();
         $this->subtractquantity();
@@ -22,8 +22,8 @@ class Inventory extends CI_Controller {
         $this->itemdetail();
         $this->load->view('templates/footer');
 
-    }
-    public function inventory_list()
+	}
+	public function inventory_list()
     {
         $inventory = $this->InventoryModel->get_inventory_list();
         $data = array();
@@ -46,7 +46,7 @@ class Inventory extends CI_Controller {
 
     public function additem()
     {
-        $data['accountcodes'] = $this->InventoryModel->get_ac_list();
+    	$data['accountcodes'] = $this->InventoryModel->get_ac_list();
         $this->form_validation->set_rules('Item_Name', 'Item Name','required');
         $this->form_validation->set_rules('Description', 'Item Description','required');
         $this->form_validation->set_rules('AccountCode', 'Account Code', 'required');
@@ -94,30 +94,18 @@ class Inventory extends CI_Controller {
         $this->form_validation->set_rules('Official_Receipt1', 'Official Receipt', 'required');
         $this->form_validation->set_rules('Received_By1', 'Received By', 'required');
         $this->form_validation->set_rules('Item_Quantity1', 'Quantity','required');
-<<<<<<< HEAD
         $this->form_validation->set_rules('Supplier_Name1', 'Supplier','required');
         $this->form_validation->set_rules('datedelivered1', 'Delivery Date', 'required');
         $this->form_validation->set_rules('datereceived1', 'Date Received', 'required');
         $this->form_validation->set_rules('Expiration_Date1', 'Expiration Date', 'required');
         $this->form_validation->set_rules('Unit_Cost1', 'Cost', 'required');
-=======
-        $this->form_validation->set_rules('Supplier_Name1', 'Supplier Name','required');
-        $this->form_validation->set_rules('datedelivered1', 'Date Delivered', 'required');
-        $this->form_validation->set_rules('datereceived1', 'Date Received', 'required');
-        $this->form_validation->set_rules('Unit_Cost1', 'Cost', 'required');
-        $this->form_validation->set_rules('Expiration_Date1', 'Expiration Date', 'required');
->>>>>>> bed4f5c43d07c8702d191086fdb6b58af58f5495
         if ($this->form_validation->run() === FALSE)
         {
             $this->load->view('custodian/modals/addquantity', $data);
         }
         else
         {
-<<<<<<< HEAD
             $data1 = $this->input->POST('Item_Quantity1');
-=======
-            $data1 = $this->input->post('Item_Quantity1');
->>>>>>> bed4f5c43d07c8702d191086fdb6b58af58f5495
 
             $data2 = array(
                 'official_receipt_no' => $this->input->post('Official_Receipt1'),
@@ -128,10 +116,7 @@ class Inventory extends CI_Controller {
                 'supplier' => $this->input->post('Supplier_Name1'),
                 'unit_cost' => $this->input->post('Unit_Cost1')
             );
-<<<<<<< HEAD
 
-=======
->>>>>>> bed4f5c43d07c8702d191086fdb6b58af58f5495
             $data3 = $this->input->post('item_id');
             $this->InventoryModel->add_quantity($data1,$data2,$data3);
             $data['item'] = $this->InventoryModel->get_inventory_list();
