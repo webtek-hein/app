@@ -1,52 +1,52 @@
-<script src="<?php echo base_url() ?>assets/js/sort.js"></script>
+<link rel = "stylesheet" type = "text/css" href = "<?php echo base_url() ?>assets/css/dept.css"/>
 <section class="content">
       <div class="row">
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">Inventory</h3><br>
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Add item</button>
+         <!-- Insert modal code here for ADD ITEM --> 
+ 
+			  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal1">Add Bulk Items</button>
+         <!-- Insert modal code here for ADD BULK ITEMS-->
 
-        <div class="container">
-          <div class="row">
-              <div class="span12">
-                  <form id="custom-search-form" class="form-search form-horizontal pull-right">                 
-                      <input type="text" class="search-query" placeholder="search">
-                  </form>
-              </div>
-          </div>
-        </div>
 
-			  
-            </div>
+                 <div class="container">
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="table" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th onclick="sortTable(0)">Item name</th>
-                  <th onclick="sortTable(1)">Description</th>
-                  <th onclick="sortTable(2)"> Account Code</th>
-                  <th onclick="sortTable(3)"> Quantity</th>
-				  <th onclick="sortTable(4)"> Unit</th>
-        		  <th> More Details</th>
+                    <th>Item name</th>
+                    <th>Description</th>
+                    <th> Account Code</th>
+                    <th> Quantity</th>
+                    <th> Unit</th>
+                    <th> Action</th>
                 </tr>
                 </thead>
                 <tbody>
-				  <?php foreach ($item as $item_record): ?>
-					<tr>
-					  <td><?php echo $item_record['item_name']; ?></td>
-					  <td><?php echo $item_record['item_description']; ?></td>
-					  <td><?php echo $item_record['account_code']; ?></td>
-					  <td><?php echo $item_record['quantity']; ?></td>
-					  <td><?php echo $item_record['unit']; ?></td>
-					  <td> 
-						  <button type="button" data-toggle="modal" data-target="#view">View Details</button>
-					  </td>
-					 </tr>
-				  <?php endforeach; ?> 
-				</tbody>
-			   </table>
-                        
+                </tbody>
+                  <tfoot>
+                  <tr>
+                      <th>Item name</th>
+                      <th>Description</th>
+                      <th> Account Code</th>
+                      <th> Quantity</th>
+                      <th> Unit</th>
+                      <th> Action</th>
+                  </tr>
+                  </tfoot>
+              </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
             </div>
             <!-- /.box-body -->
           </div>
@@ -55,5 +55,7 @@
         <!-- /.col -->
       </div>
       <!-- /.row -->
-</section>
+    </section>
     <!-- /.content -->
+  </div>
+

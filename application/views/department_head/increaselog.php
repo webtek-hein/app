@@ -1,4 +1,3 @@
-<script src="<?php echo base_url() ?>assets/js/sort.js"></script>
     <!-- Main content -->
     <section class="content">
       <div class="row">
@@ -12,13 +11,12 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th onclick="sortTable(0)">Serial</th>
-                  <th onclick="sortTable(1)"> Item name</th>
-                  <th onclick="sortTable(2)"> Date</th>
-                  <th onclick="sortTable(3)"> Date receive</th>
-                  <th onclick="sortTable(4)"> Unit Cost</th>
-				  <th onclick="sortTable(5)"> Supplier </th>
-				  <th onclick="sortTable(6)">User</th>
+                  <th>Serial</th>
+                  <th> Item name</th>
+                  <th> Date</th>
+                  <th> Date Received</th>
+                  <th> Unit Cost</th>
+					        <th> Supplier </th>
                 </tr>
                 </thead>
                 <tbody>
@@ -30,7 +28,6 @@
                   </td>
                   <td><?php echo $increase['date']; ?></td>
                   <td> 4</td>
-                  <td>X</td>
                   <td>Glo</td>
                   <td>X</td>
                 </tr>
