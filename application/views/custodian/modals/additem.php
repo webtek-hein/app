@@ -97,7 +97,7 @@
        <?php echo form_close(); ?>
     </div>
   </div>
-
+<script>
     $(function () {
                 $('input').iCheck({
                     checkboxClass: 'icheckbox_square-blue',
