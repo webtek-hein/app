@@ -13,15 +13,16 @@
                 <thead>
                 <tr>
                   <th>Serial</th>
-                  <th>Item name</th>
-                  <th>Date</th>
-                  <th>Supplier</th>
-                  <th>Status</th>
-                  <th>Unit Cost</th>
-                  <th>Returned by</th>
-                  <th>Replaced Item</th>
-                  <th>Reason</th>
-                  <th>Quantity</th>
+                  <th> Item name</th>
+                  <th> Date</th>
+                  <th> Supplier</th>
+                  <th> Status</th>
+                  <th> Unit Cost</th>
+          <th> Person? </th>
+          <th>Replace Item</th>
+          <th>Reason</th>
+          <th>Quantity</th>
+          <th>User</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -38,6 +39,7 @@
                   <td>X</td>
                   <td><?php echo $return['reason']; ?></td>
                   <td>5</td>
+                  <td>Lovelace</td>
                 </tr>
                 <?php endforeach; ?>
                 </tbody>

@@ -17,6 +17,8 @@
                   <th> Date</th>
                   <th> Date Received</th>
                   <th> Unit Cost</th>
+					        <th>User</th>
+                  <th>Employee name</th>
                 </tr>
                 </thead>
                 <?php foreach ($decreaselog as $decrease): ?>
@@ -26,9 +28,11 @@
                   <td>Internet
                     Explorer 4.0
                   </td>
-                  <td></td>
+                  <td><?php echo $decrease['date']; ?></td>
                   <td> 4</td>
                   <td>q</td>
+                  <td>X</td>
+                  <td>Glo</td>
                 </tr>
                 <?php endforeach; ?>
                 </tbody>

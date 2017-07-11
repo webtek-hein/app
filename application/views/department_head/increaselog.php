@@ -16,7 +16,8 @@
                   <th> Date</th>
                   <th> Date Received</th>
                   <th> Unit Cost</th>
-					        <th> Supplier </th>
+					<th> Supplier </th>
+					<th>User</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -28,6 +29,7 @@
                   </td>
                   <td><?php echo $increase['date']; ?></td>
                   <td> 4</td>
+                  <td>X</td>
                   <td>Glo</td>
                   <td>X</td>
                 </tr>

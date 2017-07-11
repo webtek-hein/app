@@ -2,25 +2,25 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Inventory extends CI_Controller {
-	public function __construct()
+    public function __construct()
     {
-      	parent::__construct();
-		$this->load->model('InventoryModel');
+        parent::__construct();
+        $this->load->model('InventoryModel');
     }
-	public function index()
-	{
+    public function index()
+    {
 
-		$data['accountcodes'] = $this->InventoryModel->get_ac_list();
+        $data['accountcodes'] = $this->InventoryModel->get_ac_list();
         $data['item'] = $this->InventoryModel->get_inventory_list();
-		$data['department'] = $this->InventoryModel->get_department_list();
+        $data['department'] = $this->InventoryModel->get_department_list();
 
-		$this->load->view('department_head/templates/header');
+        $this->load->view('department_head/templates/header');
         $this->load->view('department_head/inventory');
         $this->itemdetail();
-        $this->load->view('department_head/footer');
+        $this->load->view('department_head/templates/footer');
 
-	}
-	public function inventory_list()
+    }
+    public function inventory_list()
     {
         $inventory = $this->InventoryModel->get_inventory_list();
         $data = array();
@@ -41,7 +41,6 @@ class Inventory extends CI_Controller {
         echo json_encode($list);
     }
 
-
     public function itemdetail()
     {
         $item_id = $this->input->post('item_id');
@@ -50,5 +49,3 @@ class Inventory extends CI_Controller {
         $this->load->view('department_head/modals/itemdetails',$data);
     }
 
-
-}

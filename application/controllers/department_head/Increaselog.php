@@ -11,7 +11,7 @@ class Increaselog extends CI_Controller {
 	{
 		$data['increaselog'] = $this->inventorymodel->get_increase_log();
 		$this->load->view('department_head/templates/header');
-		$this->load->view('department_head/custodian/increaselog', $data);
+		$this->load->view('department_head/increaselog', $data);
 		$this->load->view('department_head/templates/footer');
 
 	}
