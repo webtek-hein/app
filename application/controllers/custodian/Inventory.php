@@ -94,18 +94,18 @@ class Inventory extends CI_Controller {
         $this->form_validation->set_rules('Official_Receipt1', 'Official Receipt', 'required');
         $this->form_validation->set_rules('Received_By1', 'Received By', 'required');
         $this->form_validation->set_rules('Item_Quantity1', 'Quantity','required');
-        $this->form_validation->set_rules('Supplier_Name1', 'Supplier Name','required');
-        $this->form_validation->set_rules('datedelivered1', 'Date Delivered', 'required');
+        $this->form_validation->set_rules('Supplier_Name1', 'Supplier','required');
+        $this->form_validation->set_rules('datedelivered1', 'Delivery Date', 'required');
         $this->form_validation->set_rules('datereceived1', 'Date Received', 'required');
-        $this->form_validation->set_rules('Unit_Cost1', 'Cost', 'required');
         $this->form_validation->set_rules('Expiration_Date1', 'Expiration Date', 'required');
+        $this->form_validation->set_rules('Unit_Cost1', 'Cost', 'required');
         if ($this->form_validation->run() === FALSE)
         {
             $this->load->view('custodian/modals/addquantity', $data);
         }
         else
         {
-            $data1 = $this->input->post('Item_Quantity1');
+            $data1 = $this->input->POST('Item_Quantity1');
 
             $data2 = array(
                 'official_receipt_no' => $this->input->post('Official_Receipt1'),
@@ -116,6 +116,7 @@ class Inventory extends CI_Controller {
                 'supplier' => $this->input->post('Supplier_Name1'),
                 'unit_cost' => $this->input->post('Unit_Cost1')
             );
+
             $data3 = $this->input->post('item_id');
             $this->InventoryModel->add_quantity($data1,$data2,$data3);
             $data['item'] = $this->InventoryModel->get_inventory_list();
