@@ -15,18 +15,19 @@ class Itemdet extends CI_Controller
         parent::__construct();
         $this->load->helper('url');
         $this->load->model('Item_detail');
+
+        $this->load->model('InventoryModel');
     }
     public function index()
     {
 
-        $data['accountcodes'] = $this->Item_detail->get_ac_list();
-        $data['item'] = $this->Item_detail->get_inventory_list();
-        $data['department'] = $this->Item_detail->get_department_list();
+        $data['accountcodes'] = $this->InventoryModel->get_ac_list();
+        $data['item'] = $this->InventoryModel->get_inventory_list();
+        $data['department'] = $this->InventoryModel->get_department_list();
 
         $this->load->view('templates/header');
         $this->load->view('inventorylist',$data);
         $this->load->view('templates/footer');
-
     }
 
     public function get_inventory_list()

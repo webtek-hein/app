@@ -14,7 +14,12 @@
         <thead>
         <tr>
             <th>Item id</th>
-
+            <th>Item name</th>
+            <th>Description</th>
+            <th> Account Code</th>
+            <th> Quantity</th>
+            <th> Unit</th>
+            <th> Action</th>
 
         </tr>
         </thead>
@@ -22,9 +27,13 @@
         <?php foreach ($item as $item_record): ?>
             <tr>
                 <td><?php echo $item_record['item_id']; ?></td>
-
+                <td><?php echo $item_record['item_name']; ?></td>
+                <td><?php echo $item_record['item_description']; ?></td>
+                <td><?php echo $item_record['account_code']; ?></td>
+                <td><?php echo $item_record['quantity']; ?></td>
+                <td><?php echo $item_record['unit']; ?></td>
 <td>
-                    <button class="btn btn-danger" onclick="edit_book(<?php echo $item_record['item_id']; ?>)"><i class="glyphicon glyphicon-remove"></i></button>
+                    <button class="btn btn-warning" onclick="edit_book(<?php echo $item_record['item_id']; ?>)"><i class="glyphicon glyphicon-pencil"></i></button>
 
 
                 </td>
@@ -39,6 +48,7 @@
     </table>
 
 </div>
+<script src="<?php echo base_url() ?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
 
 <script type="text/javascript">
     $(document).ready( function () {
@@ -49,27 +59,20 @@
     function edit_book(id)
     {
      //   save_method = 'update';
-     //   $('#example1')[0].reset(); // reset form on modals
+      //  $('#example1')[0].reset(); // reset form on modals
 
         //Ajax Load data from ajax
         $.ajax({
             url : "<?php echo site_url('admin/itemdet/ajax_edit/')?>/" + id,
             type: "GET",
-            dataType: "JSON",
-            success: function(data)
-            {
+            dataType: "json",
+       success: function(data) {
 
-                $('[name="item_id"]').val(data.item_id);
+           $('[name="item_id"]').val(data.item_id);
+           $('[name="account_code"]').val(data.account_code);
 
-
-                $('#view').modal('show'); // show bootstrap modal when complete loaded
-               // $('.modal-title').text('Edit Book'); // Set title to Bootstrap modal title
-
-            },
-            error: function (jqXHR, textStatus, errorThrown)
-            {
-                alert('Error get data from ajax');
-            }
+           $('#modal_form').modal('show');
+        }
         });
     }
 
@@ -85,34 +88,16 @@
             </div>
             <div class="modal-body form">
                 <form action="#" id="form" class="form-horizontal">
-                    <input type="hidden" value="" name="book_id"/>
+                    <input type="hidden" value="" name="item_id"/>
                     <div class="form-body">
                         <div class="form-group">
-                            <label class="control-label col-md-3">Book ISBN</label>
+                            <label class="control-label col-md-3">Account Code</label>
                             <div class="col-md-9">
-                                <input name="book_isbn" placeholder="Book ISBN" class="form-control" type="text">
+                                <input name="account_code" placeholder="code" class="form-control" type="text">
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3">Book Title</label>
-                            <div class="col-md-9">
-                                <input name="book_title" placeholder="Book_title" class="form-control" type="text">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3">Book Author</label>
-                            <div class="col-md-9">
-                                <input name="book_author" placeholder="Book Author" class="form-control" type="text">
 
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3">Book Category</label>
-                            <div class="col-md-9">
-                                <input name="book_category" placeholder="Book Category" class="form-control" type="text">
 
-                            </div>
-                        </div>
 
                     </div>
                 </form>
@@ -125,6 +110,5 @@
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 <!-- End Bootstrap modal -->
-
 </body>
 </html>
