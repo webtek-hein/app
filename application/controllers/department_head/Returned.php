@@ -4,9 +4,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Returned extends CI_Controller {
 	public function index()
 	{
-		$this->load->view('templates/header');
-		$this->load->view('custodian/return');
-		$this->load->view('templates/footer');
+		$this->load->view('department_head/templates/header');
+		$this->load->view('department_head/custodian/return');
+		$this->load->view('department_head/templates/footer');
 
 	}
 }
