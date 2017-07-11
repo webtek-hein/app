@@ -20,7 +20,12 @@ class Department extends CI_Controller {
 	}
 	public function get_dept_list($id)
     {
-        $dept_item = $this->inventorymodel->get_department_item($id);
+
+        if(!isset($id)){
+            $dept_item = $this->inventorymodel->get_department_item(1);
+        }else{
+            $dept_item = $this->inventorymodel->get_department_item($id);
+        }
 
         $data = array();
         foreach ($dept_item as $list) {
@@ -28,8 +33,28 @@ class Department extends CI_Controller {
             $row[] = $list['item_name'];
             $row[] = $list['account_code'];
             $row[] = $list['official_receipt_no'];
-            $row[] = "";
-            $row[] = "";
+            $row[] = $list['del_date'];;
+            $row[] = $list['distrib_date'];
+            $row[] = $list['receivedby'];
+            $row[] = $list['unit_cost'];
+            $data[] = $row;
+        }
+        $list = array('data'=>$data);
+        echo json_encode($list);
+    }
+
+    public function get_all_dept_list()
+    {
+        $dept_item = $this->inventorymodel->get_distributed_items();
+
+        $data = array();
+        foreach ($dept_item as $list) {
+            $row = array();
+            $row[] = $list['item_name'];
+            $row[] = $list['account_code'];
+            $row[] = $list['official_receipt_no'];
+            $row[] = $list['del_date'];;
+            $row[] = $list['distrib_date'];
             $row[] = $list['receivedby'];
             $row[] = $list['unit_cost'];
             $data[] = $row;
