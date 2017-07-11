@@ -1,78 +1,51 @@
-<style type="text/css">
-.dropdown-menu{
-   background-color: rgba(255,255,255, 0.93);
-   position:fixed;
-  overflow-x:auto;
-  overflow-y:scroll;
-  bottom:0;
-  left:50;
-  right:50;
-  top:0;
-  z-index:9999;
-  margin-left: 270px; 
-  margin-top: 129px;
-  margin-bottom: 10px;
-  }
-</style> 
+<link rel = "stylesheet" type = "text/css" href = "<?php echo base_url() ?>assets/css/dept.css"/>
 
-
+<script src="<?php echo base_url() ?>assets/js/sort.js"></script>
 <section class="content">
       <div class="row">
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
                 <div class="dropdown">
-    <button class="btn btn-primary" type="button" data-toggle="dropdown">Departments
-    <span class="caret"></span></button>
-    <ul class="dropdown-menu">
-      <?php foreach ($departments as $depts): ?>
-        <li><a href="#"><?php echo $depts['res_center_code']," ", $depts['department']; ?></a></li>
-      <?php endforeach; ?>
-    </ul>
 
-        <button type= "button" class="btn btn-success">Summary of Items</button>        
+    		<select class="selectdept" name="department" id="depts">
+          <option class="option" value="NULL">Departments</option>
+          <?php foreach ($departments as $dept): ?>
+                <option class="option" value="<?php echo $dept['dept_id'] ?>"><?php echo $dept['res_center_code'] . ' ' . $dept['department'] ?></option>
+          <?php endforeach; ?>
+        </select>
+        <button type= "button" class="btn btn-success">Summary of Items</button>
             </div>
               </div>
 
-                 <div class="container">
-          <div class="row">
-              <div class="span12">
-                  <form id="custom-search-form" class="form-search form-horizontal pull-right">                 
-                      <input type="text" class="search-query" placeholder="search">
-                  </form>
-              </div>
-          </div>
+          <div class="container">
         </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="department" class="table table-bordered table-striped">
                 <thead>
                 <tr>
                   <th>Item name</th>
                   <th> Account Code</th>
                   <th> Official Receipt</th>
-				          <th> Delivery Date</th>
+				  <th> Delivery Date</th>
                   <th> Date received</th>
-                  <th> Quantity</th>
-					<th> Received by </th>
-					<th>Cost</th>
-					<th> Unit</th>
+				  <th> Received by </th>
+				  <th>Cost</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                  <td> </td>
-                  <td> </td>
-                  <td> </td>
-                  <td> </td>
-                  <td> </td>
-                  <td> </td>
-                  <td> </td>
-				  <td> </td>
-                  <td> </td>
-                </tr>
                 </tbody>
                 <tfoot>
+                <tr>
+                    <th>Item name</th>
+                    <th> Account Code</th>
+                    <th> Official Receipt</th>
+                    <th> Delivery Date</th>
+                    <th> Date received</th>
+                    <th> Received by </th>
+                    <th>Cost</th>
+                </tr>
                 </tfoot>
               </table>
             </div>
@@ -84,5 +57,4 @@
       </div>
       <!-- /.row -->
     </section>
-    <!-- /.content -->
-  </div>
+

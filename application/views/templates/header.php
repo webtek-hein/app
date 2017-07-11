@@ -334,7 +334,7 @@ if (isset($this->session->userdata['logged_in'])) {
 
 
                 <li class="treeview">
-                    <a href="<?php echo base_url(). $position. '/' ?>department">
+                    <a href="<?php echo base_url()?>department">
                         <i class="fa fa-building"></i>
                         <span>Department</span>
                     </a>
