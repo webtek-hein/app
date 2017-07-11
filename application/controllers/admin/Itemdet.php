@@ -30,14 +30,7 @@ class Itemdet extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    public function get_inventory_list()
-    {
-        $db1 = $this->load->database('inventory', TRUE);
-        $query = $db1->select('*')
-            ->join('account_code', 'item.account_id = account_code.ac_id', 'left')
-            ->get('item');
-        return $query->result_array();
-    }
+
 
     public function ajax_edit($id)
     {

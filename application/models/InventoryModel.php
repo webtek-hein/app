@@ -28,14 +28,14 @@ class InventoryModel extends CI_Model {
                      ->get('item');
         return $query->result_array();
 	}
-    public function get_item_detail()
+    public function get_item_detail($id)
     {
         $db1 = $this->load->database('inventory', TRUE);
         $query = $db1->select('*')
-                     ->join('item_detail', 'item.item_id = item_detail.item_id', 'natural')
-                     ->join('account_code', 'item.account_id = account_code.ac_id', 'left')
-                     ->where('item.item_id')
-                     ->get('item');
+            ->join('item_detail', 'item.item_id = item_detail.item_id', 'natural')
+            ->join('account_code', 'item.account_id = account_code.ac_id', 'left')
+            ->where('item.item_id', $id)
+            ->get('item');
 
         return $query->result_array();
 
