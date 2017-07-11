@@ -28,8 +28,8 @@ class Department extends CI_Controller {
             $row[] = $list['item_name'];
             $row[] = $list['account_code'];
             $row[] = $list['official_receipt_no'];
-            $row[] = "";
-            $row[] = "";
+            $row[] = $list['del_date'];;
+            $row[] = $list['distrib_date'];
             $row[] = $list['receivedby'];
             $row[] = $list['unit_cost'];
             $data[] = $row;
