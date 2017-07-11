@@ -41,6 +41,9 @@ if (isset($this->session->userdata['logged_in'])) {
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/daterangepicker/daterangepicker.css">
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+    <!-- datatables-->
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/datatables/dataTables.bootstrap.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/datatables/jquery.dataTables.css">
     <script src="<?php echo base_url() ?>assets/plugins/jQuery/jquery-2.2.3.min.js"></script>
     <script src="<?php echo base_url() ?>assets/plugins/jQueryUI/jquery-ui.js"></script>
 
@@ -331,7 +334,7 @@ if (isset($this->session->userdata['logged_in'])) {
 
 
                 <li class="treeview">
-                    <a href="<?php echo base_url(). $position. '/' ?>department">
+                    <a href="<?php echo base_url()?>department">
                         <i class="fa fa-building"></i>
                         <span>Department</span>
                     </a>
