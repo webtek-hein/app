@@ -116,8 +116,8 @@ input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgb
 					</td>
 				</tr>
 				<tr>
-					<td><input type="submit" class="btn btn-primary btn-block btn-large" name="cancel" value="Cancel" class="cancel"></td>
-					<td><input type="submit" class="btn btn-primary btn-block btn-large" name="createaccount" value="Register" class="createaccount"></td>
+					<td><input type="submit" class="btn btn-primary btn-block btn-large" name="cancel" value="Cancel" ></td>
+					<td><input type="submit" class="btn btn-primary btn-block btn-large" name="createaccount" value="Register" ></td>
 				</tr>
 				
 			</table>

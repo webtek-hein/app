@@ -98,14 +98,6 @@
     </div>
   </div>
 
-  <script src="/libraries/jquery-2.2.3.min.js"></script>
-        <!-- Bootstrap 3.3.6 -->
-        <script src="/libraries/bootstrap.min.js"></script>
-        <!-- iCheck -->
-        <script src="/libraries/icheck.min.js"></script>
-    
-        <script src="/libraries/jquery.validate.js"></script>
-  <script>
     $(function () {
                 $('input').iCheck({
                     checkboxClass: 'icheckbox_square-blue',
