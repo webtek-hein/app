@@ -20,7 +20,12 @@ class Department extends CI_Controller {
 	}
 	public function get_dept_list($id)
     {
-        $dept_item = $this->inventorymodel->get_department_item($id);
+
+        if(!isset($id)){
+            $dept_item = $this->inventorymodel->get_department_item(1);
+        }else{
+            $dept_item = $this->inventorymodel->get_department_item($id);
+        }
 
         $data = array();
         foreach ($dept_item as $list) {
