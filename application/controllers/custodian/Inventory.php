@@ -96,7 +96,7 @@ class Inventory extends CI_Controller {
         $this->form_validation->set_rules('item_id', 'Item','required');
         if ($this->form_validation->run() === FALSE)
         {
-            $this->load->view('custodian/modals/subtractquantity', $data);
+            $this->load->view('modals/subtractquantity', $data);
         }
         else
         {
@@ -122,7 +122,7 @@ class Inventory extends CI_Controller {
         $item_id = $this->input->post('item_id');
         $data['item_detail'] = $this->InventoryModel->get_item_detail($item_id);
         echo json_encode($data['item_detail']);
-        $this->load->view('custodian/modals/itemdetails',$data);
+        $this->load->view('modals/itemdetails',$data);
     }
 
     public function get_quantity()
