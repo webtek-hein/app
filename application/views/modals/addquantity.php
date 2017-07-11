@@ -4,18 +4,17 @@
 
                       <!-- Modal content-->
                       <?php echo validation_errors(); ?>
-                      <?php echo form_open('inventory/addquantity'); ?>
+                      <?php echo form_open('custodian/inventory/addquantity'); ?>
                       <div class="modal-content">
                         <div class="modal-header">
                           <button type="button" class="close" data-dismiss="modal">&times;</button>
                           <h4 class="modal-title" align="center"><b>Add Quantity<b></h4>
                         </div>
                         <div class="modal-body" align="center">
-                          <input id="item-id" type="hidden" name="item_id" value="">
+                            <input id="item-id" type="hidden" name="item_id" value="">
                          <?php if($this->session->flashdata('msg')): ?>
                          <p><?php echo $this->session->flashdata('msg'); ?></p>
                         <?php endif; ?>
-                        
                         
                           <table border="0" width="500" align="center" class="table">
                             <tr>
