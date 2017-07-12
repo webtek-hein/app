@@ -35,7 +35,7 @@ class Inventory extends CI_Controller {
             $row[] = $list['quantity'];
             $row[] = $list['unit'];
             $row[] = "<button type=\"button\" data-id = '$list[item_id]' class=\"open-modal-action fa fa-plus\" data-toggle=\"modal\" data-target=\"#addqty\"></button>".
-                     "<button type=\"button\" class=\"open-modal-action fa fa-minus\" data-toggle=\"modal\" data-target=\"#subqty\"></button>".
+                     "<button type=\"button\" class=\"open-modal-action fa fa-minus\" onclick=\"method(". $list['item_id']. ")\"></button>".
                      "<button class=\"open-modal-action fa fa-info\" data-toggle=\"modal\" data-target=\"#view\"></button> ";
             $data[] = $row;
            
@@ -88,12 +88,6 @@ class Inventory extends CI_Controller {
         $firstname = ($this->session->userdata['logged_in']['firstname']);
         $lastname = ($this->session->userdata['logged_in']['lastname']);
         $data['department'] = $this->InventoryModel->get_department_list();
-        $this->form_validation->set_rules('Quantity', 'Quantity', 'required');
-        $this->form_validation->set_rules('department', 'Department', 'required');
-        $this->form_validation->set_rules('date', 'Date','required');
-        $this->form_validation->set_rules('usage', 'Usage','required');
-        $this->form_validation->set_rules('receivedby', 'Received By','required');
-        $this->form_validation->set_rules('item_id', 'Item','required');
         if ($this->form_validation->run() === FALSE)
         {
             $this->load->view('modals/subtractquantity', $data);

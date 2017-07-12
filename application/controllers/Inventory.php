@@ -61,7 +61,7 @@ class Inventory extends CI_Controller {
         $this->form_validation->set_rules('ExpirationDate', 'Expiration Date', 'required');
         if ($this->form_validation->run() === FALSE)
         {
-            $this->load->view('custodian/modals/additem', $data);
+            $this->load->view('modals/additem', $data);
         }
         else
         {
@@ -94,31 +94,24 @@ class Inventory extends CI_Controller {
         $this->form_validation->set_rules('Official_Receipt1', 'Official Receipt', 'required');
         $this->form_validation->set_rules('Received_By1', 'Received By', 'required');
         $this->form_validation->set_rules('Item_Quantity1', 'Quantity','required');
-<<<<<<< HEAD
         $this->form_validation->set_rules('Supplier_Name1', 'Supplier','required');
         $this->form_validation->set_rules('datedelivered1', 'Delivery Date', 'required');
         $this->form_validation->set_rules('datereceived1', 'Date Received', 'required');
         $this->form_validation->set_rules('Expiration_Date1', 'Expiration Date', 'required');
         $this->form_validation->set_rules('Unit_Cost1', 'Cost', 'required');
-=======
         $this->form_validation->set_rules('Supplier_Name1', 'Supplier Name','required');
         $this->form_validation->set_rules('datedelivered1', 'Date Delivered', 'required');
         $this->form_validation->set_rules('datereceived1', 'Date Received', 'required');
         $this->form_validation->set_rules('Unit_Cost1', 'Cost', 'required');
         $this->form_validation->set_rules('Expiration_Date1', 'Expiration Date', 'required');
->>>>>>> bed4f5c43d07c8702d191086fdb6b58af58f5495
         if ($this->form_validation->run() === FALSE)
         {
-            $this->load->view('custodian/modals/addquantity', $data);
+            $this->load->view('modals/addquantity', $data);
         }
         else
         {
-<<<<<<< HEAD
             $data1 = $this->input->POST('Item_Quantity1');
-=======
             $data1 = $this->input->post('Item_Quantity1');
->>>>>>> bed4f5c43d07c8702d191086fdb6b58af58f5495
-
             $data2 = array(
                 'official_receipt_no' => $this->input->post('Official_Receipt1'),
                 'receivedby' => $this->input->post('Received_By1'),
@@ -128,10 +121,6 @@ class Inventory extends CI_Controller {
                 'supplier' => $this->input->post('Supplier_Name1'),
                 'unit_cost' => $this->input->post('Unit_Cost1')
             );
-<<<<<<< HEAD
-
-=======
->>>>>>> bed4f5c43d07c8702d191086fdb6b58af58f5495
             $data3 = $this->input->post('item_id');
             $this->InventoryModel->add_quantity($data1,$data2,$data3);
             $data['item'] = $this->InventoryModel->get_inventory_list();
@@ -143,15 +132,9 @@ class Inventory extends CI_Controller {
         $firstname = ($this->session->userdata['logged_in']['firstname']);
         $lastname = ($this->session->userdata['logged_in']['lastname']);
         $data['department'] = $this->InventoryModel->get_department_list();
-        $this->form_validation->set_rules('Quantity', 'Quantity', 'required');
-        $this->form_validation->set_rules('department', 'Department', 'required');
-        $this->form_validation->set_rules('date', 'Date','required');
-        $this->form_validation->set_rules('usage', 'Usage','required');
-        $this->form_validation->set_rules('receivedby', 'Received By','required');
-        $this->form_validation->set_rules('item_id', 'Item','required');
         if ($this->form_validation->run() === FALSE)
         {
-            $this->load->view('custodian/modals/subtractquantity', $data);
+            $this->load->view('modals/subtractquantity', $data);
         }
         else
         {
@@ -177,7 +160,7 @@ class Inventory extends CI_Controller {
         $item_id = $this->input->post('item_id');
         $data['item_detail'] = $this->InventoryModel->get_item_detail($item_id);
         echo json_encode($data['item_detail']);
-        $this->load->view('custodian/modals/itemdetails',$data);
+        $this->load->view('modals/itemdetails',$data);
     }
 
     public function get_quantity()
@@ -185,6 +168,6 @@ class Inventory extends CI_Controller {
         $item = $this->input->post('item_id');
         $data['quantitycount'] = $this->InventoryModel->get_item_quantity($item);
 
-        $this->load->view('custodian/modals/subtractquantity',$data);
+        $this->load->view('modals/subtractquantity',$data);
     }
 }

@@ -37,7 +37,7 @@
 
         <tr>
           <td>Official Receipt</td>
-          <td><input type="int" class="InputBox" name="OfficialReceipt" value="" required="required"></td>
+          <td><input type="number" class="InputBox" name="OfficialReceipt" value="" required="required"></td>
         </tr>
 	<tr>
           <td>Received By</td>
@@ -46,7 +46,7 @@
 
         <tr>
           <td>Quantity</td>
-          <td><input type="int" class="InputBox" name="Item_Quantity" value="" required="required"></td>
+          <td><input type="number" class="InputBox" name="Item_Quantity" value="" required="required"></td>
         </tr>
 
       <tr>
@@ -79,7 +79,7 @@
         </tr>
         <tr>
           <td>Unit Cost</td>
-          <td><input type="int" class="InputBox" name="Cost" value="" required="required"></td>
+          <td><input type="number" class="InputBox" name="Cost" value="" required="required"></td>
         </tr>
         <tr>
           <td>Expiration Date</td>
