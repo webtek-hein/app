@@ -88,12 +88,6 @@ class Inventory extends CI_Controller {
         $firstname = ($this->session->userdata['logged_in']['firstname']);
         $lastname = ($this->session->userdata['logged_in']['lastname']);
         $data['department'] = $this->InventoryModel->get_department_list();
-        $this->form_validation->set_rules('Quantity', 'Quantity', 'required');
-        $this->form_validation->set_rules('department', 'Department', 'required');
-        $this->form_validation->set_rules('date', 'Date','required');
-        $this->form_validation->set_rules('usage', 'Usage','required');
-        $this->form_validation->set_rules('receivedby', 'Received By','required');
-        $this->form_validation->set_rules('item_id', 'Item','required');
         if ($this->form_validation->run() === FALSE)
         {
             $this->load->view('modals/subtractquantity', $data);
