@@ -28,7 +28,7 @@
         </tr>
         <tr>
           <td>Quantity</td>
-          <td><input type="int" class="InputBox" name="Quantity" value=""></td>
+          <td><input type="number" class="InputBox" name="Quantity" value=""></td>
         </tr>
         
           <td>Unit</td>
