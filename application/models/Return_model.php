@@ -12,4 +12,9 @@ class Return_model extends CI_Model {
         $query = $logs->get('return_log');
         return $query->result_array();
     }
+
+    public function return_items()
+    {
+        
+    }
 }
