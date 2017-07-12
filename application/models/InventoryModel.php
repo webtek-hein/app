@@ -156,7 +156,7 @@ class InventoryModel extends CI_Model {
     public function get_distributed_items() 
     {
         $dbase = $this->load->database('inventory',TRUE);
-        $query = $dbase->query("SELECT DISTINCT department, item_name, account_code, official_receipt_no, del_date, distrib_date, distribution.quantity, distribution.receivedby, unit_cost, unit FROM department
+        $query = $dbase->query("SELECT DISTINCT item_name, account_code, official_receipt_no, del_date, distrib_date, distribution.quantity, distribution.receivedby, unit_cost, unit FROM department
     LEFT JOIN distribution ON distribution.dept_id = department.dept_id
     LEFT JOIN item_detail ON item_detail.dist_id = distribution.dist_id
     LEFT JOIN item ON item_detail.item_id = item.item_id
@@ -172,6 +172,17 @@ class InventoryModel extends CI_Model {
     LEFT JOIN item_detail ON item_detail.dist_id = distribution.dist_id
     LEFT JOIN item ON item_detail.item_id = item.item_id
     LEFT JOIN  account_code ON item.account_id = account_code.ac_id WHERE item_detail.dist_id IS NOT NULL AND distribution.dept_id = $deptid");
+        return $query->result_array();
+    }
+
+    public function get_summary_items() 
+    {
+        $dbase = $this->load->database('inventory',TRUE);
+        $query = $dbase->query("SELECT DISTINCT department, item_name, account_code, official_receipt_no, del_date, distrib_date, distribution.quantity AS quantity, distribution.receivedby, unit_cost, unit FROM department
+    LEFT JOIN distribution ON distribution.dept_id = department.dept_id
+    LEFT JOIN item_detail ON item_detail.dist_id = distribution.dist_id
+    LEFT JOIN item ON item_detail.item_id = item.item_id
+    LEFT JOIN  account_code ON item.account_id = account_code.ac_id WHERE item_detail.dist_id IS NOT NULL");
         return $query->result_array();
     }
 }

@@ -15,6 +15,7 @@
                 <tr>
                   <th>Department</th>
                   <th>Item name</th>
+                  <th>Quantity</th>
                   <th> Account Code</th>
                   <th> Official Receipt</th>
                   <th> Delivery Date</th>
@@ -29,6 +30,7 @@
                 <tr>
                     <th>Department</th>
                     <th>Item name</th>
+                    <th>Quantity</th>
                     <th> Account Code</th>
                     <th> Official Receipt</th>
                     <th> Delivery Date</th>

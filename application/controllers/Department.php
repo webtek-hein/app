@@ -62,13 +62,14 @@ class Department extends CI_Controller {
 
     public function summary_items()
     {
-        $dept_item = $this->inventorymodel->get_distributed_items();
+        $dept_item = $this->inventorymodel->get_summary_items();
 
         $data = array();
         foreach ($dept_item as $list) {
             $row = array();
             $row[] = $list['department'];
             $row[] = $list['item_name'];
+            $row[] = $list['quantity'];
             $row[] = $list['account_code'];
             $row[] = $list['official_receipt_no'];
             $row[] = $list['del_date'];;
