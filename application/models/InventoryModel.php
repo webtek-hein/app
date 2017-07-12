@@ -43,7 +43,7 @@ class InventoryModel extends CI_Model {
     public function get_return_list()
     {
 
-        $db1=$this->laod->database('inventory_log', TRUE);
+       // $db1=$this->laod->database('inventory_log', TRUE);
         /*
         $query=$db1->select('*')
                 ->join('item_detail', 'item_detail.serial','item_detail.supplier','left')
@@ -60,20 +60,35 @@ class InventoryModel extends CI_Model {
     {
 
 
-        $db2=$this->load->database('logs', TRUE);
-        $query = $db2->get('increase_log');
-        return $query->result_array();
+        $dbase=$this->load->database('inventory', TRUE);
+        $query = $dbase->query("Select serial,item_name,account_code,date_rec,supplier,concat(first_name,last_name) as user,unit_cost,department from increase_log
+left join item_detail on item_detail.item_det_id = increase_log.item_det_id
+left join user on user.user_id = increase_log.user_id
+left join item on item.item_id = item_detail.item_id
+natural join account_code natural join department");
+          
+          return $query->result_array();
+        
     }
      public function get_decrease_log()
     {
-        $db2=$this->load->database('logs', TRUE);
-        $query = $db2->get('decrease_log');
+        $dbase=$this->load->database('inventory', TRUE);
+
+$query = $dbase->query("select serial,item_name,account_code,return_log.date,supplier,department,reason from return_log
+natural join department
+left join user on user.user_id = return_log.user_id
+left join item_detail on item_detail.item_det_id = return_log.item_det_id
+left join distribution on distribution.dist_id = item_detail.dist_id
+natural join account_code
+natural join item");
+
         return $query->result_array();
     }
     public function get_return_log()
     {
 
         $db2=$this->load->database('logs', TRUE);
+
         $query = $db2->get('return_log');
         return $query->result_array();
 
@@ -156,7 +171,7 @@ class InventoryModel extends CI_Model {
     public function get_distributed_items() 
     {
         $dbase = $this->load->database('inventory',TRUE);
-        $query = $dbase->query("SELECT DISTINCT item_name, account_code, official_receipt_no, del_date, distrib_date, distribution.quantity, distribution.receivedby, unit_cost, unit FROM department
+        $query = $dbase->query("SELECT item_name, account_code, official_receipt_no, del_date, distrib_date, distribution.quantity, distribution.receivedby, unit_cost, unit FROM department
     LEFT JOIN distribution ON distribution.dept_id = department.dept_id
     LEFT JOIN item_detail ON item_detail.dist_id = distribution.dist_id
     LEFT JOIN item ON item_detail.item_id = item.item_id
@@ -167,11 +182,22 @@ class InventoryModel extends CI_Model {
     public function get_department_item($deptid)
     {
         $dbase = $this->load->database('inventory',TRUE);
-        $query = $dbase->query("SELECT DISTINCT item_name, account_code, official_receipt_no, del_date, distrib_date, distribution.receivedby AS 'receivedby', unit_cost FROM department
+        $query = $dbase->query("SELECT item_name, account_code, official_receipt_no, del_date, distrib_date, distribution.receivedby AS 'receivedby', unit_cost FROM department
     LEFT JOIN distribution ON distribution.dept_id = department.dept_id
     LEFT JOIN item_detail ON item_detail.dist_id = distribution.dist_id
     LEFT JOIN item ON item_detail.item_id = item.item_id
     LEFT JOIN  account_code ON item.account_id = account_code.ac_id WHERE item_detail.dist_id IS NOT NULL AND distribution.dept_id = $deptid");
+        return $query->result_array();
+    }
+
+    public function get_summary_items() 
+    {
+        $dbase = $this->load->database('inventory',TRUE);
+        $query = $dbase->query("SELECT DISTINCT department, item_name, account_code, official_receipt_no, del_date, distrib_date, distribution.quantity AS quantity, distribution.receivedby, unit_cost, unit FROM department
+    LEFT JOIN distribution ON distribution.dept_id = department.dept_id
+    LEFT JOIN item_detail ON item_detail.dist_id = distribution.dist_id
+    LEFT JOIN item ON item_detail.item_id = item.item_id
+    LEFT JOIN  account_code ON item.account_id = account_code.ac_id WHERE item_detail.dist_id IS NOT NULL");
         return $query->result_array();
     }
 }

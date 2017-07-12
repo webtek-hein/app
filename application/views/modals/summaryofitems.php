@@ -1,5 +1,5 @@
          <!-- Modal --> 
-  <div class="modal fade" id="myModal" role="dialog">
+  <div class="modal fade" id="summary" role="dialog">
     <div class="modal-dialog">
     
       <!-- Modal content-->
@@ -10,39 +10,41 @@
         </div>
         <div class="modal-body">
 
-             <form name="additem" method="post" action="">
-      <table border="0" width="500" align="center" class="table">
-        <tr>
-          <td>Item Name</td>
-          <td><input type="text" class="InputBox" name="ItemName" value=""></td>
-        </tr>
-        <tr>
-          <td>Account Code</td>
-          <td>
-          <select class="accountcode">
-            <?php foreach ($accountcodes as $ac_record): ?>
-              <option value="<?php echo $ac_record['ac_id']; ?>"><?php echo $ac_record['account_code']," ", $ac_record['description']; ?></option>
-            <?php endforeach; ?>
-          </select>
-          </td>
-        </tr>
-        <tr>
-          <td>Quantity</td>
-          <td><input type="number" class="InputBox" name="Quantity" value=""></td>
-        </tr>
-        
-          <td>Unit</td>
-          <td><input type="text" class="InputBox" name="Unit" value=""></td>
-        </tr>
-        
-      </table>
-    </form>
+          <table id="departmentsummary" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>Department</th>
+                  <th>Item name</th>
+                  <th>Quantity</th>
+                  <th> Account Code</th>
+                  <th> Official Receipt</th>
+                  <th> Delivery Date</th>
+                  <th> Date received</th>
+                  <th> Received by </th>
+                  <th>Cost</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <th>Department</th>
+                    <th>Item name</th>
+                    <th>Quantity</th>
+                    <th> Account Code</th>
+                    <th> Official Receipt</th>
+                    <th> Delivery Date</th>
+                    <th> Date received</th>
+                    <th> Received by </th>
+                    <th>Cost</th>
+                </tr>
+                </tfoot>
+              </table>
             
             
         </div>
         <div class="modal-footer">
-         <button type="button" class="btn btn-default" id="save1" data-dismiss="modal">Save</button>
-          <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal">Exit</button>
         </div>
       </div>
       

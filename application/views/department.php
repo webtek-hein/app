@@ -14,7 +14,7 @@
                 <option class="option" value="<?php echo $dept['dept_id'] ?>"><?php echo $dept['res_center_code'] . ' ' . $dept['department'] ?></option>
           <?php endforeach; ?>
         </select>
-        <button type= "button" class="btn btn-success">Summary of Items</button>
+        <button type= "button" class="btn btn-success" onclick="summary()">Summary of Items</button>
             </div>
               </div>
 
@@ -26,12 +26,12 @@
                 <thead>
                 <tr>
                   <th>Item name</th>
-                  <th> Account Code</th>
-                  <th> Official Receipt</th>
-				  <th> Delivery Date</th>
-                  <th> Date received</th>
-				  <th> Received by </th>
-				  <th>Cost</th>
+                  <th>Account Code</th>
+                  <th>Official Receipt</th>
+				          <th>Delivery Date</th>
+                  <th>Date received</th>
+				          <th>Received by </th>
+				          <th>Cost</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -39,11 +39,11 @@
                 <tfoot>
                 <tr>
                     <th>Item name</th>
-                    <th> Account Code</th>
-                    <th> Official Receipt</th>
-                    <th> Delivery Date</th>
-                    <th> Date received</th>
-                    <th> Received by </th>
+                    <th>Account Code</th>
+                    <th>Official Receipt</th>
+                    <th>Delivery Date</th>
+                    <th>Date received</th>
+                    <th>Received by </th>
                     <th>Cost</th>
                 </tr>
                 </tfoot>

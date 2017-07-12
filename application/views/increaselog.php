@@ -23,15 +23,14 @@
                 <tbody>
                   <?php foreach ($increaselog as $increase): ?>
                 <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 4.0
+                  <td><?php echo $increase['serial']; ?></td>
+                  <td><?php echo $increase['item_name']; ?>
                   </td>
                   <td><?php echo $increase['date']; ?></td>
-                  <td> 4</td>
-                  <td>X</td>
-                  <td>Glo</td>
-                  <td>X</td>
+                  <td><?php echo $increase['date_rec']; ?></td>
+                  <td><?php echo $increase['unit_cost']; ?></td>
+                  <td><?php echo $increase['supplier']; ?></td>
+                  <td><?php echo $increase['user']; ?></td>
                 </tr>
                 <?php endforeach; ?>
                 </tbody>
