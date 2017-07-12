@@ -75,6 +75,7 @@ class Inventory extends CI_Controller {
         $this->form_validation->set_rules('Received_By1', 'Received By', 'required');
         $this->form_validation->set_rules('Item_Quantity1', 'Quantity','required');
         $this->form_validation->set_rules('Supplier_Name1', 'Supplier Name','required');
+
         $this->form_validation->set_rules('datedelivered1', 'Date Delivered', 'required');
         $this->form_validation->set_rules('datereceived1', 'Date Received', 'required');
         $this->form_validation->set_rules('Unit_Cost1', 'Cost', 'required');

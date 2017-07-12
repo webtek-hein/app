@@ -6,6 +6,7 @@ class Inventory extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('InventoryModel');
+        $this->load->helper('url');
     }
     public function index()
     {
@@ -15,48 +16,16 @@ class Inventory extends CI_Controller {
         $data['department'] = $this->InventoryModel->get_department_list();
 
         $this->load->view('department_head/templates/header');
-        $this->load->view('department_head/inventory');
-
-
-        $this->itemdetail();
+        $this->load->view('department_head/inventorylist',$data);
         $this->load->view('department_head/templates/footer');
-
     }
-    public function inventory_list()
+
+    public function itemdetail($id)
     {
-        $inventory = $this->InventoryModel->get_inventory_list();
-        $data = array();
-        foreach ($inventory as $list) {
-            $row = array();
-            $row[] = $list['item_name'];
-            $row[] = $list['item_description'];
-            $row[] = $list['account_code'];
-            $row[] = $list['quantity'];
-            $row[] = $list['unit'];
-            $row[] = "<button type=\"button\" class=\"open-modal-action fa fa-plus\" data-toggle=\"modal\" data-target=\"#addqty\"></button>".
-                     "<button type=\"button\" class=\"open-modal-action fa fa-minus\" data-toggle=\"modal\" data-target=\"#subqty\"></button>".
-                     "<button class=\"open-modal-action fa fa-info\" data-toggle=\"modal\" data-target=\"#view\"></button> ";
-            $data[] = $row;
-           
-        }
-        $list = array('data'=>$data);
-        echo json_encode($list);
+        $data = $this->InventoryModel->get_item_detail($id);
+        echo json_encode($data);
+
     }
 
 
-    public function itemdetail()
-    {
-        $item_id = $this->input->post('item_id');
-        $data['item_detail'] = $this->InventoryModel->get_item_detail($item_id);
-        echo json_encode($data['item_detail']);
-        $this->load->view('department_head/modals/itemdetails',$data);
-    }
-
-    public function get_quantity()
-    {
-        $item = $this->input->post('item_id');
-        $data['quantitycount'] = $this->InventoryModel->get_item_quantity($item);
-
-        $this->load->view('department_head/modals/subtractquantity',$data);
-    }
 }
