@@ -40,9 +40,7 @@ class Edit extends CI_Controller
             'unit' => $this->input->post('unit'),
             'quantity' => $this->input->post('qty'),
         );
-        $data1 = array ('account_code' => $this->input->post('accountcode'));
-        $acid = array('ac_id' => $this->input->post('acid'));
-        $this->Edit_model->item_update(array('item_id' => $this->input->post('item_id')),$acid, $data,$data1);
+        $this->Edit_model->item_update(array('item_id' => $this->input->post('item_id')), $data);
         echo json_encode(array("status" => TRUE));
     }
 }
