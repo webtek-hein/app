@@ -1,3 +1,4 @@
+
 <section class="content">
     <div class="row">
         <div class="col-xs-12">
@@ -106,16 +107,15 @@
 <div class="modal fade" id="view" role="dialog">
     <div class="modal-dialog modal-lg" >
 
+    <div class="container" style="background-color:white; width:1520px; height: 550px; margin-left: -300px; size:50px;">
+
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title" align="center"><b>Item Details<b></h4>
             </div>
-            <div class="modal-body" align="center">
-
-                <div class="container">
-                    <table id="example1" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                    <table id="example1" class="table table-striped table-bordered" cellspacing="0" >
                         <thead>
 
                         <tr>
