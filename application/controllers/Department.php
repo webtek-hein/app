@@ -59,4 +59,25 @@ class Department extends CI_Controller {
         $list = array('data'=>$data);
         echo json_encode($list);
     }
+
+    public function summary_items()
+    {
+        $dept_item = $this->inventorymodel->get_distributed_items();
+
+        $data = array();
+        foreach ($dept_item as $list) {
+            $row = array();
+            $row[] = $list['department'];
+            $row[] = $list['item_name'];
+            $row[] = $list['account_code'];
+            $row[] = $list['official_receipt_no'];
+            $row[] = $list['del_date'];;
+            $row[] = $list['distrib_date'];
+            $row[] = $list['receivedby'];
+            $row[] = $list['unit_cost'];
+            $data[] = $row;
+        }
+        $list = array('data'=>$data);
+        echo json_encode($list);
+    }
 }
