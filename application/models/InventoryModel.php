@@ -43,7 +43,7 @@ class InventoryModel extends CI_Model {
     public function get_return_list()
     {
 
-        $db1=$this->laod->database('inventory_log', TRUE);
+       // $db1=$this->laod->database('inventory_log', TRUE);
         /*
         $query=$db1->select('*')
                 ->join('item_detail', 'item_detail.serial','item_detail.supplier','left')
@@ -60,20 +60,32 @@ class InventoryModel extends CI_Model {
     {
 
 
-        $db2=$this->load->database('logs', TRUE);
-        $query = $db2->get('increase_log');
-        return $query->result_array();
+        $dbase=$this->load->database('inventory', TRUE);
+        $query = $dbase->query("Select serial,item_name,account_code,date_rec,supplier,concat(first_name,last_name) as user,unit_cost,department from increase_log
+left join item_detail on item_detail.item_det_id = increase_log.item_det_id
+left join user on user.user_id = increase_log.user_id
+left join item on item.item_id = item_detail.item_id
+natural join account_code natural join department");
+          
+          return $query->result_array();
+        
     }
      public function get_decrease_log()
     {
-        $db2=$this->load->database('logs', TRUE);
-        $query = $db2->get('decrease_log');
+        $dbase=$this->load->database('inventory', TRUE);
+
+$query = $dbase->query("Select serial,item_name,date,date_rec,concat(first_name,last_name) as user,unit_cost,department,user_distribute as employee from increase_log
+left join item_detail on item_detail.item_det_id = increase_log.item_det_id
+left join user on user.user_id = increase_log.user_id
+left join item on item.item_id = item_detail.item_id
+natural join department left join distribution on item_detail.dist_id = distribution.dist_id");
         return $query->result_array();
     }
     public function get_return_log()
     {
 
         $db2=$this->load->database('logs', TRUE);
+
         $query = $db2->get('return_log');
         return $query->result_array();
 
