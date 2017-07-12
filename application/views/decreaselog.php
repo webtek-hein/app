@@ -18,7 +18,8 @@
                   <th> Date Received</th>
                   <th> Unit Cost</th>
 					        <th>User</th>
-                  <th>Employee name</th>
+                  <th>Department</th>
+                  
                 </tr>
                 </thead>
                 <?php foreach ($decreaselog as $decrease): ?>
@@ -31,7 +32,8 @@
                   <td><?php echo $decrease['date_rec']; ?></td>
                   <td><?php echo $decrease['unit_cost']; ?></td>
                   <td><?php echo $decrease['user']; ?></td>
-                  <td><?php echo $decrease['date']; ?></td>
+                  <td><?php echo $decrease['department']; ?></td>
+                  
                 </tr>
                 <?php endforeach; ?>
                 </tbody>

@@ -4,7 +4,7 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Decrease</h3>
+              <h3 class="box-title">Distribution</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -22,13 +22,11 @@
                 <?php foreach ($decreaselog as $decrease): ?>
                 <tbody>
                 <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 4.0
-                  </td>
-                  <td></td>
-                  <td> 4</td>
-                  <td>q</td>
+                  <td><?php echo $decrease['serial']; ?></td>
+                  <td><?php echo $decrease['item_name']; ?></td>
+                  <td><?php echo $decrease['date']; ?></td>
+                  <td><?php echo $decrease['date_rec']; ?></td>
+                  <td><?php echo $decrease['unit_cost']; ?></td>
                 </tr>
                 <?php endforeach; ?>
                 </tbody>

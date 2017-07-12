@@ -55,6 +55,11 @@
         </tr>
 
         <tr>
+          <td>Type</td>
+          <td><input type="text" class="InputBox" name="Type" value="" required="required"></td>
+        </tr>
+
+        <tr>
           <td>Delivery Date</td>
           <td><input type="date" class="datereceived" name="datedelivered" value="" required="required"></td>
         </tr>

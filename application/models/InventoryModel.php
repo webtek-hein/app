@@ -61,11 +61,11 @@ class InventoryModel extends CI_Model {
 
 
         $dbase=$this->load->database('inventory', TRUE);
-        $query = $dbase->query("Select serial,item_name,account_code,date_rec,supplier,concat(first_name,last_name) as user,unit_cost,department from increase_log
+        $query = $dbase->query("Select serial,item_name,account_code,date_rec,supplier,concat(first_name,last_name) as user,unit_cost from increase_log
 left join item_detail on item_detail.item_det_id = increase_log.item_det_id
 left join user on user.user_id = increase_log.user_id
 left join item on item.item_id = item_detail.item_id
-natural join account_code natural join department");
+natural join account_code");
           
           return $query->result_array();
         
