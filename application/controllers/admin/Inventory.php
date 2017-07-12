@@ -27,18 +27,6 @@ class Inventory extends CI_Controller {
     public function additem()
     {
     	$data['accountcodes'] = $this->InventoryModel->get_ac_list();
-        $this->form_validation->set_rules('Item_Name', 'Item Name','required');
-        $this->form_validation->set_rules('Description', 'Item Description','required');
-        $this->form_validation->set_rules('AccountCode', 'Account Code', 'required');
-        $this->form_validation->set_rules('OfficialReceipt', 'Official Receipt', 'required');
-        $this->form_validation->set_rules('ReceivedBy', 'Received By', 'required');
-        $this->form_validation->set_rules('Item_Quantity', 'Quantity','required');
-        $this->form_validation->set_rules('Supplier_Name', 'Supplier Name','required');
-        $this->form_validation->set_rules('datedelivered', 'Date Delivered', 'required');
-        $this->form_validation->set_rules('datereceived', 'Date Received', 'required');
-        $this->form_validation->set_rules('Unit', 'Unit', 'required');
-        $this->form_validation->set_rules('Cost', 'Cost', 'required');
-        $this->form_validation->set_rules('ExpirationDate', 'Expiration Date', 'required');
         if ($this->form_validation->run() === FALSE)
         {
             $this->load->view('modals/additem', $data);
@@ -70,15 +58,6 @@ class Inventory extends CI_Controller {
     public function addquantity()
     {
         $data['accountcodes'] = $this->InventoryModel->get_ac_list();
-        
-        $this->form_validation->set_rules('Official_Receipt1', 'Official Receipt', 'required');
-        $this->form_validation->set_rules('Received_By1', 'Received By', 'required');
-        $this->form_validation->set_rules('Item_Quantity1', 'Quantity','required');
-        $this->form_validation->set_rules('Supplier_Name1', 'Supplier Name','required');
-        $this->form_validation->set_rules('datedelivered1', 'Date Delivered', 'required');
-        $this->form_validation->set_rules('datereceived1', 'Date Received', 'required');
-        $this->form_validation->set_rules('Unit_Cost1', 'Cost', 'required');
-        $this->form_validation->set_rules('Expiration_Date1', 'Expiration Date', 'required');
         if ($this->form_validation->run() === FALSE)
         {
             $this->load->view('modals/addquantity', $data);
@@ -107,12 +86,6 @@ class Inventory extends CI_Controller {
         $item_id = $this->input->post('item_id');
         $data['quantitycount'] = $this->InventoryModel->get_item_quantity($item_id);
         $this->load->view('modals/subtractquantity', $data);
-        $this->form_validation->set_rules('Quantity', 'Quantity', 'required');
-        $this->form_validation->set_rules('department', 'Department', 'required');
-        $this->form_validation->set_rules('date', 'Date','required');
-        $this->form_validation->set_rules('usage', 'Usage','required');
-        $this->form_validation->set_rules('receivedby', 'Received By','required');
-        $this->form_validation->set_rules('item_id', 'Item','required');
         if ($this->form_validation->run() === FALSE)
         {
             $this->load->view('modals/subtractquantity', $data);
