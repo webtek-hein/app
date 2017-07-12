@@ -18,7 +18,7 @@ class Inventory extends CI_Controller {
         $this->load->view('custodian/inventory');
         $this->load->view('modals/additem', $data);
         $this->load->view('modals/addquantity', $data);
-        $this->subtractquantity();
+        $this->load->view('modals/subtractquantity', $data);
         $this->itemdetail();
         $this->load->view('templates/footer');
 
@@ -35,7 +35,7 @@ class Inventory extends CI_Controller {
             $row[] = $list['quantity'];
             $row[] = $list['unit'];
             $row[] = "<button type=\"button\" data-id = '$list[item_id]' class=\"open-modal-action fa fa-plus\" data-toggle=\"modal\" data-target=\"#addqty\"></button>".
-                     "<button type=\"button\" class=\"open-modal-action fa fa-minus\" onclick=\"method(". $list['item_id']. ")\"></button>".
+                     "<button type=\"button\" data-id = '$list[item_id]' class=\"open-modal-action fa fa-minus\" data-toggle=\"modal\" data-target=\"#subqty\"></button>".
                      "<button class=\"open-modal-action fa fa-info\" data-toggle=\"modal\" data-target=\"#view\"></button> ";
             $data[] = $row;
            
@@ -88,12 +88,7 @@ class Inventory extends CI_Controller {
         $firstname = ($this->session->userdata['logged_in']['firstname']);
         $lastname = ($this->session->userdata['logged_in']['lastname']);
         $data['department'] = $this->InventoryModel->get_department_list();
-        if ($this->form_validation->run() === FALSE)
-        {
-            $this->load->view('modals/subtractquantity', $data);
-        }
-        else
-        {
+       
             $item_id = $this->input->post('item_id');
             $data['quantitycount'] = $this->InventoryModel->get_item_quantity($item_id);
             $data1 = $this->input->post('Quantity');
@@ -108,7 +103,7 @@ class Inventory extends CI_Controller {
             $this->InventoryModel->subtract_quantity($data1, $data2, $item_id, $data1);
             //$data['item'] = $this->InventoryModel->get_inventory_list();
             header('Location: http://localhost/app/custodian/inventory');
-        }
+    
     }
 
     public function itemdetail()

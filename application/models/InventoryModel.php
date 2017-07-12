@@ -40,6 +40,13 @@ class InventoryModel extends CI_Model {
         return $query->result_array();
 
     }
+    public function item_update($where,$data)
+    {
+        $db1 = $this->load->database('inventory',TRUE);
+        $db1->update('item', $data, $where);
+        //$db1->update('account_code', $data1, $acid);
+        return $this->db->affected_rows();
+    }
     public function get_return_list()
     {
 
@@ -171,7 +178,7 @@ natural join item");
     public function get_distributed_items() 
     {
         $dbase = $this->load->database('inventory',TRUE);
-        $query = $dbase->query("SELECT item_name, account_code, official_receipt_no, del_date, distrib_date, distribution.quantity, distribution.receivedby, unit_cost, unit FROM department
+        $query = $dbase->query("SELECT item.item_id as 'itemid', item_name, account_code, official_receipt_no, del_date, distrib_date, distribution.quantity, distribution.receivedby, unit_cost, unit FROM department
     LEFT JOIN distribution ON distribution.dept_id = department.dept_id
     LEFT JOIN item_detail ON item_detail.dist_id = distribution.dist_id
     LEFT JOIN item ON item_detail.item_id = item.item_id
@@ -182,7 +189,7 @@ natural join item");
     public function get_department_item($deptid)
     {
         $dbase = $this->load->database('inventory',TRUE);
-        $query = $dbase->query("SELECT item_name, account_code, official_receipt_no, del_date, distrib_date, distribution.receivedby AS 'receivedby', unit_cost FROM department
+        $query = $dbase->query("SELECT item.item_id as 'itemid', item_name, account_code, official_receipt_no, del_date, distrib_date, distribution.receivedby AS 'receivedby', unit_cost FROM department
     LEFT JOIN distribution ON distribution.dept_id = department.dept_id
     LEFT JOIN item_detail ON item_detail.dist_id = distribution.dist_id
     LEFT JOIN item ON item_detail.item_id = item.item_id

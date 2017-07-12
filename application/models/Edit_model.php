@@ -24,11 +24,11 @@ class Edit_model extends CI_Model
         return $query->result_array();
 
     }
-    public function item_update($where, $acid,$data, $data1)
+    public function item_update($where,$data)
     {
         $db1 = $this->load->database('inventory',TRUE);
         $db1->update('item', $data, $where);
-        $db1->update('account_code', $data1, $acid);
+        //$db1->update('account_code', $data1, $acid);
         return $this->db->affected_rows();
     }
 }

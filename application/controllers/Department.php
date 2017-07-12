@@ -14,6 +14,7 @@ class Department extends CI_Controller {
         $this->load->view('templates/header');
         $this->load->view('department',$data);
         $this->load->view('modals/summaryofitems');
+        $this->load->view('modals/return');
 		$this->load->view('templates/footer');
 	}
 	public function get_dept_list($id)
@@ -34,6 +35,7 @@ class Department extends CI_Controller {
             $row[] = $list['distrib_date'];
             $row[] = $list['receivedby'];
             $row[] = $list['unit_cost'];
+            $row[] = "<button type=\"button\" onclick=\"return_items(" . $list['itemid'] . ")\">Return</button>";
             $data[] = $row;
         }
         $list = array('data'=>$data);
@@ -54,6 +56,7 @@ class Department extends CI_Controller {
             $row[] = $list['distrib_date'];
             $row[] = $list['receivedby'];
             $row[] = $list['unit_cost'];
+            $row[] = "<button type=\"button\" onclick=\"return_items(" . $list['itemid'] . ")\">Return</button>";
             $data[] = $row;
         }
         $list = array('data'=>$data);
@@ -80,5 +83,11 @@ class Department extends CI_Controller {
         }
         $list = array('data'=>$data);
         echo json_encode($list);
+    }
+
+    public function return_items($id)
+    {
+         $itemid = $this->input->post('reason');
+         $this->return_model->return_items();
     }
 }

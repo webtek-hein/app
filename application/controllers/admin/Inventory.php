@@ -121,7 +121,18 @@ class Inventory extends CI_Controller {
         echo json_encode($data);
 
     }
-
+    public function item_update()
+    {
+        $data = array(
+            'item_name' => $this->input->post('item_name'),
+            'item_description' => $this->input->post('desc'),
+            'account_id' => $this->input->post('accountcode'),
+            'unit' => $this->input->post('unit'),
+            'quantity' => $this->input->post('qty'),
+        );
+        $this->Edit_model->item_update(array('item_id' => $this->input->post('item_id')), $data);
+        echo json_encode(array("status" => TRUE));
+    }
     public function get_quantity()
     {
         $item = $this->input->post('item_id');

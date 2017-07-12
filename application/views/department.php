@@ -32,6 +32,7 @@
                   <th>Date received</th>
 				          <th>Received by </th>
 				          <th>Cost</th>
+                  <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -45,6 +46,7 @@
                     <th>Date received</th>
                     <th>Received by </th>
                     <th>Cost</th>
+                    <th>Action</th>
                 </tr>
                 </tfoot>
               </table>
