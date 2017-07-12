@@ -120,6 +120,7 @@ natural join item");
         $db1->where('item_id',$itemid);
         $db1->update('item');
         //update item_detail
+        $db1->where('supplier',NULL,FALSE);
         $db1->where('item_id',$itemid);
         $db1->update('item_detail',$data2);
     }
