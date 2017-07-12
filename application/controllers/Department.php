@@ -18,8 +18,8 @@ class Department extends CI_Controller {
 	}
 	public function get_dept_list($id)
     {
-        if(!isset($id)){
-            $dept_item = $this->inventorymodel->get_department_item(1);
+        if($id == "none"){
+            $dept_item = $this->inventorymodel->get_distributed_items();
         }else{
             $dept_item = $this->inventorymodel->get_department_item($id);
         }
