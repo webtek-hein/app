@@ -41,6 +41,11 @@ if (isset($this->session->userdata['logged_in'])) {
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/daterangepicker/daterangepicker.css">
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+    <!-- datatables-->
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/datatables/dataTables.bootstrap.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/datatables/jquery.dataTables.css">
+    <script src="<?php echo base_url() ?>assets/plugins/jQuery/jquery-2.2.3.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/plugins/jQueryUI/jquery-ui.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -131,7 +136,7 @@ if (isset($this->session->userdata['logged_in'])) {
                                     <li>
                                         <a href="#">
                                             <div class="pull-left">
-                                                <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                                                <!--<img src="dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">-->
                                             </div>
                                             <h4>
                                                 Reviewers
@@ -329,7 +334,7 @@ if (isset($this->session->userdata['logged_in'])) {
 
 
                 <li class="treeview">
-                    <a href="<?php echo base_url(). $position. '/' ?>department">
+                    <a href="<?php echo base_url()?>department">
                         <i class="fa fa-building"></i>
                         <span>Department</span>
                     </a>
@@ -364,6 +369,6 @@ if (isset($this->session->userdata['logged_in'])) {
 
 
         <!-- Main content -->
-        <section class="content">
+        <section class="content" id="main">
     
   

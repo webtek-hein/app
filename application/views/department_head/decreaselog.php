@@ -1,5 +1,4 @@
     <!-- Main content -->
-<script src="<?php echo base_url() ?>assets/js/sort.js"></script>
     <section class="content">
       <div class="row">
         <div class="col-xs-12">
@@ -13,13 +12,13 @@
                 <thead>
 
                 <tr>
-                  <th onclick="sortTable(0)">Serial</th>
-                  <th onclick="sortTable(1)"> Item name</th>
-                  <th onclick="sortTable(2)"> Date</th>
-                  <th onclick="sortTable(3)"> Date receive</th>
-                  <th onclick="sortTable(4)"> Unit Cost</th>
-				  <th onclick="sortTable(5)">User</th>
-				  <th onclick="sortTable(6)">Employee name</th>
+                  <th>Serial</th>
+                  <th> Item name</th>
+                  <th> Date</th>
+                  <th> Date Received</th>
+                  <th> Unit Cost</th>
+					        <th>User</th>
+                  <th>Employee name</th>
                 </tr>
                 </thead>
                 <?php foreach ($decreaselog as $decrease): ?>

@@ -6,6 +6,7 @@ class Inventory extends CI_Controller {
     {
       	parent::__construct();
 		$this->load->model('InventoryModel');
+        $this->load->helper('url');
     }
 	public function index()
 	{
@@ -15,14 +16,13 @@ class Inventory extends CI_Controller {
 		$data['department'] = $this->InventoryModel->get_department_list();
 
 		$this->load->view('templates/header');
-		$this->load->view('inventory',$data);
+		$this->load->view('inventorylist',$data);
         $this->additem();
         $this->load->view('modals/addbulk');
         $this->addquantity();
         $this->load->view('modals/editinventory',$data);
         $this->subtractquantity();
 		$this->load->view('templates/footer');
-		$this->itemdetail();
 	}
     public function additem()
     {
@@ -133,22 +133,11 @@ class Inventory extends CI_Controller {
             header('Location: http://localhost/app/inventory');
         }
     }
-    public function itemdetail()
+    public function itemdetail($id)
     {
-        $data = $this->InventoryModel->get_inventory_list();
-        $item[][] = array();
+        $data = $this->InventoryModel->get_item_detail($id);
+        echo json_encode($data);
 
-        foreach ($data as $item_record) {
-
-            $item = array($item_record['item_id']);
-            $data['item_detail'] = $this->InventoryModel->get_item_detail($item);
-//print_r( $item);
-           // echo gettype($item);
-            //echo implode(",",$item);
-        }
-
-
-        $this->load->view('modals/itemdetails',$data);
     }
 
     public function get_quantity()
