@@ -93,7 +93,7 @@
                 tickThickness: 0,
                 lineThickness: 0,
                 valueFormatString: " ",
-                gridThickness: 0                    
+                gridThickness: 0
             },
             axisX: {
                 tickThickness: 0,
@@ -134,5 +134,4 @@
     }
   </script>
   <script type="text/javascript" src="/assets/script/canvasjs.min.js"></script>
-  <div id="chartContainer" style="height: 300px; width: 100%;">
   </div>
