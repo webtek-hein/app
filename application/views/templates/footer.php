@@ -1,8 +1,6 @@
-</section>
-
 
 <div class="control-sidebar-bg"></div>
-</div>
+
 <!-- ./wrapper -->
 
 <!-- jQuery 2.2.3 -->

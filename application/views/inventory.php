@@ -43,32 +43,12 @@
                   <td><?php echo $item_record['account_code']; ?></td>
                   <td><?php echo $item_record['quantity']; ?></td>
                   <td><?php echo $item_record['unit']; ?></td>
-                  <td>
-                      <button type="button" class="open-modal-action fa fa-plus" data-id="<?php echo $item_record['item_id']; ?>" data-toggle="modal" data-target="#addqty"></button>
-
-                      <button type="button" class="open-modal-action fa fa-minus" data-id="<?php echo $item_record['item_id']; ?>" data-toggle="modal" data-target="#subqty"></button>
-
-                      <button class="open-modal-action fa fa-pencil" data-id="<?php echo $item_record['item_id']; ?>" data-toggle="modal" data-target="#edit"></button>
-
-                      <button class="open-modal-action fa fa-info" data-toggle="modal" data-target="#view"></button>
-
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  </td>
-                </tr>
-            <?php endforeach; ?>
-                </tbody>
-              </table>
+				</tr>   
+			 <?php endforeach; ?>
+			 </tbody>
+			 </table>
             </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
+</div>
+      </div>   
+            </div>
     </section>
-    <!-- /.content -->
-  </div>

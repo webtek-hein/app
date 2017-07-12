@@ -4,23 +4,22 @@
 
                       <!-- Modal content-->
                       <?php echo validation_errors(); ?>
-                      <?php echo form_open('inventory/addquantity'); ?>
+                      <?php echo form_open('custodian/inventory/addquantity'); ?>
                       <div class="modal-content">
                         <div class="modal-header">
                           <button type="button" class="close" data-dismiss="modal">&times;</button>
                           <h4 class="modal-title" align="center"><b>Add Quantity<b></h4>
                         </div>
                         <div class="modal-body" align="center">
-                          <input id="item-id" type="hidden" name="item_id" value="">
+                            <input id="item-id" type="hidden" name="item_id" value="">
                          <?php if($this->session->flashdata('msg')): ?>
                          <p><?php echo $this->session->flashdata('msg'); ?></p>
                         <?php endif; ?>
                         
-                        
                           <table border="0" width="500" align="center" class="table">
                             <tr>
                               <td>Official Receipt</td>
-                              <td><input type="int" class="InputBox" name="Official_Receipt1" value="" required="required"></td>
+                              <td><input type="number" class="InputBox" name="Official_Receipt1" value="" required="required"></td>
                             </tr>
                             <tr>
                               <td>Received By</td>
@@ -29,7 +28,7 @@
 
                             <tr>
                               <td>Quantity</td>
-                              <td><input type="int" class="InputBox" name="Item_Quantity1" value="" required="required"></td>
+                              <td><input type="number" class="InputBox" name="Item_Quantity1" value="" required="required"></td>
                             </tr>
                             <tr>
                               <td>Supplier</td>
@@ -49,7 +48,7 @@
                             </tr>
                                <tr>
                                 <td>Cost</td>
-                                <td><input type="int" class="InputBox" name="Unit_Cost1" value="" required="required"></td>
+                                <td><input type="number" class="InputBox" name="Unit_Cost1" value="" required="required"></td>
                               </tr>
                           </table>
                         </div>

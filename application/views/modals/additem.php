@@ -4,7 +4,7 @@
     
       <!-- Modal content-->
       <?php echo validation_errors(); ?>
-      <?php echo form_open('inventory/additem'); ?>
+      <?php echo form_open('custodian/inventory/additem'); ?>
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -13,7 +13,6 @@
          <?php if($this->session->flashdata('msg')): ?>
         <p><?php echo $this->session->flashdata('msg'); ?></p>
       <?php endif; ?>
-       
         <div class="modal-body">
       <table border="0" width="500" align="center" class="table">
         <tr>
@@ -38,7 +37,7 @@
 
         <tr>
           <td>Official Receipt</td>
-          <td><input type="int" class="InputBox" name="OfficialReceipt" value="" required="required"></td>
+          <td><input type="number" class="InputBox" name="OfficialReceipt" value="" required="required"></td>
         </tr>
 	<tr>
           <td>Received By</td>
@@ -47,7 +46,7 @@
 
         <tr>
           <td>Quantity</td>
-          <td><input type="int" class="InputBox" name="Item_Quantity" value="" required="required"></td>
+          <td><input type="number" class="InputBox" name="Item_Quantity" value="" required="required"></td>
         </tr>
 
       <tr>
@@ -80,7 +79,7 @@
         </tr>
         <tr>
           <td>Unit Cost</td>
-          <td><input type="int" class="InputBox" name="Cost" value="" required="required"></td>
+          <td><input type="number" class="InputBox" name="Cost" value="" required="required"></td>
         </tr>
         <tr>
           <td>Expiration Date</td>
@@ -89,7 +88,7 @@
       </table> 
         </div>
         <div class="modal-footer">
-         <button type="submit" formaction="inventory/additem" class="btn btn-default" id="save1">Save</button>
+         <button type="submit" class="btn btn-default" id="save1">Save</button>
          <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal">Cancel</button>
              </div>
       </div>

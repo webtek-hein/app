@@ -20,12 +20,12 @@
                 <tr>
                    <input type="hidden" id="itdet"></input>
                   <th>No.</th>
-                  <th>Serial #</th>
+                  <th>Serial No.</th>
                   <th>Account Code</th>
                   <th>Expiration Date</th>
                   <th>Supplier</th>
                   <th>Description</th>
-                  <th>Official Receipt #</th>
+                  <th>Official Receipt No.</th>
                   <th>Date Delivered</th>
                   <th>Date Received</th>
                   <th>Received By</th>

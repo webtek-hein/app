@@ -20,7 +20,7 @@
                           <table border="0" width="500" align="center" class="table">
                             <tr>
                               <td>Official Receipt</td>
-                              <td><input type="int" class="InputBox" name="Official_Receipt1" value="" required="required"></td>
+                              <td><input type="number" class="InputBox" name="Official_Receipt1" value="" required="required"></td>
                             </tr>
                             <tr>
                               <td>Received By</td>
@@ -29,7 +29,7 @@
 
                             <tr>
                               <td>Quantity</td>
-                              <td><input type="int" class="InputBox" name="Item_Quantity1" value="" required="required"></td>
+                              <td><input type="number" class="InputBox" name="Item_Quantity1" value="" required="required"></td>
                             </tr>
                             <tr>
                               <td>Supplier</td>
@@ -49,7 +49,7 @@
                             </tr>
                                <tr>
                                 <td>Cost</td>
-                                <td><input type="int" class="InputBox" name="Unit_Cost1" value="" required="required"></td>
+                                <td><input type="number" class="InputBox" name="Unit_Cost1" value="" required="required"></td>
                               </tr>
                           </table>
                         </div>

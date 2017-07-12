@@ -31,6 +31,10 @@
                               </select>
                               </td>
                             </tr>
+                              <tr>
+                                  <td>Quantity</td>
+                                  <td><input type="text" class="unit" name="Supplier" value=""></td>
+                              </tr>
                             <tr>
                               <td>Unit</td>
                               <td><input type="text" class="unit" name="Supplier" value=""></td>

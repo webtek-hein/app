@@ -1,54 +1,46 @@
-<link rel = "stylesheet" type = "text/css" href = "<?php echo base_url() ?>assets/css/dept.css"/>
 <section class="content">
       <div class="row">
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">Inventory</h3><br>
-                 <div class="container">
+        <div class="container">
+          <div class="row">
+              <div class="span12">
+                  <form id="custom-search-form" class="form-search form-horizontal pull-right">
+                      <input type="text" class="search-query" placeholder="search">
+                  </form>
+              </div>
+          </div>
+        </div>
+            </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="table" class="table table-bordered table-striped">
+              <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                    <th>Item name</th>
-                    <th>Description</th>
-                    <th> Account Code</th>
-                    <th> Quantity</th>
-                    <th> Unit</th>
-                    <th> Action</th>
+                  <th>Item name</th>
+                  <th>Description</th>
+                  <th> Account Code</th>
+                  <th> Quantity</th>
+                  <th> Unit</th>
+                  <th>View Item</th>
                 </tr>
                 </thead>
                 <tbody>
-                </tbody>
-                  <tfoot>
-                  <tr>
-                      <th>Item name</th>
-                      <th>Description</th>
-                      <th> Account Code</th>
-                      <th> Quantity</th>
-                      <th> Unit</th>
-                      <th> Action</th>
-                  </tr>
-                  </tfoot>
-              </table>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  </td>
-                </tr>
-                </tbody>
-              </table>
+              <?php foreach ($item as $item_record): ?>
+                <tr>
+                  <td><?php echo $item_record['item_name']; ?></td>
+                  <td><?php echo $item_record['item_description']; ?></td>
+                  <td><?php echo $item_record['account_code']; ?></td>
+                  <td><?php echo $item_record['quantity']; ?></td>
+                  <td><?php echo $item_record['unit']; ?></td>
+        </tr>   
+       <?php endforeach; ?>
+       </tbody>
+       </table>
             </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
+</div>
+      </div>   
+            </div>
     </section>
-    <!-- /.content -->
-  </div>
-
