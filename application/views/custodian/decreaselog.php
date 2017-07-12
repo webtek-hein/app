@@ -19,16 +19,6 @@
                   <th> Unit Cost</th>
                 </tr>
                 </thead>
-                <?php foreach ($decreaselog as $decrease): ?>
-                <tbody>
-                <tr>
-                  <td><?php echo $decrease['serial']; ?></td>
-                  <td><?php echo $decrease['item_name']; ?></td>
-                  <td><?php echo $decrease['date']; ?></td>
-                  <td><?php echo $decrease['date_rec']; ?></td>
-                  <td><?php echo $decrease['unit_cost']; ?></td>
-                </tr>
-                <?php endforeach; ?>
                 </tbody>
                 <tfoot>
                 </tfoot>

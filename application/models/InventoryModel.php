@@ -68,7 +68,7 @@ class InventoryModel extends CI_Model {
 
 
         $dbase=$this->load->database('inventory', TRUE);
-        $query = $dbase->query("Select serial,item_name,account_code,date_rec,supplier,concat(first_name,last_name) as user,unit_cost from increase_log
+        $query = $dbase->query("Select serial,item_name,account_code,increase_log.date,date_rec,supplier,concat(first_name,' ',last_name) as user,unit_cost from increase_log
 left join item_detail on item_detail.item_det_id = increase_log.item_det_id
 left join user on user.user_id = increase_log.user_id
 left join item on item.item_id = item_detail.item_id
@@ -81,7 +81,7 @@ natural join account_code");
     {
         $dbase=$this->load->database('inventory', TRUE);
 
-$query = $dbase->query("select serial,item_name,account_code,return_log.date,supplier,department,reason from return_log
+$query = $dbase->query("select serial,item_name,account_code,decrease_log.date,supplier,department,reason from return_log
 natural join department
 left join user on user.user_id = return_log.user_id
 left join item_detail on item_detail.item_det_id = return_log.item_det_id
@@ -94,11 +94,17 @@ natural join item");
     public function get_return_log()
     {
 
-        $db2=$this->load->database('logs', TRUE);
+        $dbase=$this->load->database('inventory', TRUE);
 
-        $query = $db2->get('return_log');
+        $query = $dbase->query("select serial,item_name,account_code,decrease_log.date,supplier,department,reason from return_log
+natural join department
+left join user on user.user_id = return_log.user_id
+left join item_detail on item_detail.item_det_id = return_log.item_det_id
+left join distribution on distribution.dist_id = item_detail.dist_id
+natural join account_code
+natural join item");
+
         return $query->result_array();
-
     }
 
     public function add_item($data1,$data2)

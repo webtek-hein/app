@@ -8,7 +8,7 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="decrease_log" class="table table-bordered table-striped">
                 <thead>
 
                 <tr>
@@ -22,20 +22,7 @@
                   
                 </tr>
                 </thead>
-                <?php foreach ($decreaselog as $decrease): ?>
                 <tbody>
-                <tr>
-                  <td><?php echo $decrease['serial']; ?></td>
-                  <td><?php echo $decrease['item_name']; ?>
-                  </td>
-                  <td><?php echo $decrease['date']; ?></td>
-                  <td><?php echo $decrease['date_rec']; ?></td>
-                  <td><?php echo $decrease['unit_cost']; ?></td>
-                  <td><?php echo $decrease['user']; ?></td>
-                  <td><?php echo $decrease['department']; ?></td>
-                  
-                </tr>
-                <?php endforeach; ?>
                 </tbody>
                 <tfoot>
                 </tfoot>

@@ -9,13 +9,15 @@ class Decreaselog extends CI_Controller {
     }
 	public function index()
 	{
-		$data['decreaselog'] = $this->inventorymodel->get_decrease_log();
 
-		die($data);
 
 		$this->load->view('templates/header');
-		$this->load->view('decreaselog',$data);
+		$this->load->view('decreaselog');
 		$this->load->view('templates/footer');
 
 	}
+	public function decrease_log_list()
+    {
+
+    }
 }

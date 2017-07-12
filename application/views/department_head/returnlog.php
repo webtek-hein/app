@@ -9,41 +9,38 @@
             
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="return_log" class="table table-bordered table-striped">
                 <thead>
                 <tr>
                   <th>Serial</th>
                   <th> Item name</th>
                   <th> Date</th>
+                    <th> Department</th>
                   <th> Supplier</th>
-                  <th> Status</th>
                   <th> Unit Cost</th>
-          <th> Person? </th>
-          <th>Replace Item</th>
+          <th> Employee</th>
           <th>Reason</th>
           <th>Quantity</th>
           <th>User</th>
+                    <th> Status</th>
                 </tr>
                 </thead>
                 <tbody>
-                  <?php foreach ($returnlog as $return): ?>
-                <tr>
-              
-                  <td>312</td>
-                  <td>ballpen</td>
-                  <td><?php echo $return['date']; ?></td>
-                  <td>Joy</td>
-                  <td> 4</td>
-                  <td>X</td>
-                  <td> <?php echo $return['return_person']; ?></td>
-                  <td>X</td>
-                  <td><?php echo $return['reason']; ?></td>
-                  <td>5</td>
-                  <td>Lovelace</td>
-                </tr>
-                <?php endforeach; ?>
                 </tbody>
                 <tfoot>
+                <tr>
+                    <th>Serial</th>
+                    <th> Item name</th>
+                    <th> Date</th>
+                    <th> Department</th>
+                    <th> Supplier</th>
+                    <th> Unit Cost</th>
+                    <th> Employee</th>
+                    <th>Reason</th>
+                    <th>Quantity</th>
+                    <th>User</th>
+                    <th> Status</th>
+                </tr
                 </tfoot>
               </table>
             </div>
