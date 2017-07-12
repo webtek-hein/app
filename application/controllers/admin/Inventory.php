@@ -64,7 +64,7 @@ class Inventory extends CI_Controller {
             );
             $this->InventoryModel->add_item($data1,$data2);
             $data['item'] = $this->InventoryModel->get_inventory_list();
-            header('Location: http://localhost/app/inventory');
+            header('Location: http://localhost/app/admin/inventory');
         }
     }
     public function addquantity()
@@ -99,7 +99,7 @@ class Inventory extends CI_Controller {
             $data3 = $this->input->post('item_id');
             $this->InventoryModel->add_quantity($data1,$data2,$data3);
             $data['item'] = $this->InventoryModel->get_inventory_list();
-            header('Location: http://localhost/app/inventory');
+            header('Location: http://localhost/app/admin/inventory');
         }
     }
     public function subtractquantity(){
@@ -130,7 +130,7 @@ class Inventory extends CI_Controller {
                 );
             $this->InventoryModel->subtract_quantity($data1, $data2);
             //$data['item'] = $this->InventoryModel->get_inventory_list();
-            header('Location: http://localhost/app/inventory');
+            header('Location: http://localhost/app/admin/inventory');
         }
     }
     public function itemdetail($id)
