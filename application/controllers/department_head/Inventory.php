@@ -16,6 +16,8 @@ class Inventory extends CI_Controller {
 
         $this->load->view('department_head/templates/header');
         $this->load->view('department_head/inventory');
+
+
         $this->itemdetail();
         $this->load->view('department_head/templates/footer');
 
@@ -41,6 +43,7 @@ class Inventory extends CI_Controller {
         echo json_encode($list);
     }
 
+
     public function itemdetail()
     {
         $item_id = $this->input->post('item_id');
@@ -49,3 +52,11 @@ class Inventory extends CI_Controller {
         $this->load->view('department_head/modals/itemdetails',$data);
     }
 
+    public function get_quantity()
+    {
+        $item = $this->input->post('item_id');
+        $data['quantitycount'] = $this->InventoryModel->get_item_quantity($item);
+
+        $this->load->view('department_head/modals/subtractquantity',$data);
+    }
+}
