@@ -24,7 +24,7 @@
                   <th> Account Code</th>
                   <th> Quantity</th>
                   <th> Unit</th>
-                  <th> Action</th>
+                  <th>View Item</th>
                 </tr>
                 </thead>
                 <tbody>

@@ -11,10 +11,11 @@
                           <h4 class="modal-title" align="center"><b>Add Quantity<b></h4>
                         </div>
                         <div class="modal-body" align="center">
-                            <input id="item-id" type="hidden" name="item_id" value="">
+                          <input id="item-id" type="hidden" name="item_id" value="">
                          <?php if($this->session->flashdata('msg')): ?>
                          <p><?php echo $this->session->flashdata('msg'); ?></p>
                         <?php endif; ?>
+                        
                         
                           <table border="0" width="500" align="center" class="table">
                             <tr>
@@ -36,7 +37,7 @@
                             </tr>
                             <tr>
                               <td>Delivery Date</td>
-                              <td><input type="date" class="datereceived" name="datedelivered1" value=""></td>
+                              <td><input type="date" class="datereceived" name="datedelivered1" value="" required="required"></td>
                             </tr>
                             <tr>
                               <td>Date Received</td>
