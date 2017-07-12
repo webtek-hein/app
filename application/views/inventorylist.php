@@ -165,7 +165,7 @@
                     z-index:9999;">
 
                         <!-- Modal content-->
-                        <div class="modal-content">
+                        <div class="container" style="background-color:white; width:1230px; height: 800px; text-align: center; size:50px;">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                                 <h4 class="modal-title" align="center"><b>Item Details<b></h4>
