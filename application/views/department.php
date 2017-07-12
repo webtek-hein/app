@@ -14,7 +14,7 @@
                 <option class="option" value="<?php echo $dept['dept_id'] ?>"><?php echo $dept['res_center_code'] . ' ' . $dept['department'] ?></option>
           <?php endforeach; ?>
         </select>
-        <button type= "button" class="btn btn-success">Summary of Items</button>
+        <button type= "button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Summary of Items</button>
             </div>
               </div>
 
