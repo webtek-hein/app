@@ -10,8 +10,6 @@
  
 			  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal1">Add Bulk Items</button>
          <!-- Insert modal code here for ADD BULK ITEMS-->
-
-
                  <div class="container">
             <!-- /.box-header -->
             <div class="box-body">
