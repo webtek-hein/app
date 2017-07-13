@@ -8,11 +8,12 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="increase_log" class="table table-bordered table-striped">
                 <thead>
                 <tr>
                   <th>Serial</th>
                   <th> Item name</th>
+                    <th> Account Code</th>
                   <th> Date</th>
                   <th> Date Received</th>
                   <th> Unit Cost</th>
@@ -21,20 +22,16 @@
                 </tr>
                 </thead>
                 <tbody>
-                  <?php foreach ($increaselog as $increase): ?>
-                <tr>
-                  <td><?php echo $increase['serial']; ?></td>
-                  <td><?php echo $increase['item_name']; ?>
-                  </td>
-                  <td><?php echo $increase['date']; ?></td>
-                  <td><?php echo $increase['date_rec']; ?></td>
-                  <td><?php echo $increase['unit_cost']; ?></td>
-                  <td><?php echo $increase['supplier']; ?></td>
-                  <td><?php echo $increase['user']; ?></td>
-                </tr>
-                <?php endforeach; ?>
                 </tbody>
                 <tfoot>
+                <th>Serial</th>
+                <th> Item name</th>
+                <th> Account Code</th>
+                <th> Date</th>
+                <th> Date Received</th>
+                <th> Unit Cost</th>
+                <th> Supplier </th>
+                <th>User</th>
                 </tfoot>
               </table>
             </div>

@@ -81,13 +81,14 @@ natural join account_code");
     {
         $dbase=$this->load->database('inventory', TRUE);
 
-$query = $dbase->query("select serial,item_name,account_code,decrease_log.date,supplier,department,reason from return_log
-natural join department
-left join user on user.user_id = return_log.user_id
-left join item_detail on item_detail.item_det_id = return_log.item_det_id
+$query = $dbase->query("select serial,item_name,account_code,decrease_log.date,supplier,distrib_date,unit_cost,concat(user.first_name,' ',user.last_name) as user,department from decrease_log
+left join item_detail on item_detail.item_det_id = decrease_log.item_det_id
+LEFT join item on item.item_id = item_detail.item_id
 left join distribution on distribution.dist_id = item_detail.dist_id
-natural join account_code
-natural join item");
+LEFT join department on department.dept_id = distribution.dept_id
+left join user on user.user_id = decrease_log.user_id
+left join account_code on account_code.ac_id = item.account_id
+");
 
         return $query->result_array();
     }
@@ -96,13 +97,14 @@ natural join item");
 
         $dbase=$this->load->database('inventory', TRUE);
 
-        $query = $dbase->query("select serial,item_name,account_code,decrease_log.date,supplier,department,reason from return_log
-natural join department
-left join user on user.user_id = return_log.user_id
+        $query = $dbase->query("select serial,item_name,return_log.date,department,supplier,unit_cost,return_person,reason,concat(user.first_name,' ',user.last_name) as user,STATUS from return_log
 left join item_detail on item_detail.item_det_id = return_log.item_det_id
+left join item on item.item_id = item_detail.item_id
 left join distribution on distribution.dist_id = item_detail.dist_id
-natural join account_code
-natural join item");
+left join department on department.dept_id = distribution.dept_id
+left join user on user.user_id = return_log.user_id
+left join account_code on account_code.ac_id = item.account_id
+");
 
         return $query->result_array();
     }

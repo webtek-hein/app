@@ -14,17 +14,30 @@
                 <tr>
                   <th>Serial</th>
                   <th> Item name</th>
+                    <th> Account Code</th>
                   <th> Date</th>
-                  <th> Date Received</th>
+                    <th> Supplier</th>
+                    <th>Distribution Date</th>
                   <th> Unit Cost</th>
-					        <th>User</th>
+                    <th>User</th>
                   <th>Department</th>
-                  
                 </tr>
                 </thead>
+
                 <tbody>
                 </tbody>
                 <tfoot>
+                <tr>
+                    <th>Serial</th>
+                    <th> Item name</th>
+                    <th> Account Code</th>
+                    <th> Date</th>
+                    <th> Supplier</th>
+                    <th> Distribution Date</th>
+                    <th> Unit Cost</th>
+                    <th>User</th>
+                    <th>Department</th>
+                </tr>
                 </tfoot>
               </table>
             </div>
