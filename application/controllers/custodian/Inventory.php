@@ -19,7 +19,7 @@ class Inventory extends CI_Controller {
         $this->load->view('modals/additem', $data);
         $this->load->view('modals/addquantity', $data);
         $this->load->view('modals/subtractquantity', $data);
-        $this->itemdetail();
+        $this->load->view('modals/details');
         $this->load->view('templates/footer');
 
 	}
@@ -36,7 +36,7 @@ class Inventory extends CI_Controller {
             $row[] = $list['unit'];
             $row[] = "<button type=\"button\" data-id = '$list[item_id]' class=\"open-modal-action fa fa-plus\" data-toggle=\"modal\" data-target=\"#addqty\"></button>".
                      "<button type=\"button\" data-id = '$list[item_id]' class=\"open-modal-action fa fa-minus\" data-toggle=\"modal\" data-target=\"#subqty\"></button>".
-                     "<button class=\"open-modal-action fa fa-info\" data-toggle=\"modal\" data-target=\"#view\"></button> ";
+                     "<button class=\"open-modal-action fa fa-info\" onclick=\"get_item_details(". $list['item_id'] .")\"></button> ";
             $data[] = $row;
            
         }
@@ -53,6 +53,7 @@ class Inventory extends CI_Controller {
             'account_id' => $this->input->post('AccountCode'),
             'quantity' => $this->input->post('Item_Quantity'),
             'unit' => $this->input->post('Unit'),
+            'item_type' => $this->input->post('Type')
         );
         $data2 = array(
                 'official_receipt_no' => $this->input->post('OfficialReceipt'),
@@ -106,12 +107,26 @@ class Inventory extends CI_Controller {
     
     }
 
-    public function itemdetail()
+   public function itemdetail($id)
     {
-        $item_id = $this->input->post('item_id');
-        $data['item_detail'] = $this->InventoryModel->get_item_detail($item_id);
-        echo json_encode($data['item_detail']);
-        $this->load->view('modals/itemdetails',$data);
+        $details = $this->InventoryModel->get_item_detail($id);
+        $data = array();
+        foreach ($details as $list) {
+            $row = array();
+            $row[] = $list['serial'];
+            $row[] = $list['account_code'];
+            $row[] = $list['exp_date'];
+            $row[] = $list['supplier'];
+            $row[] = $list['item_description'];
+            $row[] = $list['official_receipt_no'];
+            $row[] = $list['del_date'];
+            $row[] = $list['date_rec'];
+            $row[] = $list['receivedby'];
+            $row[] = $list['unit_cost'];
+            $data[] = $row;
+        }
+        $list = array('data'=>$data);
+        echo json_encode($list);
     }
 
     public function get_quantity()

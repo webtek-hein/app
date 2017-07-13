@@ -58,7 +58,12 @@
 
         <tr>
           <td>Type</td>
-          <td><input type="text" class="InputBox" name="Type" value="" required="required"></td>
+          <td>
+           <select name="Type" required="required">
+              <option value="CO">CO</option>
+              <option value="MOOE">MOOE</option>
+          </select>
+        </td>
         </tr>
 
         <tr>
