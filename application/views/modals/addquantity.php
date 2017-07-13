@@ -1,10 +1,12 @@
-                                        <!-- Modal-->
+<?php if (isset($this->session->userdata['logged_in'])) {
+    $position = ($this->session->userdata['logged_in']['position']);
+}?>                  <!-- Modal-->
                         <div class="modal fade" id="addqty" role="dialog">
                     <div class="modal-dialog">  
 
                       <!-- Modal content-->
                       <?php echo validation_errors(); ?>
-                      <?php echo form_open('custodian/inventory/addquantity'); ?>
+                      <?php echo form_open($position.'/inventory/addquantity'); ?>
                       <div class="modal-content">
                         <div class="modal-header">
                           <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -19,7 +21,7 @@
                           <table border="0" width="500" align="center" class="table">
                             <tr>
                               <td>Official Receipt</td>
-                              <td><input type="number" class="InputBox" name="Official_Receipt1" value="" required="required"></td>
+                              <td><input type="text" class="InputBox" name="Official_Receipt1" value="" required="required"></td>
                             </tr>
                             <tr>
                               <td>Received By</td>
