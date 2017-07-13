@@ -1,7 +1,8 @@
+<link rel = "stylesheet" type = "text/css" href = "<?php echo base_url() ?>assets/css/table.css"/>
 <section class="content">
     <div class="row">
         <div class="col-xs-12">
-            <div class="box">
+            <div class="box" style="overflow-x:auto; width:auto;">
                 <div class="box-header">
                     <h3 class="box-title">Inventory</h3><br>
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Add item</button>
@@ -25,20 +26,20 @@
                         <tbody>
                         <?php foreach ($item as $item_record): ?>
                             <tr>
-                                <td><?php echo $item_record['item_id']; ?></td>
-                                <td><?php echo $item_record['item_name']; ?></td>
-                                <td><?php echo $item_record['item_description']; ?></td>
-                                <td><?php echo $item_record['account_code']; ?></td>
-                                <td><?php echo $item_record['quantity']; ?></td>
-                                <td><?php echo $item_record['unit']; ?></td>
-                                <td>
-                                    <button type="button" class=" btn btn-primary open-modal-action fa fa-plus" data-id="<?php echo $item_record['item_id']; ?>" data-toggle="modal" data-target="#addqty"></button>
+                                <td id="td"><?php echo $item_record['item_id']; ?></td>
+                                <td id="td"><?php echo $item_record['item_name']; ?></td>
+                                <td id="td"><?php echo $item_record['item_description']; ?></td>
+                                <td id="td"><?php echo $item_record['account_code']; ?></td>
+                                <td id="td"><?php echo $item_record['quantity']; ?></td>
+                                <td id="td"><?php echo $item_record['unit']; ?></td>
+                                <td id="td">
+                                    <button id ="add" type="button" class=" btn btn-primary open-modal-action fa fa-plus" data-id="<?php echo $item_record['item_id']; ?>" data-toggle="modal" data-target="#addqty"></button>
 
-                                    <button type="button" class="btn-danger open-modal-action fa fa-minus" data-id="<?php echo $item_record['item_id']; ?>" data-toggle="modal" data-target="#subqty"></button>
+                                    <button id ="sub" type="button" class="btn btn-danger open-modal-action fa fa-minus" data-id="<?php echo $item_record['item_id']; ?>" data-toggle="modal" data-target="#subqty"></button>
 
-                                    <button class="btn btn-warning open-modal-action fa fa-pencil" onclick="edit_inventory(<?php echo $item_record['item_id']; ?>)"></button>
+                                    <button id ="edit1" class="btn btn-warning open-modal-action fa fa-pencil" onclick="edit_inventory(<?php echo $item_record['item_id']; ?>)"></button>
 
-                                    <button class="btn btn-default open-modal-action fa fa-info" onclick="view_det(<?php echo $item_record['item_id']; ?>)"></button>
+                                    <button id ="itemdet" class="btn btn-default open-modal-action fa fa-info" onclick="view_det(<?php echo $item_record['item_id']; ?>)"></button>
 
 
                                 </td>
@@ -160,12 +161,11 @@
 
                 <!-- Modal item detail-->
                 <div class="modal fade" id="view" role="dialog">
-                    <div class="modal-dialog modal-lg" style="background-color: rgba(255,255,255, 0.93);position:fixed;
-                    overflow-x:auto;overflow-y:scroll;bottom:0;left:0;right:0;top:0;
-                    z-index:9999;">
+                    <div class="modal-dialog" >
 
+                        <div class="container" style="background-color:white; width:1320px; height: 650px; margin-left: -365px; size:50px; overflow-y: scroll;">
                         <!-- Modal content-->
-                        <div class="container" style="background-color:white; width:1230px; height: 800px; text-align: center; size:50px;">
+
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                                 <h4 class="modal-title" align="center"><b>Item Details<b></h4>
@@ -200,14 +200,16 @@
 
 
                 <!-- Modal edit inventory-->
-                <div class="modal fade" id="edit" role="dialog">
+                <div class="modal fade" id="summary" role="dialog">
                     <div class="modal-dialog">
-                        <div class="modal-content">
+
+                        <div class="container" style="background-color:white; width:auto; height: 550px; margin-left: -450px; size:50px;">
                             <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h3 class="modal-title">Edit Inventory</h3>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title" align="center"><b>Summary of Item<b></h4>
                             </div>
-                            <div class="modal-body form">
+                            <div class="modal-body">
+
                                 <form action="#" id="form" class="form-horizontal">
                                     <input type="hidden" value="" name="item_id"/>
                                     <input type="hidden" value="" name="acid"/>

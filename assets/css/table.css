@@ -1,0 +1,31 @@
+ #table_id {
+  border-collapse: collapse;
+  width: 100%;
+  }
+
+  td, th {
+  text-align: center;
+  border: 1px solid #ddd;
+  padding:.5em 5px;
+  font-size: 1.2em;
+  }
+
+  #add{
+  width:30px;
+  height:30px;
+  }
+
+  #sub{
+ width:30px;
+   height:30px;in
+
+  }
+
+  #edit{
+width:30px;
+  height:30px;  }
+
+  #view{
+ width:30px;
+   height:30px;
+  }
