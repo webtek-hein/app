@@ -162,7 +162,7 @@
                 <div class="modal fade" id="view" role="dialog">
                     <div class="modal-dialog">
 
-                        <div class="container" style="background-color:white; width:1320px; height: 650px; margin-left: -360px; size:50px;overflow-x:scroll ; overflow-y: scroll;">
+                        <div class="container" style="background-color:white; width:1320px; height: 650px; margin-left: -365px; size:50px; overflow-y: scroll;">
                         <!-- Modal content-->
 
                             <div class="modal-header">
