@@ -37,7 +37,7 @@
 
         <tr>
           <td>Official Receipt</td>
-          <td><input type="text" class="InputBox" name="OfficialReceipt" value="" required="required"></td>
+          <td><input type="number" class="InputBox" name="OfficialReceipt" value="" required="required"></td>
         </tr>
 	<tr>
           <td>Received By</td>
@@ -55,8 +55,13 @@
         </tr>
 
         <tr>
-          <td>Type</td>
-          <td><input type="text" class="InputBox" name="Type" value="" required="required"></td>
+           <td>Type</td>
+          <td>
+           <select name="Type" required="required">
+              <option value="CO">CO</option>
+              <option value="MOOE">MOOE</option>
+          </select>
+        </td>
         </tr>
 
         <tr>
