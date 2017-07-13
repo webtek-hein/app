@@ -107,7 +107,7 @@
 <div class="modal fade" id="view" role="dialog">
     <div class="modal-dialog modal-lg" >
 
-    <div class="container" style="background-color:white; width:1520px; height: 550px; margin-left: -300px; size:50px;">
+    <div class="container" style="background-color:white; width:1350px; height: 700px; margin-left: -220px; ">
 
         <!-- Modal content-->
         <div class="modal-content">
@@ -115,7 +115,7 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title" align="center"><b>Item Details<b></h4>
             </div>
-                    <table id="example1" class="table table-striped table-bordered" cellspacing="0" >
+                    <table id="example1" class="table table-striped table-bordered">
                         <thead>
 
                         <tr>
