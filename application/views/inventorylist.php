@@ -1,7 +1,8 @@
+<link rel = "stylesheet" type = "text/css" href = "<?php echo base_url() ?>assets/css/table.css"/>
 <section class="content">
     <div class="row">
         <div class="col-xs-12">
-            <div class="box">
+            <div class="box" style="overflow-x:auto; width:auto;">
                 <div class="box-header">
                     <h3 class="box-title">Inventory</h3><br>
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Add item</button>
@@ -32,13 +33,13 @@
                                 <td><?php echo $item_record['quantity']; ?></td>
                                 <td><?php echo $item_record['unit']; ?></td>
                                 <td>
-                                    <button type="button" class=" btn btn-primary open-modal-action fa fa-plus" data-id="<?php echo $item_record['item_id']; ?>" data-toggle="modal" data-target="#addqty"></button>
+                                    <button id ="add" type="button" class=" btn btn-primary open-modal-action fa fa-plus" data-id="<?php echo $item_record['item_id']; ?>" data-toggle="modal" data-target="#addqty"></button>
 
-                                    <button type="button" class="btn-danger open-modal-action fa fa-minus" data-id="<?php echo $item_record['item_id']; ?>" data-toggle="modal" data-target="#subqty"></button>
+                                    <button id ="sub" type="button" class="btn btn-danger open-modal-action fa fa-minus" data-id="<?php echo $item_record['item_id']; ?>" data-toggle="modal" data-target="#subqty"></button>
 
-                                    <button class="btn btn-warning open-modal-action fa fa-pencil" onclick="edit_inventory(<?php echo $item_record['item_id']; ?>)"></button>
+                                    <button id ="edit" class="btn btn-warning open-modal-action fa fa-pencil" onclick="edit_inventory(<?php echo $item_record['item_id']; ?>)"></button>
 
-                                    <button class="btn btn-default open-modal-action fa fa-info" onclick="view_det(<?php echo $item_record['item_id']; ?>)"></button>
+                                    <button id ="view" class="btn btn-default open-modal-action fa fa-info" onclick="view_det(<?php echo $item_record['item_id']; ?>)"></button>
 
 
                                 </td>
@@ -160,7 +161,7 @@
 
                 <!-- Modal item detail-->
                 <div class="modal fade" id="view" role="dialog">
-                    <div class="modal-dialog">
+                    <div class="modal-dialog" >
 
                         <div class="container" style="background-color:white; width:1320px; height: 650px; margin-left: -365px; size:50px; overflow-y: scroll;">
                         <!-- Modal content-->
