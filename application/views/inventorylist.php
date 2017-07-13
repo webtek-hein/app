@@ -160,12 +160,11 @@
 
                 <!-- Modal item detail-->
                 <div class="modal fade" id="view" role="dialog">
-                    <div class="modal-dialog modal-lg" style="background-color: rgba(255,255,255, 0.93);position:fixed;
-                    overflow-x:auto;overflow-y:scroll;bottom:0;left:0;right:0;top:0;
-                    z-index:9999;">
+                    <div class="modal-dialog">
 
+                        <div class="container" style="background-color:white; width:1320px; height: 650px; margin-left: -365px; size:50px; overflow-y: scroll;">
                         <!-- Modal content-->
-                        <div class="container" style="background-color:white; width:1230px; height: 800px; text-align: center; size:50px;">
+
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                                 <h4 class="modal-title" align="center"><b>Item Details<b></h4>
@@ -200,14 +199,16 @@
 
 
                 <!-- Modal edit inventory-->
-                <div class="modal fade" id="edit" role="dialog">
+                <div class="modal fade" id="summary" role="dialog">
                     <div class="modal-dialog">
-                        <div class="modal-content">
+
+                        <div class="container" style="background-color:white; width:auto; height: 550px; margin-left: -450px; size:50px;">
                             <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h3 class="modal-title">Edit Inventory</h3>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title" align="center"><b>Summary of Item<b></h4>
                             </div>
-                            <div class="modal-body form">
+                            <div class="modal-body">
+
                                 <form action="#" id="form" class="form-horizontal">
                                     <input type="hidden" value="" name="item_id"/>
                                     <input type="hidden" value="" name="acid"/>

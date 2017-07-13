@@ -2,14 +2,12 @@
 <script src="<?php echo base_url() ?>assets/js/addbulk.js"></script>
 
         <!-- Modal -->
-<div id="myModal1" class="modal fade" role="dialog">
-  <div class="modal-dialog modal-lg" style="background-color: rgba(255,255,255, 0.93);position:fixed;
-                    overflow-x:auto;overflow-y:scroll;bottom:0;left:0;right:0;top:0;
-                    z-index:9999;">
+<div class="modal fade" id="myModal1" role="dialog">
+    <div class="modal-dialog">
 
     <!-- Modal content-->
-    <div class="container" style="background-color:white; width:1520px; height: 550px; text-align: center; size:50px;">
-        <h4 class="modal-title"><b>Add Many Items</b></h4>
+        <div class="container" style="background-color:white; width:1520px; height: 600px; margin-left: -460px; size:50px; overflow-y: scroll;">
+            <h4 class="modal-title" align="center"><b>Add Bulk Items<b></h4>
 
 <div class="modal-body">
        
