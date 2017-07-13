@@ -108,7 +108,7 @@
     <div class="modal-dialog modal-lg" >
 
     <div class="container" style="background-color:white; width:1300px; height: 700px; margin-left: -220px; 
-    overflow-y: scroll;overflow-x: scroll;"">
+    overflow-y: scroll;overflow-x: scroll;">
 
         <!-- Modal content-->
         <div class="modal-content">
