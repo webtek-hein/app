@@ -6,7 +6,7 @@
     <div class="modal-dialog">
 
     <!-- Modal content-->
-        <div class="container" style="background-color:white; width:1530px; height: 650px; margin-left: -460px; size:50px; overflow-y: scroll;">
+        <div class="container" style="background-color:white; width:1520px; height: 650px; margin-left: -460px; size:50px; overflow-y: scroll;">
             <h4 class="modal-title" align="center"><b>Add Bulk Items<b></h4>
 
 <div class="modal-body">
