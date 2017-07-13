@@ -85,9 +85,10 @@ class Department extends CI_Controller {
         echo json_encode($list);
     }
 
-    public function return_items($id)
+    public function return_items()
     {
-         $itemid = $this->input->post('reason');
-         $this->return_model->return_items_to_inventory($id);
+         $reason = $this->input->post('reason');
+         //$id;
+         //$this->return_model->return_items_to_inventory($id);
     }
 }
