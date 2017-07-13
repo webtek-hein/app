@@ -4,7 +4,7 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Decrease</h3>
+              <h3 class="box-title">Distribution</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -19,18 +19,6 @@
                   <th> Unit Cost</th>
                 </tr>
                 </thead>
-                <?php foreach ($decreaselog as $decrease): ?>
-                <tbody>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 4.0
-                  </td>
-                  <td></td>
-                  <td> 4</td>
-                  <td>q</td>
-                </tr>
-                <?php endforeach; ?>
                 </tbody>
                 <tfoot>
                 </tfoot>
