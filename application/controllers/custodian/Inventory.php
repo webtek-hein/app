@@ -35,7 +35,7 @@ class Inventory extends CI_Controller {
             $row[] = $list['quantity'];
             $row[] = $list['unit'];
             $row[] = "<button type=\"button\" data-id = '$list[item_id]' class=\"open-modal-action fa fa-plus\" data-toggle=\"modal\" data-target=\"#addqty\"></button>".
-                     "<button type=\"button\" data-id = '$list[item_id]' class=\"open-modal-action fa fa-minus\" data-toggle=\"modal\" data-target=\"#subqty\"></button>".
+                     "<button type=\"button\" data-id = '$list[item_id]' class=\"open-modal-action fa fa-minus\" onclick=\"subtract_quantity(". $list['item_id'] .")\"></button>".
                      "<button class=\"open-modal-action fa fa-info\" onclick=\"get_item_details(". $list['item_id'] .")\"></button> ";
             $data[] = $row;
            
@@ -56,6 +56,7 @@ class Inventory extends CI_Controller {
             'item_type' => $this->input->post('Type')
         );
         $data2 = array(
+                'serial' => $this->input->post('serial'),
                 'official_receipt_no' => $this->input->post('OfficialReceipt'),
                 'receivedby' => $this->input->post('ReceivedBy'),
                 'exp_date' => $this->input->post('ExpirationDate'),
@@ -66,7 +67,7 @@ class Inventory extends CI_Controller {
         );
             $this->InventoryModel->add_item($data1,$data2);
             $data['item'] = $this->InventoryModel->get_inventory_list();
-            header('Location: '. base_url() . '/inventory');
+            header('Location: '. base_url() . 'custodian/inventory');
         }
     public function addquantity()
     {
@@ -129,12 +130,17 @@ class Inventory extends CI_Controller {
         echo json_encode($list);
     }
 
-    public function get_quantity()
+    public function get_quantity($id)
     {
-        $item = $this->input->post('item_id');
-        $data['quantitycount'] = $this->InventoryModel->get_item_quantity($item);
-
-        $this->load->view('custodian/modals/subtractquantity',$data);
+        $quantity = $this->InventoryModel->get_item_quantity($id);
+        $data = array();
+        foreach ($quantity as $list) {
+            $row = array();
+            $row[] = $list['quantity'];
+            $data[] = $row;
+        }
+        $list = array('data'=>$data);
+        echo json_encode($list);
     }
 }
 ?>

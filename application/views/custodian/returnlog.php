@@ -22,6 +22,7 @@
                   <th>Replaced Item</th>
                   <th>Reason</th>
                   <th>Quantity</th>
+                  <th>Status</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -38,6 +39,7 @@
                   <td>X</td>
                   <td><?php echo $return['reason']; ?></td>
                   <td>5</td>
+                  <td></td>
                 </tr>
                 <?php endforeach; ?>
                 </tbody>

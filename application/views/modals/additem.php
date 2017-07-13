@@ -5,7 +5,7 @@
     
       <!-- Modal content-->
       <?php echo validation_errors(); ?>
-      <?php echo form_open($position.'/inventory'); ?>
+      <?php echo form_open($position.'/inventory/additem'); ?>
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -19,6 +19,10 @@
         <tr>
           <td>Item Name</td>
           <td><input type="text" class="InputBox" name="Item_Name" value="" required="required"></td>
+        </tr>
+        <tr>
+          <td>Serial No.</td>
+          <td><input type="number" class="InputBox" name="serial" value="" required="required"></td>
         </tr>
         <tr>
           <td>Item Description</td>
