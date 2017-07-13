@@ -9,9 +9,33 @@ class Decreaselog extends CI_Controller {
     }
 	public function index()
 	{
-		$this->load->view('department_head/templates/header');
-		$this->load->view('department_head/decreaselog');
-		$this->load->view('department_head/templates/footer');
+
+	
+		$this->load->view('templates/header');
+		$this->load->view('decreaselog');
+		$this->load->view('templates/footer');
 
 	}
+    public function decrease_log_list()
+    {
+        $decrease = $this->inventorymodel->get_decrease_log();
+        $data = array();
+        foreach ($decrease as $list) {
+            $row = array();
+            $row[] = $list['serial'];
+            $row[] = $list['item_name'];
+            $row[] = $list['account_code'];
+            $row[] = $list['date'];
+            $row[] = $list['supplier'];
+            $row[] = $list['distrib_date'];
+            $row[] = $list['unit_cost'];
+            $row[] = $list['user'];
+            $row[] = $list['department'];
+
+            $data[] = $row;
+
+        }
+        $list = array('data'=>$data);
+        echo json_encode($list);
+    }
 }
