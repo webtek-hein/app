@@ -17,23 +17,10 @@
                   <th>Supplier</th>
                   <th>Department</th>
                   <th>Reason</th>
+                  <th>Status</th>
                   <th>Action</th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td><input type="submit" name="Replace" value="Replace" class="Replace">
-                      <input type="submit" name="Ignore" value="Ignore" class="Ignore">
-                  </td>
-                </tr>
-                </tbody>
               </table>
             </div>
             <!-- /.box-body -->

@@ -9,10 +9,10 @@ class Returned extends CI_Controller {
     }
 	public function index()
 	{
-		$this->load->view('department_head/templates/header');
-		$this->load->view('department_head/return');
-		$this->load->view('department_head/templates/footer');
+		$data['return'] = $this->inventorymodel->get_return_log();
+		$this->load->view('templates/header');
+		$this->load->view('return',$data);
+		$this->load->view('templates/footer');
 
 	}
-
 }
