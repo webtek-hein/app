@@ -4,14 +4,14 @@
 
                       <!-- Modal content-->
                       <?php echo validation_errors(); ?>
-                      <?php echo form_open(''); ?>
+                      <?php echo form_open('department/return_items'); ?>
                       <div class="modal-content">
                         <div class="modal-header">
                           <button type="button" class="close" data-dismiss="modal">&times;</button>
                           <h4 class="modal-title" align="center"><b>Return Items<b></h4>
                         </div>
                         <div class="modal-body" align="center">
-                            <input id="item-id" type="hidden" name="item_id" value="">
+                            <input id="dist-id" type="" name="dist_id" value="">
                          <?php if($this->session->flashdata('msg')): ?>
                          <p><?php echo $this->session->flashdata('msg'); ?></p>
                         <?php endif; ?>
