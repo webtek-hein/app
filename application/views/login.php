@@ -10,7 +10,7 @@ if (isset($this->session->userdata['logged_in'])) {
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css">
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro|Open+Sans+Condensed:300|Raleway' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/login.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/assets/css/login.css">
    
 </head>
 <body>
