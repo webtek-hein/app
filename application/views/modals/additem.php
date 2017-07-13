@@ -58,7 +58,7 @@
         <tr>
            <td>Type</td>
           <td>
-           <select name="Type" required="required">
+           <select name="Unit" class="unit" required="required">
               <option value="CO">CO</option>
               <option value="MOOE">MOOE</option>
           </select>
