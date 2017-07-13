@@ -15,14 +15,14 @@
                   <th>Serial</th>
                   <th> Item name</th>
                   <th> Date</th>
-                    <th> Department</th>
+                  <th> Department</th>
                   <th> Supplier</th>
                   <th> Unit Cost</th>
-          <th> Employee</th>
-          <th>Reason</th>
-          <th>Quantity</th>
-          <th>User</th>
-                    <th> Status</th>
+                  <th> Employee</th>
+                  <th>Reason</th>
+                  <th>Quantity</th>
+                  <th>User</th>
+                  <th> Status</th>
                 </tr>
                 </thead>
                 <tbody>
