@@ -17,6 +17,7 @@
                   <th>Supplier</th>
                   <th>Department</th>
                   <th>Reason</th>
+                  <th>Status</th>
                   <th>Action</th>
                 </tr>
                 </thead>
@@ -31,6 +32,7 @@
                       <th>Supplier</th>
                       <th>Department</th>
                       <th>Reason</th>
+                      <th>Status</th>
                       <th>Action</th>
                   </tr>
                   </tfoot>
