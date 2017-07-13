@@ -4,7 +4,7 @@
 <section class="content">
       <div class="row">
         <div class="col-xs-12">
-          <div class="box">
+          <div class="box" style="overflow-x:auto; width:auto;">
             <div class="box-header">
                 <div class="dropdown">
 

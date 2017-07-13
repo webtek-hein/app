@@ -5,8 +5,9 @@
 <div class="modal fade" id="myModal1" role="dialog">
     <div class="modal-dialog">
 
-        <div class="container" style="background-color:white; width:1520px; height: 650px; margin-left: -465px; size:50px; overflow-y: scroll;">
-            <h4 class="modal-title" align="center"><b>Add Bulk Items<b></h4>
+    <!-- Modal content-->
+    <div class="container" style="background-color:white; width:1350px; height: auto; margin-left: -368px; size:50px; overflow-x:scroll;">
+        <h4 class="modal-title" align="center"><b>Add Many Items<b></h4>
 
 <div class="modal-body">
        
@@ -40,7 +41,8 @@
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal" style>Save</button>
+          <button type="submit" class="btn btn-default" id="save1">Save</button>
+          <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal">Cancel</button>
       </div>
     </div>
       
