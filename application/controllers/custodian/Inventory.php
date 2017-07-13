@@ -122,3 +122,4 @@ class Inventory extends CI_Controller {
         $this->load->view('custodian/modals/subtractquantity',$data);
     }
 }
+?>
