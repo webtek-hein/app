@@ -35,7 +35,7 @@ class Department extends CI_Controller {
             $row[] = $list['distrib_date'];
             $row[] = $list['receivedby'];
             $row[] = $list['unit_cost'];
-            $row[] = "<button type=\"button\" data-id = '$list[distid]' class=\"open-modal-action data-toggle=\"modal\" data-target=\"#returnmodal\">Return</button>";
+            $row[] = "<button type=\"button\" data-id = '$list[distid]' class=\"open-modal-action\" data-toggle=\"modal\" data-target=\"#returnmodal\">Return</button>";
             $data[] = $row;
         }
         $list = array('data'=>$data);
@@ -56,7 +56,7 @@ class Department extends CI_Controller {
             $row[] = $list['distrib_date'];
             $row[] = $list['receivedby'];
             $row[] = $list['unit_cost'];
-            $row[] = "<button type=\"button\" data-id = '$list[distid]' data-toggle=\"modal\" data-target=\"#returnmodal\">Return</button>";
+            $row[] = "<button type=\"button\" data-id = '$list[distid]' class=\"open-modal-action\" data-toggle=\"modal\" data-target=\"#returnmodal\">Return</button>";
             $data[] = $row;
         }
         $list = array('data'=>$data);
