@@ -161,9 +161,9 @@ if (isset($this->session->userdata['logged_in'])) {
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="<?php echo base_url(). $position. '/' ?>increaselog"><i class="fa fa-circle-o"></i> Increase</a></li>
-                        <li><a href="<?php echo base_url(). $position. '/' ?>decreaselog"><i class="fa fa-circle-o"></i> Decrease</a></li>
-                        <li><a href="<?php echo base_url(). $position. '/' ?>returnlog"><i class="fa fa-circle-o"></i> Return log</a></li>
+                        <li><a href="<?php echo base_url()?>increaselog"><i class="fa fa-circle-o"></i> Increase</a></li>
+                        <li><a href="<?php echo base_url()?>decreaselog"><i class="fa fa-circle-o"></i> Decrease</a></li>
+                        <li><a href="<?php echo base_url()?>returnlog"><i class="fa fa-circle-o"></i> Return log</a></li>
                     </ul>
                 </li>
 
