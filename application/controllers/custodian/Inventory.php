@@ -56,6 +56,7 @@ class Inventory extends CI_Controller {
             'item_type' => $this->input->post('Type')
         );
         $data2 = array(
+                'serial' => $this->input->post('serial'),
                 'official_receipt_no' => $this->input->post('OfficialReceipt'),
                 'receivedby' => $this->input->post('ReceivedBy'),
                 'exp_date' => $this->input->post('ExpirationDate'),
