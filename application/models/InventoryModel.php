@@ -129,9 +129,11 @@ left join account_code on account_code.ac_id = item.account_id
         $db1->where('item_id',$itemid);
         $db1->update('item');
         //update item_detail
-        $db1->where('supplier',NULL,FALSE);
-        $db1->where('item_id',$itemid);
-        $db1->update('item_detail',$data2);
+        $counter = 1;
+        while ($counter <= $data1) {
+            $db1->insert('item_detail', $data2);
+            $counter++;
+        }
     }
 
     public function subtract_quantity($data1,$data2,$itemid, $quantity)

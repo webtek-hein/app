@@ -70,6 +70,7 @@ class Inventory extends CI_Controller {
         }
     public function addquantity()
     {
+        $item_id=$this->input->POST('item_id');
         $data1 = $this->input->POST('Item_Quantity1');
             $data2 = array(
                 'official_receipt_no' => $this->input->post('Official_Receipt1'),
@@ -78,9 +79,10 @@ class Inventory extends CI_Controller {
                 'del_date' => $this->input->post('datedelivered1'),
                 'date_rec' => $this->input->post('datereceived1'),
                 'supplier' => $this->input->post('Supplier_Name1'),
-                'unit_cost' => $this->input->post('Unit_Cost1')
+                'unit_cost' => $this->input->post('Unit_Cost1'),
+                'item_id' => $this->input->post('item_id'),
             );
-            $item_id=$this->input->POST('item_id');
+            
             $this->InventoryModel->add_quantity($data1,$data2,$item_id);
             $data['item'] = $this->InventoryModel->get_inventory_list();
             header('Location: http://localhost/app/custodian/inventory');
