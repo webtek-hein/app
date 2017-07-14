@@ -21,10 +21,6 @@
           <td><input type="text" class="InputBox" name="Item_Name" value="" required="required"></td>
         </tr>
         <tr>
-          <td>Serial No.</td>
-          <td><input type="number" class="InputBox" name="serial" value="" required="required"></td>
-        </tr>
-        <tr>
           <td>Item Description</td>
           <td><input type="text" class="InputBox" name="Description" value="" required="required"></td>
         </tr>
@@ -42,7 +38,7 @@
 
         <tr>
           <td>Official Receipt</td>
-          <td><input type="number" class="InputBox" name="OfficialReceipt" value="" required="required"></td>
+          <td><input type="text" class="InputBox" name="OfficialReceipt" value="" required="required"></td>
         </tr>
 	<tr>
           <td>Received By</td>

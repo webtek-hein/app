@@ -47,24 +47,7 @@ class Inventory extends CI_Controller {
     public function additem()
     {
         $data['accountcodes'] = $this->InventoryModel->get_ac_list();
-        $this->form_validation->set_rules('Item_Name', 'Item Name','required');
-        $this->form_validation->set_rules('Description', 'Item Description','required');
-        $this->form_validation->set_rules('AccountCode', 'Account Code', 'required');
-        $this->form_validation->set_rules('OfficialReceipt', 'Official Receipt', 'required|integer');
-        $this->form_validation->set_rules('ReceivedBy', 'Received By', 'required');
-        $this->form_validation->set_rules('Item_Quantity', 'Quantity','required|integer');
-        $this->form_validation->set_rules('Supplier_Name', 'Supplier Name','required');
-        $this->form_validation->set_rules('datedelivered', 'Date Delivered', 'required');
-        $this->form_validation->set_rules('datereceived', 'Date Received', 'required');
-        $this->form_validation->set_rules('Unit', 'Unit', 'required');
-        $this->form_validation->set_rules('Cost', 'Cost', 'required|integer');
-        $this->form_validation->set_rules('ExpirationDate', 'Expiration Date', 'required');
-        if ($this->form_validation->run() === FALSE)
-        {
             $this->load->view('modals/additem', $data);
-        }
-        else
-        {
             $data1 = array(
             'item_name' => $this->input->post('Item_Name'),
             'item_description' => $this->input->post('Description'),
@@ -85,7 +68,6 @@ class Inventory extends CI_Controller {
             $this->InventoryModel->add_item($data1,$data2);
             $data['item'] = $this->InventoryModel->get_inventory_list();
             header('Location: http://localhost/app/inventory');
-        }
     }
     public function addquantity()
     {
