@@ -42,7 +42,7 @@
 
         <tr>
           <td>Official Receipt</td>
-          <td><input type="number" class="InputBox" name="OfficialReceipt" value="" required="required"></td>
+          <td><input type="text" class="InputBox" name="OfficialReceipt" value="" required="required"></td>
         </tr>
 	<tr>
           <td>Received By</td>
