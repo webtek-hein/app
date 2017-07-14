@@ -98,7 +98,7 @@ left join account_code on account_code.ac_id = item.account_id
 
         $dbase=$this->load->database('inventory', TRUE);
 
-        $query = $dbase->query("select serial,item_name,return_log.date,department,supplier,unit_cost,return_person,reason,concat(user.first_name,' ',user.last_name) as user,STATUS from return_log
+        $query = $dbase->query("select serial,item_name,return_log.date,department,supplier,unit_cost,return_person,reason,concat(user.first_name,' ',user.last_name) as user,status from return_log
 left join item_detail on item_detail.item_det_id = return_log.item_det_id
 left join item on item.item_id = item_detail.item_id
 left join distribution on distribution.dist_id = item_detail.dist_id
