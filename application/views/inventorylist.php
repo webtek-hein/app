@@ -10,48 +10,37 @@
 
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal1">Add Bulk Items</button>
                     <!-- Insert modal code here for ADD BULK ITEMS-->
-                    <table id="table_id" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                    <table id="table" class="table table-bordered table-striped">
                         <thead>
                         <tr>
-                            <th>Item id</th>
                             <th>Item name</th>
                             <th>Description</th>
                             <th> Account Code</th>
                             <th> Quantity</th>
                             <th> Unit</th>
                             <th> Action</th>
-
                         </tr>
                         </thead>
                         <tbody>
-                        <?php foreach ($item as $item_record): ?>
-                            <tr>
-                                <td><?php echo $item_record['item_id']; ?></td>
-                                <td><?php echo $item_record['item_name']; ?></td>
-                                <td><?php echo $item_record['item_description']; ?></td>
-                                <td><?php echo $item_record['account_code']; ?></td>
-                                <td><?php echo $item_record['quantity']; ?></td>
-                                <td><?php echo $item_record['unit']; ?></td>
-                                <td>
-                                    <button type="button" class=" btn btn-primary open-modal-action fa fa-plus" data-id="<?php echo $item_record['item_id']; ?>" data-toggle="modal" data-target="#addqty"></button>
-
-                                    <button type="button" class="btn btn-danger open-modal-action fa fa-minus" data-id="<?php echo $item_record['item_id']; ?>" data-toggle="modal" data-target="#subqty"></button>
-
-                                    <button class="btn btn-warning open-modal-action fa fa-pencil" onclick="edit_inventory(<?php echo $item_record['item_id']; ?>)"></button>
-
-                                    <button class="btn btn-default open-modal-action fa fa-info" onclick="view_det(<?php echo $item_record['item_id']; ?>)"></button>
-
-
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-
-
-
                         </tbody>
-
-
+                        <tfoot>
+                        <tr>
+                            <th>Item name</th>
+                            <th>Description</th>
+                            <th> Account Code</th>
+                            <th> Quantity</th>
+                            <th> Unit</th>
+                            <th> Action</th>
+                        </tr>
+                        </tfoot>
                     </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
 
                 </div>
 

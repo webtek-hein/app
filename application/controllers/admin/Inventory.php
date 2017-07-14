@@ -24,6 +24,30 @@ class Inventory extends CI_Controller {
         $this->load->view('modals/editinventory',$data);
 		$this->load->view('templates/footer');
 	}
+    public function inventory_list()
+    {
+        $inventory = $this->InventoryModel->get_inventory_list();
+        $data = array();
+        foreach ($inventory as $item_record) {
+            $row = array();
+            $row[] = $item_record['item_name'];
+            $row[] = $item_record['item_description'];
+            $row[] = $item_record['account_code'];
+            $row[] = $item_record['quantity'];
+            $row[] = $item_record['unit'];
+            $row[] = "<button type=\"button\" class=\"btn btn-primary open-modal-action fa fa-plus\" data-id='$item_record[item_id]' data-toggle=\"modal\" data-target=\"#addqty\"></button>".
+
+                                    "<button type=\"button\" class=\"btn btn-danger open-modal-action fa fa-minus\" data-id='$item_record[item_id]' data-toggle=\"modal\" data-target=\"#subqty\"></button>".
+
+                                   " <button class=\"btn btn-warning open-modal-action fa fa-pencil\" onclick=\"edit_inventory('$item_record[item_id]')\"></button>".
+
+                                   " <button class=\"btn btn-default open-modal-action fa fa-info\" onclick=\"view_det('$item_record[item_id]')\"></button>";
+            $data[] = $row;
+
+        }
+        $list = array('data'=>$data);
+        echo json_encode($list);
+    }
     public function additem()
     {
 
@@ -66,7 +90,7 @@ class Inventory extends CI_Controller {
         $this->InventoryModel->add_quantity($data1,$data2,$item_id);
         $data['item'] = $this->InventoryModel->get_inventory_list();
 
-            header('Location:'.base_url().'/admin/inventory');
+            header('Location:'.base_url().'admin/inventory');
         }
 
     public function subtractquantity(){
