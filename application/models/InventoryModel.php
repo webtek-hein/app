@@ -187,7 +187,7 @@ left join account_code on account_code.ac_id = item.account_id
     public function get_distributed_items() 
     {
         $dbase = $this->load->database('inventory',TRUE);
-        $query = $dbase->query("SELECT item.item_id as 'itemid', item_detail.dist_id as 'distid', item_name, account_code, official_receipt_no, del_date, distrib_date, distribution.quantity, distribution.receivedby, unit_cost, unit FROM department
+        $query = $dbase->query("SELECT serial, item.item_id as 'itemid', item_detail.dist_id as 'distid', item_name, account_code, official_receipt_no, del_date, distrib_date, distribution.quantity, distribution.receivedby, unit_cost, unit FROM department
     LEFT JOIN distribution ON distribution.dept_id = department.dept_id
     LEFT JOIN item_detail ON item_detail.dist_id = distribution.dist_id
     LEFT JOIN item ON item_detail.item_id = item.item_id
@@ -198,7 +198,7 @@ left join account_code on account_code.ac_id = item.account_id
     public function get_department_item($deptid)
     {
         $dbase = $this->load->database('inventory',TRUE);
-        $query = $dbase->query("SELECT item.item_id as 'itemid', item_detail.dist_id as 'distid', item_name, account_code, official_receipt_no, del_date, distrib_date, distribution.receivedby AS 'receivedby', unit_cost FROM department
+        $query = $dbase->query("SELECT serial, item.item_id as 'itemid', item_detail.dist_id as 'distid', item_name, account_code, official_receipt_no, del_date, distrib_date, distribution.receivedby AS 'receivedby', unit_cost FROM department
     LEFT JOIN distribution ON distribution.dept_id = department.dept_id
     LEFT JOIN item_detail ON item_detail.dist_id = distribution.dist_id
     LEFT JOIN item ON item_detail.item_id = item.item_id

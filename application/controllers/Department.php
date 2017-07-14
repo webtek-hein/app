@@ -6,6 +6,7 @@ class Department extends CI_Controller {
     {
       	parent::__construct();
 		$this->load->model('inventorymodel');
+        $this->load->model('return_model');
     }
 	public function index()
 	{
@@ -56,7 +57,7 @@ class Department extends CI_Controller {
             $row[] = $list['distrib_date'];
             $row[] = $list['receivedby'];
             $row[] = $list['unit_cost'];
-            $row[] = "<button type=\"button\" data-id = '$list[distid]' class=\"open-modal-action\" data-toggle=\"modal\" data-target=\"#returnmodal\">Return</button>";
+            $row[] = "<button type=\"button\" data-id = '$list[serial]' class=\"open-modal-action\" data-toggle=\"modal\" data-target=\"#returnmodal\">Return</button>";
             $data[] = $row;
         }
         $list = array('data'=>$data);
@@ -88,7 +89,8 @@ class Department extends CI_Controller {
     public function return_items()
     {
          $reason = $this->input->post('reason');
-         //$id;
-         //$this->return_model->return_items_to_inventory($id);
+         $serial = $this->input->post('serial');
+         $this->return_model->return_items_to_inventory($serial);
+         header('Location: '. base_url() . 'department');
     }
 }
