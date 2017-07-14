@@ -30,13 +30,7 @@ class Inventory extends CI_Controller {
             $row[] = $item_record['account_code'];
             $row[] = $item_record['quantity'];
             $row[] = $item_record['unit'];
-            $row[] = "<button type=\"button\" class=\"btn btn-primary open-modal-action fa fa-plus\" data-id='$item_record[item_id]' data-toggle=\"modal\" data-target=\"#addqty\"></button>".
-
-                                    "<button type=\"button\" class=\"btn btn-danger open-modal-action fa fa-minus\" data-id='$item_record[item_id]' data-toggle=\"modal\" data-target=\"#subqty\"></button>".
-
-                                   " <button class=\"btn btn-warning open-modal-action fa fa-pencil\" onclick=\"edit_inventory('$item_record[item_id]')\"></button>".
-
-                                   " <button class=\"btn btn-default open-modal-action fa fa-info\" onclick=\"view_det('$item_record[item_id]')\"></button>";
+            $row[] = " <button class=\"btn btn-default open-modal-action fa fa-info\" onclick=\"view_det('$item_record[item_id]')\"></button>";
             $data[] = $row;
 
         }

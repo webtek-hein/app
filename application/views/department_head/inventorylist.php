@@ -13,7 +13,7 @@
                             <th> Account Code</th>
                             <th> Quantity</th>
                             <th> Unit</th>
-                            <th> Action</th>
+                            <th> View Item Details</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -25,7 +25,7 @@
                             <th> Account Code</th>
                             <th> Quantity</th>
                             <th> Unit</th>
-                            <th> Action</th>
+                            <th> View Item Details</th>
                         </tr>
                         </tfoot>
                     </table>
