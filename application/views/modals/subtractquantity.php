@@ -1,10 +1,11 @@
 <!-- Modal-->
+<?php $position = ($this->session->userdata['logged_in']['position']); ?>
 <div class="modal fade" id="subqty" role="dialog">
     <div class="modal-dialog">
 
         <!-- Modal content-->
         <?php echo validation_errors(); ?>
-        <?php echo form_open('custodian/inventory/subtractquantity'); ?>
+        <?php echo form_open($position.'/inventory/subtractquantity'); ?>
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
