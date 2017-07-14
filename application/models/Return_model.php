@@ -3,8 +3,7 @@ class Return_model extends CI_Model {
 
     public function __construct()
     {
-        $inventory = $this->load->database('inventory', TRUE);
-        $logs = $this->load->database('logs', TRUE);
+        parent:: __construct();
     }
 
     public function get_return_log()
@@ -13,10 +12,12 @@ class Return_model extends CI_Model {
         return $query->result_array();
     }
 
-    public function return_items_to_inventory($distid)
+    //not fully working
+    public function return_items_to_inventory($serial)
     {
-        $query1 = $inventory->query("UPDATE distribution SET quantity=quantity-1 WHERE dist_id=$distid");
-        $query2 = $inventory->query("UPDATE item SET quantity=quantity+1 WHERE item_id_id=(SELECT item_id FROM item_detail WHERE dist_id = $distid)");
-        $query3 = $inventory->query("UPDATE item_detail SET dist_id=NULL WHERE dist_id=$distid LIMIT 1");
+        $inventory = $this->load->database('inventory', TRUE);
+        $query1 = $inventory->query("UPDATE distribution SET quantity=quantity-1 WHERE dist_id=(SELECT dist_id FROM item_detail WHERE serial = $serial)");
+        $query2 = $inventory->query("UPDATE item_detail SET dist_id=NULL WHERE serial = $serial");
+        //$query3 = $inventory->query("UPDATE item SET quantity=quantity+1 WHERE item_id = (SELECT item_id FROM item_detail WHERE serial = $serial)");
     }
 }
