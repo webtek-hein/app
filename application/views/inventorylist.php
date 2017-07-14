@@ -59,12 +59,13 @@
                 <script type="text/javascript" >
 
                     $(document).ready(function() {
-                        $('#table_id').DataTable();
+                       list = $('#table_id').DataTable({responsive: true});
                     } );
                     $(document).ready(function() {
-                        $('#example1').DataTable();
+                       $('#example1').DataTable({responsive: true});
 
                     } );
+
 
                     var save_method; //for save method string
 
