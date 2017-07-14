@@ -1,9 +1,7 @@
-                       <!-- Modal-->
-                        <div class="modal fade" id="view" role="dialog">
-                    <div class="modal-dialog modal-lg" style="background-color: rgba(255,255,255, 0.93);position:fixed;
-                    overflow-x:auto;bottom:0;left:0;right:0;top:0;
-                    z-index:;"></div>
-                    
+   <div class="modal fade" id="summary" role="dialog">
+    <div class="modal-dialog">
+    
+<div class="container" style="background-color:white; width:1520px; height: 550px; margin-left: -450px; size:50px;">
                       <!-- Modal content-->
                       <div class="modal-content">
                         <div class="modal-header">
@@ -18,7 +16,7 @@
 
                 <tr>
                   <th>No.</th>
-                  <th>Serial No.</th>
+                  <th>Serial #</th>
                   <th>Account Code</th>
                   <th>Expiration Date</th>
                   <th>Supplier</th>
@@ -55,3 +53,6 @@
 </div>
 </div>
 </div>
+
+
+                 
