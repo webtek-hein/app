@@ -5,12 +5,6 @@
             <div class="box" style="overflow-x:auto; width:auto;">
                 <div class="box-header">
                     <h3 class="box-title">Inventory</h3><br>
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Add item</button>
-                    <!-- Insert modal code here for ADD ITEM -->
-
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal1">Add Bulk Items</button>
-                    <br></br>
-                    <!-- Insert modal code here for ADD BULK ITEMS-->
                     <table id="table" class="table table-bordered table-striped">
                         <thead>
                         <tr>
@@ -186,72 +180,6 @@
                         </div>
                     </div>
                 </div>
-
-
-                <!-- Modal edit inventory-->
-                <div class="modal fade" id="edit" role="dialog">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h3 class="modal-title">Edit Inventory</h3>
-                            </div>
-                            <div class="modal-body form">
-                                <form action="#" id="form" class="form-horizontal">
-                                    <input type="hidden" value="" name="item_id"/>
-                                    <input type="hidden" value="" name="acid"/>
-                                    <div class="form-body">
-                                        <div class="form-group">
-                                            <label class="control-label col-md-3">Item Name</label>
-                                            <div class="col-md-9">
-                                                <input name="item_name"  placeholder="Item Name" class="form-control" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-md-3">Description</label>
-                                            <div class="col-md-9">
-                                                <input name="desc" placeholder="Description" class="form-control" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-md-3">Account Code</label>
-                                            <div class="col-md-9">
-
-                                                <select name="accountcode" class="accountcode">
-                                                    <?php foreach ($accountcodes as $ac_record): ?>
-                                                        <option value="<?php echo $ac_record['ac_id']; ?>"><?php echo $ac_record['account_code']," ", $ac_record['description']; ?></option>
-                                                    <?php endforeach; ?>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-md-3">Unit</label>
-                                            <div class="col-md-9">
-                                                <input name="unit" placeholder="Unit" class="form-control" type="text">
-
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="control-label col-md-3">Quantity</label>
-                                            <div class="col-md-9">
-                                                <input name="qty" placeholder="Quantity" class="form-control" type="text">
-
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" id="btnSave" onclick="save()" class="btn btn-primary">Save</button>
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                            </div>
-                        </div><!-- /.modal-content -->
-                    </div><!-- /.modal-dialog -->
-                </div><!-- /.modal -->
-
-
             </div>
         </div>
     </div>
