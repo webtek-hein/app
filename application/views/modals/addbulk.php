@@ -3,16 +3,16 @@
 
         <!-- Modal -->
 <div class="modal fade" id="myModal1" role="dialog">
-    <div class="modal-dialog">
+    <div class="modal-dialog" style="overflow-x:auto; width:auto ">
 
     <!-- Modal content-->
-    <div class="container" style="background-color:white; width:1350px; height: auto; margin-left: -368px; size:50px; overflow-x:scroll;">
+    <div class="container" style="background-color:white; width:1530px; height: auto; size:50px;">
         <h4 class="modal-title" align="center"><b>Add Many Items<b></h4>
 
 <div class="modal-body">
        
        <div id="wrapper">
-<table align='center' cellspacing=2 cellpadding=5 id="data_table" border=1>
+<table align='center' cellspacing=2 cellpadding=5 id="data_table" >
 <tr>
 <th >Item Name</th>
 <th>Account Code</th>

@@ -1,7 +1,7 @@
  <section class="content">
       <div class="row">
         <div class="col-xs-12">
-          <div class="box">
+          <div class="box" style="overflow-x:auto; width:auto;">
             <div class="box-header">
               <h3 class="box-title">Return log</h3>
             </div>
@@ -9,7 +9,7 @@
             
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="return_log" class="table table-bordered table-striped">
+              <table id="return_log" class="table table-bordered table-striped" width="100%">
                 <thead>
                 <tr>
                   <th>Serial</th>
@@ -53,4 +53,4 @@
       <!-- /.row -->
     </section>
     <!-- /.content -->
-  </div>
+

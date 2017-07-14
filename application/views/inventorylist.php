@@ -9,6 +9,7 @@
                     <!-- Insert modal code here for ADD ITEM -->
 
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal1">Add Bulk Items</button>
+                    <br></br>
                     <!-- Insert modal code here for ADD BULK ITEMS-->
                     <table id="table" class="table table-bordered table-striped">
                         <thead>
@@ -47,12 +48,13 @@
                 <script type="text/javascript" >
 
                     $(document).ready(function() {
-                        $('#table_id').DataTable();
+                       list = $('#table_id').DataTable({responsive: true});
                     } );
                     $(document).ready(function() {
-                        $('#example1').DataTable();
+                       $('#example1').DataTable({responsive: true});
 
                     } );
+
 
                     var save_method; //for save method string
 
@@ -150,18 +152,18 @@
 
                 <!-- Modal item detail-->
                 <div class="modal fade" id="view" role="dialog">
-                    <div class="modal-dialog">
+                    <div class="modal-dialog" style="overflow-x:auto; width:auto;">
 
                         <!-- Modal content-->
-                        <div class="container" style="background-color:white; width:1320px; height: auto; margin-left: -360px; size:50px; overflow-y:scroll;">
+                        <div class="container" style="background-color:white; width:1220px; height: auto; size:50px; overflow-y:auto;">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                                 <h4 class="modal-title" align="center"><b>Item Details<b></h4>
                             </div>
-                            <div class="modal-body" align="center">
+                            <div class="modal-body">
 
-                                <div class="container">
-                                    <table id="example1" class="table table-striped table-bordered" cellspacing="0" width="100%">
+
+                                    <table id="example1" class="table table-striped table-bordered" cellspacing="0" width="auto" align="center">
                                         <thead>
 
                                         <tr>
@@ -181,7 +183,6 @@
                                         </tbody>
                                     </table>
                                 </div>
-                            </div>
                         </div>
                     </div>
                 </div>
