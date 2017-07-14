@@ -35,6 +35,7 @@ class InventoryModel extends CI_Model {
             ->join('item_detail', 'item.item_id = item_detail.item_id', 'natural')
             ->join('account_code', 'item.account_id = account_code.ac_id', 'left')
             ->where('item.item_id', $id)
+            ->where('dist_id', null,false)
             ->get('item');
 
         return $query->result_array();

@@ -26,7 +26,6 @@ class Inventory extends CI_Controller {
 	}
     public function additem()
     {
-    	$data['accountcodes'] = $this->InventoryModel->get_ac_list();
 
             $data1 = array(
             'item_name' => $this->input->post('Item_Name'),
