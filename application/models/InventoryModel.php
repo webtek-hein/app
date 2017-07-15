@@ -146,7 +146,7 @@ class InventoryModel extends CI_Model {
         //update item_detail
         $db1->query("UPDATE item_detail set item_detail.dist_id = $distid
                     WHERE item_detail.item_id = $itemid 
-                    AND item_detail.dist_id is null
+                    AND item_detail.dist_id is null AND item_status != 'defective'
                     LIMIT $quantity");
     }
 

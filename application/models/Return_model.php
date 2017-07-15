@@ -21,7 +21,7 @@ class Return_model extends CI_Model {
         $deptid = intval($row['dept_id']) ;
 
         $this->db->query("UPDATE distribution SET quantity=quantity-1 WHERE dist_id=(SELECT dist_id FROM item_detail WHERE item_det_id = $item)");
-        $this->db->query("UPDATE item_detail SET dist_id=NULL WHERE item_det_id = $item");
+        $this->db->query("UPDATE item_detail SET dist_id=NULL, item_status='defective' WHERE item_det_id = $item");
         $this->db->query("UPDATE item SET quantity=quantity+1 WHERE item_id = (SELECT item_id FROM item_detail WHERE item_det_id = $item)");
         $this->db->query("INSERT INTO logs.return_log (reason, item_det_id, dept_id, return_person, user_id) VALUES ('$reason', '$item', '$deptid', '$person', '$userid') ");
 
