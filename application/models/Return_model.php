@@ -21,6 +21,6 @@ class Return_model extends CI_Model {
         $query3 = $inventory->query("UPDATE item SET quantity=quantity+1 WHERE item_id = (SELECT item_id FROM item_detail WHERE item_det_id = $item)");
 
         //for return_log
-        //$query4 = $inventory->query("INSERT INTO return_log (reason, item_det_id, dept_id, return_person, status, user_id) VALUES () ");
+        /*$query4 = $inventory->query("INSERT INTO return_log (reason, item_det_id, dept_id, return_person, status, user_id) VALUES ('temp', $item, 11, 'temp', 'pending', 1) ");*/
     }
 }
