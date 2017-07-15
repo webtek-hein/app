@@ -18,7 +18,7 @@
                     <tr>
                         <td>Quantity</td>
                         <td>
-                            <input id="quantity" type="number" min = "1" max="" class="Input" name="Quantity">
+                            <input id="quantity" type="number" min = "0" max="" class="Input" name="Quantity">
                         </td>
                     </tr>
                     <tr>

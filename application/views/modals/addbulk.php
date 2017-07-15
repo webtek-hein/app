@@ -6,7 +6,7 @@
     <div class="modal-dialog" style="overflow-x:auto; width:auto ">
 
     <!-- Modal content-->
-    <div class="container" style="background-color:white; width:1530px; height: auto; size:50px;">
+    <div class="container" style="background-color:white; width:1700px; height: auto; size:50px;">
         <h4 class="modal-title" align="center"><b>Add Many Items<b></h4>
 
 <div class="modal-body">
