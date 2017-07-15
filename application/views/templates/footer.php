@@ -8,6 +8,9 @@
 <script src="<?php echo base_url() ?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="<?php echo base_url() ?>assets/js/jquery-ui.min.js"></script>
+
+<script src="<?php echo base_url() ?>assets/js/action.js"></script>
+
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script src="<?php echo base_url() ?>assets/plugins/morris/morris.min.js"></script>
 <script>
