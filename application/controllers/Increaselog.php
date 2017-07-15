@@ -26,6 +26,8 @@ class Increaselog extends CI_Controller {
             $row[] = $list['date'];
             $row[] = $list['date_rec'];
             $row[] = $list['unit_cost'];
+            $row[] = $list['supplier'];
+            $row[] = $list['user'];
 
             $data[] = $row;
 
