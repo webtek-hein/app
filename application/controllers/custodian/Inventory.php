@@ -98,7 +98,7 @@ class Inventory extends CI_Controller {
                 'distrib_date' => $this->input->post('date'),
                 'dept_id' => $this->input->post('department'),
                 'receivedby' => $this->input->post('receivedby'),
-                //temp
+                'account_id' => $this->input->post('AccountCode'),
                 'user_distribute' => $firstname . ' ' . $lastname
                 );
             $this->InventoryModel->subtract_quantity($data1, $data2, $item_id, $data1);

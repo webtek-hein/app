@@ -15,24 +15,12 @@
 <table align='center' cellspacing=2 cellpadding=5 id="data_table" >
 <tr>
 <th >Item Name</th>
-<th>Account Code</th>
 <th>Quantity</th>
-<th>Supplier</th>
-<th>Date Received</th>
-<th>Unit</th>
-<th>Cost</th>
-<th>Expiration Date</th>
 </tr>
 
 <tr>
 <td><input type="text" id="new_itemname"></td>
-<td><input type="text" id="new_accountcode"></td>
 <td><input type="text" id="new_qty"></td>
-<td><input type="text" id="new_supplier"></td>
-<td><input type="text" id="new_datereceived"></td>
-<td><input type="text" id="new_unit"></td>
-<td><input type="text" id="new_cost"></td>
-<td><input type="text" id="new_expdate"></td>
 <td><input type="button" class="add" onclick="add_row();" value="Add Row"></td>
 </tr>
 

@@ -11,7 +11,7 @@
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal1">Add Bulk Items</button>
                     <br></br>
                     <!-- Insert modal code here for ADD BULK ITEMS-->
-                    <table id="table" class="table table-bordered table-striped">
+                    <table id="table_id" class="table table-bordered table-striped">
                         <thead>
                         <tr>
                             <th>Item name</th>
