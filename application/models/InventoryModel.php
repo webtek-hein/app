@@ -24,6 +24,18 @@ class InventoryModel extends CI_Model {
                      ->get('item');
         return $query->result_array();
 	}
+
+    public function get_by_id($id)
+    {
+
+        $db1 = $this->load->database('inventory', TRUE);
+        $query = $db1->select('*')
+            ->where('item.item_id', $id)
+            ->get('item');
+
+        return $query->result_array();
+
+    }
     public function get_item_detail($id)
     {
         $query = $this->db->select('*')

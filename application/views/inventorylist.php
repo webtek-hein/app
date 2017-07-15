@@ -9,7 +9,7 @@
                     <!-- Insert modal code here for ADD ITEM -->
 
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal1">Add Bulk Items</button>
-                    <br></br>
+                    <br>
                     <!-- Insert modal code here for ADD BULK ITEMS-->
                     <table id="table" class="table table-bordered table-striped">
                         <thead>
@@ -37,11 +37,11 @@
             </div>
         </div>
     </div>
-</section>
 
 
 
-                </div>
+
+
 
                 <script type="text/javascript" >
 
@@ -59,17 +59,15 @@
 
                         //Ajax Load data from ajax
                         $.ajax({
-                            url : "<?php echo site_url('admin/edit/edit/')?>/" + id,
+                            url : "<?php echo site_url('admin/inventory/edit')?>/" + id,
                             type: "GET",
                             dataType: "JSON",
                             success: function(data)
                             {
                                 $.each(data, function(i, item) {
                                     $('[name="item_id"]').val(data[i].item_id);
-                                    $('[name="acid"]').val(data[i].ac_id);
                                     $('[name="item_name"]').val(data[i].item_name);
                                     $('[name="desc"]').val(data[i].item_description);
-                                    $('[name="accountcode"]').val(data[i].ac_id);
                                     $('[name="unit"]').val(data[i].unit);
                                     $('[name="qty"]').val(data[i].quantity);
                                 });
@@ -124,11 +122,9 @@
                                 } );
                                 $.each(data, function(i, item) {
                                     table.row.add([
-                                        data[i].account_code,
                                         data[i].serial,
                                         data[i].exp_date,
                                         data[i].supplier,
-                                        data[i].description,
                                         data[i].official_receipt_no,
                                         data[i].del_date,
                                         data[i].date_rec,
@@ -162,11 +158,9 @@
                                         <thead>
 
                                         <tr>
-                                            <th>Account Code</th>
                                             <th>Serial #</th>
                                             <th>Expiration Date</th>
                                             <th>Supplier</th>
-                                            <th>Description</th>
                                             <th>Official Receipt #</th>
                                             <th>Date Delivered</th>
                                             <th>Date Received</th>
@@ -194,7 +188,6 @@
                             <div class="modal-body form">
                                 <form action="#" id="form" class="form-horizontal">
                                     <input type="hidden" value="" name="item_id"/>
-                                    <input type="hidden" value="" name="acid"/>
                                     <div class="form-body">
                                         <div class="form-group">
                                             <label class="control-label col-md-3">Item Name</label>
@@ -206,17 +199,6 @@
                                             <label class="control-label col-md-3">Description</label>
                                             <div class="col-md-9">
                                                 <input name="desc" placeholder="Description" class="form-control" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-md-3">Account Code</label>
-                                            <div class="col-md-9">
-
-                                                <select name="accountcode" class="accountcode">
-                                                    <?php foreach ($accountcodes as $ac_record): ?>
-                                                        <option value="<?php echo $ac_record['ac_id']; ?>"><?php echo $ac_record['account_code']," ", $ac_record['description']; ?></option>
-                                                    <?php endforeach; ?>
-                                                </select>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -246,10 +228,5 @@
                     </div><!-- /.modal-dialog -->
                 </div><!-- /.modal -->
 
-
-            </div>
-        </div>
-    </div>
-</section>
 
 
