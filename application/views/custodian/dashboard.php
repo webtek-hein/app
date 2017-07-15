@@ -6,6 +6,7 @@
 	</title>
  </head>
 
+<img src="http://localhost/app/assets/dist/img/welcome.gif" alt="" style="width:1100px;height:328px;">
 <h1 class="page-header">Dashboard</h1>
 <div class="row">
     <a href="/admin/registration/list">
