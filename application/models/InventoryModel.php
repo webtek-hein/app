@@ -212,7 +212,7 @@ class InventoryModel extends CI_Model {
     LEFT JOIN distribution ON distribution.dept_id = department.dept_id
     LEFT JOIN item_detail ON item_detail.dist_id = distribution.dist_id
     LEFT JOIN item ON item_detail.item_id = item.item_id
-    LEFT JOIN  account_code ON item.account_id = account_code.ac_id WHERE item_detail.dist_id IS NOT NULL");
+    LEFT JOIN  account_code ON distribution.account_id = account_code.ac_id WHERE item_detail.dist_id IS NOT NULL");
         return $query->result_array();
     }
 }
