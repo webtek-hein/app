@@ -88,9 +88,11 @@ class Department extends CI_Controller {
 
     public function return_items()
     {
+         $userid = ($this->session->userdata['logged_in']['userid']);
          $reason = $this->input->post('reason');
+         $person = $this->input->post('person');
          $item = $this->input->post('item');
-         $this->return_model->return_items_to_inventory($item);
+         $this->return_model->return_items_to_inventory($item, $person, $reason, $userid);
          header('Location: '. base_url() . 'department');
     }
 }

@@ -213,4 +213,5 @@ left join account_code on account_code.ac_id = item.account_id
     LEFT JOIN  account_code ON distribution.account_id = account_code.ac_id WHERE item_detail.dist_id IS NOT NULL");
         return $query->result_array();
     }
+    
 }

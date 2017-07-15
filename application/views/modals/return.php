@@ -21,6 +21,10 @@
                               <td>Reason</td>
                               <td><input type="text" class="InputBox" name="reason" value="" required="required"></td>
                             </tr>
+                            <tr>
+                              <td>Return Person</td>
+                              <td><input type="text" class="InputBox" name="person" value="" required="required"></td>
+                            </tr>
                           </table>
                         </div>
                         <div class="modal-footer">
