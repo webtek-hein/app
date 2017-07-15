@@ -13,7 +13,6 @@
                 <tr>
                   <th>Serial</th>
                   <th> Item name</th>
-                    <th> Account Code</th>
                   <th> Date</th>
                   <th> Date Received</th>
                   <th> Unit Cost</th>
@@ -26,7 +25,6 @@
                 <tfoot>
                 <th>Serial</th>
                 <th> Item name</th>
-                <th> Account Code</th>
                 <th> Date</th>
                 <th> Date Received</th>
                 <th> Unit Cost</th>

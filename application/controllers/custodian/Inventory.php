@@ -31,7 +31,6 @@ class Inventory extends CI_Controller {
             $row = array();
             $row[] = $list['item_name'];
             $row[] = $list['item_description'];
-            $row[] = $list['account_code'];
             $row[] = $list['quantity'];
             $row[] = $list['unit'];
             $row[] = "<button type=\"button\" data-id = '$list[item_id]' class=\"open-modal-action fa fa-plus\" data-toggle=\"modal\" data-target=\"#addqty\"></button>".
@@ -50,7 +49,6 @@ class Inventory extends CI_Controller {
         $data1 = array(
             'item_name' => $this->input->post('Item_Name'),
             'item_description' => $this->input->post('Description'),
-            'account_id' => $this->input->post('AccountCode'),
             'quantity' => $this->input->post('Item_Quantity'),
             'unit' => $this->input->post('Unit'),
             'item_type' => $this->input->post('Type')
@@ -116,7 +114,6 @@ class Inventory extends CI_Controller {
         foreach ($details as $list) {
             $row = array();
             $row[] = $list['serial'];
-            $row[] = $list['account_code'];
             $row[] = $list['exp_date'];
             $row[] = $list['supplier'];
             $row[] = $list['item_description'];

@@ -17,7 +17,6 @@
                 <tr>
                   <th>No.</th>
                   <th>Serial #</th>
-                  <th>Account Code</th>
                   <th>Expiration Date</th>
                   <th>Supplier</th>
                   <th>Description</th>

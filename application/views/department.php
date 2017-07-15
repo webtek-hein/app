@@ -35,7 +35,7 @@
                   <th>Action</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody id="dept_refresh">
                 </tbody>
                 <tfoot>
                 <tr>

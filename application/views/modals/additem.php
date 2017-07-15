@@ -24,17 +24,7 @@
           <td>Item Description</td>
           <td><input type="text" class="InputBox" name="Description" value="" required="required"></td>
         </tr>
-        <tr>
-          <td>Account Code</td>
-          <td>
-          <!-- Display description, option value is account id eg. 1-07-01-010 for land -->
-          <select name="AccountCode" class="accountcode" required="required">
-            <?php foreach ($accountcodes as $ac_record): ?>
-              <option value="<?php echo $ac_record['ac_id']; ?>"><?php echo $ac_record['account_code']," ", $ac_record['description']; ?></option>
-            <?php endforeach; ?>
-          </select>
-          </td>
-        </tr>
+
 
         <tr>
           <td>Official Receipt</td>

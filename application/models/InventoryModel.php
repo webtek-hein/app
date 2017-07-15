@@ -9,31 +9,25 @@ class InventoryModel extends CI_Model {
 
     public function get_ac_list()
     {
-        $db1 = $this->load->database('inventory', TRUE);
-        $query = $db1->get('account_code');
+        $query = $this->db->get('account_code');
         return $query->result_array();
     }
      public function get_department_list()
     {
-        $db1 = $this->load->database('inventory', TRUE);
-        $query = $db1->get('department');
+        $query = $this->db->get('department');
         return $query->result_array();
     }
 
 	public function get_inventory_list()
 	{
-        $db1 = $this->load->database('inventory', TRUE);
-        $query = $db1->select('*')
-                     ->join('account_code', 'item.account_id = account_code.ac_id', 'left')
+        $query = $this->db->select('*')
                      ->get('item');
         return $query->result_array();
 	}
     public function get_item_detail($id)
     {
-        $db1 = $this->load->database('inventory', TRUE);
-        $query = $db1->select('*')
+        $query = $this->db->select('*')
             ->join('item_detail', 'item.item_id = item_detail.item_id', 'natural')
-            ->join('account_code', 'item.account_id = account_code.ac_id', 'left')
             ->where('item.item_id', $id)
             ->where('dist_id', null,false)
             ->get('item');
@@ -43,8 +37,7 @@ class InventoryModel extends CI_Model {
     }
     public function item_update($where,$data)
     {
-        $db1 = $this->load->database('inventory',TRUE);
-        $db1->update('item', $data, $where);
+        $this->db->update('item', $data, $where);
         //$db1->update('account_code', $data1, $acid);
         return $this->db->affected_rows();
     }
@@ -67,16 +60,17 @@ class InventoryModel extends CI_Model {
     public function get_increase_log()
     {
 
+        $this->load->database();
 
-        $dbase=$this->load->database('inventory', TRUE);
-        $query = $dbase->query("Select serial,item_name,account_code,increase_log.date,date_rec,supplier,concat(first_name,' ',last_name) as user,unit_cost from increase_log
-left join item_detail on item_detail.item_det_id = increase_log.item_det_id
-left join user on user.user_id = increase_log.user_id
-left join item on item.item_id = item_detail.item_id
-natural join account_code");
-          
+            $this->db->Select ('serial,item_name,logs.increase_log.date,date_rec,unit_cost','supplier');
+            $this->db->from('logs.increase_log');
+            $this->db->join('inventory.item_detail','logs.increase_log.item_det_id = inventory.item_detail.item_det_id','left');
+            $this->db->join('inventory.user','logs.increase_log.user_id = inventory.user.user_id','left');
+            $this->db->join('inventory.item','inventory.item_detail.item_id = inventory.item.item_id','left');
+
+        $query = $this->db->get();
           return $query->result_array();
-        
+
     }
      public function get_decrease_log()
     {
@@ -88,7 +82,7 @@ LEFT join item on item.item_id = item_detail.item_id
 left join distribution on distribution.dist_id = item_detail.dist_id
 LEFT join department on department.dept_id = distribution.dept_id
 left join user on user.user_id = decrease_log.user_id
-left join account_code on account_code.ac_id = item.account_id
+left join account_code on account_code.ac_id = distribution.account_id
 ");
 
         return $query->result_array();
@@ -98,7 +92,7 @@ left join account_code on account_code.ac_id = item.account_id
 
         $dbase=$this->load->database('inventory', TRUE);
 
-        $query = $dbase->query("select serial,item_name,return_log.date,department,supplier,unit_cost,return_person,reason,concat(user.first_name,' ',user.last_name) as user,STATUS from return_log
+        $query = $dbase->query("select serial,item_name,return_log.date,department,supplier,unit_cost,return_person,reason,concat(user.first_name,' ',user.last_name) as user,status from return_log
 left join item_detail on item_detail.item_det_id = return_log.item_det_id
 left join item on item.item_id = item_detail.item_id
 left join distribution on distribution.dist_id = item_detail.dist_id
@@ -194,7 +188,7 @@ left join account_code on account_code.ac_id = item.account_id
     LEFT JOIN distribution ON distribution.dept_id = department.dept_id
     LEFT JOIN item_detail ON item_detail.dist_id = distribution.dist_id
     LEFT JOIN item ON item_detail.item_id = item.item_id
-    LEFT JOIN  account_code ON item.account_id = account_code.ac_id WHERE item_detail.dist_id IS NOT NULL");
+    LEFT JOIN  account_code ON distribution.account_id = account_code.ac_id WHERE item_detail.dist_id IS NOT NULL");
         return $query->result_array();
     }
 
@@ -205,7 +199,7 @@ left join account_code on account_code.ac_id = item.account_id
     LEFT JOIN distribution ON distribution.dept_id = department.dept_id
     LEFT JOIN item_detail ON item_detail.dist_id = distribution.dist_id
     LEFT JOIN item ON item_detail.item_id = item.item_id
-    LEFT JOIN  account_code ON item.account_id = account_code.ac_id WHERE item_detail.dist_id IS NOT NULL AND distribution.dept_id = $deptid");
+    LEFT JOIN  account_code ON distribution.account_id = account_code.ac_id WHERE item_detail.dist_id IS NOT NULL AND distribution.dept_id = $deptid");
         return $query->result_array();
     }
 
