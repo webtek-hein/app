@@ -1,18 +1,17 @@
-    </section>
-      
- 
- <div class="control-sidebar-bg"></div>
-</div>
+
+<div class="control-sidebar-bg"></div>
+
 <!-- ./wrapper -->
 
 <!-- jQuery 2.2.3 -->
 <script src="<?php echo base_url() ?>assets/plugins/jQuery/jquery-2.2.3.min.js"></script>
-    <script src="<?php echo base_url() ?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?php echo base_url() ?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="<?php echo base_url() ?>assets/js/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-
-  $.widget.bridge('uibutton', $.ui.button);
+<script src="<?php echo base_url() ?>assets/plugins/morris/morris.min.js"></script>
+<script>
+    $.widget.bridge('uibutton', $.ui.button);
 </script>
 <!-- Bootstrap 3.3.6 -->
 <script src="<?php echo base_url() ?>assets/js/bootstrap.min.js"></script>
@@ -39,9 +38,7 @@
 <!-- AdminLTE App -->
 <script src="<?php echo base_url() ?>assets/dist/js/app.min.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="<?php echo base_url() ?>assets/dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url() ?>assets/dist/js/demo.js"></script>
-    <script src="<?php echo base_url() ?>assets/plugins/morris/morris.min.js"></script><script>
 </body>
 </html>

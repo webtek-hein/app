@@ -80,7 +80,7 @@ if (isset($this->session->userdata['logged_in'])) {
                         <ul class="dropdown-menu">
                             <!-- User image -->
                             <li class="user-header">
-                                <img src="<?php echo base_url() ?>assets/dist/img/admin.jpg" class="img-circle" alt="User Image">
+                                <img src="<?php echo base_url() ?>assets/dist/img/dummy.jpg" class="img-circle" alt="User Image">
                             </li>
                             <!-- Menu Footer-->
                             <li class="user-footer">
@@ -107,7 +107,7 @@ if (isset($this->session->userdata['logged_in'])) {
             <!-- Sidebar user panel -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="<?php echo base_url() ?>assets/dist/img/admin.jpg" class="img-circle" alt="User Image">
+                    <img src="<?php echo base_url() ?>assets/dist/img/dummy.jpg" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
                     <p><?= $position?></p>
@@ -159,9 +159,9 @@ if (isset($this->session->userdata['logged_in'])) {
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="<?php echo base_url(). $position. '/' ?>increaselog"><i class="fa fa-circle-o"></i> Increase</a></li>
-                        <li><a href="<?php echo base_url(). $position. '/' ?>decreaselog"><i class="fa fa-circle-o"></i> Decrease</a></li>
-                        <li><a href="<?php echo base_url(). $position. '/' ?>returnlog"><i class="fa fa-circle-o"></i> Return log</a></li>
+                        <li><a href="<?php echo base_url()?>increaselog"><i class="fa fa-circle-o"></i> Increase</a></li>
+                        <li><a href="<?php echo base_url()?>decreaselog"><i class="fa fa-circle-o"></i> Decrease</a></li>
+                        <li><a href="<?php echo base_url()?>returnlog"><i class="fa fa-circle-o"></i> Return log</a></li>
                     </ul>
                 </li>
 

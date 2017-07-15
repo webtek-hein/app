@@ -4,12 +4,6 @@
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">Inventory</h3><br>
-        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Add item</button>
-         <!-- Insert modal code here for ADD ITEM -->
-
-			  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal1">Add Bulk Items</button>
-         <!-- Insert modal code here for ADD BULK ITEMS-->
-
         <div class="container">
           <div class="row">
               <div class="span12">
@@ -29,9 +23,10 @@
                 <tr>
                   <th>Item name</th>
                   <th>Description</th>
+                  <th> Account Code</th>
                   <th> Quantity</th>
-        					<th> Unit</th>
-        					<th> Action</th>
+        		  <th> Unit</th>
+        		  <th> View Item Details</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -39,6 +34,7 @@
                 <tr>
                   <td><?php echo $item_record['item_name']; ?></td>
                   <td><?php echo $item_record['item_description']; ?></td>
+                  <td><?php echo $item_record['account_code']; ?></td>
                   <td><?php echo $item_record['quantity']; ?></td>
                   <td><?php echo $item_record['unit']; ?></td>
 				</tr>   

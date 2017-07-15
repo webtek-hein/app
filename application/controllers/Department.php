@@ -36,7 +36,7 @@ class Department extends CI_Controller {
             $row[] = $list['distrib_date'];
             $row[] = $list['receivedby'];
             $row[] = $list['unit_cost'];
-            $row[] = "<button type=\"button\" data-id = '$list[distid]' class=\"open-modal-action\" data-toggle=\"modal\" data-target=\"#returnmodal\">Return</button>";
+            $row[] = "<button type=\"button\" data-id = '$list[item_det_id]' class=\"open-modal-action\" data-toggle=\"modal\" data-target=\"#returnmodal\">Return</button>";
             $data[] = $row;
         }
         $list = array('data'=>$data);
@@ -57,7 +57,7 @@ class Department extends CI_Controller {
             $row[] = $list['distrib_date'];
             $row[] = $list['receivedby'];
             $row[] = $list['unit_cost'];
-            $row[] = "<button type=\"button\" data-id = '$list[serial]' class=\"open-modal-action\" data-toggle=\"modal\" data-target=\"#returnmodal\">Return</button>";
+            $row[] = "<button type=\"button\" data-id = '$list[item_det_id]' class=\"open-modal-action\" data-toggle=\"modal\" data-target=\"#returnmodal\">Return</button>";
             $data[] = $row;
         }
         $list = array('data'=>$data);
@@ -89,8 +89,8 @@ class Department extends CI_Controller {
     public function return_items()
     {
          $reason = $this->input->post('reason');
-         $serial = $this->input->post('serial');
-         $this->return_model->return_items_to_inventory($serial);
+         $item = $this->input->post('item');
+         $this->return_model->return_items_to_inventory($item);
          header('Location: '. base_url() . 'department');
     }
 }
