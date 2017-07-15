@@ -9,61 +9,52 @@
                     <!-- Insert modal code here for ADD ITEM -->
 
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal1">Add Bulk Items</button>
+                    <br></br>
                     <!-- Insert modal code here for ADD BULK ITEMS-->
-                    <table id="table_id" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                    <table id="table" class="table table-bordered table-striped">
                         <thead>
                         <tr>
-                            <th>Item id</th>
                             <th>Item name</th>
                             <th>Description</th>
                             <th> Account Code</th>
                             <th> Quantity</th>
                             <th> Unit</th>
                             <th> Action</th>
-
                         </tr>
                         </thead>
                         <tbody>
-                        <?php foreach ($item as $item_record): ?>
-                            <tr>
-                                <td><?php echo $item_record['item_id']; ?></td>
-                                <td><?php echo $item_record['item_name']; ?></td>
-                                <td><?php echo $item_record['item_description']; ?></td>
-                                <td><?php echo $item_record['account_code']; ?></td>
-                                <td><?php echo $item_record['quantity']; ?></td>
-                                <td><?php echo $item_record['unit']; ?></td>
-                                <td>
-                                    <button type="button" class=" btn btn-primary open-modal-action fa fa-plus" data-id="<?php echo $item_record['item_id']; ?>" data-toggle="modal" data-target="#addqty"></button>
-
-                                    <button type="button" class="btn btn-danger open-modal-action fa fa-minus" data-id="<?php echo $item_record['item_id']; ?>" data-toggle="modal" data-target="#subqty"></button>
-
-                                    <button class="btn btn-warning open-modal-action fa fa-pencil" onclick="edit_inventory(<?php echo $item_record['item_id']; ?>)"></button>
-
-                                    <button class="btn btn-default open-modal-action fa fa-info" onclick="view_det(<?php echo $item_record['item_id']; ?>)"></button>
-
-
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-
-
-
                         </tbody>
-
-
+                        <tfoot>
+                        <tr>
+                            <th>Item name</th>
+                            <th>Description</th>
+                            <th> Account Code</th>
+                            <th> Quantity</th>
+                            <th> Unit</th>
+                            <th> Action</th>
+                        </tr>
+                        </tfoot>
                     </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
 
                 </div>
 
                 <script type="text/javascript" >
 
                     $(document).ready(function() {
-                        $('#table_id').DataTable();
+                       list = $('#table_id').DataTable({responsive: true});
                     } );
                     $(document).ready(function() {
-                        $('#example1').DataTable();
+                       $('#example1').DataTable({responsive: true});
 
                     } );
+
 
                     var save_method; //for save method string
 
@@ -161,18 +152,18 @@
 
                 <!-- Modal item detail-->
                 <div class="modal fade" id="view" role="dialog">
-                    <div class="modal-dialog">
+                    <div class="modal-dialog" style="overflow-x:auto; width:auto;">
 
                         <!-- Modal content-->
-                        <div class="container" style="background-color:white; width:1320px; height: auto; margin-left: -360px; size:50px; overflow-y:scroll;">
+                        <div class="container" style="background-color:white; width:1220px; height: auto; size:50px; overflow-y:auto;">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                                 <h4 class="modal-title" align="center"><b>Item Details<b></h4>
                             </div>
-                            <div class="modal-body" align="center">
+                            <div class="modal-body">
 
-                                <div class="container">
-                                    <table id="example1" class="table table-striped table-bordered" cellspacing="0" width="100%">
+
+                                    <table id="example1" class="table table-striped table-bordered" cellspacing="0" width="auto" align="center">
                                         <thead>
 
                                         <tr>
@@ -192,7 +183,6 @@
                                         </tbody>
                                     </table>
                                 </div>
-                            </div>
                         </div>
                     </div>
                 </div>

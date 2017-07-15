@@ -11,7 +11,7 @@
                           <h4 class="modal-title" align="center"><b>Return Items<b></h4>
                         </div>
                         <div class="modal-body" align="center">
-                            <input id="dist-id" type="hidden" name="item" value="">
+                            <input id="dist-id" type="" name="serial" value="">
                          <?php if($this->session->flashdata('msg')): ?>
                          <p><?php echo $this->session->flashdata('msg'); ?></p>
                         <?php endif; ?>

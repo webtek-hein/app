@@ -29,7 +29,6 @@
                 <tr>
                   <th>Item name</th>
                   <th>Description</th>
-                  <th> Account Code</th>
                   <th> Quantity</th>
         					<th> Unit</th>
         					<th> Action</th>
@@ -40,7 +39,6 @@
                 <tr>
                   <td><?php echo $item_record['item_name']; ?></td>
                   <td><?php echo $item_record['item_description']; ?></td>
-                  <td><?php echo $item_record['account_code']; ?></td>
                   <td><?php echo $item_record['quantity']; ?></td>
                   <td><?php echo $item_record['unit']; ?></td>
 				</tr>   

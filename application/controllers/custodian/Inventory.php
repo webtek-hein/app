@@ -31,7 +31,6 @@ class Inventory extends CI_Controller {
             $row = array();
             $row[] = $list['item_name'];
             $row[] = $list['item_description'];
-            $row[] = $list['account_code'];
             $row[] = $list['quantity'];
             $row[] = $list['unit'];
             $row[] = "<button type=\"button\" data-id = '$list[item_id]' class=\"open-modal-action fa fa-plus\" data-toggle=\"modal\" data-target=\"#addqty\"></button>".
@@ -50,13 +49,11 @@ class Inventory extends CI_Controller {
         $data1 = array(
             'item_name' => $this->input->post('Item_Name'),
             'item_description' => $this->input->post('Description'),
-            'account_id' => $this->input->post('AccountCode'),
             'quantity' => $this->input->post('Item_Quantity'),
             'unit' => $this->input->post('Unit'),
             'item_type' => $this->input->post('Type')
         );
         $data2 = array(
-                'serial' => $this->input->post('serial'),
                 'official_receipt_no' => $this->input->post('OfficialReceipt'),
                 'receivedby' => $this->input->post('ReceivedBy'),
                 'exp_date' => $this->input->post('ExpirationDate'),
@@ -71,6 +68,7 @@ class Inventory extends CI_Controller {
         }
     public function addquantity()
     {
+        $item_id=$this->input->POST('item_id');
         $data1 = $this->input->POST('Item_Quantity1');
             $data2 = array(
                 'official_receipt_no' => $this->input->post('Official_Receipt1'),
@@ -79,9 +77,10 @@ class Inventory extends CI_Controller {
                 'del_date' => $this->input->post('datedelivered1'),
                 'date_rec' => $this->input->post('datereceived1'),
                 'supplier' => $this->input->post('Supplier_Name1'),
-                'unit_cost' => $this->input->post('Unit_Cost1')
+                'unit_cost' => $this->input->post('Unit_Cost1'),
+                'item_id' => $this->input->post('item_id'),
             );
-            $item_id=$this->input->POST('item_id');
+            
             $this->InventoryModel->add_quantity($data1,$data2,$item_id);
             $data['item'] = $this->InventoryModel->get_inventory_list();
             header('Location: http://localhost/app/custodian/inventory');
@@ -115,7 +114,6 @@ class Inventory extends CI_Controller {
         foreach ($details as $list) {
             $row = array();
             $row[] = $list['serial'];
-            $row[] = $list['account_code'];
             $row[] = $list['exp_date'];
             $row[] = $list['supplier'];
             $row[] = $list['item_description'];

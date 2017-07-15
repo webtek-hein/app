@@ -15,6 +15,7 @@
                    <thead>
                 <tr>
                   <th>Serial #</th>
+                  <th>Account Code</th>
                   <th>Expiration Date</th>
                   <th>Supplier</th>
                   <th>Description</th>
@@ -30,6 +31,7 @@
                 <tfoot>
                 <tr>
                   <th>Serial #</th>
+                  <th>Account Code</th>
                   <th>Expiration Date</th>
                   <th>Supplier</th>
                   <th>Description</th>

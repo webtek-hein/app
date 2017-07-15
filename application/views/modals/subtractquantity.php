@@ -1,10 +1,11 @@
 <!-- Modal-->
+<?php $position = ($this->session->userdata['logged_in']['position']); ?>
 <div class="modal fade" id="subqty" role="dialog">
     <div class="modal-dialog">
 
         <!-- Modal content-->
         <?php echo validation_errors(); ?>
-        <?php echo form_open('custodian/inventory/subtractquantity'); ?>
+        <?php echo form_open($position.'/inventory/subtractquantity'); ?>
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -17,7 +18,7 @@
                     <tr>
                         <td>Quantity</td>
                         <td>
-                            <input id="quantity" type="number" min = "1" max="" class="Input" name="Quantity">
+                            <input id="quantity" type="number" min = "0" max="" class="Input" name="Quantity">
                         </td>
                     </tr>
                     <tr>
@@ -26,6 +27,17 @@
                             <select class="dept" name="department">
                                 <?php foreach ($department as $dp_record): ?>
                                     <option value="<?php echo $dp_record['dept_id']; ?>"><?php echo $dp_record['res_center_code']," ", $dp_record['department']; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Account Code</td>
+                        <td>
+                            <!-- Display description, option value is account id eg. 1-07-01-010 for land -->
+                            <select name="AccountCode" class="accountcode" required="required">
+                                <?php foreach ($accountcodes as $ac_record): ?>
+                                    <option value="<?php echo $ac_record['ac_id']; ?>"><?php echo $ac_record['account_code']," ", $ac_record['description']; ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </td>

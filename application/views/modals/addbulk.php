@@ -5,20 +5,28 @@
       <?php echo form_open($position.'/inventory/addbulk'); ?>
         <!-- Modal -->
 <div class="modal fade" id="myModal1" role="dialog">
+<<<<<<< HEAD
     <div class="modal-dialog">
     <?php if($this->session->flashdata('msg')): ?>
         <p><?php echo $this->session->flashdata('msg'); ?></p>
       <?php endif; ?>
         <div class="modal-body">
+=======
+    <div class="modal-dialog" style="overflow-x:auto; width:auto ">
+>>>>>>> a4b05b50f24937ef13418ab4954e37f29984f215
 
     <!-- Modal content-->
-    <div class="container" style="background-color:white; width:1350px; height: auto; margin-left: -368px; size:50px; overflow-x:scroll;">
+    <div class="container" style="background-color:white; width:1700px; height: auto; size:50px;">
         <h4 class="modal-title" align="center"><b>Add Many Items<b></h4>
 
 <div class="modal-body">
        
        <div id="wrapper">
+<<<<<<< HEAD
 <table align='center'  cellspacing=2 cellpadding=5 id="data_table" border=1>
+=======
+<table align='center' cellspacing=2 cellpadding=5 id="data_table" >
+>>>>>>> a4b05b50f24937ef13418ab4954e37f29984f215
 <tr>
 <th>Item Name</th>
 <th>Item Description</th>

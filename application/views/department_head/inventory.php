@@ -13,6 +13,8 @@
               </div>
           </div>
         </div>
+
+
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -23,8 +25,8 @@
                   <th>Description</th>
                   <th> Account Code</th>
                   <th> Quantity</th>
-                  <th> Unit</th>
-                  <th>View Item</th>
+        		  <th> Unit</th>
+        		  <th> View Item Details</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -35,10 +37,10 @@
                   <td><?php echo $item_record['account_code']; ?></td>
                   <td><?php echo $item_record['quantity']; ?></td>
                   <td><?php echo $item_record['unit']; ?></td>
-        </tr>   
-       <?php endforeach; ?>
-       </tbody>
-       </table>
+				</tr>   
+			 <?php endforeach; ?>
+			 </tbody>
+			 </table>
             </div>
 </div>
       </div>   
