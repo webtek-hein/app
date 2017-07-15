@@ -32,7 +32,6 @@ class Inventory extends CI_Controller {
             $row = array();
             $row[] = $item_record['item_name'];
             $row[] = $item_record['item_description'];
-            $row[] = $item_record['account_code'];
             $row[] = $item_record['quantity'];
             $row[] = $item_record['unit'];
             $row[] = "<button type=\"button\" class=\"btn btn-primary open-modal-action fa fa-plus\" data-id='$item_record[item_id]' data-toggle=\"modal\" data-target=\"#addqty\"></button>".
@@ -69,7 +68,7 @@ class Inventory extends CI_Controller {
             );
             $this->InventoryModel->add_item($data1,$data2);
             $data['item'] = $this->InventoryModel->get_inventory_list();
-        header('Location:'.base_url().'/admin/inventory');
+        header('Location:'.base_url().'admin/inventory');
 
     }
     public function addquantity()

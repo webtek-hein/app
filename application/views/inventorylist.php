@@ -11,12 +11,11 @@
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal1">Add Bulk Items</button>
                     <br></br>
                     <!-- Insert modal code here for ADD BULK ITEMS-->
-                    <table id="table_id" class="table table-bordered table-striped">
+                    <table id="table" class="table table-bordered table-striped">
                         <thead>
                         <tr>
                             <th>Item name</th>
                             <th>Description</th>
-                            <th> Account Code</th>
                             <th> Quantity</th>
                             <th> Unit</th>
                             <th> Action</th>
@@ -28,7 +27,6 @@
                         <tr>
                             <th>Item name</th>
                             <th>Description</th>
-                            <th> Account Code</th>
                             <th> Quantity</th>
                             <th> Unit</th>
                             <th> Action</th>
@@ -47,9 +45,6 @@
 
                 <script type="text/javascript" >
 
-                    $(document).ready(function() {
-                       list = $('#table_id').DataTable({responsive: true});
-                    } );
                     $(document).ready(function() {
                        $('#example1').DataTable({responsive: true});
 
