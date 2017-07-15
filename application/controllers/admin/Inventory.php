@@ -54,7 +54,6 @@ class Inventory extends CI_Controller {
             $data1 = array(
             'item_name' => $this->input->post('Item_Name'),
             'item_description' => $this->input->post('Description'),
-            'account_id' => $this->input->post('AccountCode'),
             'quantity' => $this->input->post('Item_Quantity'),
             'unit' => $this->input->post('Unit'),
             );

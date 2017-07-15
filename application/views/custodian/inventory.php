@@ -18,7 +18,6 @@
                 <tr>
                     <th>Item name</th>
                     <th>Description</th>
-                    <th> Account Code</th>
                     <th> Quantity</th>
                     <th> Unit</th>
                     <th> Action</th>
@@ -30,7 +29,6 @@
                   <tr>
                       <th>Item name</th>
                       <th>Description</th>
-                      <th> Account Code</th>
                       <th> Quantity</th>
                       <th> Unit</th>
                       <th> Action</th>
