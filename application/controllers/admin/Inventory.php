@@ -51,10 +51,11 @@ class Inventory extends CI_Controller {
     {
 
             $data1 = array(
-            'item_name' => $this->input->post('Item_Name'),
-            'item_description' => $this->input->post('Description'),
-            'quantity' => $this->input->post('Item_Quantity'),
-            'unit' => $this->input->post('Unit'),
+                'item_name' => $this->input->post('Item_Name'),
+                'item_description' => $this->input->post('Description'),
+                'quantity' => $this->input->post('Item_Quantity'),
+                'unit' => $this->input->post('Unit'),
+                'item_type' => $this->input->post('Type')
             );
 
             $data2 = array(
@@ -66,8 +67,8 @@ class Inventory extends CI_Controller {
                 'supplier' => $this->input->post('Supplier_Name'),
                 'unit_cost' => $this->input->post('Cost')
             );
-            $this->InventoryModel->add_item($data1,$data2);
-            $data['item'] = $this->InventoryModel->get_inventory_list();
+        $data3 = array('user_id' => $this->session->userdata['logged_in']['userid']);
+        $this->InventoryModel->add_item($data1,$data2,$data3);
         header('Location:'.base_url().'admin/inventory');
 
     }

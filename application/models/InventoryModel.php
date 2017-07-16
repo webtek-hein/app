@@ -72,8 +72,6 @@ class InventoryModel extends CI_Model {
     public function get_increase_log()
     {
 
-        $this->load->database();
-
             $this->db->Select ('supplier,serial,item_name,date,date_rec,unit_cost,concat(user.first_name," ",user.last_name) as user');
             $this->db->from('logs.increase_log');
             $this->db->join('inventory.item_detail','logs.increase_log.item_det_id = inventory.item_detail.item_det_id','left');
@@ -83,9 +81,9 @@ class InventoryModel extends CI_Model {
             return $query->result_array();
 
     }
+
      public function get_decrease_log()
     {
-        $this->load->database();
 
             $this->db->Select('account_code,department,distrib_date,supplier,serial,item_name,date,date_rec,unit_cost,concat(user.first_name," ",user.last_name) as user');
             $this->db->from('logs.decrease_log');
@@ -100,7 +98,6 @@ class InventoryModel extends CI_Model {
     }
     public function get_return_log()
     {
-        $this->load->database();
 
         $this->db->Select ('department,supplier,serial,item_name,date,unit_cost,concat(user.first_name," ",user.last_name) as user,reason,inventory.item.quantity');
         $this->db->from('logs.return_log');
@@ -118,17 +115,20 @@ class InventoryModel extends CI_Model {
         return $query->result_array();
     }
 
-    public function add_item($data1,$data2)
+    public function add_item($data1,$data2,$data3)
     {
-        //load database
-        $db1 = $this->load->database('inventory',TRUE);
         // insert new item
-        $db1->insert('item', $data1);
-        $itemid = $db1->insert_id();
+        $this->db->insert('item', $data1);
+        $itemid = $this->db->insert_id();
        //update item detail table
-        $db1->where('item_id', $itemid);
-        $db1->update('item_detail',$data2);
+        $this->db->where('item_id', $itemid);
+        $this->db->update('item_detail',$data2);
+
+        $this->db->join('logs.increase_log','item_detail.item_det_id = logs.increase_log.item_id');
+        $this->db->where('user_id', null,false);
+        $this->db->update('logs.increase_log',$data3);
     }
+
     public function add_quantity($data1,$data2,$itemid)
     {
         $db1 = $this->load->database('inventory',TRUE);

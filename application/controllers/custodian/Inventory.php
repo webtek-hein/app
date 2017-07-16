@@ -9,7 +9,6 @@ class Inventory extends CI_Controller {
     }
 	public function index()
 	{
-
 		$data['accountcodes'] = $this->InventoryModel->get_ac_list();
         $data['item'] = $this->InventoryModel->get_inventory_list();
 		$data['department'] = $this->InventoryModel->get_department_list();
@@ -45,7 +44,6 @@ class Inventory extends CI_Controller {
 
     public function additem()
     {
-    	$data['accountcodes'] = $this->InventoryModel->get_ac_list();
         $data1 = array(
             'item_name' => $this->input->post('Item_Name'),
             'item_description' => $this->input->post('Description'),
@@ -61,9 +59,9 @@ class Inventory extends CI_Controller {
                 'date_rec' => $this->input->post('datereceived'),
                 'supplier' => $this->input->post('Supplier_Name'),
                 'unit_cost' => $this->input->post('Cost')
-        );
-            $this->InventoryModel->add_item($data1,$data2);
-            $data['item'] = $this->InventoryModel->get_inventory_list();
+            );
+             $data3 = array('user_id' => $this->session->userdata['logged_in']['userid']);
+            $this->InventoryModel->add_item($data1,$data2,$data3);
             header('Location: '. base_url() . 'custodian/inventory');
         }
     public function addquantity()
@@ -103,7 +101,7 @@ class Inventory extends CI_Controller {
                 );
             $this->InventoryModel->subtract_quantity($data1, $data2, $item_id, $data1);
             //$data['item'] = $this->InventoryModel->get_inventory_list();
-            header('Location: http://localhost/app/custodian/inventory');
+            header('Location:' . base_url() . 'custodian/inventory');
     
     }
 

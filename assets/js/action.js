@@ -14,7 +14,6 @@ $(document).on("click", ".open-modal-action", function () {
 var inventory;
 var department;
 var increaselog;
-var all_depts;
 
 $(document).ready(function() {
 
@@ -84,6 +83,15 @@ $(document).ready(function() {
         },
     });
 
+    returned_items = $('#returned_items').DataTable({
+        responsive: true,
+        "destroy":true,
+        "ajax": {
+            "url": 'returned/returned_list',
+            "type": "POST",
+        },
+    });
+
     setInterval(function () {
         inventory.ajax.reload(null,false);
         department.ajax.reload(null,false);
@@ -131,6 +139,9 @@ function get_item_details(id) {
             "url": 'inventory/itemdetail/' + id,
             "type": "POST",
         },
+        "columnDefs": [
+            { visible: "false", "targets": 0 }
+        ]
     });
     $('#view_custodian').modal('show');
 }
