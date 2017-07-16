@@ -18,7 +18,6 @@ var increaselog;
 $(document).ready(function() {
 
     inventory = $('#table').DataTable({
-        serverSide: true,
         destroy: true,
         responsive: true,
         "ajax": {
@@ -30,7 +29,6 @@ $(document).ready(function() {
 
 
     department = $('#department').DataTable({
-        serverSide: true,
         destroy: true,
         responsive: true,
         "ajax": {
@@ -45,7 +43,6 @@ $(document).ready(function() {
         var id = $(this).val();
 
         department = $('#department').DataTable({
-            serverSide: true,
             responsive: true,
             "destroy": true,
             "ajax": {
@@ -58,7 +55,6 @@ $(document).ready(function() {
 
 
     increaselog = $('#increase_log').DataTable({
-        serverSide: true,
         destroy: true,
         responsive: true,
         "ajax": {
@@ -70,7 +66,6 @@ $(document).ready(function() {
 
 
     decreaselog = $('#decrease_log').DataTable({
-        serverSide: true,
         responsive: true,
         "destroy":true,
         "ajax": {
@@ -80,7 +75,6 @@ $(document).ready(function() {
     });
 
     returnlog = $('#return_log').DataTable({
-        serverSide: true,
         responsive: true,
         "destroy":true,
         "ajax": {
