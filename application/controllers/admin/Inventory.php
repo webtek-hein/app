@@ -86,10 +86,9 @@ class Inventory extends CI_Controller {
             'unit_cost' => $this->input->post('Unit_Cost1')
         );
         $item_id=$this->input->POST('item_id');
-        $this->InventoryModel->add_quantity($data1,$data2,$item_id);
-        $data['item'] = $this->InventoryModel->get_inventory_list();
-
-            header('Location:'.base_url().'admin/inventory');
+        $data3 = array('user_id' => $this->session->userdata['logged_in']['userid']);
+        $this->InventoryModel->add_quantity($data1,$data2,$item_id,$data3);
+        header('Location:'.base_url().'admin/inventory');
         }
 
     public function subtractquantity(){

@@ -78,10 +78,9 @@ class Inventory extends CI_Controller {
                 'unit_cost' => $this->input->post('Unit_Cost1'),
                 'item_id' => $this->input->post('item_id'),
             );
-            
-            $this->InventoryModel->add_quantity($data1,$data2,$item_id);
-            $data['item'] = $this->InventoryModel->get_inventory_list();
-            header('Location: http://localhost/app/custodian/inventory');
+        $data3 = array('user_id' => $this->session->userdata['logged_in']['userid']);
+        $this->InventoryModel->add_quantity($data1,$data2,$item_id,$data3);
+            header('Location:'.base_url() . 'custodian/inventory');
         }
     public function subtractquantity(){
         $firstname = ($this->session->userdata['logged_in']['firstname']);

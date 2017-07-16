@@ -28,8 +28,7 @@ class InventoryModel extends CI_Model {
     public function get_by_id($id)
     {
 
-        $db1 = $this->load->database('inventory', TRUE);
-        $query = $db1->select('*')
+        $this->db->select('*')
             ->where('item.item_id', $id)
             ->get('item');
 
@@ -56,7 +55,6 @@ class InventoryModel extends CI_Model {
     public function get_return_list()
     {
 
-       // $db1=$this->laod->database('inventory_log', TRUE);
         /*
         $query=$db1->select('*')
                 ->join('item_detail', 'item_detail.serial','item_detail.supplier','left')
@@ -109,10 +107,6 @@ class InventoryModel extends CI_Model {
 
         $query = $this->db->get();
         return $query->result_array();
-
-
-
-        return $query->result_array();
     }
 
     public function add_item($data1,$data2,$data3)
@@ -123,50 +117,51 @@ class InventoryModel extends CI_Model {
        //update item detail table
         $this->db->where('item_id', $itemid);
         $this->db->update('item_detail',$data2);
-
+        //update user id on increase_log
         $this->db->join('logs.increase_log','item_detail.item_det_id = logs.increase_log.item_id');
         $this->db->where('user_id', null,false);
         $this->db->update('logs.increase_log',$data3);
     }
 
-    public function add_quantity($data1,$data2,$itemid)
+    public function add_quantity($quantity,$data2,$itemid,$userid)
     {
-        $db1 = $this->load->database('inventory',TRUE);
         //update item
-        $db1->set('quantity', 'quantity+'.$data1, FALSE);
-        $db1->where('item_id',$itemid);
-        $db1->update('item');
+        $this->db->set('quantity', 'quantity+'.$quantity, FALSE);
+        $this->db->where('item_id',$itemid);
+        $this->db->update('item');
         //update item_detail
         $counter = 1;
-        while ($counter <= $data1) {
-            $db1->insert('item_detail', $data2);
+        while ($counter <= $quantity) {
+            $this->db->insert('item_detail', $data2);
+            $item_det_id = $this->db->insert_id();
+            $this->db->where('item_det_id',$item_det_id);
+            $this->db->update('logs.increase_log',$userid);
             $counter++;
         }
     }
 
     public function subtract_quantity($data1,$data2,$itemid, $quantity)
     {
-        $db1 = $this->load->database('inventory',TRUE);
         //update item
-        $db1->set('quantity', 'quantity-'.$data1, FALSE);
-        $db1->where('item_id',$itemid);
-        $db1->update('item');
-
+        $this->db->set('quantity', 'quantity-'.$data1, FALSE);
+        $this->db->where('item_id',$itemid);
+        $this->db->update('item');
         //insert in distribution
-        $db1->insert('distribution', $data2);
-        $distid = $db1->insert_id();
+        $this->db->insert('distribution', $data2);
+        $distid = $this->db->insert_id();
         //update item_detail
-        $db1->query("UPDATE item_detail set item_detail.dist_id = $distid
-                    WHERE item_detail.item_id = $itemid 
-                    AND item_detail.dist_id is null AND item_status != 'defective'
-                    LIMIT $quantity");
+        $this->db->where('item_detail.item_id',$itemid);
+        $this->db->where('item_detail.dist_id',null,false);
+        $this->db->where('item_status !=','defective');
+        $this->db->limit($quantity);
+        $this->db->set('item_detail.dist_id',$distid);
+        $this->db->update('item_detail');
     }
 
     public function count_item_with_serial($item_id)
     {
-        $db1 = $this->load->database('inventory',TRUE);
         $where = 'serial is not NULL';
-        $query = $db1->from('item_detail')
+        $query = $this->db->from('item_detail')
                      ->where('item_id',$item_id)
                      ->where($where);
         return $query->count_all_results();
@@ -174,58 +169,62 @@ class InventoryModel extends CI_Model {
 
     public function get_item_per_department($dept)
     {
-        $dbase = $this->load->database('inventory', TRUE);
-        $dbase->select('*');
-        $dbase->from('department');
-        $dbase->join('distribution','`distribution`.`dept_id` = `department`.`dept_id`','left');
-        $dbase->join('item_detail','`item_detail`.`dist_id` = `distribution`.`dist_id`','left');
-        $dbase->join('item','`item_detail`.`item_id` = `item`.`item_id`','left');
-        $dbase->where('department.dept_id', $dept);
-        $query = $dbase->get();
+        $this->db->select('*');
+        $this->db->from('department');
+        $this->db->join('distribution','`distribution`.`dept_id` = `department`.`dept_id`','left');
+        $this->db->join('item_detail','`item_detail`.`dist_id` = `distribution`.`dist_id`','left');
+        $this->db->join('item','`item_detail`.`item_id` = `item`.`item_id`','left');
+        $this->db->where('department.dept_id', $dept);
+        $query = $this->db->get();
         return $query->result_array();
     }
 
     public function get_item_quantity($item_id)
     {
-        $dbase = $this->load->database('inventory', TRUE);
-        $dbase->select('quantity');
-        $dbase->from('item');
-        $dbase->where('item_id', $item_id);
-        $query = $dbase->get();
+        $this->db = $this->load->database('inventory', TRUE);
+        $this->db->select('quantity');
+        $this->db->from('item');
+        $this->db->where('item_id', $item_id);
+        $query = $this->db->get();
         return $query->result_array();
     }
 
     public function get_distributed_items() 
     {
-        $dbase = $this->load->database('inventory',TRUE);
-        $query = $dbase->query("SELECT item_det_id, serial, item.item_id as 'itemid', item_detail.dist_id as 'distid', item_name, account_code, official_receipt_no, del_date, distrib_date, distribution.quantity, distribution.receivedby, unit_cost, unit FROM department
-    LEFT JOIN distribution ON distribution.dept_id = department.dept_id
-    LEFT JOIN item_detail ON item_detail.dist_id = distribution.dist_id
-    LEFT JOIN item ON item_detail.item_id = item.item_id
-    LEFT JOIN  account_code ON distribution.account_id = account_code.ac_id WHERE item_detail.dist_id IS NOT NULL");
+        $this->db->select('item_det_id, serial, item.item_id as itemid, item_detail.dist_id as distid, item_name, account_code, official_receipt_no, del_date, distrib_date, distribution.quantity, distribution.receivedby, unit_cost, unit');
+        $this->db->join('distribution','distribution.dept_id = department.dept_id','left');
+        $this->db->join('item_detail','item_detail.dist_id = distribution.dist_id','left');
+        $this->db->join('item','item_detail.item_id = item.item_id','left');
+        $this->db->join ('account_code','distribution.account_id = account_code.ac_id');
+        $where = 'item_detail.dist_id IS NOT NULL';
+        $this->db->where($where);
+        $query = $this->db->get('department');
         return $query->result_array();
     }
 
     public function get_department_item($deptid)
     {
-        $dbase = $this->load->database('inventory',TRUE);
-        $query = $dbase->query("SELECT item_det_id, serial, item.item_id as 'itemid', item_detail.dist_id as 'distid', item_name, account_code, official_receipt_no, del_date, distrib_date, distribution.receivedby AS 'receivedby', unit_cost FROM department
-    LEFT JOIN distribution ON distribution.dept_id = department.dept_id
-    LEFT JOIN item_detail ON item_detail.dist_id = distribution.dist_id
-    LEFT JOIN item ON item_detail.item_id = item.item_id
-    LEFT JOIN  account_code ON distribution.account_id = account_code.ac_id WHERE item_detail.dist_id IS NOT NULL AND distribution.dept_id = $deptid");
+        $this->db->select('item_det_id, serial, item.item_id as itemid, item_detail.dist_id as distid, item_name, account_code, official_receipt_no, del_date, distrib_date, distribution.receivedby AS receivedby, unit_cost');
+        $this->db->join('distribution','distribution.dept_id = department.dept_id','left');
+        $this->db->join('item_detail','item_detail.dist_id = distribution.dist_id','left');
+        $this->db->join('item','item_detail.item_id = item.item_id','left');
+        $this->db->join ('account_code','distribution.account_id = account_code.ac_id');
+        $where = 'item_detail.dist_id IS NOT NULL';
+        $this->db->where($where);
+        $this->db->where('distribution.dept_id',$deptid);
+        $query = $this->db->get('department');
         return $query->result_array();
     }
 
     public function get_summary_items() 
     {
-        $dbase = $this->load->database('inventory',TRUE);
-        $query = $dbase->query("SELECT DISTINCT department, item_name, account_code, official_receipt_no, del_date, distrib_date, distribution.quantity AS quantity, distribution.receivedby, unit_cost, unit FROM department
-    LEFT JOIN distribution ON distribution.dept_id = department.dept_id
-    LEFT JOIN item_detail ON item_detail.dist_id = distribution.dist_id
-    LEFT JOIN item ON item_detail.item_id = item.item_id
-    LEFT JOIN  account_code ON distribution.account_id = account_code.ac_id WHERE item_detail.dist_id IS NOT NULL");
+        $this->db->distinct();
+        $this->db->select('department, item_name, account_code, official_receipt_no, del_date, distrib_date, distribution.quantity AS quantity, distribution.receivedby, unit_cost, unit');
+        $this->db->join('distribution','distribution.dept_id = department.dept_id','left');
+        $this->db->join('item_detail','item_detail.dist_id = distribution.dist_id','left');
+        $this->db->join('item','item_detail.item_id = item.item_id','left');
+        $this->db->join ('account_code','distribution.account_id = account_code.ac_id');
+        $query = $this->db->get('department');
         return $query->result_array();
     }
-    
 }
