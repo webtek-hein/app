@@ -30,7 +30,7 @@
 
                             <tr>
                               <td>Quantity</td>
-                              <td><input type="number" class="InputBox" name="Item_Quantity1" value="" required="required"></td>
+                              <td><input type="number" min = 0 class="InputBox" name="Item_Quantity1" value="" required="required"></td>
                             </tr>
                             <tr>
                               <td>Supplier</td>

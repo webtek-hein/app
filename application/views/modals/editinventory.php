@@ -33,7 +33,7 @@
                             </tr>
                               <tr>
                                   <td>Quantity</td>
-                                  <td><input type="text" class="unit" name="Supplier" value=""></td>
+                                  <td><input type="text" min = 0 class="unit" name="Supplier" value=""></td>
                               </tr>
                             <tr>
                               <td>Unit</td>
