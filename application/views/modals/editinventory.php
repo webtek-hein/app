@@ -21,16 +21,6 @@
                               <td>Description</td>
                               <td><input type="text" class="InputBox" name="Supplier" value=""></td>
                             </tr>
-                          <tr>
-                              <td>Account Code</td>
-                              <td>
-                              <select class="accountcode">
-                                <?php foreach ($accountcodes as $ac_record): ?>
-                                  <option value="<?php echo $ac_record['ac_id']; ?>"><?php echo $ac_record['account_code']," ", $ac_record['description']; ?></option>
-                                  <?php endforeach; ?>
-                              </select>
-                              </td>
-                            </tr>
                               <tr>
                                   <td>Quantity</td>
                                   <td><input type="text" min = 0 class="unit" name="Supplier" value=""></td>

@@ -107,7 +107,8 @@ class Inventory extends CI_Controller {
             //temp
             'user_distribute' => $firstname . ' ' . $lastname
         );
-        $this->InventoryModel->subtract_quantity($data1, $data2, $item_id, $data1);
+        $uid = array('user_id' => $this->session->userdata['logged_in']['userid']);
+        $this->InventoryModel->subtract_quantity($data1, $data2, $item_id, $data1,$uid);
         //$data['item'] = $this->InventoryModel->get_inventory_list();
         header('Location:'.base_url().'admin/inventory');
     }

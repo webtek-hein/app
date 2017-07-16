@@ -50,7 +50,7 @@
                             </tr>
                                <tr>
                                 <td>Cost</td>
-                                <td><input type="number" class="InputBox" name="Unit_Cost1" value="" required="required"></td>
+                                <td><input type="number" min='0' step='0.01' class="InputBox" name="Unit_Cost1" value="" required="required"></td>
                               </tr>
                           </table>
                         </div>

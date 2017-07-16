@@ -25,7 +25,8 @@
               <table id="department" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Item name</th>
+                    <th>Department</th>
+                    <th>Item name</th>
                   <th>Account Code</th>
                   <th>Official Receipt</th>
 				          <th>Delivery Date</th>
@@ -39,6 +40,7 @@
                 </tbody>
                 <tfoot>
                 <tr>
+                    <th>Department</th>
                     <th>Item name</th>
                     <th>Account Code</th>
                     <th>Official Receipt</th>

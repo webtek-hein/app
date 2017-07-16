@@ -28,7 +28,7 @@ class InventoryModel extends CI_Model {
     public function get_by_id($id)
     {
 
-        $this->db->select('*')
+        $query = $this->db->select('*')
             ->where('item.item_id', $id)
             ->get('item');
 
@@ -140,7 +140,7 @@ class InventoryModel extends CI_Model {
         }
     }
 
-    public function subtract_quantity($data1,$data2,$itemid, $quantity)
+    public function subtract_quantity($data1,$data2,$itemid, $quantity,$uid)
     {
         //update item
         $this->db->set('quantity', 'quantity-'.$data1, FALSE);
@@ -156,6 +156,11 @@ class InventoryModel extends CI_Model {
         $this->db->limit($quantity);
         $this->db->set('item_detail.dist_id',$distid);
         $this->db->update('item_detail');
+        $this->db->join('logs.decrease_log','item_detail.item_det_id = logs.decrease_log.item_id');
+        //update user in decrease_log
+        $this->db->where('user_id', null,false);
+        $this->db->update('logs.decrease_log',$uid);
+
     }
 
     public function count_item_with_serial($item_id)
@@ -191,7 +196,7 @@ class InventoryModel extends CI_Model {
 
     public function get_distributed_items() 
     {
-        $this->db->select('item_det_id, serial, item.item_id as itemid, item_detail.dist_id as distid, item_name, account_code, official_receipt_no, del_date, distrib_date, distribution.quantity, distribution.receivedby, unit_cost, unit');
+        $this->db->select('department,item_det_id, serial, item.item_id as itemid, item_detail.dist_id as distid, item_name, concat(account_code," ",description)as account_code, official_receipt_no, del_date, distrib_date, distribution.quantity, distribution.receivedby, unit_cost, unit');
         $this->db->join('distribution','distribution.dept_id = department.dept_id','left');
         $this->db->join('item_detail','item_detail.dist_id = distribution.dist_id','left');
         $this->db->join('item','item_detail.item_id = item.item_id','left');

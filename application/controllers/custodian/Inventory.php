@@ -98,9 +98,9 @@ class Inventory extends CI_Controller {
                 'account_id' => $this->input->post('AccountCode'),
                 'user_distribute' => $firstname . ' ' . $lastname
                 );
-            $this->InventoryModel->subtract_quantity($data1, $data2, $item_id, $data1);
-            //$data['item'] = $this->InventoryModel->get_inventory_list();
-            header('Location:' . base_url() . 'custodian/inventory');
+            $uid = array('user_id' => $this->session->userdata['logged_in']['userid']);
+             $this->InventoryModel->subtract_quantity($data1, $data2, $item_id, $data1,$uid);
+        header('Location:' . base_url() . 'custodian/inventory');
     
     }
 
