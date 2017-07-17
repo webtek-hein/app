@@ -123,13 +123,18 @@ class InventoryModel extends CI_Model {
         $this->db->where('user_id', null,false);
         $this->db->update('logs.increase_log',$data3);
     }
-    public function add_bulk($da)
+    public function add_bulk($data1,$data2,$data3)
     {
         // insert new item
-
-        $this->db->insert_batch('item', $da);
+        $this->db->insert('item', $data1);
         $itemid = $this->db->insert_id();
-
+        //update item detail table
+        $this->db->where('item_id', $itemid);
+        $this->db->update('item_detail',$data2);
+        //update user id on increase_log
+        $this->db->join('logs.increase_log','item_detail.item_det_id = logs.increase_log.item_id');
+        $this->db->where('user_id', null,false);
+        $this->db->update('logs.increase_log',$data3);
     }
     public function add_quantity($quantity,$data2,$itemid,$userid)
     {
