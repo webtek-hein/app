@@ -20,18 +20,17 @@ class Returned extends CI_Controller {
             $data = array();
             foreach ($return as $list) {
                 $row = array();
+
                 $row[] = $list['serial'];
                 $row[] = $list['item_name'];
+                $row[] = $list['account_code'];
                 $row[] = $list['date'];
-                $row[] = $list['department'];
                 $row[] = $list['supplier'];
-                $row[] = $list['unit_cost'];
-                $row[] = $list['return_person'];
+                $row[] = $list['department'];
                 $row[] = $list['reason'];
-                $row[] = 1;
-                $row[] = $list['user'];
                 $row[] = $list['item_status'];
-
+                $row[] = '';
+        
 
                 $data[] = $row;
 

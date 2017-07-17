@@ -8,6 +8,10 @@ class Return_model extends CI_Model {
 
     public function return_items_to_inventory($item, $person, $reason, $userid)
     {
+        $query = $this->db->query("SELECT dist_id FROM item_detail WHERE item_det_id = $item");
+        $row = $query->row_array();
+        $distid = intval($row['dist_id']) ;
+
         $this->db->select('dept_id');
         $where = 'dist_id = (SELECT dist_id FROM item_detail WHERE item_det_id = '. $item .')';
         $this->db->where($where);
@@ -34,6 +38,7 @@ class Return_model extends CI_Model {
                        'item_det_id'=>$item,
                         'dept_id' => $deptid,
                         'return_person' => $person,
+                        'dist_id' => $distid,
                         'user_id' => $userid);
         $this->db->insert('logs.return_log',$data);
 
