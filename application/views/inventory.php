@@ -7,7 +7,6 @@
                     <h3 class="box-title">Inventory</h3><br>
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Add item</button>
                     <!-- Insert modal code here for ADD ITEM -->
-
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal1">Add Bulk Items</button>
                     <!-- Insert modal code here for ADD BULK ITEMS-->
                     <div class="container" style="overflow-x:auto; width:auto;">
