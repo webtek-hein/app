@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 05, 2017 at 08:09 AM
+-- Generation Time: Jul 17, 2017 at 03:36 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -33,9 +33,14 @@ CREATE TABLE `decrease_log` (
   `dec_log_id` int(11) NOT NULL,
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `item_det_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL DEFAULT '1'
+  `user_id` int(11) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Truncate table before insert `decrease_log`
+--
+
+TRUNCATE TABLE `decrease_log`;
 -- --------------------------------------------------------
 
 --
@@ -47,9 +52,14 @@ CREATE TABLE `increase_log` (
   `inc_log_id` int(11) NOT NULL,
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `item_det_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL DEFAULT '1'
+  `user_id` int(11) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Truncate table before insert `increase_log`
+--
+
+TRUNCATE TABLE `increase_log`;
 -- --------------------------------------------------------
 
 --
@@ -60,13 +70,18 @@ DROP TABLE IF EXISTS `return_log`;
 CREATE TABLE `return_log` (
   `return_id` int(11) NOT NULL,
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `reason` varchar(45) NOT NULL,
+  `reason` varchar(45) DEFAULT NULL,
   `item_det_id` int(11) NOT NULL,
-  `dept_id` int(11) NOT NULL,
+  `dept_id` int(11) DEFAULT NULL,
   `return_person` varchar(45) NOT NULL,
   `user_id` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Truncate table before insert `return_log`
+--
+
+TRUNCATE TABLE `return_log`;
 --
 -- Indexes for dumped tables
 --
@@ -100,7 +115,7 @@ ALTER TABLE `return_log`
 -- AUTO_INCREMENT for table `decrease_log`
 --
 ALTER TABLE `decrease_log`
-  MODIFY `dec_log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `dec_log_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `increase_log`
 --
