@@ -30,18 +30,37 @@
                         </tr>
 
                         <tr>
-                            <td><input type="text" id="new_itemname" name="Item_Name[]"></td>
-                            <td><input type="text" id="new_description" name="Item_Description[]"></td>
-                            <td><input type="text" id="new_or" name="Item_OfficialReceipt[]"></td>
-                            <td><input type="text" id="new_receivedby" name="Item_Receivedby[]"></td>
-                            <td><input type="text" id="new_qty" name="Item_Quantity[]"></td>
-                            <td><input type="text" id="new_supplier" name="Item_Supplier[]"></td>
-                            <td><input type="text" id="new_type" name="Item_Type[]"></td>
-                            <td><input type="date" id="new_deldate" name="Item_Deliverydate[]"></td>
-                            <td><input type="date" id="new_datereceived" name="Item_Datereceived[]"></td>
-                            <td><input type="text" id="new_unit" name="Item_Unit[]"></td>
-                            <td><input type="text" id="new_cost" name="Item_Cost[]"></td>
-                            <td><input type="date" id="new_expdate" name="Item_Expirationdate[]"></td>
+                            <td><input type="text" id="new_itemname" name="Item_Name[]" required="required"></td>
+                            <td><input type="text" id="new_description" name="Item_Description[]" required="required"></td>
+                            <td><input type="text" id="new_or" name="Item_OfficialReceipt[]" required="required"></td>
+                            <td><input type="text" id="new_receivedby" name="Item_Receivedby[]" required="required"></td>
+                            <td><input type="number" min=0 id="new_qty" name="Item_Quantity[]" required="required"></td>
+                            <td><input type="text" id="new_supplier" name="Item_Supplier[]" required="required"></td>
+                            <td>
+
+                                <select type="text" id="new_type" name="Item_Type[]" required="required">
+                                    <option></option >
+                                    <option value="CO">CO</option>
+                                    <option value="MOOE">MOOE</option>
+                                </select>
+                            </td>
+                            <td><input type="date" id="new_deldate" name="Item_Deliverydate[]" required="required"></td>
+                            <td><input type="date" id="new_datereceived" name="Item_Datereceived[]" required="required"></td>
+                            <td>
+                                <select type="text" id="new_unit" name="Item_Unit[]" required="required">
+                                    <option></option >
+                                    <option value="piece">piece</option>
+                                    <option value="box">box</option>
+                                    <option value="set">set</option>
+                                    <option value="ream">ream</option>
+                                    <option value="dozen">dozen</option>
+                                    <option value="bundle">bundle</option>
+                                    <option value="sack">sack</option>
+                                    <option value="others">others</option>
+                                </select>
+                            </td>
+                            <td><input type="number" id="new_cost" name="Item_Cost[]" required="required"></td>
+                            <td><input type="date" id="new_expdate" name="Item_Expirationdate[]" required="required"></td>
                             <td><input type="button" class="btn btn-success" onclick="add_row();" value="Add Row"></td>
                         </tr>
 
