@@ -147,9 +147,6 @@ function return_no_action(id) {
         url: 'returned/no_action/' + id,
         type:"POST",
         dataType: 'json',
-        success: function(){
-            alert('success');
-        },
     });
 
 }
