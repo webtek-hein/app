@@ -13,7 +13,7 @@
             </div>
             <div class="modal-body" align="center">
 
-                <div class="box-body" style="overflow-x:auto; width:auto ">
+                <div class="box-body" style="overflow-x:auto; width:auto; ">
                     <table id="details" class="table table-bordered table-striped" width="100%">
                         <thead>
                         <tr>
