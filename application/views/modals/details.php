@@ -59,8 +59,8 @@
       </table> 
         </div>
         <div class="modal-footer">
-         <button type="submit" class="btn btn-default" id="save2">Save</button>
-         <button type="button" class="btn btn-default" id="cancel2" data-dismiss="modal">Cancel</button>
+         <button type="submit" class="btn btn-default" >Save</button>
+         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
              </div>
 
 </dialog>

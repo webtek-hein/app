@@ -45,7 +45,7 @@
 				<tr>
 				<script>
 					function test() {
-    					if (document.getElementById('type').value == 'Department Head') {
+    					if (document.getElementById('type').value == 'department head') {
         					document.getElementById('extra').style.display  = 'block';
     					} else {
         					document.getElementById('extra').style.display = 'none';
@@ -55,16 +55,16 @@
 					<td>Position</td>
 					<td>
 						<select id="type" name="type"  onclick='test()'>
- 						<option value="Warehouse Officer">Custodian</option>
-					  <option value="Department Head">Department Head<a/option>
-					  <option value="Admin">Admin</option>
+ 						<option value="custodian">Custodian</option>
+					  <option value="department head">Department Head<a/option>
+					  <option value="admin">Admin</option>
  				</select>
 					
 				<tr>
 				<td></td>
 				<td>
 					<select  id="extra" name="extra" style="display:none;">
-    				<option value="NULL">Department</option>
+    				<option value="NULL">Choose Department</option>
           				<?php foreach ($departments as $dept): ?>
                 		<option class="option" value="<?php echo $dept['dept_id'] ?>"><?php echo $dept['res_center_code'] . ' ' . $dept['department'] ?></option>
           				<?php endforeach; ?>
