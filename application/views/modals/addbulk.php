@@ -25,11 +25,7 @@
                             <td><input type="button" class="add" onclick="add_row();" value="Add Row"></td>
                         </tr>
 
-                        <tr>
-                            <td><input type="text" id="new_itemname" name="Item_Name[]"></td>
-                            <td><input type="text" id="new_qty" name="Item_Quantity[]"></td>
-                            <td><input type="button" class="add" onclick="add_row();" value="Add Row"></td>
-                        </tr>
+
 
 
                     </table>
