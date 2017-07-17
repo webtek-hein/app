@@ -61,13 +61,12 @@
  				</select>
 					
 				<tr>
-
-				<td>Departments</td>
+				<td></td>
 				<td>
-					<select id="extra" name="extra" style="display:none;">
-    				<option class="option" value="NULL">Department</option>
+					<select  id="extra" name="extra" style="display:none;">
+    				<option value="NULL">Department</option>
           				<?php foreach ($departments as $dept): ?>
-                		<option value="<?php echo $dept['dept_id'] ?>"><?php echo $dept['res_center_code'] . ' ' . $dept['department'] ?></option>
+                		<option class="option" value="<?php echo $dept['dept_id'] ?>"><?php echo $dept['res_center_code'] . ' ' . $dept['department'] ?></option>
           				<?php endforeach; ?>
 					</select>
         		</td>
