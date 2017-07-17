@@ -54,7 +54,7 @@
       <table border="0" width="500" align="center" class="table">
         <tr>
           <td>Add Serial</td>
-          <td><input type="text"  class="InputBox" name="serial" value="" required="required"></td>
+          <td><input type="text"  class="InputBox" name="serial" value="" ></td>
         </tr>
       </table> 
         </div>
