@@ -7,12 +7,10 @@ class Signup extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('signup_model');
-        $this->load->model('InventoryModel');
     }
 
 	public function index()
 	{
-        $data['departments'] = $this->InventoryModel->get_department_list();
         $this->form_validation->set_rules('FirstName', 'First Name', 'required');
         $this->form_validation->set_rules('LastName', 'Last Name', 'required');
         $this->form_validation->set_rules('Email', 'Email', 'required|valid_email');
@@ -24,7 +22,7 @@ class Signup extends CI_Controller {
         
         if ($this->form_validation->run() === FALSE)
         {
-            $this->load->view('signup',$data);
+            $this->load->view('signup');
         }
         else
         {

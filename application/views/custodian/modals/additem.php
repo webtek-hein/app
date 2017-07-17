@@ -107,3 +107,50 @@
        <?php echo form_close(); ?>
     </div>
   </div>
+<script>
+    $(function () {
+                $('input').iCheck({
+                    checkboxClass: 'icheckbox_square-blue',
+                    radioClass: 'iradio_square-blue',
+                increaseArea: '20%' // optional
+            });
+            $("form").validate({
+              rules: {
+                Item_Name: "required",
+                Description: "requuired",
+                OfficialReceipt: {
+                  required: true,
+                  minilength: 5
+                },
+                ReceivedBy: "required",
+                Item_Quantity: "required",
+                Supplier_Name: "required",s
+                datedelivered: "required",
+                datereceive: "required",
+                Cost:"required",
+                ExpirationDate: "required",
+              
+                messages: {
+                  Item_Name: "Please input the Item Name",
+                  Description: "Please input Description",
+                  OfficialReceipt:"Please input the Official Reciept",
+                  ReceivedBy:"Please Input the Reciever of the Item",
+                  Item_Quantity: "Please input the quantity of the Item",
+                  Supplier_Name: "Please input the supplier of the item",
+                  datedelivered:"Please provide the the Delivered date",
+                  datereceive: "Please provide the the date recieved",
+                  Cost:"Please input the Cost of the item",
+                  ExpirationDate: "Expiration date is needed"
+                }
+              },
+
+
+          submitHandler: function(form) {
+      form.submit();
+  }
+});
+                
+            });
+            $("#additem").validate();
+  </script>
+  
