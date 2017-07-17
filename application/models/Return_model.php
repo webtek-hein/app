@@ -6,24 +6,37 @@ class Return_model extends CI_Model {
         parent:: __construct();
     }
 
-    public function get_return_log()
-    {
-        $query = $logs->get('return_log');
-        return $query->result_array();
-    }
-
-    //not fully working
     public function return_items_to_inventory($item, $person, $reason, $userid)
     {
-        //for return_log
-        $query = $this->db->query("SELECT dept_id FROM inventory.distribution WHERE dist_id = (SELECT dist_id FROM item_detail WHERE item_det_id = $item)");
+        $this->db->select('dept_id');
+        $where = 'dist_id = (SELECT dist_id FROM item_detail WHERE item_det_id = '. $item .')';
+        $this->db->where($where);
+        $query = $this->db->get('distribution');
         $row = $query->row_array();
         $deptid = intval($row['dept_id']) ;
 
-        $this->db->query("UPDATE distribution SET quantity=quantity-1 WHERE dist_id=(SELECT dist_id FROM item_detail WHERE item_det_id = $item)");
-        $this->db->query("UPDATE item_detail SET dist_id=NULL, item_status='defective' WHERE item_det_id = $item");
-        $this->db->query("UPDATE item SET quantity=quantity+1 WHERE item_id = (SELECT item_id FROM item_detail WHERE item_det_id = $item)");
-        $this->db->query("INSERT INTO logs.return_log (reason, item_det_id, dept_id, return_person, user_id) VALUES ('$reason', '$item', '$deptid', '$person', '$userid') ");
+        $condition = 'dist_id=(SELECT dist_id FROM item_detail WHERE item_det_id = '. $item .')';
+        $this->db->where($condition);
+        $this->db->set('quantity','quantity-1',FALSE);
+        $this->db->update("distribution");
+
+        $this->db->set('dist_id',null);
+        $this->db->set('item_status','defective');
+        $this->db->where('item_det_id',$item);
+        $this->db->update('item_detail');
+
+        $this->db->set('quantity','quantity+1',FALSE);
+        $condition1 = 'item_id = (SELECT item_id FROM item_detail WHERE item_det_id ='. $item .')';
+        $this->db->where($condition1);
+        $this->db->update('item');
+
+        $data = array('reason'=>$reason,
+                       'item_det_id'=>$item,
+                        'dept_id' => $deptid,
+                        'return_person' => $person,
+                        'user_id' => $userid);
+        $this->db->insert('logs.return_log',$data);
+
 
     }
 }

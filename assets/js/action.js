@@ -26,6 +26,12 @@ $(document).ready(function() {
         },
     });
 
+    $('#quant').keypress(function (e) {
+        var text = String.fromCharCode(e.which);
+        if (text.match(/[e]/)) {
+            return false;
+        }
+    });
 
 
     department = $('#department').DataTable({

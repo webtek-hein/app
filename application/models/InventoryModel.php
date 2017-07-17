@@ -97,12 +97,12 @@ class InventoryModel extends CI_Model {
     public function get_return_log()
     {
 
-        $this->db->Select ('department,supplier,serial,item_name,date,unit_cost,concat(user.first_name," ",user.last_name) as user,reason,inventory.item.quantity');
+        $this->db->Select ('department,return_person,item_status,supplier,serial,item_name,date,unit_cost,concat(user.first_name," ",user.last_name) as user,reason,inventory.item.quantity');
         $this->db->from('logs.return_log');
         $this->db->join('inventory.item_detail','logs.return_log.item_det_id = inventory.item_detail.item_det_id','left');
         $this->db->join('inventory.item','inventory.item_detail.item_id = inventory.item.item_id','left');
         $this->db->join('inventory.distribution','inventory.distribution.dist_id = inventory.item_detail.dist_id','left');
-        $this->db->join('inventory.department','inventory.department.dept_id = inventory.distribution.dept_id');
+        $this->db->join('inventory.department','inventory.department.dept_id = inventory.distribution.dept_id','left');
         $this->db->join('inventory.user','logs.return_log.user_id = inventory.user.user_id','left');
 
         $query = $this->db->get();

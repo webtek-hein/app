@@ -30,7 +30,7 @@ class Returned extends CI_Controller {
                 $row[] = $list['reason'];
                 $row[] = 1;
                 $row[] = $list['user'];
-                $row[] = $list['status'];
+                $row[] = $list['item_status'];
 
 
                 $data[] = $row;
