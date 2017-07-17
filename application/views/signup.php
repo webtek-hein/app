@@ -46,27 +46,29 @@
 				<script>
 					function test() {
     					if (document.getElementById('type').value == 'department head') {
-        					document.getElementById('extra').style.display  = 'block';
+        					document.getElementById('dment').style.display  = 'block';
     					} else {
-        					document.getElementById('extra').style.display = 'none';
+        					document.getElementById('dment').style.display = 'none';
    						}
 					}
 				</script>
 					<td>Position</td>
 					<td>
 						<select id="type" name="type"  onclick='test()'>
+						<option selected="true" disabled>--Choose Position--</option>
  						<option value="custodian">Custodian</option>
-					  <option value="department head">Department Head<a/option>
-					  <option value="admin">Admin</option>
- 				</select>
-					
+					  	<option value="department head">Department Head</option>
+					    <option value="admin">Admin</option>
+					    </select>
+					 </td>
+				</tr>	
 				<tr>
 				<td></td>
 				<td>
-					<select  id="extra" name="extra" style="display:none;">
-    				<option value="NULL">Choose Department</option>
+					<select  id="dment" name="dment">
+						<option selected="true" disabled>--Choose Department--</option>
           				<?php foreach ($departments as $dept): ?>
-                		<option class="option" value="<?php echo $dept['dept_id'] ?>"><?php echo $dept['res_center_code'] . ' ' . $dept['department'] ?></option>
+                		<option value="<?php echo $dept['dept_id'] ?>"><?php echo $dept['res_center_code'] . ' ' . $dept['department'] ?></option>
           				<?php endforeach; ?>
 					</select>
         		</td>
