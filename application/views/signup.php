@@ -55,7 +55,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td><input type="submit" class="btn btn-primary btn-block btn-large" name="cancel" value="Cancel" ></td>
+					<td><a href="index.php" class="btn btn-primary btn-block btn-large" style="text-decoration: none">Cancel</a></td>
 					<td><input type="submit" class="btn btn-primary btn-block btn-large" name="createaccount" value="Register" ></td>
 				</tr>
 				
