@@ -6,7 +6,7 @@
         <div class="col-xs-12">
           <div class="box" style="overflow-x:auto; width:auto;">
             <div class="box-header">
-                <div class="dropdown">
+
 
     		<select class="selectdept" name="department" id="depts">
           <option class="option" value="none">Departments</option>
@@ -15,14 +15,11 @@
           <?php endforeach; ?>
         </select>
         <button type= "button" class="btn btn-success" onclick="summary()">Summary of Items</button>
-            </div>
-              </div>
 
-          <div class="container">
-        </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <table id="department" class="table table-bordered table-striped">
+            <div class="container" style="overflow-x:auto; width:auto;">
+                <!-- /.box-header -->
+                <div class="box-body">
+              <table id="department" class="table table-bordered table-striped" width="100%">
                 <thead>
                 <tr>
                     <th>Department</th>
@@ -58,6 +55,8 @@
           <!-- /.box -->
         </div>
         <!-- /.col -->
+      </div>
+        </div>
       </div>
       <!-- /.row -->
     </section>
