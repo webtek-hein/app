@@ -13,11 +13,10 @@
             <div class="modal-body">
 
                 <div id="wrapper">
-                    <table align='center' cellspacing=2 cellpadding=5 id="data_table" class="table table-bordered table-striped" >
+                    <table align='center' id="data_table" class="table table-bordered table-striped" >
                         <tr>
                             <th >Item Name</th>
                             <th>Description</th>
-                            <th>Account Code</th>
                             <th>Official Receipt</th>
                             <th>Received By</th>
                             <th>Quantity</th>
@@ -33,7 +32,6 @@
                         <tr>
                             <td><input type="text" id="new_itemname" name="Item_Name[]"></td>
                             <td><input type="text" id="new_description" name="Item_Description[]"></td>
-                            <td><input type="text" id="new_accountcode" name="Item_Accountcode[]"></td>
                             <td><input type="text" id="new_or" name="Item_OfficialReceipt[]"></td>
                             <td><input type="text" id="new_receivedby" name="Item_Receivedby[]"></td>
                             <td><input type="text" id="new_qty" name="Item_Quantity[]"></td>
@@ -44,7 +42,7 @@
                             <td><input type="text" id="new_unit" name="Item_Unit[]"></td>
                             <td><input type="text" id="new_cost" name="Item_Cost[]"></td>
                             <td><input type="date" id="new_expdate" name="Item_Expirationdate[]"></td>
-                            <td><input type="button" class="add" onclick="add_row();" value="Add Row"></td>
+                            <td><input type="button" class="btn btn-success" onclick="add_row();" value="Add Row"></td>
                         </tr>
 
                     </table>

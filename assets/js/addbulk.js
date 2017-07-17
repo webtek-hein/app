@@ -7,7 +7,6 @@ function add_row()
 {
  var new_itemname=document.getElementById("new_itemname").value;
  var new_description=document.getElementById("new_description").value;
- var new_accountcode=document.getElementById("new_accountcode").value;
  var new_or=document.getElementById("new_or").value;
  var new_receivedby=document.getElementById("new_receivedby").value;
  var new_qty=document.getElementById("new_qty").value;
@@ -25,7 +24,6 @@ function add_row()
  var row = table.insertRow(table_len).outerHTML="<tr id='row"+table_len+"'>" +
      "<td id='itemname_row"+table_len+"'><input type='text' value='"+new_itemname+"' name='Item_Name[]'></td>" +
      "<td id='description_row"+table_len+"'><input type='text' value='"+new_description+"' name='Item_Description[]'></td>" +
-     "<td id='accountcode_row"+table_len+"'><input type='text' value='"+new_accountcode+"' name='Item_Accountcode[]'></td>" +
      "<td id='or_row"+table_len+"'><input type='text' value='"+new_or+"' name='Item_OfficialReceipt[]'></td>" +
      "<td id='receivedby_row"+table_len+"'><input type='text' value='"+new_receivedby+"' name='Item_Receivedby[]'></td>" +
      "<td id='qty_row"+table_len+"'>"+new_qty +" <input type='text' name='Item_Quantity[]'></td>" +
@@ -36,11 +34,10 @@ function add_row()
      "<td id='unit_row"+table_len+"'><input type='text' value='"+new_unit+"' name='Item_Unit[]'></td>" +
      "<td id='cost_row"+table_len+"'><input type='text' value='"+new_cost+"' name='Item_Cost[]'></td>" +
      "<td id='expdate_row"+table_len+"'><input type='text' value='"+new_expdate+"' name='Item_Expirationdate[]'></td>" +
-     "<td> <input type='button' value='Delete' class='delete' onclick='delete_row("+table_len+")'></td></tr>";
+     "<td> <input type='button' value='Delete' class='btn btn-danger' onclick='delete_row("+table_len+")'></td></tr>";
 
  document.getElementById("new_itemname").value="";
  document.getElementById("new_description").value="";
- document.getElementById("new_accountcode").value="";
  document.getElementById("new_or").value="";
  document.getElementById("new_receivedby").value="";
  document.getElementById("new_qty").value="";
