@@ -20,7 +20,6 @@
                   <th> Unit Cost</th>
                   <th> Employee</th>
                   <th>Reason</th>
-                  <th>Quantity</th>
                   <th>User</th>
                   <th> Status</th>
                 </tr>
@@ -37,7 +36,6 @@
                     <th> Unit Cost</th>
                     <th> Employee</th>
                     <th>Reason</th>
-                    <th>Quantity</th>
                     <th>User</th>
                     <th> Status</th>
                 </tr
