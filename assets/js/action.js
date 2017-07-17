@@ -1,6 +1,11 @@
 /**
  * Created by hpb on 7/15/2017.
  */
+$(document).ready(function() {
+    $('#example1').DataTable({responsive: true});
+
+} );
+
 
 $(document).on("click", ".open-modal-action", function () {
     var item_id = $(this).data('id');
@@ -147,7 +152,62 @@ function get_item_details(id) {
         },
 
     });
-    $('#view_custodian').modal('show');
+    $('#view').modal('show');
+}
+var save_method; //for save method string
+
+function edit_inventory(id)
+{
+    save_method = 'update';
+
+    //Ajax Load data from ajax
+    $.ajax({
+        url : 'inventory/edit/' + id,
+        type: "GET",
+        dataType: "JSON",
+        success: function(data)
+        {
+            $.each(data, function(i, item) {
+                $('[name="item_id"]').val(data[i].item_id);
+                $('[name="item_name"]').val(data[i].item_name);
+                $('[name="desc"]').val(data[i].item_description);
+                $('[name="unit"]').val(data[i].unit);
+                $('[name="qty"]').val(data[i].quantity);
+            });
+            $('#edit').modal('show'); // show bootstrap modal when complete loaded
+
+        },
+        error: function (jqXHR, textStatus, errorThrown)
+        {
+            alert('Error get data from ajax');
+        }
+    });
+}
+function save()
+{
+    var url;
+    if(save_method === 'update')
+
+        url = 'admin/edit/item_update';
+
+
+    // ajax adding data to database
+    $.ajax({
+        url : url,
+        type: "POST",
+        data: $('#form').serialize(),
+        dataType: "JSON",
+        success: function(data)
+        {
+            //if success close modal and reload ajax table
+            $('#edit').modal('hide');
+            location.reload();// for reload a page
+        },
+        error: function (jqXHR, textStatus, errorThrown)
+        {
+            alert('Error adding / update data');
+        }
+    });
 }
 
 

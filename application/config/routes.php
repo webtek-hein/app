@@ -9,6 +9,6 @@ $route['(:any)/login'] = 'login/logout';
 
 $route['default_controller'] = 'login';
 $route['(:any)/dashboard'] = '';
-
+$route['(:any)/inventory'] = 'inventory';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

@@ -11,7 +11,6 @@ class Department extends CI_Controller {
 	public function index()
 	{
 		$data['departments'] = $this->inventorymodel->get_department_list();
-
         $this->load->view('templates/header');
         $this->load->view('department',$data);
         $this->load->view('modals/summaryofitems');
@@ -29,6 +28,7 @@ class Department extends CI_Controller {
         $data = array();
         foreach ($dept_item as $list) {
             $row = array();
+            $row[] = $list['department'];
             $row[] = $list['item_name'];
             $row[] = $list['account_code'];
             $row[] = $list['official_receipt_no'];

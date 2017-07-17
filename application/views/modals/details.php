@@ -1,5 +1,5 @@
       <!-- Modal-->
-                    <div class="modal fade" id="view_custodian" role="dialog">
+                    <div class="modal fade" id="view" role="dialog">
                     <div class="container" style="background-color:white; width:1400px; height: 500px; margin-top: 100px;">
                     
                       <!-- Modal content-->

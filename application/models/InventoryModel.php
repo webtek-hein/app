@@ -209,7 +209,7 @@ class InventoryModel extends CI_Model {
 
     public function get_department_item($deptid)
     {
-        $this->db->select('item_det_id, serial, item.item_id as itemid, item_detail.dist_id as distid, item_name, account_code, official_receipt_no, del_date, distrib_date, distribution.receivedby AS receivedby, unit_cost');
+        $this->db->select('department,item_det_id, serial, item.item_id as itemid, item_detail.dist_id as distid, item_name, account_code, official_receipt_no, del_date, distrib_date, distribution.receivedby AS receivedby, unit_cost');
         $this->db->join('distribution','distribution.dept_id = department.dept_id','left');
         $this->db->join('item_detail','item_detail.dist_id = distribution.dist_id','left');
         $this->db->join('item','item_detail.item_id = item.item_id','left');

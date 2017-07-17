@@ -10,146 +10,174 @@ class Inventory extends CI_Controller {
     public function index()
     {
 
+        $position = $this->session->userdata['logged_in']['position'];
+
         $data['accountcodes'] = $this->InventoryModel->get_ac_list();
         $data['item'] = $this->InventoryModel->get_inventory_list();
         $data['department'] = $this->InventoryModel->get_department_list();
 
         $this->load->view('templates/header');
-        $this->load->view('custodian/inventory');
-        $this->additem();
-        $this->subtractquantity();
-        $this->addquantity();
-        $this->itemdetail();
+        if($position === 'department head'){
+            $this->load->view('department_head/inventorylist');
+        }else{
+            $this->load->view('inventory');
+        }
+        $this->load->view('modals/additem', $data);
+        $this->load->view('modals/addquantity', $data);
+        $this->load->view('modals/subtractquantity', $data);
+        if($position === 'admin' ){
+            $this->load->view('modals/edit',$data);
+        }
+        $this->load->view('modals/addbulk');
+        $this->load->view('modals/details');
         $this->load->view('templates/footer');
+
 
     }
     public function inventory_list()
     {
         $inventory = $this->InventoryModel->get_inventory_list();
         $data = array();
+        $button = ' ';
+
+        $position = $this->session->userdata['logged_in']['position'];
+
+
         foreach ($inventory as $list) {
             $row = array();
             $row[] = $list['item_name'];
             $row[] = $list['item_description'];
-            $row[] = $list['account_code'];
             $row[] = $list['quantity'];
             $row[] = $list['unit'];
-            $row[] = "<button type=\"button\" class=\"open-modal-action fa fa-plus\" data-toggle=\"modal\" data-target=\"#addqty\"></button>".
-                     "<button type=\"button\" class=\"open-modal-action fa fa-minus\" data-toggle=\"modal\" data-target=\"#subqty\"></button>".
-                     "<button class=\"open-modal-action fa fa-info\" data-toggle=\"modal\" data-target=\"#view\"></button> ";
+            if($position === 'admin'){
+                $button = "<button type=\"button\" class=\"btn btn-primary open-modal-action fa fa-plus\" data-id='$list[item_id]' data-toggle=\"modal\" data-target=\"#addqty\"></button>".
+                    "<button type=\"button\" class=\"btn btn-danger open-modal-action fa fa-minus\" data-id='$list[item_id]' onclick=\"subtract_quantity(". $list['item_id'] .")\"></button>".
+                    " <button class=\"btn btn-warning open-modal-action fa fa-pencil\" onclick=\"edit_inventory('$list[item_id]')\"></button>".
+                    " <button class=\"btn btn-default open-modal-action fa fa-info\" onclick=\"get_item_details(". $list['item_id'] .")\"></button>";
+            }else if ($position === 'custodian'){
+                $button = "<button type=\"button\" data-id = '$list[item_id]' class=\"open-modal-action fa fa-plus\" data-toggle=\"modal\" data-target=\"#addqty\"></button>".
+                    "<button type=\"button\" data-id = '$list[item_id]' class=\"open-modal-action fa fa-minus\" onclick=\"subtract_quantity(". $list['item_id'] .")\"></button>".
+                    "<button class=\"open-modal-action fa fa-info\" onclick=\"get_item_details(". $list['item_id'] .")\"></button> ";
+            }else{
+                $button = " <button class=\"btn btn-default open-modal-action fa fa-info\" onclick=\"get_item_details(". $list['item_id'] .")\"></button>";
+            }
+            $row[] = $button;
             $data[] = $row;
-           
+
+        }
+        $list = array('data'=>$data);
+        echo json_encode($list);
+    }
+    public function edit($id)
+    {
+        $data = $this->InventoryModel->get_by_id($id);
+        echo json_encode($data);
+    }
+    public function item_update()
+    {
+        $data = array(
+            'item_name' => $this->input->post('item_name'),
+            'item_description' => $this->input->post('desc'),
+            'unit' => $this->input->post('unit'),
+            'quantity' => $this->input->post('qty'),
+        );
+        $this->InventoryModel->item_update(array('item_id' => $this->input->post('item_id')), $data);
+        echo json_encode(array("status" => TRUE));
+    }
+    public function additem()
+    {
+        $data1 = array(
+            'item_name' => $this->input->post('Item_Name'),
+            'item_description' => $this->input->post('Description'),
+            'quantity' => $this->input->post('Item_Quantity'),
+            'unit' => $this->input->post('Unit'),
+            'item_type' => $this->input->post('Type')
+        );
+        $data2 = array(
+            'official_receipt_no' => $this->input->post('OfficialReceipt'),
+            'receivedby' => $this->input->post('ReceivedBy'),
+            'exp_date' => $this->input->post('ExpirationDate'),
+            'del_date' => $this->input->post('datedelivered'),
+            'date_rec' => $this->input->post('datereceived'),
+            'supplier' => $this->input->post('Supplier_Name'),
+            'unit_cost' => $this->input->post('Cost')
+        );
+        $data3 = array('user_id' => $this->session->userdata['logged_in']['userid']);
+        $this->InventoryModel->add_item($data1,$data2,$data3);
+        header('Location: '. base_url() . 'inventory');
+    }
+    public function addquantity()
+    {
+        $item_id=$this->input->POST('item_id');
+        $data1 = $this->input->POST('Item_Quantity1');
+        $data2 = array(
+            'official_receipt_no' => $this->input->post('Official_Receipt1'),
+            'receivedby' => $this->input->post('Received_By1'),
+            'exp_date' => $this->input->post('Expiration_Date1'),
+            'del_date' => $this->input->post('datedelivered1'),
+            'date_rec' => $this->input->post('datereceived1'),
+            'supplier' => $this->input->post('Supplier_Name1'),
+            'unit_cost' => $this->input->post('Unit_Cost1'),
+            'item_id' => $this->input->post('item_id'),
+        );
+        $data3 = array('user_id' => $this->session->userdata['logged_in']['userid']);
+        $this->InventoryModel->add_quantity($data1,$data2,$item_id,$data3);
+        header('Location:'.base_url() . 'inventory');
+    }
+    public function subtractquantity(){
+        $firstname = ($this->session->userdata['logged_in']['firstname']);
+        $lastname = ($this->session->userdata['logged_in']['lastname']);
+        $data['department'] = $this->InventoryModel->get_department_list();
+
+        $item_id = $this->input->post('item_id');
+        $data['quantitycount'] = $this->InventoryModel->get_item_quantity($item_id);
+        $data1 = $this->input->post('Quantity');
+        $data2 =array(
+            'quantity' => $data1,
+            'distrib_date' => $this->input->post('date'),
+            'dept_id' => $this->input->post('department'),
+            'receivedby' => $this->input->post('receivedby'),
+            'account_id' => $this->input->post('AccountCode'),
+            'user_distribute' => $firstname . ' ' . $lastname
+        );
+        $uid = array('user_id' => $this->session->userdata['logged_in']['userid']);
+        $this->InventoryModel->subtract_quantity($data1, $data2, $item_id, $data1,$uid);
+        header('Location:' . base_url() . 'inventory');
+
+    }
+
+    public function itemdetail($id)
+    {
+        $details = $this->InventoryModel->get_item_detail($id);
+        $data = array();
+        foreach ($details as $list) {
+            $row = array();
+            $row[] = $list['serial'];
+            $row[] = $list['exp_date'];
+            $row[] = $list['supplier'];
+            $row[] = $list['item_description'];
+            $row[] = $list['official_receipt_no'];
+            $row[] = $list['del_date'];
+            $row[] = $list['date_rec'];
+            $row[] = $list['receivedby'];
+            $row[] = $list['unit_cost'];
+            $data[] = $row;
         }
         $list = array('data'=>$data);
         echo json_encode($list);
     }
 
-    public function additem()
+    public function get_quantity($id)
     {
-        $data['accountcodes'] = $this->InventoryModel->get_ac_list();
-            $this->load->view('modals/additem', $data);
-            $data1 = array(
-            'item_name' => $this->input->post('Item_Name'),
-            'item_description' => $this->input->post('Description'),
-            'account_id' => $this->input->post('AccountCode'),
-            'quantity' => $this->input->post('Item_Quantity'),
-            'unit' => $this->input->post('Unit'),
-            );
-
-            $data2 = array(
-                'official_receipt_no' => $this->input->post('OfficialReceipt'),
-                'receivedby' => $this->input->post('ReceivedBy'),
-                'exp_date' => $this->input->post('ExpirationDate'),
-                'del_date' => $this->input->post('datedelivered'),
-                'date_rec' => $this->input->post('datereceived'),
-                'supplier' => $this->input->post('Supplier_Name'),
-                'unit_cost' => $this->input->post('Cost')
-            );
-            $this->InventoryModel->add_item($data1,$data2);
-            $data['item'] = $this->InventoryModel->get_inventory_list();
-            header('Location: http://localhost/app/inventory');
-    }
-    public function addquantity()
-    {
-        $data['accountcodes'] = $this->InventoryModel->get_ac_list();
-        
-        $this->form_validation->set_rules('Official_Receipt1', 'Official Receipt', 'required');
-        $this->form_validation->set_rules('Received_By1', 'Received By', 'required');
-        $this->form_validation->set_rules('Item_Quantity1', 'Quantity','required');
-        $this->form_validation->set_rules('Supplier_Name1', 'Supplier','required');
-        $this->form_validation->set_rules('datedelivered1', 'Delivery Date', 'required');
-        $this->form_validation->set_rules('datereceived1', 'Date Received', 'required');
-        $this->form_validation->set_rules('Expiration_Date1', 'Expiration Date', 'required');
-        $this->form_validation->set_rules('Unit_Cost1', 'Cost', 'required');
-        $this->form_validation->set_rules('Supplier_Name1', 'Supplier Name','required');
-        $this->form_validation->set_rules('datedelivered1', 'Date Delivered', 'required');
-        $this->form_validation->set_rules('datereceived1', 'Date Received', 'required');
-        $this->form_validation->set_rules('Unit_Cost1', 'Cost', 'required');
-        $this->form_validation->set_rules('Expiration_Date1', 'Expiration Date', 'required');
-        if ($this->form_validation->run() === FALSE)
-        {
-            $this->load->view('modals/addquantity', $data);
+        $quantity = $this->InventoryModel->get_item_quantity($id);
+        $data = array();
+        foreach ($quantity as $list) {
+            $row = array();
+            $row[] = $list['quantity'];
+            $data[] = $row;
         }
-        else
-        {
-            $data1 = $this->input->POST('Item_Quantity1');
-            $data1 = $this->input->post('Item_Quantity1');
-            $data2 = array(
-                'official_receipt_no' => $this->input->post('Official_Receipt1'),
-                'receivedby' => $this->input->post('Received_By1'),
-                'exp_date' => $this->input->post('Expiration_Date1'),
-                'del_date' => $this->input->post('datedelivered1'),
-                'date_rec' => $this->input->post('datereceived1'),
-                'supplier' => $this->input->post('Supplier_Name1'),
-                'unit_cost' => $this->input->post('Unit_Cost1')
-            );
-            $data3 = $this->input->post('item_id');
-            $this->InventoryModel->add_quantity($data1,$data2,$data3);
-            $data['item'] = $this->InventoryModel->get_inventory_list();
-            header('Location: http://localhost/app/custodian/inventory');
-        }
-    }
-
-    public function subtractquantity(){
-        $firstname = ($this->session->userdata['logged_in']['firstname']);
-        $lastname = ($this->session->userdata['logged_in']['lastname']);
-        $data['department'] = $this->InventoryModel->get_department_list();
-        if ($this->form_validation->run() === FALSE)
-        {
-            $this->load->view('modals/subtractquantity', $data);
-        }
-        else
-        {
-            $item_id = $this->input->post('item_id');
-            $data['quantitycount'] = $this->InventoryModel->get_item_quantity($item_id);
-            $data1 = $this->input->post('Quantity');
-            $data2 =array(
-                'quantity' => $data1,
-                'distrib_date' => $this->input->post('date'),
-                'dept_id' => $this->input->post('department'),
-                'receivedby' => $this->input->post('receivedby'),
-                //temp
-                'user_distribute' => $firstname . ' ' . $lastname
-                );
-            $this->InventoryModel->subtract_quantity($data1, $data2, $item_id, $data1);
-            //$data['item'] = $this->InventoryModel->get_inventory_list();
-            header('Location: http://localhost/app/custodian/inventory');
-        }
-    }
-
-    public function itemdetail()
-    {
-        $item_id = $this->input->post('item_id');
-        $data['item_detail'] = $this->InventoryModel->get_item_detail($item_id);
-        echo json_encode($data['item_detail']);
-        $this->load->view('modals/itemdetails',$data);
-    }
-
-    public function get_quantity()
-    {
-        $item = $this->input->post('item_id');
-        $data['quantitycount'] = $this->InventoryModel->get_item_quantity($item);
-
-        $this->load->view('modals/subtractquantity',$data);
+        $list = array('data'=>$data);
+        echo json_encode($list);
     }
 }
+?>

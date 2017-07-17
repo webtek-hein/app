@@ -1,4 +1,4 @@
-<?php
+    <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Edit extends CI_Controller
@@ -36,7 +36,6 @@ class Edit extends CI_Controller
         $data = array(
             'item_name' => $this->input->post('item_name'),
             'item_description' => $this->input->post('desc'),
-            'account_id' => $this->input->post('accountcode'),
             'unit' => $this->input->post('unit'),
             'quantity' => $this->input->post('qty'),
         );

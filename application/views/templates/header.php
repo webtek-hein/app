@@ -129,7 +129,7 @@ if (isset($this->session->userdata['logged_in'])) {
                 </li>
 
                 <li class="treeview">
-                    <a href="<?php echo base_url(). $position. '/' ?>inventory">
+                    <a href="<?php echo base_url()?>inventory">
                         <i class="fa fa-book"></i> <span>Inventory</span>
                     </a>
                 </li>
@@ -145,7 +145,7 @@ if (isset($this->session->userdata['logged_in'])) {
 
 
                 <li class="treeview">
-                    <a href="<?php echo base_url(). $position. '/' ?>returned">
+                    <a href="<?php echo base_url()?>returned">
                         <i class="fa fa-reply"></i> <span>Return</span>
                     </a>
                 </li>
