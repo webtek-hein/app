@@ -10,6 +10,7 @@
        
 </head>
 <body>
+
 <h1><center> SIGN UP</center></h1>
 		<?php echo validation_errors(); ?>
 		<?php echo form_open('signup'); ?>
@@ -43,19 +44,39 @@
 					<td><input type="password" class="InputBox" name="confirm_password" value="" required="required"></td>
 				</tr>
 				<tr>
-
-					<td>Type</td>
+				<script>
+					function test() {
+    					if (document.getElementById('type').value == 'Department Head') {
+        					document.getElementById('extra').style.display  = 'block';
+    					} else {
+        					document.getElementById('extra').style.display = 'none';
+   						}
+					}
+				</script>
+					<td>Position</td>
 					<td>
-					<select class="type" name="type">
-					  <option value="Warehouse Officer">Custodian</option>
-					  <option value="Department Head">Department Head</option>
+						<select id="type" name="type"  onclick='test()'>
+ 						<option value="Warehouse Officer">Custodian</option>
+					  <option value="Department Head">Department Head<a/option>
 					  <option value="Admin">Admin</option>
+ 				</select>
+					
+				<tr>
 
+				<td>Departments</td>
+				<td>
+					<select id="extra" name="department" style="display:none;">
+    				<option class="option" value="NULL">Departments</option>
+          				<?php foreach ($departments as $dept): ?>
+                		<option class="option" value="<?php echo $dept['dept_id'] ?>"><?php echo $dept['res_center_code'] . ' ' . $dept['department'] ?></option>
+          				<?php endforeach; ?>
 					</select>
+        		</td>
+				</tr>
 					</td>
 				</tr>
 				<tr>
-					<td><input type="submit" class="btn btn-primary btn-block btn-large" name="cancel" value="Cancel" ></td>
+					<td><a href="index.php" class="btn btn-primary btn-block btn-large" style="text-decoration: none">Cancel</a></td>
 					<td><input type="submit" class="btn btn-primary btn-block btn-large" name="createaccount" value="Register" ></td>
 				</tr>
 				
