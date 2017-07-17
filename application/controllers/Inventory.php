@@ -109,16 +109,28 @@ class Inventory extends CI_Controller {
 
     public function addbulk()
     {
-        for($i = 0;$i < count($this->input->post('Item_Name')); $i++)
+        for($i = 0;$i < count($this->input->post('Item_Name')); $i++) {
 
-            $batch[] = array(
-                'item_name' =>$this->input->post('Item_Name')[$i],
-                'quantity'=>$this->input->post('Item_Quantity')[$i],
-
+            $data1 = array(
+                'item_name' => $this->input->post('Item_Name')[$i],
+                'item_description' => $this->input->post('Item_Description')[$i],
+                'quantity' => $this->input->post('Item_Quantity')[$i],
+                'unit' => $this->input->post('Item_Unit')[$i],
+                'item_type' => $this->input->post('Item_Type')[$i]
             );
-        print_r($batch);
-        $this->InventoryModel->add_bulk($batch);
-        header('Location:'.base_url().'inventory');
+            $data2 = array(
+                'official_receipt_no' => $this->input->post('Item_OfficialReceipt')[$i],
+                'receivedby' => $this->input->post('Item_Receivedby')[$i],
+                'exp_date' => $this->input->post('Item_Expirationdate')[$i],
+                'del_date' => $this->input->post('Item_Deliverydate')[$i],
+                'date_rec' => $this->input->post('Item_Datereceived')[$i],
+                'supplier' => $this->input->post('Item_Supplier')[$i],
+                'unit_cost' => $this->input->post('Item_Cost')[$i]
+            );
+            $data3 = array('user_id' => $this->session->userdata['logged_in']['userid']);
+            $this->InventoryModel->add_bulk($data1, $data2, $data3);
+        }
+        header('Location: '. base_url() . 'inventory');
     }
 
     public function addquantity()
