@@ -26,14 +26,14 @@ function add_row()
      "<td id='description_row"+table_len+"'><input type='text' value='"+new_description+"' name='Item_Description[]' required='required' style='width:150px;'></td>" +
      "<td id='or_row"+table_len+"'><input type='text' value='"+new_or+"' name='Item_OfficialReceipt[]' required='required' style='width:150px;'></td>" +
      "<td id='receivedby_row"+table_len+"'><input type='text' value='"+new_receivedby+"' name='Item_Receivedby[]' required='required' style='width:150px;'></td>" +
-     "<td id='qty_row"+table_len+"'> <input type='number' min = 0 value='"+new_qty+"' name='Item_Quantity[]' required='required' style='width:150px;'></td>" +
+     "<td id='qty_row"+table_len+"'> <input type='number' min = 0 value='"+new_qty+"' name='Item_Quantity[]' required='required' style='width:80px;'></td>" +
      "<td id='supplier_row"+table_len+"'><input type='text' value='"+new_supplier+"' name='Item_Supplier[]' required='required' style='width:150px;'></td>" +
-     "<td id='type_row"+table_len+"'><input type='text' value='"+new_type+"' name='Item_Type[]' required='required' style='width:150px;'></td>" +
-     "<td id='deldate_row"+table_len+"'><input type='date' value='"+new_deldate+"' name='Item_Deliverydate[]' required='required' style='width:150px;'></td>" +
-     "<td id='datereceived_row"+table_len+"'><input type='date' value='"+new_datereceived+"' name='Item_Datereceived[]' required='required' style='width:150px;'></td>" +
-     "<td id='unit_row"+table_len+"'><input type='text' value='"+new_unit+"' name='Item_Unit[]' required='required' style='width:150px;'></td>" +
-     "<td id='cost_row"+table_len+"'><input type='text' value='"+new_cost+"' name='Item_Cost[]' required='required' style='width:150px;'></td>" +
-     "<td id='expdate_row"+table_len+"'><input type='date' value='"+new_expdate+"' name='Item_Expirationdate[]' required='required' style='width:150px;'></td>" +
+     "<td id='type_row"+table_len+"'><input type='text' value='"+new_type+"' name='Item_Type[]' required='required' style='width:80px;'></td>" +
+     "<td id='deldate_row"+table_len+"'><input type='date' value='"+new_deldate+"' name='Item_Deliverydate[]' required='required' style='width:140px;'></td>" +
+     "<td id='datereceived_row"+table_len+"'><input type='date' value='"+new_datereceived+"' name='Item_Datereceived[]' required='required' style='width:140px;'></td>" +
+     "<td id='unit_row"+table_len+"'><input type='text' value='"+new_unit+"' name='Item_Unit[]' required='required' style='width:80px;'></td>" +
+     "<td id='cost_row"+table_len+"'><input type='text' value='"+new_cost+"' name='Item_Cost[]' required='required' style='width:80px;'></td>" +
+     "<td id='expdate_row"+table_len+"'><input type='date' value='"+new_expdate+"' name='Item_Expirationdate[]' required='required' style='width:140px;'></td>" +
      "<td> <input type='button' value='Delete' class='btn btn-danger' onclick='delete_row("+table_len+")'></td></tr>";
 
  document.getElementById("new_itemname").value="";
