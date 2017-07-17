@@ -63,7 +63,7 @@
 				<tr>
 				<td></td>
 				<td>
-					<select  id="extra" name="extra" style="display:none;">
+					<select  id="extra" name="dment" style="display:none;">
     				<option value="NULL">Choose Department</option>
           				<?php foreach ($departments as $dept): ?>
                 		<option class="option" value="<?php echo $dept['dept_id'] ?>"><?php echo $dept['res_center_code'] . ' ' . $dept['department'] ?></option>
