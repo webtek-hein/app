@@ -7,13 +7,13 @@
         <?php echo validation_errors(); ?>
         <?php echo form_open('inventory/addbulk'); ?>
         <!-- Modal content-->
-        <div class="container" style="background-color:white; width:2400px; height: auto; size:50px;">
+        <div class="container" style="background-color:white; width:2800px; height: auto; size:50px;">
             <h4 class="modal-title" align="center"><b>Add Many Items<b></h4>
 
             <div class="modal-body">
 
                 <div id="wrapper">
-                    <table align='center' cellspacing=2 cellpadding=5 id="data_table" >
+                    <table align='center' cellspacing=2 cellpadding=5 id="data_table" class="table table-bordered table-striped" >
                         <tr>
                             <th >Item Name</th>
                             <th>Description</th>
@@ -39,16 +39,13 @@
                             <td><input type="text" id="new_qty" name="Item_Quantity[]"></td>
                             <td><input type="text" id="new_supplier" name="Item_Supplier[]"></td>
                             <td><input type="text" id="new_type" name="Item_Type[]"></td>
-                            <td><input type="text" id="new_deldate" name="Item_Deliverydate[]"></td>
-                            <td><input type="text" id="new_datereceived" name="Item_Datereceived[]"></td>
+                            <td><input type="date" id="new_deldate" name="Item_Deliverydate[]"></td>
+                            <td><input type="date" id="new_datereceived" name="Item_Datereceived[]"></td>
                             <td><input type="text" id="new_unit" name="Item_Unit[]"></td>
                             <td><input type="text" id="new_cost" name="Item_Cost[]"></td>
-                            <td><input type="text" id="new_expdate" name="Item_Expirationdate[]"></td>
+                            <td><input type="date" id="new_expdate" name="Item_Expirationdate[]"></td>
                             <td><input type="button" class="add" onclick="add_row();" value="Add Row"></td>
                         </tr>
-
-
-
 
                     </table>
                 </div>
