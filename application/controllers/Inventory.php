@@ -106,21 +106,6 @@ class Inventory extends CI_Controller {
         $this->InventoryModel->add_item($data1,$data2,$data3);
         header('Location: '. base_url() . 'inventory');
     }
-
-    public function addbulk()
-    {
-        for($i = 0;$i < count($this->input->post('Item_Name')); $i++)
-
-            $batch[] = array(
-                'item_name' =>$this->input->post('Item_Name')[$i],
-                'quantity'=>$this->input->post('Item_Quantity')[$i],
-
-            );
-        print_r($batch);
-        $this->InventoryModel->add_bulk($batch);
-        header('Location:'.base_url().'inventory');
-    }
-
     public function addquantity()
     {
         $item_id=$this->input->POST('item_id');
