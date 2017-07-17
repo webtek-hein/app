@@ -13,6 +13,9 @@ $(document).on("click", ".open-modal-action", function () {
 
     var item = $(this).data('id');
     $(".modal-body #dist-id").val( item );
+
+    var return_id = $(this).data('id');
+    $(".modal-body #return-id").val( return_id );
 });
 
 
@@ -139,8 +142,17 @@ function subtract_quantity(id) {
 
 }
 
+function return_no_action(id) {
+    $.ajax({
+        url: 'returned/no_action/' + id,
+        type:"POST",
+        dataType: 'json',
+        success: function(){
+            alert('success');
+        },
+    });
 
-
+}
 
 function get_item_details(id) {
     $('#details').DataTable({

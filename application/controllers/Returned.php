@@ -6,11 +6,14 @@ class Returned extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('InventoryModel');
+        $this->load->model('return_model');
     }
 	public function index()
 	{
+        $data['accountcodes'] = $this->InventoryModel->get_ac_list();
 		$this->load->view('templates/header');
 		$this->load->view('custodian/return');
+        $this->load->view('modals/replace', $data);
 		$this->load->view('templates/footer');
 
 	}
@@ -29,7 +32,8 @@ class Returned extends CI_Controller {
                 $row[] = $list['department'];
                 $row[] = $list['reason'];
                 $row[] = $list['item_status'];
-                $row[] = '';
+                $row[] = "<button type=\"button\" data-id = '$list[return_id]' class=\"open-modal-action\" data-toggle=\"modal\" data-target=\"#replacemodal\">Replace</button>".
+                    "<button type=\"button\" class=\"open-modal-action\" onclick=\"return_no_action(". $list['return_id'] .")\">No Action</button>";
         
 
                 $data[] = $row;
@@ -37,5 +41,30 @@ class Returned extends CI_Controller {
             }
             $list = array('data'=>$data);
             echo json_encode($list);
+    }
+
+    public function no_action($id)
+    {
+        $this->return_model->return_no_action($id);
+        header('Location: '. base_url() . 'returned');
+    }
+
+    public function replace()
+    {
+        $firstname = ($this->session->userdata['logged_in']['firstname']);
+        $lastname = ($this->session->userdata['logged_in']['lastname']);
+        $return_id = $this->input->post('return_id');
+        $dept_id = $this->return_model->get_dept_id($return_id);
+        $data =array(
+            'quantity' => 1,
+            'distrib_date' => $this->input->post('date'),
+            'dept_id' => $dept_id,
+            'receivedby' => $this->input->post('receivedby'),
+            'account_id' => $this->input->post('AccountCode'),
+            'user_distribute' => $firstname . ' ' . $lastname
+        );
+        $uid = array('user_id' => $this->session->userdata['logged_in']['userid']);
+        $this->return_model->return_replace($return_id, $data, $uid);
+        header('Location: '. base_url() . 'returned');
     }
 }
