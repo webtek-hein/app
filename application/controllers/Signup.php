@@ -21,7 +21,8 @@ class Signup extends CI_Controller {
         $this->form_validation->set_rules('Password', 'Password', 'required');
         $this->form_validation->set_rules('confirm_password', 'Confirm Password', 'required|matches[Password]');
         $this->form_validation->set_rules('type', 'User Type', 'required');
-        
+        $this->form_validation->set_rules('dment', 'Department', 'required');
+
         if ($this->form_validation->run() === FALSE)
         {
             $this->load->view('signup',$data);
@@ -35,7 +36,8 @@ class Signup extends CI_Controller {
             'contact_no' => $this->input->post('contactno'),
             'username' => $this->input->post('Username'),
             'password' => $this->input->post('Password'),
-            'position' => $this->input->post('type')
+            'position' => $this->input->post('type'),
+            'dept_id' => $this->input->post('dept_id')
             );
 
             $this->signup_model->register($data);
