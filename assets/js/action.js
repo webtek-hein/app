@@ -128,7 +128,6 @@ function subtract_quantity(id) {
         dataType: 'json',
         success: function(data){
             $('input[name="Quantity"]').attr('max', data.data)
-            //alert(data.data);
             $('#subqty').modal('show');
         },
     });
@@ -154,7 +153,7 @@ function get_item_details(id) {
         "destroy": true,
         "ajax": {
             "url": 'inventory/itemdetail/' + id,
-            "type": "POST",
+            "type": "GET",
         },
     });
    $('#details').on( 'click', 'tr :first-child', function () {
@@ -165,7 +164,6 @@ function get_item_details(id) {
        $(this).blur(function () {
             serial = $(this).text();
            if(oldData != serial) {
-               alert("ajax");
                $.ajax({
                    type: "POST",
                    url: 'inventory/set_serial/' + id,

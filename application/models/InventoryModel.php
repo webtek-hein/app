@@ -265,8 +265,8 @@ class InventoryModel extends CI_Model {
     {
         $this->db->where('item_id',$id);
         $this->db->where('serial',null,false);
-        $this->db->limit(1);
         $this->db->set('serial',$data);
+        $this->db->limit(1);
         $this->db->update('item_detail');
     }
 }
