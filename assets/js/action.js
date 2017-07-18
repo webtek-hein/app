@@ -139,7 +139,9 @@ function return_no_action(id) {
     $.ajax({
         url: 'returned/no_action/' + id,
         type:"POST",
-        dataType: 'json',
+        success: function() {
+            location.href = window.location.origin + "/app/returned"
+        }
     });
 
 }

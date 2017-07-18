@@ -46,7 +46,6 @@ class Returned extends CI_Controller {
     public function no_action($id)
     {
         $this->return_model->return_no_action($id);
-        header('Location: '. base_url() . 'returned');
     }
 
     public function replace()
