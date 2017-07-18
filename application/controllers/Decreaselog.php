@@ -18,7 +18,14 @@ class Decreaselog extends CI_Controller {
 	}
     public function decrease_log_list()
     {
-        $decrease = $this->inventorymodel->get_decrease_log();
+        $position = $this->session->userdata['logged_in']['position'];
+        $user_id = $this->session->userdata['logged_in']['userid'];
+
+        if($position == 'admin'){
+            $decrease = $this->inventorymodel->get_decrease_log();
+        }else{
+            $decrease = $this->inventorymodel->get_decrease_log_per_user($user_id);
+        }
         $data = array();
         foreach ($decrease as $list) {
             $row = array();

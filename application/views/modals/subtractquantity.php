@@ -44,7 +44,7 @@
                     </tr>
                     <tr>
                         <td>Date of Distribution</td>
-                        <td><input type="date" class="date" name="date" value=""></td>
+                        <td><input type="date" class="date" name="date" value="" required="required"></td>
                     </tr>
                     <tr>
                         <td>Usage</td>
