@@ -171,9 +171,6 @@ function get_item_details(id) {
                    url: 'inventory/set_serial/' + id,
                    data: {'serial':serial},
                    dataType: 'json',
-                   success: function (data) {
-                    alert(data);
-                   }
                });
            }
        });
