@@ -58,6 +58,7 @@
 						<option selected="true" disabled>--Choose Position--</option>
  						<option value="custodian">Custodian</option>
 					  	<option value="department head">Department Head</option>
+					  	<option value="receiver">Receiver</option>
 					    <option value="admin">Admin</option>
 					    </select>
 					 </td>
