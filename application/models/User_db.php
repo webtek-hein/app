@@ -35,6 +35,7 @@ class User_db extends CI_Model {
         $condition = "username =" . "'" . $username . "'";
         $db->select('*');
         $db->from('user');
+        $db->join('department', 'department.dept_id = user.dept_id', 'natural');
         $db->where($condition);
         $db->limit(1);
         $query = $db->get();
