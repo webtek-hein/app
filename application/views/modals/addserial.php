@@ -1,5 +1,5 @@
 <!-- Modal-->
-<div class="modal fade" id="view" role="dialog">
+<div class="modal fade" id="ser" role="dialog">
     <div class="modal-dialog" style="overflow-x:auto; width:auto ">
         <div class="container" style="background-color:white; width:auto; height: auto; size:50px;">
 
@@ -10,18 +10,10 @@
             </div>
             <div class="modal-body" align="center">
                 <div class="box-body" style="overflow-x:auto; width:auto; ">
-                    <table id="details" class="table table-bordered table-striped" width="100%">
+                    <table id="serial" class="table table-bordered table-striped" width="100%">
                         <thead>
                         <tr>
                             <th>Serial #</th>
-                            <th>Expiration Date</th>
-                            <th>Supplier</th>
-                            <th>Description</th>
-                            <th>Official Receipt #</th>
-                            <th>Date Delivered</th>
-                            <th>Date Received</th>
-                            <th>Received By</th>
-                            <th>Unit Cost</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -29,14 +21,6 @@
                         <tfoot>
                         <tr>
                             <th>Serial #</th>
-                            <th>Expiration Date</th>
-                            <th>Supplier</th>
-                            <th>Description</th>
-                            <th>Official Receipt #</th>
-                            <th>Date Delivered</th>
-                            <th>Date Received</th>
-                            <th>Received By</th>
-                            <th>Unit Cost</th>
                         </tr>
                         </tfoot>
                     </table>

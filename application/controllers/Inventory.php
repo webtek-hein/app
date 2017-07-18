@@ -84,6 +84,7 @@ class Inventory extends CI_Controller {
         $this->InventoryModel->item_update(array('item_id' => $this->input->post('item_id')), $data);
         echo json_encode(array("status" => TRUE));
     }
+
     public function additem()
     {
         $data1 = array(
@@ -205,6 +206,15 @@ class Inventory extends CI_Controller {
         }
         $list = array('data'=>$data);
         echo json_encode($list);
+    }
+    public function set_serial($id)
+    {
+        $data = $this->input->post('data');
+        if (isset($data)){
+            echo json_encode("Success");
+        }else{
+            echo json_encode("failed");
+        }
     }
 }
 ?>
