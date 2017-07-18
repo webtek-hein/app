@@ -246,4 +246,10 @@ class InventoryModel extends CI_Model {
         $query = $this->db->get('department');
         return $query->result_array();
     }
+    public function count_no_serial($item_id)
+    {
+        $this->db->select('count(*) as count');
+        $this->db->where('serial',null,false);
+        $this->db->where('item_id',$item_id);
+    }
 }

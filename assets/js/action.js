@@ -34,13 +34,6 @@ $(document).ready(function() {
         },
     });
 
-    $('#quant').keypress(function (e) {
-        var text = String.fromCharCode(e.which);
-        if (text.match(/[e]/)) {
-            return false;
-        }
-    });
-
 
     department = $('#department').DataTable({
         destroy: true,
@@ -146,23 +139,50 @@ function return_no_action(id) {
     $.ajax({
         url: 'returned/no_action/' + id,
         type:"POST",
-        dataType: 'json',
+        success: function() {
+            location.href = window.location.origin + "/app/returned"
+        }
     });
 
 }
 
 function get_item_details(id) {
-    $('#details').DataTable({
+    var serial;
+    var oldData;
+    details = $('#details').DataTable({
         responsive: true,
         "destroy": true,
         "ajax": {
             "url": 'inventory/itemdetail/' + id,
             "type": "POST",
         },
+    });
+   $('#details').on( 'click', 'tr :first-child', function () {
+       $(this).attr('contentEditable', 'true');
+       $(this).focus(function () {
+           oldData = $(this).text();
+       });
+       $(this).blur(function () {
+            serial = $(this).text();
+           if(oldData != serial) {
+               alert("ajax");
+               $.ajax({
+                   type: "POST",
+                   url: 'inventory/set_serial/' + id,
+                   data: serial,
+                   dataType: 'json',
+                   success: function (data) {
+                    alert(data);
+                   }
+               });
+           }
+       });
 
     });
+
     $('#view').modal('show');
 }
+
 var save_method; //for save method string
 
 function edit_inventory(id)
