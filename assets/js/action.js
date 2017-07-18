@@ -145,7 +145,8 @@ function return_no_action(id) {
 }
 
 function get_item_details(id) {
-    var data;
+    var serial;
+    var oldData;
     details = $('#details').DataTable({
         responsive: true,
         "destroy": true,
@@ -156,17 +157,25 @@ function get_item_details(id) {
     });
    $('#details').on( 'click', 'tr :first-child', function () {
        $(this).attr('contentEditable', 'true');
-       var oldData = $(this).text();
-       $(this).blur(function () {
-            data = $(this).text();
+       $(this).focus(function () {
+           oldData = $(this).text();
        });
-        if(oldData != data) {
-            $.ajax({
-                type: "POST",
-                url: 'inventory/set_serial/' + id,
-                data: data,
-            });
-        }
+       $(this).blur(function () {
+            serial = $(this).text();
+           if(oldData != serial) {
+               alert("ajax");
+               $.ajax({
+                   type: "POST",
+                   url: 'inventory/set_serial/' + id,
+                   data: serial,
+                   dataType: 'json',
+                   success: function (data) {
+                    alert(data);
+                   }
+               });
+           }
+       });
+
     });
 
     $('#view').modal('show');

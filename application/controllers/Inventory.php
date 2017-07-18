@@ -209,12 +209,8 @@ class Inventory extends CI_Controller {
     }
     public function set_serial($id)
     {
-        $data = $this->input->post('data');
-        if (isset($data)){
-            echo json_encode("Success");
-        }else{
-            echo json_encode("failed");
-        }
+        $data = json_decode($this->input->post('data'));
+        echo json_encode($data);
     }
 }
 ?>
