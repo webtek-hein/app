@@ -16,7 +16,7 @@ if (isset($this->session->userdata['logged_in'])) {
             <div class="box" style="overflow-x:auto; width:auto;">
                 <div class="box-header">
 
-                    <span class="hidden-xs"><?= $firstname.' '.$lastname?></span>
+
                     <select class="selectdept" name="department" id="depts">
                         <option class="option" value="none">Departments</option>
                         <span class="hidden-xs"><?= $firstname.' '.$lastname?></span>
