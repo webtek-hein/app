@@ -19,7 +19,7 @@ class Returned extends CI_Controller {
 	}
 	public function returned_list()
     {
-            $return = $this->InventoryModel->get_return_log();
+            $return = $this->InventoryModel->get_returned();
             $data = array();
             foreach ($return as $list) {
                 $row = array();

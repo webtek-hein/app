@@ -209,8 +209,9 @@ class Inventory extends CI_Controller {
     }
     public function set_serial($id)
     {
-        $data = $this->input->post('id');
-        var_dump($data);
+        $data = $this->input->post('serial');
+        $this->InventoryModel->set_serial($data, $id);
+
     }
 }
 ?>

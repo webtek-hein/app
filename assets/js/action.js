@@ -169,7 +169,7 @@ function get_item_details(id) {
                $.ajax({
                    type: "POST",
                    url: 'inventory/set_serial/' + id,
-                   data: {'id':serial},
+                   data: {'serial':serial},
                    dataType: 'json',
                    success: function (data) {
                     alert(data);
