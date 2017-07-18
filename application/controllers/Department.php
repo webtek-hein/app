@@ -12,7 +12,11 @@ class Department extends CI_Controller {
 	{
         $position = $this->session->userdata['logged_in']['position'];
 		$data['departments'] = $this->inventorymodel->get_department_list();
-        $this->load->view('templates/header');
+        if($position === 'department head'){
+            $this->load->view('department_head/templates/header');
+        }else{
+            $this->load->view('templates/header');
+        }
         if($position === 'department head'){
             $this->load->view('department_head/department', $data);
         }else{
