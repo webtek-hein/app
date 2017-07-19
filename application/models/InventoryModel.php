@@ -188,14 +188,19 @@ class InventoryModel extends CI_Model {
         $this->db->where('item_id',$itemid);
         $this->db->update('item');
         //update item_detail
-        $counter = 1;
+        /*$counter = 1;
         while ($counter <= $quantity) {
             $this->db->insert('item_detail', $data2);
             $item_det_id = $this->db->insert_id();
             $this->db->where('item_det_id',$item_det_id);
             $this->db->update('logs.increase_log',$userid);
             $counter++;
-        }
+        }*/
+        $this->db->insert_batch($data2);
+        $first_id = $this->db->insert_id();
+        $insert_id = range($first_id,$quantity);
+        $this->db->where_in('item_det_id',$insert_id);
+        $this->db->update('logs.increase_log',$userid);
     }
 
     public function subtract_quantity($data1,$data2,$itemid, $quantity,$uid)
@@ -288,6 +293,7 @@ class InventoryModel extends CI_Model {
         $this->db->join('item_detail','item_detail.dist_id = distribution.dist_id','left');
         $this->db->join('item','item_detail.item_id = item.item_id','left');
         $this->db->join ('account_code','distribution.account_id = account_code.ac_id');
+        $this->db->where('item.quantity !=','0');
         $query = $this->db->get('department');
         return $query->result_array();
     }
