@@ -66,7 +66,7 @@
 				<tr>
 				<td></td>
 				<td>
-					<select  id="dment" name="dment">
+					<select  id="dment" name="dment" style="display:none;">
 						<option selected="true" disabled>--Choose Department--</option>
           				<?php foreach ($departments as $dept): ?>
                 		<option value="<?php echo $dept['dept_id'] ?>"><?php echo $dept['res_center_code'] . ' ' . $dept['department'] ?></option>
