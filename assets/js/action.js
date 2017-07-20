@@ -178,6 +178,18 @@ function get_item_details(id) {
     $('#view').modal('show');
 }
 
+function get_distribution_details(id) {
+    $('#details').DataTable({
+        responsive: true,
+        "destroy": true,
+        "ajax": {
+            "url": 'department/dist_details/' + id,
+            "type": "POST",
+        },
+    });
+    $('#view').modal('show');
+}
+
 var save_method; //for save method string
 
 function edit_inventory(id)
