@@ -5,6 +5,7 @@
     $lastname = ($this->session->userdata['logged_in']['lastname']);
     $position = ($this->session->userdata['logged_in']['position']);
     $department = ($this->session->userdata['logged_in']['department']);
+    $dept_id = ($this->session->userdata['logged_in']['dept_id']);
 ?>
 <script src="<?php echo base_url() ?>assets/js/sort.js"></script>
 <section class="content">
