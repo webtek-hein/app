@@ -27,7 +27,14 @@ class Returned extends CI_Controller {
 	}
 	public function returned_list()
     {
+        $position = $this->session->userdata['logged_in']['position'];
+        $user_id = $this->session->userdata['logged_in']['userid'];
+
+        if($position == 'admin' || $position == 'custodian'){
             $return = $this->InventoryModel->get_returned();
+        }else{
+            $return = $this->InventoryModel->get_return_log_per_user($user_id);
+        }
             $data = array();
             foreach ($return as $list) {
                 $row = array();
