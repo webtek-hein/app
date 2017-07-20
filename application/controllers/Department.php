@@ -22,7 +22,7 @@ class Department extends CI_Controller {
         }else{
             $this->load->view('department',$data);
         }
-        $this->load->view('modals/summaryofitems');
+        $this->load->view('modals/department_item');
         $this->load->view('modals/return');
 		$this->load->view('templates/footer');
 	}
