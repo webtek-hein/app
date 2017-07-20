@@ -30,7 +30,7 @@ class Department extends CI_Controller {
 	public function get_dept_list($id)
     {
         if($id == "none"){
-            $dept_item = $this->inventorymodel->get_distributed_items();
+            $dept_item = $this->inventorymodel->get_summary_items();
         }else{
             $dept_item = $this->inventorymodel->get_department_item($id);
         }
@@ -38,14 +38,12 @@ class Department extends CI_Controller {
         $data = array();
         foreach ($dept_item as $list) {
             $row = array();
+            $row[] = $list['department'];
             $row[] = $list['item_name'];
-            $row[] = $list['account_code'];
-            $row[] = $list['official_receipt_no'];
-            $row[] = $list['del_date'];;
-            $row[] = $list['distrib_date'];
-            $row[] = $list['receivedby'];
-            $row[] = $list['unit_cost'];
-            $row[] = "<button type=\"button\" data-id = '$list[item_det_id]' class=\"open-modal-action\" data-toggle=\"modal\" data-target=\"#returnmodal\">Return</button>";
+            $row[] = $list['item_description'];
+            $row[] = $list['quantity'];;
+            $row[] = $list['unit'];
+            $row[] = "<button type=\"button\" data-id = '$list[item_det_id]' class=\"open-modal-action fa fa-info\" data-toggle=\"modal\" data-target=\"#view\"></button>";
             $data[] = $row;
         }
         $list = array('data'=>$data);
@@ -54,19 +52,17 @@ class Department extends CI_Controller {
 
     public function get_all_dept_list()
     {
-        $dept_item = $this->inventorymodel->get_distributed_items();
+        $dept_item = $this->inventorymodel->get_summary_items();
 
         $data = array();
         foreach ($dept_item as $list) {
             $row = array();
+            $row[] = $list['department'];
             $row[] = $list['item_name'];
-            $row[] = $list['account_code'];
-            $row[] = $list['official_receipt_no'];
-            $row[] = $list['del_date'];;
-            $row[] = $list['distrib_date'];
-            $row[] = $list['receivedby'];
-            $row[] = $list['unit_cost'];
-            $row[] = "<button type=\"button\" data-id = '$list[item_det_id]' class=\"open-modal-action\" data-toggle=\"modal\" data-target=\"#returnmodal\">Return</button>";
+            $row[] = $list['item_description'];
+            $row[] = $list['quantity'];
+            $row[] = $list['unit'];
+            $row[] = "<button type=\"button\" data-id = '$list[item_det_id]' class=\"open-modal-action fa fa-info\" data-toggle=\"modal\" data-target=\"#view\"></button>";
             $data[] = $row;
         }
         $list = array('data'=>$data);

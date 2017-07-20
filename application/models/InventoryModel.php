@@ -260,7 +260,7 @@ class InventoryModel extends CI_Model {
 
     public function get_distributed_items() 
     {
-        $this->db->select('department,item_det_id, serial, item.item_id as itemid, item_detail.dist_id as distid, item_name, concat(account_code," ",description)as account_code, official_receipt_no, del_date, distrib_date, distribution.quantity, distribution.receivedby, unit_cost, unit');
+        $this->db->select('department, item_description, item_det_id, serial, item.item_id as itemid, item_detail.dist_id as distid, item_name, concat(account_code," ",description)as account_code, official_receipt_no, del_date, distrib_date, distribution.quantity, distribution.receivedby, unit_cost, unit');
         $this->db->join('distribution','distribution.dept_id = department.dept_id','left');
         $this->db->join('item_detail','item_detail.dist_id = distribution.dist_id','left');
         $this->db->join('item','item_detail.item_id = item.item_id','left');
@@ -273,7 +273,8 @@ class InventoryModel extends CI_Model {
 
     public function get_department_item($deptid)
     {
-        $this->db->select('department,item_det_id, serial, item.item_id as itemid, item_detail.dist_id as distid, item_name, account_code, official_receipt_no, del_date, distrib_date, distribution.receivedby AS receivedby, unit_cost');
+        $this->db->distinct();
+        $this->db->select('department,item_description, item_det_id, serial, item.item_id as itemid, item_detail.dist_id as distid, item_name, account_code, official_receipt_no, del_date, distrib_date, distribution.quantity, distribution.receivedby AS receivedby, unit_cost, unit');
         $this->db->join('distribution','distribution.dept_id = department.dept_id','left');
         $this->db->join('item_detail','item_detail.dist_id = distribution.dist_id','left');
         $this->db->join('item','item_detail.item_id = item.item_id','left');
@@ -288,7 +289,7 @@ class InventoryModel extends CI_Model {
     public function get_summary_items() 
     {
         $this->db->distinct();
-        $this->db->select('department, item_name, account_code, official_receipt_no, del_date, distrib_date, distribution.quantity AS quantity, distribution.receivedby, unit_cost, unit');
+        $this->db->select('department,item_description, item_det_id, item_name, account_code, official_receipt_no, del_date, distrib_date, distribution.quantity AS quantity, distribution.receivedby, unit_cost, unit');
         $this->db->join('distribution','distribution.dept_id = department.dept_id','left');
         $this->db->join('item_detail','item_detail.dist_id = distribution.dist_id','left');
         $this->db->join('item','item_detail.item_id = item.item_id','left');
