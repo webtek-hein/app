@@ -11,6 +11,7 @@ class Department extends CI_Controller {
 	public function index()
 	{
         $position = $this->session->userdata['logged_in']['position'];
+        $dept_id = $this->session->userdata['logged_in']['dept_id'];
 		$data['departments'] = $this->inventorymodel->get_department_list();
         if($position === 'department head'){
             $this->load->view('department_head/templates/header');
