@@ -1,10 +1,3 @@
-
-<script>
-
-</script>
-
-
-
   <title>sample data</title>
 </head>
 

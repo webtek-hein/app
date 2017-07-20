@@ -7,5 +7,6 @@ class Dashboard extends CI_Controller {
 			$this->load->view('templates/header');
             $this->load->view('dashboard');
 			$this->load->view('templates/footer');
+	        echo json_encode("Success.");
 	}
 }

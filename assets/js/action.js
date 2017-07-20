@@ -233,58 +233,57 @@ function save()
         }
     });
 }
-$(function () {
+function create_chart()
+{
     var chart;
+    // Build the chart
+    $('#items').highcharts({
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false
+        },
+        title: {
+            text: 'Items'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: false
+                },
+                showInLegend: true
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: 'Top 5 items',
+            data: [
+                ['Ballpen',   4],
+                ['Table',       2],
+                ['Bag',    1],
+                ['Paper',     1],
+                ['Laptop',   2]
+            ]
+        }]
+    });
+}
 
     $(document).ready(function () {
 
-        // Build the chart
-        $('#items').highcharts({
-            chart: {
-                plotBackgroundColor: null,
-                plotBorderWidth: null,
-                plotShadow: false
-            },
-            title: {
-                text: 'Items'
-            },
-            tooltip: {
-                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-            },
-            plotOptions: {
-                pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
-                    dataLabels: {
-                        enabled: false
-                    },
-                    showInLegend: true
-                }
-            },
-            series: [{
-                type: 'pie',
-                name: 'Top 5 items',
-                data: [
-                    ['Ballpen',   4],
-                    ['Table',       2],
-                    ['Bag',    1],
-                    ['Paper',     1],
-                    ['Laptop',   2]
-                ]
-            }]
-        });
-    });
-
+        $.ajax({
+            url: 'dashboard',
+            type: 'POST',
+            async: true,
+            dataType: "JSON",
+            success: function(data){
+                console.log(data);
+            }
+        })
 });
 
 
-$.ajax({
-    url: '/dashboard.php'
-    type: 'POST',
-    async: true,
-    dataType: "JSON"
-    success: function(data){
-        console.warn(data);
-        return data;
-    }
-})
