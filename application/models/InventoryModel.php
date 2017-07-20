@@ -269,4 +269,10 @@ class InventoryModel extends CI_Model {
         $this->db->limit(1);
         $this->db->update('item_detail');
     }
+
+    public function get_dashboard()
+    {
+        $this->query->SELECT (quantity FROM item WHERE item_id<=(SELECT (COUNT(quantity)) * (50.00/100.00) FROM item) ORDER BY item_id);
+        return $query->result_array();
+    }
 }
