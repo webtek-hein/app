@@ -198,7 +198,7 @@ class InventoryModel extends CI_Model {
         }*/
         $this->db->insert_batch('item_detail',$data2);
         $first_id = $this->db->insert_id();
-        $insert_id = range($first_id,$quantity);
+        $insert_id = range($first_id,($first_id+($quantity-1)));
         $this->db->where_in('item_det_id',$insert_id);
         $this->db->update('logs.increase_log',$userid);
     }
