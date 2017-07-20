@@ -9,7 +9,15 @@ class Returnlog extends CI_Controller {
     }
 	public function index()
 	{
-		$this->load->view('templates/header');
+        $position = $this->session->userdata['logged_in']['position'];
+
+        if($position === 'department head'){
+            $this->load->view('department_head/templates/header');
+        }else if($position ==='receiver'){
+            $this->load->view('receiver/header');
+        }else{
+            $this->load->view('templates/header');
+        }
 		$this->load->view('returnlog');
 		$this->load->view('templates/footer');
 

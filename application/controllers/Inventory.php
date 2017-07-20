@@ -16,7 +16,11 @@ class Inventory extends CI_Controller {
         $data['item'] = $this->InventoryModel->get_inventory_list();
         $data['department'] = $this->InventoryModel->get_department_list();
 
-        $this->load->view('templates/header');
+        if($position === 'receiver'){
+            $this->load->view('receiver/header');
+        }else{
+            $this->load->view('templates/header');
+        }
         if($position === 'department head'){
             $this->load->view('department_head/inventorylist');
         }else{
