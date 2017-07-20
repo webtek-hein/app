@@ -44,8 +44,8 @@
 				</tr>
 				<tr>
 				<script>
-					function test() {
-    					if (document.getElementById('type').value == 'department head') {
+					function select_dept() {
+    					if (document.getElementById('type').value == 'department head' || document.getElementById('type').value == 'receiver') {
         					document.getElementById('dment').style.display  = 'block';
     					} else {
         					document.getElementById('dment').style.display = 'none';
@@ -54,7 +54,7 @@
 				</script>
 					<td>Position</td>
 					<td>
-						<select id="type" name="type"  onclick='test()'>
+						<select id="type" name="type"  onclick='select_dept()'>
 						<option selected="true" disabled>--Choose Position--</option>
  						<option value="custodian">Custodian</option>
 					  	<option value="department head">Department Head</option>
