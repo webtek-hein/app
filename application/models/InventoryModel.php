@@ -308,7 +308,10 @@ class InventoryModel extends CI_Model {
 
     public function get_dashboard()
     {
-        $this->query->SELECT (quantity FROM item WHERE item_id<=(SELECT (COUNT(quantity)) * (50.00/100.00) FROM item) ORDER BY item_id);
+        $this->db->SELECT ('quantity')
+            $FROM->('item');
+            $where->('item_id<=(SELECT (COUNT(quantity)) * (50.00/100.00) FROM item');
+            $orderby->('item_id');
         return $query->result_array();
     }
 }
