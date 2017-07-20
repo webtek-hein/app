@@ -127,7 +127,7 @@ function subtract_quantity(id) {
         type:"POST",
         dataType: 'json',
         success: function(data){
-            $('input[name="Quantity"]').attr('max', data.data)
+            $('input[name="Quantity"]').attr('max', data.data);
             $('#subqty').modal('show');
         },
     });

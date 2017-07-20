@@ -1,13 +1,10 @@
 <link rel = "stylesheet" type = "text/css" href = "<?php echo base_url() ?>assets/css/dept.css"/>
 <?php
-if (isset($this->session->userdata['logged_in'])) {
     $username = ($this->session->userdata['logged_in']['username']);
     $firstname = ($this->session->userdata['logged_in']['firstname']);
     $lastname = ($this->session->userdata['logged_in']['lastname']);
     $position = ($this->session->userdata['logged_in']['position']);
-} else {
-    header("location: login");
-}
+    $department = ($this->session->userdata['logged_in']['department']);
 ?>
 <script src="<?php echo base_url() ?>assets/js/sort.js"></script>
 <section class="content">
@@ -17,9 +14,11 @@ if (isset($this->session->userdata['logged_in'])) {
                 <div class="box-header">
 
 
-                    <select class="selectdept" name="department" id="depts">
-                        <option class="option" value="none">Departments</option>
-                        <span class="hidden-xs"><?= $firstname.' '.$lastname?></span>
+                  <select class="selectdept" name="department" id="depts">
+                        <option class="option" value="none"> Departments</option>
+                        <?php foreach ($departments as $dept): ?>
+                            <option class="option" value="<?php echo $dept['dept_id'] ?>"><?php echo $dept['res_center_code'] . ' ' . $dept['department'] ?></option>
+                        <?php endforeach; ?>
                     </select>
                     <button type= "button" class="btn btn-success" onclick="summary()">Summary of Items</button>
 

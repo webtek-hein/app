@@ -52,21 +52,6 @@ class InventoryModel extends CI_Model {
         //$db1->update('account_code', $data1, $acid);
         return $this->db->affected_rows();
     }
-    public function get_return_list()
-    {
-
-        /*
-        $query=$db1->select('*')
-                ->join('item_detail', 'item_detail.serial','item_detail.supplier','left')
-                ->join('item','item.item_name','left')
-                ->join('account_code','account_code.account_code','left')
-                ->join('department','department.department','left')
-                ->get('item');
-                return $query->result_array();
-        */
-                
-
-    }
     public function get_increase_log()
     {
 
@@ -77,6 +62,19 @@ class InventoryModel extends CI_Model {
             $this->db->join('inventory.user','logs.increase_log.user_id = inventory.user.user_id','left');
             $query = $this->db->get();
             return $query->result_array();
+
+    }
+    public function get_increase_log_per_user($id)
+    {
+
+        $this->db->Select ('supplier,serial,item_name,date,date_rec,unit_cost,concat(user.first_name," ",user.last_name) as user');
+        $this->db->from('logs.increase_log');
+        $this->db->join('inventory.item_detail','logs.increase_log.item_det_id = inventory.item_detail.item_det_id','left');
+        $this->db->join('inventory.item','inventory.item_detail.item_id = inventory.item.item_id','left');
+        $this->db->join('inventory.user','logs.increase_log.user_id = inventory.user.user_id','left');
+        $this->db->where('logs.increase_log.user_id',$id);
+        $query = $this->db->get();
+        return $query->result_array();
 
     }
 
@@ -94,6 +92,21 @@ class InventoryModel extends CI_Model {
             $query = $this->db->get();
         return $query->result_array();
     }
+    public function get_decrease_log_per_user($id)
+    {
+
+        $this->db->Select('account_code,department,distrib_date,supplier,serial,item_name,date,date_rec,unit_cost,concat(user.first_name," ",user.last_name) as user');
+        $this->db->from('logs.decrease_log');
+        $this->db->join('inventory.item_detail','logs.decrease_log.item_det_id = inventory.item_detail.item_det_id','left');
+        $this->db->join('inventory.item','inventory.item_detail.item_id = inventory.item.item_id','left');
+        $this->db->join('inventory.distribution','inventory.distribution.dist_id = inventory.item_detail.dist_id','left');
+        $this->db->join('inventory.account_code','inventory.distribution.account_id = inventory.account_code.ac_id','left');
+        $this->db->join('inventory.department','inventory.distribution.dept_id = inventory.department.dept_id','left');
+        $this->db->join('inventory.user','logs.decrease_log.user_id = inventory.user.user_id','left');
+        $this->db->where('logs.decrease_log.user_id',$id);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
     public function get_return_log()
     {
 
@@ -105,6 +118,22 @@ class InventoryModel extends CI_Model {
          $this->db->join('inventory.account_code','inventory.account_code.ac_id = inventory.distribution.account_id','left');
         $this->db->join('inventory.department','logs.return_log.dept_id = inventory.department.dept_id','left');
         $this->db->join('inventory.user','logs.return_log.user_id = inventory.user.user_id','left');
+
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    public function get_return_log_per_user($id)
+    {
+
+        $this->db->Select ('return_id, account_code,department,return_person,logs.return_log.status as item_status,supplier,serial,item_name,date,unit_cost,concat(user.first_name," ",user.last_name) as user,reason,inventory.item.quantity');
+        $this->db->from('logs.return_log');
+        $this->db->join('inventory.item_detail','logs.return_log.item_det_id = inventory.item_detail.item_det_id','left');
+        $this->db->join('inventory.item','inventory.item_detail.item_id = inventory.item.item_id','left');
+        $this->db->join('inventory.distribution','inventory.distribution.dist_id = logs.return_log.dist_id','left');
+        $this->db->join('inventory.account_code','inventory.account_code.ac_id = inventory.distribution.account_id','left');
+        $this->db->join('inventory.department','logs.return_log.dept_id = inventory.department.dept_id','left');
+        $this->db->join('inventory.user','logs.return_log.user_id = inventory.user.user_id','left');
+        $this->db->where('logs.return_log.user_id',$id);
 
         $query = $this->db->get();
         return $query->result_array();
@@ -159,14 +188,19 @@ class InventoryModel extends CI_Model {
         $this->db->where('item_id',$itemid);
         $this->db->update('item');
         //update item_detail
-        $counter = 1;
+        /*$counter = 1;
         while ($counter <= $quantity) {
             $this->db->insert('item_detail', $data2);
             $item_det_id = $this->db->insert_id();
             $this->db->where('item_det_id',$item_det_id);
             $this->db->update('logs.increase_log',$userid);
             $counter++;
-        }
+        }*/
+        $this->db->insert_batch('item_detail',$data2);
+        $first_id = $this->db->insert_id();
+        $insert_id = range($first_id,($first_id+($quantity-1)));
+        $this->db->where_in('item_det_id',$insert_id);
+        $this->db->update('logs.increase_log',$userid);
     }
 
     public function subtract_quantity($data1,$data2,$itemid, $quantity,$uid)
@@ -215,10 +249,11 @@ class InventoryModel extends CI_Model {
 
     public function get_item_quantity($item_id)
     {
-        $this->db = $this->load->database('inventory', TRUE);
-        $this->db->select('quantity');
-        $this->db->from('item');
-        $this->db->where('item_id', $item_id);
+        $where = 'serial is not null and dist_id is null and item_status != "defective"';
+        $this->db->select('count(*) as quantity');
+        $this->db->from('item_detail');
+        $this->db->where($where);
+        $this->db->where('item_detail.item_id', $item_id);
         $query = $this->db->get();
         return $query->result_array();
     }
@@ -258,6 +293,7 @@ class InventoryModel extends CI_Model {
         $this->db->join('item_detail','item_detail.dist_id = distribution.dist_id','left');
         $this->db->join('item','item_detail.item_id = item.item_id','left');
         $this->db->join ('account_code','distribution.account_id = account_code.ac_id');
+        $this->db->where('item.quantity !=','0');
         $query = $this->db->get('department');
         return $query->result_array();
     }

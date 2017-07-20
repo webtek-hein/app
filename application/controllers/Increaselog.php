@@ -17,7 +17,14 @@ class Increaselog extends CI_Controller {
 	}
     public function increase_log_list()
     {
-        $increase = $this->inventorymodel->get_increase_log();
+        $position = $this->session->userdata['logged_in']['position'];
+        $user_id = $this->session->userdata['logged_in']['userid'];
+
+        if($position == 'admin'){
+            $increase = $this->inventorymodel->get_increase_log();
+        }else{
+            $increase = $this->inventorymodel->get_increase_log_per_user($user_id);
+        }
         $data = array();
         foreach ($increase as $list) {
             $row = array();

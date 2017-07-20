@@ -16,7 +16,14 @@ class Returnlog extends CI_Controller {
 	}
     public function return_log_list()
     {
-        $return = $this->inventorymodel->get_return_log();
+        $position = $this->session->userdata['logged_in']['position'];
+        $user_id = $this->session->userdata['logged_in']['userid'];
+
+        if($position == 'admin'){
+            $return = $this->inventorymodel->get_return_log();
+        }else{
+            $return = $this->inventorymodel->get_return_log_per_user($user_id);
+        }
         $data = array();
         foreach ($return as $list) {
             $row = array();
