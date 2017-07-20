@@ -13,7 +13,7 @@
                             <option class="option" value="<?php echo $dept['dept_id'] ?>"><?php echo $dept['res_center_code'] . ' ' . $dept['department'] ?></option>
                         <?php endforeach; ?>
                     </select>
-                    <button type= "button" class="btn btn-success" onclick="summary()">Summary of Items</button>
+
 
                     <div class="container" style="overflow-x:auto; width:auto;">
                         <!-- /.box-header -->
@@ -23,13 +23,10 @@
                                 <tr>
                                     <th>Department</th>
                                     <th>Item name</th>
-                                    <th>Account Code</th>
-                                    <th>Official Receipt</th>
-                                    <th>Delivery Date</th>
-                                    <th>Date received</th>
-                                    <th>Received by </th>
-                                    <th>Cost</th>
-                                    <th>Action</th>
+                                    <th>Description</th>
+                                    <th>Quantity</th>
+                                    <th>Unit</th>
+                                    <th>View Item Detail</th>
                                 </tr>
                                 </thead>
                                 <tbody id="dept_refresh">
@@ -38,13 +35,10 @@
                                 <tr>
                                     <th>Department</th>
                                     <th>Item name</th>
-                                    <th>Account Code</th>
-                                    <th>Official Receipt</th>
-                                    <th>Delivery Date</th>
-                                    <th>Date received</th>
-                                    <th>Received by </th>
-                                    <th>Cost</th>
-                                    <th>Action</th>
+                                     <th>Description</th>
+                                    <th>Quantity</th>
+                                    <th>Unit</th>
+                                    <th>View Item Detail</th>
                                 </tr>
                                 </tfoot>
                             </table>
