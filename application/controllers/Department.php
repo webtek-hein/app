@@ -37,7 +37,6 @@ class Department extends CI_Controller {
         $data = array();
         foreach ($dept_item as $list) {
             $row = array();
-            $row[] = $list['department'];
             $row[] = $list['item_name'];
             $row[] = $list['account_code'];
             $row[] = $list['official_receipt_no'];
@@ -59,7 +58,6 @@ class Department extends CI_Controller {
         $data = array();
         foreach ($dept_item as $list) {
             $row = array();
-            $row[] = $list['department'];
             $row[] = $list['item_name'];
             $row[] = $list['account_code'];
             $row[] = $list['official_receipt_no'];
@@ -81,7 +79,6 @@ class Department extends CI_Controller {
         $data = array();
         foreach ($dept_item as $list) {
             $row = array();
-            $row[] = $list['department'];
             $row[] = $list['item_name'];
             $row[] = $list['quantity'];
             $row[] = $list['account_code'];
