@@ -171,7 +171,7 @@ class InventoryModel extends CI_Model {
     public function add_bulk($data1,$data2,$data3)
     {
         // insert new item
-        $this->db->insert('item', $data1);
+        $this->db->insert_batch('item', $data1);
         $itemid = $this->db->insert_id();
         //update item detail table
         $this->db->where('item_id', $itemid);
@@ -196,7 +196,7 @@ class InventoryModel extends CI_Model {
             $this->db->update('logs.increase_log',$userid);
             $counter++;
         }*/
-        $this->db->insert_batch($data2);
+        $this->db->insert_batch('item_detail',$data2);
         $first_id = $this->db->insert_id();
         $insert_id = range($first_id,$quantity);
         $this->db->where_in('item_det_id',$insert_id);
