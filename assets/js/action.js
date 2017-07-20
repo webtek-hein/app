@@ -285,5 +285,31 @@ function create_chart()
             }
         })
 });
-
+//form validations
+    $(document).ready(function () {
+        $( "input[name=Item_Quantity]" ).on("keypress paste",function () {
+            var x = event.charCode;
+            if(x === 101 || x === 46 || x === 45 || x === 43){
+                return false;
+            }
+        });
+        $( "input[name=Cost]" ).on("keypress paste",function () {
+            var x = event.charCode;
+            if(x === 101 ||  x === 45 || x === 43){
+                return false;
+            }
+        });
+        $( "input[id=add_bulk_quant]" ).on("keypress paste",function () {
+            var x = event.charCode;
+            if(x === 101 || x === 46 || x === 45 || x === 43){
+                return false;
+            }
+        });
+        $( "input[id=new_cost]" ).on("keypress paste",function () {
+            var x = event.charCode;
+            if(x === 101 ||  x === 45 || x === 43){
+                return false;
+            }
+        });
+    });
 

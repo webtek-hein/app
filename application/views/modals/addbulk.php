@@ -35,7 +35,7 @@
                             <td><input type="text" id="new_description" name="Item_Description[]" required="required" style="width:150px;"></td>
                             <td><input type="text" id="new_or" name="Item_OfficialReceipt[]" required="required" style="width:150px;"></td>
                             <td><input type="text" id="new_receivedby" name="Item_Receivedby[]" required="required" style="width:150px;"></td>
-                            <td><input type="number" min=0 id="new_qty" name="Item_Quantity[]" required="required" style="width:80px;"></td>
+                            <td><input type="number" id = "add_bulk_quant" min=0 id="new_qty" name="Item_Quantity[]" required="required" style="width:80px;"></td>
                             <td><input type="text" id="new_supplier" name="Item_Supplier[]" required="required" style="width:150px;"></td>
                             <td>
 
