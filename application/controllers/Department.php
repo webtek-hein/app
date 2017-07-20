@@ -115,7 +115,7 @@ class Department extends CI_Controller {
             $row[] = $list['date_rec'];
             $row[] = $list['receivedby'];
             $row[] = $list['unit_cost'];
-            $row[] = "<button type=\"button\" data-id = '$list[item_det_id]' class=\"open-modal-action\" data-toggle=\"modal\" data-target=\"#return\">Return</button>";
+            $row[] = "<button type=\"button\" data-id = '$list[item_det_id]' class=\"open-modal-action\" data-toggle=\"modal\" data-target=\"#returnmodal\">Return</button>";
             $data[] = $row;
         }
         $list = array('data'=>$data);
