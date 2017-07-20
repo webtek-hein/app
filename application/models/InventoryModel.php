@@ -327,4 +327,57 @@ class InventoryModel extends CI_Model {
         return $query->result_array();
     }
 
-}
+    public function dashborad_custodian_ordered_items()
+    {
+        $this->db->SELECT ('concat(last_name,', ',first_name), item_name, quantity,supplier');
+         $this->db->FROM('inventory.user');
+          $this->db->join ('item');
+           $this->db->join ('item_detail');
+            $query = $this->db->get();
+            return $query->result_array();
+
+    }
+
+    public function dashborad_custodian_recieved_items()
+    {
+      $this->db->SELECT ('concat(last_name,', ',first_name), item_name, quantity,supplier');
+         $this->db->FROM('inventory.user');
+          $this->db->join ('item');
+           $this->db-> join ('item_detail');
+            $query = $this->db->get();
+            return $query->result_array();
+    }
+
+     public function dashborad_custodian_returned_items()
+     {
+         $this->db->SELECT('concat(last_name,', ',first_name), item_name, quantity, reason, department');
+          $this->db->FROM('inventory.user');
+          $this->db->join('item');
+         $this->db->join('item_detail');
+           $this->db->join('department');
+            $this->db->join('logs.return_log');
+            $query = $this->db->get();
+            return $query->result_array();
+     }
+
+     public function dashborad_custodian_defected_items()
+     {
+        $this->db->SELECT ('concat(last_name,', ',first_name), item_name, quantity, supplier, reason, department');
+            $this->db->FROM('inventory.user');
+           $this->db->join('item ');
+           $this->db->join('item_detail');
+            $this->db->join('department');
+           $this->db->join('logs.return_log');
+              $query = $this->db->get();
+            return $query->result_array();
+     }
+
+     public function dashboard_custodian_items_remaining()
+     {
+        $this->db->SELECT('official_receipt_no, item_name, quantity, date_rec');
+        $this->db->from('item');
+      $this->db->join('item_detail');
+        $query = $this->db->get();
+        return $query->result_array();
+     }
+    }
