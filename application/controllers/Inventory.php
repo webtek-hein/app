@@ -40,12 +40,18 @@ class Inventory extends CI_Controller {
     }
     public function inventory_list()
     {
-        $inventory = $this->InventoryModel->get_inventory_list();
         $data = array();
         $button = ' ';
 
         $position = $this->session->userdata['logged_in']['position'];
+        $dept_id = $this->session->userdata['logged_in']['dept_id'];
 
+        if($position === 'receiver')
+        {
+            $inventory = $this->InventoryModel->get_distributed_per_departments($dept_id);
+        }else{
+            $inventory = $this->InventoryModel->get_inventory_list();
+        }
 
         foreach ($inventory as $list) {
             $row = array();
