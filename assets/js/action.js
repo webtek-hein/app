@@ -276,7 +276,7 @@ function create_chart()
     $(document).ready(function () {
 
         $.ajax({
-            url: 'dashboard',
+            url: 'dashboard/graph',
             type: 'POST',
             async: true,
             dataType: "JSON",
