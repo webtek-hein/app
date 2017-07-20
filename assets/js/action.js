@@ -233,5 +233,48 @@ function save()
         }
     });
 }
+$(function () {
+    var chart;
+
+    $(document).ready(function () {
+
+        // Build the chart
+        $('#items').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: 'Items'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'Top 5 items',
+                data: [
+                    ['Ballpen',   4],
+                    ['Table',       2],
+                    ['Bag',    1],
+                    ['Paper',     1],
+                    ['Laptop',   2]
+                ]
+            }]
+        });
+    });
+
+});
 
 
