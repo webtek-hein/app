@@ -1,4 +1,6 @@
+
 <link rel = "stylesheet" type = "text/css" href = "<?php echo base_url() ?>assets/css/dept.css"/>
+<script src="<?php echo base_url() ?>assets/js/sort.js"></script>
 <?php
     $username = ($this->session->userdata['logged_in']['username']);
     $firstname = ($this->session->userdata['logged_in']['firstname']);
@@ -6,20 +8,18 @@
     $position = ($this->session->userdata['logged_in']['position']);
     $department = ($this->session->userdata['logged_in']['department']);
     $dept_id = ($this->session->userdata['logged_in']['dept_id']);
+
 ?>
-<script src="<?php echo base_url() ?>assets/js/sort.js"></script>
 <section class="content">
     <div class="row">
         <div class="col-xs-12">
             <div class="box" style="overflow-x:auto; width:auto;">
                 <div class="box-header">
-
-
-                  <select class="selectdept" name="department" id="depts">
+                    <select class="selectdept" name="department" id="depts">
                         <option class="option" value="none"> Departments</option>
-                            <option class="option" value="<?php echo $dept_id ?>" ><?php echo $department ?></option>
+                            <option class="option" value="<?php echo $dept_id?>"><?php echo $department?></option>
                     </select>
-                    <button type= "button" class="btn btn-success" onclick="summary()">Summary of Items</button>
+
 
                     <div class="container" style="overflow-x:auto; width:auto;">
                         <!-- /.box-header -->
@@ -29,13 +29,10 @@
                                 <tr>
                                     <th>Department</th>
                                     <th>Item name</th>
-                                    <th>Account Code</th>
-                                    <th>Official Receipt</th>
-                                    <th>Delivery Date</th>
-                                    <th>Date received</th>
-                                    <th>Received by </th>
-                                    <th>Cost</th>
-                                    <th>Action</th>
+                                    <th>Description</th>
+                                    <th>Quantity</th>
+                                    <th>Unit</th>
+                                    <th>View Item Detail</th>
                                 </tr>
                                 </thead>
                                 <tbody id="dept_refresh">
@@ -44,13 +41,10 @@
                                 <tr>
                                     <th>Department</th>
                                     <th>Item name</th>
-                                    <th>Account Code</th>
-                                    <th>Official Receipt</th>
-                                    <th>Delivery Date</th>
-                                    <th>Date received</th>
-                                    <th>Received by </th>
-                                    <th>Cost</th>
-                                    <th>Action</th>
+                                     <th>Description</th>
+                                    <th>Quantity</th>
+                                    <th>Unit</th>
+                                    <th>View Item Detail</th>
                                 </tr>
                                 </tfoot>
                             </table>
