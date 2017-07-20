@@ -112,7 +112,7 @@ class Inventory extends CI_Controller {
     {
         for($i = 0;$i < count($this->input->post('Item_Name')); $i++) {
 
-            $data1[] = array(
+            $data1 = array(
                 'item_name' => $this->input->post('Item_Name')[$i],
                 'item_description' => $this->input->post('Item_Description')[$i],
                 'quantity' => $this->input->post('Item_Quantity')[$i],

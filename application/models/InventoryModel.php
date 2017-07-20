@@ -171,7 +171,7 @@ class InventoryModel extends CI_Model {
     public function add_bulk($data1,$data2,$data3)
     {
         // insert new item
-        $this->db->insert_batch('item', $data1);
+        $this->db->insert('item', $data1);
         $itemid = $this->db->insert_id();
         //update item detail table
         $this->db->where('item_id', $itemid);
