@@ -5,10 +5,16 @@
             <div class="box" style="overflow-x:auto; width:auto;">
                 <div class="box-header">
                     <h3 class="box-title">Inventory</h3><br>
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Add item</button>
-                    <!-- Insert modal code here for ADD ITEM -->
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal1">Add Bulk Items</button>
-                    <!-- Insert modal code here for ADD BULK ITEMS-->
+                   <?php
+                   $position = $this->session->userdata['logged_in']['position'];
+                        if ($position === 'receiver'){
+
+                        }else{
+                            echo '<button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Add item</button>';
+                            echo '<button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal1">Add Bulk Items</button>';
+                        }
+                        ?>
+
                     <div class="container" style="overflow-x:auto; width:auto;">
                         <!-- /.box-header -->
                         <div class="box-body">
