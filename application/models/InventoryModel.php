@@ -342,10 +342,11 @@ class InventoryModel extends CI_Model {
 
     public function dashborad_custodian_ordered_items()
     {
-        $this->db->SELECT ('concat(last_name,', ',first_name), item_name, quantity,supplier');
-         $this->db->FROM('inventory.user');
-          $this->db->join ('item');
-           $this->db->join ('item_detail');
+        $this->db->SELECT ('item_detail.official_receipt_no,item_name, quantity,"supplier"');
+         $this->db->FROM('item');
+        $this->db->join('item_detail','item_detail.item_id = item.item_id','left');
+        $this->db->join('logs.increase_log','item_detail.item_det_id = logs.increase_log.item_det_id','left');
+        $this->db->limit(10);
             $query = $this->db->get();
             return $query->result_array();
 
@@ -353,44 +354,50 @@ class InventoryModel extends CI_Model {
 
     public function dashborad_custodian_recieved_items()
     {
-      $this->db->SELECT ('concat(last_name,', ',first_name), item_name, quantity,supplier');
-         $this->db->FROM('inventory.user');
-          $this->db->join ('item');
-           $this->db-> join ('item_detail');
-            $query = $this->db->get();
-            return $query->result_array();
+        $this->db->SELECT('concat(last_name," ",first_name) as user, item_name, item.quantity, "suppplier"');
+        $this->db->join('item_detail','item.item_id = item_detail.item_id');
+        $this->db->join('logs.increase_log','item_detail.item_det_id = logs.increase_log.item_det_id');
+        $this->db->join('user','user.user_id = increase_log.user_id');
+        $this->db->limit(10);
+        $query = $this->db->get('item');
+
+        return $query->result_array();
     }
 
      public function dashborad_custodian_returned_items()
      {
-         $this->db->SELECT('concat(last_name,', ',first_name), item_name, quantity, reason, department');
-          $this->db->FROM('inventory.user');
-          $this->db->join('item');
-         $this->db->join('item_detail');
-           $this->db->join('department');
-            $this->db->join('logs.return_log');
-            $query = $this->db->get();
+         $this->db->SELECT('concat(last_name," ",first_name) as user, item_name, item.quantity, reason, department');
+         $this->db->join('item_detail','item.item_id = item_detail.item_id');
+         $this->db->join('logs.return_log','item_detail.item_det_id = logs.return_log.item_det_id');
+         $this->db->join('distribution','distribution.dist_id = logs.return_log.dist_id');
+           $this->db->join('department','distribution.dept_id = department.dept_id');
+         $this->db->join('user','user.user_id = return_log.user_id');
+         $this->db->limit(10);
+            $query = $this->db->get('item');
+
             return $query->result_array();
      }
 
      public function dashborad_custodian_defected_items()
      {
-        $this->db->SELECT ('concat(last_name,', ',first_name), item_name, quantity, supplier, reason, department');
-            $this->db->FROM('inventory.user');
-           $this->db->join('item ');
-           $this->db->join('item_detail');
-            $this->db->join('department');
-           $this->db->join('logs.return_log');
-              $query = $this->db->get();
-            return $query->result_array();
+         $this->db->SELECT('concat(last_name," ",first_name) as user, item_name, item.quantity, "supplier",reason, department');
+         $this->db->join('item_detail','item.item_id = item_detail.item_id');
+         $this->db->join('logs.return_log','item_detail.item_det_id = logs.return_log.item_det_id');
+         $this->db->join('distribution','distribution.dist_id = logs.return_log.dist_id');
+         $this->db->join('department','distribution.dept_id = department.dept_id');
+         $this->db->join('user','user.user_id = return_log.user_id');
+         $this->db->limit(10);
+         $query = $this->db->get('item');
+
+         return $query->result_array();
      }
 
      public function dashboard_custodian_items_remaining()
      {
         $this->db->SELECT('official_receipt_no, item_name, quantity, date_rec');
-        $this->db->from('item');
-      $this->db->join('item_detail');
-        $query = $this->db->get();
+      $this->db->join('item_detail','item_detail.item_id = item.item_id','left');
+      $this->db->limit(10);
+        $query = $this->db->get('item');
         return $query->result_array();
      }
     }

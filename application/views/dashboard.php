@@ -35,46 +35,7 @@
                 </div>
                 <!-- /.box-body -->
             </div>
-
-                        <div class="col-lg-3 col-sm-8" style="width: 450px; height:auto; margin-left:630px; margin-top: -505px;">
-                            <div class="panel panel-default panel-success">
-                                <!-- Default panel contents -->
-                                <div class="panel-heading">
-                                    <h3>Ordered Items</h3>
-                                </div>
-                                <!-- Table -->
-                                <table class="table table-bordered table-striped" width="auto">
-                                    <thead>
-                                    
-                                    <tr>
-                                        <th>User</th>
-                                        <th>Item</th>
-                                        <th>Quantity</th>
-                                        <th>Supplier</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <?php foreach ($ordered as $ordered_items): ?>
-                                    <tr>
-                                        <td><?php echo $ordered_items['user']; ?></td>
-                                        <td><?php echo $ordered_items['item_name']; ?></td>
-                                        <td><?php echo $ordered_items['quantity']; ?></td>
-                                        <td><?php echo $ordered_items['supplier']; ?></td>
-                                    </tr>
-                                    <?php endforeach; ?>
-                                    </tbody>
-                                </table>
-
-                                        <th scope="row">
-                                            <p class="text-center">
-                                                <a href="" class="btn-success btn">
-                                                    <span aria-hidden="true"></span> See more</a>
-                                            </p>
-                                        </th>
-                            </div>
-                        </div>
-
-            <div class="col-lg-3 col-sm-8" style="width: 450px; margin-left:630px; margin-top: -250px;">
+                <div class="col-lg-3 col-sm-8" style="width: 450px; margin-left:630px; margin-top: -170px;">
                 <div class="panel panel-default panel-info">
                     <!-- Default panel contents -->
                     <div class="panel-heading">
@@ -167,7 +128,6 @@
                                     <th>Supplier</th>
                                 </tr>
                                 </thead>
-                                <tbody>defecteditems
                                 <?php foreach ($defecteditems as $defected_items): ?>
                                 <tr>
                                     <td><?php echo $defected_items['user']; ?></td>
