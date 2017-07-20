@@ -17,6 +17,8 @@ class Returned extends CI_Controller {
             $this->load->view('department_head/templates/header');
         }else if($position ==='receiver'){
             $this->load->view('receiver/header');
+        }else{
+            $this->load->view('templates/header');
         }
 		$this->load->view('custodian/return');
         $this->load->view('modals/replace', $data);
