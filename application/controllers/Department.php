@@ -20,11 +20,7 @@ class Department extends CI_Controller {
         } else {
             $this->load->view('templates/header');
         }
-        if($position === 'department head'){
-            $this->load->view('department_head/department', $data);
-        }else{
-            $this->load->view('department',$data);
-        }
+        $this->load->view('department',$data);
         $this->load->view('modals/department_item');
         $this->load->view('modals/return');
 		$this->load->view('templates/footer');
