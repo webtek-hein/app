@@ -28,17 +28,18 @@ function add_row()
      "<td id='receivedby_row"+table_len+"'><input type='text' value='"+new_receivedby+"' name='Item_Receivedby[]' required='required' style='width:150px;'></td>" +
      "<td id='qty_row"+table_len+"'> <input type='number' min = 0 value='"+new_qty+"' name='Item_Quantity[]' required='required' style='width:80px;'></td>" +
      "<td id='supplier_row"+table_len+"'><input type='text' value='"+new_supplier+"' name='Item_Supplier[]' required='required' style='width:150px;'></td>" +
-     "<td id='type_row"+table_len+"'><input type='text' value='"+new_type+"' name='Item_Type[]' required='required' style='width:80px;'>" +
-     "<input type='text' id='new_type' name='Item_Type[]' required='required' style='width:80px; height: 25px;'>" +
-     " <datalist>" +
+     "<td id='type_row"+table_len+"'>" +
+     "<input type='text' list='typelist' value='"+new_type+"' name='Item_Type[]' required='required' style='width:80px;'>" +
+     " <datalist id='typelist'>" +
      " <option value='CO'>CO</option>" +
      " <option value='MOOE'>MOOE</option>" +
      " </datalist>" +
      "</td>" +
      "<td id='deldate_row"+table_len+"'><input type='date' value='"+new_deldate+"' name='Item_Deliverydate[]' required='required' style='width:140px;'></td>" +
      "<td id='datereceived_row"+table_len+"'><input type='date' value='"+new_datereceived+"' name='Item_Datereceived[]' required='required' style='width:140px;'></td>" +
-     "<td id='unit_row"+table_len+"'><input type='text' value='"+new_unit+"' name='Item_Unit[]' required='required' style='width:80px;'>" +
-     "<datalist id='list'> " +
+     "<td id='unit_row"+table_len+"'>" +
+     "<input type='text' list='unitlist' value='"+new_unit+"' name='Item_Unit[]' required='required' style='width:80px;'>" +
+     "<datalist id='unitlist'> " +
      "<option value='piece'>piece</option> " +
      "<option value='box'>box</option> " +
      "<option value='set'>set</option>" +
