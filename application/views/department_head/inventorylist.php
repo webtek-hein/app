@@ -1,10 +1,11 @@
-
+<?php
+	$department = ($this->session->userdata['logged_in']['department']);
+?>
 <section class="content">
     <div class="row">
         <div class="col-xs-12">
             <div class="box" style="overflow-x:auto; width:auto;">
                 <div class="box-header">
-                    <h3 class="box-title">Inventory</h3><br>
                     <table id="table" class="table table-bordered table-striped">
                         <thead>
                         <tr>
