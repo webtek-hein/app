@@ -7,6 +7,7 @@ class Department extends CI_Controller {
       	parent::__construct();
 		$this->load->model('inventorymodel');
         $this->load->model('return_model');
+        $this->load->model('department_model');
     }
 	public function index()
 	{
@@ -30,9 +31,9 @@ class Department extends CI_Controller {
 	public function get_dept_list($id)
     {
         if($id == "none"){
-            $dept_item = $this->inventorymodel->get_distributed_in_departments();
+            $dept_item = $this->department_model->get_distributed_in_departments();
         }else{
-            $dept_item = $this->inventorymodel->get_distributed_per_department($id);
+            $dept_item = $this->department_model->get_distributed_per_department($id);
         }
 
         $data = array();
@@ -52,7 +53,7 @@ class Department extends CI_Controller {
 
     public function get_all_dept_list()
     {
-        $dept_item = $this->inventorymodel->get_distributed_in_departments();
+        $dept_item = $this->department_model->get_distributed_in_departments();
 
         $data = array();
         foreach ($dept_item as $list) {
@@ -102,7 +103,7 @@ class Department extends CI_Controller {
 
     public function dist_details($id) 
     {
-    	$details = $this->inventorymodel->get_distributed_details($id);
+    	$details = $this->department_model->get_distributed_details($id);
         $data = array();
         foreach ($details as $list) {
             $row = array();
