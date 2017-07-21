@@ -43,7 +43,7 @@
                         </tfoot>
                     </table>
                     <?php $position = $this->session->userdata['logged_in']['position'];
-                    if($position === 'receiver'){
+                    if($position !== 'department head'){
                         echo '<button type="button" class="open-modal-action" onclick="return_selected_items()" ">Return Selected Item(s)</button>';
                     }
                     ?>

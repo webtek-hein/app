@@ -20,7 +20,11 @@
                   <th> Unit Cost</th>
                   <th> Employee</th>
                   <th>Reason</th>
-                  <th>User</th>
+                    <?php $position = $this->session->userdata['logged_in']['position'];
+                    if($position === 'admin'){
+                        echo '<th>User</th>';
+                    }
+                    ?>
                   <th> Status</th>
                 </tr>
                 </thead>
@@ -36,7 +40,11 @@
                     <th> Unit Cost</th>
                     <th> Employee</th>
                     <th>Reason</th>
-                    <th>User</th>
+                    <?php $position = $this->session->userdata['logged_in']['position'];
+                    if($position === 'admin'){
+                        echo '<th>User</th>';
+                    }
+                    ?>
                     <th> Status</th>
                 </tr
                 </tfoot>

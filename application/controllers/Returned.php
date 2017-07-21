@@ -22,7 +22,7 @@ class Returned extends CI_Controller {
         } else {
             $this->load->view('templates/header');
         }
-		$this->load->view('custodian/return');
+		$this->load->view('return');
         $this->load->view('modals/replace', $data);
 		$this->load->view('templates/footer');
 
@@ -49,10 +49,10 @@ class Returned extends CI_Controller {
                 $row[] = $list['department'];
                 $row[] = $list['reason'];
                 $row[] = $list['item_status'];
-                $row[] = "<button type=\"button\" data-id = '$list[return_id]' class=\"open-modal-action\" data-toggle=\"modal\" data-target=\"#replacemodal\">Replace</button>".
-                    "<button type=\"button\" class=\"open-modal-action\" onclick=\"return_no_action(". $list['return_id'] .")\">No Action</button>";
-        
-
+                if($position === 'admin' || $position === 'receiver'){
+                    $row[] = "<button type=\"button\" data-id = '$list[return_id]' class=\"open-modal-action\" data-toggle=\"modal\" data-target=\"#replacemodal\">Replace</button>".
+                        "<button type=\"button\" class=\"open-modal-action\" onclick=\"return_no_action(". $list['return_id'] .")\">No Action</button>";
+                }
                 $data[] = $row;
 
             }

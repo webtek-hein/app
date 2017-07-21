@@ -115,7 +115,7 @@ $(document).ready(function() {
     setInterval(function () {
         inventory.ajax.reload(null,false);
         department.ajax.reload(null,false);
-
+        returned_items.ajax.reload(null,false);
     }, 1000);
 });
 
