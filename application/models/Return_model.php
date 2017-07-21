@@ -36,10 +36,11 @@ class Return_model extends CI_Model {
         $this->db->update('item');
 
         $data = array();
-        for($i=1;$i <= $quant;$i++)
+        foreach($item as $item_det_id)
         {
             $data[] = array('reason'=>$reason,
                 'dept_id' => $deptid,
+                'item_det_id' =>$item_det_id['item_det_id'],
                 'return_person' => $person,
                 'dist_id' => $distid,
                 'user_id' => $userid);

@@ -35,7 +35,7 @@ class Returned extends CI_Controller {
         if($position == 'admin' || $position == 'custodian'){
             $return = $this->InventoryModel->get_returned();
         }else{
-            $return = $this->InventoryModel->get_return_log_per_user($user_id);
+            $return = $this->InventoryModel->get_returned_per_user($user_id);
         }
             $data = array();
             foreach ($return as $list) {
