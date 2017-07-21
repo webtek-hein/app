@@ -13,6 +13,7 @@
                     <table id="details" class="table table-bordered table-striped" width="100%">
                         <thead>
                         <tr>
+                            <th></th>
                             <th>Serial #</th>
                             <th>Expiration Date</th>
                             <th>Supplier</th>
@@ -22,13 +23,13 @@
                             <th>Date Received</th>
                             <th>Received By</th>
                             <th>Unit Cost</th>
-                            <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
                         </tbody>
                         <tfoot>
                         <tr>
+                            <th></th>
                             <th>Serial #</th>
                             <th>Expiration Date</th>
                             <th>Supplier</th>
@@ -38,10 +39,10 @@
                             <th>Date Received</th>
                             <th>Received By</th>
                             <th>Unit Cost</th>
-                            <th>Action</th>
                         </tr>
                         </tfoot>
                     </table>
+                     <button type=\"button\" data-id = '$list[item_det_id]' class=\"open-modal-action\" data-toggle=\"modal\" data-target=\"#returnmodal\">Return Selected Item(s)</button>
                 </div>
 
             </div>
