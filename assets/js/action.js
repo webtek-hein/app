@@ -157,7 +157,7 @@ function get_item_details(id) {
             "type": "GET",
         },
     });
-   $('#details').on( 'click', 'tr :first-child', function () {
+   $('#details').on( 'click', 'tr :nth-child(2)', function () {
        $(this).attr('contentEditable', 'true');
        $(this).focus(function () {
            oldData = $(this).text();
