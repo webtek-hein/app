@@ -4,7 +4,7 @@
 
                       <!-- Modal content-->
                       <?php echo validation_errors(); ?>
-                      <?php echo form_open('department/return_items'); ?>
+                      <form>
                       <div class="modal-content">
                         <div class="modal-header">
                           <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -28,7 +28,7 @@
                           </table>
                         </div>
                         <div class="modal-footer">
-                          <button type="submit" class="btn btn-default" id="save1">Save</button>
+                          <button class="btn btn-default" id="save1">Save</button>
                           <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal">Cancel</button>
                         </div>
                       </div>

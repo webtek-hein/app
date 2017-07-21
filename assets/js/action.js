@@ -327,12 +327,26 @@ function create_chart()
         });
     });
 //return items
-function return_items(){
+
+function return_selected_items() {
     var item_det_id = [];
+    var reason;
+    var person;
     $('#item_detail:checked').each(function () {
-       item_det_id.push($(this).val());
+        item_det_id.push($(this).val());
     });
-    alert(item_det_id);
+    $('#returnmodal').modal('show');
+   $('button[id=save1]').on('click',function () {
+        reason =  $('input[name=reason]').val();
+        person =  $('input[name=person]').val();
+        var item_data = {'item_det_id':item_det_id,'reason':reason,'person':person};
+       $.ajax({
+           url : 'department/return_items',
+           type: "POST",
+           data: item_data,
+           dataType: "JSON",
+       });
+   });
 }
 
 
