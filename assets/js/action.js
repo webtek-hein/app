@@ -26,6 +26,7 @@ var increaselog;
 $(document).ready(function() {
 
     inventory = $('#table').DataTable({
+
         destroy: true,
         responsive: true,
         "ajax": {
@@ -285,18 +286,7 @@ function create_chart()
     });
 }
 
-    $(document).ready(function () {
 
-        $.ajax({
-            url: 'dashboard/graph',
-            type: 'POST',
-            async: true,
-            dataType: "JSON",
-            success: function(data){
-                console.log(data);
-            }
-        })
-});
 //form validations
     $(document).ready(function () {
         $( "input[name=Item_Quantity]" ).on("keypress paste",function () {
