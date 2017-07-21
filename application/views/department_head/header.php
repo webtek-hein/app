@@ -6,7 +6,6 @@ if (isset($this->session->userdata['logged_in'])) {
     $firstname = ($this->session->userdata['logged_in']['firstname']);
     $lastname = ($this->session->userdata['logged_in']['lastname']);
     $position = ($this->session->userdata['logged_in']['position']);
-	$department = ($this->session->userdata['logged_in']['department']);
 } else {
     header("location: login");
 }
@@ -77,7 +76,6 @@ if (isset($this->session->userdata['logged_in'])) {
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <!--<img src="<?php echo base_url() ?>assets/dist/img/admin.jpg" class="user-image" alt="User Image">-->
                             <span class="hidden-xs"><?= $firstname.' '.$lastname?></span>
-
                         </a>
                         <ul class="dropdown-menu">
                             <!-- User image -->
@@ -113,7 +111,7 @@ if (isset($this->session->userdata['logged_in'])) {
                 </div>
                 <div class="pull-left info">
                     <p><?= $position?></p>
-                    <p><?= $department?></p>
+                    <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                 </div>
             </div>
             <!-- sidebar menu: : style can be found in sidebar.less -->
@@ -136,38 +134,7 @@ if (isset($this->session->userdata['logged_in'])) {
                     </a>
                 </li>
 
-
-
-                <li class="treeview">
-                    <a href="<?php echo base_url()?>department">
-                        <i class="fa fa-building"></i>
-                        <span>Department</span>
-                    </a>
-                </li>
-
-
-                <li class="treeview">
-                    <a href="<?php echo base_url()?>returned">
-                        <i class="fa fa-reply"></i> <span>Return</span>
-                    </a>
-                </li>
-
-
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-table"></i> <span>Logs</span>
-                        <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="<?php echo base_url()?>increaselog"><i class="fa fa-circle-o"></i> Increase</a></li>
-                        <li><a href="<?php echo base_url()?>decreaselog"><i class="fa fa-circle-o"></i> Decrease</a></li>
-                        <li><a href="<?php echo base_url()?>returnlog"><i class="fa fa-circle-o"></i> Return log</a></li>
-                    </ul>
-                </li>
-
-                <!-- /.sidebar -->
+                               <!-- /.sidebar -->
     </aside>
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">

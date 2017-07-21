@@ -18,6 +18,8 @@ class Inventory extends CI_Controller {
 
         if($position === 'receiver'){
             $this->load->view('receiver/header');
+        }else if($position === 'department head'){
+            $this->load->view('department_head/header');
         }else{
             $this->load->view('templates/header');
         }
@@ -46,7 +48,7 @@ class Inventory extends CI_Controller {
         $position = $this->session->userdata['logged_in']['position'];
         $dept_id = $this->session->userdata['logged_in']['dept_id'];
 
-        if($position === 'receiver')
+        if($position === 'receiver' || $position === 'department head')
         {
             $inventory = $this->InventoryModel->get_distributed_per_departments($dept_id);
         }else{
