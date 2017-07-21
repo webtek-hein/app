@@ -42,7 +42,7 @@
                         </tr>
                         </tfoot>
                     </table>
-                     <button type=\"button\" data-id = '$list[item_det_id]' class=\"open-modal-action\" data-toggle=\"modal\" data-target=\"#returnmodal\">Return Selected Item(s)</button>
+                     <button type="button" class="open-modal-action" data-toggle="modal" data-target="#returnmodal">Return Selected Item(s)</button>
                 </div>
 
             </div>
