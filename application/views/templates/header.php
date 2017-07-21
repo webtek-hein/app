@@ -152,6 +152,13 @@ if (isset($this->session->userdata['logged_in'])) {
 
 
                 <li class="treeview">
+                    <a href="<?php echo base_url()?>users">
+                        <i class="fa fa-user-plus"></i> <span>Users</span>
+                    </a>
+                </li>
+
+
+                <li class="treeview">
                     <a href="#">
                         <i class="fa fa-table"></i> <span>Logs</span>
                         <span class="pull-right-container">
