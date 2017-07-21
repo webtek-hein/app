@@ -20,7 +20,9 @@ class Inventory extends CI_Controller {
             $this->load->view('receiver/header');
         }else if($position === 'department head'){
             $this->load->view('department_head/header');
-        }else{
+        }else if ($position === 'custodian'){
+            $this->load->view('custodian/header');
+        } else {
             $this->load->view('templates/header');
         }
         if($position === 'department head'){

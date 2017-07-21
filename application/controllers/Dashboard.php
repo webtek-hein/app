@@ -19,8 +19,10 @@ class Dashboard extends CI_Controller {
             $this->load->view('receiver/header');
         }else if($position === 'department head'){
             $this->load->view('department_head/header');
-        }else{
-             $this->load->view('templates/header');
+        }else if ($position === 'custodian'){
+             $this->load->view('custodian/header');
+        } else {
+            $this->load->view('templates/header');
         }
             $this->load->view('dashboard',$data);
 			$this->load->view('templates/footer');

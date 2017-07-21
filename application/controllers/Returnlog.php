@@ -15,7 +15,9 @@ class Returnlog extends CI_Controller {
             $this->load->view('department_head/templates/header');
         }else if($position ==='receiver'){
             $this->load->view('receiver/header');
-        }else{
+        }else if ($position === 'custodian'){
+            $this->load->view('custodian/header');
+        } else {
             $this->load->view('templates/header');
         }
 		$this->load->view('returnlog');
