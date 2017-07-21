@@ -14,11 +14,8 @@ class Department extends CI_Controller {
         $position = $this->session->userdata['logged_in']['position'];
         $dept_id = $this->session->userdata['logged_in']['dept_id'];
 		$data['departments'] = $this->inventorymodel->get_department_list();
-        if($position === 'department head'){
-            $this->load->view('department_head/templates/header');
-        }else{
+
             $this->load->view('templates/header');
-        }
         if($position === 'department head'){
             $this->load->view('department_head/department', $data);
         }else{
@@ -44,7 +41,7 @@ class Department extends CI_Controller {
             $row[] = $list['item_description'];
             $row[] = $list['quantity'];;
             $row[] = $list['unit'];
-            $row[] = "<button type=\"button\" class=\"open-modal-action fa fa-info\" onclick=\"get_distribution_details(". $list['dist_id'].",".$list['dept_id'] .")\"></button>";
+            $row[] = "<button type=\"button\" class=\"open-modal-action fa fa-info\" onclick=\"get_distribution_details(". $list['dist_id'].")\"></button>";
             $data[] = $row;
         }
         $list = array('data'=>$data);

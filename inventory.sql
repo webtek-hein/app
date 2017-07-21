@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 18, 2017 at 07:19 AM
+-- Generation Time: Jul 21, 2017 at 01:48 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -215,7 +215,7 @@ CREATE TABLE `item` (
   `item_name` varchar(45) NOT NULL,
   `quantity` bigint(20) NOT NULL,
   `item_description` varchar(45) NOT NULL,
-  `unit` enum('piece','box','set','ream','dozen','bundle','sack','others') NOT NULL DEFAULT 'others',
+  `unit` varchar(11) NOT NULL,
   `item_type` enum('CO','MOOE') DEFAULT 'CO'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -287,6 +287,13 @@ CREATE TRIGGER `increase_log` AFTER INSERT ON `item_detail` FOR EACH ROW BEGIN
   END
 $$
 DELIMITER ;
+DROP TRIGGER IF EXISTS `item_detail_delete`;
+DELIMITER $$
+CREATE TRIGGER `item_detail_delete` BEFORE DELETE ON `item_detail` FOR EACH ROW BEGIN
+	UPDATE logs.increase_log set serial = old.serial, exp_date = old.exp_date, official_receipt_no = old.official_receipt_no, del_date = old.del_date, date_rec = old.date_rec, receivedby = old.receivedby, unit_cost = old.unit_cost, item_status = old.item_status	;	
+  END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -304,7 +311,8 @@ CREATE TABLE `user` (
   `username` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
   `position` varchar(45) NOT NULL,
-  `dept_id` int(11) DEFAULT NULL
+  `dept_id` int(11) DEFAULT NULL,
+  `status` enum('pending','accepted','declined') NOT NULL DEFAULT 'pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -316,18 +324,19 @@ TRUNCATE TABLE `user`;
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`user_id`, `first_name`, `last_name`, `email`, `contact_no`, `username`, `password`, `position`, `dept_id`) VALUES
-(1, 'admin', 'admin', 'Joy_Cabildo24@yahoo.com', '09053983127', 'admin', 'admin', 'admin', NULL),
-(221, 'Lovelace ', 'Oliva', 'lv@gmail.com', '+6392588845', 'love', 'password', 'admin', NULL),
-(222, 'Lyra ', 'Ronquillo', 'lyra@yahoo.com', '09254785639', 'lyra', 'password', 'custodian', NULL),
-(223, 'Joy', 'Cabildo', 'Joy@yahoo.com', '09554287136', 'joy', 'password', 'department head', NULL),
-(225, 'Heinrich', 'Bangui', 'hein@yahoo.com', '09235987452', 'hein', 'password', 'admin', NULL),
-(226, 'Mark', 'Andawi', 'Mark@yahoo.com', '09854732156', 'Mark', 'password', 'custodian', NULL),
-(227, 'Ryan', 'Castillo', 'Rye@yahoo.com', '09852145778', 'Ryan', 'password', 'admin', NULL),
-(228, 'Glo', 'Goyo', 'Glo@yahoo.com', '09582145877', 'Glo', 'password', 'department', NULL),
-(229, 'russel', 'Bayote', 'Russel@yahoo.com', '09854731251', 'Russ', 'password', 'admin', NULL),
-(2210, 'Ian', 'Alinso', 'Ian@yahoo.com', '09854564521', 'Ian', 'password', 'custodian', NULL),
-(2211, 'Christian', 'Beltran', 'Chris@yahoo.com', '09855472364', 'Chris', 'password', 'admin', NULL);
+INSERT INTO `user` (`user_id`, `first_name`, `last_name`, `email`, `contact_no`, `username`, `password`, `position`, `dept_id`, `status`) VALUES
+(1, 'admin', 'admin', 'Joy_Cabildo24@yahoo.com', '09053983127', 'admin', 'admin', 'admin', NULL, 'accepted'),
+(221, 'Lovelace ', 'Oliva', 'lv@gmail.com', '+6392588845', 'love', 'password', 'admin', NULL, 'accepted'),
+(222, 'Lyra ', 'Ronquillo', 'lyra@yahoo.com', '09254785639', 'lyra', 'password', 'custodian', NULL, 'accepted'),
+(223, 'Joy', 'Cabildo', 'Joy@yahoo.com', '09554287136', 'joy', 'password', 'department head', 13, 'accepted'),
+(225, 'Heinrich', 'Bangui', 'hein@yahoo.com', '09235987452', 'hein', 'password', 'admin', NULL, 'accepted'),
+(226, 'Mark', 'Andawi', 'Mark@yahoo.com', '09854732156', 'Mark', 'password', 'custodian', NULL, 'accepted'),
+(227, 'Ryan', 'Castillo', 'Rye@yahoo.com', '09852145778', 'Ryan', 'password', 'admin', NULL, 'accepted'),
+(228, 'Glo', 'Goyo', 'Glo@yahoo.com', '09582145877', 'Glo', 'password', 'department head', 22, 'accepted'),
+(229, 'russel', 'Bayote', 'Russel@yahoo.com', '09854731251', 'Russ', 'password', 'admin', NULL, 'accepted'),
+(2210, 'Ian', 'Alinso', 'Ian@yahoo.com', '09854564521', 'Ian', 'password', 'custodian', NULL, 'accepted'),
+(2211, 'Christian', 'Beltran', 'Chris@yahoo.com', '09855472364', 'Chris', 'password', 'admin', NULL, 'accepted'),
+(2214, 'Kasima', 'Katuhr', 'kasima@gmail.com', '09164146566', 'kasima', 'password', 'department head', 12, 'accepted');
 
 --
 -- Indexes for dumped tables
@@ -411,7 +420,7 @@ ALTER TABLE `item_detail`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2212;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2215;
 --
 -- Constraints for dumped tables
 --
