@@ -35,15 +35,16 @@ class Return_model extends CI_Model {
         $this->db->set('quantity','quantity+'.$quant,FALSE);
         $this->db->update('item');
 
-
-        $data = array('reason'=>$reason,
-                       'item_det_id'=>$item,
-                        'dept_id' => $deptid,
-                        'return_person' => $person,
-                        'dist_id' => $distid,
-                        'user_id' => $userid);
-        $ret_log = array_fill(1,$quant,$data);
-        $this->db->insert_batch('logs.return_log',$ret_log);
+        $data = array();
+        for($i=1;$i <= $quant;$i++)
+        {
+            $data[] = array('reason'=>$reason,
+                'dept_id' => $deptid,
+                'return_person' => $person,
+                'dist_id' => $distid,
+                'user_id' => $userid);
+        }
+        $this->db->insert_batch('logs.return_log',$data);
     }
 
     public function return_no_action($id) 

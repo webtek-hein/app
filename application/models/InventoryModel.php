@@ -319,12 +319,13 @@ class InventoryModel extends CI_Model {
     public function get_distributed_per_department($id)
     {
         $this->db->distinct()
-                 ->select('department.dept_id,department,distribution.dist_id,item_name,item.item_description,distribution.quantity,unit')
-                 ->join('item_detail','item_detail.dist_id = distribution.dist_id')
-                 ->join('item','item_detail.item_id = item.item_id')
-                 ->join('department','distribution.dept_id = department.dept_id')
+                 ->select('item_detail.item_id,department,distribution.dist_id,item_name,item_description,distribution.quantity,unit')
+                 ->join('item_detail','item.item_id = item_detail.item_id','left')
+                 ->join('distribution','distribution.dist_id = item_detail.dist_id','left')
+                 ->join('department','distribution.dept_id = department.dept_id','left')
+                 ->where('distribution.quantity is not null')
                  ->where('distribution.dept_id',$id);
-        $query = $this->db->get('distribution');
+        $query = $this->db->get('item');
         return $query->result_array();
     }
 

@@ -38,6 +38,7 @@ class Inventory extends CI_Controller {
         }
         $this->load->view('modals/addbulk');
         $this->load->view('modals/details');
+        $this->load->view('modals/return');
         $this->load->view('templates/footer');
 
 
@@ -49,6 +50,7 @@ class Inventory extends CI_Controller {
 
         $position = $this->session->userdata['logged_in']['position'];
         $dept_id = $this->session->userdata['logged_in']['dept_id'];
+
 
         if($position === 'receiver' || $position === 'department head')
         {
