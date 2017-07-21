@@ -324,13 +324,22 @@ class InventoryModel extends CI_Model {
 
     public function get_distributed_per_department($id)
     {
-        $query = $this->db->query("SELECT DISTINCT distribution.dist_id as dist_id, department, item_name, item_description, distribution.quantity as quantity, unit FROM department LEFT JOIN distribution ON department.dept_id = distribution.dept_id LEFT JOIN item_detail ON distribution.dist_id = item_detail.dist_id LEFT JOIN item ON item.item_id = item_detail.item_id WHERE item_detail.dist_id IS NOT NULL AND distribution.dept_id = $id");
+        $this->db->distinct()
+                 ->select('item_name,item.item_description,distribution.quantity,unit')
+                 ->join('item_detail','item_detail.dist_id = distribution.dist_id')
+                 ->join('item','item_detail.item_id = item.item_id')
+                 ->join('department','distribution.dept_id = department.dept_id')
+                 ->where('distribution.dept_id',$id);
+        $query = $this->db->get('distribution');
         return $query->result_array();
     }
 
-    public function get_distributed_details($id)
+    public function get_distributed_details($dept_id,$item_id)
     {
-        $query = $this->db->query("SELECT item_det_id, serial, exp_date, supplier, item_description, official_receipt_no, del_date, date_rec, receivedby, unit_cost FROM item_detail NATURAL JOIN item WHERE dist_id = $id");
+        $this->db->join('distribution','distribution.dist_id = item_detail.dist_id','left')
+                 ->where('dept_id',$dept_id)
+                 ->where('item_id',$item_id);
+        $query = $this->db->get('item_detail');
         return $query->result_array();
     }
 
@@ -354,7 +363,7 @@ class InventoryModel extends CI_Model {
 
     public function dashborad_custodian_recieved_items()
     {
-        $this->db->SELECT('concat(last_name," ",first_name) as user, item_name, item.quantity, "suppplier"');
+        $this->db->SELECT('concat(last_name," ",first_name) as user, item_name, item.quantity, item_detail.supplier');
         $this->db->join('item_detail','item.item_id = item_detail.item_id');
         $this->db->join('logs.increase_log','item_detail.item_det_id = logs.increase_log.item_det_id');
         $this->db->join('user','user.user_id = increase_log.user_id');
@@ -380,7 +389,7 @@ class InventoryModel extends CI_Model {
 
      public function dashborad_custodian_defected_items()
      {
-         $this->db->SELECT('concat(last_name," ",first_name) as user, item_name, item.quantity, "supplier",reason, department');
+         $this->db->SELECT('concat(last_name," ",first_name) as user, item_name, item.quantity, item_detail.supplier,reason, department');
          $this->db->join('item_detail','item.item_id = item_detail.item_id');
          $this->db->join('logs.return_log','item_detail.item_det_id = logs.return_log.item_det_id');
          $this->db->join('distribution','distribution.dist_id = logs.return_log.dist_id');

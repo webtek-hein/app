@@ -16,7 +16,6 @@
                             <th>Serial #</th>
                             <th>Expiration Date</th>
                             <th>Supplier</th>
-                            <th>Description</th>
                             <th>Official Receipt #</th>
                             <th>Date Delivered</th>
                             <th>Date Received</th>
@@ -31,7 +30,6 @@
                             <th>Serial #</th>
                             <th>Expiration Date</th>
                             <th>Supplier</th>
-                            <th>Description</th>
                             <th>Official Receipt #</th>
                             <th>Date Delivered</th>
                             <th>Date Received</th>

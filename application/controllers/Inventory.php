@@ -188,14 +188,21 @@ class Inventory extends CI_Controller {
 
     public function itemdetail($id)
     {
-        $details = $this->InventoryModel->get_item_detail($id);
+        $position = $this->session->userdata['logged_in']['position'];
+        $dept_id = $this->session->userdata['logged_in']['dept_id'];
+
+        if($position === 'receiver'){
+            $details = $this->InventoryModel->get_distributed_details($dept_id,$id);
+
+        }else{
+            $details = $this->InventoryModel->get_item_detail($id);
+        }
         $data = array();
         foreach ($details as $list) {
             $row = array();
             $row[] = $list['serial'];
             $row[] = $list['exp_date'];
             $row[] = $list['supplier'];
-            $row[] = $list['item_description'];
             $row[] = $list['official_receipt_no'];
             $row[] = $list['del_date'];
             $row[] = $list['date_rec'];
