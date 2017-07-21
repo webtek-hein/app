@@ -9,7 +9,7 @@ class User_db extends CI_Model {
     public function login($data) {
         $db = $this->load->database("inventory",TRUE);
 
-        $condition = "username =" . "'" . $data['username'] . "' AND " . "password =" . "'" . $data['password'] . "'";
+        $condition = "username =" . "'" . $data['username'] . "' AND " . "password =" . "'" . $data['password'] . "'" . "AND status = 'accepted'";
         $db->select('*');
         $db->from('user');
         $db->where($condition);
