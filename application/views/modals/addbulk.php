@@ -35,21 +35,22 @@
                             <td><input type="text" id="new_description" name="Item_Description[]" required="required" style="width:150px;"></td>
                             <td><input type="text" id="new_or" name="Item_OfficialReceipt[]" required="required" style="width:150px;"></td>
                             <td><input type="text" id="new_receivedby" name="Item_Receivedby[]" required="required" style="width:150px;"></td>
-                            <td><input type="number" id = "add_bulk_quant" min=0 id="new_qty" name="Item_Quantity[]" required="required" style="width:80px;"></td>
+                            <td><input type="number" min=0 id="new_qty" name="Item_Quantity[]" required="required" style="width:80px;"></td>
                             <td><input type="text" id="new_supplier" name="Item_Supplier[]" required="required" style="width:150px;"></td>
                             <td>
 
-                                <select type="text" id="new_type" name="Item_Type[]" required="required" style="width:80px; height: 25px;">
-                                    <option></option >
+                                <input type="text" list="typelist" id="new_type" name="Item_Type[]" required="required" style="width:80px; height: 25px;">
+                                    <datalist id="typelist">
                                     <option value="CO">CO</option>
                                     <option value="MOOE">MOOE</option>
-                                </select>
+                                    </datalist>
                             </td>
                             <td><input type="date" id="new_deldate" name="Item_Deliverydate[]" required="required" style="width:140px;"></td>
                             <td><input type="date" id="new_datereceived" name="Item_Datereceived[]" required="required" style="width:140px;"></td>
                             <td>
-                                <select type="text" id="new_unit" name="Item_Unit[]" required="required" style="width:80px; height: 25px;">
-                                    <option></option >
+
+                                <input type="text" id="new_unit" name="Item_Unit[]" list="list" required="required" style="width:80px; height: 25px;">
+                                <datalist id="list">
                                     <option value="piece">piece</option>
                                     <option value="box">box</option>
                                     <option value="set">set</option>
@@ -58,9 +59,9 @@
                                     <option value="bundle">bundle</option>
                                     <option value="sack">sack</option>
                                     <option value="others">others</option>
-                                </select>
+                                </datalist>
                             </td>
-                            <td><input type="number" id="new_cost" name="Item_Cost[]" required="required" style="width:80px;"></td>
+                            <td><input type="number" min="0" id="new_cost" name="Item_Cost[]" required="required" style="width:80px;"></td>
                             <td><input type="date" id="new_expdate" name="Item_Expirationdate[]" required="required" style="width:140px;"></td>
                             <td><input type="button" class="btn btn-success" onclick="add_row();" value="Add Row"></td>
                         </tr>

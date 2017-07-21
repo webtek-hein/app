@@ -49,10 +49,11 @@
         <tr>
            <td>Type</td>
           <td>
-           <select name="Type" class="unit" required="required">
+           <input list="typelist" name="Type" class="unit" required="required">
+              <datalist id="typelist">
               <option value="CO">CO</option>
               <option value="MOOE">MOOE</option>
-          </select>
+              </datalist>
         </td>
         </tr>
 
@@ -67,16 +68,17 @@
         <tr>
           <td>Unit</td>
           <td>
-            <select name="Unit" class="unit" required="required">
-              <option value="piece">piece</option>
-              <option value="box">box</option>
-              <option value="set">set</option>
-              <option value="ream">ream</option>
-              <option value="dozen">dozen</option>
-              <option value="bundle">bundle</option>
-              <option value="sack">sack</option>
-              <option value="others">others</option>
-            </select>
+              <input name="Unit" class="unit" list="list" required="required">
+              <datalist id="list">
+                  <option value="piece">piece</option>
+                  <option value="box">box</option>
+                  <option value="set">set</option>
+                  <option value="ream">ream</option>
+                  <option value="dozen">dozen</option>
+                  <option value="bundle">bundle</option>
+                  <option value="sack">sack</option>
+                  <option value="others">others</option>
+              </datalist>
           </td>
         </tr>
         <tr>
@@ -97,4 +99,4 @@
        <?php echo form_close(); ?>
     </div>
   </div>
-  
+

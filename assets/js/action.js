@@ -157,7 +157,7 @@ function get_item_details(id) {
             "type": "GET",
         },
     });
-   $('#details').on( 'click', 'tr :first-child', function () {
+   $('#details').on( 'click', 'tr :nth-child(2)', function () {
        $(this).attr('contentEditable', 'true');
        $(this).focus(function () {
            oldData = $(this).text();
@@ -301,7 +301,7 @@ function create_chart()
                 return false;
             }
         });
-        $( "input[id=add_bulk_quant]" ).on("keypress paste",function () {
+        $( "input[id=new_qty]" ).on("keypress paste",function () {
             var x = event.charCode;
             if(x === 101 || x === 46 || x === 45 || x === 43){
                 return false;
@@ -314,4 +314,13 @@ function create_chart()
             }
         });
     });
+//return items
+function return_items(){
+    var item_det_id = [];
+    $('#item_detail:checked').each(function () {
+       item_det_id.push($(this).val());
+    });
+    alert(item_det_id);
+}
+
 
