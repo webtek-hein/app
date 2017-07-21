@@ -44,7 +44,7 @@ class Department extends CI_Controller {
             $row[] = $list['item_description'];
             $row[] = $list['quantity'];;
             $row[] = $list['unit'];
-            $row[] = "<button type=\"button\" class=\"open-modal-action fa fa-info\" onclick=\"get_distribution_details(". $list['dist_id'] .")\"></button>";
+            $row[] = "<button type=\"button\" class=\"open-modal-action fa fa-info\" onclick=\"get_distribution_details(". $list['dist_id'].",".$list['dept_id'] .")\"></button>";
             $data[] = $row;
         }
         $list = array('data'=>$data);
@@ -101,12 +101,13 @@ class Department extends CI_Controller {
          header('Location: '. base_url() . 'department');
     }
 
-    public function dist_details($id) 
+    public function dist_details($id)
     {
     	$details = $this->department_model->get_distributed_details($id);
         $data = array();
         foreach ($details as $list) {
             $row = array();
+            $row[] = ' <input type="checkbox" id="item_detail" value='.$list['item_det_id'].'>';
             $row[] = $list['serial'];
             $row[] = $list['exp_date'];
             $row[] = $list['supplier'];
@@ -116,7 +117,6 @@ class Department extends CI_Controller {
             $row[] = $list['date_rec'];
             $row[] = $list['receivedby'];
             $row[] = $list['unit_cost'];
-            $row[] = "<button type=\"button\" data-id = '$list[item_det_id]' class=\"open-modal-action\" data-toggle=\"modal\" data-target=\"#returnmodal\">Return</button>";
             $data[] = $row;
         }
         $list = array('data'=>$data);

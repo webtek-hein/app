@@ -41,7 +41,10 @@
                         </tr>
                         </tfoot>
                     </table>
-                    <button onclick="return_items()">return</button>
+                        <?php $position = $this->session->userdata['logged_in']['position'];
+                        if($position === 'receiver') {
+                            echo '<button onclick = "return_items()" >return</button >';
+                        }?>
                 </form>
                 </div>
 
