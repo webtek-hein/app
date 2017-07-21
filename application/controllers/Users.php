@@ -14,6 +14,8 @@ class Users extends CI_Controller {
     {
         $this->load->view('templates/header');
         $this->load->view('users');
+        $this->load->view('modals/accept');
+        $this->load->view('modals/decline');
         $this->load->view('templates/footer');
     }
 
@@ -37,13 +39,17 @@ class Users extends CI_Controller {
         echo json_encode($list);
     }
 
-    public function accept($id)
+    public function accept()
     {
+        $id = $this->input->post('user_id');
         $this->user_db->accept_user($id);
+        header('Location: '. base_url() . 'users');
     }
 
-    public function decline($id)
+    public function decline()
     {
+        $id = $this->input->post('user_id');
         $this->user_db->decline_user($id);
+        header('Location: '. base_url() . 'users');
     }
 }
