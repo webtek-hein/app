@@ -314,4 +314,13 @@ function create_chart()
             }
         });
     });
+//return items
+function return_items(){
+    var item_det_id = [];
+    $('#item_detail:checked').each(function () {
+       item_det_id.push($(this).val());
+    });
+    alert(item_det_id);
+}
+
 

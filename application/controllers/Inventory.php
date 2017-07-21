@@ -200,7 +200,7 @@ class Inventory extends CI_Controller {
         $data = array();
         foreach ($details as $list) {
             $row = array();
-            $row[] = ' <input type="checkbox" name="test" value="item_det_id">';
+            $row[] = ' <input type="checkbox" id="item_detail" value='.$list['item_det_id'].'>';
             $row[] = $list['serial'];
             $row[] = $list['exp_date'];
             $row[] = $list['supplier'];

@@ -9,7 +9,8 @@
                 <h4 class="modal-title" align="center"><b>Item Details<b></h4>
             </div>
             <div class="modal-body" align="center">
-                <div class="box-body" style="overflow-x:auto; width:auto; ">
+                <form class="box-body" style="overflow-x:auto; width:auto; ">
+                    <form action="">
                     <table id="details" class="table table-bordered table-striped" width="100%">
                         <thead>
                         <tr>
@@ -40,8 +41,8 @@
                         </tr>
                         </tfoot>
                     </table>
-                    <button>return</button>
-
+                    <button onclick="return_items()">return</button>
+                </form>
                 </div>
 
             </div>
