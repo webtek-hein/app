@@ -14,6 +14,7 @@
                     <table id="details" class="table table-bordered table-striped" width="100%">
                         <thead>
                         <tr>
+                            <th></th>
                             <th>Serial #</th>
                             <th>Expiration Date</th>
                             <th>Supplier</th>
@@ -28,6 +29,7 @@
                         </tbody>
                         <tfoot>
                         <tr>
+                            <th></th>
                             <th>Serial #</th>
                             <th>Expiration Date</th>
                             <th>Supplier</th>
@@ -39,6 +41,10 @@
                         </tr>
                         </tfoot>
                     </table>
+                        <?php $position = $this->session->userdata['logged_in']['position'];
+                        if($position === 'receiver') {
+                            echo '<button onclick = "return_items()" >return</button >';
+                        }?>
                 </form>
                 </div>
 

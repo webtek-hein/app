@@ -319,7 +319,7 @@ class InventoryModel extends CI_Model {
     public function get_distributed_per_department($id)
     {
         $this->db->distinct()
-                 ->select('item_name,item.item_description,distribution.quantity,unit')
+                 ->select('department.dept_id,department,distribution.dist_id,item_name,item.item_description,distribution.quantity,unit')
                  ->join('item_detail','item_detail.dist_id = distribution.dist_id')
                  ->join('item','item_detail.item_id = item.item_id')
                  ->join('department','distribution.dept_id = department.dept_id')
@@ -328,6 +328,14 @@ class InventoryModel extends CI_Model {
         return $query->result_array();
     }
 
+    public function get_distrib_item_details($item_id)
+    {
+        $this->db->join('distribution','distribution.dist_id = item_detail.dist_id','left')
+                 ->join('item','item.item_id = item_detail.item_id')
+                 ->where('item_detail.item_id',$item_id);
+        $query = $this->db->get('item_detail');
+        return $query->result_array();
+    }
     public function get_distributed_details($dept_id,$item_id)
     {
         $this->db->join('distribution','distribution.dist_id = item_detail.dist_id','left')
@@ -336,13 +344,6 @@ class InventoryModel extends CI_Model {
         $query = $this->db->get('item_detail');
         return $query->result_array();
     }
-
-    public function get_distributed_per_departments($dept_id)
-    {
-        $query = $this->db->query("SELECT DISTINCT item.item_id,distribution.dist_id as dist_id, department, item_name, item_description, distribution.quantity as quantity, unit FROM department LEFT JOIN distribution ON department.dept_id = distribution.dept_id LEFT JOIN item_detail ON distribution.dist_id = item_detail.dist_id LEFT JOIN item ON item.item_id = item_detail.item_id WHERE item_detail.dist_id IS NOT NULL AND distribution.dept_id  = $dept_id");
-        return $query->result_array();
-    }
-
     public function dashborad_custodian_ordered_items()
     {
         $this->db->SELECT ('item_detail.official_receipt_no,item_name, quantity,"supplier"');

@@ -50,7 +50,7 @@ class Inventory extends CI_Controller {
 
         if($position === 'receiver' || $position === 'department head')
         {
-            $inventory = $this->InventoryModel->get_distributed_per_departments($dept_id);
+            $inventory = $this->InventoryModel->get_distrib_item_details($dept_id);
         }else{
             $inventory = $this->InventoryModel->get_inventory_list();
         }
