@@ -301,7 +301,7 @@ function create_chart()
                 return false;
             }
         });
-        $( "input[id=add_bulk_quant]" ).on("keypress paste",function () {
+        $( "input[id=new_qty]" ).on("keypress paste",function () {
             var x = event.charCode;
             if(x === 101 || x === 46 || x === 45 || x === 43){
                 return false;
