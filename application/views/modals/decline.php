@@ -1,14 +1,14 @@
 <!-- Modal-->
-<div class="modal fade" id="accept" role="dialog">
+<div class="modal fade" id="decline" role="dialog">
     <div class="modal-dialog">
 
         <!-- Modal content-->
         <?php echo validation_errors(); ?>
-        <?php echo form_open('users/accept'); ?>
+        <?php echo form_open('users/decline'); ?>
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title" align="center"><b>Accept registration?<b></h4>
+                <h4 class="modal-title" align="center"><b>Decline registration?<b></h4>
             </div>
             <div class="modal-body" align="center">
                 <input id="user-id" type="hidden" name="user_id" value="">

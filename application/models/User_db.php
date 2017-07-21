@@ -63,4 +63,9 @@ class User_db extends CI_Model {
     {
         $query = $this->db->query("UPDATE user SET status = 'declined' WHERE user_id = $id");
     }
+
+    public function get_info($id)
+    {
+        $query = $this->db->query("SELECT CONCAT(first_name, ' ', last_name, ' is registering as a(n) ', position) as info FROM user WHERE user_id = $id");
+    }
 }
