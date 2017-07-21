@@ -29,10 +29,21 @@ class Users extends CI_Controller {
             $row[] = $list['email'];
             $row[] = $list['contact_no'];
             $row[] = $list['position'];
-            $row[] = "<button type=\"button\" class=\"open-modal-action\" onclick=\"get_distribution_details(". $list['user_id'] .")\">Accept</button>" . "<button type=\"button\" class=\"open-modal-action\" onclick=\"get_distribution_details(". $list['user_id'] .")\">Decline</button>";
+            $row[] = "<button type=\"button\" class=\"open-modal-action\" data-id='$list[user_id]' data-toggle=\"modal\" data-target=\"#accept\">Accept</button>" . 
+            "<button type=\"button\" class=\"open-modal-action\" data-id='$list[user_id]' data-toggle=\"modal\" data-target=\"#decline\">Decline</button>";
             $data[] = $row;
         }
         $list = array('data'=>$data);
         echo json_encode($list);
+    }
+
+    public function accept($id)
+    {
+        $this->user_db->accept_user($id);
+    }
+
+    public function decline($id)
+    {
+        $this->user_db->decline_user($id);
     }
 }

@@ -54,4 +54,13 @@ class User_db extends CI_Model {
         return $query->result_array();
     }
 
+    public function accept_user($id)
+    {
+        $query = $this->db->query("UPDATE user SET status = 'accepted' WHERE user_id = $id");
+    }
+
+    public function decline_user($id)
+    {
+        $query = $this->db->query("UPDATE user SET status = 'declined' WHERE user_id = $id");
+    }
 }

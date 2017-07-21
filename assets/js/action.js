@@ -16,6 +16,9 @@ $(document).on("click", ".open-modal-action", function () {
 
     var return_id = $(this).data('id');
     $(".modal-body #return-id").val( return_id );
+
+    var user_id = $(this).data('id');
+    $(".modal-body #user-id").val( user_id );
 });
 
 
