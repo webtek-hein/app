@@ -100,6 +100,15 @@ $(document).ready(function() {
         },
     });
 
+    pending = $('#pending').DataTable({
+        responsive: true,
+        "destroy":true,
+        "ajax": {
+            "url": 'users/display_pending_users',
+            "type": "POST",
+        },
+    });
+
     setInterval(function () {
         inventory.ajax.reload(null,false);
         department.ajax.reload(null,false);
