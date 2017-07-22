@@ -35,7 +35,7 @@ class Returned extends CI_Controller {
         if($position == 'admin' || $position == 'custodian'){
             $return = $this->InventoryModel->get_returned();
         }else{
-            $return = $this->InventoryModel->get_return_log_per_user($user_id);
+            $return = $this->InventoryModel->get_returned_per_user($user_id);
         }
             $data = array();
             foreach ($return as $list) {
@@ -49,10 +49,10 @@ class Returned extends CI_Controller {
                 $row[] = $list['department'];
                 $row[] = $list['reason'];
                 $row[] = $list['item_status'];
-                $row[] = "<button type=\"button\" data-id = '$list[return_id]' class=\"open-modal-action\" data-toggle=\"modal\" data-target=\"#replacemodal\">Replace</button>".
-                    "<button type=\"button\" class=\"open-modal-action\" onclick=\"return_no_action(". $list['return_id'] .")\">No Action</button>";
-        
-
+                if($position === 'admin' || $position === 'custodian'){
+                    $row[] = "<button type=\"button\" data-id = '$list[return_id]' class=\"open-modal-action\" data-toggle=\"modal\" data-target=\"#replacemodal\">Replace</button>".
+                        "<button type=\"button\" class=\"open-modal-action\" onclick=\"return_no_action(". $list['return_id'] .")\">No Action</button>";
+                }
                 $data[] = $row;
 
             }

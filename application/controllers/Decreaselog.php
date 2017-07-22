@@ -39,7 +39,9 @@ class Decreaselog extends CI_Controller {
             $row[] = $list['supplier'];
             $row[] = $list['distrib_date'];
             $row[] = $list['unit_cost'];
-            $row[] = $list['user'];
+            if($position === 'admin') {
+                $row[] = $list['user'];
+            }
             $row[] = $list['department'];
 
             $data[] = $row;

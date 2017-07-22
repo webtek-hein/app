@@ -6,6 +6,8 @@ class Inventory extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('InventoryModel');
+        $this->load->model('department_model');
+
     }
     public function index()
     {
@@ -38,6 +40,7 @@ class Inventory extends CI_Controller {
         }
         $this->load->view('modals/addbulk');
         $this->load->view('modals/details');
+        $this->load->view('modals/return');
         $this->load->view('templates/footer');
 
 
@@ -50,9 +53,10 @@ class Inventory extends CI_Controller {
         $position = $this->session->userdata['logged_in']['position'];
         $dept_id = $this->session->userdata['logged_in']['dept_id'];
 
+
         if($position === 'receiver' || $position === 'department head')
         {
-            $inventory = $this->InventoryModel->get_distributed_per_department($dept_id);
+            $inventory = $this->department_model->get_distributed_per_department($dept_id);
         }else{
             $inventory = $this->InventoryModel->get_inventory_list();
         }
@@ -199,7 +203,7 @@ class Inventory extends CI_Controller {
             $details = $this->InventoryModel->get_distributed_details($dept_id,$id);
 
         }else{
-            $details = $this->InventoryModel->get_item_detail($id);
+            $details = $this->InventoryModel->get_distrib_item_details($id);
         }
         $data = array();
         foreach ($details as $list) {

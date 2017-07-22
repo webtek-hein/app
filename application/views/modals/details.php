@@ -43,7 +43,7 @@
                     </table>
                         <?php $position = $this->session->userdata['logged_in']['position'];
                         if($position === 'receiver') {
-                            echo '<button onclick = "return_items()" >return</button >';
+                            echo '<button type="button" class="open-modal-action" onclick="return_selected_items()" ">Return Selected Item(s)</button>';
                         }?>
                 </form>
                 </div>

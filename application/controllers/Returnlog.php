@@ -45,7 +45,9 @@ class Returnlog extends CI_Controller {
             $row[] = $list['unit_cost'];
             $row[] = $list['return_person'];
             $row[] = $list['reason'];
-            $row[] = $list['user'];
+            if($position === 'admin') {
+                $row[] = $list['user'];
+            }
             $row[] = $list['item_status'];
 
             $data[] = $row;

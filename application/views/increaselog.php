@@ -17,7 +17,12 @@
                   <th> Date Received</th>
                   <th> Unit Cost</th>
 					<th> Supplier </th>
-					<th>User</th>
+                    <?php $position = $this->session->userdata['logged_in']['position'];
+                    if($position === 'admin'){
+                        echo '<th>User</th>';
+                    }
+                    ?>
+
                 </tr>
                 </thead>
                 <tbody>
@@ -29,7 +34,12 @@
                 <th> Date Received</th>
                 <th> Unit Cost</th>
                 <th> Supplier </th>
-                <th>User</th>
+                <?php $position = $this->session->userdata['logged_in']['position'];
+                if($position === 'admin'){
+                    echo '<th>User</th>';
+                }
+                ?>
+
                 </tfoot>
               </table>
             </div>
