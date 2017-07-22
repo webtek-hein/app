@@ -325,6 +325,24 @@ function create_chart()
                 return false;
             }
         });
+        $( "input[name=datereceived]" ).on("blur",function () {
+            del_date = new Date($('input[name=datedelivered]').val());
+            date_rec = new Date($('input[name=datereceived]').val());
+
+            if(del_date > date_rec){
+                $(this).val('');
+            }
+        });
+
+        $( "input[name=ExpirationDate]" ).on("blur",function () {
+            date_rec = new Date($('input[name=datereceived]').val());
+            exp_date = new Date($('input[name=ExpirationDate]').val());
+
+            if(exp_date < date_rec){
+                $(this).val('');
+            }
+        });
+
     });
 //return items
 
