@@ -1,6 +1,3 @@
-<?php
-	$department = ($this->session->userdata['logged_in']['department']);
-?>
 <section class="content">
     <div class="row">
         <div class="col-xs-12">
