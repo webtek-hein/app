@@ -199,7 +199,7 @@ class Inventory extends CI_Controller {
         $position = $this->session->userdata['logged_in']['position'];
         $dept_id = $this->session->userdata['logged_in']['dept_id'];
 
-        if($position === 'receiver'){
+        if($position === 'receiver' || $position === 'department head'){
             $details = $this->InventoryModel->get_distributed_details($dept_id,$id);
 
         }else{
