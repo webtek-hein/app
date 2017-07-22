@@ -44,12 +44,6 @@ if (isset($this->session->userdata['logged_in'])) {
     <!-- datatables-->
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/datatables/dataTables.bootstrap.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/datatables/jquery.dataTables.css">
-    <script src="<?php echo base_url() ?>assets/plugins/jQuery/jquery-2.2.3.min.js"></script>
-    <script src="<?php echo base_url() ?>assets/plugins/jQueryUI/jquery-ui.js"></script>
-
-
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">

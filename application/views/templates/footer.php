@@ -9,7 +9,8 @@
 <!-- jQuery UI 1.11.4 -->
 <script src="<?php echo base_url() ?>assets/js/jquery-ui.min.js"></script>
 <script src="<?php echo base_url() ?>assets/js/highcharts.js"></script>
-
+<script src="<?php echo base_url() ?>assets/js/html5shiv.min.js"></script>
+<script src="<?php echo base_url() ?>assets/js/respond.min.js"></script>
 <script src="<?php echo base_url() ?>assets/js/action.js"></script>
 
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
