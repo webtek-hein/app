@@ -37,6 +37,7 @@ class Signup extends CI_Controller {
             'username' => $this->input->post('Username'),
             'password' => $this->input->post('Password'),
             'position' => $this->input->post('type'),
+            'dept_id' => $this->input->post('dment'),
             );
 
             $this->signup_model->register($data);
