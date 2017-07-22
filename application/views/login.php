@@ -7,7 +7,6 @@ if (isset($this->session->userdata['logged_in'])) {
 ?>
 <head>
     <title>Login</title>
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/styles.css">
     <link href="<?php echo base_url(); ?>assets/css/font.css" rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/normalize.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/assets/css/login.css">
