@@ -33,6 +33,8 @@ class Profile extends CI_Controller
             'con_password' => $this->input->post('con_password'),
 
         );
+         $this->user_db->edit_profile(array('user_id' => $this->input->post('user_id')), $data);
+        echo json_encode(array("status" => TRUE));
     }
 
 }
