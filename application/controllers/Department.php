@@ -68,8 +68,9 @@ class Department extends CI_Controller {
          $reason = $this->input->post('reason');
          $person = $this->input->post('person');
          $item_det_id = $this->input->post('item_det_id');
-         $this->return_model->return_items_to_inventory($item_det_id, $person, $reason, $userid);
-         header('Location: '. base_url() . 'department');
+         $ischecked = $this->input->post('ischecked');
+        $this->return_model->return_items_to_inventory($item_det_id, $person, $reason, $userid, $ischecked);
+        header('Location: '. base_url() . 'department');
     }
 
     public function dist_details($id)

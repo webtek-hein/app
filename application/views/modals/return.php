@@ -25,6 +25,9 @@
                               <td>Return Person</td>
                               <td><input type="text" class="InputBox" name="person" value="" required="required"></td>
                             </tr>
+                            <tr>
+                              <td><input type="checkbox" name="defect" value="">Flag item as DEFECTIVE</td>
+                            </tr>
                           </table>
                         </div>
                         <div class="modal-footer">

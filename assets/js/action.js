@@ -386,6 +386,7 @@ function return_selected_items() {
     var item_det_id = [];
     var reason;
     var person;
+    var checked;
     $('#item_detail:checked').each(function () {
         item_det_id.push($(this).val());
     });
@@ -393,7 +394,13 @@ function return_selected_items() {
    $('button[id=save1]').on('click',function () {
         reason =  $('input[name=reason]').val();
         person =  $('input[name=person]').val();
-        var item_data = {'item_det_id':item_det_id,'reason':reason,'person':person};
+        if ($('input[name=defect]').is(":checked"))
+        {
+            checked = 'yes';
+        } else {
+            checked = 'no';
+        }
+        var item_data = {'item_det_id':item_det_id,'reason':reason,'person':person, 'ischecked': checked};
        $.ajax({
            url : 'department/return_items',
            type: "POST",
