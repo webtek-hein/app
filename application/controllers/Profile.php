@@ -33,13 +33,8 @@ class Profile extends CI_Controller
             'password' => $this->input->post('password'),
         );
         $this->user_db->edit_profile($data, $userid);
-        $sess_array = array(
-            'username' => ''
-        );
-        $this->session->unset_userdata('logged_in', $sess_array);
-        $this->session->sess_destroy();
-        $data['message_display'] = 'Profile Update. Please relogin';
-        $this->load->view('login', $data);
+        $this->session->set_flashdata('msg', 'Update will take effect on next login.');
+        header('Location: '. base_url() . 'inventory');
     }
 
 }

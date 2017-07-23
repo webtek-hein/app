@@ -33,6 +33,9 @@
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
               <li><a href="" data-toggle="tab">Update Profile</a></li>
+              <?php if($this->session->flashdata('msg')): ?>
+                <p><?php echo $this->session->flashdata('msg'); ?></p>
+              <?php endif; ?>
             </ul>
             <?php echo form_open('profile/profile_update'); ?>
              <div class="form-horizontal">
