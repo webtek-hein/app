@@ -9,7 +9,7 @@
        
 </head>
 <body>
-<h1><center> SIGN UP</center></h1>
+<h1> SIGN UP</h1>
 		<?php echo validation_errors(); ?>
 		<?php echo form_open('signup'); ?>
 			<table border="0" width="500" align="center" class="table">
@@ -27,11 +27,11 @@
 				</tr>
 				<tr>
 					<td>Contact no.</td>
-					<td><input type="text" class="InputBox" name="contactno" required="required" value="<?php echo isset($_POST["contactno"]) ? $_POST["contactno"] : ''; ?>"></td>
+					<td><input type="text" class="InputBox" pattern="^(09|\+639)\d{9}$" title="ex 09xxxxxxxxx" name="contactno" required="required" value="<?php echo isset($_POST["contactno"]) ? $_POST["contactno"] : ''; ?>"></td>
 				</tr>
 				<tr>
 					<td>Username</td>
-					<td><input type="text" class="InputBox" name="Username" required="required" value="<?php echo isset($_POST["Username"]) ? $_POST["Username"] : ''; ?>"></td>
+					<td><input type="text" pattern="^[A-Za-z0-9_-]{4,15}$" title="Username must be more than 4 characters and not more than 15 characters." class="InputBox" name="Username" required="required" value="<?php echo isset($_POST["Username"]) ? $_POST["Username"] : ''; ?>"></td>
 				</tr>
 				<tr>
 					<td>Password</td>
@@ -53,7 +53,7 @@
 				</script>
 					<td>Position</td>
 					<td>
-						<select id="type" name="type"  onclick='select_dept()'>
+						<select id="type" name="type"  onclick='select_dept()' required>
 						<option selected="true" disabled>--Choose Position--</option>
  						<option value="custodian">Custodian</option>
 					  	<option value="department head">Department Head</option>
@@ -80,4 +80,6 @@
 				
 			</table>
 	</body>
+    <script src="<?php echo base_url() ?>assets/js/signup_validation.js">
+
 </html>

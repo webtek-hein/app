@@ -45,7 +45,7 @@ if (isset($message_display)) {
         <input type="text" name="username" id="name" placeholder="username" required="required"/>
         <input type="password" name="password" id="password" placeholder="password" required="required"/>
         <input type="submit" class="btn btn-primary btn-block btn-large" value=" Login " name="submit"/><br />
-        <a href="<?php echo base_url() ?>signup" style="text-decoration:none">Click Here To SignUp </a>
+        <a href="<?php echo base_url() ?>signup" style="text-decoration:none">Click Here To Sign Up </a>
         <?php echo form_close(); ?>
     </div>
 </div>
