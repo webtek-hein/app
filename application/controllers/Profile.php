@@ -22,5 +22,17 @@ class Profile extends CI_Controller
          $this->load->view('templates/footer');
 
     }
+    public function profile_update()
+    {
+        $data = array(
+            'first_name' => $this->input->post('first_name'),
+            'last_name' => $this->input->post('last_name'),
+            'email' => $this->input->post('email'),
+            'contact_no' => $this->input->post('contact_no'),
+            'password' => $this->input->post('password'),
+            'con_password' => $this->input->post('con_password'),
+
+        );
+    }
 
 }
