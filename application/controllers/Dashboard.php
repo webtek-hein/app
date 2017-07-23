@@ -14,18 +14,9 @@ class Dashboard extends CI_Controller {
         $data['defecteditems'] = $this->inventorymodel->dashborad_custodian_defected_items();
         $data['received'] = $this->inventorymodel->dashborad_custodian_recieved_items();
 
-        $position = $this->session->userdata['logged_in']['position'];
-        if($position === 'receiver'){
-            $this->load->view('receiver/header');
-        }else if($position === 'department head'){
-            $this->load->view('department_head/header');
-        }else if ($position === 'custodian'){
-             $this->load->view('custodian/header');
-        } else {
-            $this->load->view('templates/header');
-        }
-            $this->load->view('dashboard',$data);
-			$this->load->view('templates/footer');
+        $this->load->view('templates/header');
+        $this->load->view('dashboard',$data);
+        $this->load->view('templates/footer');
 	}
 	public function graph()
     {	

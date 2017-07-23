@@ -9,12 +9,7 @@ class Decreaselog extends CI_Controller {
     }
 	public function index()
 	{
-        $position = $this->session->userdata['logged_in']['position'];
-        if ($position === 'custodian') {
-            $this->load->view('custodian/header');
-        } else {
-            $this->load->view('templates/header');
-        }
+        $this->load->view('templates/header');
 		$this->load->view('decreaselog');
 		$this->load->view('templates/footer');
 

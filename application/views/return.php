@@ -18,7 +18,11 @@
                   <th>Department</th>
                   <th>Reason</th>
                   <th>Status</th>
-                  <th>Action</th>
+                    <?php $position = $this->session->userdata['logged_in']['position'];
+                    if($position === 'admin' || $position === 'custodian') {
+                        echo '<th> Action</th >';
+                    }
+                    ?>
                 </tr>
                 </thead>
                 <tbody>

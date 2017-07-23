@@ -11,15 +11,9 @@ class Department extends CI_Controller {
     }
 	public function index()
 	{
-        $position = $this->session->userdata['logged_in']['position'];
-        $dept_id = $this->session->userdata['logged_in']['dept_id'];
 		$data['departments'] = $this->inventorymodel->get_department_list();
 
-        if ($position === 'custodian') {
-            $this->load->view('custodian/header');
-        } else {
-            $this->load->view('templates/header');
-        }
+        $this->load->view('templates/header');
         $this->load->view('department',$data);
         $this->load->view('modals/department_item');
         $this->load->view('modals/return');

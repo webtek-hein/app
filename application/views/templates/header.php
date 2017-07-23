@@ -71,7 +71,7 @@ if (isset($this->session->userdata['logged_in'])) {
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                    <a href="<?php echo base_url()?>profile" class="btn btn-default btn-flat">Profile</a>
                                 </div>
                                 <div class="pull-right">
                                     <a href="<?php echo base_url()?>logout" class="btn btn-default btn-flat">Sign out</a>
@@ -121,42 +121,43 @@ if (isset($this->session->userdata['logged_in'])) {
                 </li>
 
 
-
-                <li class="treeview">
-                    <a href="<?php echo base_url()?>department">
-                        <i class="fa fa-building"></i>
-                        <span>Department</span>
-                    </a>
-                </li>
-
-
-                <li class="treeview">
-                    <a href="<?php echo base_url()?>returned">
-                        <i class="fa fa-reply"></i> <span>Return</span>
-                    </a>
-                </li>
+            <?php $position = $this->session->userdata['logged_in']['position'];
+            if ($position === 'admin' || $position === 'custodian' || $position === 'custodian'){
+                echo '<li class="treeview"><a href='.base_url().'department><i class="fa fa-building"></i>'.
+                    '<span>Department</span></a></li>';
+            }
+                ?>
+                <li class="treeview"><a href=<?php echo base_url();?>returned><i class="fa fa-reply"></i>
+                        <span>Return</span></a></li>
 
 
-                <li class="treeview">
-                    <a href="<?php echo base_url()?>users">
-                        <i class="fa fa-user-plus"></i> <span>Users</span>
-                    </a>
-                </li>
+            <?php $position = $this->session->userdata['logged_in']['position'];
+            if ($position === 'admin') {
+
+                echo '<li class="treeview" ><a href ='.base_url().'users> <i class="fa fa-user-plus" >'.
+                     '</i > <span > Users</span ></a ></li >';
+            }
+            ?>
+            <?php $position = $this->session->userdata['logged_in']['position'];
+                if ($position === 'admin' || $position === 'custodian' || $position === 'receiver') {
+                    echo '<li class="treeview"><a href="#"><i class="fa fa-table"></i><span>Logs</span>'.
+                         '<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>'.
+                    '</a>';
+                        if ($position === 'admin' || $position === 'custodian' || $position === 'receiver') {
+                           echo '<ul class="treeview-menu">';
+                            if ($position === 'admin' || $position === 'custodian') {
+                               echo '<li><a href=' . base_url() . 'increaselog><i class="fa fa-circle-o"></i> Increase</a></li>' .
+                                '<li><a href=' . base_url() . 'decreaselog><i class="fa fa-circle-o"></i> Decrease</a></li>';
+                            }
+                            echo '<li><a href=' . base_url() . 'returnlog><i class="fa fa-circle-o"></i> Return log</a></li>';
+
+                            echo '</ul></li>';
+                        }
+                }
+            ?>
 
 
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-table"></i> <span>Logs</span>
-                        <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="<?php echo base_url()?>increaselog"><i class="fa fa-circle-o"></i> Increase</a></li>
-                        <li><a href="<?php echo base_url()?>decreaselog"><i class="fa fa-circle-o"></i> Decrease</a></li>
-                        <li><a href="<?php echo base_url()?>returnlog"><i class="fa fa-circle-o"></i> Return log</a></li>
-                    </ul>
-                </li>
+
 
                 <!-- /.sidebar -->
     </aside>
