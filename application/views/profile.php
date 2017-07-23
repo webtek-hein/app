@@ -34,7 +34,7 @@
             <ul class="nav nav-tabs">
               <li><a href="" data-toggle="tab">Update Profile</a></li>
             </ul>
-
+             <form action="#" id="form" class="form-horizontal">
           <div class="tab-pane" id="settings">
                 <form class="form-horizontal">
                   <div class="form-group">
@@ -89,6 +89,7 @@
                   </div>
                 </form>
               </div>
+              </form>
               <!-- /.tab-pane -->
             </div>
             <!-- /.tab-content -->
