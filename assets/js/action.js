@@ -176,22 +176,35 @@ function get_item_details(id) {
             "type": "GET",
         },
     });
-   $('#details').on( 'click', 'tr :nth-child(2)', function () {
+   $('#details').on( 'click', 'tr :nth-child(1)', function () {
        $(this).attr('contentEditable', 'true');
        $(this).focus(function () {
            oldData = $(this).text();
        });
 
        // input field for serial
-/*           $('input[type=reset]').on('click', function() {
-               $('input.input').val('').change();
+       $('#item_detail').change(function(){
+
+
+           // input field for serial
+           $(document).ready(function() {
+               $('input[type=reset]').on('click', function() {
+                   $('input.input').val('').change();
+               });
+               $('input[type=number]').on('keyup change ', function() {
+                   var serial = ($(this).val());
+                   $.each($('#details tr input[name=item-det]:checked'),function () {
+                       $(this).parent().siblings(':first').text(serial);
+                   });
+
+               });
            });
-           $('input[type=number]').on('keyup change ', function() {
-               $('tbody > tr :nth-child(2)').text($(this).val());
-           });
-*/
+
+
+       });
 
       // used table cell as input
+    /*
       $('tbody > tr :nth-child(2)').on('keyup change', function () {
           serial = $(this).text();
           $.each($('#details tr input[name=item-det]:checked'),function () {
@@ -205,7 +218,7 @@ function get_item_details(id) {
                    data: {'serial':serial},
                    dataType: 'json',
                });
-           }
+           } */
        });
 
    // });
