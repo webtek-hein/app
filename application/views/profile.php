@@ -34,7 +34,8 @@
             <ul class="nav nav-tabs">
               <li><a href="" data-toggle="tab">Update Profile</a></li>
             </ul>
-             <form action="#" id="form" class="form-horizontal">
+            <?php echo form_open('profile/profile_update'); ?>
+             <div class="form-horizontal">
           <div class="tab-pane" id="settings">
                 <form class="form-horizontal" action="profile/profile_update">
                   <div class="form-group">
@@ -83,11 +84,11 @@
 
                   <div class="form-group">
                     <div class="col-sm-offset-8 col-sm-9">
-                                  <button type="button" id="btnSave" onclick="save()" class="btn btn-primary">Save</button>
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-primary">Save</button>
+                                <button type="button" class="btn btn-danger">Cancel</button>
                     </div>
                   </div>
-                </form>
+                </div>
               </div>
               </form>
               <!-- /.tab-pane -->
