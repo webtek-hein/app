@@ -61,25 +61,24 @@
                      <i class="fa fa-arrow-circle-right"> </i></a></button> </span>
     </div>
 </div>
-
 <!-- ./col -->
-<div class="col-lg-3 col-xs-6">
-    <!-- small box -->
-    
-    <div class="small-box bg-yellow">
-        <div class="inner">
-            <h3>
-            </h3>
-            <p>Pending Users</p>
-        </div>
-        <div class="icon">
-            <i class="ion ion-person-add"></i>
-        </div>
-        <nav><a href="/app/users"><button>More Details
-                <i class="fa fa-arrow-circle-right"> </i></a></button></a>
-        </nav>
-    </div>
-</div>
+<!-- small box -->
+
+<?php $position = $this->session->userdata['logged_in']['position'];
+if($position === 'admin'){
+
+
+    echo '<div class="col-lg-3 col-xs-6">'.
+         '<div class="small-box bg-yellow">'.
+         '<div class="inner"><h3></h3>'.
+         '<p>Pending Users</p></div>'.
+         '<div class="icon">'.
+         '<i class="ion ion-person-add"></i></div>'.
+         '<nav><a href="/app/users"><button>More Details'.
+         '<i class="fa fa-arrow-circle-right"> </i></a></button></a>'.
+         '</nav></div></div>';
+}
+?>
 <!-- -->
 <section class="content">
     <div class="row">

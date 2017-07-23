@@ -164,6 +164,12 @@ function return_no_action(id) {
     });
 
 }
+//select all
+$(document).ready(function () {
+    $('input[name=select-all]').change(function () {
+        $('input[name=item-det]').prop('checked',this.checked);
+    });
+});
 function get_item_details(id) {
     var serial;
     var item_det_id = [];
@@ -177,10 +183,7 @@ function get_item_details(id) {
             "type": "GET",
         },
     });
-    //select all
-    $('input[name=select-all]').change(function () {
-        $('input[name=item-det]').prop('checked',this.checked);
-    });
+
     //make serial editable
     $('td :nth-child(1)').on('click', function () {
         $(this).attr('contentEditable', 'true');
