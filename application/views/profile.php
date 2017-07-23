@@ -45,7 +45,7 @@
                     <label for="inputName" class="col-sm-2 control-label">First Name</label>
 
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" id="inputName" name="first_name" placeholder="<?php echo $firstname ?>">
+                      <input type="text" required="required" class="form-control" id="inputName" name="first_name" placeholder="<?php echo $firstname ?>">
                     </div>
                   </div>
 
@@ -53,7 +53,7 @@
                     <label for="inputName" class="col-sm-2 control-label">Last Name</label>
 
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" id="inputName" name="last_name" placeholder="<?php echo $lastname ?>">
+                      <input type="text" required="required" class="form-control" id="inputName" name="last_name" placeholder="<?php echo $lastname ?>">
                     </div>
                   </div>
 
@@ -61,27 +61,27 @@
                     <label for="inputEmail" class="col-sm-2 control-label">Email</label>
 
                     <div class="col-sm-9">
-                      <input type="email" class="form-control" id="inputEmail" name="email" placeholder="<?php echo $email ?>">
+                      <input type="email" required="required" class="form-control" id="inputEmail" name="email" placeholder="<?php echo $email ?>">
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="inputName" class="col-sm-2 control-label">Contact no</label>
 
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" id="inputName" name="contact_no" placeholder="<?php echo $contact_no ?>">
+                      <input type="text" required="required" class="form-control" id="inputName" name="contact_no" placeholder="<?php echo $contact_no ?>">
                     </div>
                   </div>
 
 				           <div class="form-group">
                     <label for="inputName" class="col-sm-2 control-label">Password</label>
                     <div class="col-sm-9">
-                      <input type="password" class="form-control" id="inputPassword" name="password" placeholder="password">
+                      <input type="password" required="required" class="form-control" id="inputPassword" name="password" placeholder="password">
                     </div>
                   </div>
                     <div class="form-group">
                     <label for="inputName" class="col-sm-2 control-label">Confirm Password</label>
                     <div class="col-sm-9">
-                      <input type="password" class="form-control" id="inputPasswordAgain" name="con_password" placeholder="password">
+                      <input type="password" required="required" class="form-control" id="inputPasswordAgain" name="con_password" placeholder="password">
                     </div>
                   </div>
 
