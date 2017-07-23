@@ -20,7 +20,7 @@
         <div class="icon">
             <i class="ion ion-bag"></i>
         </div>
-        <span onClick="toggle();"><button><a class="small-box-footer">Received Items
+        <span onClick="toggle();"><button><a class="small-box-footer">More Details
                      <i class="fa fa-arrow-circle-right"> </i></a></button> </span>
 
     </div>
@@ -37,7 +37,7 @@
         <div class="icon">
             <i class="ion ion-stats-bars"></i>
         </div>
-        <span onClick="toggle1();"><button><a class="small-box-footer">Returned Items
+        <span onClick="toggle1();"><button><a class="small-box-footer">More Details
                      <i class="fa fa-arrow-circle-right"> </i></a></button> </span>
 
     </div>
@@ -54,7 +54,7 @@
         <div class="icon">
             <i class="ion ion-person-add"></i>
         </div>
-        <span onClick="toggle2();"><button><a class="small-box-footer">Defected Items
+        <span onClick="toggle2();"><button><a class="small-box-footer">More Details
                      <i class="fa fa-arrow-circle-right"> </i></a></button> </span>
     </div>
 </div>
@@ -62,6 +62,7 @@
 <!-- ./col -->
 <div class="col-lg-3 col-xs-6">
     <!-- small box -->
+    
     <div class="small-box bg-yellow">
         <div class="inner">
             <h3>07</h3>
@@ -71,8 +72,9 @@
         <div class="icon">
             <i class="ion ion-person-add"></i>
         </div>
-        <button><a class="small-box-footer">Pending Users
-                <i class="fa fa-arrow-circle-right"> </i></a></button>
+        <nav><a href="/app/users"><button>More Details
+                <i class="fa fa-arrow-circle-right"> </i></a></button></a>
+        </nav>
     </div>
 </div>
 <!-- -->
