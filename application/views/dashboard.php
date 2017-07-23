@@ -81,7 +81,7 @@
         <div class="col-md-12">
             <div class="container" style="width:650px; margin-left: -30px; height:auto;">
 
-                <div class="col-lg-3 col-sm-8" style="width: 780px;">
+                <div class="col-lg-3 col-sm-8" style="width: 650px;">
                     <div class="panel panel-default">
                         <!-- Default panel contents -->
                         <div class="panel-heading">
@@ -112,10 +112,10 @@
                     <!-- /.table-responsive -->
                 </div>
                 <!-- /.box-body -->
-            </div>
+
             <!---->
             <div id="hidethis" style="display:none;">
-                <div class="col-lg-3 col-sm-8" style="width: 480px; margin-left:750px; margin-top: -490px;">
+                <div class="col-lg-3 col-sm-8" style="width: 480px; margin-left:630px;  position:fixed;">
                     <div class="panel panel-default panel-info">
                         <!-- Default panel contents -->
                         <div class="panel-heading">
@@ -149,7 +149,7 @@
             </div>
             <!---->
             <div id="hidethis1" style="display:none;">
-                <div class="col-lg-3 col-sm-8" style="width: 480px; margin-left:750px; margin-top: -490px;">
+                <div class="col-lg-3 col-sm-8" style="width: 480px; margin-left:630px;  position:fixed;">
                     <div class="panel panel-default panel-warning">
                         <!-- Default panel contents -->
                         <div class="panel-heading">
@@ -185,7 +185,7 @@
             </div>
             <!---->
             <div id="hidethis2" style="display:none;">
-                <div class="col-lg-3 col-sm-8" style="width: 480px; margin-left:750px; margin-top: -490px;">
+                <div class="col-lg-3 col-sm-8" style="width: 480px; margin-left:630px;  position:fixed;">
                     <div class="panel panel-default panel-danger">
                         <!-- Default panel contents -->
                         <div class="panel-heading">
@@ -215,7 +215,7 @@
                             <?php endforeach; ?>
                             </tbody>
                         </table>
-
+                    </div>
                     </div>
                 </div>
             </div>
