@@ -181,12 +181,29 @@ function get_item_details(id) {
        $(this).focus(function () {
            oldData = $(this).text();
        });
-       $('tbody > tr :nth-child(2)').on('blur keyup change', function () {
-           serial = $(this).text();
-           $('tbody > tr :nth-child(2)').text(serial); // kaya pumupunta ung cursor sa umpisa kasi nauupdate din ung <td> - var serial
+
+       // input field for serial
+       $(document).ready(function() {
+           $('input[type=reset]').on('click', function() {
+               $('input.input').val('').change();
+           });
+           $('input[type=number]').on('keyup change ', function() {
+               $('tbody > tr :nth-child(2)').text($(this).val());
+           });
        });
-      // $(this).blur(function () {
-       //     serial = $(this).text();
+
+
+     /* // used table cell as input
+      $('tbody > tr :nth-child(2)').on('blur keyup change', function () {
+          serial = $(this).text();
+           $('tbody > tr :nth-child(2)').text(serial); // kaya pumupunta ung cursor sa umpisa kasi nauupdate din ung <td> - var serial
+       }); */
+
+
+      /*  // original
+      $(this).blur(function () {
+           serial = $(this).text();
+           */
            if(oldData != serial) {
                $.ajax({
                    type: "POST",
