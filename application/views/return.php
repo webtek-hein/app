@@ -7,7 +7,7 @@
               <h3 class="box-title">Return</h3>
             </div>
             <div class="box-body" style="overflow-x:auto; width:auto;">
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="returned_items" class="table table-bordered table-striped">
                 <thead>
                 <tr>
                   <th>Serial no.</th>

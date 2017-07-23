@@ -306,6 +306,7 @@ function create_chart()
 
 //form validations
     $(document).ready(function () {
+
         $( "input[name=Item_Quantity]" ).on("keypress paste",function () {
             var x = event.charCode;
             if(x === 101 || x === 46 || x === 45 || x === 43){
