@@ -12,18 +12,17 @@
             </div>
             <div class="modal-body" align="center">
                 <form class="box-body" style="overflow-x:auto; width:auto; ">
-                    <form action="">
-                        <p class="display">Select an item and input the serial here:  </p>
+                    <?php $position = $this->session->userdata['logged_in']['position'];
+                    if($position === 'admin' || $position === 'custodian') {
+                    echo '<form action="">'.
+                         '<p class="display">Select desired items and input the serial here for multi-input:  </p>'.
+                         '<form action="#">'.
+                         '<input placeholder="serial number: xxxxxxxx" name="input" type="number" />'.
+                         '<input class = "btn btn-danger" type="reset" value="Reset" />'.
+                         '<input type="button" class="btn btn-success" name="submit-serial" value="Save"></input></form>';
+                    }
+                    ?>
 
-                        <form action="#">
-                            <input placeholder="serial number: xxxxxxxx" name="input" type="number" />
-                            <input class = "btn btn-danger" type="reset" value="Reset" />
-                            <?php $position = $this->session->userdata['logged_in']['position'];
-                            if($position === 'admin' || $position === 'custodian'){
-                                echo '<input type="button" class="btn btn-success" name="submit-serial" value="Save All"></input>';
-                            }
-                            ?>
-                        </form>
                     <table id="details" class="table table-bordered table-striped" width="100%">
                         <thead>
                         <tr>

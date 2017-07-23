@@ -181,10 +181,12 @@ function get_item_details(id) {
     $('input[name=select-all]').change(function () {
         $('input[name=item-det]').prop('checked',this.checked);
     });
+    //make serial editable
     $('td :nth-child(1)').on('click', function () {
         $(this).attr('contentEditable', 'true');
     });
-   $('#details,input[name=select-all]').on( 'change click', 'input[type=checkbox]', function () {
+    //
+   $('#details').on( 'change', 'input[type=checkbox]', function () {
            $('tr :nth-child(2)').attr('contentEditable', 'true');
            $(this).focus(function () {
                oldData = $(this).text();
@@ -197,7 +199,7 @@ function get_item_details(id) {
                    $('input.input').val('').change();
                });
                $('input[type=number]').on('keyup change ', function () {
-                   var serial = ($(this).val());
+                   serial = ($(this).val());
                    $.each($('#details tr input[name=item-det]:checked'), function () {
                        $(this).parent().siblings(':first').text(serial);
                    });
