@@ -186,7 +186,7 @@ function get_item_details(id) {
         $(this).attr('contentEditable', 'true');
     });
     //multiple serial input
-   $('#details').on( 'change', 'input[type=checkbox]', function () {
+   $('#details ').on( 'change',  function () {
            $('tr :nth-child(2)').attr('contentEditable', 'true');
            $(this).focus(function () {
                oldData = $(this).text();

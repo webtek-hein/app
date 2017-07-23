@@ -42,7 +42,7 @@ class User_db extends CI_Model {
     public function accept_user($id)
     {
         $this->db->set('status','accepted')
-            ->where('status','accepted')
+            ->where('status','pending')
             ->where('user_id',$id)
             ->update('user');
     }
@@ -50,7 +50,7 @@ class User_db extends CI_Model {
     public function decline_user($id)
     {
         $this->db->set('status','declined')
-            ->where('status','accepted')
+            ->where('status','pending')
             ->where('user_id',$id)
             ->update('user');
     }
