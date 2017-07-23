@@ -1,7 +1,68 @@
+    <section class="content-header">
+      <h1>
+        Dashboard
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Dashboard</li>
+      </ol>
+    </section><br>
+
+<!---->
+<div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-aqua">
+            <div class="inner">
+              <h3>150</h3>
+
+              <p>Received Items</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-bag"></i>
+            </div>
+              <span onClick="toggle();"><button><a class="small-box-footer">Received Items
+                     <i class="fa fa-arrow-circle-right"> </i></a></button> </span>
+
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-green">
+            <div class="inner">
+              <h3>53<sup style="font-size: 20px">%</sup></h3>
+
+              <p>Returned Items</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-stats-bars"></i>
+            </div>
+              <span onClick="toggle1();"><button><a class="small-box-footer">Returned Items
+                     <i class="fa fa-arrow-circle-right"> </i></a></button> </span>
+
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-yellow">
+            <div class="inner">
+              <h3>44</h3>
+
+              <p>Defected Items</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-person-add"></i>
+            </div>
+              <span onClick="toggle2();"><button><a class="small-box-footer">Defected Items
+                     <i class="fa fa-arrow-circle-right"> </i></a></button> </span>
+          </div>
+        </div>
+<!-- -->   
 <section class="content">
     <div class="row">
         <div class="col-md-12">
-            <div class="container" style="width:600px; margin-left: -30px">
+            <div class="container" style="width:600px; margin-left: -30px; height:auto;">
 
                 <div class="col-lg-3 col-sm-8" style="width: 650px;">
                     <div class="panel panel-default">
@@ -35,7 +96,9 @@
                 </div>
                 <!-- /.box-body -->
             </div>
-                <div class="col-lg-3 col-sm-8" style="width: 450px; margin-left:630px; margin-top: -170px;">
+<!---->
+    <div id="hidethis" style="display:none;">
+                <div class="col-lg-3 col-sm-8" style="width: 450px; margin-left:630px; margin-top: -135px;">
                 <div class="panel panel-default panel-info">
                     <!-- Default panel contents -->
                     <div class="panel-heading">
@@ -63,16 +126,13 @@
                         </tbody>
                     </table>
 
-                    <th scope="row">
-                        <p class="text-center">
-                            <a href="" class="btn-info btn">
-                                <span aria-hidden="true"></span> See more</a>
-                        </p>
-                    </th>
                 </div>
             </div>
 
-            <div class="col-lg-3 col-sm-8" style="width: 450px; margin-left:630px;">
+</div>
+<!---->
+<div id="hidethis1" style="display:none;">
+            <div class="col-lg-3 col-sm-8" style="width: 450px; margin-left:630px; margin-top: -135px;">
                 <div class="panel panel-default panel-warning">
                     <!-- Default panel contents -->
                     <div class="panel-heading">
@@ -102,15 +162,13 @@
                         </tbody>
                     </table>
 
-                    <th scope="row">
-                        <p class="text-center">
-                            <a href="" class="btn-warning btn">
-                                <span aria-hidden="true"></span> See more</a>
-                        </p>
-                    </th>
                 </div>
             </div>
-                    <div class="col-lg-3 col-sm-8" style="width: 450px; margin-left:630px;">
+
+</div>
+<!---->
+<div id="hidethis2" style="display:none;">
+                    <div class="col-lg-3 col-sm-8" style="width: 450px; margin-left:630px; margin-top: -135px;">
                         <div class="panel panel-default panel-danger">
                             <!-- Default panel contents -->
                             <div class="panel-heading">
@@ -141,15 +199,39 @@
                                 </tbody>
                             </table>
 
-                            <th scope="row">
-                                <p class="text-center">
-                                    <a href="" class="btn-danger btn">
-                                        <span aria-hidden="true"></span> See more</a>
-                                </p>
-                            </th>
                         </div>
                     </div>
-
+</div>
         </div>
     </div>
 </section>
+
+
+<script>
+    function toggle() {
+        if( document.getElementById("hidethis").style.display=='none' ){
+            document.getElementById("hidethis").style.display = '';
+        }else{
+            document.getElementById("hidethis").style.display = 'none';
+        }
+    }
+
+
+    function toggle1() {
+        if( document.getElementById("hidethis1").style.display=='none' ){
+            document.getElementById("hidethis1").style.display = '';
+        }else{
+            document.getElementById("hidethis1").style.display = 'none';
+        }
+    }
+
+
+    function toggle2() {
+        if( document.getElementById("hidethis2").style.display=='none' ){
+            document.getElementById("hidethis2").style.display = '';
+        }else{
+            document.getElementById("hidethis2").style.display = 'none';
+        }
+    }
+
+</script>
