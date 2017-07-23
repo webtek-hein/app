@@ -17,24 +17,23 @@ class Profile extends CI_Controller
 // Show login page
     public function index()
     {
-            $this->load->view('templates/header');
-            $this->load->view('profile');
-         $this->load->view('templates/footer');
+        $this->load->view('templates/header');
+        $this->load->view('profile');
+        $this->load->view('templates/footer');
 
     }
     public function profile_update()
     {
+        $userid = ($this->session->userdata['logged_in']['userid']);
         $data = array(
             'first_name' => $this->input->post('first_name'),
             'last_name' => $this->input->post('last_name'),
             'email' => $this->input->post('email'),
             'contact_no' => $this->input->post('contact_no'),
             'password' => $this->input->post('password'),
-            'con_password' => $this->input->post('con_password'),
-
         );
-         $this->user_db->edit_profile(array('user_id' => $this->input->post('user_id')), $data);
-        echo json_encode(array("status" => TRUE));
+        $this->user_db->edit_profile($data, $userid);
+        header('Location: '. base_url() . 'profile');
     }
 
 }
