@@ -1,3 +1,60 @@
+    <section class="content-header">
+      <h1>
+        Dashboard
+        <small>Control panel</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Dashboard</li>
+      </ol>
+    </section><br>
+
+<!---->
+<div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-aqua">
+            <div class="inner">
+              <h3>150</h3>
+
+              <p>Received Items</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-bag"></i>
+            </div>
+             <button onclick="myFunction()" ><a class="small-box-footer">Items Remaining<i class="fa fa-arrow-circle-right"></i></a></button>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-green">
+            <div class="inner">
+              <h3>53<sup style="font-size: 20px">%</sup></h3>
+
+              <p>Returned Items</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-stats-bars"></i>
+            </div>
+            <button onclick="myFunction()" ><a class="small-box-footer">Return Items<i class="fa fa-arrow-circle-right"></i></a></button>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-yellow">
+            <div class="inner">
+              <h3>44</h3>
+
+              <p>Defected Items</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-person-add"></i>
+            </div>
+            <button onclick="myFunction()" ><a class="small-box-footer">Defected Items<i class="fa fa-arrow-circle-right"></i></a></button>
+          </div>
+        </div>
+<!-- -->   
 <section class="content">
     <div class="row">
         <div class="col-md-12">
@@ -35,6 +92,8 @@
                 </div>
                 <!-- /.box-body -->
             </div>
+<!---->
+<div id="received">
                 <div class="col-lg-3 col-sm-8" style="width: 450px; margin-left:630px; margin-top: -170px;">
                 <div class="panel panel-default panel-info">
                     <!-- Default panel contents -->
@@ -72,6 +131,9 @@
                 </div>
             </div>
 
+</div>
+<!---->
+<div id="returned ">
             <div class="col-lg-3 col-sm-8" style="width: 450px; margin-left:630px;">
                 <div class="panel panel-default panel-warning">
                     <!-- Default panel contents -->
@@ -110,6 +172,10 @@
                     </th>
                 </div>
             </div>
+
+</div>
+<!---->
+<div id="defected">
                     <div class="col-lg-3 col-sm-8" style="width: 450px; margin-left:630px;">
                         <div class="panel panel-default panel-danger">
                             <!-- Default panel contents -->
@@ -149,7 +215,37 @@
                             </th>
                         </div>
                     </div>
-
+</div>
         </div>
     </div>
 </section>
+<script>
+function myFunction() {
+    var a = document.getElementById('received');
+    if (a.style.display === 'none') {
+        a.style.display = 'block';
+    } else {
+        a.style.display = 'none';
+    }
+}
+</script>
+<script>
+function myFunction() {
+    var x = document.getElementById('returned');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+<script>
+function myFunction() {
+    var yz = document.getElementById('defected');
+    if (yz.style.display === 'none') {
+        yz.style.display = 'block';
+    } else {
+        yz.style.display = 'none';
+    }
+}
+</script>
