@@ -382,6 +382,7 @@ class InventoryModel extends CI_Model {
         $this->db->join('logs.increase_log','item_detail.item_det_id = logs.increase_log.item_det_id');
         $this->db->join('user','user.user_id = increase_log.user_id');
         $this->db->limit(10);
+        $this->db->distinct();
         $query = $this->db->get('item');
 
         return $query->result_array();
@@ -396,6 +397,7 @@ class InventoryModel extends CI_Model {
            $this->db->join('department','distribution.dept_id = department.dept_id');
          $this->db->join('user','user.user_id = return_log.user_id');
          $this->db->limit(10);
+         $this->db->distinct();
             $query = $this->db->get('item');
 
             return $query->result_array();
@@ -410,6 +412,7 @@ class InventoryModel extends CI_Model {
          $this->db->join('department','distribution.dept_id = department.dept_id');
          $this->db->join('user','user.user_id = return_log.user_id');
          $this->db->limit(10);
+         $this->db->distinct();
          $query = $this->db->get('item');
 
          return $query->result_array();
@@ -425,4 +428,15 @@ class InventoryModel extends CI_Model {
         $query = $this->db->get('item');
         return $query->result_array();
      }
+
+
+     public function count_received_item()
+     {
+
+        $this->db->select('item_name, count(*) as quantity from item_detail');
+        $this->db->join('item',' item.item_id = item_detail.item_id','left');
+                -> where ('DATE(date_rec) =  CURDATE()');
+                -> group_by ('item_detail.item_id');
+                $query = $this->db->get('item');
+        return $query->result_array();
     }
