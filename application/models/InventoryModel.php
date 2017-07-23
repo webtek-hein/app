@@ -417,9 +417,11 @@ class InventoryModel extends CI_Model {
 
      public function dashboard_custodian_items_remaining()
      {
-        $this->db->SELECT('official_receipt_no, item_name, quantity, date_rec');
+        $this->db->select(' official_receipt_no, item_name, quantity, item_type');
       $this->db->join('item_detail','item_detail.item_id = item.item_id','left');
+      $this->db->order_by('item_name');
       $this->db->limit(10);
+      $this->db->distinct();
         $query = $this->db->get('item');
         return $query->result_array();
      }

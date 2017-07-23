@@ -94,7 +94,7 @@
                                 <th>Order ID</th>
                                 <th>Item</th>
                                 <th>Quantity</th>
-                                <th>Date</th>
+                                <th>Type</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -103,7 +103,7 @@
                                     <td><?php echo $items_remaining['official_receipt_no']; ?></td>
                                     <td><?php echo $items_remaining['item_name']; ?></td>
                                     <td><?php echo $items_remaining['quantity']; ?></td>
-                                    <td><?php echo $items_remaining['date_rec']; ?></td>
+                                    <td><?php echo $items_remaining['item_type']; ?></td>
                                 </tr>
                             <?php endforeach; ?>
                             </tbody>
