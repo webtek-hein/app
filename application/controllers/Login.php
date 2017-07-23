@@ -54,6 +54,8 @@ class Login extends CI_Controller {
                         'userid' => $result[0]->user_id,
                         'department' => $result[0]->department,
                         'dept_id' => $result[0]->dept_id,
+                        'email' => $result[0]->email,
+                        'contact_no' => $result[0]->contact_no,
                     );
 // Add user data in session
 

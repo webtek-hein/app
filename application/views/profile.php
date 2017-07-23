@@ -1,3 +1,13 @@
+ <?php
+    $username = ($this->session->userdata['logged_in']['username']);
+    $firstname = ($this->session->userdata['logged_in']['firstname']);
+    $lastname = ($this->session->userdata['logged_in']['lastname']);
+    $position = ($this->session->userdata['logged_in']['position']);
+    $email = ($this->session->userdata['logged_in']['email']);
+    $contact_no = ($this->session->userdata['logged_in']['contact_no']);
+
+?>
+
   <div class="content-wrapper">
     <!-- Main content -->
     <section class="content">
@@ -22,23 +32,16 @@
         <div class="col-md-9">
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-              <li><a href="#settings" data-toggle="tab">Settings</a></li>
+              <li><a href="" data-toggle="tab">Update Profile</a></li>
             </ul>
-
-            <div class="tab-content">
-
-
-
-              </div>
-
 
           <div class="tab-pane" id="settings">
                 <form class="form-horizontal">
                   <div class="form-group">
-                    <label for="inputName" class="col-sm-2 control-label">Name</label>
+                    <label for="inputName" class="col-sm-2 control-label">First Name</label>
 
                     <div class="col-sm-9">
-                      <input type="email" class="form-control" id="inputName" placeholder="Name">
+                      <input type="text" class="form-control" id="inputName" name="first_name" placeholder="<?php echo $firstname ?>">
                     </div>
                   </div>
 
@@ -46,7 +49,7 @@
                     <label for="inputName" class="col-sm-2 control-label">Last Name</label>
 
                     <div class="col-sm-9">
-                      <input type="email" class="form-control" id="inputName" placeholder="Last name">
+                      <input type="text" class="form-control" id="inputName" name="last_name" placeholder="<?php echo $lastname ?>">
                     </div>
                   </div>
 
@@ -54,35 +57,34 @@
                     <label for="inputEmail" class="col-sm-2 control-label">Email</label>
 
                     <div class="col-sm-9">
-                      <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                      <input type="email" class="form-control" id="inputEmail" name="email" placeholder="<?php echo $email ?>">
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="inputName" class="col-sm-2 control-label">Contact no</label>
 
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" id="inputName" placeholder="Contact no">
+                      <input type="text" class="form-control" id="inputName" name="contact_no" placeholder="<?php echo $contact_no ?>">
                     </div>
                   </div>
 
-				  <div class="form-group">
+				           <div class="form-group">
                     <label for="inputName" class="col-sm-2 control-label">Password</label>
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" id="inputName" placeholder="password">
+                      <input type="password" class="form-control" id="inputPassword" name="password" placeholder="password">
+                    </div>
+                  </div>
+                    <div class="form-group">
+                    <label for="inputName" class="col-sm-2 control-label">Confirm Password</label>
+                    <div class="col-sm-9">
+                      <input type="password" class="form-control" id="inputPasswordAgain" name="con_password" placeholder="password">
                     </div>
                   </div>
 
-				   <div class="form-group">
-                    <label for="inputName" class="col-sm-2 control-label">Confirm Password</label>
-                    <div class="col-sm-9">
-                      <input type="text" class="form-control" id="inputName" placeholder="confirm password">
-                    </div>
-                  </div>
-                  
                   <div class="form-group">
                     <div class="col-sm-offset-8 col-sm-9">
 					  <button type="submit" class="btn btn-success">Cancel</button>
-                      <button type="submit" class="btn btn-danger">Submit</button>
+                      <button type="submit" id="submit" class="btn btn-danger">Submit</button>
                     </div>
                   </div>
                 </form>
