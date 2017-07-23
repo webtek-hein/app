@@ -83,8 +83,8 @@
 
                   <div class="form-group">
                     <div class="col-sm-offset-8 col-sm-9">
-					  <button type="button" class="btn btn-success">Cancel</button>
-                      <button type="submit" id="submit" class="btn btn-danger">Submit</button>
+                                  <button type="button" id="btnSave" onclick="save()" class="btn btn-primary">Save</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                     </div>
                   </div>
                 </form>
