@@ -13,8 +13,11 @@
     <!-- small box -->
     <div class="small-box bg-aqua">
         <div class="inner">
-            <h3>150</h3>
-
+            <?php foreach ($countrecitems as $count_rec_items): ?>
+            <h3>
+                <?php echo $count_rec_items['quantity']; ?>
+            </h3>
+                <?php endforeach; ?>
             <p>Received Items</p>
         </div>
         <div class="icon">
@@ -30,8 +33,11 @@
     <!-- small box -->
     <div class="small-box bg-green">
         <div class="inner">
-            <h3>53<sup style="font-size: 20px">%</sup></h3>
-
+            <?php foreach ($retitems as $ret_items): ?>
+            <h3>
+                <?php echo $ret_items['quantity']; ?>
+            </h3>
+                <?php endforeach; ?>
             <p>Returned Items</p>
         </div>
         <div class="icon">
@@ -47,8 +53,11 @@
     <!-- small box -->
     <div class="small-box bg-red">
         <div class="inner">
-            <h3>44</h3>
-
+                <?php foreach ($defitems as $def_items): ?>
+            <h3>
+                <?php echo $def_items['quantity']; ?>
+            </h3>
+                <?php endforeach; ?>
             <p>Defected Items</p>
         </div>
         <div class="icon">
@@ -65,8 +74,11 @@
     
     <div class="small-box bg-yellow">
         <div class="inner">
-            <h3>07</h3>
-
+            <?php foreach ($pending as $pending_user): ?>
+            <h3>
+                <?php echo $pending_user['quantity']; ?>
+            </h3>
+            <?php endforeach; ?>
             <p>Pending Users</p>
         </div>
         <div class="icon">
