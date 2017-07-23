@@ -53,7 +53,7 @@ $(document).ready(function() {
     $('select[name="department"]').change(function(){
         var id = $(this).val();
 
-        department = $('#department').DataTable({
+        department = $('#department').DataTable({   
             responsive: true,
             "destroy": true,
             "ajax": {
@@ -61,6 +61,12 @@ $(document).ready(function() {
                 "type": "POST",
             },
         });
+        if (id == 'none') {
+            department.column( 0 ).visible( true );
+        } else {
+            department.column( 0 ).visible( false );
+        }
+        
     });
 
 
