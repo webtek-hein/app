@@ -138,22 +138,18 @@ if (isset($this->session->userdata['logged_in'])) {
                      '</i > <span > Users</span ></a ></li >';
             }
             ?>
+                <li class="treeview"><a href="#"><i class="fa fa-table"></i><span>Logs</span>
+                        <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                    </a>
             <?php $position = $this->session->userdata['logged_in']['position'];
-                if ($position === 'admin' || $position === 'custodian' || $position === 'receiver') {
-                    echo '<li class="treeview"><a href="#"><i class="fa fa-table"></i><span>Logs</span>'.
-                         '<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>'.
-                    '</a>';
-                        if ($position === 'admin' || $position === 'custodian' || $position === 'receiver') {
+
                            echo '<ul class="treeview-menu">';
                             if ($position === 'admin' || $position === 'custodian') {
                                echo '<li><a href=' . base_url() . 'increaselog><i class="fa fa-circle-o"></i> Increase</a></li>' .
                                 '<li><a href=' . base_url() . 'decreaselog><i class="fa fa-circle-o"></i> Decrease</a></li>';
                             }
                             echo '<li><a href=' . base_url() . 'returnlog><i class="fa fa-circle-o"></i> Return log</a></li>';
-
                             echo '</ul></li>';
-                        }
-                }
             ?>
 
 
