@@ -440,5 +440,28 @@ class InventoryModel extends CI_Model {
                 $query = $this->db->get('item');
         return $query->result_array();
     }
+ public function count_ret_items()
+     {
+$this->db->select(' item_name, count(*) as quantity');
+$this->db->get('table');
+$this->db->join ('item', 'item.item_id = item_detail.item_id','left');
+$this->db->where ('DATE(date_rec) =  CURDATE()');
+$this->db->and ('weekday('*') >=0');
+$this->db->group_by ('item_detail.item_id ');
+        $query = $this->db->get('item');
+        return $query->result_array(); 
+    }
+
+         public function count_def_items()
+     {
+$this->db->select(' item_name, count(*) as quantity');
+$this->db->get('table');
+$this->db->join ('item', 'item.item_id = item_detail.item_id','left');
+$this->db->where ('DATE(date_rec) =  CURDATE()');
+$this->db->and ('weekday('*') >=0');
+$this->db->group_by ('item_detail.item_id ');
+        $query = $this->db->get('item');
+        return $query->result_array(); 
+    }
 
     }
