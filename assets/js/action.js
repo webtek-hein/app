@@ -175,8 +175,12 @@ function get_item_details(id) {
        $(this).focus(function () {
            oldData = $(this).text();
        });
-       $(this).blur(function () {
-            serial = $(this).text();
+       $('tbody > tr :nth-child(2)').on('blur keyup change', function () {
+           serial = $(this).text();
+           $('tbody > tr :nth-child(2)').text(serial); // kaya pumupunta ung cursor sa umpisa kasi nauupdate din ung <td> - var serial
+       });
+      // $(this).blur(function () {
+       //     serial = $(this).text();
            if(oldData != serial) {
                $.ajax({
                    type: "POST",
@@ -187,7 +191,7 @@ function get_item_details(id) {
            }
        });
 
-    });
+   // });
 
     $('#view').modal('show');
 }
