@@ -33,11 +33,8 @@
     <!-- small box -->
     <div class="small-box bg-green">
         <div class="inner">
-            <?php foreach ($retitems as $ret_items): ?>
             <h3>
-                <?php echo $ret_items['quantity']; ?>
             </h3>
-                <?php endforeach; ?>
             <p>Returned Items</p>
         </div>
         <div class="icon">
@@ -53,11 +50,8 @@
     <!-- small box -->
     <div class="small-box bg-red">
         <div class="inner">
-                <?php foreach ($defitems as $def_items): ?>
             <h3>
-                <?php echo $def_items['quantity']; ?>
             </h3>
-                <?php endforeach; ?>
             <p>Defected Items</p>
         </div>
         <div class="icon">
@@ -74,11 +68,8 @@
     
     <div class="small-box bg-yellow">
         <div class="inner">
-            <?php foreach ($pending as $pending_user): ?>
             <h3>
-                <?php echo $pending_user['quantity']; ?>
             </h3>
-            <?php endforeach; ?>
             <p>Pending Users</p>
         </div>
         <div class="icon">
@@ -112,14 +103,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <?php foreach ($itemsremaining as $items_remaining): ?>
-                                <tr>
-                                    <td><?php echo $items_remaining['official_receipt_no']; ?></td>
-                                    <td><?php echo $items_remaining['item_name']; ?></td>
-                                    <td><?php echo $items_remaining['quantity']; ?></td>
-                                    <td><?php echo $items_remaining['item_type']; ?></td>
-                                </tr>
-                            <?php endforeach; ?>
+
                             </tbody>
                         </table>
                     </div>
@@ -139,19 +123,15 @@
                         <table class="table table-bordered table-striped" width="auto">
                             <thead>
                             <tr>
-                                <th>User</th>
                                 <th>Item</th>
                                 <th>Quantity</th>
-                                <th>Supplier</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <?php foreach ($received as $received_items): ?>
+                            <?php foreach ($countrecitems as $cri): ?>
                                 <tr>
-                                    <td><?php echo $received_items['user']; ?></td>
-                                    <td><?php echo $received_items['item_name']; ?></td>
-                                    <td><?php echo $received_items['quantity']; ?></td>
-                                    <td><?php echo $received_items['supplier']; ?></td>
+                                    <td><?php echo $cri['item_name']; ?></td>
+                                    <td><?php echo $cri['quantity']; ?></td>
                                 </tr>
                             <?php endforeach; ?>
                             </tbody>
@@ -216,16 +196,7 @@
                                 <th>Supplier</th>
                             </tr>
                             </thead>
-                            <?php foreach ($defecteditems as $defected_items): ?>
-                                <tr>
-                                    <td><?php echo $defected_items['user']; ?></td>
-                                    <td><?php echo $defected_items['item_name']; ?></td>
-                                    <td><?php echo $defected_items['quantity']; ?></td>
-                                    <td><?php echo $defected_items['reason']; ?></td>
-                                    <td><?php echo $defected_items['department']; ?></td>
-                                    <td><?php echo $defected_items['supplier']; ?></td>
-                                </tr>
-                            <?php endforeach; ?>
+
                             </tbody>
                         </table>
                     </div>

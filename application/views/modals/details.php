@@ -13,11 +13,16 @@
             <div class="modal-body" align="center">
                 <form class="box-body" style="overflow-x:auto; width:auto; ">
                     <form action="">
-                        <p class="display">The value of the text input is: </p>
+                        <p class="display">Select an item and input the serial here:  </p>
 
                         <form action="#">
-                            <input name="input" type="number" />
-                            <input type="reset" value="Reset" />
+                            <input placeholder="serial number: xxxxxxxx" name="input" type="number" />
+                            <input class = "btn btn-danger" type="reset" value="Reset" />
+                            <?php $position = $this->session->userdata['logged_in']['position'];
+                            if($position === 'admin' || $position === 'custodian'){
+                                echo '<input type="button" class="btn btn-success" name="submit-serial" value="Save All"></input>';
+                            }
+                            ?>
                         </form>
                     <table id="details" class="table table-bordered table-striped" width="100%">
                         <thead>

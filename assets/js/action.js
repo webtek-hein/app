@@ -164,10 +164,11 @@ function return_no_action(id) {
     });
 
 }
-
 function get_item_details(id) {
     var serial;
+    var item_det_id = [];
     var oldData;
+    //detail list
     details = $('#details').DataTable({
         responsive: true,
         "destroy": true,
@@ -176,55 +177,49 @@ function get_item_details(id) {
             "type": "GET",
         },
     });
-   $('#details').on( 'click', 'tr :nth-child(1)', function () {
-       $(this).attr('contentEditable', 'true');
-       $(this).focus(function () {
-           oldData = $(this).text();
-       });
-
-       // input field for serial
-       $('#item_detail').change(function(){
-
+    //select all
+    $('input[name=select-all]').change(function () {
+        $('input[name=item-det]').prop('checked',this.checked);
+    });
+    $('td :nth-child(1)').on('click', function () {
+        $(this).attr('contentEditable', 'true');
+    });
+   $('#details,input[name=select-all]').on( 'change click', 'input[type=checkbox]', function () {
+           $('tr :nth-child(2)').attr('contentEditable', 'true');
+           $(this).focus(function () {
+               oldData = $(this).text();
+           });
 
            // input field for serial
-           $(document).ready(function() {
-               $('input[type=reset]').on('click', function() {
+           $('#item_detail').change(function () {
+               // reset button
+               $('input[type=reset]').on('click', function () {
                    $('input.input').val('').change();
                });
-               $('input[type=number]').on('keyup change ', function() {
+               $('input[type=number]').on('keyup change ', function () {
                    var serial = ($(this).val());
-                   $.each($('#details tr input[name=item-det]:checked'),function () {
+                   $.each($('#details tr input[name=item-det]:checked'), function () {
                        $(this).parent().siblings(':first').text(serial);
                    });
 
                });
            });
 
+           /*
+                         if(oldData != serial) {
+                          $.ajax({
+                              type: "POST",
+                              url: 'inventory/set_serial/' + id,
+                              data: {'serial':serial},
+                              dataType: 'json',
+                          });
+                      } */
 
        });
-
-      // used table cell as input
-    /*
-      $('tbody > tr :nth-child(2)').on('keyup change', function () {
-          serial = $(this).text();
-          $.each($('#details tr input[name=item-det]:checked'),function () {
-             $(this).parent().siblings(':first').text(serial)
-          });
-       });
-           if(oldData != serial) {
-               $.ajax({
-                   type: "POST",
-                   url: 'inventory/set_serial/' + id,
-                   data: {'serial':serial},
-                   dataType: 'json',
-               });
-           } */
-       });
-
-   // });
-
     $('#view').modal('show');
+
 }
+
 
 function get_distribution_details(id) {
     $('#details').DataTable({
@@ -410,8 +405,3 @@ function return_selected_items() {
    });
 }
 
-$(document).ready(function () {
-    $('input[name=select-all]').change(function () {
-        $('input[name=item-det]').prop('checked',this.checked);
-    });
-});

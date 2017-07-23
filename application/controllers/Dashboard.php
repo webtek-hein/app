@@ -9,7 +9,7 @@ class Dashboard extends CI_Controller {
     }
 	public function index()
 	{
-	    $data['itemsremaining'] = $this->inventorymodel->dashboard_custodian_items_remaining();
+	    $data['countrecitems'] = $this->inventorymodel->count_received_item();
         $data['returned'] = $this->inventorymodel->dashborad_custodian_returned_items();
         $data['defecteditems'] = $this->inventorymodel->dashborad_custodian_defected_items();
         $data['received'] = $this->inventorymodel->dashborad_custodian_recieved_items();
