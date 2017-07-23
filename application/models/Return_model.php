@@ -50,14 +50,17 @@ class Return_model extends CI_Model {
 
     public function return_no_action($id) 
     {
-         $this->db->query("UPDATE logs.return_log SET status='no action' WHERE return_id=$id");
+        $this->db->set('status','no action');
+        $this->db->where('return_id',$id);
+        $this->db->update('logs.return_log');
     }
 
     public function return_replace($id, $data, $uid) 
     {
         //update return log
-        $this->db->query("UPDATE logs.return_log SET status='replaced' WHERE return_id=$id");
-
+        $this->db->set('status','replaced');
+        $this->db->where('return_id',$id);
+        $this->db->update('logs.return_log');
         //get item quantity
         $query1 = $this->db->query("SELECT quantity FROM item WHERE item_id IN (SELECT item_id FROM item_detail WHERE dist_id = (SELECT dist_id FROM logs.return_log WHERE return_id = $id))");
         $row1 = $query1->row_array();
@@ -92,7 +95,9 @@ class Return_model extends CI_Model {
 
     public function get_dept_id($return_id) 
     {
-        $query = $this->db->query("SELECT dept_id FROM logs.return_log WHERE return_id=$return_id");
+        $this->db->select('dept_id')
+            ->where('return_id',$return_id);
+        $query = $this->db->get('logs.return_log');
         $row = $query->row_array();
         return intval($row['dept_id']);
     }

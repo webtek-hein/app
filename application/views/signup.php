@@ -4,9 +4,8 @@
 <meta charset="utf-8">
 
         <title>Sign Up</title>
-        <link rel="stylesheet" href="styles.css" type="text/css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-        <link rel="stylesheet" type="text/css" href="assets/css/signup.css">
+        <link rel="stylesheet" <?php echo base_url() ?>assets/js/normalize.min.css">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/signup.css">
        
 </head>
 <body>

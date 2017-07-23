@@ -29,7 +29,7 @@
                         </tbody>
                         <tfoot>
                         <tr>
-                            <th></th>
+                            <th><input type="checkbox" name="select-all" ><label> Check all</label></th>
                             <th>Serial #</th>
                             <th>Expiration Date</th>
                             <th>Supplier</th>

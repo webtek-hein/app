@@ -1,28 +1,15 @@
 <?php
 class User_db extends CI_Model {
-
-    public function __construct()
-    {
-    }
-
 // Read data using username and password
     public function login($data) {
-        $db = $this->load->database("inventory",TRUE);
 
         $condition = "username =" . "'" . $data['username'] . "' AND " . "password =" . "'" . $data['password'] . "'" . "AND status = 'accepted'";
-        $db->select('*');
-        $db->from('user');
-        $db->where($condition);
-        $db->limit(1);
-        $query = $db->get();
+        $this->db->select('*')
+            ->where($condition)
+            ->limit(1);
+        $query = $this->db->count_all_results('user');
 
-        if ($query->num_rows() == 1) {
-            return true;
-        } else {
-            return false;
-        }
-
-        if ($query->num_rows() == 1) {
+        if ($query == 1) {
             return true;
         } else {
             return false;
@@ -31,14 +18,11 @@ class User_db extends CI_Model {
 
 // Read data from database to show data in admin page
     public function read_user_information($username) {
-        $db = $this->load->database("inventory",TRUE);
         $condition = "username =" . "'" . $username . "'";
-        $db->select('*');
-        $db->from('user');
-        $db->join('department', 'department.dept_id = user.dept_id', 'left');
-        $db->where($condition);
-        $db->limit(1);
-        $query = $db->get();
+        $this->db->join('department', 'department.dept_id = user.dept_id', 'left')
+            ->where($condition)
+            ->limit(1);
+        $query = $this->db->get('user');
 
         if ($query->num_rows() == 1) {
             return $query->result();
@@ -50,22 +34,31 @@ class User_db extends CI_Model {
 
     public function get_pending_users()
     {
-        $query = $this->db->query("SELECT * FROM user WHERE status = 'pending'");
+        $this->db->where('status','pending');
+        $query = $this->db->get('user');
         return $query->result_array();
     }
 
     public function accept_user($id)
     {
-        $query = $this->db->query("UPDATE user SET status = 'accepted' WHERE user_id = $id");
+        $this->db->set('status','accepted')
+            ->where('status','accepted')
+            ->where('user_id',$id)
+            ->update('user');
     }
 
     public function decline_user($id)
     {
-        $query = $this->db->query("UPDATE user SET status = 'declined' WHERE user_id = $id");
+        $this->db->set('status','declined')
+            ->where('status','accepted')
+            ->where('user_id',$id)
+            ->update('user');
     }
 
     public function get_info($id)
     {
-        $query = $this->db->query("SELECT CONCAT(first_name, ' ', last_name, ' is registering as a(n) ', position) as info FROM user WHERE user_id = $id");
+        $this->db->select('SELECT CONCAT(first_name, , last_name," is registering as a(n) ",position) as info')
+            ->where('user_id',$id);
+        $query = $this->db->get('user');
     }
 }

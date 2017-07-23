@@ -8,6 +8,7 @@ class Login extends CI_Controller {
         parent::__construct();
     // Load database
         $this->load->model('user_db');
+        $this->load->library('form_validation');
 
     }
 

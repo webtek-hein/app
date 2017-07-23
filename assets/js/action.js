@@ -368,4 +368,8 @@ function return_selected_items() {
    });
 }
 
-
+$(document).ready(function () {
+    $('input[name=select-all]').change(function () {
+        $('input[name=item-det]').prop('checked',this.checked);
+    });
+});
