@@ -185,7 +185,7 @@ function get_item_details(id) {
     $('td :nth-child(1)').on('click', function () {
         $(this).attr('contentEditable', 'true');
     });
-    //
+    //multiple serial input
    $('#details').on( 'change', 'input[type=checkbox]', function () {
            $('tr :nth-child(2)').attr('contentEditable', 'true');
            $(this).focus(function () {
@@ -206,18 +206,30 @@ function get_item_details(id) {
 
                });
            });
-
-           /*
-                         if(oldData != serial) {
-                          $.ajax({
-                              type: "POST",
-                              url: 'inventory/set_serial/' + id,
-                              data: {'serial':serial},
-                              dataType: 'json',
-                          });
-                      } */
+   });
+   //single serial input
+       $('#details').on( 'click', 'tr :nth-child(2)', function () {
+           $(this).attr('contentEditable', 'true');
+           $(this).focus(function () {
+               oldData = $(this).text();
+           });
+           $(this).blur(function () {
+               serial = $(this).text();
+               if(oldData != serial) {
+                   $.ajax({
+                       type: "POST",
+                       url: 'inventory/set_serial/' + id,
+                       data: {'serial':serial},
+                       dataType: 'json',
+                   });
+               }
+           });
 
        });
+
+    $('input[name=submit-serial]').on('click', function () {
+        $('input.input').val('').change();
+    });
     $('#view').modal('show');
 
 }
