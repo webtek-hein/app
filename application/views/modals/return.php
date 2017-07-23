@@ -19,7 +19,7 @@
                           <table border="0" width="500" align="center" class="table">
                             <tr>
                               <td>Reason</td>
-                              <td><input type="text" class="InputBox" name="reason" value="" required="required"></td>
+                              <td><textarea rows="4" cols="50" name="comment" form="usrform" type="text" class="InputBox" name="reason" value="" required="required" ></textarea></td>
                             </tr>
                             <tr>
                               <td>Return Person</td>
