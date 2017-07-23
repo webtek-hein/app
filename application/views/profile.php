@@ -36,7 +36,7 @@
             </ul>
 
           <div class="tab-pane" id="settings">
-                <form class="form-horizontal">
+                <form class="form-horizontal" action="profile/profile_update">
                   <div class="form-group">
                     <label for="inputName" class="col-sm-2 control-label">First Name</label>
 
