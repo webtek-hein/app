@@ -61,4 +61,10 @@ class User_db extends CI_Model {
             ->where('user_id',$id);
         $query = $this->db->get('user');
     }
+
+    public function edit_profile($data, $userid)
+    {
+        $this->db->where('user_id', $userid);
+        $this->db->update('user',$data);
+    }
 }
