@@ -58,6 +58,23 @@
                      <i class="fa fa-arrow-circle-right"> </i></a></button> </span>
           </div>
         </div>
+
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-yellow">
+            <div class="inner">
+              <h3>07</h3>
+
+              <p>Pending Users</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-person-add"></i>
+            </div>
+              <button><a class="small-box-footer">Pending Users
+                     <i class="fa fa-arrow-circle-right"> </i></a></button>
+          </div>
+        </div>
 <!-- -->   
 <section class="content">
     <div class="row">
