@@ -34,7 +34,7 @@ class Profile extends CI_Controller
         );
         $this->user_db->edit_profile($data, $userid);
         $this->session->set_flashdata('msg', 'Update will take effect on next login.');
-        header('Location: '. base_url() . 'inventory');
+        header('Location: '. base_url() . 'profile');
     }
 
 }
