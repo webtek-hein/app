@@ -39,5 +39,17 @@ class Department_model extends CI_Model {
         $query = $this->db->get('item_detail');
         return $query->result_array();
     }
+    public function department_inventory_list($id)
+    {
+        $this->db->select('item_detail.dist_id,item_detail.item_id,item_name,count(*) as quantity,item_description,unit')
+            ->join('distribution','distribution.dist_id = item_detail.dist_id','left')
+            ->join('item','item.item_id = item_detail.item_id','left')
+            ->where('distribution.dept_id',$id)
+            ->group_by('item_detail.item_id');
+        $query = $this->db->get('item_detail');
+        return $query->result_array();
+
+    }
+
 
 }

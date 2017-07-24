@@ -343,7 +343,8 @@ class InventoryModel extends CI_Model {
                  ->join('distribution','distribution.dist_id = item_detail.dist_id','left')
                  ->join('department','distribution.dept_id = department.dept_id','left')
                  ->where('distribution.quantity is not null AND serial is not null')
-                 ->where('distribution.dept_id',$id);
+                 ->where('distribution.dept_id',$id)
+                 ->group_by('item_detail.item_id');
         $query = $this->db->get('item');
         return $query->result_array();
     }
