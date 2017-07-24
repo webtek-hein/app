@@ -329,6 +329,7 @@ class InventoryModel extends CI_Model {
     {
         $this->db->SELECT ('quantity')
             ->where('item_id<=(SELECT (COUNT(quantity)) * (50.00/100.00) FROM item)')
+            ->group_by ('item_detail.item_id')
             ->order_by('item_id');
             $query = $this->db->get('item');
         return $query->result_array();
@@ -443,13 +444,11 @@ class InventoryModel extends CI_Model {
  public function count_ret_items()
      {
 $this->db->select(' item_name, count(*) as quantity');
-$this->db->get('table');
 $this->db->join ('item', 'item.item_id = item_detail.item_id','left');
-
-        $this->db->where('DATE(date_rec)','CURDATE()',FALSE);
-$this->db->and ('weekday('*') >=0');
+$this->db->where('DATE(date_rec)','CURDATE()',FALSE);
+$this->db->where ('weekday('*') >=0');
 $this->db->group_by ('item_detail.item_id ');
-        $query = $this->db->get('item');
+$query = $this->db->get('item_detail');
         return $query->result_array(); 
     }
 
