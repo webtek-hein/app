@@ -13,11 +13,11 @@
     <!-- small box -->
     <div class="small-box bg-aqua">
         <div class="inner">
-            <?php foreach ($countrecitems as $count_rec_items): ?>
+           <?php foreach ($countrecitems as $recitems): ?>
             <h3>
-                <?php echo $count_rec_items['quantity']; ?>
+              <td><?php echo $recitems['quantity']; ?></td>
             </h3>
-                <?php endforeach; ?>
+               <?php endforeach; ?>
             <p>Received Items</p>
         </div>
         <div class="icon">
@@ -137,7 +137,14 @@ if($position === 'admin'){
                             </tr>
                             </thead>
                         </table>
-
+                            <tbody>
+                                         <?php foreach ($received as $recitem): ?>
+                                <tr>
+                                    <td><?php echo $recitem['item_name']; ?></td>
+                                    <td><?php echo $recitem['quantity']; ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                            </tbody>
                     </div>
                 </div>
 

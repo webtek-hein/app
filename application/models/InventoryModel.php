@@ -352,7 +352,8 @@ class InventoryModel extends CI_Model {
     {
         $this->db->join('distribution','distribution.dist_id = item_detail.dist_id','left')
                  ->join('item','item.item_id = item_detail.item_id')
-                 ->where('item_detail.item_id',$item_id);
+                 ->where('item_detail.item_id',$item_id)
+                 ->where('item_detail.dist_id',null,FALSE);
         $query = $this->db->get('item_detail');
         return $query->result_array();
     }
