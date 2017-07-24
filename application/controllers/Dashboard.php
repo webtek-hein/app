@@ -15,6 +15,7 @@ class Dashboard extends CI_Controller {
         $data['returned'] = $this->inventorymodel->dashborad_custodian_returned_items();
         $data['defecteditems'] = $this->inventorymodel->dashborad_custodian_defected_items();
         $data['received'] = $this->inventorymodel->dashborad_custodian_recieved_items();
+        $data['retitems'] = $this->inventorymodel->count_ret_items();
 
         if($position === 'department head'){
             $this->load->view('department_head/templates/header');
@@ -24,10 +25,18 @@ class Dashboard extends CI_Controller {
         $this->load->view('dashboard',$data);
         $this->load->view('templates/footer');
 	}
-	public function graph()
+	public function count_received_item()
     {	
     	$data = $this->inventorymodel->get_dashboard();
         echo json_encode($data);
 
     }
+
+        public function dashboard_custodian_items_remaining()
+    {   
+        $data = $this->inventorymodel->get_dashboard();
+        echo json_encode($data);
+
+    }
+
 }

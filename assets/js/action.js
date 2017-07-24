@@ -389,16 +389,14 @@ function return_selected_items() {
 }
 
 
-
-
-
-function count_received_item(item_id, quantity)
+function count_received_item(item_id,quantity)
 {
     $.ajax({
         method: "POST",
-        url: "dashboard",
+        url: "dashboard.php",
         dataType: "JSON",
-        data:{item_id}
+        data:{item_id:item_id}
+       
 })
 }
 function dashboard_custodian_items_remaining(){

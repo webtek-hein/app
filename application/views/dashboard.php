@@ -33,8 +33,11 @@
     <!-- small box -->
     <div class="small-box bg-green">
         <div class="inner">
+            
             <h3>
+             
             </h3>
+            
             <p>Returned Items</p>
         </div>
         <div class="icon">
@@ -133,14 +136,6 @@ if($position === 'admin'){
                                 <th>Quantity</th>
                             </tr>
                             </thead>
-                            <tbody>
-                            <?php foreach ($countrecitems as $cri): ?>
-                                <tr>
-                                    <td><?php echo $cri['item_name']; ?></td>
-                                    <td><?php echo $cri['quantity']; ?></td>
-                                </tr>
-                            <?php endforeach; ?>
-                            </tbody>
                         </table>
 
                     </div>
@@ -166,17 +161,7 @@ if($position === 'admin'){
                                 <th>Department</th>
                             </tr>
                             </thead>
-                            <tbody>
-                            <?php foreach ($returned as $returned_items): ?>
-                                <tr>
-                                    <td><?php echo $returned_items['user']; ?></td>
-                                    <td><?php echo $returned_items['item_name']; ?></td>
-                                    <td><?php echo $returned_items['quantity']; ?></td>
-                                    <td><?php echo $returned_items['reason']; ?></td>
-                                    <td><?php echo $returned_items['department']; ?></td>
-                                </tr>
-                            <?php endforeach; ?>
-                            </tbody>
+                           
                         </table>
 
                     </div>
