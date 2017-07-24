@@ -13,11 +13,11 @@
     <!-- small box -->
     <div class="small-box bg-aqua">
         <div class="inner">
-           <?php foreach ($countrecitems as $recitems): ?>
+            <?php foreach ($countrecitems as $count_rec_items): ?>
             <h3>
-              <td><?php echo $recitems['quantity']; ?></td>
+                <?php echo $count_rec_items['quantity']; ?>
             </h3>
-               <?php endforeach; ?>
+                <?php endforeach; ?>
             <p>Received Items</p>
         </div>
         <div class="icon">
@@ -33,11 +33,8 @@
     <!-- small box -->
     <div class="small-box bg-green">
         <div class="inner">
-            
             <h3>
-             
             </h3>
-            
             <p>Returned Items</p>
         </div>
         <div class="icon">
@@ -122,7 +119,7 @@ if($position === 'admin'){
 
             <!---->
             <div id="hidethis" style="display:none;">
-                <div class="col-lg-3 col-sm-8" style="width: 480px; margin-left:630px;  position:fixed;">
+                <div class="col-lg-3 col-sm-8" style="width: 480px; margin-left:630px; position:absolute;">
                     <div class="panel panel-default panel-info">
                         <!-- Default panel contents -->
                         <div class="panel-heading">
@@ -136,22 +133,23 @@ if($position === 'admin'){
                                 <th>Quantity</th>
                             </tr>
                             </thead>
-                        </table>
                             <tbody>
-                                         <?php foreach ($received as $recitem): ?>
+                            <?php foreach ($countrecitems as $cri): ?>
                                 <tr>
-                                    <td><?php echo $recitem['item_name']; ?></td>
-                                    <td><?php echo $recitem['quantity']; ?></td>
+                                    <td><?php echo $cri['item_name']; ?></td>
+                                    <td><?php echo $cri['quantity']; ?></td>
                                 </tr>
                             <?php endforeach; ?>
                             </tbody>
+                        </table>
+
                     </div>
                 </div>
 
             </div>
             <!---->
             <div id="hidethis1" style="display:none;">
-                <div class="col-lg-3 col-sm-8" style="width: 480px; margin-left:630px;  position:fixed;">
+                <div class="col-lg-3 col-sm-8" style="width: 480px; margin-left:630px; position:absolute;">
                     <div class="panel panel-default panel-warning">
                         <!-- Default panel contents -->
                         <div class="panel-heading">
@@ -168,7 +166,17 @@ if($position === 'admin'){
                                 <th>Department</th>
                             </tr>
                             </thead>
-                           
+                            <tbody>
+                            <?php foreach ($returned as $returned_items): ?>
+                                <tr>
+                                    <td><?php echo $returned_items['user']; ?></td>
+                                    <td><?php echo $returned_items['item_name']; ?></td>
+                                    <td><?php echo $returned_items['quantity']; ?></td>
+                                    <td><?php echo $returned_items['reason']; ?></td>
+                                    <td><?php echo $returned_items['department']; ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                            </tbody>
                         </table>
 
                     </div>
@@ -176,7 +184,7 @@ if($position === 'admin'){
             </div>
             <!---->
             <div id="hidethis2" style="display:none;">
-                <div class="col-lg-3 col-sm-8" style="width: 480px; margin-left:630px;  position:fixed;">
+                <div class="col-lg-3 col-sm-8" style="width: 480px; margin-left:630px;  position:absolute;">
                     <div class="panel panel-default panel-danger">
                         <!-- Default panel contents -->
                         <div class="panel-heading">
