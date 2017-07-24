@@ -195,7 +195,7 @@ function get_item_details(id) {
        $.each($('#details tr input[name=item-det]'),function () {
                // reset button
                $('input[type=reset]').on('click', function () {
-                   $('input.input').val('').change();
+                   $('input[type=number]').val('').change();
                });
                $('input[type=number]').on('keyup change ', function () {
                    serial = ($(this).val());
