@@ -392,26 +392,38 @@ function return_selected_items() {
     var reason;
     var person;
     var checked;
+   
     $('#item_detail:checked').each(function () {
         item_det_id.push($(this).val());
     });
+
     $('#returnmodal').modal('show');
-   $('button[id=save1]').on('click',function () {
-        reason =  $('input[name=reason]').val();
+      
+    $('button[id=save1]').on('click',function () {
+        reason =  $('textarea#reason').val();
         person =  $('input[name=person]').val();
+
         if ($('input[name=defect]').is(":checked"))
         {
             checked = 'yes';
         } else {
             checked = 'no';
         }
-        var item_data = {'item_det_id':item_det_id,'reason':reason,'person':person, 'ischecked': checked};
-       $.ajax({
+
+        var item_data;
+
+        if ($('#item_detail:checked').length > 0 && reason && person) {
+            item_data = {'item_det_id':item_det_id,'reason':reason,'person':person, 'ischecked': checked};
+        } else {
+            return;
+        }
+
+        $.ajax({
            url : 'department/return_items',
            type: "POST",
            data: item_data,
            dataType: "JSON",
-       });
-   });
+        });
+    });   
 }
 
