@@ -18,8 +18,7 @@
                          '<p class="display">Select desired items and input the serial here for multi-input:  </p>'.
                          '<form action="#">'.
                          '<input placeholder="serial number: xxxxxxxx" name="input" type="number" />'.
-                         '<input class = "btn btn-danger" type="reset" value="Reset" />'.
-                         '<input type="button" class="btn btn-success" name="submit-serial" value="Save"></input></form>';
+                         '<input class = "btn btn-danger" type="reset" value="Reset" />';
                     }
                     ?>
 

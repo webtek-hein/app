@@ -184,19 +184,15 @@ function get_item_details(id) {
         },
     });
 
-    //make serial editable
-    $('td :nth-child(1)').on('click', function () {
-        $(this).attr('contentEditable', 'true');
-    });
     //multiple serial input
-   $('#details ').on( 'change',  function () {
+   $('#details ').on( 'change ',  function () {
            $('tr :nth-child(2)').attr('contentEditable', 'true');
            $(this).focus(function () {
                oldData = $(this).text();
            });
 
            // input field for serial
-           $('#item_detail').change(function () {
+       $.each($('#details tr input[name=item-det]'),function () {
                // reset button
                $('input[type=reset]').on('click', function () {
                    $('input.input').val('').change();
@@ -208,7 +204,7 @@ function get_item_details(id) {
                    });
 
                });
-           });
+       });
    });
    //single serial input
        $('#details').on( 'click', 'tr :nth-child(2)', function () {
@@ -230,9 +226,6 @@ function get_item_details(id) {
 
        });
 
-    $('input[name=submit-serial]').on('click', function () {
-        $('input.input').val('').change();
-    });
     $('#view').modal('show');
 
 }
