@@ -10,6 +10,7 @@ class Dashboard extends CI_Controller {
 	public function index()
 	{
 	    $position = $this->session->userdata['logged_in']['position'];
+        $data['itemsremaining'] = $this->inventorymodel->dashboard_custodian_items_remaining();
         $data['countrecitems'] = $this->inventorymodel->count_received_item();
         $data['returned'] = $this->inventorymodel->dashborad_custodian_returned_items();
         $data['defecteditems'] = $this->inventorymodel->dashborad_custodian_defected_items();

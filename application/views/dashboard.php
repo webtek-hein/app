@@ -102,7 +102,14 @@ if($position === 'admin'){
                             </tr>
                             </thead>
                             <tbody>
-
+                                         <?php foreach ($itemsremaining as $itemret): ?>
+                                <tr>
+                                    <td><?php echo $itemret['official_receipt_no']; ?></td>
+                                    <td><?php echo $itemret['item_name']; ?></td>
+                                    <td><?php echo $itemret['quantity']; ?></td>
+                                    <td><?php echo $itemret['item_type']; ?></td>
+                                </tr>
+                            <?php endforeach; ?>
                             </tbody>
                         </table>
                     </div>

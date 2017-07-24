@@ -445,7 +445,7 @@ class InventoryModel extends CI_Model {
 $this->db->select(' item_name, count(*) as quantity');
 $this->db->get('table');
 $this->db->join ('item', 'item.item_id = item_detail.item_id','left');
-$this->db->where ('DATE(date_rec) =  CURDATE()');
+$this->db->where('DATE(date_rec)','CURDATE()',FALSE);
 $this->db->and ('weekday('*') >=0');
 $this->db->group_by ('item_detail.item_id ');
         $query = $this->db->get('item');

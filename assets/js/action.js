@@ -298,46 +298,6 @@ function save()
         }
     });
 }
-function create_chart()
-{
-    var chart;
-    // Build the chart
-    $('#items').highcharts({
-        chart: {
-            plotBackgroundColor: null,
-            plotBorderWidth: null,
-            plotShadow: false
-        },
-        title: {
-            text: 'Items'
-        },
-        tooltip: {
-            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-        },
-        plotOptions: {
-            pie: {
-                allowPointSelect: true,
-                cursor: 'pointer',
-                dataLabels: {
-                    enabled: false
-                },
-                showInLegend: true
-            }
-        },
-        series: [{
-            type: 'pie',
-            name: 'Top 5 items',
-            data: [
-                ['Ballpen',   4],
-                ['Table',       2],
-                ['Bag',    1],
-                ['Paper',     1],
-                ['Laptop',   2]
-            ]
-        }]
-    });
-}
-
 
 //form validations
     $(document).ready(function () {
@@ -428,3 +388,64 @@ function return_selected_items() {
     });   
 }
 
+
+
+
+// var countreceiveditem
+// var viewitemremaining
+var countretitem
+// var defitem
+//var pendingusers
+
+$(document).ready(function() {
+
+ countretitem = $('#table').DataTable({
+
+        destroy: true,
+        responsive: true,
+        "ajax": {
+            "url": 'dashboard',
+            "type": "POST",
+        },
+    });
+
+ // countreceiveditem = $('#table').DataTable({
+
+  //       destroy: true,
+  //       responsive: true,
+  //       "ajax": {
+  //           "url": 'dashboard',
+  //           "type": "POST",
+  //       },
+  //   });
+
+  //viewitemremaining = $('#table').DataTable({
+
+  //       destroy: true,
+  //       responsive: true,
+  //       "ajax": {
+  //           "url": 'dashboard',
+  //           "type": "POST",
+  //       },
+  //   });
+
+  //defitem = $('#table').DataTable({
+
+  //       destroy: true,
+ //        responsive: true,
+  //       "ajax": {
+  //           "url": 'dashboard',
+  //           "type": "POST",
+  //       },
+  //   });
+
+  //pendingusers = $('#table').DataTable({
+
+  //       destroy: true,
+  //       responsive: true,
+  //       "ajax": {
+  //           "url": 'dashboard',
+  //           "type": "POST",
+  //       },
+  //   });
+}
