@@ -415,6 +415,7 @@ function return_selected_items() {
         if ($('#item_detail:checked').length > 0 && reason && person) {
             item_data = {'item_det_id':item_det_id,'reason':reason,'person':person, 'ischecked': checked};
         } else {
+            window.alert("Please check at least 1 item and input all required fields. Try again.");
             return;
         }
 
