@@ -393,7 +393,10 @@ function count_received_item(item_id,quantity)
         method: "POST",
         url: "dashboard",
         dataType: "JSON",
-        data:{item_id:item_id}
+        data:{item_id:item_id},
+         success: function(data){
+            alert(data);
+        }
 })
 }
 function dashboard_custodian_items_remaining(){
@@ -401,7 +404,9 @@ function dashboard_custodian_items_remaining(){
         method: "POST",
         url: "dashboard",
         dataType: "JSON",
-        
+            success: function(data){
+            alert(data);
+        }
         })
 }
 

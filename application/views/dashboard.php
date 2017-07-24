@@ -13,11 +13,11 @@
     <!-- small box -->
     <div class="small-box bg-aqua">
         <div class="inner">
-            <?php foreach ($countrecitems as $count_rec_items): ?>
+           
             <h3>
-                <?php echo $count_rec_items['quantity']; ?>
+              
             </h3>
-                <?php endforeach; ?>
+               
             <p>Received Items</p>
         </div>
         <div class="icon">
