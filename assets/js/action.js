@@ -401,43 +401,12 @@ function count_received_item(item_id, quantity)
         data:{item_id}
 })
 }
+function dashboard_custodian_items_remaining(){
+        $.ajax({
+        method: "POST",
+        url: "dashboard",
+        dataType: "JSON",
+        
+        })
+}
 
-  //countreceiveditem = $('#table').DataTable({
-
-  //       destroy: true,
-  //       responsive: true,
-  //       "ajax": {
-  //           "url": 'dashboard',
-  //           "type": "POST",
-  //       },
-  //   });
-
-  //viewitemremaining = $('#table').DataTable({
-
-  //       destroy: true,
-  //       responsive: true,
-  //       "ajax": {
-  //           "url": 'dashboard',
-  //           "type": "POST",
-  //       },
-  //   });
-
-  //defitem = $('#table').DataTable({
-
-  //       destroy: true,
- //        responsive: true,
-  //       "ajax": {
-  //           "url": 'dashboard',
-  //           "type": "POST",
-  //       },
-  //   });
-
-  //pendingusers = $('#table').DataTable({
-
-  //       destroy: true,
-  //       responsive: true,
-  //       "ajax": {
-  //           "url": 'dashboard',
-  //           "type": "POST",
-  //       },
-  //   });
