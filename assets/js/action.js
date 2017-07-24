@@ -391,25 +391,18 @@ function return_selected_items() {
 
 
 
-// var countreceiveditem
-// var viewitemremaining
-var countretitem
-// var defitem
-//var pendingusers
 
-$(document).ready(function() {
+function count_received_item(item_id, quantity)
+{
+    $.ajax({
+        method: "POST",
+        url: "dashboard",
+        dataType: "JSON",
+        data:{item_id}
+})
+}
 
- countretitem = $('#table').DataTable({
-
-        destroy: true,
-        responsive: true,
-        "ajax": {
-            "url": 'dashboard',
-            "type": "POST",
-        },
-    });
-
- // countreceiveditem = $('#table').DataTable({
+  //countreceiveditem = $('#table').DataTable({
 
   //       destroy: true,
   //       responsive: true,
@@ -448,4 +441,3 @@ $(document).ready(function() {
   //           "type": "POST",
   //       },
   //   });
-}
