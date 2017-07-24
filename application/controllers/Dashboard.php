@@ -9,12 +9,17 @@ class Dashboard extends CI_Controller {
     }
 	public function index()
 	{
-	    $data['countrecitems'] = $this->inventorymodel->count_received_item();
+	    $position = $this->session->userdata['logged_in']['position'];
+        $data['countrecitems'] = $this->inventorymodel->count_received_item();
         $data['returned'] = $this->inventorymodel->dashborad_custodian_returned_items();
         $data['defecteditems'] = $this->inventorymodel->dashborad_custodian_defected_items();
         $data['received'] = $this->inventorymodel->dashborad_custodian_recieved_items();
 
-        $this->load->view('templates/header');
+        if($position === 'department head'){
+            $this->load->view('department_head/templates/header');
+        }else{
+            $this->load->view('templates/header');
+        }
         $this->load->view('dashboard',$data);
         $this->load->view('templates/footer');
 	}

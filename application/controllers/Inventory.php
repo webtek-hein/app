@@ -17,8 +17,11 @@ class Inventory extends CI_Controller {
         $data['accountcodes'] = $this->InventoryModel->get_ac_list();
         $data['item'] = $this->InventoryModel->get_inventory_list();
         $data['department'] = $this->InventoryModel->get_department_list();
-
-        $this->load->view('templates/header');
+        if($position === 'department head'){
+            $this->load->view('department_head/templates/header');
+        }else{
+            $this->load->view('templates/header');
+        }
         if($position === 'department head'){
             $this->load->view('department_head/inventorylist');
         }else{
