@@ -186,7 +186,7 @@ function get_item_details(id) {
 
     //multiple serial input
    $('#details ').on( 'change ',  function () {
-           $('tr :nth-child(2)').attr('contentEditable', 'true');
+           $('#details tr :nth-child(2)').attr('contentEditable', 'true');
 
 
            // input field for serial
