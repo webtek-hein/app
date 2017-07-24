@@ -187,9 +187,7 @@ function get_item_details(id) {
     //multiple serial input
    $('#details ').on( 'change ',  function () {
            $('tr :nth-child(2)').attr('contentEditable', 'true');
-           $(this).focus(function () {
-               oldData = $(this).text();
-           });
+
 
            // input field for serial
        $.each($('#details tr input[name=item-det]'),function () {
@@ -393,10 +391,9 @@ function count_received_item(item_id,quantity)
 {
     $.ajax({
         method: "POST",
-        url: "dashboard.php",
+        url: "dashboard",
         dataType: "JSON",
         data:{item_id:item_id}
-       
 })
 }
 function dashboard_custodian_items_remaining(){

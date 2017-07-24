@@ -9,29 +9,18 @@ if (isset($this->session->userdata['logged_in'])) {
     <title>Login</title>
     <link href="<?php echo base_url(); ?>assets/css/font.css" rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/normalize.min.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/assets/css/login.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/login.css">
    
 </head>
 <body>
-<?php
-if (isset($logout_message)) {
-    echo "<div class='message'>";
-    echo $logout_message;
-    echo "</div>";
-}
-?>
-<?php
-if (isset($message_display)) {
-    echo "<div class='message'>";
-    echo $message_display;
-    echo "</div>";
-}
-?>
+
 <?php if($this->session->flashdata('msg')): ?>
     <p><?php echo $this->session->flashdata('msg'); ?></p>
 <?php endif; ?>
 <div id="main">
+
     <div id="login">
+
         <h1>Login</h1>
         <?php echo form_open('Login/user_login_process'); ?>
         <?php
