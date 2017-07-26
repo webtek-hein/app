@@ -229,12 +229,12 @@ function get_item_details(id) {
 }
 
 
-function get_distribution_details(id) {
+function get_distribution_details(item_id,id) {
     $('#details').DataTable({
         responsive: true,
         "destroy": true,
         "ajax": {
-            "url": 'department/dist_details/' + id,
+            "url": 'department/dist_details/' + item_id +'/'+id,
             "type": "POST",
         },
     });

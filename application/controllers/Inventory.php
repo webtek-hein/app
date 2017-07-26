@@ -71,7 +71,7 @@ class Inventory extends CI_Controller {
                     "<button type=\"button\" data-id = '$list[item_id]' class=\"open-modal-action fa fa-minus\" onclick=\"subtract_quantity(". $list['item_id'] .")\"></button>".
                     "<button class=\"open-modal-action fa fa-info\" onclick=\"get_item_details(". $list['item_id'] .")\"></button> ";
             }else{
-                $button = "<button class=\"open-modal-action fa fa-info\" onclick=\"get_item_details(". $list['item_id'] .")\"></button> ";
+                $button = "<button class=\"open-modal-action fa fa-info\" onclick=\"get_distribution_details(". $list['item_id'] .','.$list['dept_id'] .")\"></button> ";
             }
             $row[] = $button;
             $data[] = $row;
@@ -194,7 +194,7 @@ class Inventory extends CI_Controller {
         $dept_id = $this->session->userdata['logged_in']['dept_id'];
 
         if($position === 'receiver' || $position === 'department head'){
-            $details = $this->InventoryModel->get_distributed_details($dept_id,$id);
+            $details = $this->department_model->get_distributed_details($dept_id,$id);
 
         }else{
             $details = $this->InventoryModel->get_distrib_item_details($id);
