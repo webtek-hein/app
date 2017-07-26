@@ -9,6 +9,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
+          
           <h4 class="modal-title" align="center"><b>Add Item<b></h4>
         </div>
          <?php if($this->session->flashdata('msg')): ?>
