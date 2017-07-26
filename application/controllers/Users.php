@@ -31,10 +31,15 @@ class Users extends CI_Controller {
             $row[] = $list['email'];
             $row[] = $list['contact_no'];
             $row[] = $list['position'];
+            if ($list['status'] === 'pending'){
             $row[] = "<button type=\"button\" class=\"open-modal-action\" data-id='$list[user_id]' data-toggle=\"modal\" data-target=\"#accept\">Accept</button>" .
             "<button type=\"button\" class=\"open-modal-action\" data-id='$list[user_id]' data-toggle=\"modal\" data-target=\"#decline\">Decline</button>";
+            }else{
+             $row[] = "<button type=\"button\" class=\"open-modal-action\" data-id='$list[user_id]' data-toggle=\"modal\" data-target=\"#decline\">Deactivate</button>";
+        }
             $data[] = $row;
         }
+        
         $list = array('data'=>$data);
         echo json_encode($list);
     }
@@ -52,4 +57,12 @@ class Users extends CI_Controller {
         $this->user_db->decline_user($id);
         header('Location: '. base_url() . 'users');
     }
+
+    public function deactivate()
+    {
+        $id = $this->input->post('user_id');
+        $this->user_db->deactivate_user($id);
+        header('Location: '. base_url() . 'users');
+    }
+
 }
