@@ -54,7 +54,7 @@ class Department extends CI_Controller {
             $row[] = $list['item_description'];
             $row[] = $list['quantity'];
             $row[] = $list['unit'];
-            $row[] = "<button type=\"button\" class=\"open-modal-action fa fa-info\" onclick=\"get_distribution_details(". $list['dist_id'] .")\"></button>";
+            $row[] = "<button type=\"button\" class=\"open-modal-action fa fa-info\" onclick=\"get_distribution_details(". $list['item_id'] .")\"></button>";
             $data[] = $row;
         }
         $list = array('data'=>$data);
