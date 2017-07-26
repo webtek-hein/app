@@ -196,13 +196,18 @@ $('#item_detail:checked').val();
                $('input[type=reset]').on('click', function () {
                    $('input[type=number]').val('').change();
                });
-               $('input[type=number]').on('keyup change ', function () {
-                   serial = ($(this).val());
-                   $.each($('#details tr input[name=item-det]:checked'), function () {
-                       $(this).parent().siblings(':first').text(serial);
-                   });
 
-               });
+           $.each($('#details tr input[name=item-det]:checked'),function () {
+               if($(this).parent().siblings(':first').text()=='')
+               {
+                   $('input[type=number]').on('keyup change ', function () {
+                       serial = ($(this).val());
+                       $.each($('#details tr input[name=item-det]:checked'), function () {
+                           $(this).parent().siblings(':first').text(serial);
+                       });
+                   });
+               }
+           });
        });
    });
    //single serial input
