@@ -16,6 +16,8 @@ class Users extends CI_Controller {
         $this->load->view('users');
         $this->load->view('modals/accept');
         $this->load->view('modals/decline');
+        $this->load->view('modals/deactivate');
+        $this->load->view('modals/activate');
         $this->load->view('templates/footer');
     }
 
@@ -34,9 +36,11 @@ class Users extends CI_Controller {
             if ($list['status'] === 'pending'){
             $row[] = "<button type=\"button\" class=\"open-modal-action\" data-id='$list[user_id]' data-toggle=\"modal\" data-target=\"#accept\">Accept</button>" .
             "<button type=\"button\" class=\"open-modal-action\" data-id='$list[user_id]' data-toggle=\"modal\" data-target=\"#decline\">Decline</button>";
+            }else if ($list['status'] === 'accepted'){
+              $row[] = "<button type=\"button\" class=\"open-modal-action\" data-id='$list[user_id]' data-toggle=\"modal\" data-target=\"#deactivate\">Deactivate</button>";   
             }else{
-             $row[] = "<button type=\"button\" class=\"open-modal-action\" data-id='$list[user_id]' data-toggle=\"modal\" data-target=\"#deactivate\">Deactivate</button>";
-        }
+             $row[] = "<button type=\"button\" class=\"open-modal-action\" data-id='$list[user_id]' data-toggle=\"modal\" data-target=\"#activate\">Activate</button>";
+            }
             $data[] = $row;
         }
         
@@ -62,6 +66,12 @@ class Users extends CI_Controller {
     {
         $id = $this->input->post('user_id');
         $this->user_db->deactivate_user($id);
+        header('Location: '. base_url() . 'users');
+    }
+    public function activate()
+    {
+        $id = $this->input->post('user_id');
+        $this->user_db->activate_user($id);
         header('Location: '. base_url() . 'users');
     }
 
