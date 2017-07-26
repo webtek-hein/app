@@ -35,7 +35,7 @@ class Users extends CI_Controller {
             $row[] = "<button type=\"button\" class=\"open-modal-action\" data-id='$list[user_id]' data-toggle=\"modal\" data-target=\"#accept\">Accept</button>" .
             "<button type=\"button\" class=\"open-modal-action\" data-id='$list[user_id]' data-toggle=\"modal\" data-target=\"#decline\">Decline</button>";
             }else{
-             $row[] = "<button type=\"button\" class=\"open-modal-action\" data-id='$list[user_id]' data-toggle=\"modal\" data-target=\"#decline\">Deactivate</button>";
+             $row[] = "<button type=\"button\" class=\"open-modal-action\" data-id='$list[user_id]' data-toggle=\"modal\" data-target=\"#deactivate\">Deactivate</button>";
         }
             $data[] = $row;
         }
