@@ -31,6 +31,8 @@ if (isset($this->session->userdata['logged_in'])) {
         echo validation_errors();
         echo "</div>";
         ?>
+        
+   
         <input type="text" name="username" id="name" placeholder="username" required="required"/>
         <input type="password" name="password" id="password" placeholder="password" required="required"/>
         <input type="submit" class="btn btn-primary btn-block btn-large" value=" Login " name="submit"/><br />

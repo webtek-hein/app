@@ -6,6 +6,7 @@ if (isset($this->session->userdata['logged_in'])) {
     $firstname = ($this->session->userdata['logged_in']['firstname']);
     $lastname = ($this->session->userdata['logged_in']['lastname']);
     $position = ($this->session->userdata['logged_in']['position']);
+    $department = ($this->session->userdata['logged_in']['department']);
 } else {
     header("location: login");
 }
@@ -55,7 +56,7 @@ if (isset($this->session->userdata['logged_in'])) {
             <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
                 <span class="sr-only">Toggle navigation</span>
             </a>
-
+            
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
                     <li class="dropdown user user-menu">

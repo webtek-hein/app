@@ -25,9 +25,8 @@ class User_db extends CI_Model {
 
 // Read data from database to show data in admin page
     public function read_user_information($username) {
-        $condition = "username =" . "'" . $username . "'";
         $this->db->join('department', 'department.dept_id = user.dept_id', 'left')
-            ->where($condition)
+            ->where('username',$username)
             ->limit(1);
         $query = $this->db->get('user');
 

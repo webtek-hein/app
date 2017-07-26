@@ -12,6 +12,9 @@
 <script src="<?php echo base_url() ?>assets/js/html5shiv.min.js"></script>
 <script src="<?php echo base_url() ?>assets/js/respond.min.js"></script>
 <script src="<?php echo base_url() ?>assets/js/action.js"></script>
+<script src="<?php echo base_url() ?>assets/js/pages/dashboard2.js"></script>
+<script src="<?php echo base_url() ?>assets/plugins/chartjs/Chart.min.js"></script>
+
 
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script src="<?php echo base_url() ?>assets/plugins/morris/morris.min.js"></script>

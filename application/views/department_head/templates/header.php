@@ -57,6 +57,10 @@ if (isset($this->session->userdata['logged_in'])) {
                 <span class="sr-only">Toggle navigation</span>
             </a>
 
+            <a class='navbar-brand'>
+                <span><?= $department ?></span>
+            </a>
+
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
                     <li class="dropdown user user-menu">
@@ -97,7 +101,7 @@ if (isset($this->session->userdata['logged_in'])) {
                     <img src="<?php echo base_url() ?>assets/dist/img/dummy.jpg" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
-                    <span><?= $department?></span>
+                    <span><?= $position?></span>
                 </div>
             </div>
             <!-- sidebar menu: : style can be found in sidebar.less -->
