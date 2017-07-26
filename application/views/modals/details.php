@@ -15,6 +15,7 @@
                     <?php $position = $this->session->userdata['logged_in']['position'];
                     if($position === 'admin' || $position === 'custodian') {
                     echo '<form action="">'.
+                         '<p class="display">Note: Only UNIQUE serial numbers will be saved.</p>'.
                          '<p class="display">Select desired items and input the serial here for multi-input:  </p>'.
                          '<form action="#">'.
                          '<input placeholder="serial number: xxxxxxxx" name="input" type="number" />'.
