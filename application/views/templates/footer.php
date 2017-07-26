@@ -23,6 +23,8 @@
 </script>
 <!-- Bootstrap 3.3.6 -->
 <script src="<?php echo base_url() ?>assets/js/bootstrap.min.js"></script>
+<script src="<?php echo base_url() ?>assets/js/bootstrap-dialog.min.js"></script>
+
 <!-- Morris.js charts -->
 <script src="<?php echo base_url() ?>assets/js/raphael-min.js"></script>
 <!-- Sparkline -->
