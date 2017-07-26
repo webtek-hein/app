@@ -71,7 +71,8 @@ class User_db extends CI_Model {
     public function activate_user($id)
     {
         $this->db->set('status','accepted')
-            ->where('status = declined || status = deactivated')
+            ->where('status = declined')
+            ->where('status = deactivated')
             ->where('user_id',$id)
             ->update('user');
     }    
