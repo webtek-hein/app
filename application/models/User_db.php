@@ -40,7 +40,6 @@ class User_db extends CI_Model {
 
     public function get_pending_users()
     {
-        $this->db->where('status','pending');
         $query = $this->db->get('user');
         return $query->result_array();
     }

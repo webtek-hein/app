@@ -4,7 +4,7 @@
             <!-- /.box-header -->
           <div class="box" style="overflow-x:auto; width:auto;">
           <div class="box-header">
-              <h3 class="box-title">Pending Users</h3>
+              <h3 class="box-title">List of Users</h3>
             </div>
             <div class="box-body" style="overflow-x:auto; width:auto;">
               <table id="pending" class="table table-bordered table-striped">
