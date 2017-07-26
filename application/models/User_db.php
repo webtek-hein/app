@@ -3,9 +3,9 @@ class User_db extends CI_Model {
 // Read data using username and password
     public function login($data) {
 
-        $condition = "username =" . "'" . $data['username'] . "' AND " . "password =" . "'" . $data['password'] . "'" . "AND status = 'accepted'";
         $this->db->select('*')
-            ->where($condition)
+            ->where($data)
+            ->where('status','accepted')
             ->limit(1);
         $query = $this->db->count_all_results('user');
 
