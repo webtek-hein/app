@@ -14,7 +14,7 @@ if (isset($this->session->userdata['logged_in'])) {
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>GSO Inventory</title>
+    <title><?= $department ?> INV.</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
@@ -35,6 +35,7 @@ if (isset($this->session->userdata['logged_in'])) {
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/datatables/jquery.dataTables.css">
 
     <link rel = "stylesheet" type = "text/css" href = "<?php echo base_url() ?>assets/css/dept.css"/>
+    <link rel="icon" href="<?php echo base_url() ?>assets/css/logo.png">
 
 
 

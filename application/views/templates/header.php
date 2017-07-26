@@ -35,7 +35,7 @@ if (isset($this->session->userdata['logged_in'])) {
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/datatables/jquery.dataTables.css">
 
     <link rel = "stylesheet" type = "text/css" href = "<?php echo base_url() ?>assets/css/dept.css"/>
-
+    <link rel="icon" href="<?php echo base_url() ?>assets/css/logo.png">
 
 
 </head>

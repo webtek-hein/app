@@ -184,6 +184,7 @@ function get_item_details(id) {
         },
     });
 
+$('#item_detail:checked').val();
     //multiple serial input
    $('#details ').on( 'change ',  function () {
            $('#details tr :nth-child(2)').attr('contentEditable', 'true');
@@ -206,6 +207,7 @@ function get_item_details(id) {
    });
    //single serial input
        $('#details').on( 'click', 'tr :nth-child(2)', function () {
+            var item_det = $(this).closest('tr').find('input[name="item-det"]').val();
            $(this).attr('contentEditable', 'true');
            $(this).focus(function () {
                oldData = $(this).text();
@@ -215,8 +217,8 @@ function get_item_details(id) {
                if(oldData != serial) {
                    $.ajax({
                        type: "POST",
-                       url: 'inventory/set_serial/' + id,
-                       data: {'serial':serial},
+                       url: 'inventory/set_serial/',
+                       data: {'serial':serial, 'item_det': item_det},
                        dataType: 'json',
                    });
                }
