@@ -223,9 +223,8 @@ function get_item_details(id) {
                        type: "POST",
                        url: 'inventory/set_serial/',
                        data: {'serial':serial, 'item_det': item_det},
-                       dataType: 'json',
                        success: function () {
-                           alert('test');
+                           BootstrapDialog.alert('Serial number saved.');
                        },error: function () {
                            BootstrapDialog.alert('I want banana!');
                        }
