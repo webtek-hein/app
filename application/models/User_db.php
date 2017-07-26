@@ -72,7 +72,7 @@ class User_db extends CI_Model {
     {
         $this->db->set('status','accepted')
             ->where('status = declined')
-            ->where('status = deactivated')
+            ->or_where('status = deactivated')
             ->where('user_id',$id)
             ->update('user');
     }    
