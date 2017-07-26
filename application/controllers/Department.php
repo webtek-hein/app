@@ -24,7 +24,7 @@ class Department extends CI_Controller {
         if($id == "none"){
             $dept_item = $this->department_model->get_distributed_in_departments();
         }else{
-            $dept_item = $this->department_model->get_distributed_details($id);
+            $dept_item = $this->department_model->get_distributed_per_department($id);
         }
 
         $data = array();
@@ -35,7 +35,7 @@ class Department extends CI_Controller {
             $row[] = $list['item_description'];
             $row[] = $list['quantity'];;
             $row[] = $list['unit'];
-            $row[] = "<button class=\"open-modal-action fa fa-info\" onclick=\"get_item_details(". $list['item_id'] .")\"></button> ";
+            $row[] = "<button class=\"open-modal-action fa fa-info\" onclick=\"get_distribution_details(". $list['item_id'] .','.$list['dept_id'] .")\"></button> ";
             $data[] = $row;
         }
         $list = array('data'=>$data);
@@ -54,7 +54,7 @@ class Department extends CI_Controller {
             $row[] = $list['item_description'];
             $row[] = $list['quantity'];
             $row[] = $list['unit'];
-            $row[] = "<button type=\"button\" class=\"open-modal-action fa fa-info\" onclick=\"get_distribution_details(". $list['item_id'] .")\"></button>";
+            $row[] = "<button type=\"button\" class=\"open-modal-action fa fa-info\" onclick=\"get_distribution_details(". $list['item_id'] .','.$list['dept_id'] .")\"></button>";
             $data[] = $row;
         }
         $list = array('data'=>$data);
@@ -73,9 +73,9 @@ class Department extends CI_Controller {
         header('Location: '. base_url() . 'department');
     }
 
-    public function dist_details($id)
+    public function dist_details($item_id,$dept_id)
     {
-    	$details = $this->department_model->get_distributed_details($id);
+    	$details = $this->department_model->get_distributed_details($item_id,$dept_id);
         $data = array();
         foreach ($details as $list) {
             $row = array();
