@@ -217,6 +217,7 @@ function get_item_details(id) {
                oldData = $(this).text();
            });
            $(this).blur(function () {
+
                serial = $(this).text();
                if(oldData != serial) {
                    $.ajax({
@@ -226,7 +227,11 @@ function get_item_details(id) {
                        success: function () {
                            BootstrapDialog.alert('Serial number saved.');
                        },error: function () {
-                           BootstrapDialog.alert('I want banana!');
+                           BootstrapDialog.alert({
+                               type: BootstrapDialog.TYPE_WARNING,
+                               message: 'Enter a unique serial',
+                               closable: true
+                           });
                        }
                    });
                }
