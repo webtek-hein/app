@@ -32,13 +32,16 @@ class Signup extends CI_Controller {
         }
         else
         {
+            $password = $this->input->post('Password');
+            $options = ['cost' => 12];
+            $hashpassword =  password_hash($password, PASSWORD_DEFAULT, $options);
             $data = array(
             'first_name' => $this->input->post('FirstName'),
             'last_name' => $this->input->post('LastName'),
             'email' => $this->input->post('Email'),
             'contact_no' => $this->input->post('contactno'),
             'username' => $this->input->post('Username'),
-            'password' => $this->input->post('Password'),
+            'password' => $hashpassword,
             'position' => $this->input->post('type'),
             'dept_id' => $this->input->post('dment'),
             );
