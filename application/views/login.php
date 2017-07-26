@@ -10,6 +10,7 @@ if (isset($this->session->userdata['logged_in'])) {
     <link href="<?php echo base_url(); ?>assets/css/font.css" rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/normalize.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/login.css">
+    <link rel="icon" href="<?php echo base_url() ?>assets/css/logo.png">
    
 </head>
 <body>
