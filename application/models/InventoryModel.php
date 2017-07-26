@@ -148,6 +148,7 @@ class InventoryModel extends CI_Model {
         //update item_detail
         $this->db->where('item_detail.item_id',$itemid);
         $this->db->where('item_detail.dist_id',null,false);
+        $this->db->where('serial !=',null,false);
         $this->db->where('item_status !=','defective');
         $this->db->limit($quantity);
         $this->db->set('item_detail.dist_id',$distid);
