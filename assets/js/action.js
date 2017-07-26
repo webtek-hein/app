@@ -184,7 +184,6 @@ function get_item_details(id) {
         },
     });
 
-$('#item_detail:checked').val();
     //multiple serial input
    $('#details ').on( 'change ',  function () {
            $('#details tr :nth-child(2)').attr('contentEditable', 'true');
@@ -202,10 +201,10 @@ $('#item_detail:checked').val();
                {
                    $('input[type=number]').on('keyup change ', function () {
                        serial = ($(this).val());
-                       $.each($('#details tr input[name=item-det]:checked'), function () {
-                           $(this).parent().siblings(':first').text(serial);
-                       });
-                   });
+                               $.each($('#details tr input[name=item-det]:checked'), function () {
+                                   $(this).parent().siblings(':first').text(serial);
+                               });
+                               });
                }
            });
        });
@@ -224,7 +223,11 @@ $('#item_detail:checked').val();
                        type: "POST",
                        url: 'inventory/set_serial/',
                        data: {'serial':serial, 'item_det': item_det},
-                       dataType: 'json',
+                       success: function () {
+                           BootstrapDialog.alert('Serial number saved.');
+                       },error: function () {
+                           BootstrapDialog.alert('I want banana!');
+                       }
                    });
                }
            });
