@@ -98,7 +98,6 @@ if (isset($this->session->userdata['logged_in'])) {
                 </div>
                 <div class="pull-left info">
                     <p><?= $position?></p>
-                    <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                 </div>
             </div>
             <!-- sidebar menu: : style can be found in sidebar.less -->

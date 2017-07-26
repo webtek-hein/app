@@ -7,6 +7,12 @@
     $contact_no = ($this->session->userdata['logged_in']['contact_no']);
 
 ?>
+<script>
+function relocate_home()
+{
+     location.href = "index.php";
+} 
+</script>
 
   <div class="content-wrapper">
     <!-- Main content -->
@@ -87,8 +93,8 @@
 
                   <div class="form-group">
                     <div class="col-sm-offset-8 col-sm-9">
-                                <button type="submit" class="btn btn-primary">Save</button>
-                                <button type="button" class="btn btn-danger">Cancel</button>
+                        <button type="submit" class="btn btn-primary" >Save</button>
+                        <button type="button" class="btn btn-danger" onclick=" relocate_home()">Cancel</button>
                     </div>
                   </div>
                 </div>

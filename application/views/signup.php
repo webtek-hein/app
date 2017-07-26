@@ -6,7 +6,13 @@
         <title>Sign Up</title>
         <link rel="stylesheet" <?php echo base_url() ?>assets/js/normalize.min.css">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/signup.css">
-       
+        <link rel="icon" href="<?php echo base_url() ?>assets/css/logo.png">
+		<script>
+			function relocate_home()
+			{
+			     location.href = "index.php";
+			} 
+		</script>
 </head>
 <body>
 <h1> SIGN UP</h1>
@@ -74,7 +80,7 @@
         		</td>
 				</tr>
 				<tr>
-					<td><a href=index.php type="submit" class="btn btn-primary btn-block btn-large" name="cancel" value="Cancel" >Cancel</a></td>
+					<td><input type="button" class="btn btn-primary btn-block btn-large" name="cancel" value="Cancel" onclick=" relocate_home()"></td>
 					<td><input type="submit" class="btn btn-primary btn-block btn-large" name="createaccount" value="Register" ></td>
 				</tr>
 				
