@@ -21,14 +21,16 @@ class Department_model extends CI_Model {
     
     public function get_distributed_per_department($id)
     {
+
         $this->db->distinct()
-            ->select('item_detail.item_id,distribution.dist_id as dist_id, department, item_name, item_description, distribution.quantity as quantity, unit')
-            ->join('distribution','department.dept_id = distribution.dept_id')
-            ->join('item_detail','distribution.dist_id = item_detail.dist_id')
-            ->join('item','item.item_id = item_detail.item_id')
-            ->where('item_detail.dist_id IS NOT NULL')
-            ->where('distribution.dept_id',$id);
-        $query = $this->db->get('department');
+            ->select('item_detail.item_id,department,item_name,item_description,unit,count(*) as quantity')
+            ->join('item','item_detail.item_id = item.item_id','left')
+            ->join('distribution','item_detail.dist_id = distribution.dist_id')
+            ->join('department','distribution.dept_id = department.dept_id')
+            ->WHERE('item_detail.dist_id is not null')
+            ->WHERE('distribution.dept_id',$id)
+            ->group_by('item_detail.item_id,department');
+        $query = $this->db->get('item_detail');
         return $query->result_array();
     }
 
