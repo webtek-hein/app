@@ -12,7 +12,7 @@
             </div>
             <div class="modal-body" align="center">
                 <input id="user-id" type="hidden" name="user_id" value="">
-                <h4></h4>
+                <h4>Are you sure you want to deactivate this account?</h4>
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-default" id="save1" >Confirm</button>
