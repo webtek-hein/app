@@ -60,6 +60,14 @@ class User_db extends CI_Model {
             ->update('user');
     }
 
+    public function deactivate_user($id)
+    {
+        $this->db->set('status','pending')
+            ->where('status','accepted')
+            ->where('user_id',$id)
+            ->update('user');
+    }    
+
     public function get_info($id)
     {
         $this->db->select('SELECT CONCAT(first_name, , last_name," is registering as a(n) ",position) as info')
