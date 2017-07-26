@@ -360,12 +360,10 @@ class InventoryModel extends CI_Model {
     }
  public function count_ret_items()
      {
-$this->db->select(' item_name, count(*) as quantity');
-$this->db->join ('item', 'item.item_id = item_detail.item_id','left');
-$this->db->where('DATE(date_rec)','CURDATE()',FALSE);
-$this->db->where ('weekday('*') >=0');
-$this->db->group_by ('item_detail.item_id ');
-$query = $this->db->get('item_detail');
+$this->db->select('COUNT(logs.return_log.user_id)');
+$this->db->join ('inventory.user','logs.return_log.user_id = inventory.user.user_id');
+$this->db->where ('DATE(date) = CURDATE()');
+$query = $this->db->get('logs.return_log');
         return $query->result_array(); 
     }
 
