@@ -88,4 +88,13 @@ class User_db extends CI_Model {
         $this->db->where('user_id', $userid);
         $this->db->update('user',$data);
     }
+
+    public function get_email($email)
+    {
+        $this->db->select('*')
+            ->where('email', $email)
+            ->limit(1);
+        return $this->db->get('user')->row();
+
+    }
 }
