@@ -345,6 +345,7 @@ class InventoryModel extends CI_Model {
       $this->db->distinct();
         $query = $this->db->get('item');
         return $query->result_array();
+    }
      public function count_received_items()
      {
         $this->db->select('item_name, count(*) as quantity');
