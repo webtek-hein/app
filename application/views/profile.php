@@ -25,9 +25,13 @@ function relocate_home()
             <div class="box-body box-profile">
               <img class="profile-user-img img-responsive img-circle" src="../../dist/img/user4-128x128.jpg" alt="User profile picture">
 
-              <h3 class="profile-username text-center">Admin</h3>
+<?php echo $error;?>
+<?php echo form_open_multipart('upload/do_upload');?>
+<input type="file" name="userfile" size="20" />
+<br /><br />
+<input type="submit" value="upload" value="upload" />
+
 			  <div class="col-sm-offset-2 col-sm-3">
-					  <button type="submit" class="btn btn-default">Choose picture</button>
                 </div>
             </div>
 			    
@@ -93,7 +97,7 @@ function relocate_home()
 
                   <div class="form-group">
                     <div class="col-sm-offset-8 col-sm-9">
-                        <button type="submit" class="btn btn-primary" >Save</button>
+                        <button type="submit" class="btn btn-primary" name="save">Save</button>
                         <button type="button" class="btn btn-danger" onclick=" relocate_home()">Cancel</button>
                     </div>
                   </div>

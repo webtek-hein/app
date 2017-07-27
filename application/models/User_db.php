@@ -97,4 +97,14 @@ class User_db extends CI_Model {
         return $this->db->get('user')->row();
 
     }
+    function insert_data($name, $path_name){
+    $data = array(
+                  'name'    => $name,
+                  'path'    => $path_name
+                 );
+
+    $this->db->insert('table', $data);
+
+    return $this->db->insert_id();
+}
 }
