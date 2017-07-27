@@ -19,7 +19,7 @@
 					        <th> Supplier </th>
                     <?php $position = $this->session->userdata['logged_in']['position'];
                     if($position === 'admin'){
-                        echo '<th>Action</th>';
+                        echo '<th>User</th>';
                     }
                     ?>
 

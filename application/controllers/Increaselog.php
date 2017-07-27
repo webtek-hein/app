@@ -29,8 +29,8 @@ class Increaselog extends CI_Controller {
         $data = array();
         foreach ($increase as $list) {
             $row = array();
-            $row[] = $list['serial'];
             $row[] = $list['item_name'];
+            $row[] = $list['quantity'];
             $row[] = $list['date'];
             $row[] = $list['date_rec'];
             $row[] = $list['unit_cost'];
