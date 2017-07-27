@@ -1,15 +1,17 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Dashboard extends CI_Controller {
-	public function __construct()
+class Dashboard extends CI_Controller
+{
+    public function __construct()
     {
-      	parent::__construct();
-		$this->load->model('inventorymodel');
+        parent::__construct();
+        $this->load->model('inventorymodel');
     }
-	public function index()
-	{
-	    $position = $this->session->userdata['logged_in']['position'];
+
+    public function index()
+    {
+        $position = $this->session->userdata['logged_in']['position'];
         $data['itemsremaining'] = $this->inventorymodel->dashboard_custodian_items_remaining();
         $data['countrecitems'] = $this->inventorymodel->count_received_item();
         $data['returned'] = $this->inventorymodel->dashborad_custodian_returned_items();
@@ -19,46 +21,52 @@ class Dashboard extends CI_Controller {
         $data['defitems'] = $this->inventorymodel->count_def_items();
         $data['pendingusers'] = $this->inventorymodel->count_pending_users();
 
-        if($position === 'department head'){
+        if ($position === 'department head') {
             $this->load->view('department_head/templates/header');
-        }else{
+        } else {
             $this->load->view('templates/header');
         }
-        $this->load->view('dashboard',$data);
+        $this->load->view('dashboard', $data);
         $this->load->view('templates/footer');
-	}
-	public function count_received_item()
-    {	
-    	$data = $this->inventorymodel->count_received_item();
-        foreach ($data as $item){
+    }
+
+    public function count_received_item()
+    {
+        $data = $this->inventorymodel->count_received_item();
+        foreach ($data as $item) {
             echo $item['quantity'];
         }
 
     }
 
-        public function dashboard_custodian_items_remaining()
-    {   
+    public function dashboard_custodian_items_remaining()
+    {
         $data = $this->inventorymodel->get_dashboard();
         echo json_encode($data);
 
     }
-        public function count_ret_items()
-     {
-        $data = $this->inventorymodel->get_dashboard();
-        echo json_encode($data);
+
+    public function count_ret_items()
+    {
+        $data = $this->inventorymodel->count_ret_items();
+        foreach ($data as $ret) {
+            echo $ret['user'];
+        }
     }
+
     public function count_def_items()
-     {
+    {
         $data = $this->inventorymodel->count_def_items();
-        foreach ($data as $def){
+        foreach ($data as $def) {
             echo $def['status'];
-    }
-}
-            public function count_pending_users()
-    {   
-        $data = $this->inventorymodel->get_dashboard();
-        echo json_encode($data);
-
+        }
     }
 
+    public function count_pending_users()
+    {
+        $data = $this->inventorymodel->count_pending_users();
+        foreach ($data as $penu) {
+            echo $penu['status'];
+        }
+    }
 }
