@@ -31,4 +31,9 @@ class Edit_model extends CI_Model
         //$db1->update('account_code', $data1, $acid);
         return $this->db->affected_rows();
     }
+
+    public function log_item_update($data)
+    {
+        $this->db->insert('logs.edit_log', $data);
+    }
 }
