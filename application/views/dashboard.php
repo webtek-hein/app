@@ -143,7 +143,7 @@
     <!-- small box -->
     <div class="small-box bg-red">
         <div class="inner">
-            <h3>
+            <h3 id="defect_items">
             </h3>
 
             <p>Defected Items</p>

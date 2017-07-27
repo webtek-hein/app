@@ -49,7 +49,7 @@ class Dashboard extends CI_Controller {
     }
     public function count_def_items()
      {
-        $data = $this->inventorymodel->get_dashboard();
+        $data = $this->inventorymodel->count_def_items();
         foreach ($data as $def){
             echo $def['status'];
     }
