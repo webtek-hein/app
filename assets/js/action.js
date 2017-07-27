@@ -226,7 +226,7 @@ function get_item_details(id) {
                        error: function () {
                            BootstrapDialog.alert({
                                type: BootstrapDialog.TYPE_WARNING,
-                               message: 'Enter a unique serial',
+                               message: 'Please enter a unique serial',
                                closable: true
                            });
                        }

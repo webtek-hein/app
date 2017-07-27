@@ -370,7 +370,7 @@ $query = $this->db->get('logs.return_log');
          public function count_def_items()
      {
 $this->db->select('COUNT(item_detail.item_status) AS status');
-$this->db->where ('item_detail.item_status in','defective'); 
+$this->db->where_in ('item_detail.item_status','defective');
 $this->db->order_by('del_date');
         $query = $this->db->get('inventory.item_detail');
         return $query->result_array(); 

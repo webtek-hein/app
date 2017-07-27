@@ -16,7 +16,7 @@ class Dashboard extends CI_Controller {
         $data['defecteditems'] = $this->inventorymodel->dashborad_custodian_defected_items();
         $data['received'] = $this->inventorymodel->dashborad_custodian_recieved_items();
         $data['retitems'] = $this->inventorymodel->count_ret_items();
-     //   $data['defitems'] = $this->inventorymodel->count_def_items();
+        $data['defitems'] = $this->inventorymodel->count_def_items();
      //   $data['pendingusers'] = $this->inventorymodel->count_pending_users();
 
         if($position === 'department head'){

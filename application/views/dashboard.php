@@ -145,8 +145,11 @@
     <!-- small box -->
     <div class="small-box bg-red">
         <div class="inner">
+            <?php foreach ($defitems as $defit): ?>
             <h3>
+                <?php echo $defit['status']; ?>
             </h3>
+            <?php endforeach; ?>
             <p>Defected Items</p>
         </div>
         <div class="icon">
