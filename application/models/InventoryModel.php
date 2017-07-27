@@ -369,14 +369,19 @@ $query = $this->db->get('logs.return_log');
 
          public function count_def_items()
      {
-$this->db->select(' item_name, count(*) as quantity');
-$this->db->get('table');
-$this->db->join ('item', 'item.item_id = item_detail.item_id','left');
-$this->db->where ('DATE(date_rec) =  CURDATE()');
-$this->db->and ('weekday('*') >=0');
-$this->db->group_by ('item_detail.item_id ');
-        $query = $this->db->get('item');
+$this->db->select('COUNT(item_detail.item_status) AS status');
+$this->db->where ('item_detail.item_status in','defective'); 
+$this->db->order_by('del_date');
+        $query = $this->db->get('inventory.item_detail');
         return $query->result_array(); 
     }
 
+           public function count_pending_users()
+     {  
+        $this->db->select(' COUNT(user.status) AS status');
+        $this->db->where ('user.status in',' pending');
+        $query = $this->db->get('inventory.user');
+        return $query->result_array(); 
+
     }
+}
