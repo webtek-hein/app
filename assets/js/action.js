@@ -424,3 +424,8 @@ function dashboard_custodian_items_remaining(){
 $(document).ready(function () {
     $( "#rec_items" ).load("dashboard/count_received_item");
 });
+
+
+$(document).ready(function () {
+    $( "#defect_items" ).load("dashboard/count_def_items");
+});

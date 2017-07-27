@@ -28,11 +28,25 @@ class Dashboard extends CI_Controller {
         echo json_encode($data);
 
     }
-        public function count_received_item()
+    public function count_received_item()
     {   
+        $data = $this->inventorymodel->count_received_item();
+        foreach ($data as $item){
+            echo $item['quantity'];
+        }
+
+    }
+    public function count_ret_items()
+     {
+        $data = $this->inventorymodel->get_dashboard();
+        foreach ($data as $def){
+            echo $def['status'];
+    }
+}
+    public function count_def_items()
+     {
         $data = $this->inventorymodel->get_dashboard();
         echo json_encode($data);
-
     }
     public function count_pending_users()
     {   

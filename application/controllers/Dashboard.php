@@ -50,8 +50,10 @@ class Dashboard extends CI_Controller {
     public function count_def_items()
      {
         $data = $this->inventorymodel->get_dashboard();
-        echo json_encode($data);
+        foreach ($data as $def){
+            echo $def['status'];
     }
+}
             public function count_pending_users()
     {   
         $data = $this->inventorymodel->get_dashboard();
