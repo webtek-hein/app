@@ -223,9 +223,7 @@ function get_item_details(id) {
                        type: "POST",
                        url: 'inventory/set_serial/',
                        data: {'serial':serial, 'item_det': item_det},
-                       success: function () {
-                           BootstrapDialog.alert('Serial number saved.');
-                       },error: function () {
+                       error: function () {
                            BootstrapDialog.alert({
                                type: BootstrapDialog.TYPE_WARNING,
                                message: 'Enter a unique serial',
