@@ -379,7 +379,7 @@ $this->db->order_by('del_date');
            public function count_pending_users()
      {  
         $this->db->select(' COUNT(user.status) AS status');
-        $this->db->where ('user.status in',' pending');
+        $this->db->where_in('user.status',' pending');
         $query = $this->db->get('inventory.user');
         return $query->result_array(); 
 
