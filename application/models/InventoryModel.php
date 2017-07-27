@@ -308,11 +308,11 @@ class InventoryModel extends CI_Model {
 
      public function dashborad_custodian_returned_items()
      {
-         $this->db->SELECT('concat(last_name," ",first_name) as user, item_name, item.quantity, reason, department');
+         $this->db->SELECT('concat(last_name," ",first_name) as user, item_name, distribution.quantity, reason, department');
          $this->db->join('item_detail','item.item_id = item_detail.item_id');
          $this->db->join('logs.return_log','item_detail.item_det_id = logs.return_log.item_det_id');
          $this->db->join('distribution','distribution.dist_id = logs.return_log.dist_id');
-           $this->db->join('department','distribution.dept_id = department.dept_id');
+         $this->db->join('department','distribution.dept_id = department.dept_id');
          $this->db->join('user','user.user_id = return_log.user_id');
          $this->db->limit(10);
          $this->db->distinct();
@@ -323,7 +323,7 @@ class InventoryModel extends CI_Model {
 
      public function dashborad_custodian_defected_items()
      {
-         $this->db->SELECT('concat(last_name," ",first_name) as user, item_name, item.quantity, item_detail.supplier,reason, department');
+         $this->db->SELECT('concat(last_name," ",first_name) as user, item_name, distribution.quantity, item_detail.supplier,reason, department');
          $this->db->join('item_detail','item.item_id = item_detail.item_id');
          $this->db->join('logs.return_log','item_detail.item_det_id = logs.return_log.item_det_id');
          $this->db->join('distribution','distribution.dist_id = logs.return_log.dist_id');
@@ -346,16 +346,21 @@ class InventoryModel extends CI_Model {
         $query = $this->db->get('item');
         return $query->result_array();
      }
-
-
-     public function count_received_item()
+     public function count_received_items()
      {
-
         $this->db->select('item_name, count(*) as quantity');
         $this->db->join('item',' item.item_id = item_detail.item_id','left');
          $this->db->where ('DATE(date_rec) =  CURDATE()');
          $this->db->group_by ('item_detail.item_id');
                 $query = $this->db->get('item_detail');
+        return $query->result_array();
+    }
+
+     public function count_received_item()
+     {
+
+        $this->db->select('COUNT(item.item_id) AS quantity');
+                $query = $this->db->get('inventory.item');
         return $query->result_array();
     }
  public function count_ret_items()
