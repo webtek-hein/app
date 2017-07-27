@@ -126,7 +126,7 @@
     <!-- small box -->
     <div class="small-box bg-green">
         <div class="inner">
-            <h3>
+            <h3 id="ret_items">
             </h3>
             <p>Returned Items</p>
         </div>
@@ -164,7 +164,7 @@ if($position === 'admin'){
 
     echo '<div class="col-lg-3 col-xs-6">'.
          '<div class="small-box bg-yellow">'.
-         '<div class="inner"><?php foreach ($pendingusers as $pendingu): ?> <h3><?php echo $pendingu[\'status\']; ?></h3><?php endforeach; ?>'.
+         '<div class="inner"><h3 id="pendingu"></h3>'.
          '<p>Pending Users</p></div>'.
          '<div class="icon">'.
          '<i class="ion ion-person-add"></i></div>'.
