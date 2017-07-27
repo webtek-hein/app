@@ -168,7 +168,7 @@ if($position === 'admin'){
 
     echo '<div class="col-lg-3 col-xs-6">'.
          '<div class="small-box bg-yellow">'.
-         '<div class="inner"><h3></h3>'.
+         '<div class="inner"><?php foreach ($pendingusers as $pendingu): ?> <h3><?php echo $pendingu[\'status\']; ?></h3><?php endforeach; ?>'.
          '<p>Pending Users</p></div>'.
          '<div class="icon">'.
          '<i class="ion ion-person-add"></i></div>'.
