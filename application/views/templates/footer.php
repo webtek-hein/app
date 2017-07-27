@@ -12,7 +12,7 @@
 <script src="<?php echo base_url() ?>assets/js/html5shiv.min.js"></script>
 <script src="<?php echo base_url() ?>assets/js/respond.min.js"></script>
 <script src="<?php echo base_url() ?>assets/js/action.js"></script>
-<script src="<?php echo base_url() ?>assets/js/pages/dashboard2.js"></script>
+
 <script src="<?php echo base_url() ?>assets/plugins/chartjs/Chart.min.js"></script>
 
 
@@ -46,6 +46,7 @@
 <!-- FastClick -->
 <script src="<?php echo base_url() ?>assets/plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
+<!-- <script src="<?php echo base_url() ?>assets/js/pages/dashboard2.js"></script> -->
 <script src="<?php echo base_url() ?>assets/dist/js/app.min.js"></script>
 
 </body>
