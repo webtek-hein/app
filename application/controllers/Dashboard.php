@@ -29,8 +29,10 @@ class Dashboard extends CI_Controller {
 	}
 	public function count_received_item()
     {	
-    	$data = $this->inventorymodel->get_dashboard();
-        echo json_encode($data);
+    	$data = $this->inventorymodel->count_received_item();
+        foreach ($data as $item){
+            echo $item['quantity'];
+        }
 
     }
 
