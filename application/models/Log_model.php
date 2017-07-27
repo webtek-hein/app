@@ -11,11 +11,10 @@ class Log_model extends CI_Model {
      public function get_increase_log()
     {
 
-            $this->db->Select ('item_detail.supplier,item.quantity,item.item_name,logs.increase_log.date,item_detail.date_rec,item_detail.unit_cost,concat(user.first_name," ",user.last_name) as user');
+            $this->db->Select ('item_detail.supplier, item.quantity, item.item_name, logs.increase_log.date, item_detail.date_rec, item_detail.unit_cost, item_detail.item_status');
             $this->db->from('logs.increase_log');
             $this->db->join('inventory.item_detail','logs.increase_log.item_det_id = inventory.item_detail.item_det_id','left');
             $this->db->join('inventory.item','inventory.item_detail.item_id = inventory.item.item_id','left');
-            $this->db->join('inventory.user','logs.increase_log.user_id = inventory.user.user_id','left');
              $this->db->distinct();
             $query = $this->db->get();
             return $query->result_array();
