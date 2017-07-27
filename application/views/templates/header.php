@@ -156,7 +156,6 @@ if (isset($this->session->userdata['logged_in'])) {
 
 
 
-
                 <!-- /.sidebar -->
     </aside>
     <!-- Content Wrapper. Contains page content -->

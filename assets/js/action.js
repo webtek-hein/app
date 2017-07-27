@@ -216,8 +216,7 @@ function get_item_details(id) {
            $(this).focus(function () {
                oldData = $(this).text();
            });
-           $(this).blur(function () {
-
+    $(this).blur(function () {
                serial = $(this).text();
                if(oldData != serial) {
                    $.ajax({
@@ -236,7 +235,6 @@ function get_item_details(id) {
                    });
                }
            });
-
        });
 
     $('#view').modal('show');

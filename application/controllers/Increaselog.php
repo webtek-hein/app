@@ -5,7 +5,7 @@ class Increaselog extends CI_Controller {
 			public function __construct()
     {
       	parent::__construct();
-		$this->load->model('inventorymodel');
+        $this->load->model('log_model');
     }
 	public function index()
 	{
@@ -22,9 +22,9 @@ class Increaselog extends CI_Controller {
         $user_id = $this->session->userdata['logged_in']['userid'];
 
         if($position == 'admin'){
-            $increase = $this->inventorymodel->get_increase_log();
+            $increase = $this->log_model->get_increase_log();
         }else{
-            $increase = $this->inventorymodel->get_increase_log_per_user($user_id);
+            $increase = $this->log_model->get_increase_log_per_user($user_id);
         }
         $data = array();
         foreach ($increase as $list) {

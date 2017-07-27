@@ -5,7 +5,7 @@ class Returnlog extends CI_Controller {
 		public function __construct()
     {
       	parent::__construct();
-		$this->load->model('inventorymodel');
+        $this->load->model('log_model');
     }
 	public function index()
 	{
@@ -25,9 +25,9 @@ class Returnlog extends CI_Controller {
         $user_id = $this->session->userdata['logged_in']['userid'];
 
         if($position == 'admin'){
-            $return = $this->inventorymodel->get_return_log();
+            $return = $this->log_model->get_return_log();
         }else{
-            $return = $this->inventorymodel->get_return_log_per_user($user_id);
+            $return = $this->log_model->get_return_log_per_user($user_id);
         }
         $data = array();
         foreach ($return as $list) {
