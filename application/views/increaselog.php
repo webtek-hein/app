@@ -11,15 +11,15 @@
               <table id="increase_log" class="table table-bordered table-striped" width="100%">
                 <thead>
                 <tr>
-                  <th>Serial</th>
                   <th> Item name</th>
+                  <th>Quantity</th>
                   <th> Date</th>
                   <th> Date Received</th>
                   <th> Unit Cost</th>
-					<th> Supplier </th>
+					        <th> Supplier </th>
                     <?php $position = $this->session->userdata['logged_in']['position'];
                     if($position === 'admin'){
-                        echo '<th>User</th>';
+                        echo '<th>Action</th>';
                     }
                     ?>
 
@@ -28,17 +28,17 @@
                 <tbody>
                 </tbody>
                 <tfoot>
-                <th>Serial</th>
                 <th> Item name</th>
+                <th>Quantity</th>
                 <th> Date</th>
                 <th> Date Received</th>
                 <th> Unit Cost</th>
                 <th> Supplier </th>
                 <?php $position = $this->session->userdata['logged_in']['position'];
-                if($position === 'admin'){
-                    echo '<th>User</th>';
-                }
-                ?>
+                    if($position === 'admin'){
+                        echo '<th>Action</th>';
+                    }
+                    ?>
 
                 </tfoot>
               </table>
