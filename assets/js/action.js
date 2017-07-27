@@ -358,19 +358,23 @@ function save()
 
 function return_selected_items() {
     var item_det_id = [];
-    var reason;
-    var person;
     var checked;
    
     $('#item_detail:checked').each(function () {
         item_det_id.push($(this).val());
     });
 
-    $('#returnmodal').modal('show');
+    if ($('#item_detail:checked').length > 0) {
+        $('#returnmodal').modal('show');
+    } else {
+        BootstrapDialog.alert('Please check at least one item');
+        return;
+    }
+    
       
     $('button[id=save1]').on('click',function () {
-        reason =  $('textarea#reason').val();
-        person =  $('input[name=person]').val();
+        var reason =  $('textarea#reason').val().trim();
+        var person =  $('input[name=person]').val();
 
         if ($('input[name=defect]').is(":checked"))
         {
@@ -381,19 +385,21 @@ function return_selected_items() {
 
         var item_data;
 
-        if ($('#item_detail:checked').length > 0 && reason && person) {
-            item_data = {'item_det_id':item_det_id,'reason':reason,'person':person, 'ischecked': checked};
+        if (!reason && !person) {
+            BootstrapDialog.alert("Please enter reason and return person");
+        } else if (!reason && person){
+            BootstrapDialog.alert("Please enter reason");
+        } else if (reason && !person) {
+            BootstrapDialog.alert("Please enter return person");
         } else {
-            window.alert("Please check at least 1 item and input all required fields. Try again.");
-            return;
+            item_data = {'item_det_id':item_det_id,'reason':reason,'person':person, 'ischecked': checked};
+            $.ajax({
+                url : 'department/return_items',
+                type: "POST",
+                data: item_data,
+                dataType: "JSON",
+            });
         }
-
-        $.ajax({
-           url : 'department/return_items',
-           type: "POST",
-           data: item_data,
-           dataType: "JSON",
-        });
     });   
 }
 
