@@ -65,7 +65,7 @@ class Inventory extends CI_Controller {
                 $button = "<button type=\"button\" class=\"btn btn-primary open-modal-action fa fa-plus\" data-id='$list[item_id]' data-toggle=\"modal\" data-target=\"#addqty\"></button>".
                     "<button type=\"button\" class=\"btn btn-danger open-modal-action fa fa-minus\" data-id='$list[item_id]' onclick=\"subtract_quantity(". $list['item_id'] .")\"></button>".
                     " <button class=\"btn btn-warning open-modal-action fa fa-pencil\" onclick=\"edit_inventory('$list[item_id]')\"></button>".
-                    " <button class=\"btn-info open-modal-action fa fa-info\" onclick=\"get_item_details(". $list['item_id'] .")\"></button>";
+                    " <button class=\"btn btn-info open-modal-action fa fa-info\" onclick=\"get_item_details(". $list['item_id'] .")\"></button>";
             }else if ($position === 'custodian'){
                 $button = "<button type=\"button\" data-id = '$list[item_id]' class=\"btn btn-primary open-modal-action fa fa-plus\" data-toggle=\"modal\" data-target=\"#addqty\"></button>".
                     "<button class=\"btn btn-info open-modal-action fa fa-info\" onclick=\"get_item_details(". $list['item_id'] .")\"></button> ".
