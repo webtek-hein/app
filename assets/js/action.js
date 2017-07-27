@@ -210,13 +210,13 @@ function get_item_details(id) {
        });
    });
    //single serial input
-       $('#details').on( 'click', 'tr :nth-child(2)', function () {
+       $('#details').off( 'click', 'tr :nth-child(2)').on( 'click', 'tr :nth-child(2)', function () {
             var item_det = $(this).closest('tr').find('input[name="item-det"]').val();
            $(this).attr('contentEditable', 'true');
            $(this).focus(function () {
                oldData = $(this).text();
            });
-    $(this).blur(function () {
+    $(this).off('blur').on('blur',function () {
                serial = $(this).text();
                if(oldData != serial) {
                    $.ajax({
