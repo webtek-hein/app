@@ -336,8 +336,7 @@ class InventoryModel extends CI_Model {
          return $query->result_array();
      }
 
-     public function dashboard_custodian_items_remaining()
-     {
+     public function dashboard_custodian_items_remaining(){
         $this->db->select(' official_receipt_no, item_name, quantity, item_type');
       $this->db->join('item_detail','item_detail.item_id = item.item_id','left');
       $this->db->where('quantity <= 30');
@@ -346,7 +345,6 @@ class InventoryModel extends CI_Model {
       $this->db->distinct();
         $query = $this->db->get('item');
         return $query->result_array();
-     }
      public function count_received_items()
      {
         $this->db->select('item_name, count(*) as quantity');
