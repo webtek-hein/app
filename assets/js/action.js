@@ -475,5 +475,13 @@ $(document).ready(function () {
             }]
         });
     });
-    
+   .ajax({
+    url: '/dashboard.php'
+    type: 'POST',
+    async: true,
+    dataType: "JSON"
+    success: function(data){
+        console.warn(data);
+        return data;
+    } 
 });
