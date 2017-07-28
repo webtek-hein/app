@@ -36,7 +36,7 @@ function relocate_home()
                       <br><p><?php echo $this->session->flashdata('mesg'); ?></p>
                   <?php endif; ?>
 
-                  <img class="profile-user-img img-responsive img-circle" src="<?php echo base_url()?>/images/<?php// echo $image->image?>" alt="User profile picture">
+                  <img class="profile-user-img img-responsive img-circle" src="<?php echo base_url()?>/images/<?php echo $image ?>" alt="User profile picture">
 
                   <h3 class="profile-username text-center"><?php echo $firstname.' '.$lastname ?></h3>
                   <div class="col-sm-offset-0 col-sm-5">
