@@ -12,18 +12,13 @@
                         <thead>
 
                         <tr>
-                            <th>Serial</th>
-                            <th> Item name</th>
-                            <th> Date</th>
-                            <th> Supplier</th>
-                            <th>Distribution Date</th>
-                            <th> Unit Cost</th>
-                            <?php $position = $this->session->userdata['logged_in']['position'];
-                            if($position === 'admin'){
-                                echo '<th>User</th>';
-                            }
-                            ?>
-                            <th>Department</th>
+                            <th>Last Item Name</th>
+                            <th>Item name</th>
+                            <th>Last Description</th>
+                            <th>Description</th>
+                            <th>Last Unit</th>
+                            <th>Unit</th>
+                            <th>Date</th>
                         </tr>
                         </thead>
 
@@ -31,17 +26,13 @@
                         </tbody>
                         <tfoot>
                         <tr>
-                            <th>Serial</th>
-                            <th> Item name</th>
-                            <th> Date</th>
-                            <th> Supplier</th>
-                            <th> Distribution Date</th>
-                            <th> Unit Cost</th>
-                            <?php $position = $this->session->userdata['logged_in']['position'];
-                            if($position === 'admin'){
-                                echo '<th>User</th>';
-                            }
-                            ?>
+                            <th>Last Item Name</th>
+                            <th>Item name</th>
+                            <th>Last Description</th>
+                            <th>Description</th>
+                            <th>Last Unit</th>
+                            <th>Unit</th>
+                            <th>Date</th>
                         </tr>
                         </tfoot>
                     </table>
