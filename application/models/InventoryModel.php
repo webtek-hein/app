@@ -315,7 +315,6 @@ class InventoryModel extends CI_Model {
          $this->db->join('department','distribution.dept_id = department.dept_id');
          $this->db->join('user','user.user_id = return_log.user_id');
          $this->db->limit(10);
-         $this->db->distinct();
             $query = $this->db->get('item');
 
             return $query->result_array();
@@ -360,6 +359,7 @@ class InventoryModel extends CI_Model {
      {
 
         $this->db->select('COUNT(item.item_id) AS quantity');
+         $this->db->where ('DATE(date) = CURDATE()');
                 $query = $this->db->get('inventory.item');
         return $query->result_array();
     }
@@ -375,7 +375,7 @@ $query = $this->db->get('logs.return_log');
          public function count_def_items()
      {
 $this->db->select('COUNT(item_detail.item_status) AS status');
-$this->db->where_in ('item_detail.item_status','defective');
+$this->db->where('item_detail.item_status','defective');
 $this->db->order_by('del_date');
         $query = $this->db->get('inventory.item_detail');
         return $query->result_array(); 

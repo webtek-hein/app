@@ -451,12 +451,7 @@ $(document).ready(function () {
                 plotBorderWidth: null,
                 plotShadow: false
             },
-            title: {
-                text: 'Items'
-            },
-            tooltip: {
-                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-            },
+
             plotOptions: {
                 pie: {
                     allowPointSelect: true,
