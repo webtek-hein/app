@@ -7,6 +7,7 @@ if (isset($this->session->userdata['logged_in'])) {
     $lastname = ($this->session->userdata['logged_in']['lastname']);
     $position = ($this->session->userdata['logged_in']['position']);
     $department = ($this->session->userdata['logged_in']['department']);
+    $image = ($this->session->userdata['logged_in']['image']);
 } else {
     header("location: login");
 }
@@ -69,7 +70,7 @@ if (isset($this->session->userdata['logged_in'])) {
                         <ul class="dropdown-menu">
                             <!-- User image -->
                             <li class="user-header">
-                                <img src="<?php echo base_url() ?>assets/dist/img/dummy.jpg" class="img-circle" alt="User Image">
+                                <img src="<?php echo base_url() ?>images/<?= $image ?>" class="img-circle" alt="User Image">
                             </li>
                             <!-- Menu Footer-->
                             <li class="user-footer">
@@ -96,7 +97,7 @@ if (isset($this->session->userdata['logged_in'])) {
             <!-- Sidebar user panel -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="<?php echo base_url() ?>assets/dist/img/dummy.jpg" class="img-circle" alt="User Image">
+                    <img src="<?php echo base_url() ?>images/<?= $image ?>" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
                     <p><?= $position?></p>

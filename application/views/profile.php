@@ -7,8 +7,11 @@
     $email = ($this->session->userdata['logged_in']['email']);
     $contact_no = ($this->session->userdata['logged_in']['contact_no']);
     $password = ($this->session->userdata['logged_in']['password']);
-
+    $image = ($this->session->userdata['logged_in']['image']);
 ?>
+
+    <link rel="stylesheet" type="text/css" href="assets/css/profile.css">
+
 
 <script>
 function relocate_home()
@@ -32,11 +35,11 @@ function relocate_home()
                       <br><p><?php echo $this->session->flashdata('mesg'); ?></p>
                   <?php endif; ?>
 
-                  <img class="profile-user-img img-responsive img-circle" src="<?php echo base_url()?>/images/<?php// echo $image->image?>" alt="User profile picture">
+                  <img class="profile-user-img img-responsive img-circle" src="<?php echo base_url()?>images/<?= $image ?>" alt="User profile picture">
 
                   <h3 class="profile-username text-center"><?php echo $firstname.','.$lastname ?></h3>
                   <div class="col-sm-offset-0 col-sm-5">
-                      <input type="file" name="userfile" size="20" />
+                      <input type="file" name="userfile" size="20"  />
                       <input type="submit" name="upload" value="Upload" />
                   </div>
               </div>
@@ -102,10 +105,11 @@ function relocate_home()
           </div>
         </div>
 
-    <div class="col-md-9">
+
+    <div class="col-md-9" id="part2">
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-                <li><a href="" data-toggle="tab">Update Profile</a></li>
+                <li><a href="" data-toggle="tab">Update Password</a></li>
 
                 <?php if($this->session->flashdata('msg')): ?>
                     <br><p><?php echo $this->session->flashdata('msg'); ?></p>
@@ -147,6 +151,6 @@ function relocate_home()
           </div>
         </div>
       </div>
-    </div>
+</div>
     </section>
   </div>
