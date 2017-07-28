@@ -18,12 +18,11 @@ class Log_model extends CI_Model {
             $this->db->join('inventory.user','logs.increase_log.user_id = inventory.user.user_id','left');
             $query = $this->db->get();
             return $query->result_array();
-
     }
+
     //get all decrease records from db
        public function get_decrease_log()
     {
-
             $this->db->Select('account_code,department,distrib_date,supplier,serial,item_name,date,date_rec,unit_cost,concat(user.first_name," ",user.last_name) as user');
             $this->db->from('logs.decrease_log');
             $this->db->join('inventory.item_detail','logs.decrease_log.item_det_id = inventory.item_detail.item_det_id','left');
@@ -39,7 +38,6 @@ class Log_model extends CI_Model {
     //get all return records from db
       public function get_return_log()
     {
-
         $this->db->Select ('return_id, account_code,department,return_person,logs.return_log.status as item_status,supplier,serial,item_name,date,unit_cost,concat(user.first_name," ",user.last_name) as user,reason,inventory.item.quantity');
         $this->db->from('logs.return_log');
         $this->db->join('inventory.item_detail','logs.return_log.item_det_id = inventory.item_detail.item_det_id','left');
@@ -55,7 +53,6 @@ class Log_model extends CI_Model {
 
      public function get_increase_log_per_user($id)
     {
-
         $this->db->Select ('item_detail.supplier,item_detail.serial,item.item_name,logs.increase_log.date,item_detail.date_rec,item_detail.unit_cost,concat(user.first_name," ",user.last_name) as user');
         $this->db->from('logs.increase_log');
         $this->db->join('inventory.item_detail','logs.increase_log.item_det_id = inventory.item_detail.item_det_id','left');
@@ -69,7 +66,6 @@ class Log_model extends CI_Model {
 
     public function get_decrease_log_per_user($id)
     {
-
         $this->db->Select('account_code,department,distrib_date,supplier,serial,item_name,date,date_rec,unit_cost,concat(user.first_name," ",user.last_name) as user');
         $this->db->from('logs.decrease_log');
         $this->db->join('inventory.item_detail','logs.decrease_log.item_det_id = inventory.item_detail.item_det_id','left');
@@ -82,11 +78,9 @@ class Log_model extends CI_Model {
         $query = $this->db->get();
         return $query->result_array();
     }
- 
 
  public function get_return_log_per_user($id)
     {
-
         $this->db->Select ('return_id, account_code,department,return_person,logs.return_log.status as item_status,supplier,serial,item_name,date,unit_cost,concat(user.first_name," ",user.last_name) as user,reason,inventory.item.quantity');
         $this->db->from('logs.return_log');
         $this->db->join('inventory.item_detail','logs.return_log.item_det_id = inventory.item_detail.item_det_id','left');
@@ -98,6 +92,15 @@ class Log_model extends CI_Model {
         $this->db->where('logs.return_log.user_id',$id);
 
 
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function get_edit_log()
+    {
+        $this->db->Select ('before_item_name, after_item_name, before_description, after_description, before_unit, after_unit, date, concat(user.first_name, ,user.last_name) as user');
+        $this->db->from('logs.edit_log');
+        $this->db->join('inventory.user','logs.edit_log.user_id = inventory.user.user_id','left');
         $query = $this->db->get();
         return $query->result_array();
     }
