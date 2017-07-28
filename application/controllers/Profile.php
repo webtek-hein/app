@@ -72,7 +72,7 @@ class Profile extends CI_Controller
               'upload_path' =>'./images',
               'allowed_types' => "gif|jpg|png|jpeg",
               'overwrite' => TRUE,
-              'max_size' => "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
+              'max_size' => "2048000", 
               'max_height' => "5768",
               'max_width' => "5024"
           );
