@@ -485,3 +485,16 @@ $(document).ready(function () {
         }
   
 });
+
+$(document).ready(function() {
+
+    editlog = $('#edit_log').DataTable({
+
+        destroy: true,
+        responsive: true,
+        "ajax": {
+            "url": 'EditLog/get_edit_log',
+            "type": "POST",
+        },
+    });
+});
