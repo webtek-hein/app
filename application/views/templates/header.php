@@ -7,7 +7,7 @@ if (isset($this->session->userdata['logged_in'])) {
     $lastname = ($this->session->userdata['logged_in']['lastname']);
     $position = ($this->session->userdata['logged_in']['position']);
     $department = ($this->session->userdata['logged_in']['department']);
-    $image = ($this->session->userdata['logged_in']['image']);
+    $image = ($this->session->userdata['image_in']['image']);
 } else {
     header("location: login");
 }

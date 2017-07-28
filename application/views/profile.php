@@ -7,7 +7,7 @@
     $email = ($this->session->userdata['logged_in']['email']);
     $contact_no = ($this->session->userdata['logged_in']['contact_no']);
     $password = ($this->session->userdata['logged_in']['password']);
-    $image = ($this->session->userdata['logged_in']['image']);
+    $image = ($this->session->userdata['image_in']['image']);
 ?>
 
     <link rel="stylesheet" type="text/css" href="assets/css/profile.css">
