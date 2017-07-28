@@ -93,8 +93,8 @@ class Profile extends CI_Controller
                   'image' => $data['file_name']);
 
               $this->session->set_flashdata('mesg', 'Profile Picture changed!');
-
-              $this->user_db->edit_image($name,$userid);
+             $imagesession= $this->user_db->edit_image($name,$userid);
+              $this->session->set_userdata('image', $imagesession);
               header('Location: '. base_url() . 'profile');
           }
 
