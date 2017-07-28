@@ -28,6 +28,7 @@ function relocate_home()
 	  <div class="col-md-3">
           <!-- Profile Image -->
           <?php echo form_open_multipart('profile/upload_image'); ?>
+          <form>
           <div class="box box-primary">
 
               <div class="box-body box-profile">
@@ -44,6 +45,7 @@ function relocate_home()
                   </div>
               </div>
           </div>
+          </form>
           <!-- /.box -->
 		</div>
         <!-- /.col -->
@@ -52,8 +54,8 @@ function relocate_home()
             <ul class="nav nav-tabs">
               <li><a href="" data-toggle="tab">Update Profile</a></li>
 
-              <?php if($this->session->flashdata('msg')): ?>
-                <br><p><?php echo $this->session->flashdata('msg'); ?></p>
+              <?php if($this->session->flashdata('profilemsg')): ?>
+                <br><p><?php echo $this->session->flashdata('profilemsg'); ?></p>
               <?php endif; ?>
             </ul>
 
@@ -111,8 +113,8 @@ function relocate_home()
             <ul class="nav nav-tabs">
                 <li><a href="" data-toggle="tab">Update Password</a></li>
 
-                <?php if($this->session->flashdata('msg')): ?>
-                    <br><p><?php echo $this->session->flashdata('msg'); ?></p>
+                <?php if($this->session->flashdata('passwordmsg')): ?>
+                    <br><p><?php echo $this->session->flashdata('passwordmsg'); ?></p>
                 <?php endif; ?>
             </ul>
 

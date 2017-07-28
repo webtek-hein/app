@@ -37,7 +37,7 @@ class Profile extends CI_Controller
             );
 
             $this->user_db->edit_profile($data, $userid);
-            $this->session->set_flashdata('msg', 'Update will take effect on next login.');
+            $this->session->set_flashdata('profilemsg', 'Update will take effect on next login.');
             header('Location: ' . base_url() . 'profile');
 
 
@@ -61,7 +61,7 @@ class Profile extends CI_Controller
             );
 
             $this->user_db->edit_profile($hashpassword, $userid);
-            $this->session->set_flashdata('msg', 'Update will take effect on next login.');
+            $this->session->set_flashdata('passwordmsg', 'Update will take effect on next login.');
             header('Location: ' . base_url() . 'profile');
         }
     }
@@ -83,7 +83,7 @@ class Profile extends CI_Controller
           if ( ! $this->upload->do_upload('userfile'))
           {
               $error =  $this->upload->display_errors();
-            print_r( $error);
+              header('Location: '. base_url() . 'profile');
           }
           else
           {
