@@ -70,7 +70,8 @@ body{
     font-size: 15px;
     color: whitesmoke;
     margin-left: 50px;
-    text-decoration: underline;
+    text-decoration:none;
+
 }
 
 input { 
