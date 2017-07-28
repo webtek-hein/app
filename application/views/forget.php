@@ -1,4 +1,5 @@
 <html>
+   <link rel="stylesheet" type="text/css" href="assets/css/forget.css">
 <div class="container">
 
     <?php echo form_open('Forget/doforget'); ?>
@@ -23,6 +24,7 @@
                 echo validation_errors();
                 echo "</div>";
                 ?>
+                <a href="<?php echo base_url() ?>signup" style="text-decoration:none">Click Here To Sign Up </a>
 
 </fieldset>
 </form>
