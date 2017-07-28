@@ -68,4 +68,13 @@ class Dashboard extends CI_Controller
             echo $penu['status'];
         }
     }
+    public function graph()
+    {
+        echo json_encode("Success.");
+    {  
+       $data = $this->inventorymodel->get_dashboard();
+        echo json_encode($data);
+
+     }
+ }
 }
