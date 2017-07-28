@@ -426,7 +426,7 @@ function dashboard_custodian_items_remaining(){
         }
         })
 }
-
+//load data
 $(document).ready(function () {
     $( "#rec_items" ).load("dashboard/count_received_item");
     $( "#defect_items" ).load("dashboard/count_def_items");

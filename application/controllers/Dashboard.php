@@ -36,7 +36,6 @@ class Dashboard extends CI_Controller
         foreach ($data as $item) {
             echo $item['quantity'];
         }
-
     }
 
     public function dashboard_custodian_items_remaining()

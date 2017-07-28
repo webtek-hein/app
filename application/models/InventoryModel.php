@@ -383,9 +383,9 @@ $this->db->order_by('del_date');
 
            public function count_pending_users()
      {  
-        $this->db->select(' COUNT(user.status) AS status');
-        $this->db->where_in('user.status',' pending');
-        $query = $this->db->get('inventory.user');
+        $this->db->select(' count(*) as status');
+        $this->db->where('status','pending');
+        $query = $this->db->get('user');
         return $query->result_array(); 
 
     }
