@@ -37,7 +37,7 @@ class Profile extends CI_Controller
             );
 
             $this->user_db->edit_profile($data, $userid);
-            $this->session->set_flashdata('msg', 'Update will take effect on next login.');
+            $this->session->set_flashdata('profilemsg', 'Update will take effect on next login.');
             header('Location: ' . base_url() . 'profile');
 
 
@@ -61,7 +61,7 @@ class Profile extends CI_Controller
             );
 
             $this->user_db->edit_profile($hashpassword, $userid);
-            $this->session->set_flashdata('msg', 'Update will take effect on next login.');
+            $this->session->set_flashdata('passwordmsg', 'Update will take effect on next login.');
             header('Location: ' . base_url() . 'profile');
         }
     }
@@ -72,7 +72,7 @@ class Profile extends CI_Controller
               'upload_path' =>'./images',
               'allowed_types' => "gif|jpg|png|jpeg",
               'overwrite' => TRUE,
-              'max_size' => "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
+              'max_size' => "2048000", 
               'max_height' => "5768",
               'max_width' => "5024"
           );
@@ -83,7 +83,7 @@ class Profile extends CI_Controller
           if ( ! $this->upload->do_upload('userfile'))
           {
               $error =  $this->upload->display_errors();
-            print_r( $error);
+              header('Location: '. base_url() . 'profile');
           }
           else
           {

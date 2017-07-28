@@ -32,18 +32,20 @@ class Returnlog extends CI_Controller {
         $data = array();
         foreach ($return as $list) {
             $row = array();
-            $row[] = $list['serial'];
             $row[] = $list['item_name'];
+            $row[] = '';
             $row[] = $list['date'];
             $row[] = $list['department'];
-            $row[] = $list['supplier'];
-            $row[] = $list['unit_cost'];
             $row[] = $list['return_person'];
             $row[] = $list['reason'];
             if($position === 'admin') {
                 $row[] = $list['user'];
             }
-            $row[] = $list['item_status'];
+
+             if($position === 'admin') {
+                $row[] = '';
+            }
+            
 
             $data[] = $row;
 
