@@ -12,12 +12,11 @@
               <table id="return_log" class="table table-bordered table-striped" width="100%">
                 <thead>
                 <tr>
-                  <th>Serial</th>
+                  
                   <th> Item name</th>
+                  <th> Quantity</th>
                   <th> Date</th>
                   <th> Department</th>
-                  <th> Supplier</th>
-                  <th> Unit Cost</th>
                   <th> Employee</th>
                   <th>Reason</th>
                     <?php $position = $this->session->userdata['logged_in']['position'];
@@ -25,19 +24,23 @@
                         echo '<th>User</th>';
                     }
                     ?>
-                  <th> Status</th>
+                    <?php $position = $this->session->userdata['logged_in']['position'];
+                    if($position === 'admin'){
+                        echo '<th>Action</th>';
+                    }
+                    ?>
+                  
                 </tr>
                 </thead>
                 <tbody>
                 </tbody>
                 <tfoot>
                 <tr>
-                    <th>Serial</th>
+                   
                     <th> Item name</th>
+                    <th> Quantity</th>
                     <th> Date</th>
                     <th> Department</th>
-                    <th> Supplier</th>
-                    <th> Unit Cost</th>
                     <th> Employee</th>
                     <th>Reason</th>
                     <?php $position = $this->session->userdata['logged_in']['position'];
@@ -45,7 +48,12 @@
                         echo '<th>User</th>';
                     }
                     ?>
-                    <th> Status</th>
+                    <?php $position = $this->session->userdata['logged_in']['position'];
+                    if($position === 'admin'){
+                        echo '<th>Action</th>';
+                    }
+                    ?>
+
                 </tr
                 </tfoot>
               </table>
