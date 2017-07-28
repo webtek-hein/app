@@ -154,16 +154,6 @@ function subtract_quantity(id) {
 
 }
 
-function return_no_action(id) {
-    $.ajax({
-        url: 'returned/no_action/' + id,
-        type:"POST",
-        success: function() {
-            location.href = window.location.origin + "/app/returned"
-        }
-    });
-
-}
 //select all
 $(document).ready(function () {
     $('input[name=select-all]').change(function () {

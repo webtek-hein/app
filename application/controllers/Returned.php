@@ -20,6 +20,7 @@ class Returned extends CI_Controller {
         }
 		$this->load->view('return');
         $this->load->view('modals/replace', $data);
+        $this->load->view('modals/noaction');
 		$this->load->view('templates/footer');
 
 	}
@@ -47,7 +48,7 @@ class Returned extends CI_Controller {
                 $row[] = $list['item_status'];
                 if($position === 'admin' || $position === 'custodian'){
                     $row[] = "<button type=\"button\" data-id = '$list[return_id]' class=\"open-modal-action\" data-toggle=\"modal\" data-target=\"#replacemodal\">Replace</button>".
-                        "<button type=\"button\" class=\"open-modal-action\" onclick=\"return_no_action(". $list['return_id'] .")\">No Action</button>";
+                        "<button type=\"button\" data-id = '$list[return_id]' class=\"open-modal-action\" data-toggle=\"modal\" data-target=\"#noaction\">No Action</button>";
                 }
                 $data[] = $row;
 
@@ -56,9 +57,11 @@ class Returned extends CI_Controller {
             echo json_encode($list);
     }
 
-    public function no_action($id)
+    public function no_action()
     {
-        $this->return_model->return_no_action($id);
+        $return_id = $this->input->post('return_id');
+        $this->return_model->return_no_action($return_id);
+        header('Location: '. base_url() . 'returned');
     }
 
     public function replace()
