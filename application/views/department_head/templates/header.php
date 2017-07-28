@@ -127,11 +127,6 @@ if (isset($this->session->userdata['logged_in'])) {
                     </a>
                 </li>
 
-                <li class="treeview">
-                    <a href="<?php echo base_url()?>receiver">
-                        <i class="fa fa-list"></i> <span>Receivers</span>
-                    </a>
-                </li>
             <?php $position = $this->session->userdata['logged_in']['position'];
             if ($position === 'admin' || $position === 'custodian' || $position === 'custodian'){
                 echo '<li class="treeview"><a href='.base_url().'department><i class="fa fa-building"></i>'.
