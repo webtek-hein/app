@@ -298,7 +298,17 @@ if($position === 'admin'){
                                 <th>Supplier</th>
                             </tr>
                             </thead>
-
+                            <tbody>
+                            <?php foreach ($defecteditems as $defect_items): ?>
+                                <tr>
+                                    <td><?php echo $defect_items['user']; ?></td>
+                                    <td><?php echo $defect_items['item_name']; ?></td>
+                                    <td><?php echo $defect_items['quantity']; ?></td>
+                                    <td><?php echo $defect_items['reason']; ?></td>
+                                    <td><?php echo $defect_items['department']; ?></td>
+                                    <td><?php echo $defect_items['supplier']; ?></td>
+                                </tr>
+                            <?php endforeach; ?>
                             </tbody>
                         </table>
                     </div>
