@@ -37,7 +37,7 @@ function relocate_home()
 
                   <img class="profile-user-img img-responsive img-circle" src="<?php echo base_url()?>images/<?= $image ?>" alt="User profile picture">
 
-                  <h3 class="profile-username text-center"><?php echo $firstname.','.$lastname ?></h3>
+                  <h3 class="profile-username text-center"><?php echo $firstname.' '.$lastname ?></h3>
                   <div class="col-sm-offset-0 col-sm-5">
                       <input type="file" name="userfile" size="20"  />
                       <input type="submit" name="upload" value="Upload" />
