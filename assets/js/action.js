@@ -479,8 +479,7 @@ $(document).ready(function () {
             },
             series: [{
                 type: 'pie',
-                name: 'Top 5 items',
-                data: [data[0]]
+                data: data
             }]
         });
         }
