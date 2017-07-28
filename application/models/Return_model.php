@@ -9,23 +9,26 @@ class Return_model extends CI_Model {
     public function return_items_to_inventory($item, $person, $reason, $userid, $ischecked)
     {
         $quant = count($item);
-
-        $this->db->select('dist_id')
-            ->where_in('item_det_id',$item);
+        $this->db->select('dist_id');
+        $this->db->where_in('item_det_id', $item);
         $query = $this->db->get('item_detail');
-        $row = $query->row_array();
-        $distid = intval($row['dist_id']) ;
+        $distids = $query->result_array();
 
+        $dept_ids = array();
+        $dist_ids = array();
+        foreach ($distids as $dist_id) {
+            $this->db->where('dist_id',$dist_id['dist_id']);
+            $this->db->set('quantity','quantity-1',FALSE);
+            $this->db->update("distribution");
 
-        $this->db->select('dept_id');
-        $this->db->where('dist_id',$distid);
-        $query = $this->db->get('distribution');
-        $row = $query->row_array();
-        $deptid = intval($row['dept_id']) ;
-
-        $this->db->where('dist_id',$distid);
-        $this->db->set('quantity','quantity-'.$quant,FALSE);
-        $this->db->update("distribution");
+            $this->db->select('dept_id');
+            $this->db->where('dist_id',$dist_id['dist_id']);
+            $query = $this->db->get('distribution');
+            $row = $query->row_array();
+            $deptid = intval($row['dept_id']) ;
+            array_push($dept_ids, $deptid);
+            array_push($dist_ids, $dist_id['dist_id']);
+        }
 
         if ($ischecked == 'yes') {
             $this->db->set('dist_id',null);
@@ -44,14 +47,17 @@ class Return_model extends CI_Model {
         $this->db->update('item');
 
         $data = array();
+        $index = 0;
         foreach($item as $item_det_id)
         {
             $data[] = array('reason'=>$reason,
-                'dept_id' => $deptid,
+                'dept_id' => $dept_ids[$index],
                 'item_det_id' =>$item_det_id['item_det_id'],
                 'return_person' => $person,
-                'dist_id' => $distid,
+                'dist_id' => $dist_ids[$index],
                 'user_id' => $userid);
+
+            $index++;
         }
         $this->db->insert_batch('logs.return_log',$data);
     }
