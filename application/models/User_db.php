@@ -88,7 +88,15 @@ class User_db extends CI_Model {
         $this->db->where('user_id', $userid);
         $this->db->update('user',$data);
     }
-
+    public  function edit_image($name,$user_id){
+        $this->db->where('user_id', $user_id);
+        $this->db->update('user',$name);
+}
+public function get_image($user_id){
+    $this->db->select('image')
+        ->where('user_id', $user_id);
+    return $this->db->get('user')->row();
+}
     public function get_email($email)
     {
         $this->db->select('*')
