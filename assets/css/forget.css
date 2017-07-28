@@ -1,5 +1,4 @@
 
-/* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
 @import url(http://fonts.googleapis.com/css?family=Open+Sans);
 
 .btn { display: inline-block; 
@@ -30,47 +29,37 @@
 
 * { -webkit-box-sizing:border-box; -moz-box-sizing:border-box; -ms-box-sizing:border-box; -o-box-sizing:border-box; box-sizing:border-box; }
 
-html { width: 100%; height:100%;}
-
-body { 
-    width: 100%;
-    height:100%;
-    font-family: 'Open Sans', sans-serif;
-}
-
 body{
     background:url('bg.jpg') no-repeat fixed bottom; 
 }
 
-
-
-#login { 
+fieldset { 
     color: grey;
     -webkit-box-shadow: 10px 10px 5px 0px rgba(10,0,0,0.75);
     -moz-box-shadow: 15px 15px 10px 10px rgba(0,0,0,0.75);
     position: absolute;
-    top: 40%;
+    top: 50%;
     left: 50%;
     margin: -150px 0 0 -150px;
-    width:500px;
-    height:400px;
+    height:250px;
     border-radius: 25px;
      border: 2px solid #a1a1a1;
     padding: 10px 40px; 
     width: 350px;
 
-}
-#login h1 { 
+}   
+legend { 
     color:white;
 	margin-top: 15px;
 	text-align:center;
+	font-size: 40px;
 }
 
-#login a{
+label{
     font-size: 15px;
     color: whitesmoke;
     margin-left: 50px;
-    text-decoration: underline;
+    font-size: 20px;
 }
 
 input { 
@@ -99,7 +88,12 @@ input:focus {
     
 }
 
-
+a{
+    font-size: 15px;
+    color: whitesmoke;
+    margin-left: 50px;
+    text-decoration: underline;
+}
 
 .error_msg{
     padding: 2px;
