@@ -31,12 +31,10 @@ class Return_model extends CI_Model {
         }
 
         if ($ischecked == 'yes') {
-            $this->db->set('dist_id',null);
             $this->db->set('item_status','defective');
             $this->db->where_in('item_det_id',$item);
             $this->db->update('item_detail');
         } else {
-            $this->db->set('dist_id',null);
             $this->db->set('item_status','returned');
             $this->db->where_in('item_det_id',$item);
             $this->db->update('item_detail');
@@ -75,21 +73,27 @@ class Return_model extends CI_Model {
         $this->db->set('status','replaced');
         $this->db->where('return_id',$id);
         $this->db->update('logs.return_log');
-        //get item quantity
-        $query1 = $this->db->query("SELECT quantity FROM item WHERE item_id IN (SELECT item_id FROM item_detail WHERE dist_id = (SELECT dist_id FROM logs.return_log WHERE return_id = $id))");
-        $row1 = $query1->row_array();
-        $quantity = intval($row1['quantity']);
-
+        
         //get item id
-        $query2 = $this->db->query("SELECT item_id FROM item_detail WHERE dist_id = (SELECT dist_id FROM logs.return_log WHERE return_id = $id)");
+        $query1 = $this->db->query("SELECT item_id FROM inventory.item_detail WHERE dist_id = (SELECT dist_id FROM logs.return_log WHERE return_id = $id)");
+        $row1 = $query1->row_array();
+        $itemid = intval($row1['item_id']);
+
+        //get item quantity
+        $where = 'serial is not null and dist_id is null and item_status != "defective"';
+        $this->db->select('count(*) as quantity');
+        $this->db->from('inventory.item_detail');
+        $this->db->where($where);
+        $this->db->where('item_detail.item_id', $itemid);
+        $query2 = $this->db->get();
         $row2 = $query2->row_array();
-        $itemid = intval($row2['item_id']);
+        $quantity = intval($row2['quantity']);
 
         if ($quantity > 0) {
             //update item
             $this->db->set('quantity', 'quantity-1', FALSE);
             $this->db->where('item_id',$itemid);
-            $this->db->update('item');
+            $this->db->update('inventory.item');
             //insert in distribution
             $this->db->insert('distribution', $data);
             $distid = $this->db->insert_id();
@@ -99,7 +103,7 @@ class Return_model extends CI_Model {
             $this->db->where('item_status !=','defective');
             $this->db->limit(1);
             $this->db->set('item_detail.dist_id',$distid);
-            $this->db->update('item_detail');
+            $this->db->update('inventory.item_detail');
             $this->db->join('logs.decrease_log','item_detail.item_det_id = logs.decrease_log.item_id');
             //update user in decrease_log
             $this->db->where('user_id', null,false);

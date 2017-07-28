@@ -14,6 +14,7 @@ class Department_model extends CI_Model {
             ->join('distribution','item_detail.dist_id = distribution.dist_id')
             ->join('department','distribution.dept_id = department.dept_id')
             ->WHERE('item_detail.dist_id is not null')
+            ->WHERE("item_detail.item_status = 'in_stock'")
             ->group_by('item_detail.item_id,distribution.dept_id');
         $query = $this->db->get('item_detail');
         return $query->result_array();
@@ -28,6 +29,7 @@ class Department_model extends CI_Model {
             ->join('distribution','item_detail.dist_id = distribution.dist_id')
             ->join('department','distribution.dept_id = department.dept_id')
             ->WHERE('item_detail.dist_id is not null')
+            ->WHERE("item_detail.item_status = 'in_stock'")
             ->WHERE('distribution.dept_id',$id)
             ->group_by('item_detail.item_id,distribution.dept_id');
         $query = $this->db->get('item_detail');
@@ -41,6 +43,7 @@ class Department_model extends CI_Model {
                    ->join('distribution','item_detail.dist_id = distribution.dist_id')
                    ->join('department','distribution.dept_id = department.dept_id')
                    ->WHERE('item_detail.dist_id is not null')
+                   ->WHERE("item_detail.item_status = 'in_stock'")
                    ->WHERE('item_detail.item_id',$item_id)
                    ->WHERE('distribution.dept_id',$dept_id);
 
