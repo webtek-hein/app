@@ -438,9 +438,24 @@ $(document).ready(function () {
     var chart;
     
     $(document).ready(function () {
-        
+         $.ajax({
+            url: 'dashboard/data_in_graph',
+            type: 'POST',
+            async: true,
+            dataType: "JSON",
+            success: function(data){
+             createGraph(data);
+
+            } 
+    });
+    });
+
+               
+
         // Build the chart
-        $('#items').highcharts({
+        
+    function createGraph(data){
+            $('#items').highcharts({
             chart: {
                 plotBackgroundColor: null,
                 plotBorderWidth: null,
@@ -465,23 +480,9 @@ $(document).ready(function () {
             series: [{
                 type: 'pie',
                 name: 'Top 5 items',
-                data: [
-                    ['Ballpen',   4],
-                    ['Table',       2],
-                    ['Bag',    1],
-                    ['Paper',     1],
-                    ['Laptop',   2]
-                ]
+                data: [data[0]]
             }]
         });
-    });
-   .ajax({
-    url: '/dashboard.php'
-    type: 'POST',
-    async: true,
-    dataType: "JSON"
-    success: function(data){
-        console.warn(data);
-        return data;
-    } 
+        }
+  
 });
