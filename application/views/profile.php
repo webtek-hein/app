@@ -98,7 +98,7 @@ function relocate_home()
                   </div>
     <div class="form-group">
         <div class="col-sm-offset-8 col-sm-9">
-            <button type="submit" class="btn btn-primary" >Save</button>
+            <button type="submit" name="bts-submit" id="bts-submit" class="btn btn-success" disabled>Save</button>
         </div>
     </div>
 </form>
@@ -145,7 +145,7 @@ function relocate_home()
 
                   <div class="form-group">
                     <div class="col-sm-offset-8 col-sm-9">
-                        <button type="submit" class="btn btn-primary" >Save</button>
+                        <button type="submit" class="btn btn-success" >Save</button>
                     </div>
                   </div>
 
