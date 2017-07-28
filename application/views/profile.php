@@ -10,6 +10,9 @@
 
 ?>
 
+    <link rel="stylesheet" type="text/css" href="assets/css/profile.css">
+
+
 <script>
 function relocate_home()
 {
@@ -36,7 +39,7 @@ function relocate_home()
 
                   <h3 class="profile-username text-center"><?php echo $firstname.','.$lastname ?></h3>
                   <div class="col-sm-offset-0 col-sm-5">
-                      <input type="file" name="userfile" size="20" />
+                      <input type="file" name="userfile" size="20"  />
                       <input type="submit" name="upload" value="Upload" />
                   </div>
               </div>
@@ -102,7 +105,8 @@ function relocate_home()
           </div>
         </div>
 
-    <div class="col-md-9">
+
+    <div class="col-md-9" id="part2">
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
                 <li><a href="" data-toggle="tab">Update Profile</a></li>
@@ -147,6 +151,6 @@ function relocate_home()
           </div>
         </div>
       </div>
-    </div>
+</div>
     </section>
   </div>
