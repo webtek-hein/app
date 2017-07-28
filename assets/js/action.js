@@ -483,3 +483,61 @@ $(document).ready(function() {
         },
     });
 });
+
+ $(document).ready(function(){
+    var first_name;
+    var last_name;
+    var email;
+    var contact_no;
+    $('input[name=first_name]').focus(function(){  
+        first_name = $(this).val();
+    });
+    $('input[name=first_name]').on('keypress keydown blur',function(){  
+        first_name1 = $(this).val();
+        if(first_name != first_name1){
+            $('button[name=bts-submit]').attr("disabled",true);
+        }else{
+            $('button[name=bts-submit]').attr("disabled",false);
+        }
+    });
+
+    $('input[name=last_name]').focus(function(){  
+        last_name = $(this).val();
+
+    });
+    $('input[name=last_name]').on('keypress keydown blur',function(){  
+        last_name1 = $(this).val();
+        if(last_name != last_name1){
+             $('button[name=bts-submit]').attr("disabled",true);
+        }else{
+            $('button[name=bts-submit]').attr("disabled",false);
+        }
+    });
+
+    $('input[name=email]').focus(function(){  
+        email = $(this).val();
+
+    });
+    $('input[name=email]').on('keypress keydown blur',function(){  
+        email1 = $(this).val();
+        if(email != email1){
+            $('button[name=bts-submit]').attr("disabled",true);
+        }else{
+            $('button[name=bts-submit]').attr("disabled",false);
+        }
+    });
+
+    $('input[name=contact_no]').focus(function(){  
+        contact_no = $(this).val();
+
+    });
+    $('input[name=contact_no]').on('keypress keydown blur',function(){  
+        contact_no1 = $(this).val();
+        if(contact_no != contact_no1){
+            $('button[name=bts-submit]').attr("disabled",true);
+        }else{
+            $('button[name=bts-submit]').attr("disabled",false);
+        }
+    });
+
+});
