@@ -28,8 +28,8 @@ function relocate_home()
           <div class="box box-primary">
 
               <div class="box-body box-profile">
-                  <?php if($this->session->flashdata('msg')): ?>
-                      <br><p><?php echo $this->session->flashdata('msg'); ?></p>
+                  <?php if($this->session->flashdata('mesg')): ?>
+                      <br><p><?php echo $this->session->flashdata('mesg'); ?></p>
                   <?php endif; ?>
 
                   <img class="profile-user-img img-responsive img-circle" src="<?php echo base_url()?>/images/<?php// echo $image->image?>" alt="User profile picture">
