@@ -47,7 +47,6 @@
 <!-- FastClick -->
 <script src="<?php echo base_url() ?>assets/plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
- <script src="<?php echo base_url() ?>assets/js/pages/dashboard2.js"></script>
 <script src="<?php echo base_url() ?>assets/dist/js/app.min.js"></script>
 
 </body>

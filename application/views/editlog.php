@@ -10,7 +10,6 @@
                 <div class="box-body">
                     <table id="edit_log" class="table table-bordered table-striped" width="100%">
                         <thead>
-
                         <tr>
                             <th>Last Item Name</th>
                             <th>Item name</th>
@@ -19,10 +18,15 @@
                             <th>Last Unit</th>
                             <th>Unit</th>
                             <th>Date</th>
+                            <?php $position = $this->session->userdata['logged_in']['position'];
+                            if($position === 'admin'){
+                                echo '<th>User</th>';
+                            }
+                            ?>
                         </tr>
                         </thead>
-
                         <tbody>
+
                         </tbody>
                         <tfoot>
                         <tr>
@@ -33,6 +37,11 @@
                             <th>Last Unit</th>
                             <th>Unit</th>
                             <th>Date</th>
+                            <?php $position = $this->session->userdata['logged_in']['position'];
+                            if($position === 'admin'){
+                                echo '<th>User</th>';
+                            }
+                            ?>
                         </tr>
                         </tfoot>
                     </table>
