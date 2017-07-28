@@ -7,6 +7,7 @@ if (isset($this->session->userdata['logged_in'])) {
     $lastname = ($this->session->userdata['logged_in']['lastname']);
     $position = ($this->session->userdata['logged_in']['position']);
     $department = ($this->session->userdata['logged_in']['department']);
+    $image = ($this->session->userdata['logged_in']['image']);
 } else {
     header("location: login");
 }
@@ -72,7 +73,8 @@ if (isset($this->session->userdata['logged_in'])) {
                         <ul class="dropdown-menu">
                             <!-- User image -->
                             <li class="user-header">
-                                <img src="<?php echo base_url() ?>assets/dist/img/dummy.jpg" class="img-circle" alt="User Image">
+
+                                <img src="<?php echo base_url() ?>images/<?= $image ?>" class="img-circle" alt="User Image">
                             </li>
                             <!-- Menu Footer-->
                             <li class="user-footer">
@@ -99,7 +101,7 @@ if (isset($this->session->userdata['logged_in'])) {
             <!-- Sidebar user panel -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="<?php echo base_url() ?>assets/dist/img/dummy.jpg" class="img-circle" alt="User Image">
+                    <img src="<?php echo base_url() ?>images/<?= $image ?>" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
                     <span><?= $position?></span>
@@ -125,7 +127,11 @@ if (isset($this->session->userdata['logged_in'])) {
                     </a>
                 </li>
 
-
+                <li class="treeview">
+                    <a href="<?php echo base_url()?>receiver">
+                        <i class="fa fa-list"></i> <span>Receivers</span>
+                    </a>
+                </li>
             <?php $position = $this->session->userdata['logged_in']['position'];
             if ($position === 'admin' || $position === 'custodian' || $position === 'custodian'){
                 echo '<li class="treeview"><a href='.base_url().'department><i class="fa fa-building"></i>'.
