@@ -24,7 +24,10 @@
                 echo validation_errors();
                 echo "</div>";
                 ?>
+                <a href="<?php echo base_url() ?>login" style="text-decoration:none"><center>Sign In</center></a>
+                <br></br>
                 <a href="<?php echo base_url() ?>signup" style="text-decoration:none">Click Here To Sign Up </a>
+
 
 </fieldset>
 </form>
