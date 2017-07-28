@@ -14,6 +14,7 @@
                 <tr>
                   <th>Serial</th>
                   <th> Item name</th>
+                    <th> Quantity</th>
                   <th> Date</th>
                     <th> Supplier</th>
                     <th>Distribution Date</th>
@@ -33,6 +34,7 @@
                 <tr>
                     <th>Serial</th>
                     <th> Item name</th>
+                    <th> Quantity</th>
                     <th> Date</th>
                     <th> Supplier</th>
                     <th> Distribution Date</th>
