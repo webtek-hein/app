@@ -21,17 +21,17 @@ class Log_model extends CI_Model {
     }
 
     //get all decrease records from db
-       public function get_decrease_log()
+    public function get_decrease_log()
     {
-            $this->db->Select('account_code,department,distrib_date,supplier,serial,item_name,date,date_rec,unit_cost,concat(user.first_name," ",user.last_name) as user');
-            $this->db->from('logs.decrease_log');
-            $this->db->join('inventory.item_detail','logs.decrease_log.item_det_id = inventory.item_detail.item_det_id','left');
-            $this->db->join('inventory.item','inventory.item_detail.item_id = inventory.item.item_id','left');
-            $this->db->join('inventory.distribution','inventory.distribution.dist_id = inventory.item_detail.dist_id','left');
-            $this->db->join('inventory.account_code','inventory.distribution.account_id = inventory.account_code.ac_id','left');
-            $this->db->join('inventory.department','inventory.distribution.dept_id = inventory.department.dept_id','left');
-            $this->db->join('inventory.user','logs.decrease_log.user_id = inventory.user.user_id','left');
-            $query = $this->db->get();
+        $this->db->Select('serial,item_name,distribution.quantity AS quantity,date,supplier,distrib_date,unit_cost,CONCAT(user.first_name," ", user.last_name) AS user,department');
+        $this->db->from('logs.decrease_log');
+        $this->db->join('inventory.item_detail','logs.decrease_log.item_det_id = inventory.item_detail.item_det_id','left');
+        $this->db->join('inventory.item','inventory.item_detail.item_id = inventory.item.item_id','left');
+        $this->db->join('inventory.distribution','inventory.distribution.dist_id = inventory.item_detail.dist_id','left');
+        $this->db->join('inventory.department','inventory.distribution.dept_id = inventory.department.dept_id','left');
+        $this->db->join('inventory.user','logs.decrease_log.user_id = inventory.user.user_id','left');
+        $this->db->distinct();
+        $query = $this->db->get();
         return $query->result_array();
     }
 

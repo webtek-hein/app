@@ -30,6 +30,7 @@ class Decreaselog extends CI_Controller {
             $row = array();
             $row[] = $list['serial'];
             $row[] = $list['item_name'];
+            $row[] = 1;
             $row[] = $list['date'];
             $row[] = $list['supplier'];
             $row[] = $list['distrib_date'];
