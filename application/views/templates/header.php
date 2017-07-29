@@ -3,8 +3,8 @@
 <?php
 if (isset($this->session->userdata['logged_in'])) {
     $username = ($this->session->userdata['logged_in']['username']);
-    $firstname = ($this->session->userdata['logged_in']['firstname']);
-    $lastname = ($this->session->userdata['logged_in']['lastname']);
+    $firstname = ($this->session->userdata['user_in']['firstname']);
+    $lastname = ($this->session->userdata['user_in']['lastname']);
     $position = ($this->session->userdata['logged_in']['position']);
     $department = ($this->session->userdata['logged_in']['department']);
     $image = ($this->session->userdata['image_in']['image']);

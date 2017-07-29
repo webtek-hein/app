@@ -48,21 +48,25 @@ class Login extends CI_Controller {
                 if ($result != false) {
                     $session_data = array(
                         'username' => $result[0]->username,
-                        'firstname' => $result[0]->first_name,
-                        'lastname' => $result[0]->last_name,
                         'position' => $result[0]->position,
                         'userid' => $result[0]->user_id,
                         'department' => $result[0]->department,
                         'dept_id' => $result[0]->dept_id,
-                        'email' => $result[0]->email,
-                        'contact_no' => $result[0]->contact_no,
                         'password' => $result[0]->password,
 
                     );
 // Add user data in session
+                    $user_data = array(
+                        'firstname' => $result[0]->first_name,
+                        'lastname' => $result[0]->last_name,
+                        'email' => $result[0]->email,
+                        'contact_no' => $result[0]->contact_no,);
+
                     $image_data = array('image' => $result[0]->image);
-                    $this->session->set_userdata('image_in', $image_data);
+
+                    $this->session->set_userdata('user_in',$user_data);
                     $this->session->set_userdata('logged_in', $session_data);
+                    $this->session->set_userdata('image_in', $image_data);
                     if($result[0]->position == 'admin'){
                         redirect(base_url().'admin/dashboard');
                     }else if($result[0]->position == 'custodian'){

@@ -37,8 +37,18 @@ class Profile extends CI_Controller
             );
 
             $this->user_db->edit_profile($data, $userid);
-            $this->session->set_flashdata('profilemsg', 'Update will take effect on next login.');
-            header('Location: ' . base_url() . 'profile');
+            $this->session->set_flashdata('profilemsg', 'Successfully updated profile!');
+
+        $usersession = $this->user_db->get_user($userid);
+        print_r($usersession);
+        $userdata = array(
+            'firstname' => $usersession->first_name,
+            'lastname' => $usersession->last_name,
+            'contact_no' => $usersession->contact_no,
+            'email' => $usersession->email);
+        $this->session->set_userdata('user_in', $userdata);
+
+        header('Location: ' . base_url() . 'profile');
 
 
     }

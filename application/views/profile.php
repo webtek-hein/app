@@ -1,11 +1,11 @@
 
 <?php
     $username = ($this->session->userdata['logged_in']['username']);
-    $firstname = ($this->session->userdata['logged_in']['firstname']);
-    $lastname = ($this->session->userdata['logged_in']['lastname']);
+    $firstname = ($this->session->userdata['user_in']['firstname']);
+    $lastname = ($this->session->userdata['user_in']['lastname']);
     $position = ($this->session->userdata['logged_in']['position']);
-    $email = ($this->session->userdata['logged_in']['email']);
-    $contact_no = ($this->session->userdata['logged_in']['contact_no']);
+    $email = ($this->session->userdata['user_in']['email']);
+    $contact_no = ($this->session->userdata['user_in']['contact_no']);
     $password = ($this->session->userdata['logged_in']['password']);
     $image = ($this->session->userdata['image_in']['image']);
 ?>
