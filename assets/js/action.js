@@ -394,22 +394,11 @@ function return_selected_items() {
 }
 
 
-function count_received_item(item_id,quantity)
-{
-    $.ajax({
-        method: "POST",
-        url: "dashboard",
-        dataType: "JSON",
-        data:{item_id:item_id},
-         success: function(data){
-            alert(data);
-        }
-})
-}
+
 function dashboard_custodian_items_remaining(){
         $.ajax({
         method: "POST",
-        url: "dashboard",
+        url: "dashboard/dashboard_custodian_items_remaining",
         dataType: "JSON",
             success: function(data){
             alert(data);

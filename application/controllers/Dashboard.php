@@ -40,7 +40,17 @@ class Dashboard extends CI_Controller
 
     public function dashboard_custodian_items_remaining()
     {
-        $data = $this->inventorymodel->get_dashboard();
+        $remainingitem = $this->inventorymodel->dashboard_custodian_items_remaining();
+        $data = array();
+        foreach ($remainingitem as $list) {
+            $row = array();
+            $row[] = $list['official_receipt_no'];
+            $row[] = $list['item_name'];
+            $row[] = (int)$list['quantity'];
+            $row[] = $list['item_type'];
+            $data[] = $row;
+        }
+        $list = array('data'=>$data);
         echo json_encode($data);
 
     }

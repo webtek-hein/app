@@ -94,38 +94,27 @@ if($position === 'admin'){
         <div class="col-md-12">
             <div class="container" style="width:650px; margin-left: -30px; height:auto;">
 
-                <div class="col-lg-3 col-sm-8" style="width: 650px;">
-                    <div class="panel panel-default">
-                        <!-- Default panel contents -->
-                        <div class="panel-heading">
-                            <h3><center>Items Remaining</center></h3>
-                        </div>
+                <?php if($position==='admin' || $position==='custodian'){
 
-                        <table class="table table-bordered table-striped" width="auto">
-                            <thead >
-                            <tr>
-                                <th>Order ID</th>
-                                <th>Item</th>
-                                <th>Quantity</th>
-                                <th>Type</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                                         <?php foreach ($itemsremaining as $itemret): ?>
-                                <tr>
-                                    <td><?php echo $itemret['official_receipt_no']; ?></td>
-                                    <td><?php echo $itemret['item_name']; ?></td>
-                                    <td><?php echo $itemret['quantity']; ?></td>
-                                    <td><?php echo $itemret['item_type']; ?></td>
-                                </tr>
-                            <?php endforeach; ?>
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- /.table-responsive -->
-                </div>
-                <!-- /.box-body -->
+                echo '<div class="col-lg-3 col-sm-8" style="width: 650px;">'.
+                    '<div class="panel panel-default">'.
 
+                        '<div class="panel-heading">'.
+                            '<h3><center>Items Remaining</center></h3>'.
+                        '</div>'.
+
+                        '<table class="table table-bordered table-striped" width="auto">'.
+                            '<thead >'.
+                            '<tr>'.
+                                '<th>Order ID</th>'.
+                                '<th>Item</th>'.
+                                '<th>Quantity</th>'.
+                                '<th>Type</th>'.
+                            '</tr>'.
+                            '</thead>'.
+                            '<tbody></tbody></table></div></div>';
+                        }
+            ?>
             <!---->
             <div id="hidethis" style="display:none;">
                 <div class="col-lg-3 col-sm-8" style="width: 480px; margin-left:630px; position:absolute;">

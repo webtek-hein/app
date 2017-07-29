@@ -359,7 +359,6 @@ class InventoryModel extends CI_Model {
      {
 
         $this->db->select('COUNT(item.item_id) AS quantity');
-         $this->db->where ('DATE(date) = CURDATE()');
                 $query = $this->db->get('inventory.item');
         return $query->result_array();
     }
