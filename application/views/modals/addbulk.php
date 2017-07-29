@@ -61,7 +61,7 @@
                                     <option value="others">others</option>
                                 </datalist>
                             </td>
-                            <td><input type="number" min="0" id="new_cost" name="Item_Cost[]" required="required" style="width:80px;"></td>
+                            <td><input type="number" min="0"step='0.01' id="new_cost" name="Item_Cost[]" required="required" style="width:80px;"></td>
                             <td><input type="date" id="new_expdate" name="Item_Expirationdate[]" required="required" style="width:140px;"></td>
                             <td><input type="button" class="btn btn-success" onclick="add_row();" value="Add Row"></td>
                         </tr>
