@@ -46,14 +46,15 @@
 
                                             </div>
                                         </div>-->
-
+                                        <div class="modal-footer">
+                                            <button type="submit" name="submit" id="btnSave" onclick="save()" class="btn btn-primary">Save</button>
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                                        </div>
                                     </div>
+
                                 </form>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" id="btnSave" onclick="save()" class="btn btn-primary">Save</button>
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                            </div>
+
                         </div><!-- /.modal-content -->
                     </div><!-- /.modal-dialog -->
                 </div><!-- /.modal -->
