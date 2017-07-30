@@ -33,6 +33,19 @@ class Log_model extends CI_Model {
         return $query->result_array();
     }
 
+    public function get_decrease_log_modal()
+    {
+        $this->db->Select('serial, official_receipt_no, item_description, distrib_date, unit_cost');
+        $this->db->join('inventory.item_detail','logs.decrease_log.item_det_id = inventory.item_detail.item_det_id','left');
+        $this->db->join('inventory.item','inventory.item_detail.item_id = inventory.item.item_id','left');
+        $this->db->join('inventory.distribution','inventory.distribution.dist_id = inventory.item_detail.dist_id','left');
+        $this->db->join('inventory.department','inventory.distribution.dept_id = inventory.department.dept_id','left');
+        $this->db->distinct();
+        $query = $this->db->get('logs.decrease_log');
+        return $query->result_array();
+    }
+
+
     //get all return records from db
       public function get_return_log()
     {
