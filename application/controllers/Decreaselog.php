@@ -39,7 +39,8 @@ class Decreaselog extends CI_Controller {
             if($position === 'admin') {
                 $row[] = $list['user'];
             }
-            $row[] = "<button class=\"btn btn-info open-modal-action fa fa-info\" onclick=\"get_decreaselog_details(". $list['item_id'] .','.$list['dept_id'] .")\"></button> ";
+            $date = $list['date'];
+            $row[] = "<button class=\"btn btn-info open-modal-action fa fa-info\" onclick=\"get_decreaselog_details(". $list['date']  .")\"></button> ";
             $data[] = $row;
 
         }

@@ -228,12 +228,12 @@ function get_item_details(id) {
     $('#view').modal('show');
 
 }
-function get_decreaselog_details(item_id,id) {
-   $('#details').DataTable({
+function get_decreaselog_details(date) {
+   $('#decreasedet').DataTable({
         responsive: true,
         "destroy": true
        /*   "ajax": {
-            "url": 'decreaselog/decreaselog_details/' + item_id +'/'+id,
+            "url": 'decreaselog/decreaselog_details/' + date',
             "type": "POST",
         },*/
     });
