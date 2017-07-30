@@ -239,8 +239,8 @@ function get_decreaselog_details(item_id,id) {
     });
     $('#decrease').modal('show');
 }
-function get_returnlog_details(item_id) {
-    $('#details').DataTable({
+function get_return_details(item_id) {
+    $('#return').DataTable({
         responsive: true,
         "destroy": true
         /*   "ajax": {
@@ -248,7 +248,7 @@ function get_returnlog_details(item_id) {
          "type": "POST",
          },*/
     });
-    $('#return').modal('show');
+    $('#return_det').modal('show');
 }
 
 function get_distribution_details(item_id,id) {
