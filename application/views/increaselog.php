@@ -12,11 +12,14 @@
                 <thead>
                 <tr>
                   <th> Item name</th>
-                  <th>Quantity</th>
-                  <th> Date</th>
+                    <th>Description</th>
+                    <th>Quantity</th>
+                    <th>Unit</th>
+                    <th>Type</th>
+                    <th> Date</th>
                   <th> Date Received</th>
                   <th> Unit Cost</th>
-					        <th> Supplier </th>
+                    <th> Supplier </th>
                     <?php $position = $this->session->userdata['logged_in']['position'];
                     if($position === 'admin'){
                         echo '<th>User</th>';
@@ -28,19 +31,23 @@
                 <tbody>
                 </tbody>
                 <tfoot>
-                <th> Item name</th>
-                <th>Quantity</th>
-                <th> Date</th>
-                <th> Date Received</th>
-                <th> Unit Cost</th>
-                <th> Supplier </th>
-                <?php $position = $this->session->userdata['logged_in']['position'];
+                <tr>
+                    <th> Item name</th>
+                    <th>Description</th>
+                    <th>Quantity</th>
+                    <th>Unit</th>
+                    <th>Type</th>
+                    <th> Date</th>
+                    <th> Date Received</th>
+                    <th> Unit Cost</th>
+                    <th> Supplier </th>
+                    <?php $position = $this->session->userdata['logged_in']['position'];
                     if($position === 'admin'){
-                        echo '<th>Action</th>';
+                        echo '<th>User</th>';
                     }
                     ?>
 
-                </tfoot>
+                </tr>
               </table>
             </div>
             <!-- /.box-body -->
