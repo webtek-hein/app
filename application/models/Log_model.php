@@ -10,11 +10,11 @@ class Log_model extends CI_Model {
     //get all increase records from db
      public function get_increase_log()
     {
-        $this->db->Select ('inventory.item.item_name,count(inventory.item_detail.item_id) as quantity,date,inventory.item_detail.date_rec,inventory.item_detail.unit_cost,inventory.item_detail.supplier,concat(inventory.user.first_name," ",inventory.user.last_name) as user');
+        $this->db->Select ('inventory.item.item_name,inventory.item.item_description,count(inventory.item_detail.item_id) as quantity,inventory.item.unit,inventory.item.item_type,date,inventory.item_detail.date_rec,inventory.item_detail.unit_cost,inventory.item_detail.supplier,concat(inventory.user.first_name," ",inventory.user.last_name) as user');
             $this->db->join('inventory.item_detail','item_detail.item_det_id = increase_log.item_det_id','left');
             $this->db->join('inventory.item','item.item_id = item_detail.item_id','left');
             $this->db->join('inventory.user','user.user_id = increase_log.user_id','left');
-            $this->db->group_by('date,inventory.item.item_name');
+            $this->db->group_by('date,inventory.item.item_name,inventory.user.user_id,inventory.item.item_description');
             $query = $this->db->get('logs.increase_log');
             return $query->result_array();
     }
@@ -53,13 +53,13 @@ class Log_model extends CI_Model {
 
      public function get_increase_log_per_user($id)
     {
-        $this->db->Select ('item_detail.supplier,item_detail.serial,item.item_name,logs.increase_log.date,item_detail.date_rec,item_detail.unit_cost,concat(user.first_name," ",user.last_name) as user');
-        $this->db->from('logs.increase_log');
-        $this->db->join('inventory.item_detail','logs.increase_log.item_det_id = inventory.item_detail.item_det_id','left');
-        $this->db->join('inventory.item','inventory.item_detail.item_id = inventory.item.item_id','left');
-        $this->db->join('inventory.user','logs.increase_log.user_id = inventory.user.user_id','left');
+        $this->db->Select ('inventory.item.item_name,inventory.item.item_description,count(inventory.item_detail.item_id) as quantity,inventory.item.unit,inventory.item.item_type,date,inventory.item_detail.date_rec,inventory.item_detail.unit_cost,inventory.item_detail.supplier,concat(inventory.user.first_name," ",inventory.user.last_name) as user');
+        $this->db->join('inventory.item_detail','item_detail.item_det_id = increase_log.item_det_id','left');
+        $this->db->join('inventory.item','item.item_id = item_detail.item_id','left');
+        $this->db->join('inventory.user','user.user_id = increase_log.user_id','left');
+        $this->db->group_by('date,inventory.item.item_name,inventory.user.user_id,inventory.item.item_description');
         $this->db->where('logs.increase_log.user_id',$id);
-        $query = $this->db->get();
+        $query = $this->db->get('logs.increase_log');
         return $query->result_array();
 
     }
