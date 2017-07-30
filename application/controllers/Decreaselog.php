@@ -32,12 +32,12 @@ class Decreaselog extends CI_Controller {
             $row[] = $list['item_name'];
             $row[] = $list['item_description'];
             $row[] = $list['quantity'];
+            $row[] = $list['unit'];
+            $row[] = $list['item_type'];
             $row[] = $list['date'];
-            $row[] = $list['distrib_date'];
             if($position === 'admin') {
                 $row[] = $list['user'];
             }
-            $row[] = $list['department'];
             $row[] = " <button class=\"btn btn-info open-modal-action fa fa-info\" onclick=\"get_item_details(". $list['item_id'] .")\"></button>";
             $data[] = $row;
 

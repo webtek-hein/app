@@ -22,15 +22,14 @@ class Log_model extends CI_Model {
     //get all decrease records from db
     public function get_decrease_log()
     {
-        $this->db->Select('serial,item_name,distribution.quantity AS quantity,date,supplier,distrib_date,unit_cost,CONCAT(user.first_name," ", user.last_name) AS user,department');
-        $this->db->from('logs.decrease_log');
-        $this->db->join('inventory.item_detail','logs.decrease_log.item_det_id = inventory.item_detail.item_det_id','left');
-        $this->db->join('inventory.item','inventory.item_detail.item_id = inventory.item.item_id','left');
-        $this->db->join('inventory.distribution','inventory.distribution.dist_id = inventory.item_detail.dist_id','left');
-        $this->db->join('inventory.department','inventory.distribution.dept_id = inventory.department.dept_id','left');
-        $this->db->join('inventory.user','logs.decrease_log.user_id = inventory.user.user_id','left');
-        $this->db->distinct();
-        $query = $this->db->get();
+        $this->db->Select('inventory.item_detail.item_id,department,item_name, item_description,count(inventory.item_detail.item_id) as quantity,unit,item_type,date,concat(inventory.user.first_name," ",inventory.user.last_name) as user');
+        $this->db->join('inventory.item_detail','item_detail.item_det_id = decrease_log.item_det_id','left');
+        $this->db->join('inventory.item','item_detail.item_id = item.item_id','left');
+        $this->db->join('inventory.distribution','distribution.dist_id = item_detail.dist_id','left');
+        $this->db->join('inventory.department','distribution.dept_id = department.dept_id','left');
+        $this->db->join('inventory.user','user.user_id = decrease_log.user_id','left');
+        $this->db->group_by('date,inventory.item.item_name,inventory.user.user_id,inventory.item.item_description');
+        $query = $this->db->get('logs.decrease_log');
         return $query->result_array();
     }
 
@@ -66,16 +65,15 @@ class Log_model extends CI_Model {
 
     public function get_decrease_log_per_user($id)
     {
-        $this->db->Select('account_code,department,distrib_date,supplier,serial,item_name,date,date_rec,unit_cost,concat(user.first_name," ",user.last_name) as user');
-        $this->db->from('logs.decrease_log');
-        $this->db->join('inventory.item_detail','logs.decrease_log.item_det_id = inventory.item_detail.item_det_id','left');
-        $this->db->join('inventory.item','inventory.item_detail.item_id = inventory.item.item_id','left');
-        $this->db->join('inventory.distribution','inventory.distribution.dist_id = inventory.item_detail.dist_id','left');
-        $this->db->join('inventory.account_code','inventory.distribution.account_id = inventory.account_code.ac_id','left');
-        $this->db->join('inventory.department','inventory.distribution.dept_id = inventory.department.dept_id','left');
-        $this->db->join('inventory.user','logs.decrease_log.user_id = inventory.user.user_id','left');
+        $this->db->Select('inventory.item_detail.item_id,department,item_name, item_description,count(inventory.item_detail.item_id) as quantity,unit,item_type,date,concat(inventory.user.first_name," ",inventory.user.last_name) as user');
+        $this->db->join('inventory.item_detail','item_detail.item_det_id = decrease_log.item_det_id','left');
+        $this->db->join('inventory.item','item_detail.item_id = item.item_id','left');
+        $this->db->join('inventory.distribution','distribution.dist_id = item_detail.dist_id','left');
+        $this->db->join('inventory.department','distribution.dept_id = department.dept_id','left');
+        $this->db->join('inventory.user','user.user_id = decrease_log.user_id','left');
+        $this->db->group_by('date,inventory.item.item_name,inventory.user.user_id,inventory.item.item_description');
         $this->db->where('logs.decrease_log.user_id',$id);
-        $query = $this->db->get();
+        $query = $this->db->get('logs.decrease_log');
         return $query->result_array();
     }
 
