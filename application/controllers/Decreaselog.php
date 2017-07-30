@@ -12,6 +12,7 @@ class Decreaselog extends CI_Controller {
 	{
         $this->load->view('templates/header');
 		$this->load->view('decreaselog');
+        $this->load->view('modals/decrease_details');
 		$this->load->view('templates/footer');
 
 	}
@@ -38,11 +39,29 @@ class Decreaselog extends CI_Controller {
             if($position === 'admin') {
                 $row[] = $list['user'];
             }
-            $row[] = " <button class=\"btn btn-info open-modal-action fa fa-info\" onclick=\"get_item_details(". $list['item_id'] .")\"></button>";
+            $row[] = "<button class=\"btn btn-info open-modal-action fa fa-info\" onclick=\"get_decreaselog_details(". $list['item_id'] .','.$list['dept_id'] .")\"></button> ";
             $data[] = $row;
 
         }
         $list = array('data'=>$data);
         echo json_encode($list);
     }
+    public function decreaselog_details($item_id,$dept_id){
+        $details = $this->log_model->get_decreaselog_details($item_id,$dept_id);
+        $data = array();
+        foreach ($details as $list) {
+            $row = array();
+            $row[] = $list['account_code'];
+            $row[] = $list['serial'];
+            $row[] = $list['official_receipt_no'];
+            $row[] = $list['item_description'];
+            $row[] = $list['distrib_date'];
+            $row[] = $list['receivedby'];
+            $row[] = $list['unit_cost'];
+            $data[] = $row;
+        }
+        $list = array('data'=>$data);
+        echo json_encode($list);
+    }
+
 }
