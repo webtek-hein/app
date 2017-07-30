@@ -175,7 +175,7 @@ function get_item_details(id) {
     });
 
     //multiple serial input
-   $('#details ').on( 'change ',  function () {
+   $('#details ').on( 'change',  function () {
            $('#details tr :nth-child(2)').attr('contentEditable', 'true');
 
 
@@ -189,7 +189,7 @@ function get_item_details(id) {
            $.each($('#details tr input[name=item-det]:checked'),function () {
                if($(this).parent().siblings(':first').text()=='')
                {
-                   $('input[type=number]').on('keyup change ', function () {
+                   $('input[type=number]').on('keyup change focus', function () {
                        serial = ($(this).val());
                                $.each($('#details tr input[name=item-det]:checked'), function () {
                                    $(this).parent().siblings(':first').text(serial);
@@ -303,25 +303,25 @@ function save()
 
         $( "input[name=Item_Quantity]" ).on("keypress paste",function () {
             var x = event.charCode;
-            if(x === 101 || x === 46 || x === 45 || x === 43){
+            if(x === 101 || x === 46 || x === 45 || x === 43 || x === 69){
                 return false;
             }
         });
         $( "input[name=Cost]" ).on("keypress paste",function () {
             var x = event.charCode;
-            if(x === 101 ||  x === 45 || x === 43){
+            if(x === 101 ||  x === 45 || x === 43 || x === 69){
                 return false;
             }
         });
         $( "input[id=new_qty]" ).on("keypress paste",function () {
             var x = event.charCode;
-            if(x === 101 || x === 46 || x === 45 || x === 43){
+            if(x === 101 || x === 46 || x === 45 || x === 43 || x === 69){
                 return false;
             }
         });
         $( "input[id=new_cost]" ).on("keypress paste",function () {
             var x = event.charCode;
-            if(x === 101 ||  x === 45 || x === 43){
+            if(x === 101 ||  x === 45 || x === 43 || x === 69){
                 return false;
             }
         });
