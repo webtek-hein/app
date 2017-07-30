@@ -38,14 +38,14 @@
                                                 </datalist>
                                             </div>
                                         </div>
-
+                                        <!-- temporarily removed edit for quantity
                                         <div class="form-group">
                                             <label class="control-label col-md-3">Quantity</label>
                                             <div class="col-md-9">
                                                 <input name="qty" placeholder="Quantity" class="form-control" type="number" min="0" required="required">
 
                                             </div>
-                                        </div>
+                                        </div>-->
 
                                     </div>
                                 </form>
