@@ -12,19 +12,18 @@
                 <thead>
 
                 <tr>
-                  <th>Serial</th>
+                  <th>Department</th>
                   <th> Item name</th>
+                    <th>Description</th>
                     <th> Quantity</th>
                   <th> Date</th>
-                    <th> Supplier</th>
                     <th>Distribution Date</th>
-                  <th> Unit Cost</th>
                     <?php $position = $this->session->userdata['logged_in']['position'];
                     if($position === 'admin'){
                         echo '<th>User</th>';
                     }
                     ?>
-                  <th>Department</th>
+                    <th>Action</th>
                 </tr>
                 </thead>
 
@@ -32,19 +31,18 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                    <th>Serial</th>
+                    <th>Department</th>
                     <th> Item name</th>
+                    <th>Description</th>
                     <th> Quantity</th>
                     <th> Date</th>
-                    <th> Supplier</th>
-                    <th> Distribution Date</th>
-                    <th> Unit Cost</th>
+                    <th>Distribution Date</th>
                     <?php $position = $this->session->userdata['logged_in']['position'];
                     if($position === 'admin'){
                         echo '<th>User</th>';
                     }
                     ?>
-                    <th>Department</th>
+                    <th>Action</th>
                 </tr>
                 </tfoot>
               </table>

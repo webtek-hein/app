@@ -28,18 +28,17 @@ class Decreaselog extends CI_Controller {
         $data = array();
         foreach ($decrease as $list) {
             $row = array();
-            $row[] = $list['serial'];
+            $row[] = $list['department'];
             $row[] = $list['item_name'];
-            $row[] = 1;
+            $row[] = $list['item_description'];
+            $row[] = $list['quantity'];
             $row[] = $list['date'];
-            $row[] = $list['supplier'];
             $row[] = $list['distrib_date'];
-            $row[] = $list['unit_cost'];
             if($position === 'admin') {
                 $row[] = $list['user'];
             }
             $row[] = $list['department'];
-
+            $row[] = " <button class=\"btn btn-info open-modal-action fa fa-info\" onclick=\"get_item_details(". $list['item_id'] .")\"></button>";
             $data[] = $row;
 
         }
