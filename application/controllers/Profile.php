@@ -18,9 +18,14 @@ class Profile extends CI_Controller
 
     public function index()
     {
+        $position = $this->session->userdata['logged_in']['position'];
         $userid = ($this->session->userdata['logged_in']['userid']);
         $data['image'] = $this->user_db->get_image($userid);
-        $this->load->view('templates/header',$data);
+        if($position === 'department head'){
+            $this->load->view('department_head/templates/header');
+        }else{
+            $this->load->view('templates/header');
+        }
         $this->load->view('profile',$data);
         $this->load->view('templates/footer');
 

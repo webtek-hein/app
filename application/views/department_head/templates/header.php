@@ -15,11 +15,13 @@ if (isset($this->session->userdata['logged_in'])) {
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title><?= $department ?> INV.</title>
+    <title><?= $department ?> INV</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/bootstrap-dialog.min.css">
+
     <!--modal css -->
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/modal.css">
     <!-- Font Awesome -->
@@ -39,7 +41,6 @@ if (isset($this->session->userdata['logged_in'])) {
     <link rel="icon" href="<?php echo base_url() ?>assets/css/logo.png">
 
 
-
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -50,7 +51,7 @@ if (isset($this->session->userdata['logged_in'])) {
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>DH</b></span>
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><b>DH Inventory </b></span>
+            <span class="logo-lg"><b>DH</b>Inventory</span>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top">
@@ -58,11 +59,10 @@ if (isset($this->session->userdata['logged_in'])) {
             <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
                 <span class="sr-only">Toggle navigation</span>
             </a>
-
             <a class='navbar-brand'>
                 <span><?= $department ?></span>
             </a>
-
+            
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
                     <li class="dropdown user user-menu">
@@ -73,7 +73,6 @@ if (isset($this->session->userdata['logged_in'])) {
                         <ul class="dropdown-menu">
                             <!-- User image -->
                             <li class="user-header">
-
                                 <img src="<?php echo base_url() ?>images/<?= $image ?>" class="img-circle" alt="User Image">
                             </li>
                             <!-- Menu Footer-->
@@ -104,7 +103,7 @@ if (isset($this->session->userdata['logged_in'])) {
                     <img src="<?php echo base_url() ?>images/<?= $image ?>" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
-                    <span><?= $position?></span>
+                    <p><?= $position?></p>
                 </div>
             </div>
             <!-- sidebar menu: : style can be found in sidebar.less -->
@@ -127,6 +126,7 @@ if (isset($this->session->userdata['logged_in'])) {
                     </a>
                 </li>
 
+
             <?php $position = $this->session->userdata['logged_in']['position'];
             if ($position === 'admin' || $position === 'custodian' || $position === 'custodian'){
                 echo '<li class="treeview"><a href='.base_url().'department><i class="fa fa-building"></i>'.
@@ -137,7 +137,7 @@ if (isset($this->session->userdata['logged_in'])) {
                         <span>Return</span></a></li>
 
 
-            <?php $position = $this->session->userdata['logged_in']['position'];
+            <?php
             if ($position === 'admin') {
 
                 echo '<li class="treeview" ><a href ='.base_url().'users> <i class="fa fa-user-plus" >'.
@@ -147,17 +147,18 @@ if (isset($this->session->userdata['logged_in'])) {
                 <li class="treeview"><a href="#"><i class="fa fa-table"></i><span>Logs</span>
                         <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                     </a>
-            <?php $position = $this->session->userdata['logged_in']['position'];
+            <?php
 
                            echo '<ul class="treeview-menu">';
                             if ($position === 'admin' || $position === 'custodian') {
                                echo '<li><a href=' . base_url() . 'increaselog><i class="fa fa-circle-o"></i> Increase</a></li>' .
-                                '<li><a href=' . base_url() . 'decreaselog><i class="fa fa-circle-o"></i> Decrease</a></li>';
+                                '<li><a href=' . base_url() . 'decreaselog><i class="fa fa-circle-o"></i> Decrease</a></li>'.
+                                '<li><a href=' . base_url() . 'editlog><i class="fa fa-circle-o"></i> Edit</a></li>';
+
                             }
                             echo '<li><a href=' . base_url() . 'returnlog><i class="fa fa-circle-o"></i> Return log</a></li>';
                             echo '</ul></li>';
             ?>
-
 
 
 
@@ -169,3 +170,5 @@ if (isset($this->session->userdata['logged_in'])) {
 
         <!-- Main content -->
         <section class="content" id="main">
+
+
