@@ -32,21 +32,17 @@ class Returnlog extends CI_Controller {
         $data = array();
         foreach ($return as $list) {
             $row = array();
-            $row[] = $list['item_name'];
-            $row[] = (int)$list['quantity'];
-            $row[] = $list['date'];
             $row[] = $list['department'];
+            $row[] = $list['item_name'];
+            $row[] = $list['item_description'];
+            $row[] = (int)$list['quantity'];
+            $row[] = $list['unit'];
+            $row[] = $list['date'];
             $row[] = $list['return_person'];
-            $row[] = $list['reason'];
             if($position === 'admin') {
                 $row[] = $list['user'];
             }
-
-             if($position === 'admin') {
-                $row[] = '';
-            }
-            
-
+            $row[] = " <button class=\"btn btn-info open-modal-action fa fa-info\" onclick=\"get_item_details(". $list['item_id'] .")\"></button>";
             $data[] = $row;
 
         }
