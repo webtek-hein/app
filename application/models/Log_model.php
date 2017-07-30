@@ -37,7 +37,7 @@ class Log_model extends CI_Model {
     //get all return records from db
       public function get_return_log()
     {
-        $this->db->Select ('inventory.item_detail.item_id,department,item_name, item_description,count(inventory.item_detail.item_id) as quantity,unit,date,concat(inventory.user.first_name," ",inventory.user.last_name) as user,return_person');
+        $this->db->Select ('inventory.item_detail.item_id,distribution.dist_id,department,item_name, item_description,count(inventory.item_detail.item_id) as quantity,unit,date,concat(inventory.user.first_name," ",inventory.user.last_name) as user,return_person');
         $this->db->join('inventory.item_detail','item_detail.item_det_id = return_log.item_det_id','left');
         $this->db->join('inventory.item','item_detail.item_id = item.item_id','left');
         $this->db->join('inventory.distribution','distribution.dist_id = item_detail.dist_id','left');
@@ -78,7 +78,7 @@ class Log_model extends CI_Model {
 
  public function get_return_log_per_user($id)
     {
-        $this->db->Select ('item_detail.item_id,department,item_name, item_description,count(inventory.item_detail.item_id) as quantity,unit,date,concat(inventory.user.first_name," ",inventory.user.last_name) as user,return_person');
+        $this->db->Select ('item_detail.item_id,distribution.dist_id,department,item_name, item_description,count(inventory.item_detail.item_id) as quantity,unit,date,concat(inventory.user.first_name," ",inventory.user.last_name) as user,return_person');
         $this->db->join('inventory.item_detail','item_detail.item_det_id = return_log.item_det_id','left');
         $this->db->join('inventory.item','item_detail.item_id = item.item_id','left');
         $this->db->join('inventory.distribution','distribution.dist_id = item_detail.dist_id','left');
@@ -91,6 +91,19 @@ class Log_model extends CI_Model {
         $query = $this->db->get('logs.return_log');
         return $query->result_array();
     }
+    public function return_log_details($dist_id)
+    {
+        $this->db->Select ('inventory.account_code.account_code,inventory.item_detail.serial,inventory.item_detail.official_receipt_no,inventory.item.item_description,inventory.distribution.item_usage,inventory.distribution.distrib_date,inventory.distribution.receivedby,inventory.item_detail.unit_cost,logs.return_log.reason');
+        $this->db->join('inventory.item_detail','item_detail.item_det_id = return_log.item_det_id','left');
+        $this->db->join('inventory.item','item.item_id = item_detail.item_id','left');
+        $this->db->join('inventory.distribution','distribution.dist_id = return_log.dist_id','left');
+        $this->db->join('inventory.account_code','account_code.ac_id = distribution.account_id','left');
+        $this->db->group_by('inventory.item_detail.serial');
+        $this->db->where('logs.return_log.dist_id',$dist_id);
+        $query = $this->db->get('logs.return_log');
+        return $query->result_array();
+    }
+
 
     public function get_edit_log()
     {
