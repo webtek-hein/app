@@ -169,8 +169,8 @@ class Inventory extends CI_Controller {
         header('Location:'.base_url() . 'inventory');
     }
     public function subtractquantity(){
-        $firstname = ($this->session->userdata['logged_in']['firstname']);
-        $lastname = ($this->session->userdata['logged_in']['lastname']);
+        $firstname = ($this->session->userdata['user_in']['firstname']);
+        $lastname = ($this->session->userdata['user_in']['lastname']);
         $data['department'] = $this->InventoryModel->get_department_list();
 
         $item_id = $this->input->post('item_id');
@@ -182,7 +182,8 @@ class Inventory extends CI_Controller {
             'dept_id' => $this->input->post('department'),
             'receivedby' => $this->input->post('receivedby'),
             'account_id' => $this->input->post('AccountCode'),
-            'user_distribute' => $firstname . ' ' . $lastname
+            'user_distribute' => $firstname . ' ' . $lastname,
+            'item_usage' => $this->input->post('usage'),
         );
         $uid = array('user_id' => $this->session->userdata['logged_in']['userid']);
         $this->InventoryModel->subtract_quantity($data1, $data2, $item_id, $data1,$uid);
