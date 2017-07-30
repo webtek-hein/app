@@ -1,5 +1,5 @@
 <!-- Modal-->
-<div class="modal fade" id="details" role="dialog">
+<div class="modal fade" id="return_det" role="dialog">
     <div class="modal-dialog" style="overflow-x:auto; width:auto ">
         <div class="container" style="background-color:white; width:auto; height: auto; size:50px;">
 
