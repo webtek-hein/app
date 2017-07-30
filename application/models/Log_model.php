@@ -28,6 +28,7 @@ class Log_model extends CI_Model {
         $this->db->join('inventory.distribution','distribution.dist_id = item_detail.dist_id','left');
         $this->db->join('inventory.department','distribution.dept_id = department.dept_id','left');
         $this->db->join('inventory.user','user.user_id = decrease_log.user_id','left');
+        $this->db->where('inventory.item_detail.item_status !=','defective');
         $this->db->group_by('date,inventory.item.item_name,inventory.user.user_id,inventory.item.item_description');
         $query = $this->db->get('logs.decrease_log');
         return $query->result_array();
@@ -36,17 +37,14 @@ class Log_model extends CI_Model {
     //get all return records from db
       public function get_return_log()
     {
-        $this->db->Select ('item_name,COUNT(return_log.item_det_id) AS quantity,date,department,return_person,reason,CONCAT(inventory.user.first_name," ",inventory.user.last_name) AS user');
-        $this->db->from('logs.return_log');
-        $this->db->join('inventory.department','logs.return_log.dept_id = inventory.department.dept_id','left');
-        $this->db->join('inventory.item_detail','inventory.item_detail.item_det_id = return_log.item_det_id','left');
-        $this->db->join('inventory.item','inventory.item.item_id = inventory.item_detail.item_id','left');
+        $this->db->Select ('inventory.item_detail.item_id,department,item_name, item_description,count(inventory.item_detail.item_id) as quantity,unit,date,concat(inventory.user.first_name," ",inventory.user.last_name) as user,return_person');
+        $this->db->join('inventory.item_detail','item_detail.item_det_id = return_log.item_det_id','left');
+        $this->db->join('inventory.item','item_detail.item_id = item.item_id','left');
+        $this->db->join('inventory.distribution','distribution.dist_id = item_detail.dist_id','left');
+        $this->db->join('inventory.department','distribution.dept_id = department.dept_id','left');
         $this->db->join('inventory.user','user.user_id = return_log.user_id','left');
-        $this->db->group_by('return_log.item_det_id , return_log.dept_id , date ,department, return_person , reason , user');
-        $this->db->distinct();
-
-
-        $query = $this->db->get();
+        $this->db->group_by('date,inventory.item.item_name,inventory.user.user_id,inventory.item.item_description');
+        $query = $this->db->get('logs.return_log');
         return $query->result_array();
     }
 
@@ -72,6 +70,7 @@ class Log_model extends CI_Model {
         $this->db->join('inventory.department','distribution.dept_id = department.dept_id','left');
         $this->db->join('inventory.user','user.user_id = decrease_log.user_id','left');
         $this->db->group_by('date,inventory.item.item_name,inventory.user.user_id,inventory.item.item_description');
+        $this->db->where('inventory.item_detail.item_status !=','defective');
         $this->db->where('logs.decrease_log.user_id',$id);
         $query = $this->db->get('logs.decrease_log');
         return $query->result_array();
@@ -79,24 +78,23 @@ class Log_model extends CI_Model {
 
  public function get_return_log_per_user($id)
     {
-        $this->db->Select ('return_id, account_code,department,return_person,logs.return_log.status as item_status,supplier,serial,item_name,date,unit_cost,concat(user.first_name," ",user.last_name) as user,reason,inventory.item.quantity');
-        $this->db->from('logs.return_log');
-        $this->db->join('inventory.item_detail','logs.return_log.item_det_id = inventory.item_detail.item_det_id','left');
-        $this->db->join('inventory.item','inventory.item_detail.item_id = inventory.item.item_id','left');
-        $this->db->join('inventory.distribution','inventory.distribution.dist_id = logs.return_log.dist_id','left');
-        $this->db->join('inventory.account_code','inventory.account_code.ac_id = inventory.distribution.account_id','left');
-        $this->db->join('inventory.department','logs.return_log.dept_id = inventory.department.dept_id','left');
-        $this->db->join('inventory.user','logs.return_log.user_id = inventory.user.user_id','left');
+        $this->db->Select ('item_detail.item_id,department,item_name, item_description,count(inventory.item_detail.item_id) as quantity,unit,date,concat(inventory.user.first_name," ",inventory.user.last_name) as user,return_person');
+        $this->db->join('inventory.item_detail','item_detail.item_det_id = return_log.item_det_id','left');
+        $this->db->join('inventory.item','item_detail.item_id = item.item_id','left');
+        $this->db->join('inventory.distribution','distribution.dist_id = item_detail.dist_id','left');
+        $this->db->join('inventory.department','distribution.dept_id = department.dept_id','left');
+        $this->db->join('inventory.user','user.user_id = return_log.user_id','left');
+        $this->db->group_by('date,inventory.item.item_name,inventory.user.user_id,inventory.item.item_description');
         $this->db->where('logs.return_log.user_id',$id);
 
 
-        $query = $this->db->get();
+        $query = $this->db->get('logs.return_log');
         return $query->result_array();
     }
 
     public function get_edit_log()
     {
-        $this->db->Select ('before_item_name, after_item_name, before_description, after_description, before_unit, after_unit, date, concat(user.first_name, ,user.last_name) as user');
+        $this->db->Select ('before_item_name, after_item_name, before_description, after_description, before_unit, after_unit, date, concat(user.first_name," ",user.last_name) as user');
         $this->db->from('logs.edit_log');
         $this->db->join('inventory.user','logs.edit_log.user_id = inventory.user.user_id','left');
         $query = $this->db->get();

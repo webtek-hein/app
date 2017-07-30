@@ -12,49 +12,39 @@
               <table id="return_log" class="table table-bordered table-striped" width="100%">
                 <thead>
                 <tr>
-                  
-                  <th> Item name</th>
-                  <th> Quantity</th>
-                  <th> Date</th>
-                  <th> Department</th>
+                    <th> Department</th>
+                    <th> Item name</th>
+                    <th> Description</th>
+                    <th> Quantity</th>
+                    <th> Unit</th>
+                    <th> Date</th>
                   <th> Employee</th>
-                  <th>Reason</th>
                     <?php $position = $this->session->userdata['logged_in']['position'];
                     if($position === 'admin'){
                         echo '<th>User</th>';
                     }
                     ?>
-                    <?php $position = $this->session->userdata['logged_in']['position'];
-                    if($position === 'admin'){
-                        echo '<th>Action</th>';
-                    }
-                    ?>
-                  
+                    <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
                 </tbody>
                 <tfoot>
                 <tr>
-                   
+                    <th> Department</th>
                     <th> Item name</th>
                     <th> Quantity</th>
                     <th> Date</th>
-                    <th> Department</th>
                     <th> Employee</th>
                     <th>Reason</th>
+                    <th> Employee</th>
                     <?php $position = $this->session->userdata['logged_in']['position'];
                     if($position === 'admin'){
                         echo '<th>User</th>';
                     }
                     ?>
-                    <?php $position = $this->session->userdata['logged_in']['position'];
-                    if($position === 'admin'){
-                        echo '<th>Action</th>';
-                    }
-                    ?>
-
-                </tr
+                        <th>Action</th>
+                </tr>
                 </tfoot>
               </table>
             </div>
