@@ -239,14 +239,14 @@ function get_decreaselog_details(item_id,id) {
     });
     $('#decrease').modal('show');
 }
-function get_return_details(item_id) {
+function get_return_details(dist_id) {
     $('#return').DataTable({
         responsive: true,
-        "destroy": true
-        /*   "ajax": {
-         "url": 'decreaselog/dist_details/' + item_id +'/'+id,
+        "destroy": true,
+           "ajax": {
+         "url": 'returnlog/returnlog_details/' + dist_id ,
          "type": "POST",
-         },*/
+         },
     });
     $('#return_det').modal('show');
 }

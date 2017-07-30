@@ -43,9 +43,28 @@ class Returnlog extends CI_Controller {
             if($position === 'admin') {
                 $row[] = $list['user'];
             }
-            $row[] = " <button class=\"btn btn-info open-modal-action fa fa-info\" onclick=\"get_return_details(". $list['item_id'] .")\"></button>";
+            $row[] = " <button class=\"btn btn-info open-modal-action fa fa-info\" onclick=\"get_return_details(". $list['dist_id'] .")\"></button>";
             $data[] = $row;
 
+        }
+        $list = array('data'=>$data);
+        echo json_encode($list);
+    }
+    public function returnlog_details($dist_id){
+        $details = $this->log_model->return_log_details($dist_id);
+        $data = array();
+        foreach ($details as $list) {
+            $row = array();
+            $row[] = $list['account_code'];
+            $row[] = $list['serial'];
+            $row[] = $list['official_receipt_no'];
+            $row[] = $list['item_description'];
+            $row[] = $list['item_usage'];
+            $row[] = $list['distrib_date'];
+            $row[] = $list['receivedby'];
+            $row[] = $list['unit_cost'];
+            $row[] = $list['reason'];
+            $data[] = $row;
         }
         $list = array('data'=>$data);
         echo json_encode($list);
