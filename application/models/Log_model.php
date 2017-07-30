@@ -22,7 +22,7 @@ class Log_model extends CI_Model {
     //get all decrease records from db
     public function get_decrease_log()
     {
-        $this->db->Select('item_name,item_description,distribution.quantity,unit_cost,item_type,distrib_date,CONCAT(user.first_name," ", user.last_name) AS user,department');
+        $this->db->Select('item_name,item_description,distribution.quantity,unit_cost,item_type,date,CONCAT(user.first_name," ", user.last_name) AS user,department');
         $this->db->join('inventory.item_detail','logs.decrease_log.item_det_id = inventory.item_detail.item_det_id','left');
         $this->db->join('inventory.item','inventory.item_detail.item_id = inventory.item.item_id','left');
         $this->db->join('inventory.distribution','inventory.distribution.dist_id = inventory.item_detail.dist_id','left');
