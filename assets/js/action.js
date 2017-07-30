@@ -228,7 +228,28 @@ function get_item_details(id) {
     $('#view').modal('show');
 
 }
-
+function get_decreaselog_details(item_id,id) {
+   $('#details').DataTable({
+        responsive: true,
+        "destroy": true
+       /*   "ajax": {
+            "url": 'decreaselog/decreaselog_details/' + item_id +'/'+id,
+            "type": "POST",
+        },*/
+    });
+    $('#decrease').modal('show');
+}
+function get_returnlog_details(item_id) {
+    $('#details').DataTable({
+        responsive: true,
+        "destroy": true
+        /*   "ajax": {
+         "url": 'decreaselog/dist_details/' + item_id +'/'+id,
+         "type": "POST",
+         },*/
+    });
+    $('#return').modal('show');
+}
 
 function get_distribution_details(item_id,id) {
     $('#details').DataTable({
