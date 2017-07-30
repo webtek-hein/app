@@ -16,6 +16,7 @@ class Returnlog extends CI_Controller {
             $this->load->view('templates/header');
         }
 		$this->load->view('returnlog');
+        $this->load->view('modals/return_details');
 		$this->load->view('templates/footer');
 
 	}
@@ -42,7 +43,7 @@ class Returnlog extends CI_Controller {
             if($position === 'admin') {
                 $row[] = $list['user'];
             }
-            $row[] = " <button class=\"btn btn-info open-modal-action fa fa-info\" onclick=\"get_item_details(". $list['item_id'] .")\"></button>";
+            $row[] = " <button class=\"btn btn-info open-modal-action fa fa-info\" onclick=\"get_return_details(". $list['item_id'] .")\"></button>";
             $data[] = $row;
 
         }
