@@ -119,4 +119,16 @@ class Return_model extends CI_Model {
         $row = $query->row_array();
         return intval($row['dept_id']);
     }
+     public function return_log_details()
+    {
+        $this->db->Select ('inventory.account_code.account_code,inventory.item_detail.serial,inventory.item_detail.official_receipt_no,inventory.item.item_description,inventory.distribution.item_usage,inventory.distribution.distrib_date,inventory.distribution.receivedby,inventory.item_detail.unit_cost,logs.return_log.reason');
+            $this->db->join('inventory.item_detail','item_detail.item_det_id = return_log.item_det_id','left');
+            $this->db->join('inventory.item','item.item_id = item_detail.item_id','left');
+            $this->db->join('inventory.distribution','distribution.dist_id = return_log.dist_id','left');
+            $this->db->join('inventory.account_code','account_code.ac_id = distribution.account_id','left');            
+            $this->db->group_by('inventory.item_detail.serial');
+            $query = $this->db->get('logs.return_log');
+            return $query->result_array();
+    }
+
 }
