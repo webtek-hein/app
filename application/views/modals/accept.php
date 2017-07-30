@@ -15,7 +15,7 @@
                 <h4>Are you sure you want to accept this user?</h4>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-default" id="save1" >Confirm</button>
+                <input type="submit" class="btn btn-default" id="save1" value="Confirm">
                 <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal">Cancel</button>
             </div>
         </div>
