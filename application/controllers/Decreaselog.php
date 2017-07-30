@@ -33,7 +33,7 @@ class Decreaselog extends CI_Controller {
             $row[] = $list['item_name'];
             $row[] = $list['item_description'];
             $row[] = $list['quantity'];
-            $row[] = $list['unit_cost'];
+            $row[] = $list['unit'];
             $row[] = $list['item_type'];
             $row[] = $list['date'];
             if($position === 'admin') {
