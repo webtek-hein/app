@@ -16,7 +16,7 @@
     </div><!--end container -->
 
 <?php $position = $this->session->userdata['logged_in']['dept_id'];
-    if($position === 'department head'){
+    if($position === 'department head' || $position === 'receiver'){
         echo "<div class='col-lg-3 col-xs-6'>";
         echo "<div class='small-box bg-aqua'>";
         echo "<div class='inner'>";
@@ -30,26 +30,22 @@
         echo "<i class='fa fa-arrow-circle-right'> </i></a></button> </span>";
         echo "</div>";
         echo "</div>";
+    } else {
+        echo "<div class='col-lg-3 col-xs-6'>";
+        echo "<div class='small-box bg-aqua'>";
+        echo "<div class='inner'>";
+        echo "<h3 id='rec_items'></h3>";
+        echo "<p>Received Items</p>";
+        echo "</div>";
+        echo "<div class='icon'>";
+        echo "<i class='ion ion-bag'></i>";
+        echo "</div>";
+        echo "<span onClick='toggle();''><button><a class='small-box-footer'>More Details";
+        echo "<i class='fa fa-arrow-circle-right'> </i></a></button> </span>";
+        echo "</div>";
+        echo "</div>";
     }
 ?>
-<!---->
-<div class="col-lg-3 col-xs-6">
-    <!-- small box -->
-    <div class="small-box bg-aqua">
-        <div class="inner">
-
-            <h3 id="rec_items">
-            </h3>
-            <p>Received Items</p>
-        </div>
-        <div class="icon">
-            <i class="ion ion-bag"></i>
-        </div>
-        <span onClick="toggle();"><button><a class="small-box-footer">More Details
-                     <i class="fa fa-arrow-circle-right"> </i></a></button> </span>
-
-    </div>
-</div>
 <!-- ./col -->
 <div class="col-lg-3 col-xs-6">
     <!-- small box -->
