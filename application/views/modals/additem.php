@@ -51,8 +51,7 @@
            <td>Type</td>
           <td>
             <select id="type" name="Type" required="required">
-              <option selected="true" disabled>--choose type--</option>
-              <option value="CO">CO</option>
+              <option selected="true" value="CO">CO</option>
               <option value="MOOE">MOOE</option>
             </select>   
         </td>
