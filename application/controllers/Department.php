@@ -89,6 +89,7 @@ class Department extends CI_Controller {
             $row[] = $list['date_rec'];
             $row[] = $list['receivedby'];
             $row[] = $list['unit_cost'];
+            $row[] = (int)$list['unit_cost']*$list['quantity'];
             $data[] = $row;
         }
         $list = array('data'=>$data);

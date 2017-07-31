@@ -20,7 +20,9 @@ class InventoryModel extends CI_Model {
 
 	public function get_inventory_list()
 	{
-        $query = $this->db->select('*')
+        $query = $this->db->select('item_detail.item_id,item_name,item_description,quantity,unit,item_detail.unit_cost')
+                    ->join('item_detail','item_detail.item_id = item.item_id','left')
+                ->group_by('item_detail.item_id,item_name,item_description,quantity,unit,unit_cost')
                      ->get('item');
         return $query->result_array();
 	}

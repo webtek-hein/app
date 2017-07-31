@@ -61,6 +61,7 @@ class Inventory extends CI_Controller {
             $row[] = $list['item_description'];
             $row[] = $list['quantity'];
             $row[] = $list['unit'];
+            $row[] = (int)$list['unit_cost']*$list['quantity'];
             if($position === 'admin'){
                 $button = "<button type=\"button\" class=\"btn btn-primary open-modal-action fa fa-plus\" data-id='$list[item_id]' data-toggle=\"modal\" data-target=\"#addqty\"></button>".
                     "<button type=\"button\" class=\"btn btn-danger open-modal-action fa fa-minus\" data-id='$list[item_id]' onclick=\"subtract_quantity(". $list['item_id'] .")\"></button>".
@@ -214,7 +215,6 @@ class Inventory extends CI_Controller {
             $row[] = $list['date_rec'];
             $row[] = $list['receivedby'];
             $row[] = $list['unit_cost'];
-            $row[] = (int)$list['unit_cost']*$list['quantity'];
             $data[] = $row;
         }
         $list = array('data'=>$data);

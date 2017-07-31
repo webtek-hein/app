@@ -38,7 +38,7 @@ class Department_model extends CI_Model {
 
     public function get_distributed_details($item_id,$dept_id)
     {
-        $this->db->select('item_det_id, serial, exp_date, supplier, item_description, official_receipt_no, del_date, date_rec, distribution.receivedby, unit_cost')
+        $this->db->select('distribution.quantity,item_det_id, serial, exp_date, supplier, item_description, official_receipt_no, del_date, date_rec, distribution.receivedby, unit_cost')
                    ->join('item','item_detail.item_id = item.item_id','left')
                    ->join('distribution','item_detail.dist_id = distribution.dist_id')
                    ->join('department','distribution.dept_id = department.dept_id')
