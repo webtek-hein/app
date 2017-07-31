@@ -59,7 +59,7 @@ class Decreaselog extends CI_Controller {
              $row[] = $list['item_usage'];
             $row[] = $list['distrib_date'];
             $row[] = $list['receivedby'];
-            $row[] = $list['unit_cost'];
+            $row[] =  "&#8369; ".number_format((int)$list['unit_cost'],2)."<br>";
             $data[] = $row;
         }
         $list = array('data'=>$data);

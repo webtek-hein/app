@@ -24,14 +24,14 @@ class Department_model extends CI_Model {
     {
 
         $this->db->distinct()
-            ->select('distribution.dept_id,item_detail.item_id,department,item_name,item_description,unit,count(*) as quantity')
+            ->select('unit_cost,distribution.dept_id,item_detail.item_id,department,item_name,item_description,unit,count(*) as quantity')
             ->join('item','item_detail.item_id = item.item_id','left')
             ->join('distribution','item_detail.dist_id = distribution.dist_id')
             ->join('department','distribution.dept_id = department.dept_id')
             ->WHERE('item_detail.dist_id is not null')
             ->WHERE("item_detail.item_status = 'in_stock'")
             ->WHERE('distribution.dept_id',$id)
-            ->group_by('item_detail.item_id,distribution.dept_id');
+            ->group_by('item_detail.item_id,distribution.dept_id,unit_cost');
         $query = $this->db->get('item_detail');
         return $query->result_array();
     }

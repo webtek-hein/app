@@ -36,7 +36,7 @@ class Increaselog extends CI_Controller {
             $row[] = $list['item_type'];
             $row[] = $list['date'];
             $row[] = $list['date_rec'];
-            $row[] = $list['unit_cost'];
+            $row[] =  "&#8369; ".number_format((int)$list['unit_cost'],2)."<br>";
             $row[] = $list['supplier'];
             if($position === 'admin') {
                 $row[] = $list['user'];

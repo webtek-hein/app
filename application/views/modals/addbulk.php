@@ -38,12 +38,10 @@
                             <td><input type="number" min=0 id="new_qty" name="Item_Quantity[]" required="required" style="width:80px;"></td>
                             <td><input type="text" id="new_supplier" name="Item_Supplier[]" required="required" style="width:150px;"></td>
                             <td>
-
-                                <input type="text" list="typelist" id="new_type" name="Item_Type[]" required="required" style="width:80px; height: 25px;">
-                                    <datalist id="typelist">
-                                    <option value="CO">CO</option>
+                                <select id="type" list="typelist" name="Type" required="required">
+                                    <option selected="true" value="CO">CO</option>
                                     <option value="MOOE">MOOE</option>
-                                    </datalist>
+                                </select>
                             </td>
                             <td><input type="date" id="new_deldate" name="Item_Deliverydate[]" required="required" style="width:140px;"></td>
                             <td><input type="date" id="new_datereceived" name="Item_Datereceived[]" required="required" style="width:140px;"></td>
@@ -61,7 +59,7 @@
                                     <option value="others">others</option>
                                 </datalist>
                             </td>
-                            <td><input type="number" min="0"step='0.01' id="new_cost" name="Item_Cost[]" required="required" style="width:80px;"></td>
+                            <td><input type="number" min="0"step='any' id="new_cost" name="Item_Cost[]" required="required" style="width:80px;"></td>
                             <td><input type="date" id="new_expdate" name="Item_Expirationdate[]" required="required" style="width:140px;"></td>
                             <td><input type="button" class="btn btn-success" onclick="add_row();" value="Add Row"></td>
                         </tr>

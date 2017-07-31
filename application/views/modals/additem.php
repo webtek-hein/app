@@ -50,7 +50,7 @@
         <tr>
            <td>Type</td>
           <td>
-            <select id="type" name="Type" required="required">
+            <select id="type" list="typelist" name="Type" required="required">
               <option selected="true" value="CO">CO</option>
               <option value="MOOE">MOOE</option>
             </select>   

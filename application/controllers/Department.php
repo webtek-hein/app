@@ -83,13 +83,11 @@ class Department extends CI_Controller {
             $row[] = $list['serial'];
             $row[] = $list['exp_date'];
             $row[] = $list['supplier'];
-            $row[] = $list['item_description'];
             $row[] = $list['official_receipt_no'];
             $row[] = $list['del_date'];
             $row[] = $list['date_rec'];
             $row[] = $list['receivedby'];
-            $row[] = $list['unit_cost'];
-            $row[] = (int)$list['unit_cost']*$list['quantity'];
+            $row[] =  "&#8369; ".number_format((int)$list['unit_cost'],2)."<br>";
             $data[] = $row;
         }
         $list = array('data'=>$data);
