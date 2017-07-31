@@ -83,7 +83,7 @@
         </tr>
         <tr>
           <td>Unit Cost</td>
-          <td><input type="number" min='0' step='0.01' class="InputBox" name="Cost" value="" required="required"></td>
+          <td><input type="number" min='0' step='any' class="InputBox" name="Cost" value="" required="required"></td>
         </tr>
         <tr>
           <td>Expiration Date</td>
