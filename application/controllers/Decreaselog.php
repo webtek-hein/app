@@ -39,16 +39,16 @@ class Decreaselog extends CI_Controller {
             if($position === 'admin') {
                 $row[] = $list['user'];
             }
-            $date = $list['date'];
-            $row[] = "<button class=\"btn btn-info open-modal-action fa fa-info\" onclick=\"get_decreaselog_details(". $list['date']  .")\"></button> ";
+            $row[] = "<button class=\"btn btn-info open-modal-action fa fa-info\" onclick=\"get_decreaselog_details(". $list['dist_id'] .")\"></button> ";
+
             $data[] = $row;
 
         }
         $list = array('data'=>$data);
         echo json_encode($list);
     }
-    public function decreaselog_details($item_id,$dept_id){
-        $details = $this->log_model->get_decreaselog_details($item_id,$dept_id);
+    public function decreaselog_details($dist_id){
+        $details = $this->log_model->get_decreaselog_details($dist_id);
         $data = array();
         foreach ($details as $list) {
             $row = array();

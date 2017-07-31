@@ -22,7 +22,7 @@ class Log_model extends CI_Model {
     //get all decrease records from db
     public function get_decrease_log()
     {
-        $this->db->Select('item_name,item_description,distribution.quantity,unit,item_type,date,CONCAT(user.first_name," ", user.last_name) AS user,department');
+        $this->db->Select('item_name,item_description,distribution.dist_id,distribution.quantity,unit,item_type,date,CONCAT(user.first_name," ", user.last_name) AS user,department');
         $this->db->join('inventory.item_detail','logs.decrease_log.item_det_id = inventory.item_detail.item_det_id','left');
         $this->db->join('inventory.item','inventory.item_detail.item_id = inventory.item.item_id','left');
         $this->db->join('inventory.distribution','inventory.distribution.dist_id = inventory.item_detail.dist_id','left');
@@ -75,7 +75,7 @@ class Log_model extends CI_Model {
 
     public function get_decrease_log_per_user($id)
     {
-        $this->db->Select('inventory.item_detail.item_id,department,item_name, item_description,count(inventory.item_detail.item_id) as quantity,unit,item_type,date,concat(inventory.user.first_name," ",inventory.user.last_name) as user');
+        $this->db->Select('inventory.item_detail.item_id,distribution.dist_id,department,item_name, item_description,count(inventory.item_detail.item_id) as quantity,unit,item_type,date,concat(inventory.user.first_name," ",inventory.user.last_name) as user');
         $this->db->join('inventory.item_detail','item_detail.item_det_id = decrease_log.item_det_id','left');
         $this->db->join('inventory.item','item_detail.item_id = item.item_id','left');
         $this->db->join('inventory.distribution','distribution.dist_id = item_detail.dist_id','left');

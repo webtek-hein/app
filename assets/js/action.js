@@ -228,15 +228,17 @@ function get_item_details(id) {
     $('#view').modal('show');
 
 }
-function get_decreaselog_details(date) {
+function get_decreaselog_details(dist_id) {
    $('#decreasedet').DataTable({
         responsive: true,
-        "destroy": true
-       /*   "ajax": {
-            "url": 'decreaselog/decreaselog_details/' + date',
+      /*  "destroy": true,
+         "ajax": {
+            "url": 'decreaselog/decreaselog_details/' + date,
             "type": "POST",
-        },*/
+        },
+*/
     });
+
     $('#decrease').modal('show');
 }
 function get_return_details(dist_id) {
