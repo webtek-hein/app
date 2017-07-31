@@ -27,7 +27,6 @@ var department;
 var increaselog;
 
 $(document).ready(function() {
-
     inventory = $('#table').DataTable({
 
         destroy: true,
@@ -37,6 +36,7 @@ $(document).ready(function() {
             "type": "POST",
         },
     });
+
 
 
     department = $('#department').DataTable({
@@ -72,6 +72,14 @@ $(document).ready(function() {
 
 
     increaselog = $('#increase_log').DataTable({
+        dom: 'Bfrtip',
+        buttons:[{
+            text: 'Export',
+            extend: 'pdf',
+            className: 'btn btn-success',
+            title: "Increase Logs",
+            extension: '.pdf'
+        }],
         destroy: true,
         responsive: true,
         "ajax": {
@@ -82,7 +90,16 @@ $(document).ready(function() {
 
 
 
+
     decreaselog = $('#decrease_log').DataTable({
+        dom: 'Bfrtip',
+        buttons:[{
+            text: 'Export',
+            extend: 'pdf',
+            className: 'btn btn-success',
+            title: "Decrease Logs",
+            extension: '.pdf'
+        }],
         responsive: true,
         "destroy":true,
         "ajax": {
@@ -92,6 +109,14 @@ $(document).ready(function() {
     });
 
     returnlog = $('#return_log').DataTable({
+        dom: 'Bfrtip',
+        buttons:[{
+            text: 'Export',
+            extend: 'pdf',
+            className: 'btn btn-success',
+            title: "Return Logs",
+            extension: '.pdf'
+        }],
         responsive: true,
         "destroy":true,
         "ajax": {

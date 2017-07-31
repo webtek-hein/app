@@ -5,14 +5,29 @@
 
 <!-- jQuery 2.2.3 -->
 <script src="<?php echo base_url() ?>assets/plugins/jQuery/jquery-2.2.3.min.js"></script>
-<script src="<?php echo base_url() ?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
 <script src="<?php echo base_url() ?>assets/js/jquery-ui.min.js"></script>
+
+<script src="<?php echo base_url() ?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?php echo base_url() ?>assets/js/dataTables.buttons.min.js"></script>
+<script src="<?php echo base_url() ?>assets/js/buttons.flash.min.js"></script>
+<script src="<?php echo base_url() ?>assets/js/jszip.min.js"></script>
+<script src="<?php echo base_url() ?>assets/js/pdfmake.min.js"></script>
+<script src="<?php echo base_url() ?>assets/js/vfs_fonts.js"></script>
+<script src="<?php echo base_url() ?>assets/js/buttons.html5.min.js"></script>
+
+
+
+
+
 <script src="<?php echo base_url() ?>assets/js/highcharts.js"></script>
 <script src="<?php echo base_url() ?>assets/js/html5shiv.min.js"></script>
 <script src="<?php echo base_url() ?>assets/js/respond.min.js"></script>
 <script src="<?php echo base_url() ?>assets/js/canvasjs.min.js"></script>
+
+
+
 <script src="<?php echo base_url() ?>assets/js/action.js"></script>
+
 
 <script src="<?php echo base_url() ?>assets/plugins/chartjs/Chart.min.js"></script>
 
