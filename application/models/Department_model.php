@@ -23,7 +23,7 @@ class Department_model extends CI_Model {
     public function get_distributed_per_department($id)
     {
 
-        $this->db->distinct()
+        $this->db
             ->select('unit_cost,distribution.dept_id,item_detail.item_id,department,item_name,item_description,unit,count(*) as quantity')
             ->join('item','item_detail.item_id = item.item_id','left')
             ->join('distribution','item_detail.dist_id = distribution.dist_id')

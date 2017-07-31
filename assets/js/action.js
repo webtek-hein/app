@@ -488,6 +488,9 @@ $(document).ready(function () {
                 plotBorderWidth: null,
                 plotShadow: false
             },
+                title: {
+                    text: 'Top 10 Biggest Items'
+                },
 
             plotOptions: {
                 pie: {

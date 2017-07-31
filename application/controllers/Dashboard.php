@@ -79,8 +79,15 @@ class Dashboard extends CI_Controller
         }
     }
     public function data_in_graph(){
+        $position = $this->session->userdata['logged_in']['position'];
+        $dept_id = $this->session->userdata['logged_in']['dept_id'];
 
-        $pie = $this->inventorymodel->pie_graph();
+        if($position === 'receiver' || $position === 'department head')
+        {
+            $pie = $this->inventorymodel->pie_graph_per_dept($dept_id);
+        }else{
+            $pie = $this->inventorymodel->pie_graph();
+        }
         $data = array();
         foreach ($pie as $list) {
             $row = array();
