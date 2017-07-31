@@ -14,7 +14,7 @@ class Log_model extends CI_Model {
             $this->db->join('inventory.item_detail','item_detail.item_det_id = increase_log.item_det_id','left');
             $this->db->join('inventory.item','item.item_id = item_detail.item_id','left');
             $this->db->join('inventory.user','user.user_id = increase_log.user_id','left');
-            $this->db->group_by('date,inventory.item.item_name,inventory.user.user_id,inventory.item.item_description');
+            $this->db->group_by('date,inventory.item.item_name,inventory.user.user_id,inventory.item.item_description,inventory.item.unit');
             $query = $this->db->get('logs.increase_log');
             return $query->result_array();
     }
@@ -66,7 +66,7 @@ class Log_model extends CI_Model {
         $this->db->join('inventory.item_detail','item_detail.item_det_id = increase_log.item_det_id','left');
         $this->db->join('inventory.item','item.item_id = item_detail.item_id','left');
         $this->db->join('inventory.user','user.user_id = increase_log.user_id','left');
-        $this->db->group_by('date,inventory.item.item_name,inventory.user.user_id,inventory.item.item_description');
+        $this->db->group_by('date,item.item_name,user.user_id,item.item_description,unit,item_type,date_rec,unit_cost,supplier');
         $this->db->where('logs.increase_log.user_id',$id);
         $query = $this->db->get('logs.increase_log');
         return $query->result_array();

@@ -404,6 +404,6 @@ $this->db->order_by('del_date');
         $this->db->where('dept_id', $deptid);
         $this->db->group_by('dept_id');
         $query = $this->db->get();
-        return $query->result_array(); 
+        return $query->result_array();
     }
 }
