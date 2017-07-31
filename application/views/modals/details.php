@@ -35,6 +35,7 @@
                             <th>Date Received</th>
                             <th>Received By</th>
                             <th>Unit Cost</th>
+                            <th>Total Cost</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -50,6 +51,7 @@
                             <th>Date Received</th>
                             <th>Received By</th>
                             <th>Unit Cost</th>
+                            <th>Total Cost</th>
                         </tr>
                         </tfoot>
                     </table>
