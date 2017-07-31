@@ -15,7 +15,23 @@
                     <div id="items"></div>
     </div><!--end container -->
 
-
+<?php $position = $this->session->userdata['logged_in']['dept_id'];
+    if($position === 'department head'){
+        echo "<div class='col-lg-3 col-xs-6'>";
+        echo "<div class='small-box bg-aqua'>";
+        echo "<div class='inner'>";
+        echo "<h3 id='rec_items_per_dept'></h3>";
+        echo "<p>Received Items</p>";
+        echo "</div>";
+        echo "<div class='icon'>";
+        echo "<i class='ion ion-bag'></i>";
+        echo "</div>";
+        echo "<span onClick='toggle();''><button><a class='small-box-footer'>More Details";
+        echo "<i class='fa fa-arrow-circle-right'> </i></a></button> </span>";
+        echo "</div>";
+        echo "</div>";
+    }
+?>
 <!---->
 <div class="col-lg-3 col-xs-6">
     <!-- small box -->

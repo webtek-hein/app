@@ -431,6 +431,7 @@ function dashboard_custodian_items_remaining(){
 //load data
 $(document).ready(function () {
     $( "#rec_items" ).load("dashboard/count_received_item");
+    $( "#rec_items_per_dept" ).load("dashboard/count_rec_items_per_dept");
     $( "#defect_items" ).load("dashboard/count_def_items");
     $( "#ret_items" ).load("dashboard/count_ret_items");
     $( "#pendingu" ).load("dashboard/count_pending_users");

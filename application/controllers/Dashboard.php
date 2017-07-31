@@ -92,4 +92,12 @@ class Dashboard extends CI_Controller
         echo json_encode($data);
     }
 
+    public function count_rec_items_per_dept()
+    {
+        $deptid = $this->session->userdata['logged_in']['dept_id'];
+        $data = $this->inventorymodel->count_rec_items_per_dept($deptid);
+        foreach ($data as $ret) {
+            echo $ret['received'];
+        }
+    }
 }
