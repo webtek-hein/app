@@ -96,8 +96,8 @@ class Dashboard extends CI_Controller
     {
         $deptid = $this->session->userdata['logged_in']['dept_id'];
         $data = $this->inventorymodel->count_rec_items_per_dept($deptid);
-        foreach ($data as $ret) {
-            echo $ret['received'];
+        foreach ($data as $received) {
+            echo $received['received'];
         }
     }
 }
