@@ -396,4 +396,14 @@ $this->db->order_by('del_date');
         $query = $this->db->get('item');
         return $query->result_array(); 
     }
+
+    public function count_rec_items_per_dept($deptid)
+     {
+        $this->db->select('dept_id, SUM(quantity) as received');
+        $this->db->from('distribution');
+        $this->db->where('dept_id', $deptid);
+        $this->db->group_by('dept_id');
+        $query = $this->db->get();
+        return $query->result_array(); 
+    }
 }
