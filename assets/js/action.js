@@ -231,12 +231,11 @@ function get_item_details(id) {
 function get_decreaselog_details(dist_id) {
    $('#decreasedet').DataTable({
         responsive: true,
-      /*  "destroy": true,
+        "destroy": true,
          "ajax": {
-            "url": 'decreaselog/decreaselog_details/' + date,
+            "url": 'decreaselog/decreaselog_details/' + dist_id,
             "type": "POST",
         },
-*/
     });
 
     $('#decrease').modal('show');

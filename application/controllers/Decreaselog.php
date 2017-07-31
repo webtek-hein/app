@@ -48,7 +48,7 @@ class Decreaselog extends CI_Controller {
         echo json_encode($list);
     }
     public function decreaselog_details($dist_id){
-        $details = $this->log_model->get_decreaselog_details($dist_id);
+        $details = $this->log_model->get_decrease_details($dist_id);
         $data = array();
         foreach ($details as $list) {
             $row = array();
@@ -56,6 +56,7 @@ class Decreaselog extends CI_Controller {
             $row[] = $list['serial'];
             $row[] = $list['official_receipt_no'];
             $row[] = $list['item_description'];
+             $row[] = $list['item_usage'];
             $row[] = $list['distrib_date'];
             $row[] = $list['receivedby'];
             $row[] = $list['unit_cost'];

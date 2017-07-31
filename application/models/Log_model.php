@@ -126,5 +126,15 @@ class Log_model extends CI_Model {
         return $query->result_array();
     }
 
-    
+    public function get_decrease_details($dist_id)
+    {
+        $this->db->SELECT("account_code, serial, official_receipt_no, item_description, item_usage, distrib_date, distribution.receivedby, unit_cost");
+        $this->db->FROM("account_code");
+        $this->db->JOIN('distribution','account_code.ac_id = distribution.account_id','left');
+        $this->db->JOIN('item_detail','item_detail.dist_id = distribution.dist_id','left');
+        $this->db->JOIN('item','item.item_id = item_detail.item_id','left');
+        $this->db->WHERE('distribution.dist_id',$dist_id);
+        $query = $this->db->GET();
+        return $query->result_array();
+    }
 }
