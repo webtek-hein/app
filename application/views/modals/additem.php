@@ -50,11 +50,11 @@
         <tr>
            <td>Type</td>
           <td>
-           <input list="typelist" name="Type" class="unit" required="required">
-              <datalist id="typelist">
+            <select id="type" name="Type" required="required">
+              <option selected="true" disabled>--choose type--</option>
               <option value="CO">CO</option>
               <option value="MOOE">MOOE</option>
-              </datalist>
+            </select>   
         </td>
         </tr>
 
