@@ -28,7 +28,7 @@ class Log_model extends CI_Model {
         $this->db->join('inventory.distribution','inventory.distribution.dist_id = inventory.item_detail.dist_id','left');
         $this->db->join('inventory.department','inventory.distribution.dept_id = inventory.department.dept_id','left');
         $this->db->join('inventory.user','logs.decrease_log.user_id = inventory.user.user_id','left');
-        $this->db->distinct();
+        $this->db->group_by('item_detail.item_id,distribution.dist_id,date,inventory.item.item_name,inventory.user.user_id,inventory.item.item_description');
         $query = $this->db->get('logs.decrease_log');
         return $query->result_array();
     }
@@ -55,7 +55,7 @@ class Log_model extends CI_Model {
         $this->db->join('inventory.distribution','distribution.dist_id = item_detail.dist_id','left');
         $this->db->join('inventory.department','distribution.dept_id = department.dept_id','left');
         $this->db->join('inventory.user','user.user_id = return_log.user_id','left');
-        $this->db->group_by('date,inventory.item.item_name,inventory.user.user_id,inventory.item.item_description');
+        $this->db->group_by('logs.return_log.return_person,item_detail.item_id,distribution.dist_id,date,inventory.item.item_name,inventory.user.user_id,inventory.item.item_description');
         $query = $this->db->get('logs.return_log');
         return $query->result_array();
     }
@@ -81,7 +81,7 @@ class Log_model extends CI_Model {
         $this->db->join('inventory.distribution','distribution.dist_id = item_detail.dist_id','left');
         $this->db->join('inventory.department','distribution.dept_id = department.dept_id','left');
         $this->db->join('inventory.user','user.user_id = decrease_log.user_id','left');
-        $this->db->group_by('date,inventory.item.item_name,inventory.user.user_id,inventory.item.item_description');
+        $this->db->group_by('item_detail.item_id,distribution.dist_id,date,inventory.item.item_name,inventory.user.user_id,inventory.item.item_description');
         $this->db->where('inventory.item_detail.item_status !=','defective');
         $this->db->where('logs.decrease_log.user_id',$id);
         $query = $this->db->get('logs.decrease_log');
@@ -96,7 +96,7 @@ class Log_model extends CI_Model {
         $this->db->join('inventory.distribution','distribution.dist_id = item_detail.dist_id','left');
         $this->db->join('inventory.department','distribution.dept_id = department.dept_id','left');
         $this->db->join('inventory.user','user.user_id = return_log.user_id','left');
-        $this->db->group_by('date,inventory.item.item_name,inventory.user.user_id,inventory.item.item_description');
+        $this->db->group_by('logs.return_log.return_person,item_detail.item_id,distribution.dist_id,date,inventory.item.item_name,inventory.user.user_id,inventory.item.item_description');
         $this->db->where('logs.return_log.user_id',$id);
 
 
