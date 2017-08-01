@@ -20,7 +20,7 @@
                     <th> Date</th>
                   <th> Employee</th>
                     <?php $position = $this->session->userdata['logged_in']['position'];
-                    if($position === 'admin'){
+                    if($position === 'admin' || $position === 'custodian'){
                         echo '<th>User</th>';
                     }
                     ?>
@@ -39,7 +39,7 @@
                     <th>Reason</th>
                     <th> Employee</th>
                     <?php $position = $this->session->userdata['logged_in']['position'];
-                    if($position === 'admin'){
+                    if($position === 'admin' || $position === 'custodian'){
                         echo '<th>User</th>';
                     }
                     ?>

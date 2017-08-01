@@ -25,7 +25,7 @@ class Returnlog extends CI_Controller {
         $position = $this->session->userdata['logged_in']['position'];
         $user_id = $this->session->userdata['logged_in']['userid'];
 
-        if($position == 'admin'){
+        if($position == 'admin' || $position === 'custodian' ){
             $return = $this->log_model->get_return_log();
         }else{
             $return = $this->log_model->get_return_log_per_user($user_id);
@@ -40,7 +40,7 @@ class Returnlog extends CI_Controller {
             $row[] = $list['unit'];
             $row[] = $list['date'];
             $row[] = $list['return_person'];
-            if($position === 'admin') {
+            if($position === 'admin' || $position === 'custodian') {
                 $row[] = $list['user'];
             }
             $row[] = " <button class=\"btn btn-info open-modal-action fa fa-info\" onclick=\"get_return_details(". $list['dist_id'] .")\"></button>";
