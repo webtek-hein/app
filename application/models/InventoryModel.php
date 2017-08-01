@@ -9,11 +9,13 @@ class InventoryModel extends CI_Model {
 
     public function get_ac_list()
     {
+        $this->db->order_by('description');
         $query = $this->db->get('account_code');
         return $query->result_array();
     }
      public function get_department_list()
     {
+        $this->db->order_by('res_center_code');
         $query = $this->db->get('department');
         return $query->result_array();
     }

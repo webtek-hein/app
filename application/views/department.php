@@ -21,6 +21,7 @@
                                 <thead>
                                 <tr>
                                     <th>Department</th>
+                                    <th>Account Code</th>
                                     <th>Item name</th>
                                     <th>Description</th>
                                     <th>Quantity</th>
@@ -33,6 +34,7 @@
                                 <tfoot>
                                 <tr>
                                     <th>Department</th>
+                                    <th>Account Code</th>
                                     <th>Item name</th>
                                      <th>Description</th>
                                     <th>Quantity</th>

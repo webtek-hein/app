@@ -9,13 +9,14 @@ class Department_model extends CI_Model {
     public function get_distributed_in_departments()
     {
         $this->db->distinct()
-            ->select('item_detail.item_id,distribution.dept_id,department,item_name,item_description,unit,count(*) as quantity')
+            ->select('item_detail.item_id,distribution.dept_id,account_code,department,item_name,item_description,unit,count(*) as quantity')
             ->join('item','item_detail.item_id = item.item_id','left')
             ->join('distribution','item_detail.dist_id = distribution.dist_id')
+            ->join('account_code','account_code.ac_id = distribution.account_id','left')
             ->join('department','distribution.dept_id = department.dept_id')
             ->WHERE('item_detail.dist_id is not null')
             ->WHERE("item_detail.item_status = 'in_stock'")
-            ->group_by('item_detail.item_id,distribution.dept_id');
+            ->group_by('item_detail.item_id,distribution.dept_id,account_code');
         $query = $this->db->get('item_detail');
         return $query->result_array();
     }
@@ -24,14 +25,15 @@ class Department_model extends CI_Model {
     {
 
         $this->db
-            ->select('unit_cost,distribution.dept_id,item_detail.item_id,department,item_name,item_description,unit,count(*) as quantity')
+            ->select('unit_cost,distribution.dept_id,account_code,item_detail.item_id,department,item_name,item_description,unit,count(*) as quantity')
             ->join('item','item_detail.item_id = item.item_id','left')
             ->join('distribution','item_detail.dist_id = distribution.dist_id')
+            ->join('account_code','account_code.ac_id = distribution.account_id','left')
             ->join('department','distribution.dept_id = department.dept_id')
             ->WHERE('item_detail.dist_id is not null')
             ->WHERE("item_detail.item_status = 'in_stock'")
             ->WHERE('distribution.dept_id',$id)
-            ->group_by('item_detail.item_id,distribution.dept_id,unit_cost');
+            ->group_by('item_detail.item_id,distribution.dept_id,unit_cost,account_code');
         $query = $this->db->get('item_detail');
         return $query->result_array();
     }
