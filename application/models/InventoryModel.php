@@ -442,15 +442,29 @@ $this->db->order_by('del_date');
         return $query->result_array();
     }
 
+    //count items expiring in 1 week
     public function count_expiring_items()
     {
         $query = $this->db->query("SELECT COUNT(*) as quantity FROM item_detail WHERE exp_date BETWEEN NOW() AND DATE_ADD(NOW(), INTERVAL 7 DAY)");
         return $query->result_array();
     }
 
+    //count items expiring in 1 week per department
     public function count_expiring_items_per_dept($deptid)
     {
         $query = $this->db->query("SELECT COUNT(*) as quantity FROM item_detail WHERE exp_date BETWEEN NOW() AND DATE_ADD(NOW(), INTERVAL 7 DAY) AND dist_id IN (SELECT dist_id FROM distribution WHERE dept_id = $deptid)");
+        return $query->result_array();
+    }
+
+    public function count_expired_items()
+    {
+        $query = $this->db->query("SELECT COUNT(*) as quantity FROM item_detail WHERE exp_date < NOW()");
+        return $query->result_array();
+    }
+
+    public function count_expired_items_per_dept($deptid)
+    {
+        $query = $this->db->query("SELECT COUNT(*) as quantity FROM item_detail WHERE exp_date < NOW() AND dist_id IN (SELECT dist_id FROM distribution WHERE dept_id = $deptid)");
         return $query->result_array();
     }
 }

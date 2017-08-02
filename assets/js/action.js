@@ -287,10 +287,13 @@ function get_item_details(id) {
        $('#details').off( 'click', 'tr :nth-child(2)').on( 'click', 'tr :nth-child(2)', function () {
             var item_det = $(this).closest('tr').find('input[name="item-det"]').val();
            $(this).attr('contentEditable', 'true');
+           $(this).bind("cut copy paste",function(e) {
+               e.preventDefault();
+           });
            $(this).focus(function () {
                oldData = $(this).text();
            });
-    $(this).off('blur').on('blur',function () {
+    $(this).off('blur focusout').on('blur focusout',function () {
                serial = $(this).text();
                if(oldData != serial) {
                    $.ajax({
@@ -310,8 +313,8 @@ function get_item_details(id) {
        });
 
     $('#view').modal('show');
-
 }
+
 function get_decreaselog_details(dist_id) {
    $('#decreasedet').DataTable({
         responsive: true,
