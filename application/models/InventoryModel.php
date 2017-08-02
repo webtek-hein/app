@@ -394,9 +394,11 @@ $this->db->order_by('del_date');
     }
 
     public function pie_graph(){
-        $this->db->select('item_name, quantity');
+         $this->db->distinct();
+        $this->db->select('item_name,(quantity*unit_cost) as quantity');
+        $this->db->join('item_detail','item_detail on item_detail.item_id = item.item_id','left');
+        $this->db->order_by(2);
         $this->db->limit(10);
-        $this->db->order_by('quantity');
         $query = $this->db->get('item');
         return $query->result_array(); 
     }
