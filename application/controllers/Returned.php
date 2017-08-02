@@ -13,11 +13,8 @@ class Returned extends CI_Controller {
         $position = $this->session->userdata['logged_in']['position'];
         $data['accountcodes'] = $this->InventoryModel->get_ac_list();
 
-        if($position === 'department head'){
-            $this->load->view('department_head/templates/header');
-        }else{
-            $this->load->view('templates/header');
-        }
+
+        $this->load->view('templates/header');
 		$this->load->view('return');
         $this->load->view('modals/replace', $data);
         $this->load->view('modals/noaction');
