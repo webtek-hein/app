@@ -8,41 +8,22 @@
     </ol>
 </section><br>
 
-
-
-<?php $position1 = $this->session->userdata['logged_in']['position'];
-    if($position1 === 'department head' || $position1 === 'receiver'){
-        echo "<div class='col-lg-3 col-xs-6'>";
-        echo "<div class='small-box bg-aqua'>";
-        echo "<div class='inner'>";
-        echo "<h3 id='rec_items_per_dept'></h3>";
-        echo "<p>Received Items</p>";
-        echo "</div>";
-        echo "<div class='icon'>";
-        echo "<i class='ion ion-bag'></i>";
-        echo "</div>";
-        echo "<span><button><a class='small-box-footer' href='/app/inventory'>More Details";
-        echo "<i class='fa fa-arrow-circle-right'> </i></a></button> </span>";
-        echo "</div>";
-        echo "</div>";
-    } else {
-        echo "<div class='col-lg-3 col-xs-6'>";
-        echo "<div class='small-box bg-aqua'>";
-        echo "<div class='inner'>";
-        echo "<h3 id='rec_items'></h3>";
-        echo "<p>Received Items</p>";
-        echo "</div>";
-        echo "<div class='icon'>";
-        echo "<i class='ion ion-bag'></i>";
-        echo "</div>";
-        echo "<span><button><a class='small-box-footer' href='/app/inventory'>More Details";
-        echo "<i class='fa fa-arrow-circle-right'> </i></a></button> </span>";
-        echo "</div>";
-        echo "</div>";
-    }
-?>
+    <div class="container">
 <!-- ./col -->
-<div class="col-lg-3 col-xs-6">
+<div class='col-lg-3 col-xs-6'>
+    <div class='small-box bg-aqua'>
+        <div class='inner'>
+            <h3 id='rec_items'></h3>
+            <p>Received Items</p>
+        </div>
+        <div class='icon'>
+            <i class='ion ion-bag'></i>
+        </div>
+        <span><button><a class='small-box-footer' href='/app/inventory'>More Details
+         <i class='fa fa-arrow-circle-right'> </i></a></button> </span>
+    </div>
+</div>
+        <div class="col-lg-3 col-xs-12">
     <!-- small box -->
     <div class="small-box bg-green">
         <div class="inner">
@@ -57,87 +38,97 @@
                      <i class="fa fa-arrow-circle-right"> </i></a></button> </span>
 
     </div>
-</div>
-
-<!-- ./col -->
-<div class="col-lg-3 col-xs-6">
-    <!-- small box -->
-    <div class="small-box bg-blue">
-        <div class="inner">
-            <h3 id="no_of_items">
-            </h3>
-            <p>Total Items</p>
-        </div>
-        <div class="icon">
-            <i class="ion ion-stats-bars"></i>
-        </div>
-
-
     </div>
+        <div class="col-lg-3 col-xs-6">
+
+            <div class="small-box bg-blue">
+                <div class="inner">
+                    <h3 id="no_of_items">
+                    </h3>
+                    <p>Total Items</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                </div>
+
+
+            </div>
+        </div>
+
+
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-purple">
+                <div class="inner">
+                    <h3 id="total_unit_cost">
+                    </h3>
+                    <p>Total Cost</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                </div>
+            </div>
+        </div>
 </div>
-<!-- ./col -->
-<div class="col-lg-3 col-xs-6">
-    <!-- small box -->
-    <div class="small-box bg-purple">
-        <div class="inner">
-            <h3 id="total_unit_cost">
-            </h3>
-            <p>Total Cost</p>
-        </div>
-        <div class="icon">
-            <i class="ion ion-stats-bars"></i>
-        </div>
-    </div>
-</div>
-<!-- ./col -->
-<div class="col-lg-3 col-xs-6">
-    <!-- small box -->
-    <div class="small-box bg-red">
-        <div class="inner">
-            <h3 id="expired_items">
-            </h3>
-            <p>Expired Items</p>
-        </div>
-         <div class="icon">
-            <i class="ion ion-person-add"></i>
-        </div>
-        <span><button><a class="small-box-footer">More Details
+
+    <div class="container">
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-12">
+            <!-- small box -->
+            <div class="small-box bg-red">
+                <div class="inner">
+                    <h3 id="expired_items">
+                    </h3>
+                    <p>Expired Items</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-person-add"></i>
+                </div>
+                <span><button><a class="small-box-footer">More Details
                      <i class="fa fa-arrow-circle-right"> </i></a></button> </span>
+            </div>
+        </div>
+
+        <?php $position = $this->session->userdata['logged_in']['position'];
+        if ($position === 'admin') {
+
+
+            echo '<div class="col-lg-3 col-xs-6">' .
+                '<div class="small-box bg-yellow">' .
+                '<div class="inner"><h3 id="pendingu"></h3>' .
+                '<p>Pending Users</p></div>' .
+                '<div class="icon">' .
+                '<i class="ion ion-person-add"></i></div>' .
+                '<nav><a href="/app/users"><button>More Details' .
+                '<i class="fa fa-arrow-circle-right"> </i></a></button></a>' .
+                '</nav></div></div>';
+        }
+        ?>
     </div>
-</div>
-
-<!-- ./col -->
-<!-- small box -->
-
-<?php $position = $this->session->userdata['logged_in']['position'];
-if($position === 'admin'){
-
-
-    echo '<div class="col-lg-3 col-xs-6">'.
-         '<div class="small-box bg-yellow">'.
-         '<div class="inner"><h3 id="pendingu"></h3>'.
-         '<p>Pending Users</p></div>'.
-         '<div class="icon">'.
-         '<i class="ion ion-person-add"></i></div>'.
-         '<nav><a href="/app/users"><button>More Details'.
-         '<i class="fa fa-arrow-circle-right"> </i></a></button></a>'.
-         '</nav></div></div>';
-}
-?>
 
 
     <div class="container">
-        <div id="items"></div>
-    </div>
-    <!--end container -->
 
-    <!--pie graph 2 -->
+
+    </div>
+
+
+
+
 <div class="container">
-        <div id="graph"></div>
+    <div class="row">
+        <div class="col-xs-6">
+            <div id="items"></div>
+        </div>
+        <div class="col-xs-6">
+            <div id="graph"></div>
+        </div>
+    </div>
 </div>
-    <!--end container -->
+<div class="container">
+</div>
 
-    <!--bar graph -->
-    <div class="container">
-        <div id="bar"></div>
-    </div><!--end container -->
+<!--bar graph -->
+<div class="container">
+    <div id="bar"></div>
+</div><!--end container -->

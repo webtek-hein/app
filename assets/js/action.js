@@ -534,7 +534,7 @@ $(document).ready(function () {
     
     $(document).ready(function () {
          $.ajax({
-            url: 'dashboard/data_in_graph',
+            url: 'dashboard/view_pie_graph_co',
             type: 'POST',
             async: true,
             dataType: "JSON",
@@ -542,6 +542,15 @@ $(document).ready(function () {
              createGraph(data);
             } 
     });
+        $.ajax({
+            url: 'dashboard/view_pie_graph_mooe',
+            type: 'POST',
+            async: true,
+            dataType: "JSON",
+            success: function(data){
+                mooegraph(data);
+            }
+        });
     });
 
                
@@ -556,7 +565,7 @@ $(document).ready(function () {
                 plotShadow: false
             },
                 title: {
-                    text: 'Top 10 Biggest Items'
+                    text: 'Top 10 Capital Outlay Items'
                 },subtitle: {
                     text: 'Click the slices to view percentage of items.'
                 },
@@ -623,25 +632,56 @@ $(document).ready(function() {
      });
 
 <!-- -->
-   /* var bar;
+    var bar;
     
-    $(document).ready(function () {
-         $.ajax({
-            url: 'dashboard/view_bar_graph',
-            type: 'POST',
-            async: true,
-            dataType: "JSON",
-            success: function(data){
-             createGraph(data);
-            }
-    });*/
-$( function() {
+    $( function() {
     $( ".datepicker" ).datepicker().val('mm/dd/yyyy');
 
-} );
+    } );
+//MOOE
+function mooegraph(data) {
+    $('#graph').highcharts({
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false
+        },
+        title: {
+            text: 'Top 10 MOOE Items'
+        },subtitle: {
+            text: 'Click the slices to view percentage of items.'
+        },
 
-function mooegraph() {
-    $('#bar').highcharts({
+        plotOptions: {
+            series: {
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.name}: ₱ {point.y:,.2f}'
+                }
+            },
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: false
+                },
+                showInLegend: true
+            }
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+
+        series: [{
+            name: 'Item',
+            type: 'pie',
+            data: data
+        }]
+    });
+
+}
+function bar_graph(data) {
+    $('#graph').highcharts({
         bar: {
             type: 'bar'
         },
@@ -658,7 +698,7 @@ function mooegraph() {
         },
         series: [{
             name: 'Child ID: 1',
-            data: [1,2,1,0,2,0,0,1,0,0,0,0,7,]
+            data: data
         }]
     });
 }

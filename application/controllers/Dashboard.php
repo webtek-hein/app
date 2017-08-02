@@ -118,7 +118,7 @@ class Dashboard extends CI_Controller
         }
     }
 
-    public function view_bar_graph_co()
+    public function view_pie_graph_co()
     {
         $position = $this->session->userdata['logged_in']['position'];
         $dept_id = $this->session->userdata['logged_in']['dept_id'];
@@ -140,7 +140,7 @@ class Dashboard extends CI_Controller
         echo json_encode($data);
     }
 
-    public function view_bar_graph_mooe()
+    public function view_pie_graph_mooe()
     {
         $position = $this->session->userdata['logged_in']['position'];
         $dept_id = $this->session->userdata['logged_in']['dept_id'];
