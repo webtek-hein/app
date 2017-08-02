@@ -6,7 +6,7 @@ class Return_model extends CI_Model {
         parent:: __construct();
     }
 
-    public function return_items_to_inventory($item, $person, $reason, $userid, $ischecked)
+    public function return_items_to_inventory($item, $person, $reason, $userid)
     {
         $quant = count($item);
         $this->db->select('dist_id');
@@ -30,17 +30,10 @@ class Return_model extends CI_Model {
             array_push($dist_ids, $dist_id['dist_id']);
         }
 
-        if ($ischecked == 'yes') {
-            $this->db->set('item_status','defective');
-            $this->db->where_in('item_det_id',$item);
-            $this->db->update('item_detail');
-        } else {
-            $this->db->set('item_status','returned');
-            $this->db->where_in('item_det_id',$item);
-            $this->db->update('item_detail');
-        }
+        $this->db->set('item_status','returned');
+        $this->db->where_in('item_det_id',$item);
+        $this->db->update('item_detail');
         
-
         $this->db->set('quantity','quantity+'.$quant,FALSE);
         $this->db->update('item');
 
@@ -84,9 +77,15 @@ class Return_model extends CI_Model {
         $this->db->set('status','replaced');
         $this->db->where('return_id',$id);
         $this->db->update('logs.return_log');
-        
+
+        $this->db->select('dist_id')
+                ->where('return_id',$id);
+        $dist = $this->db->get('logs.return_log');
+
         //get item id
-        $query1 = $this->db->query("SELECT item_id FROM inventory.item_detail WHERE dist_id = (SELECT dist_id FROM logs.return_log WHERE return_id = $id)");
+        $this->db->select('item_id')
+            ->where('dist_id',$dist->row());
+        $query1 = $this->db->get('item_detail');
         $row1 = $query1->row_array();
         $itemid = intval($row1['item_id']);
 
@@ -108,7 +107,7 @@ class Return_model extends CI_Model {
             //insert in distribution
             $this->db->insert('distribution', $data);
             $distid = $this->db->insert_id();
-            //update item_detail
+         /*   //update item_detail
             $this->db->where('item_detail.item_id',$itemid);
             $this->db->where('item_detail.dist_id',null,false);
             $this->db->where('serial !=',null,false);
@@ -119,7 +118,7 @@ class Return_model extends CI_Model {
             $this->db->join('logs.decrease_log','item_detail.item_det_id = logs.decrease_log.item_id');
             //update user in decrease_log
             $this->db->where('user_id', null,false);
-            $this->db->update('logs.decrease_log',$uid);
+            $this->db->update('logs.decrease_log',$uid);*/
         }
     }
 

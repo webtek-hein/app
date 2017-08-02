@@ -206,7 +206,7 @@ class Inventory extends CI_Controller {
         $data = array();
         foreach ($details as $list) {
             $row = array();
-            if($position !== 'department head'){
+            if($position === 'custodian' || $position === 'receiver'){
                 $row[] = ' <input type="checkbox" name="item-det" id="item_detail" value='.$list['item_det_id'].'>';
             }
             $row[] = $list['serial'];

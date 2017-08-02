@@ -27,7 +27,7 @@
                         <thead>
                         <tr>
                     <?= $position = $this->session->userdata['logged_in']['position'];
-                        if($position === 'custodian'){
+                        if($position === 'custodian' || $position === 'receiver'){
                             echo '<th><input type="checkbox" name="select-all" ><label> Check all</label></th>';
                         }
                         ?>
@@ -46,7 +46,7 @@
                         <tfoot>
                         <tr>
                             <?= $position = $this->session->userdata['logged_in']['position'];
-                            if($position === 'custodian'){
+                            if($position === 'custodian' || $position === 'receiver'){
                                 echo '<th><input type="checkbox" name="select-all" ><label> Check all</label></th>';
                             }
                             ?>
