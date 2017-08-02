@@ -5,7 +5,10 @@
 
         <!-- Modal content-->
         <?php echo validation_errors(); ?>
-        <?php echo form_open('/returned/replace'); ?>
+        <?php
+            $attributes = array('id' => 'replaceform'); 
+            echo form_open('/returned/replace', $attributes); 
+        ?>
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -15,6 +18,9 @@
                 <input id="return-id" type="hidden" name="return_id" value="">
 
                  <table border="0" width="500" align="center" class="table">
+                    <tr>
+                        <p> Current stock of this item is <span id="stock"></span></p>
+                    </tr>
                     <tr>
                         <td>Account Code</td>
                         <td>
@@ -38,7 +44,7 @@
 
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-default" id="save1" >Yes</button>
+                <button type="button" class="btn btn-default" id="save1" >Yes</button>
                 <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal">Cancel</button>
             </div>
         </div>

@@ -60,6 +60,17 @@ class Return_model extends CI_Model {
         $this->db->insert_batch('logs.return_log',$data);
     }
 
+    public function get_item_quantity($item_id)
+    {
+        $where = 'serial is not null and dist_id is null and item_status != "defective"';
+        $this->db->select('count(*) as quantity');
+        $this->db->from('item_detail');
+        $this->db->where($where);
+        $this->db->where('item_detail.item_id', $item_id);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
     public function return_no_action($id) 
     {
         $this->db->set('status','no action');
@@ -100,6 +111,7 @@ class Return_model extends CI_Model {
             //update item_detail
             $this->db->where('item_detail.item_id',$itemid);
             $this->db->where('item_detail.dist_id',null,false);
+            $this->db->where('serial !=',null,false);
             $this->db->where('item_status !=','defective');
             $this->db->limit(1);
             $this->db->set('item_detail.dist_id',$distid);
@@ -120,4 +132,20 @@ class Return_model extends CI_Model {
         return intval($row['dept_id']);
     }
 
+    public function get_current_quantity($return_id)
+    {
+        //get item id
+        $query1 = $this->db->query("SELECT item_id FROM inventory.item_detail WHERE dist_id = (SELECT dist_id FROM logs.return_log WHERE return_id = $return_id)");
+        $row1 = $query1->row_array();
+        $itemid = intval($row1['item_id']);
+
+        //get item quantity
+        $where = 'serial is not null and dist_id is null and item_status != "defective"';
+        $this->db->select('count(*) as quantity');
+        $this->db->from('inventory.item_detail');
+        $this->db->where($where);
+        $this->db->where('item_detail.item_id', $itemid);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
 }

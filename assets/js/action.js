@@ -188,7 +188,39 @@ function subtract_quantity(id) {
 }
 
 function replace(id) {
-    //$('#replacemodal').modal('show');
+    $.ajax({
+        url: 'returned/get_quantity/' + id,
+        type:"POST",
+        dataType: 'json',
+        success: function(data){
+            $('#stock').text(data.data);
+            if (data.data <= 0) {
+                $('select[name=AccountCode]').prop("disabled", true);
+                $('input[name=date]').prop("disabled", true);
+                $('input[name=receivedby]').prop("disabled", true);
+                $('#save1').prop("disabled", true);
+            }
+            $('#replacemodal').modal('show');
+            $('#save1').on('click', function () {
+                var date =  $('input[name=date]').val();
+                var receivedby =  $('input[name=receivedby]').val();
+                if (!date && !receivedby) {
+                    BootstrapDialog.alert("Please enter date and received by");
+                } else if (!date && receivedby){
+                    BootstrapDialog.alert("Please enter date");
+                } else if (date && !receivedby) {
+                    BootstrapDialog.alert("Please enter received by");
+                } else {
+                    $.ajax({
+                        url : 'returned/replace',
+                        type: "POST",
+                        data: {'return_id': id},
+                    });
+                    $('#replacemodal').modal('hide');
+                }
+            });
+        },
+    });
 }
 
 //select all

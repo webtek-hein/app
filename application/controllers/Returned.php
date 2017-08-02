@@ -44,7 +44,7 @@ class Returned extends CI_Controller {
                 $row[] = $list['reason'];
                 $row[] = $list['item_status'];
                 if($position === 'admin' || $position === 'custodian'){
-                    $row[] = "<button type=\"button\" class=\"open-modal-action\" onclick=\"repalce(". $list['return_id'] .")\">Replace</button>".
+                    $row[] = "<button type=\"button\" class=\"open-modal-action\" onclick=\"replace(". $list['return_id'] .")\">Replace</button>".
                         "<button type=\"button\" data-id = '$list[return_id]' class=\"open-modal-action\" data-toggle=\"modal\" data-target=\"#noaction\">No Action</button>";
                 }
                 $data[] = $row;
@@ -63,8 +63,8 @@ class Returned extends CI_Controller {
 
     public function replace()
     {
-        $firstname = ($this->session->userdata['logged_in']['firstname']);
-        $lastname = ($this->session->userdata['logged_in']['lastname']);
+        $firstname = $this->session->userdata['user_in']['firstname'];
+        $lastname = $this->session->userdata['user_in']['lastname'];
         $return_id = $this->input->post('return_id');
         $dept_id = $this->return_model->get_dept_id($return_id);
         $data =array(
@@ -78,5 +78,18 @@ class Returned extends CI_Controller {
         $uid = array('user_id' => $this->session->userdata['logged_in']['userid']);
         $this->return_model->return_replace($return_id, $data, $uid);
         header('Location: '. base_url() . 'returned');
+    }
+
+    public function get_quantity($id)
+    {
+        $quantity = $this->return_model->get_current_quantity($id);
+        $data = array();
+        foreach ($quantity as $list) {
+            $row = array();
+            $row[] = $list['quantity'];
+            $data[] = $row;
+        }
+        $list = array('data'=>$data);
+        echo json_encode($list);
     }
 }
