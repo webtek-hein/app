@@ -187,6 +187,10 @@ function subtract_quantity(id) {
 
 }
 
+function replace(id) {
+    //$('#replacemodal').modal('show');
+}
+
 //select all
 $(document).ready(function () {
     $('input[name=select-all]').change(function () {

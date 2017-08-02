@@ -44,7 +44,7 @@ class Returned extends CI_Controller {
                 $row[] = $list['reason'];
                 $row[] = $list['item_status'];
                 if($position === 'admin' || $position === 'custodian'){
-                    $row[] = "<button type=\"button\" data-id = '$list[return_id]' class=\"open-modal-action\" data-toggle=\"modal\" data-target=\"#replacemodal\">Replace</button>".
+                    $row[] = "<button type=\"button\" class=\"open-modal-action\" onclick=\"repalce(". $list['return_id'] .")\">Replace</button>".
                         "<button type=\"button\" data-id = '$list[return_id]' class=\"open-modal-action\" data-toggle=\"modal\" data-target=\"#noaction\">No Action</button>";
                 }
                 $data[] = $row;
