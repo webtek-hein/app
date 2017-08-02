@@ -81,7 +81,7 @@ class Inventory extends CI_Controller {
         $data = $this->InventoryModel->get_by_id($id);
         echo json_encode($data);
     }
-    /*
+    
     public function item_update()
     {
         $data = array(
@@ -93,7 +93,7 @@ class Inventory extends CI_Controller {
         $this->InventoryModel->item_update(array('item_id' => $this->input->post('item_id')), $data);
         echo json_encode(array("status" => TRUE));
     }
-*/
+
     public function additem()
     {
         $data1 = array(

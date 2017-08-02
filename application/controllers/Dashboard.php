@@ -109,7 +109,6 @@ class Dashboard extends CI_Controller
             foreach ($data as $received) {
                 echo $received['received'];
             }
-        }
-        
+        }   
     }
 }
