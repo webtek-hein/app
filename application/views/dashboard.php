@@ -93,6 +93,40 @@ if($position === 'admin'){
 }
 ?>
 
+<!-- ./col -->
+<div class="col-lg-3 col-xs-6">
+    <!-- small box -->
+    <div class="small-box bg-blue">
+        <div class="inner">
+            <h3 id="no_of_items">
+            </h3>
+            <p>Items</p>
+        </div>
+        <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+        </div>
+
+
+    </div>
+</div>
+<!-- ./col -->
+<!-- ./col -->
+<div class="col-lg-3 col-xs-6">
+    <!-- small box -->
+    <div class="small-box bg-orange">
+        <div class="inner">
+            <h3 id="expired_items">
+            </h3>
+            <p>Expired Items</p>
+        </div>
+        <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+        </div>
+
+
+    </div>
+</div>
+<!-- ./col -->
 
     <div class="container">
         <div id="items"></div>

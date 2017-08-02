@@ -20,6 +20,7 @@ class Dashboard extends CI_Controller
         $data['retitems'] = $this->inventorymodel->count_ret_items();
         $data['defitems'] = $this->inventorymodel->count_def_items();
         $data['pendingusers'] = $this->inventorymodel->count_pending_users();
+        $data['no_of_items'] = $this->inventorymodel->no_of_items();
 
         $this->load->view('templates/header');
         $this->load->view('dashboard', $data);
@@ -101,6 +102,14 @@ class Dashboard extends CI_Controller
         $data = $this->inventorymodel->count_rec_items_per_dept($deptid);
         foreach ($data as $received) {
             echo $received['received'];
+        }
+    }
+
+    public function no_of_items()
+    {
+        $data = $this->inventorymodel->no_of_items();
+        foreach ($data as $itemno) {
+            echo $itemno['item'];
         }
     }
 }

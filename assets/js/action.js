@@ -518,6 +518,7 @@ $(document).ready(function () {
     $( "#defect_items" ).load("dashboard/count_def_items");
     $( "#ret_items" ).load("dashboard/count_ret_items");
     $( "#pendingu" ).load("dashboard/count_pending_users");
+    $( "#no_of_items" ).load("dashboard/no_of_items");
 });
 
     $(function () {

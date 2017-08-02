@@ -426,4 +426,12 @@ $this->db->order_by('del_date');
         $query = $this->db->get();
         return $query->result_array();
     }
+
+
+    public function no_of_items(){
+        $this->db->select('count(item_id) as item');
+        $this->db->from('item');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
 }
