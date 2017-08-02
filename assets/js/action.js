@@ -463,7 +463,6 @@ function save()
 
 function return_selected_items() {
     var item_det_id = [];
-    var checked;
    
     $('#item_detail:checked').each(function () {
         item_det_id.push($(this).val());
@@ -481,13 +480,6 @@ function return_selected_items() {
         var reason =  $('textarea#reason').val().trim();
         var person =  $('input[name=person]').val();
 
-        if ($('input[name=defect]').is(":checked"))
-        {
-            checked = 'yes';
-        } else {
-            checked = 'no';
-        }
-
         var item_data;
 
         if (!reason && !person) {
@@ -497,7 +489,7 @@ function return_selected_items() {
         } else if (reason && !person) {
             BootstrapDialog.alert("Please enter return person");
         } else {
-            item_data = {'item_det_id':item_det_id,'reason':reason,'person':person, 'ischecked': checked};
+            item_data = {'item_det_id':item_det_id,'reason':reason,'person':person};
             $.ajax({
                 url : 'department/return_items',
                 type: "POST",

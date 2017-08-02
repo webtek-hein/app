@@ -6,7 +6,7 @@ class Return_model extends CI_Model {
         parent:: __construct();
     }
 
-    public function return_items_to_inventory($item, $person, $reason, $userid, $ischecked)
+    public function return_items_to_inventory($item, $person, $reason, $userid)
     {
         $quant = count($item);
         $this->db->select('dist_id');
@@ -30,17 +30,10 @@ class Return_model extends CI_Model {
             array_push($dist_ids, $dist_id['dist_id']);
         }
 
-        if ($ischecked == 'yes') {
-            $this->db->set('item_status','defective');
-            $this->db->where_in('item_det_id',$item);
-            $this->db->update('item_detail');
-        } else {
-            $this->db->set('item_status','returned');
-            $this->db->where_in('item_det_id',$item);
-            $this->db->update('item_detail');
-        }
+        $this->db->set('item_status','returned');
+        $this->db->where_in('item_det_id',$item);
+        $this->db->update('item_detail');
         
-
         $this->db->set('quantity','quantity+'.$quant,FALSE);
         $this->db->update('item');
 
