@@ -73,7 +73,8 @@ class Returned extends CI_Controller {
             'dept_id' => $dept_id,
             'receivedby' => $this->input->post('receivedby'),
             'account_id' => $this->input->post('AccountCode'),
-            'user_distribute' => $firstname . ' ' . $lastname
+            'user_distribute' => $firstname . ' ' . $lastname,
+            'item_usage' => $this->input->post('usage')
         );
         $uid = array('user_id' => $this->session->userdata['logged_in']['userid']);
         $this->return_model->return_replace($return_id, $data, $uid);
