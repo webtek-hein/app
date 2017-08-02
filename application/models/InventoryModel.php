@@ -393,10 +393,22 @@ $this->db->order_by('del_date');
 
     }
 
-    public function pie_graph(){
-         $this->db->distinct();
+    public function pie_graph_co(){
+        $this->db->distinct();
         $this->db->select('item_name,(quantity*unit_cost) as quantity');
         $this->db->join('item_detail','item_detail on item_detail.item_id = item.item_id','left');
+        $this->db->where('item.item_type', 'CO');
+        $this->db->order_by(2);
+        $this->db->limit(10);
+        $query = $this->db->get('item');
+        return $query->result_array(); 
+    }
+
+     public function pie_graph_mooe(){
+        $this->db->distinct();
+        $this->db->select('item_name,(quantity*unit_cost) as quantity');
+        $this->db->join('item_detail','item_detail on item_detail.item_id = item.item_id','left');
+        $this->db->where('item.item_type', 'MOOE');
         $this->db->order_by(2);
         $this->db->limit(10);
         $query = $this->db->get('item');
