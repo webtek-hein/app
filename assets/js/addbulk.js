@@ -31,10 +31,10 @@ function add_row()
      "<td id='supplier_row"+table_len+"'><input type='text' value='"+new_supplier+"' name='Item_Supplier[]' required='required' style='width:150px;'></td>" +
      "<td id='type_row"+table_len+"'>" +
      "<input type='text' list='typelist' value='"+new_type+"' name='Item_Type[]' required='required' style='width:80px;'>" +
-     " <datalist id='typelist'>" +
+     " <select id='typelist'>" +
      " <option value='CO'>CO</option>" +
      " <option value='MOOE'>MOOE</option>" +
-     " </datalist>" +
+     " </select>" +
      "</td>" +
      "<td id='deldate_row"+table_len+"'><input type='text' value='"+new_deldate+"' name='Item_Deliverydate[]' required='required' style='width:140px;'></td>" +
      "<td id='datereceived_row"+table_len+"'><input type='text' value='"+new_datereceived+"' name='Item_Datereceived[]' required='required' style='width:140px;'></td>" +
