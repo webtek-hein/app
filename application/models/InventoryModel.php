@@ -508,4 +508,13 @@ $this->db->order_by('del_date');
         $query = $this->db->get();
         return $query->result_array();
     }
+
+    public function count_returned_per_dept($deptid)
+    {
+        $this->db->select('COUNT(*) as total');
+        $this->db->from('logs.return_log');
+        $this->db->where('dept_id', $deptid);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
 }
