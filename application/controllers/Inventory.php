@@ -16,16 +16,9 @@ class Inventory extends CI_Controller {
         $data['accountcodes'] = $this->InventoryModel->get_ac_list();
         $data['item'] = $this->InventoryModel->get_inventory_list();
         $data['department'] = $this->InventoryModel->get_department_list();
-        if($position === 'department head'){
-            $this->load->view('department_head/templates/header');
-        }else{
-            $this->load->view('templates/header');
-        }
-        if($position === 'department head'){
-            $this->load->view('department_head/inventorylist');
-        }else{
-            $this->load->view('inventory');
-        }
+
+        $this->load->view('templates/header');
+        $this->load->view('inventory');
         $this->load->view('modals/additem', $data);
         $this->load->view('modals/addquantity', $data);
         $this->load->view('modals/subtractquantity', $data);
@@ -206,14 +199,15 @@ class Inventory extends CI_Controller {
 
         if($position === 'receiver' || $position === 'department head'){
             $details = $this->department_model->get_distributed_details($dept_id,$id);
-
         }else{
             $details = $this->InventoryModel->get_distrib_item_details($id);
         }
         $data = array();
         foreach ($details as $list) {
             $row = array();
-            $row[] = ' <input type="checkbox" name="item-det" id="item_detail" value='.$list['item_det_id'].'>';
+            if($position !== 'department head'){
+                $row[] = ' <input type="checkbox" name="item-det" id="item_detail" value='.$list['item_det_id'].'>';
+            }
             $row[] = $list['serial'];
             $row[] = $list['exp_date'];
             $row[] = $list['supplier'];

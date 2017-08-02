@@ -13,7 +13,6 @@
                     <table id="details" class="table table-bordered table-striped" width="100%">
                         <thead>
                         <tr>
-                            <th></th>
                             <th>Serial #</th>
                             <th>Expiration Date</th>
                             <th>Supplier</th>
@@ -28,7 +27,6 @@
                         </tbody>
                         <tfoot>
                         <tr>
-                            <th><input type="checkbox" name="select-all" ><label> Check all</label></th>
                             <th>Serial #</th>
                             <th>Expiration Date</th>
                             <th>Supplier</th>
@@ -41,7 +39,7 @@
                         </tfoot>
                     </table>
                     <?php $position = $this->session->userdata['logged_in']['position'];
-                    if($position !== 'department head'){
+                    if($position === 'receiver'){
                         echo '<button type="button" class="open-modal-action" onclick="return_selected_items()" ">Return Selected Item(s)</button>';
                     }
                     ?>

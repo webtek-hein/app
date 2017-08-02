@@ -26,7 +26,7 @@
                     <table id="details" class="table table-bordered table-striped" width="100%">
                         <thead>
                         <tr>
-                            <th></th>
+
                             <th>Serial #</th>
                             <th>Expiration Date</th>
                             <th>Supplier</th>
@@ -41,7 +41,7 @@
                         </tbody>
                         <tfoot>
                         <tr>
-                            <th><input type="checkbox" name="select-all" ><label> Check all</label></th>
+
                             <th>Serial #</th>
                             <th>Expiration Date</th>
                             <th>Supplier</th>

@@ -21,11 +21,7 @@ class Dashboard extends CI_Controller
         $data['defitems'] = $this->inventorymodel->count_def_items();
         $data['pendingusers'] = $this->inventorymodel->count_pending_users();
 
-        if ($position === 'department head') {
-            $this->load->view('department_head/templates/header');
-        } else {
-            $this->load->view('templates/header');
-        }
+        $this->load->view('templates/header');
         $this->load->view('dashboard', $data);
         $this->load->view('templates/footer');
     }

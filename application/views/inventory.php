@@ -6,9 +6,7 @@
                     <h3 class="box-title">Inventory</h3><br>
                    <?php
                    $position = $this->session->userdata['logged_in']['position'];
-                        if ($position === 'receiver'){
-
-                        }else{
+                        if ($position === 'custodian') {
                             echo '<button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Add item</button>';
                             echo '<button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal1">Add Bulk Items</button>';
                         }

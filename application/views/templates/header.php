@@ -15,7 +15,13 @@ if (isset($this->session->userdata['logged_in'])) {
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>GSO Inventory</title>
+    <?php
+    if($position !== 'admin' || $position !== 'custodian'){
+        echo '<title>'. $department.'</title>';
+    }else{
+        echo '<title> GSO Inventory</title>';
+    }
+    ?>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
@@ -58,6 +64,9 @@ if (isset($this->session->userdata['logged_in'])) {
             <!-- Sidebar toggle button-->
             <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
                 <span class="sr-only">Toggle navigation</span>
+            </a>
+            <a class='navbar-brand'>
+                <span><?= $department ?></span>
             </a>
             
             <div class="navbar-custom-menu">

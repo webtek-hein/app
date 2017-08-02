@@ -78,10 +78,14 @@ class Department extends CI_Controller {
     public function dist_details($item_id,$dept_id)
     {
     	$details = $this->department_model->get_distributed_details($item_id,$dept_id);
+    	$position = $this->session->userdata['logged_in']['position'];
+
         $data = array();
         foreach ($details as $list) {
             $row = array();
-            $row[] = ' <input type="checkbox" name ="item-det" id="item_detail" value='.$list['item_det_id'].'>';
+            if($position === 'receiver'){
+                $row[] = ' <input type="checkbox" name ="item-det" id="item_detail" value='.$list['item_det_id'].'>';
+            }
             $row[] = $list['serial'];
             $row[] = $list['exp_date'];
             $row[] = $list['supplier'];
