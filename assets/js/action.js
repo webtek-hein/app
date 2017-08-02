@@ -216,8 +216,10 @@ function replace(id) {
                         url : 'returned/replace',
                         type: "POST",
                         data: {'return_id': id, 'AccountCode': account, 'date': date, 'receivedby': receivedby},
+                        success: function() {
+                            $('#replacemodal').modal('hide');
+                        }
                     });
-                    $('#replacemodal').modal('hide');
                 }
             });
         },
