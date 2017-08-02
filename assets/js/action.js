@@ -622,7 +622,47 @@ $(document).ready(function() {
 
      });
 
+<!-- -->
+ $(function () {
+    var bar;
+    
+    $(document).ready(function () {
+         $.ajax({
+            url: 'dashboard/view_bar_graph',
+            type: 'POST',
+            async: true,
+            dataType: "JSON",
+            success: function(data){
+             createGraph(data);
+
+            } 
+    });
+    });
 $( function() {
     $( ".datepicker" ).datepicker().val('mm/dd/yyyy');
 
 } );
+
+(function () { 
+    $('#bar').highcharts({
+        bar: {
+            type: 'bar'
+        },
+        title: {
+            text: 'items'
+        },
+        xAxis: {
+            categories: [ 'ballpen', 'mug']
+        },
+        yAxis: {
+            title: {
+                text: 'items'
+            }
+        },
+        series: [{
+            name: 'Child ID: 1',
+            data: [1,2,1,0,2,0,0,1,0,0,0,0,7,]
+        }]
+    });
+}
+});

@@ -137,4 +137,8 @@ class Dashboard extends CI_Controller
             echo $expired['quantity'];
         }
     }
+
+        public function dview_bar_graph(){
+        
+    }
 }
