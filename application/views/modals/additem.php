@@ -59,11 +59,11 @@
 
         <tr>
           <td>Delivery Date</td>
-          <td><input type="date" class=""  name="datedelivered" required="required"></td>
+          <td><input type="date" name="datedelivered" required="required"></td>
         </tr>
         <tr>
           <td>Date Received</td>
-          <td><input type="date" class="" name="datereceived" required="required"></td>
+          <td><input type="date" name="datereceived" required="required"></td>
         </tr>
         <tr>
           <td>Unit</td>

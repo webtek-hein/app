@@ -15,7 +15,7 @@
                 <div id="wrapper">
                     <table align='center' id="data_table" class="table table-bordered table-striped">
                         <tr>
-
+                            <th style="width:150px;"></th>
                             <th style="width:150px;">Item Name</th>
                             <th style="width:150px;">Description</th>
                             <th style="width:150px;">Official Receipt</th>
@@ -31,6 +31,7 @@
                         </tr>
 
                         <tr>
+                            <td><input type="button" class="btn btn-success" onclick="add_row();" value="Add Row"></td>
                             <td><input type="text" id="new_itemname" name="Item_Name[]" required="required" style="width:150px;"></td>
                             <td><input type="text" id="new_description" name="Item_Description[]" required="required" style="width:150px;"></td>
                             <td><input type="text" id="new_or" name="Item_OfficialReceipt[]" required="required" style="width:150px;"></td>
@@ -43,8 +44,8 @@
                                     <option value="MOOE">MOOE</option>
                                 </select>
                             </td>
-                            <td><input type="text" class="datepicker" id="new_deldate" value="mm/dd/yyyy" name="Item_Deliverydate[]" required="required" style="width:140px;"></td>
-                            <td><input type="text" class="datepicker" id="new_datereceived" value="mm/dd/yyyy" name="Item_Datereceived[]" required="required" style="width:140px;"></td>
+                            <td><input type="date"  id="new_deldate" value="mm/dd/yyyy" name="Item_Deliverydate[]" required="required" style="width:140px;"></td>
+                            <td><input type="date"  id="new_datereceived" value="mm/dd/yyyy" name="Item_Datereceived[]" required="required" style="width:140px;"></td>
                             <td>
 
                                 <input type="text" id="new_unit" name="Item_Unit[]" list="list" required="required" style="width:80px; height: 25px;">
@@ -60,8 +61,7 @@
                                 </datalist>
                             </td>
                             <td><input type="number" min="0"step='any' id="new_cost" name="Item_Cost[]" required="required" style="width:80px;"></td>
-                            <td><input type="text" class="datepicker" id="new_expdate" value="mm/dd/yyyy" name="Item_Expirationdate[]" required="required" style="width:140px;"></td>
-                            <td><input type="button" class="btn btn-success" onclick="add_row();" value="Add Row"></td>
+                            <td><input type="date" class="datepicker" id="new_expdate" value="mm/dd/yyyy" name="Item_Expirationdate[]" required="required" style="width:140px;"></td>
                         </tr>
 
                     </table>

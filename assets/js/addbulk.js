@@ -22,6 +22,7 @@ function add_row()
  var table=document.getElementById("data_table");
  var table_len=(table.rows.length)-1;
  var row = table.insertRow(table_len).outerHTML="<tr id='row"+table_len+"'>" +
+     "<td> <input type='button' value='Delete' class='btn btn-danger' onclick='delete_row("+table_len+")'></td>"+
      "<td id='itemname_row"+table_len+"'><input type='text' value='"+new_itemname+"' name='Item_Name[]' required='required' style='width:150px;'></td>" +
      "<td id='description_row"+table_len+"'><input type='text' value='"+new_description+"' name='Item_Description[]' required='required' style='width:150px;'></td>" +
      "<td id='or_row"+table_len+"'><input type='text' value='"+new_or+"' name='Item_OfficialReceipt[]' required='required' style='width:150px;'></td>" +
@@ -51,8 +52,8 @@ function add_row()
      "</datalist>" +
      "</td>" +
      "<td id='cost_row"+table_len+"'><input type='text' min='0' value='"+new_cost+"' name='Item_Cost[]' required='required' style='width:80px;'></td>" +
-     "<td id='expdate_row"+table_len+"'><input type='text' value='"+new_expdate+"' name='Item_Expirationdate[]' required='required' style='width:140px;'></td>" +
-     "<td> <input type='button' value='Delete' class='btn btn-danger' onclick='delete_row("+table_len+")'></td></tr>";
+     "<td id='expdate_row"+table_len+"'><input type='text' value='"+new_expdate+"' name='Item_Expirationdate[]' required='required' style='width:140px;'></td>"+
+     "</tr>";
 
  document.getElementById("new_itemname").value="";
  document.getElementById("new_description").value="";
