@@ -122,6 +122,14 @@ class Dashboard extends CI_Controller
         }
     }
 
+    public function total_unit_cost()
+    {
+        $data = $this->inventorymodel->total_unit_cost();
+        foreach ($data as $unit_cost) {
+            echo $unit_cost['cost'];
+        }
+    }
+
         public function count_expiring_items()
     {
         $data = $this->inventorymodel->count_expiring_items();

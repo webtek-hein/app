@@ -100,7 +100,7 @@ if($position === 'admin'){
         <div class="inner">
             <h3 id="no_of_items">
             </h3>
-            <p>Items</p>
+            <p>Total Items</p>
         </div>
         <div class="icon">
             <i class="ion ion-stats-bars"></i>
@@ -110,6 +110,19 @@ if($position === 'admin'){
     </div>
 </div>
 <!-- ./col -->
+<div class="col-lg-3 col-xs-6">
+    <!-- small box -->
+    <div class="small-box bg-purple">
+        <div class="inner">
+            <h3 id="total_unit_cost">
+            </h3>
+            <p>Total Cost</p>
+        </div>
+        <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+        </div>
+    </div>
+</div>
 <!-- ./col -->
 <div class="col-lg-3 col-xs-6">
     <!-- small box -->

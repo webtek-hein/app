@@ -435,6 +435,13 @@ $this->db->order_by('del_date');
         return $query->result_array();
     }
 
+    public function total_unit_cost(){
+        $this->db->select('sum(unit_cost) as cost');
+        $this->db->from('item_detail');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
     public function count_expiring_items()
     {
         $query = $this->db->query("SELECT COUNT(*) as quantity FROM item_detail WHERE exp_date BETWEEN NOW() AND DATE_ADD(NOW(), INTERVAL 7 DAY)");
