@@ -202,6 +202,7 @@ function replace(id) {
             }
             $('#replacemodal').modal('show');
             $('#save1').on('click', function () {
+                var account = $('select[name=AccountCode]').val();
                 var date =  $('input[name=date]').val();
                 var receivedby =  $('input[name=receivedby]').val();
                 if (!date && !receivedby) {
@@ -214,7 +215,7 @@ function replace(id) {
                     $.ajax({
                         url : 'returned/replace',
                         type: "POST",
-                        data: {'return_id': id},
+                        data: {'return_id': id, 'AccountCode': account, 'date': date, 'receivedby': receivedby},
                     });
                     $('#replacemodal').modal('hide');
                 }
