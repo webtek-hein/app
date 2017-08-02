@@ -269,8 +269,8 @@ class InventoryModel extends CI_Model {
 
     public function get_distrib_item_details($item_id)
     {
-        $where = "item_detail.item_id = $item_id AND item_detail.dist_id IS null OR (item_detail.dist_id IS NOT NULL AND item_detail.item_status = 'returned')";
-        $this->db->SELECT("item.quantity,item_det_id, serial, exp_date, supplier, official_receipt_no, del_date, date_rec, item_detail.receivedby AS receivedby, unit_cost, distribution.dist_id, item_detail.dist_id, item.item_id, item_detail.item_id, item_detail.item_status as item_status")
+        $where = "item_detail.item_id = $item_id AND item_detail.dist_id IS null OR item_detail.dist_id IS NOT NULL AND item_detail.item_status = 'returned'";
+        $this->db->SELECT("item.quantity,item_det_id, serial, exp_date, supplier, official_receipt_no, del_date, date_rec, item_detail.receivedby AS receivedby, unit_cost, distribution.dist_id, item_detail.dist_id, item.item_id, item_detail.item_id, if(exp_date = DATE(now()),'Expired',item_status) as item_status")
                 ->join('distribution','distribution.dist_id = item_detail.dist_id','left')
                 ->join('item','item.item_id = item_detail.item_id')
                 ->where($where);

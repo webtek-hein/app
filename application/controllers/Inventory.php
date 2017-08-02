@@ -221,8 +221,8 @@ class Inventory extends CI_Controller {
                 $row[] = 'In Stock';
             } else if ($list['item_status'] == 'returned') {
                 $row[] = 'Returned';
-            } else if ($list['exp_date'] < NOW()) {
-                $row[] = 'Expired';
+            }else{
+                $row[] = $list['item_status'];
             }
             $data[] = $row;
         }
