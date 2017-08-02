@@ -356,9 +356,15 @@ function save()
 //form validations
     $(document).ready(function () {
 
+        $( "input[type=number]" ).on("keypress paste",function () {
+            var x = event.charCode;
+            if(x === 101 || x === 45 || x === 43 || x === 69){
+                return false;
+            }
+        });
         $( "input[name=Item_Quantity]" ).on("keypress paste",function () {
             var x = event.charCode;
-            if(x === 101 || x === 46 || x === 45 || x === 43 || x === 69){
+            if(x=== 46){
                 return false;
             }
         });
@@ -368,12 +374,7 @@ function save()
                 return false;
             }
         });
-        $( "input[id=new_qty]" ).on("keypress paste",function () {
-            var x = event.charCode;
-            if(x === 101 || x === 46 || x === 45 || x === 43 || x === 69){
-                return false;
-            }
-        });
+
         $( "input[id=new_cost]" ).on("keypress paste",function () {
             var x = event.charCode;
             if(x === 101 ||  x === 45 || x === 43 || x === 69){

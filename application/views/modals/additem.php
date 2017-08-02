@@ -29,11 +29,11 @@
 
         <tr>
           <td>Official Receipt</td>
-          <td><input type="text" class="InputBox" name="OfficialReceipt" value="" required="required"></td>
+          <td><input class="InputBox" name="OfficialReceipt" value="" required="required"></td>
         </tr>
 	<tr>
           <td>Received By</td>
-          <td><input type="text" pattern="[A-Za-z]"  class="InputBox" name="ReceivedBy" value="" required="required"></td>
+          <td><input type="text" class="InputBox" name="ReceivedBy" value="" required="required"></td>
         </tr>
 
         <tr>
