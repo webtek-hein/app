@@ -216,13 +216,15 @@ function get_item_details(id) {
        $.each($('#details tr input[name=item-det]'),function () {
                // reset button
                $('input[type=reset]').on('click', function () {
-                   $('input[type=number]').val('').change();
+                   $.each($('#details tr input[name=item-det]:checked'), function () {
+                       $(this).parent().siblings(':first').text('');
+                   });
                });
 
            $.each($('#details tr input[name=item-det]:checked'),function () {
                if($(this).parent().siblings(':first').text()=='')
                {
-                   $('input[type=number]').on('keyup change focus', function () {
+                   $('input[name=input]').on('keyup change focus', function () {
                        serial = ($(this).val());
                                $.each($('#details tr input[name=item-det]:checked'), function () {
                                    $(this).parent().siblings(':first').text(serial);
