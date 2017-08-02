@@ -543,6 +543,6 @@ $(document).ready(function() {
      });
 
 $( function() {
-    $( ".datepicker" ).datepicker();
+    $( ".datepicker" ).datepicker().val('mm/dd/yyyy');
 
 } );
