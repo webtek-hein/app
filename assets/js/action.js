@@ -197,6 +197,7 @@ function replace(id) {
             if (data.data <= 0) {
                 $('select[name=AccountCode]').prop("disabled", true);
                 $('input[name=date]').prop("disabled", true);
+                $('input[name=usage]').prop("disabled", true);
                 $('input[name=receivedby]').prop("disabled", true);
                 $('#save1').prop("disabled", true);
             }
@@ -204,18 +205,27 @@ function replace(id) {
             $('#save1').on('click', function () {
                 var account = $('select[name=AccountCode]').val();
                 var date =  $('input[name=date]').val();
+                var usage = $('input[name=usage]').val();
                 var receivedby =  $('input[name=receivedby]').val();
-                if (!date && !receivedby) {
+                if (!date && !receivedby && !usage) {
+                    BootstrapDialog.alert("Please enter date, usage, and received by");
+                } else if (!date && !receivedby && usage){
                     BootstrapDialog.alert("Please enter date and received by");
-                } else if (!date && receivedby){
+                } else if (date && !receivedby && !usage) {
+                    BootstrapDialog.alert("Please enter received by and usage");
+                } else if (!date && receivedby && !usage) {
+                    BootstrapDialog.alert("Please enter date and usage");
+                } else if (!date && receivedby && usage) {
                     BootstrapDialog.alert("Please enter date");
-                } else if (date && !receivedby) {
+                } else if (date && !receivedby && usage) {
                     BootstrapDialog.alert("Please enter received by");
+                } else if (date && receivedby && !usage) {
+                    BootstrapDialog.alert("Please enter usage");
                 } else {
                     $.ajax({
                         url : 'returned/replace',
                         type: "POST",
-                        data: {'return_id': id, 'AccountCode': account, 'date': date, 'receivedby': receivedby},
+                        data: {'return_id': id, 'AccountCode': account, 'date': date, 'receivedby': receivedby, 'usage': usage},
                         success: function() {
                             $('#replacemodal').modal('hide');
                         }

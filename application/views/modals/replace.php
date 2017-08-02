@@ -36,6 +36,10 @@
                         <td>Date of Distribution</td>
                         <td><input type="date" class="date" name="date" value=""></td>
                     </tr>
+                     <tr>
+                        <td>Usage</td>
+                        <td><input type="text" class="usage" name="usage" value=""></td>
+                    </tr>
                     <tr>
                         <td>Received By</td>
                         <td><input type="text" class="usage" name="receivedby" value=""></td>
