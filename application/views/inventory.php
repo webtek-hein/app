@@ -8,7 +8,7 @@
                    $position = $this->session->userdata['logged_in']['position'];
                         if ($position === 'custodian') {
                             echo '<button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Add item</button>';
-                            echo '<button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal1">Add Bulk Items</button>';
+                            echo '<button style="margin: 5px 5px 5px 5px" type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal1">Add Bulk Items</button>';
                         }
                         ?>
 
