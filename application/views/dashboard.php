@@ -9,12 +9,6 @@
 </section><br>
 
 
-    <div class="container">
-
-
-                    <div id="items"></div>
-    </div><!--end container -->
-
 <?php $position1 = $this->session->userdata['logged_in']['position'];
     if($position1 === 'department head' || $position1 === 'receiver'){
         echo "<div class='col-lg-3 col-xs-6'>";
@@ -100,3 +94,6 @@ if($position === 'admin'){
 ?>
 
 
+    <div class="container">
+        <div id="items"></div>
+    </div><!--end container -->
