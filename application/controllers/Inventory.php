@@ -112,15 +112,16 @@ class Inventory extends CI_Controller {
         $data2 = array(
             'official_receipt_no' => $this->input->post('OfficialReceipt'),
             'receivedby' => $this->input->post('ReceivedBy'),
-            'exp_date' => $this->input->post('ExpirationDate'),
-            'del_date' => $this->input->post('datedelivered'),
-            'date_rec' => $this->input->post('datereceived'),
+            'exp_date' => date('Y-m-d', strtotime($this->input->post('ExpirationDate'))),
+            'del_date' => date('Y-m-d', strtotime($this->input->post('datedelivered'))),
+            'date_rec' => date('Y-m-d', strtotime($this->input->post('datereceived'))),
             'supplier' => $this->input->post('Supplier_Name'),
             'unit_cost' => $this->input->post('Cost')
         );
+        print_r($data2);
         $data3 = array('user_id' => $this->session->userdata['logged_in']['userid']);
         $this->InventoryModel->add_item($data1,$data2,$data3);
-        header('Location: '. base_url() . 'inventory');
+       // header('Location: '. base_url() . 'inventory');
     }
 
     public function addbulk()

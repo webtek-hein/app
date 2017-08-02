@@ -59,11 +59,11 @@
 
         <tr>
           <td>Delivery Date</td>
-          <td><input type="date" class="datereceived" name="datedelivered" value="" required="required"></td>
+          <td><input type="text" class="datepicker"  name="datedelivered" required="required"></td>
         </tr>
         <tr>
           <td>Date Received</td>
-          <td><input type="date" class="datereceived" name="datereceived" value="" required="required"></td>
+          <td><input type="text" class="datepicker" name="datereceived" required="required"></td>
         </tr>
         <tr>
           <td>Unit</td>
@@ -87,7 +87,7 @@
         </tr>
         <tr>
           <td>Expiration Date</td>
-          <td><input type="date" class="expdate" name="ExpirationDate" value="" required="required"></td>
+          <td><input type="text" class="datepicker"  name="ExpirationDate"  required="required"></td>
         </tr>
       </table> 
         </div>

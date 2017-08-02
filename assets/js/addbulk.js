@@ -35,8 +35,8 @@ function add_row()
      " <option value='MOOE'>MOOE</option>" +
      " </datalist>" +
      "</td>" +
-     "<td id='deldate_row"+table_len+"'><input type='date' value='"+new_deldate+"' name='Item_Deliverydate[]' required='required' style='width:140px;'></td>" +
-     "<td id='datereceived_row"+table_len+"'><input type='date' value='"+new_datereceived+"' name='Item_Datereceived[]' required='required' style='width:140px;'></td>" +
+     "<td id='deldate_row"+table_len+"'><input type='text' value='"+new_deldate+"' name='Item_Deliverydate[]' required='required' style='width:140px;'></td>" +
+     "<td id='datereceived_row"+table_len+"'><input type='text' value='"+new_datereceived+"' name='Item_Datereceived[]' required='required' style='width:140px;'></td>" +
      "<td id='unit_row"+table_len+"'>" +
      "<input type='text' list='unitlist' value='"+new_unit+"' name='Item_Unit[]' required='required' style='width:80px;'>" +
      "<datalist id='unitlist'> " +
@@ -51,7 +51,7 @@ function add_row()
      "</datalist>" +
      "</td>" +
      "<td id='cost_row"+table_len+"'><input type='text' min='0' value='"+new_cost+"' name='Item_Cost[]' required='required' style='width:80px;'></td>" +
-     "<td id='expdate_row"+table_len+"'><input type='date' value='"+new_expdate+"' name='Item_Expirationdate[]' required='required' style='width:140px;'></td>" +
+     "<td id='expdate_row"+table_len+"'><input type='text' value='"+new_expdate+"' name='Item_Expirationdate[]' required='required' style='width:140px;'></td>" +
      "<td> <input type='button' value='Delete' class='btn btn-danger' onclick='delete_row("+table_len+")'></td></tr>";
 
  document.getElementById("new_itemname").value="";
@@ -61,9 +61,9 @@ function add_row()
  document.getElementById("new_qty").value="";
  document.getElementById("new_supplier").value="";
  document.getElementById("new_type").value="";
- document.getElementById("new_deldate").value="";
- document.getElementById("new_datereceived").value="";
+ document.getElementById("new_deldate").value="mm/dd/yyyy";
+ document.getElementById("new_datereceived").value="mm/dd/yyyy";
  document.getElementById("new_unit").value="";
  document.getElementById("new_cost").value="";
- document.getElementById("new_expdate").value="";
+ document.getElementById("new_expdate").value="mm/dd/yyyy";
 }

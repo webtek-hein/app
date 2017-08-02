@@ -38,13 +38,13 @@
                             <td><input type="number" min=0 id="new_qty" name="Item_Quantity[]" required="required" style="width:80px;"></td>
                             <td><input type="text" id="new_supplier" name="Item_Supplier[]" required="required" style="width:150px;"></td>
                             <td>
-                                <select id="type" list="typelist" name="Type" required="required">
+                                <select id="new_type" list="typelist" name="Type" required="required">
                                     <option selected="true" value="CO">CO</option>
                                     <option value="MOOE">MOOE</option>
                                 </select>
                             </td>
-                            <td><input type="date" id="new_deldate" name="Item_Deliverydate[]" required="required" style="width:140px;"></td>
-                            <td><input type="date" id="new_datereceived" name="Item_Datereceived[]" required="required" style="width:140px;"></td>
+                            <td><input type="text" class="datepicker" id="new_deldate" value="mm/dd/yyyy" name="Item_Deliverydate[]" required="required" style="width:140px;"></td>
+                            <td><input type="text" class="datepicker" id="new_datereceived" value="mm/dd/yyyy" name="Item_Datereceived[]" required="required" style="width:140px;"></td>
                             <td>
 
                                 <input type="text" id="new_unit" name="Item_Unit[]" list="list" required="required" style="width:80px; height: 25px;">
@@ -60,7 +60,7 @@
                                 </datalist>
                             </td>
                             <td><input type="number" min="0"step='any' id="new_cost" name="Item_Cost[]" required="required" style="width:80px;"></td>
-                            <td><input type="date" id="new_expdate" name="Item_Expirationdate[]" required="required" style="width:140px;"></td>
+                            <td><input type="text" class="datepicker" id="new_expdate" value="mm/dd/yyyy" name="Item_Expirationdate[]" required="required" style="width:140px;"></td>
                             <td><input type="button" class="btn btn-success" onclick="add_row();" value="Add Row"></td>
                         </tr>
 
