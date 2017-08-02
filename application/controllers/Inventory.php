@@ -217,6 +217,13 @@ class Inventory extends CI_Controller {
             $row[] = $list['date_rec'];
             $row[] = $list['receivedby'];
             $row[] =  "&#8369; ".number_format((int)$list['unit_cost'],2)."<br>";
+            if ($list['item_status'] == 'in_stock') {
+                $row[] = 'In Stock';
+            } else if ($list['item_status'] == 'returned') {
+                $row[] = 'Returned';
+            } else if ($list['exp_date'] < NOW()) {
+                $row[] = 'Expired';
+            }
             $data[] = $row;
         }
         $list = array('data'=>$data);

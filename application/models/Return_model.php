@@ -90,7 +90,7 @@ class Return_model extends CI_Model {
         $itemid = intval($row1['item_id']);
 
         //get item quantity
-        $where = 'serial is not null and dist_id is null and item_status != "defective"';
+        $where = 'serial is not null and dist_id is null and item_status != "defective" AND exp_date >= NOW()';
         $this->db->select('count(*) as quantity');
         $this->db->from('inventory.item_detail');
         $this->db->where($where);
@@ -107,18 +107,19 @@ class Return_model extends CI_Model {
             //insert in distribution
             $this->db->insert('distribution', $data);
             $distid = $this->db->insert_id();
-         /*   //update item_detail
+            //update item_detail
             $this->db->where('item_detail.item_id',$itemid);
             $this->db->where('item_detail.dist_id',null,false);
             $this->db->where('serial !=',null,false);
             $this->db->where('item_status !=','defective');
+            $this->db->where('exp_date >=','NOW()', false);
             $this->db->limit(1);
             $this->db->set('item_detail.dist_id',$distid);
             $this->db->update('inventory.item_detail');
             $this->db->join('logs.decrease_log','item_detail.item_det_id = logs.decrease_log.item_id');
             //update user in decrease_log
             $this->db->where('user_id', null,false);
-            $this->db->update('logs.decrease_log',$uid);*/
+            $this->db->update('logs.decrease_log',$uid);
         }
     }
 
@@ -139,7 +140,7 @@ class Return_model extends CI_Model {
         $itemid = intval($row1['item_id']);
 
         //get item quantity
-        $where = 'serial is not null and dist_id is null and item_status != "defective"';
+        $where = 'serial is not null and dist_id is null and item_status != "defective" AND exp_date >= NOW()';
         $this->db->select('count(*) as quantity');
         $this->db->from('inventory.item_detail');
         $this->db->where($where);
