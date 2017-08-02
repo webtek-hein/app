@@ -19,7 +19,7 @@
 
                  <table border="0" width="500" align="center" class="table">
                     <tr>
-                        <p> Current stock of this item is <span id="stock"></span></p>
+                        <p>Available stock of this item is <span id="stock"></span></p>
                     </tr>
                     <tr>
                         <td>Account Code</td>
@@ -35,6 +35,10 @@
                     <tr>
                         <td>Date of Distribution</td>
                         <td><input type="date" class="date" name="date" value=""></td>
+                    </tr>
+                     <tr>
+                        <td>Usage</td>
+                        <td><input type="text" class="usage" name="usage" value=""></td>
                     </tr>
                     <tr>
                         <td>Received By</td>

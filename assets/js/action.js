@@ -197,6 +197,7 @@ function replace(id) {
             if (data.data <= 0) {
                 $('select[name=AccountCode]').prop("disabled", true);
                 $('input[name=date]').prop("disabled", true);
+                $('input[name=usage]').prop("disabled", true);
                 $('input[name=receivedby]').prop("disabled", true);
                 $('#save1').prop("disabled", true);
             }
@@ -204,18 +205,27 @@ function replace(id) {
             $('#save1').on('click', function () {
                 var account = $('select[name=AccountCode]').val();
                 var date =  $('input[name=date]').val();
+                var usage = $('input[name=usage]').val();
                 var receivedby =  $('input[name=receivedby]').val();
-                if (!date && !receivedby) {
+                if (!date && !receivedby && !usage) {
+                    BootstrapDialog.alert("Please enter date, usage, and received by");
+                } else if (!date && !receivedby && usage){
                     BootstrapDialog.alert("Please enter date and received by");
-                } else if (!date && receivedby){
+                } else if (date && !receivedby && !usage) {
+                    BootstrapDialog.alert("Please enter received by and usage");
+                } else if (!date && receivedby && !usage) {
+                    BootstrapDialog.alert("Please enter date and usage");
+                } else if (!date && receivedby && usage) {
                     BootstrapDialog.alert("Please enter date");
-                } else if (date && !receivedby) {
+                } else if (date && !receivedby && usage) {
                     BootstrapDialog.alert("Please enter received by");
+                } else if (date && receivedby && !usage) {
+                    BootstrapDialog.alert("Please enter usage");
                 } else {
                     $.ajax({
                         url : 'returned/replace',
                         type: "POST",
-                        data: {'return_id': id, 'AccountCode': account, 'date': date, 'receivedby': receivedby},
+                        data: {'return_id': id, 'AccountCode': account, 'date': date, 'receivedby': receivedby, 'usage': usage},
                         success: function() {
                             $('#replacemodal').modal('hide');
                         }
@@ -443,7 +453,7 @@ function save()
         });
         $('input[type=text]').keypress(function () {
             var x = event.charCode;
-            if(x >= 0 && x <= 64){
+            if(x >= 0 && x <= 64 && x != 32){
                 return false;
             }
         });
@@ -453,7 +463,6 @@ function save()
 
 function return_selected_items() {
     var item_det_id = [];
-    var checked;
    
     $('#item_detail:checked').each(function () {
         item_det_id.push($(this).val());
@@ -471,13 +480,6 @@ function return_selected_items() {
         var reason =  $('textarea#reason').val().trim();
         var person =  $('input[name=person]').val();
 
-        if ($('input[name=defect]').is(":checked"))
-        {
-            checked = 'yes';
-        } else {
-            checked = 'no';
-        }
-
         var item_data;
 
         if (!reason && !person) {
@@ -487,7 +489,7 @@ function return_selected_items() {
         } else if (reason && !person) {
             BootstrapDialog.alert("Please enter return person");
         } else {
-            item_data = {'item_det_id':item_det_id,'reason':reason,'person':person, 'ischecked': checked};
+            item_data = {'item_det_id':item_det_id,'reason':reason,'person':person};
             $.ajax({
                 url : 'department/return_items',
                 type: "POST",

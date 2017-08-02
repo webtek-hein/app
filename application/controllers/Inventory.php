@@ -81,7 +81,7 @@ class Inventory extends CI_Controller {
         $data = $this->InventoryModel->get_by_id($id);
         echo json_encode($data);
     }
-    /*
+    
     public function item_update()
     {
         $data = array(
@@ -93,7 +93,7 @@ class Inventory extends CI_Controller {
         $this->InventoryModel->item_update(array('item_id' => $this->input->post('item_id')), $data);
         echo json_encode(array("status" => TRUE));
     }
-*/
+
     public function additem()
     {
         $data1 = array(
@@ -206,7 +206,7 @@ class Inventory extends CI_Controller {
         $data = array();
         foreach ($details as $list) {
             $row = array();
-            if($position !== 'department head'){
+            if($position === 'custodian' || $position === 'receiver'){
                 $row[] = ' <input type="checkbox" name="item-det" id="item_detail" value='.$list['item_det_id'].'>';
             }
             $row[] = $list['serial'];

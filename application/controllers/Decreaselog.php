@@ -2,12 +2,13 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Decreaselog extends CI_Controller {
-			public function __construct()
+	
+    public function __construct()
     {
       	parent::__construct();
         $this->load->model('log_model');
-
     }
+
 	public function index()
 	{
         $this->load->view('templates/header');
@@ -16,6 +17,7 @@ class Decreaselog extends CI_Controller {
 		$this->load->view('templates/footer');
 
 	}
+
     public function decrease_log_list()
     {
         $position = $this->session->userdata['logged_in']['position'];
@@ -39,7 +41,7 @@ class Decreaselog extends CI_Controller {
             if($position === 'admin') {
                 $row[] = $list['user'];
             }
-            $row[] = "<button clasks=\"btn btn-info open-modal-action fa fa-info\" onclick=\"get_decreaselog_details(". $list['dist_id'] .")\"></button> ";
+            $row[] = "<button class=\"btn btn-info open-modal-action fa fa-info\" onclick=\"get_decreaselog_details(". $list['dist_id'] .")\"></button> ";
 
             $data[] = $row;
 
@@ -47,6 +49,7 @@ class Decreaselog extends CI_Controller {
         $list = array('data'=>$data);
         echo json_encode($list);
     }
+
     public function decreaselog_details($dist_id){
         $details = $this->log_model->get_decrease_details($dist_id);
         $data = array();
@@ -65,5 +68,4 @@ class Decreaselog extends CI_Controller {
         $list = array('data'=>$data);
         echo json_encode($list);
     }
-
 }

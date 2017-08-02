@@ -20,32 +20,25 @@
 		<?php echo form_open('signup'); ?>
 			<table border="0" width="500" align="center" class="table">
 				<tr>
-					<td>First Name</td>
-					<td><input type="text" class="InputBox" name="FirstName" required="required" value="<?php echo isset($_POST["FirstName"]) ? $_POST["FirstName"] : ''; ?>" placeholder= "John"></td>
+					<td><input type="text" class="InputBox" name="FirstName" required="required" value="<?php echo isset($_POST["FirstName"]) ? $_POST["FirstName"] : ''; ?>" placeholder= "First Name"></td>
 				</tr>
 				<tr>
-					<td>Last Name</td>
-					<td><input type="text" class="InputBox" name="LastName" required="required" value="<?php echo isset($_POST["LastName"]) ? $_POST["LastName"] : ''; ?>" placeholder= "Wick"></td>
+					<td><input type="text" class="InputBox" name="LastName" required="required" value="<?php echo isset($_POST["LastName"]) ? $_POST["LastName"] : ''; ?>" placeholder= "Last Name"></td>
 				</tr>
 				<tr>
-					<td>Email</td>
-					<td><input type="email" class="InputBox" name="Email" required="required" value="<?php echo isset($_POST["Email"]) ? $_POST["Email"] : ''; ?>" placeholder= "johnwick@domain.com"></td>
+					<td><input type="email" class="InputBox" name="Email" required="required" value="<?php echo isset($_POST["Email"]) ? $_POST["Email"] : ''; ?>" placeholder= "Email"></td>
 				</tr>
 				<tr>
-					<td>Contact no.</td>
-					<td><input type="text" class="InputBox" pattern="^(09|\+639)\d{9}$" title="ex 09xxxxxxxxx" name="contactno" required="required" value="<?php echo isset($_POST["contactno"]) ? $_POST["contactno"] : ''; ?>" placeholder= "09012345678"></td>
+					<td><input type="text" class="InputBox" pattern="^(09|\+639)\d{9}$" title="ex 09xxxxxxxxx" name="contactno" required="required" value="<?php echo isset($_POST["contactno"]) ? $_POST["contactno"] : ''; ?>" placeholder= "Contact No."></td>
 				</tr>
 				<tr>
-					<td>Username</td>
-					<td><input type="text" pattern="^[A-Za-z0-9_-]{4,15}$" title="Username must be more than 4 characters and not more than 15 characters." class="InputBox" name="Username" required="required" value="<?php echo isset($_POST["Username"]) ? $_POST["Username"] : ''; ?>" placeholder= "johnwick"></td>
+					<td><input type="text" pattern="^[A-Za-z0-9_-]{4,15}$" title="Username must be more than 4 characters and not more than 15 characters." class="InputBox" name="Username" required="required" value="<?php echo isset($_POST["Username"]) ? $_POST["Username"] : ''; ?>" placeholder= "Username"></td>
 				</tr>
 				<tr>
-					<td>Password</td>
-					<td><input type="password" class="InputBox" name="Password" value="" required="required" placeholder= "******"></td>
+					<td><input type="password" class="InputBox" name="Password" value="" required="required" placeholder= "Password"></td>
 				</tr>
 				<tr>
-					<td>Confirm Password</td>
-					<td><input type="password" class="InputBox" name="confirm_password" value="" required="required" placeholder= "******"></td>
+					<td><input type="password" class="InputBox" name="confirm_password" value="" required="required" placeholder= "Repeat password"></td>
 				</tr>
 				<tr>
 				<script>
@@ -57,7 +50,6 @@
    						}
 					}
 				</script>
-					<td>Position</td>
 					<td>
 						<select id="type" name="type"  onclick='select_dept()' required>
 						<option selected="true" disabled>--Choose Position--</option>
@@ -80,8 +72,8 @@
         		</td>
 				</tr>
 				<tr>
-					<td><input type="button" class="btn btn-primary btn-block btn-large" name="cancel" value="Cancel" onclick=" relocate_home()"></td>
-					<td><input type="submit" class="btn btn-primary btn-block btn-large" name="createaccount" value="Register" ></td>
+					<td><input type="button" class="btn btn-primary btn-block btn-small" name="cancel" value="Cancel" onclick=" relocate_home()"></td>
+					<td><input type="submit" class="btn btn-primary btn-block btn-small" name="createaccount" value="Register" ></td>
 				</tr>
 				
 			</table>

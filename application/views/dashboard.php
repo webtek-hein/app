@@ -20,7 +20,7 @@
         echo "<div class='icon'>";
         echo "<i class='ion ion-bag'></i>";
         echo "</div>";
-        echo "<span><button><a class='small-box-footer' href='/app/inventory>More Details";
+        echo "<span><button><a class='small-box-footer' href='/app/inventory'>More Details";
         echo "<i class='fa fa-arrow-circle-right'> </i></a></button> </span>";
         echo "</div>";
         echo "</div>";

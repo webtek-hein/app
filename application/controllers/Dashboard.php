@@ -31,7 +31,11 @@ class Dashboard extends CI_Controller
     {
         $data = $this->inventorymodel->count_received_item();
         foreach ($data as $item) {
-            echo $item['quantity'];
+            if ($item['quantity'] == null) {
+                echo "0";
+            } else {
+                echo $item['quantity'];
+            }
         }
     }
 
@@ -100,9 +104,13 @@ class Dashboard extends CI_Controller
     {
         $deptid = $this->session->userdata['logged_in']['dept_id'];
         $data = $this->inventorymodel->count_rec_items_per_dept($deptid);
-        foreach ($data as $received) {
-            echo $received['received'];
-        }
+        if (empty($data)) {
+            echo "0";
+        } else {
+            foreach ($data as $received) {
+                echo $received['received'];
+            }
+        }   
     }
 
     public function no_of_items()
