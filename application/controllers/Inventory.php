@@ -144,6 +144,7 @@ class Inventory extends CI_Controller {
         header('Location: '. base_url() . 'inventory');
     }
 
+
     public function addquantity()
     {
         $item_id=$this->input->POST('item_id');
