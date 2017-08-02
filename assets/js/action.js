@@ -526,7 +526,7 @@ $(document).ready(function () {
     $( "#pendingu" ).load("dashboard/count_pending_users");
     $( "#no_of_items" ).load("dashboard/no_of_items");
     $( "#total_unit_cost" ).load("dashboard/total_unit_cost");
-    $( "#expired_items" ).load("dashboard/count_expiring_items");
+    $( "#expired_items" ).load("dashboard/count_expired_items");
 });
 
     $(function () {

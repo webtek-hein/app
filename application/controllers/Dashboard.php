@@ -110,9 +110,9 @@ class Dashboard extends CI_Controller
         }
     }
 
-        public function count_expiring_items()
+    public function count_expired_items()
     {
-        $data = $this->inventorymodel->count_expiring_items();
+        $data = $this->inventorymodel->count_expired_items();
         foreach ($data as $expired) {
             echo $expired['quantity'];
         }
