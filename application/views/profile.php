@@ -93,7 +93,7 @@ function relocate_home()
                     <label for="inputName" class="col-sm-2 control-label" >Contact no</label>
 
                     <div class="col-sm-9">
-                      <input type="text" required="required" pattern="^(09|\+639)\d{9}$" class="form-control" id="inputName" name="contact_no" value="<?php echo $contact_no ?>">
+                      <input type="number" required="required" pattern="^(09|\+639)\d{9}$" class="form-control" id="inputName" name="contact_no" value="<?php echo $contact_no ?>">
                     </div>
                   </div>
     <div class="form-group">
