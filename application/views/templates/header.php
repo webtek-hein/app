@@ -55,9 +55,22 @@ if (isset($this->session->userdata['logged_in'])) {
         <!-- Logo -->
         <a href="#" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
-            <span class="logo-mini"><b>GSO</b></span>
+             <?php
+                if($position == 'department head'){
+                    echo '<span class="logo-mini"><b>DH</b></span>';
+                }else{
+                    echo '<span class="logo-mini"><b>GSO</b></span>';
+                }
+             ?>   
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><b>GSO</b>Inventory</span>
+             <?php
+                if($position == 'department head'){
+                    echo '<span class="logo-lg"><b>DH</b>Inventory</span>';
+                }else{
+                    echo '<span class="logo-lg"><b>GSO</b>Inventory</span>';
+                }
+             ?>   
+            
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top">
