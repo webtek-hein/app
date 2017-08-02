@@ -115,7 +115,7 @@ class Inventory extends CI_Controller {
         print_r($data2);
         $data3 = array('user_id' => $this->session->userdata['logged_in']['userid']);
         $this->InventoryModel->add_item($data1,$data2,$data3);
-       // header('Location: '. base_url() . 'inventory');
+        header('Location: '. base_url() . 'inventory');
     }
 
     public function addbulk()
