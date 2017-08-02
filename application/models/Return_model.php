@@ -84,7 +84,7 @@ class Return_model extends CI_Model {
 
         //get item id
         $this->db->select('item_id')
-            ->where('dist_id',$dist->row());
+            ->where('dist_id',$dist->row()->dist_id);
         $query1 = $this->db->get('item_detail');
         $row1 = $query1->row_array();
         $itemid = intval($row1['item_id']);
