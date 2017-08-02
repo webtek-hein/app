@@ -21,6 +21,7 @@ class Dashboard extends CI_Controller
         $data['defitems'] = $this->inventorymodel->count_def_items();
         $data['pendingusers'] = $this->inventorymodel->count_pending_users();
         $data['no_of_items'] = $this->inventorymodel->no_of_items();
+        $data['expired_items'] = $this->inventorymodel->count_expiring_items();
 
         $this->load->view('templates/header');
         $this->load->view('dashboard', $data);
@@ -118,6 +119,14 @@ class Dashboard extends CI_Controller
         $data = $this->inventorymodel->no_of_items();
         foreach ($data as $itemno) {
             echo $itemno['item'];
+        }
+    }
+
+        public function count_expiring_items()
+    {
+        $data = $this->inventorymodel->count_expiring_items();
+        foreach ($data as $expired) {
+            echo $expired['quantity'];
         }
     }
 }

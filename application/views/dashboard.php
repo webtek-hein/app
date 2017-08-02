@@ -119,11 +119,11 @@ if($position === 'admin'){
             </h3>
             <p>Expired Items</p>
         </div>
-        <div class="icon">
-            <i class="ion ion-stats-bars"></i>
+         <div class="icon">
+            <i class="ion ion-person-add"></i>
         </div>
-
-
+        <span><button><a class="small-box-footer">More Details
+                     <i class="fa fa-arrow-circle-right"> </i></a></button> </span>
     </div>
 </div>
 <!-- ./col -->
