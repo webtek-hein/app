@@ -26,7 +26,11 @@
                     <table id="details" class="table table-bordered table-striped" width="100%">
                         <thead>
                         <tr>
-
+                    <?= $position = $this->session->userdata['logged_in']['position'];
+                        if($position === 'custodian'){
+                            echo '<th><input type="checkbox" name="select-all" ><label> Check all</label></th>';
+                        }
+                        ?>
                             <th>Serial #</th>
                             <th>Expiration Date</th>
                             <th>Supplier</th>
@@ -41,7 +45,11 @@
                         </tbody>
                         <tfoot>
                         <tr>
-
+                            <?= $position = $this->session->userdata['logged_in']['position'];
+                            if($position === 'custodian'){
+                                echo '<th><input type="checkbox" name="select-all" ><label> Check all</label></th>';
+                            }
+                            ?>
                             <th>Serial #</th>
                             <th>Expiration Date</th>
                             <th>Supplier</th>
