@@ -105,7 +105,14 @@ a,input, select{
 
 }
 input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgba(255,255,255,0.2); }
-
+input:focus:invalid{
+	box-shadow: 0 0 5px #5cd053;
+	border-color:#b03535;
+}
+ input:focus:valid{
+	 box-shadow: 0 0 5px #5cd053;
+	 border-color:#28921f;
+ }
  p{
 	 color : #FFFFFF;
 	 text-align: center;

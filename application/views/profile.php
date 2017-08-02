@@ -29,7 +29,7 @@ function relocate_home()
           <!-- Profile Image -->
           <?php echo form_open_multipart('profile/upload_image'); ?>
           <form>
-          <div class="box box-primary">
+          <div style="width:200px" class="box box-primary">
 
               <div class="box-body box-profile">
                   <?php if($this->session->flashdata('mesg')): ?>
@@ -39,7 +39,7 @@ function relocate_home()
                   <img class="profile-user-img img-responsive img-circle" src="<?php echo base_url()?>/images/<?php echo $image ?>" alt="User profile picture">
 
                   <h3 class="profile-username text-center"><?php echo $firstname.' '.$lastname ?></h3>
-                  <div class="col-sm-offset-0 col-sm-5">
+                  <div style="padding: 0 0 10px 0;"  class="col-sm-offset-0 col-sm-5">
                       <input type="file" name="userfile" size="20" />
                       <input type="submit" name="upload" value="Upload" />
                   </div>
@@ -97,7 +97,7 @@ function relocate_home()
                     </div>
                   </div>
     <div class="form-group">
-        <div class="col-sm-offset-8 col-sm-9">
+        <div style="padding: 0 10px 10px 90px;"class="col-sm-offset-8 col-sm-9">
             <button type="submit" name="bts-submit" id="bts-submit" class="btn btn-success" disabled>Save</button>
         </div>
     </div>
@@ -144,7 +144,7 @@ function relocate_home()
 
 
                   <div class="form-group">
-                    <div class="col-sm-offset-8 col-sm-9">
+                    <div style="padding: 0 20px 10px 90px;" class="col-sm-offset-8 col-sm-9">
                         <button type="submit" class="btn btn-success" >Save</button>
                     </div>
                   </div>
