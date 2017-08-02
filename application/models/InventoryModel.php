@@ -353,20 +353,11 @@ class InventoryModel extends CI_Model {
     }
      public function count_received_items()
      {
-        $this->db->select('item_name, count(*) as quantity');
-        $this->db->join('item',' item.item_id = item_detail.item_id','left');
+        $this->db->select('count(DISTINCT item.item_id) as quantity');
+        $this->db->join('item_detail',' item.item_id = item_detail.item_id','left');
          $this->db->where ('DATE(date_rec) =  CURDATE()');
-         $this->db->group_by ('item_detail.item_id');
-                $query = $this->db->get('item_detail');
-        return $query->result_array();
-    }
-
-     public function count_received_item()
-     {
-
-        $this->db->select('SUM(quantity) as quantity');
-        $this->db->from('item');
-        $query = $this->db->get();
+         $this->db->group_by('item_name');
+                $query = $this->db->get('item');
         return $query->result_array();
     }
  public function count_ret_items()

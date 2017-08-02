@@ -11,26 +11,14 @@ class Dashboard extends CI_Controller
 
     public function index()
     {
-        $position = $this->session->userdata['logged_in']['position'];
-        $data['itemsremaining'] = $this->inventorymodel->dashboard_custodian_items_remaining();
-        $data['countrecitems'] = $this->inventorymodel->count_received_items();
-        $data['returned'] = $this->inventorymodel->dashborad_custodian_returned_items();
-        $data['defecteditems'] = $this->inventorymodel->dashborad_custodian_defected_items();
-        $data['received'] = $this->inventorymodel->dashborad_custodian_recieved_items();
-        $data['retitems'] = $this->inventorymodel->count_ret_items();
-        $data['defitems'] = $this->inventorymodel->count_def_items();
-        $data['pendingusers'] = $this->inventorymodel->count_pending_users();
-        $data['no_of_items'] = $this->inventorymodel->no_of_items();
-        $data['expired_items'] = $this->inventorymodel->count_expiring_items();
-
         $this->load->view('templates/header');
-        $this->load->view('dashboard', $data);
+        $this->load->view('dashboard');
         $this->load->view('templates/footer');
     }
 
     public function count_received_item()
     {
-        $data = $this->inventorymodel->count_received_item();
+        $data = $this->inventorymodel->count_received_items();
         foreach ($data as $item) {
             if ($item['quantity'] == null) {
                 echo "0";

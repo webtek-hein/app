@@ -256,6 +256,7 @@ function get_item_details(id) {
         },
     });
 
+
     //multiple serial input
    $('#details ').on( 'change',  function () {
            $('#details tr :nth-child(2)').attr('contentEditable', 'true');
