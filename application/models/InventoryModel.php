@@ -500,4 +500,12 @@ $this->db->order_by('del_date');
 
         return $query->result_array();
     }
+
+     public function total_item_per_dept($deptid){
+        $this->db->select('sum(quantity) as total');
+        $this->db->from('distribution');
+        $this->db->where('dept_id', $deptid);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
 }
