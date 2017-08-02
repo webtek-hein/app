@@ -57,24 +57,7 @@
 
     </div>
 </div>
-<!-- ./col -->
-<div class="col-lg-3 col-xs-6">
-    <!-- small box -->
-    <div class="small-box bg-red">
-        <div class="inner">
-            <h3 id="defect_items">
-            </h3>
 
-            <p>Defected Items</p>
-        </div>
-        <div class="icon">
-            <i class="ion ion-person-add"></i>
-        </div>
-        <span><button><a class="small-box-footer" href="/app/decreaselog">More Details
-                     <i class="fa fa-arrow-circle-right"> </i></a></button> </span>
-    </div>
-</div>
-<!-- ./col -->
 <!-- small box -->
 
 <?php $position = $this->session->userdata['logged_in']['position'];
@@ -126,7 +109,7 @@ if($position === 'admin'){
 <!-- ./col -->
 <div class="col-lg-3 col-xs-6">
     <!-- small box -->
-    <div class="small-box bg-orange">
+    <div class="small-box bg-red">
         <div class="inner">
             <h3 id="expired_items">
             </h3>
