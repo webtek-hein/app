@@ -361,8 +361,9 @@ class InventoryModel extends CI_Model {
      public function count_received_item()
      {
 
-        $this->db->select('COUNT(item.item_id) AS quantity');
-                $query = $this->db->get('inventory.item');
+        $this->db->select('SUM(quantity) as quantity');
+        $this->db->from('item');
+        $query = $this->db->get();
         return $query->result_array();
     }
  public function count_ret_items()
