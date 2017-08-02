@@ -10,7 +10,7 @@
 
     <div class="container">
 <!-- ./col -->
-<div class='col-lg-3 col-xs-6'>
+<div class='col-lg-2 col-xs-2'>
     <div class='small-box bg-aqua'>
         <div class='inner'>
             <h3 id='rec_items'></h3>
@@ -23,7 +23,7 @@
          <i class='fa fa-arrow-circle-right'> </i></a></button> </span>
     </div>
 </div>
-        <div class="col-lg-3 col-xs-12">
+        <div class="col-lg-2 col-xs-2">
     <!-- small box -->
     <div class="small-box bg-green">
         <div class="inner">
@@ -39,7 +39,7 @@
 
     </div>
     </div>
-        <div class="col-lg-3 col-xs-6">
+        <div class="col-lg-4 col-xs-2">
 
             <div class="small-box bg-blue">
                 <div class="inner">
@@ -56,13 +56,13 @@
         </div>
 
 
-        <div class="col-lg-3 col-xs-6">
+        <div class="col-lg-4 col-xs-6">
             <!-- small box -->
             <div class="small-box bg-purple">
                 <div class="inner">
                     <h3 id="total_unit_cost">
                     </h3>
-                    <p>Total Cost</p>
+                    <p>Total Cost of Items</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-stats-bars"></i>
@@ -73,7 +73,7 @@
 
     <div class="container">
         <!-- ./col -->
-        <div class="col-lg-3 col-xs-12">
+        <div class="col-lg-2 col-xs-12">
             <!-- small box -->
             <div class="small-box bg-red">
                 <div class="inner">
@@ -93,7 +93,7 @@
         if ($position === 'admin') {
 
 
-            echo '<div class="col-lg-3 col-xs-6">' .
+            echo '<div class="col-lg-2 col-xs-6">' .
                 '<div class="small-box bg-yellow">' .
                 '<div class="inner"><h3 id="pendingu"></h3>' .
                 '<p>Pending Users</p></div>' .
@@ -105,7 +105,6 @@
         }
         ?>
     </div>
-
 
     <div class="container">
 

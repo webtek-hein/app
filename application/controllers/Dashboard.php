@@ -106,7 +106,7 @@ class Dashboard extends CI_Controller
     {
         $data = $this->inventorymodel->total_unit_cost();
         foreach ($data as $unit_cost) {
-            echo $unit_cost['cost'];
+            echo "&#8369; ".number_format((int)$unit_cost['cost'],2);
         }
     }
 

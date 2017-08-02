@@ -632,8 +632,7 @@ $(document).ready(function() {
      });
 
 <!-- -->
-    var bar;
-    
+
     $( function() {
     $( ".datepicker" ).datepicker().val('mm/dd/yyyy');
 
@@ -680,25 +679,4 @@ function mooegraph(data) {
     });
 
 }
-function bar_graph(data) {
-    $('#graph').highcharts({
-        bar: {
-            type: 'bar'
-        },
-        title: {
-            text: 'items'
-        },
-        xAxis: {
-            categories: [ 'ballpen', 'mug']
-        },
-        yAxis: {
-            title: {
-                text: 'items'
-            }
-        },
-        series: [{
-            name: 'Child ID: 1',
-            data: data
-        }]
-    });
-}
+var bar;
