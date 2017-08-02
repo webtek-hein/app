@@ -19,6 +19,10 @@ $(document).on("click", ".open-modal-action", function () {
 
     var user_id = $(this).data('id');
     $(".modal-body #user-id").val( user_id );
+
+    var item_type = $(this).data('type');
+    $(".modal-body #item-type").val( item_type );
+
 });
 
 
@@ -148,6 +152,10 @@ $(document).ready(function() {
         department.ajax.reload(null,false);
         returned_items.ajax.reload(null,false);
         pending.ajax.reload(null,false);
+        increaselog.ajax.reload(null,false);
+        decreaselog.ajax.reload(null,false);
+        editlog.ajax.reload(null,false);
+        returnlog.ajax.reload(null,false);
     }, 1000);
 });
 
@@ -378,6 +386,7 @@ function save()
 
             if(del_date > date_rec){
                 $(this).val('');
+                BootstrapDialog.alert('Delivery date must be later than the date received.');
             }
         });
 
@@ -385,8 +394,15 @@ function save()
             date_rec = new Date($('input[name=datereceived]').val());
             exp_date = new Date($('input[name=ExpirationDate]').val());
 
-            if(exp_date < date_rec){
+            if(exp_date < date_rec || exp_date === date_rec){
                 $(this).val('');
+                BootstrapDialog.alert('Expiration date must be later than the date received.');
+            }
+        });
+        $('input[type=text]').keypress(function () {
+            var x = event.charCode;
+            if(x >= 0 && x <= 64){
+                return false;
             }
         });
 
@@ -454,6 +470,7 @@ function dashboard_custodian_items_remaining(){
 }
 //load data
 $(document).ready(function () {
+
     $( "#rec_items" ).load("dashboard/count_received_item");
     $( "#rec_items_per_dept" ).load("dashboard/count_rec_items_per_dept");
     $( "#defect_items" ).load("dashboard/count_def_items");

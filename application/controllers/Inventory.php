@@ -61,14 +61,15 @@ class Inventory extends CI_Controller {
             $row[] = $list['item_description'];
             $row[] = $list['quantity'];
             $row[] = $list['unit'];
+            $row[] = $list['item_type'];
             $row[] =  "&#8369; ".number_format((int)$list['unit_cost']*$list['quantity'],2)."<br>";
             if($position === 'admin'){
-                $button = "<button type=\"button\" class=\"btn btn-primary open-modal-action fa fa-plus\" data-id='$list[item_id]' data-toggle=\"modal\" data-target=\"#addqty\"></button>".
+                $button = "<button type=\"button\" class=\"btn btn-primary open-modal-action fa fa-plus\" data-type='$list[item_type]' data-id='$list[item_id]' data-toggle=\"modal\" data-target=\"#addqty\"></button>".
                     "<button type=\"button\" class=\"btn btn-danger open-modal-action fa fa-minus\" data-id='$list[item_id]' onclick=\"subtract_quantity(". $list['item_id'] .")\"></button>".
                     " <button class=\"btn btn-warning open-modal-action fa fa-pencil\" onclick=\"edit_inventory('$list[item_id]')\"></button>".
                     " <button class=\"btn btn-info open-modal-action fa fa-info\" onclick=\"get_item_details(". $list['item_id'] .")\"></button>";
             }else if ($position === 'custodian'){
-                $button = "<button type=\"button\" data-id = '$list[item_id]' class=\"btn btn-primary open-modal-action fa fa-plus\" data-toggle=\"modal\" data-target=\"#addqty\"></button>".
+                $button = "<button type=\"button\" data-id = '$list[item_id]' data-type='$list[item_type]' class=\"btn btn-primary open-modal-action fa fa-plus\" data-toggle=\"modal\" data-target=\"#addqty\"></button>".
                     "<button class=\"btn btn-info open-modal-action fa fa-info\" onclick=\"get_item_details(". $list['item_id'] .")\"></button> ".
                     "<button type=\"button\" data-id = '$list[item_id]' class=\"btn btn-warning open-modal-action fa fa-minus\" onclick=\"subtract_quantity(". $list['item_id'] .")\"></button>";
             }else{
@@ -154,6 +155,7 @@ class Inventory extends CI_Controller {
     {
         $item_id=$this->input->POST('item_id');
         $data1 = $this->input->POST('Item_Quantity1');
+        $item_type = $this->input->post('item_type');
         $data2 = array(
             'official_receipt_no' => $this->input->post('Official_Receipt1'),
             'receivedby' => $this->input->post('Received_By1'),
@@ -164,9 +166,13 @@ class Inventory extends CI_Controller {
             'unit_cost' => $this->input->post('Unit_Cost1'),
             'item_id' => $this->input->post('item_id'),
         );
-        $item_details = array_fill(1,$data1,$data2);
+        if($item_type === 'CO'){
+            $item_details = array_fill(1,$data1,$data2);
+        }else{
+            $item_details = $data2;
+        }
         $data3 = array('user_id' => $this->session->userdata['logged_in']['userid']);
-        $this->InventoryModel->add_quantity($data1,$item_details,$item_id,$data3);
+        $this->InventoryModel->add_quantity($data1,$item_details,$item_id,$data3,$item_type);
 
         header('Location:'.base_url() . 'inventory');
     }

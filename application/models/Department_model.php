@@ -25,7 +25,7 @@ class Department_model extends CI_Model {
     {
 
         $this->db
-            ->select('unit_cost,distribution.dept_id,account_code,item_detail.item_id,department,item_name,item_description,unit,count(*) as quantity')
+            ->select('item_type,unit_cost,distribution.dept_id,account_code,item_detail.item_id,department,item_name,item_description,unit,count(*) as quantity')
             ->join('item','item_detail.item_id = item.item_id','left')
             ->join('distribution','item_detail.dist_id = distribution.dist_id')
             ->join('account_code','account_code.ac_id = distribution.account_id','left')

@@ -33,7 +33,7 @@
         </tr>
 	<tr>
           <td>Received By</td>
-          <td><input type="text" class="InputBox" name="ReceivedBy" value="" required="required"></td>
+          <td><input type="text" pattern="[A-Za-z]"  class="InputBox" name="ReceivedBy" value="" required="required"></td>
         </tr>
 
         <tr>
@@ -44,7 +44,7 @@
 
       <tr>
           <td>Supplier</td>
-          <td><input type="text" class="InputBox" name="Supplier_Name" value="" required="required"></td>
+          <td><input class="InputBox" name="Supplier_Name" value="" required="required"></td>
         </tr>
 
         <tr>
@@ -59,11 +59,11 @@
 
         <tr>
           <td>Delivery Date</td>
-          <td><input type="text" class="datepicker"  name="datedelivered" required="required"></td>
+          <td><input type="date" class=""  name="datedelivered" required="required"></td>
         </tr>
         <tr>
           <td>Date Received</td>
-          <td><input type="text" class="datepicker" name="datereceived" required="required"></td>
+          <td><input type="date" class="" name="datereceived" required="required"></td>
         </tr>
         <tr>
           <td>Unit</td>
@@ -87,7 +87,7 @@
         </tr>
         <tr>
           <td>Expiration Date</td>
-          <td><input type="text" class="datepicker"  name="ExpirationDate"  required="required"></td>
+          <td><input type="date" class=""  name="ExpirationDate"  required="required"></td>
         </tr>
       </table> 
         </div>

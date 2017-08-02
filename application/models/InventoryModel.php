@@ -22,9 +22,9 @@ class InventoryModel extends CI_Model {
 
 	public function get_inventory_list()
 	{
-        $query = $this->db->select('item_detail.item_id,item_name,item_description,quantity,unit,item_detail.unit_cost')
+        $query = $this->db->select('item_detail.item_id,item_name,item_type,item_description,quantity,unit,item_detail.unit_cost')
                     ->join('item_detail','item_detail.item_id = item.item_id','left')
-                ->group_by('item_detail.item_id,item_name,item_description,quantity,unit,unit_cost')
+                ->group_by('item_detail.item_id,item_name,item_description,quantity,unit,unit_cost,item_type')
                      ->get('item');
         return $query->result_array();
 	}
@@ -118,25 +118,23 @@ class InventoryModel extends CI_Model {
         $this->db->where('user_id', null,false);
         $this->db->update('logs.increase_log',$data3);
     }
-    public function add_quantity($quantity,$data2,$itemid,$userid)
+    public function add_quantity($quantity,$data2,$itemid,$userid,$item_type)
     {
         //update item
         $this->db->set('quantity', 'quantity+'.$quantity, FALSE);
         $this->db->where('item_id',$itemid);
         $this->db->update('item');
         //update item_detail
-        /*$counter = 1;
-        while ($counter <= $quantity) {
-            $this->db->insert('item_detail', $data2);
-            $item_det_id = $this->db->insert_id();
-            $this->db->where('item_det_id',$item_det_id);
-            $this->db->update('logs.increase_log',$userid);
-            $counter++;
-        }*/
-        $this->db->insert_batch('item_detail',$data2);
-        $first_id = $this->db->insert_id();
-        $insert_id = range($first_id,($first_id+($quantity-1)));
-        $this->db->where_in('item_det_id',$insert_id);
+        if($item_type === 'CO'){
+            $this->db->insert_batch('item_detail',$data2);
+            $first_id = $this->db->insert_id();
+            $insert_id = range($first_id,($first_id+($quantity-1)));
+            $this->db->where_in('item_det_id',$insert_id);
+        }else{
+            $this->db->insert('item_detail',$data2);
+            $this->db->where('item_det_id',$this->db->insert_id());
+        }
+
         $this->db->update('logs.increase_log',$userid);
     }
 

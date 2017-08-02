@@ -24,6 +24,7 @@
                                     <th>Description</th>
                                     <th> Quantity</th>
                                     <th> Unit</th>
+                                    <th> Type</th>
                                     <th> Total Cost</th>
                                     <th> Action</th>
 
@@ -37,6 +38,7 @@
                                     <th>Description</th>
                                     <th> Quantity</th>
                                     <th> Unit</th>
+                                    <th> Type</th>
                                     <th> Total Cost</th>
                                     <th> Action</th>
                                 </tr>

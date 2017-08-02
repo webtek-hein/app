@@ -14,7 +14,9 @@
                         </div>
                         <div class="modal-body" align="center">
                             <input id="item-id" type="hidden" name="item_id" value="">
-                         <?php if($this->session->flashdata('msg')): ?>
+                            <input id="item-type" type="hidden" name="item_type" value="">
+
+                            <?php if($this->session->flashdata('msg')): ?>
                          <p><?php echo $this->session->flashdata('msg'); ?></p>
                         <?php endif; ?>
                         
