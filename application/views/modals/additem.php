@@ -82,7 +82,7 @@
           </td>
         </tr>
         <tr>
-          <td>Unit Cost</td>
+          <td>Cost per Unit</td>
           <td><input type="number" min='0' step='any' class="InputBox" name="Cost" value="" required="required"></td>
         </tr>
         <tr>

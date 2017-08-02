@@ -88,7 +88,7 @@ class Dashboard extends CI_Controller
         {
             $pie = $this->inventorymodel->pie_graph_per_dept($dept_id);
         }else{
-            $pie = $this->inventorymodel->pie_graph();
+            $pie = $this->inventorymodel->pie_graph_co();
         }
         $data = array();
         foreach ($pie as $list) {

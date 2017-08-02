@@ -540,7 +540,6 @@ $(document).ready(function () {
             dataType: "JSON",
             success: function(data){
              createGraph(data);
-
             } 
     });
     });
@@ -624,8 +623,7 @@ $(document).ready(function() {
      });
 
 <!-- -->
- $(function () {
-    var bar;
+   /* var bar;
     
     $(document).ready(function () {
          $.ajax({
@@ -635,16 +633,14 @@ $(document).ready(function() {
             dataType: "JSON",
             success: function(data){
              createGraph(data);
-
-            } 
-    });
-    });
+            }
+    });*/
 $( function() {
     $( ".datepicker" ).datepicker().val('mm/dd/yyyy');
 
 } );
 
-(function () { 
+function mooegraph() {
     $('#bar').highcharts({
         bar: {
             type: 'bar'
@@ -666,4 +662,3 @@ $( function() {
         }]
     });
 }
-});

@@ -26,7 +26,7 @@
                             <th style="width:140px;">Delivery Date</th>
                             <th style="width:140px;">Date Received</th>
                             <th style="width:80px;">Unit</th>
-                            <th style="width:80px;">Cost</th>
+                            <th style="width:80px;">Cost per Unit</th>
                             <th style="width:140px;">Expiration Date</th>
                         </tr>
 
