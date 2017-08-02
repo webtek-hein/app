@@ -80,26 +80,6 @@ class Dashboard extends CI_Controller
             echo $penu['status'];
         }
     }
-    public function data_in_graph(){
-        $position = $this->session->userdata['logged_in']['position'];
-        $dept_id = $this->session->userdata['logged_in']['dept_id'];
-
-        if($position === 'receiver' || $position === 'department head')
-        {
-            $pie = $this->inventorymodel->pie_graph_per_dept($dept_id);
-        }else{
-            $pie = $this->inventorymodel->pie_graph_co();
-        }
-        $data = array();
-        foreach ($pie as $list) {
-            $row = array();
-            $row[] = $list['item_name'];
-            $row[] = (int)$list['quantity'];
-            $data[] = $row;
-        }
-        $list = array('data'=>$data);
-        echo json_encode($data);
-    }
 
     public function count_rec_items_per_dept()
     {
@@ -138,7 +118,47 @@ class Dashboard extends CI_Controller
         }
     }
 
-        public function dview_bar_graph(){
-        
+    public function view_bar_graph_co()
+    {
+        $position = $this->session->userdata['logged_in']['position'];
+        $dept_id = $this->session->userdata['logged_in']['dept_id'];
+
+        if($position === 'receiver' || $position === 'department head')
+        {
+            $pie = $this->inventorymodel->pie_graph_per_dept_co($dept_id);
+        }else{
+            $pie = $this->inventorymodel->pie_graph_co();
+        }
+        $data = array();
+        foreach ($pie as $list) {
+            $row = array();
+            $row[] = $list['item_name'];
+            $row[] = (int)$list['quantity'];
+            $data[] = $row;
+        }
+        $list = array('data'=>$data);
+        echo json_encode($data);
+    }
+
+    public function view_bar_graph_mooe()
+    {
+        $position = $this->session->userdata['logged_in']['position'];
+        $dept_id = $this->session->userdata['logged_in']['dept_id'];
+
+        if($position === 'receiver' || $position === 'department head')
+        {
+            $pie = $this->inventorymodel->pie_graph_per_dept_mooe($dept_id);
+        }else{
+            $pie = $this->inventorymodel->pie_graph_mooe();
+        }
+        $data = array();
+        foreach ($pie as $list) {
+            $row = array();
+            $row[] = $list['item_name'];
+            $row[] = (int)$list['quantity'];
+            $data[] = $row;
+        }
+        $list = array('data'=>$data);
+        echo json_encode($data);
     }
 }

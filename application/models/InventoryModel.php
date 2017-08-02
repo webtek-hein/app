@@ -414,11 +414,30 @@ $this->db->order_by('del_date');
         $query = $this->db->get('item');
         return $query->result_array(); 
     }
-    public function pie_graph_per_dept($id){
+    public function pie_graph_per_dept_co($id){
         $this->db
             ->select('item_name,count(item_detail.item_id) as quantity')
             ->join('item','item_detail.item_id = item.item_id','left')
             ->join('distribution','item_detail.dist_id = distribution.dist_id')
+            ->where('item.item_type', 'CO')
+            ->WHERE('item_detail.dist_id is not null')
+            ->WHERE("item_detail.item_status = 'in_stock'")
+            ->WHERE('distribution.dept_id',$id)
+            ->group_by('item_detail.item_id,distribution.dept_id,unit_cost');
+        $this->db->limit(10);
+        $this->db->order_by('quantity');
+
+        $query = $this->db->get('item_detail');
+        return $query->result_array();
+
+    }
+
+    public function pie_graph_per_dept_mooe($id){
+        $this->db
+            ->select('item_name,count(item_detail.item_id) as quantity')
+            ->join('item','item_detail.item_id = item.item_id','left')
+            ->join('distribution','item_detail.dist_id = distribution.dist_id')
+            ->where('item.item_type', 'MOOE')
             ->WHERE('item_detail.dist_id is not null')
             ->WHERE("item_detail.item_status = 'in_stock'")
             ->WHERE('distribution.dept_id',$id)
