@@ -252,13 +252,15 @@ function get_item_details(id) {
        $.each($('#details tr input[name=item-det]'),function () {
                // reset button
                $('input[type=reset]').on('click', function () {
-                   $('input[type=number]').val('').change();
+                   $.each($('#details tr input[name=item-det]:checked'), function () {
+                       $(this).parent().siblings(':first').text('');
+                   });
                });
 
            $.each($('#details tr input[name=item-det]:checked'),function () {
                if($(this).parent().siblings(':first').text()=='')
                {
-                   $('input[type=number]').on('keyup change focus', function () {
+                   $('input[name=input]').on('keyup change focus', function () {
                        serial = ($(this).val());
                                $.each($('#details tr input[name=item-det]:checked'), function () {
                                    $(this).parent().siblings(':first').text(serial);
@@ -544,9 +546,17 @@ $(document).ready(function () {
             },
                 title: {
                     text: 'Top 10 Biggest Items'
+                },subtitle: {
+                    text: 'Click the slices to view percentage of items.'
                 },
 
             plotOptions: {
+                series: {
+                    dataLabels: {
+                        enabled: true,
+                        format: '{point.name}: {point.y:.1f}%'
+                    }
+                },
                 pie: {
                     allowPointSelect: true,
                     cursor: 'pointer',
@@ -556,7 +566,12 @@ $(document).ready(function () {
                     showInLegend: true
                 }
             },
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                },
+
             series: [{
+                name: 'Item',
                 type: 'pie',
                 data: data
             }]

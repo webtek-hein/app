@@ -28,6 +28,23 @@
                 <tbody>
 
                 </tbody>
+                  <tfoot>
+                  <tr>
+                      <th>Serial no.</th>
+                      <th>Item Name</th>
+                      <th>Account Code</th>
+                      <th>Date Returned</th>
+                      <th>Supplier</th>
+                      <th>Department</th>
+                      <th>Reason</th>
+                      <th>Status</th>
+                      <?php $position = $this->session->userdata['logged_in']['position'];
+                      if($position === 'admin' || $position === 'custodian') {
+                          echo '<th> Action</th >';
+                      }
+                      ?>
+                  </tr>
+                  </tfoot>
               </table>
             </div>
             <!-- /.box-body -->

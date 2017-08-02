@@ -108,7 +108,9 @@ samp {
   font-family: monospace, monospace;
   font-size: 1em;
 }
-button,
+button{
+  margin-left: 15px;
+}
 input,
 optgroup,
 select,

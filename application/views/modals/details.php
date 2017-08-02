@@ -18,7 +18,7 @@
                          '<p class="display">Note: Only UNIQUE serial numbers will be saved.</p>'.
                          '<p class="display">Select desired items and input the serial here for multi-input:  </p>'.
                          '<form action="#">'.
-                         '<input placeholder="serial number: xxxxxxxx" name="input" type="number" />'.
+                         '<input placeholder="serial number: xxxxxxxx" name="input"/>'.
                          '<input class = "btn btn-danger" type="reset" value="Reset" />';
                     }
                     ?>
