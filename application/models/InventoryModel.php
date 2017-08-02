@@ -481,4 +481,16 @@ $this->db->order_by('del_date');
         $query = $this->db->query("SELECT COUNT(*) as quantity FROM item_detail WHERE exp_date < NOW() AND dist_id IN (SELECT dist_id FROM distribution WHERE dept_id = $deptid)");
         return $query->result_array();
     }
+
+        public function count_expired_items()
+    {
+        $query = $this->db->query("SELECT COUNT(*) as quantity FROM item_detail WHERE exp_date < NOW()");
+        return $query->result_array();
+    }
+
+        public function view_bar_graph()
+    {
+
+        return $query->result_array();
+    }
 }

@@ -9,6 +9,7 @@
 </section><br>
 
 
+
 <?php $position1 = $this->session->userdata['logged_in']['position'];
     if($position1 === 'department head' || $position1 === 'receiver'){
         echo "<div class='col-lg-3 col-xs-6'>";
@@ -58,24 +59,6 @@
     </div>
 </div>
 
-<!-- small box -->
-
-<?php $position = $this->session->userdata['logged_in']['position'];
-if($position === 'admin'){
-
-
-    echo '<div class="col-lg-3 col-xs-6">'.
-         '<div class="small-box bg-yellow">'.
-         '<div class="inner"><h3 id="pendingu"></h3>'.
-         '<p>Pending Users</p></div>'.
-         '<div class="icon">'.
-         '<i class="ion ion-person-add"></i></div>'.
-         '<nav><a href="/app/users"><button>More Details'.
-         '<i class="fa fa-arrow-circle-right"> </i></a></button></a>'.
-         '</nav></div></div>';
-}
-?>
-
 <!-- ./col -->
 <div class="col-lg-3 col-xs-6">
     <!-- small box -->
@@ -122,8 +105,39 @@ if($position === 'admin'){
                      <i class="fa fa-arrow-circle-right"> </i></a></button> </span>
     </div>
 </div>
+
 <!-- ./col -->
+<!-- small box -->
+
+<?php $position = $this->session->userdata['logged_in']['position'];
+if($position === 'admin'){
+
+
+    echo '<div class="col-lg-3 col-xs-6">'.
+         '<div class="small-box bg-yellow">'.
+         '<div class="inner"><h3 id="pendingu"></h3>'.
+         '<p>Pending Users</p></div>'.
+         '<div class="icon">'.
+         '<i class="ion ion-person-add"></i></div>'.
+         '<nav><a href="/app/users"><button>More Details'.
+         '<i class="fa fa-arrow-circle-right"> </i></a></button></a>'.
+         '</nav></div></div>';
+}
+?>
+
 
     <div class="container">
         <div id="items"></div>
+    </div>
+    <!--end container -->
+
+    <!--pie graph 2 -->
+<div class="container">
+        <div id="graph"></div>
+</div>
+    <!--end container -->
+
+    <!--bar graph -->
+    <div class="container">
+        <div id="bar"></div>
     </div><!--end container -->
