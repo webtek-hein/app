@@ -443,7 +443,7 @@ function save()
         });
         $('input[type=text]').keypress(function () {
             var x = event.charCode;
-            if(x >= 0 && x <= 64){
+            if(x >= 0 && x <= 64 && x != 32){
                 return false;
             }
         });
