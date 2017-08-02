@@ -482,12 +482,6 @@ $this->db->order_by('del_date');
         return $query->result_array();
     }
 
-        public function count_expired_items()
-    {
-        $query = $this->db->query("SELECT COUNT(*) as quantity FROM item_detail WHERE exp_date < NOW()");
-        return $query->result_array();
-    }
-
         public function view_bar_graph()
     {
 
