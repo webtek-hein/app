@@ -16,7 +16,7 @@ if (isset($this->session->userdata['logged_in'])) {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <?php
-    if($position !== 'admin' || $position !== 'custodian'){
+    if($position === 'receiver' || $position == 'department head'){
         echo '<title>'. $department.'</title>';
     }else{
         echo '<title> GSO Inventory</title>';
