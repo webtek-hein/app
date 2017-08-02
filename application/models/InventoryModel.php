@@ -152,7 +152,7 @@ class InventoryModel extends CI_Model {
         $this->db->where('item_detail.dist_id',null,false);
         $this->db->where('serial !=',null,false);
         $this->db->where('item_status !=','defective');
-        $this->db->where('exp_date >=','NOW()', false);
+        $this->db->where('exp_date >','NOW()', false);
         $this->db->limit($quantity);
         $this->db->set('item_detail.dist_id',$distid);
         $this->db->update('item_detail');
@@ -186,7 +186,7 @@ class InventoryModel extends CI_Model {
 
     public function get_item_quantity($item_id)
     {
-        $where = 'serial is not null and dist_id is null and item_status != "defective" AND exp_date >= NOW()';
+        $where = 'serial is not null and dist_id is null and item_status != "defective" AND exp_date > NOW()';
         $this->db->select('count(*) as quantity');
         $this->db->from('item_detail');
         $this->db->where($where);
@@ -270,7 +270,7 @@ class InventoryModel extends CI_Model {
     public function get_distrib_item_details($item_id)
     {
         $where = "item_detail.item_id = $item_id AND item_detail.dist_id IS null OR item_detail.dist_id IS NOT NULL AND item_detail.item_status = 'returned'";
-        $this->db->SELECT("item.quantity,item_det_id, serial, exp_date, supplier, official_receipt_no, del_date, date_rec, item_detail.receivedby AS receivedby, unit_cost, distribution.dist_id, item_detail.dist_id, item.item_id, item_detail.item_id, if(exp_date = DATE(now()),'Expired',item_status) as item_status")
+        $this->db->SELECT("item.quantity,item_det_id, serial, exp_date, supplier, official_receipt_no, del_date, date_rec, item_detail.receivedby AS receivedby, unit_cost, distribution.dist_id, item_detail.dist_id, item.item_id, item_detail.item_id, if(exp_date <= DATE(now()),'Expired',item_status) as item_status")
                 ->join('distribution','distribution.dist_id = item_detail.dist_id','left')
                 ->join('item','item.item_id = item_detail.item_id')
                 ->where($where);

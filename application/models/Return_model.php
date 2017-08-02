@@ -90,7 +90,7 @@ class Return_model extends CI_Model {
         $itemid = intval($row1['item_id']);
 
         //get item quantity
-        $where = 'serial is not null and dist_id is null and item_status != "defective" AND exp_date >= NOW()';
+        $where = 'serial is not null and dist_id is null and item_status != "defective" AND exp_date > NOW()';
         $this->db->select('count(*) as quantity');
         $this->db->from('inventory.item_detail');
         $this->db->where($where);
@@ -112,7 +112,7 @@ class Return_model extends CI_Model {
             $this->db->where('item_detail.dist_id',null,false);
             $this->db->where('serial !=',null,false);
             $this->db->where('item_status !=','defective');
-            $this->db->where('exp_date >=','NOW()', false);
+            $this->db->where('exp_date >','NOW()', false);
             $this->db->limit(1);
             $this->db->set('item_detail.dist_id',$distid);
             $this->db->update('inventory.item_detail');
@@ -140,7 +140,7 @@ class Return_model extends CI_Model {
         $itemid = intval($row1['item_id']);
 
         //get item quantity
-        $where = 'serial is not null and dist_id is null and item_status != "defective" AND exp_date >= NOW()';
+        $where = 'serial is not null and dist_id is null and item_status != "defective" AND exp_date > NOW()';
         $this->db->select('count(*) as quantity');
         $this->db->from('inventory.item_detail');
         $this->db->where($where);
