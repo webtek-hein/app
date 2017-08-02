@@ -514,9 +514,17 @@ $(document).ready(function () {
             },
                 title: {
                     text: 'Top 10 Biggest Items'
+                },subtitle: {
+                    text: 'Click the slices to view percentage of items.'
                 },
 
             plotOptions: {
+                series: {
+                    dataLabels: {
+                        enabled: true,
+                        format: '{point.name}: {point.y:.1f}%'
+                    }
+                },
                 pie: {
                     allowPointSelect: true,
                     cursor: 'pointer',
@@ -526,7 +534,12 @@ $(document).ready(function () {
                     showInLegend: true
                 }
             },
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                },
+
             series: [{
+                name: 'Item',
                 type: 'pie',
                 data: data
             }]
