@@ -520,6 +520,8 @@ $this->db->order_by('del_date');
     {
         $this->db->select('COUNT(*) as user');
         $this->db->from('logs.return_log');
+        $this->db->where ('status', 'pending');
+        $this->db->where ('DATE(date) = DATE(NOW())');
         $this->db->where('dept_id', $deptid);
         $query = $this->db->get();
         return $query->result_array();
