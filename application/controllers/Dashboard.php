@@ -11,6 +11,7 @@ class Dashboard extends CI_Controller
 
     public function index()
     {
+
         $this->load->view('templates/header');
         $this->load->view('dashboard');
         $this->load->view('templates/footer');
@@ -18,11 +19,17 @@ class Dashboard extends CI_Controller
 
     public function count_received_item()
     {
-        $data = $this->inventorymodel->count_received_items();
+        $position = $this->session->userdata['logged_in']['position'];
+        $deptid = $this->session->userdata['logged_in']['dept_id'];
+        if($position === 'custodian' || $position === 'admin'){
+            $data = $this->inventorymodel->count_received_items();
+        }else{
+            $data = $this->inventorymodel->count_rec_items_per_dept($deptid);
+        }
         foreach ($data as $item) {
-            if ($item['quantity'] == null) {
-                echo "0";
-            } else {
+            if($item === ""){
+                echo '0';
+            }else{
                 echo $item['quantity'];
             }
         }
@@ -47,17 +54,15 @@ class Dashboard extends CI_Controller
 
     public function count_ret_items()
     {
-        $data = $this->inventorymodel->count_ret_items();
+        $position = $this->session->userdata['logged_in']['position'];
+        $deptid = $this->session->userdata['logged_in']['dept_id'];
+        if($position === 'custodian' || $position === 'admin'){
+            $data = $this->inventorymodel->count_ret_items();
+        }else{
+            $data = $this->inventorymodel-> count_returned_per_dept($deptid);
+        }
         foreach ($data as $ret) {
             echo $ret['user'];
-        }
-    }
-
-    public function count_def_items()
-    {
-        $data = $this->inventorymodel->count_def_items();
-        foreach ($data as $def) {
-            echo $def['status'];
         }
     }
 
@@ -69,22 +74,15 @@ class Dashboard extends CI_Controller
         }
     }
 
-    public function count_rec_items_per_dept()
+      public function no_of_items()
     {
+        $position = $this->session->userdata['logged_in']['position'];
         $deptid = $this->session->userdata['logged_in']['dept_id'];
-        $data = $this->inventorymodel->count_rec_items_per_dept($deptid);
-        if (empty($data)) {
-            echo "0";
-        } else {
-            foreach ($data as $received) {
-                echo $received['received'];
-            }
-        }   
-    }
-
-    public function no_of_items()
-    {
-        $data = $this->inventorymodel->no_of_items();
+        if($position === 'custodian' || $position === 'admin'){
+            $data = $this->inventorymodel->no_of_items();
+        }else{
+            $data = $this->inventorymodel->total_item_per_dept($deptid);
+        }
         foreach ($data as $itemno) {
             echo $itemno['item'];
         }
@@ -92,7 +90,13 @@ class Dashboard extends CI_Controller
 
     public function total_unit_cost()
     {
-        $data = $this->inventorymodel->total_unit_cost();
+        $position = $this->session->userdata['logged_in']['position'];
+        $dept_id = $this->session->userdata['logged_in']['dept_id'];
+        if($position === 'admin' || $position === 'custodian'){
+            $data = $this->inventorymodel->total_unit_cost();
+        }else{
+            $data = $this->inventorymodel-> total_unit_cost_per_dept($dept_id);
+        }
         foreach ($data as $unit_cost) {
             echo "&#8369; ".number_format((int)$unit_cost['cost'],2);
         }
@@ -100,7 +104,13 @@ class Dashboard extends CI_Controller
 
     public function count_expired_items()
     {
-        $data = $this->inventorymodel->count_expired_items();
+        $position = $this->session->userdata['logged_in']['position'];
+        $dept_id = $this->session->userdata['logged_in']['dept_id'];
+        if($position === 'admin' || $position === 'custodian'){
+            $data = $this->inventorymodel->count_expired_items();
+        }else{
+            $data = $this->inventorymodel->count_expired_items_per_dept($dept_id);
+        }
         foreach ($data as $expired) {
             echo $expired['quantity'];
         }

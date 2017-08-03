@@ -12,7 +12,8 @@
             </div>
             <div class="modal-body" align="center">
                 <form class="box-body" style="overflow-x:auto; width:auto; ">
-                    <?php $position = $this->session->userdata['logged_in']['position'];
+                    <?php
+                    $position = $this->session->userdata['logged_in']['position'];
                     if($position === 'admin' || $position === 'custodian') {
                     echo '<form action="">'.
                          '<p class="display">Note: Only UNIQUE serial numbers will be saved.</p>'.
@@ -26,7 +27,7 @@
                     <table id="details" class="table table-bordered table-striped" width="100%">
                         <thead>
                         <tr>
-                    <?= $position = $this->session->userdata['logged_in']['position'];
+                    <?php $position = $this->session->userdata['logged_in']['position'];
                         if($position === 'custodian' || $position === 'receiver'){
                             echo '<th><input type="checkbox" name="select-all" ><label> Check all</label></th>';
                         }
@@ -39,14 +40,17 @@
                             <th>Date Received</th>
                             <th>Received By</th>
                             <th>Unit Cost</th>
-                            <th>Status</th>
+                            <?php $position = $this->session->userdata['logged_in']['position'];
+                            if ($position === 'admin' || $position === 'custodian'){
+                                echo '<th>Status</th>';
+                            }?>
                         </tr>
                         </thead>
                         <tbody>
                         </tbody>
                         <tfoot>
                         <tr>
-                            <?= $position = $this->session->userdata['logged_in']['position'];
+                            <?php $position = $this->session->userdata['logged_in']['position'];
                             if($position === 'custodian' || $position === 'receiver'){
                                 echo '<th><input type="checkbox" name="select-all" ><label> Check all</label></th>';
                             }
@@ -59,14 +63,18 @@
                             <th>Date Received</th>
                             <th>Received By</th>
                             <th>Unit Cost</th>
-                            <th>Status</th>
+                            <?php $position = $this->session->userdata['logged_in']['position'];
+                            if ($position === 'admin' || $position === 'custodian'){
+                                echo '<th>Status</th>';
+                            }?>
                         </tr>
                         </tfoot>
                     </table>
-                        <?php $position = $this->session->userdata['logged_in']['position'];
-                        if($position === 'receiver') {
-                            echo '<button type="button" class="open-modal-action" onclick="return_selected_items()" ">Return Selected Item(s)</button>';
-                        }?>
+                    <?php $position = $this->session->userdata['logged_in']['position'];
+                    if($position === 'receiver'){
+                        echo '<button type="button" class="open-modal-action" onclick="return_selected_items()" ">Return Selected Item(s)</button>';
+                    }
+                    ?>
                 </form>
                 </div>
 

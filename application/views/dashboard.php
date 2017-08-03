@@ -13,7 +13,7 @@
 <div class='col-lg-2 col-xs-2'>
     <div class='small-box bg-aqua'>
         <div class='inner'>
-            <h3 id='rec_items'></h3>
+            <h3 id='r_items'></h3>
             <p>Received Items</p>
         </div>
         <div class='icon'>

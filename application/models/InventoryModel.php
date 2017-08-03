@@ -354,10 +354,10 @@ class InventoryModel extends CI_Model {
      public function count_received_items()
      {
         $this->db->select('count(DISTINCT item.item_id) as quantity');
-        $this->db->join('item_detail',' item.item_id = item_detail.item_id','left');
-         $this->db->where ('DATE(date_rec) =  CURDATE()');
+        $this->db->join('item_detail','item.item_id = item_detail.item_id','left');
+         $this->db->where ('DATE(date_rec)=CURDATE()');
          $this->db->group_by('item_name');
-                $query = $this->db->get('item');
+         $query = $this->db->get('item');
         return $query->result_array();
     }
  public function count_ret_items()
@@ -446,10 +446,10 @@ $this->db->order_by('del_date');
 
     public function count_rec_items_per_dept($deptid)
      {
-        $this->db->select('dept_id, SUM(quantity) as received');
+        $this->db->select('dept_id, quantity');
         $this->db->from('distribution');
         $this->db->where('dept_id', $deptid);
-        $this->db->group_by('dept_id');
+        $this->db->group_by('dept_id,quantity');
         $query = $this->db->get();
         return $query->result_array();
     }
@@ -466,6 +466,13 @@ $this->db->order_by('del_date');
         $this->db->select('sum(unit_cost) as cost');
         $this->db->from('item_detail');
         $query = $this->db->get();
+        return $query->result_array();
+    }
+    public function total_unit_cost_per_dept($dept_id){
+        $this->db->select('sum(unit_cost) as cost');
+        $this->db->join('distribution','item_detail.dist_id = distribution.dist_id','left');
+        $this->db->where('distribution.dept_id',$dept_id);
+        $query = $this->db->get('item_detail');
         return $query->result_array();
     }
 
@@ -502,7 +509,7 @@ $this->db->order_by('del_date');
     }
 
      public function total_item_per_dept($deptid){
-        $this->db->select('sum(quantity) as total');
+        $this->db->select('sum(quantity) as item');
         $this->db->from('distribution');
         $this->db->where('dept_id', $deptid);
         $query = $this->db->get();
@@ -511,7 +518,7 @@ $this->db->order_by('del_date');
 
     public function count_returned_per_dept($deptid)
     {
-        $this->db->select('COUNT(*) as total');
+        $this->db->select('COUNT(*) as user');
         $this->db->from('logs.return_log');
         $this->db->where('dept_id', $deptid);
         $query = $this->db->get();
