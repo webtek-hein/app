@@ -38,14 +38,15 @@
                             <td><input type="text" id="new_receivedby" name="Item_Receivedby[]" required="required" style="width:150px;"></td>
                             <td><input type="number" min=0 id="new_qty" name="Item_Quantity[]" required="required" style="width:80px;"></td>
                             <td><input type="text" id="new_supplier" name="Item_Supplier[]" required="required" style="width:150px;"></td>
-                            <td>
-                                <select id="new_type" list="typelist" name="Type" required="required">
-                                    <option selected="true" value="CO">CO</option>
+                            <td><input type="text" id="new_type"  list="typelist" name="Item_Type[]" required="required" style="width:80px;" pattern="CO|MOOE" title="Type must Be 'CO' or 'MOOE'">
+                                <span id="error"></span>
+                                <datalist id="typelist" >
+                                    <option value="CO">CO</option>
                                     <option value="MOOE">MOOE</option>
-                                </select>
+                                </datalist>
                             </td>
-                            <td><input type="date"  id="new_deldate" value="mm/dd/yyyy" name="Item_Deliverydate[]" required="required" style="width:140px;"></td>
-                            <td><input type="date"  id="new_datereceived" value="mm/dd/yyyy" name="Item_Datereceived[]" required="required" style="width:140px;"></td>
+                            <td><input type="date"  id="new_deldate" value="" name="Item_Deliverydate[]" required="required" style="width:140px;"></td>
+                            <td><input type="date"  id="new_datereceived" value="" name="Item_Datereceived[]" required="required" style="width:140px;"></td>
                             <td>
 
                                 <input type="text" id="new_unit" name="Item_Unit[]" list="list" required="required" style="width:80px; height: 25px;">
@@ -61,7 +62,7 @@
                                 </datalist>
                             </td>
                             <td><input type="number" min="0"step='any' id="new_cost" name="Item_Cost[]" required="required" style="width:80px;"></td>
-                            <td><input type="date" class="datepicker" id="new_expdate" value="mm/dd/yyyy" name="Item_Expirationdate[]" required="required" style="width:140px;"></td>
+                            <td><input type="date"  id="new_expdate" value="" name="Item_Expirationdate[]" required="required" style="width:140px;"></td>
                         </tr>
 
                     </table>
@@ -77,4 +78,3 @@
     </div>
 </div>
 </div>
-      
