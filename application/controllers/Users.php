@@ -34,12 +34,12 @@ class Users extends CI_Controller {
             $row[] = $list['contact_no'];
             $row[] = $list['position'];
             if ($list['status'] === 'pending'){
-            $row[] = "<button type=\"button\" class=\"open-modal-action\" data-id='$list[user_id]' data-toggle=\"modal\" data-target=\"#accept\">Accept</button>" .
-            "<button type=\"button\" class=\"open-modal-action\" data-id='$list[user_id]' data-toggle=\"modal\" data-target=\"#decline\">Decline</button>";
+                $row[] = "<button type=\"button\" class=\"btn btn-primary open-modal-action\" data-id='$list[user_id]' data-toggle=\"modal\" data-target=\"#accept\" style=\"width: 88px;\">Accept</button>" .
+                    "<br> <button type=\"button\" class=\"btn btn-warning open-modal-action\" data-id='$list[user_id]' data-toggle=\"modal\" data-target=\"#decline\" style=\"width: 88px;\">Decline</button>";
             }else if ($list['status'] === 'accepted'){
-              $row[] = "<button type=\"button\" class=\"open-modal-action\" data-id='$list[user_id]' data-toggle=\"modal\" data-target=\"#deactivate\">Deactivate</button>";   
+                $row[] = "<button type=\"button\" class=\"btn btn-danger open-modal-action\" data-id='$list[user_id]' data-toggle=\"modal\" data-target=\"#deactivate\">Deactivate</button>";
             }else{
-             $row[] = "<button type=\"button\" class=\"open-modal-action\" data-id='$list[user_id]' data-toggle=\"modal\" data-target=\"#activate\">Activate</button>";
+                $row[] = "<button type=\"button\" class=\"btn btn-success open-modal-action\" data-id='$list[user_id]' data-toggle=\"modal\" data-target=\"#activate\" style=\"width: 88px;\">Activate</button>";
             }
             $data[] = $row;
         }
