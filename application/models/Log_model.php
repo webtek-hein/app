@@ -103,6 +103,22 @@ class Log_model extends CI_Model {
         $query = $this->db->get('logs.return_log');
         return $query->result_array();
     }
+public function get_return_log_per_dept($id)
+    {
+        $this->db->Select ('item_detail.item_id,distribution.dist_id,department,item_name, item_description,count(inventory.item_detail.item_det_id) as quantity,unit,date,concat(inventory.user.first_name," ",inventory.user.last_name) as user,return_person');
+        $this->db->join('inventory.item_detail','item_detail.item_det_id = return_log.item_det_id','left');
+        $this->db->join('inventory.item','item_detail.item_id = item.item_id','left');
+        $this->db->join('inventory.distribution','distribution.dist_id = item_detail.dist_id','left');
+        $this->db->join('inventory.department','distribution.dept_id = department.dept_id','left');
+        $this->db->join('inventory.user','user.user_id = return_log.user_id','left');
+        $this->db->group_by('logs.return_log.return_person,item_detail.item_id,distribution.dist_id,date,inventory.item.item_name,inventory.user.user_id,inventory.item.item_description');
+        $this->db->where('logs.return_log.dept_id',$id);
+
+
+        $query = $this->db->get('logs.return_log');
+        return $query->result_array();
+    }
+
     public function return_log_details($dist_id)
     {
         $this->db->Select ('account_code, serial, official_receipt_no, item_description, item_usage, distrib_date, distribution.receivedby, unit_cost, logs.return_log.reason');

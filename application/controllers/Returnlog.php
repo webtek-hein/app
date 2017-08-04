@@ -21,11 +21,14 @@ class Returnlog extends CI_Controller {
     {
         $position = $this->session->userdata['logged_in']['position'];
         $user_id = $this->session->userdata['logged_in']['userid'];
+        $dept_id = $this->session->userdata['logged_in']['dept_id'];
 
-        if($position == 'admin' || $position === 'custodian' ){
+        if($position === 'admin' || $position === 'custodian' ){
             $return = $this->log_model->get_return_log();
-        }else{
+        }else if($position === 'receiver'){
             $return = $this->log_model->get_return_log_per_user($user_id);
+        }else{
+            $return = $this->log_model->get_return_log_per_dept($dept_id);
         }
         $data = array();
         foreach ($return as $list) {
