@@ -535,7 +535,7 @@ $this->db->order_by('del_date');
         $type = $query->row()->item_type;
 
         if ($type == 'CO') {
-            $where = "serial IS NOT NULL AND item_status != 'defective' AND exp_date > NOW() AND (dist_id IS NULL OR dist_id NOT IN (SELECT dist_id FROM item_detail WHERE item_status = 'returned' AND dist_id NOT IN (SELECT dist_id FROM distribution WHERE dept_id = $deptid)))";
+            $where = "serial IS NOT NULL AND exp_date > NOW() AND (dist_id IS NULL OR (item_status != 'in_stock' AND dist_id NOT IN (SELECT dist_id FROM item_detail WHERE item_status = 'returned' AND dist_id NOT IN (SELECT dist_id FROM distribution WHERE dept_id = $deptid))))";
             $this->db->select('count(*) as quantity');
             $this->db->from('item_detail');
             $this->db->where($where);
@@ -543,7 +543,7 @@ $this->db->order_by('del_date');
             $query = $this->db->get();
             return $query->result_array();
         } else {
-            $where = "item_status != 'defective' AND exp_date > NOW() AND (dist_id IS NULL OR dist_id NOT IN (SELECT dist_id FROM item_detail WHERE item_status = 'returned' AND dist_id NOT IN (SELECT dist_id FROM distribution WHERE dept_id = $deptid)))";
+            $where = "exp_date > NOW() AND (dist_id IS NULL OR (item_status != 'in_stock' AND dist_id NOT IN (SELECT dist_id FROM item_detail WHERE item_status = 'returned' AND dist_id NOT IN (SELECT dist_id FROM distribution WHERE dept_id = $deptid))))";
             $this->db->distinct();
             $this->db->select('quantity');
             $this->db->from('item');
