@@ -544,10 +544,13 @@ $this->db->order_by('del_date');
             return $query->result_array();
         } else {
             $where = "item_status != 'defective' AND exp_date > NOW() AND (dist_id IS NULL OR dist_id NOT IN (SELECT dist_id FROM item_detail WHERE item_status = 'returned' AND dist_id NOT IN (SELECT dist_id FROM distribution WHERE dept_id = $deptid)))";
-            $this->db->select('count(*) as quantity');
-            $this->db->from('item_detail');
+            $this->db->distinct();
+            $this->db->select('quantity');
+            $this->db->from('item');
             $this->db->where($where);
-            $this->db->where('item_detail.item_id', $id);
+            $this->db->where('item.item_id', $id);
+            $this->db->join('item_detail', 'item.item_id = item_detail.item_id', 'left');
+
             $query = $this->db->get();
             return $query->result_array();
         }
