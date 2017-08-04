@@ -230,9 +230,9 @@ class Inventory extends CI_Controller {
         echo json_encode($list);
     }
 
-    public function get_quantity($id)
+    public function get_quantity($id, $deptid)
     {
-        $quantity = $this->InventoryModel->get_item_quantity($id);
+        $quantity = $this->InventoryModel->get_quantity_for_dept($id, $deptid);
         $data = array();
         foreach ($quantity as $list) {
             $row = array();
@@ -242,6 +242,7 @@ class Inventory extends CI_Controller {
         $list = array('data'=>$data);
         echo json_encode($list);
     }
+
     public function set_serial()
     {
         $data = $this->input->post('serial');

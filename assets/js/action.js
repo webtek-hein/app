@@ -74,7 +74,6 @@ $(document).ready(function() {
     });
 
 
-
     increaselog = $('#increase_log').DataTable({
         dom: 'Bfrtip',
         buttons:[{
@@ -175,16 +174,28 @@ function summary() {
 
 
 function subtract_quantity(id) {
-    $.ajax({
-        url: 'inventory/get_quantity/' + id,
-        type:"POST",
-        dataType: 'json',
-        success: function(data){
-            $('input[name="Quantity"]').attr('max', data.data);
-            $('#subqty').modal('show');
-        },
+    $('.modal').on('hidden.bs.modal', function(){
+        document.getElementById('quant').style.display  = 'none';
+        $(this).find('form')[0].reset();
     });
-
+    $('#subqty').modal('show');
+    $('select[name="department"]').change(function() {
+        var deptid = $(this).val();
+        if (deptid != 'none') {
+            $('input[name="Quantity"]').val(0);
+            $.ajax({
+                url: 'inventory/get_quantity/' + id + '/' + deptid,
+                type:"POST",
+                dataType: 'json',
+                success: function(data){
+                    $('input[name="Quantity"]').prop('max', data.data);
+                    document.getElementById('quant').style.display  = 'block';
+                },
+            });
+        } else {
+            document.getElementById('quant').style.display  = 'none';
+        } 
+    });
 }
 
 function replace(id) {

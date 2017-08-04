@@ -16,19 +16,20 @@
 
                 <table border="0" width="500" align="center" class="table">
                     <tr>
-                        <td>Quantity</td>
-                        <td>
-                            <input id="quantity" type="number" min = "0" max="" class="Input" name="Quantity">
-                        </td>
-                    </tr>
-                    <tr>
                         <td>Department</td>
                         <td>
                             <select class="dept" name="department">
+                                <option value="none">Select Department</option>
                                 <?php foreach ($department as $dp_record): ?>
                                     <option value="<?php echo $dp_record['dept_id']; ?>"><?php echo $dp_record['res_center_code']," ", $dp_record['department']; ?></option>
                                 <?php endforeach; ?>
                             </select>
+                        </td>
+                    </tr>
+                    <tr id="quant">
+                        <td>Quantity</td>
+                        <td>
+                            <input id="quantity" type="number" min = "0" max="" class="Input" name="Quantity">
                         </td>
                     </tr>
                     <tr>
@@ -65,3 +66,8 @@
         <?php echo form_close(); ?>
     </div>
 </div>
+<style type="text/css">
+    #quant {
+        display: none;
+    }
+</style>

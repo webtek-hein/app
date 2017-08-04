@@ -525,4 +525,32 @@ $this->db->order_by('del_date');
         $query = $this->db->get();
         return $query->result_array();
     }
+
+    public function get_quantity_for_dept($id, $deptid)
+    {
+        $this->db->select('item_type');
+        $this->db->from('item');
+        $this->db->where('item_id', $id);
+        $query = $this->db->get();
+        $type = $query->row()->item_type;
+
+        if ($type == 'CO') {
+            $where = "serial IS NOT NULL AND item_status != 'defective' AND exp_date > NOW() AND (dist_id IS NULL OR dist_id NOT IN (SELECT dist_id FROM item_detail WHERE item_status = 'returned' AND dist_id NOT IN (SELECT dist_id FROM distribution WHERE dept_id = $deptid)))";
+            $this->db->select('count(*) as quantity');
+            $this->db->from('item_detail');
+            $this->db->where($where);
+            $this->db->where('item_detail.item_id', $id);
+            $query = $this->db->get();
+            return $query->result_array();
+        } else {
+            $where = "item_status != 'defective' AND exp_date > NOW() AND (dist_id IS NULL OR dist_id NOT IN (SELECT dist_id FROM item_detail WHERE item_status = 'returned' AND dist_id NOT IN (SELECT dist_id FROM distribution WHERE dept_id = $deptid)))";
+            $this->db->select('count(*) as quantity');
+            $this->db->from('item_detail');
+            $this->db->where($where);
+            $this->db->where('item_detail.item_id', $id);
+            $query = $this->db->get();
+            return $query->result_array();
+        }
+        
+    }
 }
