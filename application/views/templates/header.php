@@ -147,13 +147,13 @@ if (isset($this->session->userdata['logged_in'])) {
 
 
             <?php $position = $this->session->userdata['logged_in']['position'];
-            if ($position === 'admin' || $position === 'custodian' || $position === 'custodian'){
+            if ($position === 'admin' || $position === 'custodian'){
                 echo '<li class="treeview"><a href='.base_url().'department><i class="fa fa-building"></i>'.
-                    '<span>Department</span></a></li>';
+                    '<span>Department</span></a></li><li class="treeview"><a href=<?php echo'. 'base_url();?>returned><i class="fa fa-reply"></i>'.
+                        '<span>Return</span></a></li>';
             }
                 ?>
-                <li class="treeview"><a href=<?php echo base_url();?>returned><i class="fa fa-reply"></i>
-                        <span>Return</span></a></li>
+                
 
 
             <?php
