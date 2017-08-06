@@ -148,15 +148,39 @@ class InventoryModel extends CI_Model {
         $this->db->insert('distribution', $data2);
         $distid = $this->db->insert_id();
         //update item_detail
-        $query = $this->db->query("SELECT dist_id FROM item_detail WHERE item_status = 'returned' AND dist_id NOT IN (SELECT dist_id FROM distribution WHERE dept_id = $data2[dept_id])");
-        $dists=$query->result_array();
+//        $dists = $this->db->query("SELECT dist_id FROM item_detail WHERE item_status = 'returned' AND dist_id NOT IN (SELECT dist_id FROM distribution WHERE dept_id = $data2[dept_id])");
+        $this->db->select('dist_id')
+            ->where('dept_id',$data2['dept_id']);
+        $query = $this->db->get('distribution');
+
         $temp = array();
-        foreach ($dists as $dist) {
-            array_push($temp, $dist);
+        foreach ($query->result_array() as $dist) {
+            $temp[] = $dist['dist_id'];
         }
-        $where = "serial IS NOT NULL AND exp_date > NOW() AND (dist_id IS NULL OR (item_status != 'in_stock' AND dist_id NOT IN (SELECT dist_id FROM item_detail WHERE item_status = 'returned' AND dist_id NOT IN (SELECT dist_id FROM distribution WHERE dept_id =$data2[dept_id]))) )";
+
+        $this->db->select('dist_id')
+            ->where('item_status','returned')
+            ->where_not_in('dist_id',$temp);
+        $query = $this->db->get('item_detail');
+
+        $dist_id = array();
+        foreach ($query->result_array() as $list) {
+            $dist_id[] = $list['dist_id'];
+        }
+        //$where = "serial IS NOT NULL AND exp_date > NOW() AND (dist_id IS NULL OR (item_status != 'in_stock' AND dist_id NOT IN (SELECT dist_id FROM item_detail WHERE item_status = 'returned' AND dist_id NOT IN (SELECT dist_id FROM distribution WHERE dept_id = $deptid))))";
+        //$where = "serial IS NOT NULL AND exp_date > NOW() AND (dist_id IS NULL OR (item_status != 'in_stock' AND dist_id NOT IN ))";
         $this->db->where('item_detail.item_id',$itemid);
-        $this->db->where($where);
+        $this->db->where('serial is not null');
+        $this->db->where('exp_date > now()');
+        $this->db->group_start();
+        $this->db->where('item_detail.dist_id',null, false);
+        $this->db->or_group_start();
+        $this->db->where('item_status !=', 'in_stock');
+        if(count($dist_id)>0){
+            $this->db->where_not_in('dist_id', $dist_id);
+        }
+        $this->db->group_end();
+        $this->db->group_end();
         $this->db->limit($quantity);
         $this->db->set('item_detail.dist_id',$distid);
         $this->db->update('item_detail');
