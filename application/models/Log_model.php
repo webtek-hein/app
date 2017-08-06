@@ -90,7 +90,7 @@ class Log_model extends CI_Model {
 
  public function get_return_log_per_user($id)
     {
-        $this->db->Select ('item_detail.item_id,distribution.dist_id,department,item_name, item_description,count(inventory.item_detail.item_det_id) as quantity,unit,date,concat(inventory.user.first_name," ",inventory.user.last_name) as user,return_person');
+        $this->db->Select ('item_detail.item_id,distribution.dist_id,department,item_name, item_description,count(inventory.item_detail.item_det_id) as quantity,unit,date,concat(inventory.user.first_name," ",inventory.user.last_name) as user,return_person, distribution.dept_id');
         $this->db->join('inventory.item_detail','item_detail.item_det_id = return_log.item_det_id','left');
         $this->db->join('inventory.item','item_detail.item_id = item.item_id','left');
         $this->db->join('inventory.distribution','distribution.dist_id = item_detail.dist_id','left');
@@ -105,7 +105,7 @@ class Log_model extends CI_Model {
     }
 public function get_return_log_per_dept($id)
     {
-        $this->db->Select ('item_detail.item_id,distribution.dist_id,department,item_name, item_description,count(*) as quantity,unit,date,concat(inventory.user.first_name," ",inventory.user.last_name) as user,return_person');
+        $this->db->Select ('item_detail.item_id,distribution.dist_id,department,item_name, item_description,count(*) as quantity,unit,date,concat(inventory.user.first_name," ",inventory.user.last_name) as user,return_person, distribution.dept_id');
         $this->db->join('inventory.item_detail','item_detail.item_det_id = return_log.item_det_id','left');
         $this->db->join('inventory.item','item_detail.item_id = item.item_id','left');
         $this->db->join('inventory.distribution','distribution.dist_id = item_detail.dist_id','left');
@@ -117,7 +117,7 @@ public function get_return_log_per_dept($id)
         return $query->result_array();
     }
 
-    public function return_log_details($dist_id)
+    public function return_log_details($dist_id, $dept_id)
     {
         $this->db->Select ('account_code, serial, official_receipt_no, item_description, item_usage, distrib_date, distribution.receivedby, unit_cost, logs.return_log.reason');
         $this->db->JOIN('distribution','account_code.ac_id = distribution.account_id','left');
@@ -125,6 +125,7 @@ public function get_return_log_per_dept($id)
         $this->db->JOIN('item','item.item_id = item_detail.item_id','left');
         $this->db->JOIN('logs.return_log','item_detail.item_det_id = return_log.item_det_id','left');
         $this->db->WHERE('distribution.dist_id',$dist_id);
+        $this->db->WHERE('return_log.dept_id',$dept_id);
         $this->db->WHERE('logs.return_log.reason !=',null,false);
         $query = $this->db->GET('account_code');
         return $query->result_array();

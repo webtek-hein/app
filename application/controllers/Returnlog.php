@@ -43,15 +43,15 @@ class Returnlog extends CI_Controller {
             if($position === 'admin' || $position === 'custodian') {
                 $row[] = $list['user'];
             }
-            $row[] = " <button class=\"btn btn-info open-modal-action fa fa-info\" onclick=\"get_return_details(". $list['dist_id'] .")\"></button>";
+            $row[] = " <button class=\"btn btn-info open-modal-action fa fa-info\" onclick=\"get_return_details(". $list['dist_id'] . ", " . $list['dept_id'] .")\"></button>";
             $data[] = $row;
 
         }
         $list = array('data'=>$data);
         echo json_encode($list);
     }
-    public function returnlog_details($dist_id){
-        $details = $this->log_model->return_log_details($dist_id);
+    public function returnlog_details($dist_id, $dept_id){
+        $details = $this->log_model->return_log_details($dist_id, $dept_id);
         $data = array();
         foreach ($details as $list) {
             $row = array();
