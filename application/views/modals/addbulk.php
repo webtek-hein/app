@@ -34,7 +34,7 @@
                             <td><input type="button" class="btn btn-success" onclick="add_row();" value="Add Row"></td>
                             <td><input type="text" id="new_itemname" name="Item_Name[]" required="required" style="width:150px;"></td>
                             <td><input id="new_description" name="Item_Description[]" required="required" style="width:150px;"></td>
-                            <td><input type="text" id="new_or" name="Item_OfficialReceipt[]" required="required" style="width:150px;"></td>
+                            <td><input id="new_or" name="Item_OfficialReceipt[]" required="required" style="width:150px;"></td>
                             <td><input type="text" id="new_receivedby" name="Item_Receivedby[]" required="required" style="width:150px;"></td>
                             <td><input type="number" min=0 id="new_qty" name="Item_Quantity[]" required="required" style="width:80px;"></td>
                             <td><input type="text" id="new_supplier" name="Item_Supplier[]" required="required" style="width:150px;"></td>

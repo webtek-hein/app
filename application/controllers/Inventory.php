@@ -55,7 +55,7 @@ class Inventory extends CI_Controller {
             $row[] = $list['quantity'];
             $row[] = $list['unit'];
             $row[] = $list['item_type'];
-            $row[] =  "&#8369; ".number_format((int)$list['unit_cost']*$list['quantity'],2)."<br>";
+            $row[] =  "&#8369; ".number_format((int)$list['unit_cost'],2)."<br>";
             if($position === 'admin'){
                 $button = "<button style=\"margin-left: 5px\" type=\"button\" class=\"btn btn-primary open-modal-action fa fa-plus\" data-type='$list[item_type]' data-id='$list[item_id]' data-toggle=\"modal\" data-target=\"#addqty\"></button>".
                     "<button style=\"margin-left: 5px\" type=\"button\" class=\"btn btn-danger open-modal-action fa fa-minus\" data-id='$list[item_id]' onclick=\"subtract_quantity(". $list['item_id'] .")\"></button>".

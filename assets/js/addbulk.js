@@ -24,8 +24,8 @@ function add_row()
  var row = table.insertRow(table_len).outerHTML="<tr id='row"+table_len+"'>" +
      "<td> <input type='button' value='Delete' class='btn btn-danger' onclick='delete_row("+table_len+")'></td>"+
      "<td id='itemname_row"+table_len+"'><input type='text' value='"+new_itemname+"' name='Item_Name[]' required='required' style='width:150px;'></td>" +
-     "<td id='description_row"+table_len+"'><input type='text' value='"+new_description+"' name='Item_Description[]' required='required' style='width:150px;'></td>" +
-     "<td id='or_row"+table_len+"'><input type='text' value='"+new_or+"' name='Item_OfficialReceipt[]' required='required' style='width:150px;'></td>" +
+     "<td id='description_row"+table_len+"'><input value='"+new_description+"' name='Item_Description[]' required='required' style='width:150px;'></td>" +
+     "<td id='or_row"+table_len+"'><input value='"+new_or+"' name='Item_OfficialReceipt[]' required='required' style='width:150px;'></td>" +
      "<td id='receivedby_row"+table_len+"'><input type='text' value='"+new_receivedby+"' name='Item_Receivedby[]' required='required' style='width:150px;'></td>" +
      "<td id='qty_row"+table_len+"'> <input type='number' min = 0 value='"+new_qty+"' name='Item_Quantity[]' required='required' style='width:80px;'></td>" +
      "<td id='supplier_row"+table_len+"'><input type='text' value='"+new_supplier+"' name='Item_Supplier[]' required='required' style='width:150px;'></td>" +
