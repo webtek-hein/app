@@ -94,9 +94,9 @@ class Log_model extends CI_Model {
         $this->db->join('inventory.item_detail','item_detail.item_det_id = return_log.item_det_id','left');
         $this->db->join('inventory.item','item_detail.item_id = item.item_id','left');
         $this->db->join('inventory.distribution','distribution.dist_id = item_detail.dist_id','left');
-        $this->db->join('inventory.department','distribution.dept_id = department.dept_id','left');
+        $this->db->join('inventory.department','logs.return_log.dept_id = department.dept_id','left');
         $this->db->join('inventory.user','user.user_id = return_log.user_id','left');
-        $this->db->group_by('logs.return_log.return_person,item_detail.item_id,distribution.dist_id,date,inventory.item.item_name,inventory.user.user_id,inventory.item.item_description');
+        $this->db->group_by('department,logs.return_log.return_person,item_detail.item_id,distribution.dist_id,date,inventory.item.item_name,inventory.user.user_id,inventory.item.item_description');
         $this->db->where('logs.return_log.user_id',$id);
 
 
@@ -109,9 +109,9 @@ public function get_return_log_per_dept($id)
         $this->db->join('inventory.item_detail','item_detail.item_det_id = return_log.item_det_id','left');
         $this->db->join('inventory.item','item_detail.item_id = item.item_id','left');
         $this->db->join('inventory.distribution','distribution.dist_id = item_detail.dist_id','left');
-        $this->db->join('inventory.department','distribution.dept_id = department.dept_id','left');
+        $this->db->join('inventory.department','logs.return_log.dept_id = department.dept_id','left');
         $this->db->join('inventory.user','user.user_id = return_log.user_id','left');
-        $this->db->group_by('logs.return_log.return_person,item_detail.item_id,distribution.dist_id,date,inventory.item.item_name,inventory.user.user_id,inventory.item.item_description');
+        $this->db->group_by('department,logs.return_log.return_person,item_detail.item_id,distribution.dist_id,date,inventory.item.item_name,inventory.user.user_id,inventory.item.item_description');
         $this->db->where('return_log.dept_id',$id);
         $query = $this->db->get('logs.return_log');
         return $query->result_array();
