@@ -21,28 +21,31 @@ class InventoryModel extends CI_Model {
     }
 
 	public function get_inventory_list()
-	{
+    {
 
 
         $query = $this->db->select('item_description,item_type,item_name,sum(quantity) as quantity,unit,sum(cost) as unit_cost,item_id')
-                ->from('(SELECT unit, item_type,item_description,item_name,item_detail.item_id,count(unit_cost) as quantity,count(unit_cost)*unit_cost as cost FROM `item_detail`
+            ->from('(SELECT unit, item_type,item_description,item_name,item_detail.item_id,count(unit_cost) as quantity,count(unit_cost)*unit_cost as cost FROM `item_detail`
+left join item on item.item_id = item_detail.item_id
+group by unit_cost,item_id,item_name,item_description,item_type) as a')
+            ->group_by('item_id')
+            ->get();
+        if (($query->num_rows()) > 0) {
+            $item_type = $query->row()->item_type;
+            if ($item_type === 'CO') {
+                return $query->result_array();
+            } else {
+                $query = $this->db->select('item_description,item_type,item_name,sum(quantity) as quantity,unit,sum(cost) as unit_cost,item_id')
+                    ->from('(SELECT unit, item_type,item_description,item_name,item_detail.item_id,quantity,quantity*unit_cost as cost FROM `item_detail`
 left join item on item.item_id = item_detail.item_id
 group by unit_cost,item_id) as a')
-                ->group_by('item_id')
-                     ->get();
-        $item_type = $query->row()->item_type;
-        if($item_type === 'CO'){
-            return $query->result_array();
-        }else{
-            $query = $this->db->select('item_description,item_type,item_name,sum(quantity) as quantity,unit,sum(cost) as unit_cost,item_id')
-                ->from('(SELECT unit, item_type,item_description,item_name,item_detail.item_id,quantity,quantity*unit_cost as cost FROM `item_detail`
-left join item on item.item_id = item_detail.item_id
-group by unit_cost,item_id) as a')
-                ->group_by('item_id')
-                ->get();
-            return $query->result_array();
+                    ->group_by('item_id')
+                    ->get();
+                return $query->result_array();
+            }
+
         }
-	}
+    }
 
     public function get_by_id($id)
     {
