@@ -148,13 +148,13 @@ class InventoryModel extends CI_Model {
         $this->db->insert('distribution', $data2);
         $distid = $this->db->insert_id();
         //update item_detail
-        $dists = $this->db->query("SELECT dist_id FROM item_detail WHERE item_status = 'returned' AND dist_id NOT IN (SELECT dist_id FROM distribution WHERE dept_id = $data2[dept_id])");
-        return $dists->result_array();
+        $query = $this->db->query("SELECT dist_id FROM item_detail WHERE item_status = 'returned' AND dist_id NOT IN (SELECT dist_id FROM distribution WHERE dept_id = $data2[dept_id])");
+        $dists=$query->result_array();
         $temp = array();
         foreach ($dists as $dist) {
             array_push($temp, $dist);
         }
-        $where = "serial IS NOT NULL AND exp_date > NOW() AND (dist_id IS NULL OR (item_status != 'in_stock' AND dist_id NOT IN (SELECT dist_id FROM item_detail WHERE item_status = 'returned' AND dist_id NOT IN (SELECT dist_id FROM distribution WHERE dept_id = $deptid))))";
+        $where = "serial IS NOT NULL AND exp_date > NOW() AND (dist_id IS NULL OR (item_status != 'in_stock' AND dist_id NOT IN (SELECT dist_id FROM item_detail WHERE item_status = 'returned' AND dist_id NOT IN (SELECT dist_id FROM distribution WHERE dept_id =$data2[dept_id]))) )";
         $this->db->where('item_detail.item_id',$itemid);
         $this->db->where($where);
         $this->db->limit($quantity);
