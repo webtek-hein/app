@@ -26,13 +26,14 @@ class Dashboard extends CI_Controller
         }else{
             $data = $this->inventorymodel->count_rec_items_per_dept($deptid);
         }
-        foreach ($data as $item) {
-            if($item === ""){
-                echo '0';
-            }else{
+        if (count($data) == 0) {
+            echo "0";
+        } else {
+            foreach ($data as $item) {
                 echo $item['quantity'];
             }
         }
+        
     }
 
     public function dashboard_custodian_items_remaining()
@@ -83,8 +84,17 @@ class Dashboard extends CI_Controller
         }else{
             $data = $this->inventorymodel->total_item_per_dept($deptid);
         }
-        foreach ($data as $itemno) {
-            echo $itemno['item'];
+        if (count($data) == 0) {
+            echo "0";
+        } else {
+            foreach ($data as $itemno) {
+                if ($itemno['item'] === NULL) {
+                    echo "0";
+                } else {
+                    echo $itemno['item'];
+                }
+               
+            }
         }
     }
 
