@@ -148,7 +148,6 @@ class InventoryModel extends CI_Model {
         $this->db->insert('distribution', $data2);
         $distid = $this->db->insert_id();
         //update item_detail
-//        $dists = $this->db->query("SELECT dist_id FROM item_detail WHERE item_status = 'returned' AND dist_id NOT IN (SELECT dist_id FROM distribution WHERE dept_id = $data2[dept_id])");
         $this->db->select('dist_id')
             ->where('dept_id',$data2['dept_id']);
         $query = $this->db->get('distribution');
@@ -160,15 +159,13 @@ class InventoryModel extends CI_Model {
 
         $this->db->select('dist_id')
             ->where('item_status','returned')
-            ->where_not_in('dist_id',$temp);
+            ->where_in('dist_id',$temp);
         $query = $this->db->get('item_detail');
 
         $dist_id = array();
         foreach ($query->result_array() as $list) {
             $dist_id[] = $list['dist_id'];
         }
-        //$where = "serial IS NOT NULL AND exp_date > NOW() AND (dist_id IS NULL OR (item_status != 'in_stock' AND dist_id NOT IN (SELECT dist_id FROM item_detail WHERE item_status = 'returned' AND dist_id NOT IN (SELECT dist_id FROM distribution WHERE dept_id = $deptid))))";
-        //$where = "serial IS NOT NULL AND exp_date > NOW() AND (dist_id IS NULL OR (item_status != 'in_stock' AND dist_id NOT IN ))";
         $this->db->where('item_detail.item_id',$itemid);
         $this->db->where('serial is not null');
         $this->db->where('exp_date > now()');
@@ -297,7 +294,7 @@ class InventoryModel extends CI_Model {
 
     public function get_distrib_item_details($item_id)
     {
-        $where = "item_detail.item_id = $item_id AND item_detail.dist_id IS null OR item_detail.dist_id IS NOT NULL AND item_detail.item_status = 'returned'";
+        $where = "item_detail.item_id = $item_id AND (item_detail.dist_id IS null OR item_detail.dist_id IS NOT NULL AND item_detail.item_status = 'returned')";
         $this->db->SELECT("item.quantity,item_det_id, serial, exp_date, supplier, official_receipt_no, del_date, date_rec, item_detail.receivedby AS receivedby, unit_cost, distribution.dist_id, item_detail.dist_id, item.item_id, item_detail.item_id, if(exp_date <= DATE(now()),'Expired',item_status) as item_status")
                 ->join('distribution','distribution.dist_id = item_detail.dist_id','left')
                 ->join('item','item.item_id = item_detail.item_id')
@@ -563,7 +560,7 @@ $this->db->order_by('del_date');
         $type = $query->row()->item_type;
 
         if ($type == 'CO') {
-            $where = "serial IS NOT NULL AND exp_date > NOW() AND (dist_id IS NULL OR (item_status != 'in_stock' AND dist_id NOT IN (SELECT dist_id FROM item_detail WHERE item_status = 'returned' AND dist_id NOT IN (SELECT dist_id FROM distribution WHERE dept_id = $deptid))))";
+            $where = "serial IS NOT NULL AND exp_date > NOW() AND (dist_id IS NULL OR (item_status = 'returned' AND dist_id NOT IN (SELECT dist_id FROM item_detail WHERE item_status = 'returned' AND item_detail.dist_id IN (SELECT dist_id FROM distribution WHERE dept_id = $deptid))))";
             $this->db->select('count(*) as quantity');
             $this->db->from('item_detail');
             $this->db->where($where);
@@ -571,7 +568,7 @@ $this->db->order_by('del_date');
             $query = $this->db->get();
             return $query->result_array();
         } else {
-            $where = "exp_date > NOW() AND (dist_id IS NULL OR (item_status != 'in_stock' AND dist_id NOT IN (SELECT dist_id FROM item_detail WHERE item_status = 'returned' AND dist_id NOT IN (SELECT dist_id FROM distribution WHERE dept_id = $deptid))))";
+            $where = "exp_date > NOW() AND (dist_id IS NULL OR (item_status != 'in_stock' AND dist_id NOT IN (SELECT dist_id FROM item_detail WHERE item_status = 'returned' AND dist_id IN (SELECT dist_id FROM distribution WHERE dept_id = $deptid))))";
             $this->db->distinct();
             $this->db->select('quantity');
             $this->db->from('item');
