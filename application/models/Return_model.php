@@ -89,6 +89,11 @@ class Return_model extends CI_Model {
         $row1 = $query1->row_array();
         $itemid = intval($row1['item_id']);
 
+        $this->db->select('item_type')
+            ->where('item_id',$itemid);
+        $query = $this->db->get('item');
+        $item_type = $query->row()->item_type;
+
         //get item quantity
         $where = 'serial is not null and dist_id is null and item_status != "defective" AND exp_date > NOW()';
         $this->db->select('count(*) as quantity');
@@ -127,7 +132,9 @@ class Return_model extends CI_Model {
                 $dist_id[] = $list['dist_id'];
             }
             $this->db->where('item_detail.item_id',$itemid);
-            $this->db->where('serial is not null');
+            if ($item_type == 'CO') {
+                $this->db->where('serial is not null');
+            }
             $this->db->where('exp_date > now()');
             $this->db->group_start();
             $this->db->where('item_detail.dist_id',null, false);
@@ -139,8 +146,11 @@ class Return_model extends CI_Model {
             $this->db->group_end();
             $this->db->group_end();
             $this->db->limit(1);
+
             $this->db->set('item_detail.dist_id',$distid);
-            $this->db->update('item_detail');
+            $this->db->set('item_detail.item_status','in_stock');
+
+            $this->db->update('item_detail', $updetails);
             $this->db->join('logs.decrease_log','item_detail.item_det_id = logs.decrease_log.item_id');
             //update user in decrease_log
             $this->db->where('user_id', null,false);

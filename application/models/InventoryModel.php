@@ -140,6 +140,13 @@ class InventoryModel extends CI_Model {
 
     public function subtract_quantity($data1,$data2,$itemid, $quantity,$uid)
     {
+        $this->db->select('item_type')
+            ->where('item_id',$itemid);
+        $query = $this->db->get('item');
+
+        $item_type = $query->row()->item_type;
+
+
         //update item
         $this->db->set('quantity', 'quantity-'.$data1, FALSE);
         $this->db->where('item_id',$itemid);
@@ -167,7 +174,9 @@ class InventoryModel extends CI_Model {
             $dist_id[] = $list['dist_id'];
         }
         $this->db->where('item_detail.item_id',$itemid);
-        $this->db->where('serial is not null');
+        if ($item_type == 'CO') {
+            $this->db->where('serial is not null');
+        }
         $this->db->where('exp_date > now()');
         $this->db->group_start();
         $this->db->where('item_detail.dist_id',null, false);
@@ -180,6 +189,7 @@ class InventoryModel extends CI_Model {
         $this->db->group_end();
         $this->db->limit($quantity);
         $this->db->set('item_detail.dist_id',$distid);
+        $this->db->set('item_detail.item_status','in_stock');
         $this->db->update('item_detail');
         $this->db->join('logs.decrease_log','item_detail.item_det_id = logs.decrease_log.item_id');
         //update user in decrease_log
