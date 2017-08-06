@@ -84,7 +84,7 @@
                 <div class="icon">
                     <i class="ion ion-person-add"></i>
                 </div>
-                <span><button><a class="small-box-footer">More Details
+                <span><button><a class="small-box-footer" href='/app/inventory'>More Details
                      <i class="fa fa-arrow-circle-right"> </i></a></button> </span>
             </div>
         </div>
