@@ -20,25 +20,25 @@
 		<?php echo form_open('signup'); ?>
 			<table border="0" width="500" align="center" class="table">
 				<tr>
-					<td><input type="text" class="InputBox" name="FirstName" required="required" value="<?php echo isset($_POST["FirstName"]) ? $_POST["FirstName"] : ''; ?>" placeholder= "First Name"></td>
+					<td align="center"><input type="text" class="InputBox" name="FirstName" required="required" value="<?php echo isset($_POST["FirstName"]) ? $_POST["FirstName"] : ''; ?>" placeholder= "First Name"></td>
 				</tr>
 				<tr>
-					<td><input type="text" class="InputBox" name="LastName" required="required" value="<?php echo isset($_POST["LastName"]) ? $_POST["LastName"] : ''; ?>" placeholder= "Last Name"></td>
+					<td align="center"><input type="text" class="InputBox" name="LastName" required="required" value="<?php echo isset($_POST["LastName"]) ? $_POST["LastName"] : ''; ?>" placeholder= "Last Name"></td>
 				</tr>
 				<tr>
-					<td><input type="email" class="InputBox" name="Email" required="required" value="<?php echo isset($_POST["Email"]) ? $_POST["Email"] : ''; ?>" placeholder= "Email"></td>
+					<td align="center"><input type="email" class="InputBox" name="Email" required="required" value="<?php echo isset($_POST["Email"]) ? $_POST["Email"] : ''; ?>" placeholder= "Email"></td>
 				</tr>
 				<tr>
-					<td><input type="text" class="InputBox" pattern="^(09|\+639)\d{9}$" title="ex 09xxxxxxxxx" name="contactno" required="required" value="<?php echo isset($_POST["contactno"]) ? $_POST["contactno"] : ''; ?>" placeholder= "Contact No."></td>
+					<td align="center"><input type="text" class="InputBox" pattern="^(09|\+639)\d{9}$" title="ex 09xxxxxxxxx" name="contactno" required="required" value="<?php echo isset($_POST["contactno"]) ? $_POST["contactno"] : ''; ?>" placeholder= "Contact No."></td>
 				</tr>
 				<tr>
-					<td><input type="text" pattern="^[A-Za-z0-9_-]{4,15}$" title="Username must be more than 4 characters and not more than 15 characters." class="InputBox" name="Username" required="required" value="<?php echo isset($_POST["Username"]) ? $_POST["Username"] : ''; ?>" placeholder= "Username"></td>
+					<td align="center"><input type="text" pattern="^[A-Za-z0-9_-]{4,15}$" title="Username must be more than 4 characters and not more than 15 characters." class="InputBox" name="Username" required="required" value="<?php echo isset($_POST["Username"]) ? $_POST["Username"] : ''; ?>" placeholder= "Username"></td>
 				</tr>
 				<tr>
-					<td><input type="password" class="InputBox" name="Password" value="" required="required" placeholder= "Password"></td>
+					<td align="center"><input type="password" class="InputBox" name="Password" value="" required="required" placeholder= "Password"></td>
 				</tr>
 				<tr>
-					<td><input type="password" class="InputBox" name="confirm_password" value="" required="required" placeholder= "Repeat password"></td>
+					<td align="center"><input type="password" class="InputBox" name="confirm_password" value="" required="required" placeholder= "Repeat password"></td>
 				</tr>
 				<tr>
 				<script>
@@ -50,8 +50,8 @@
    						}
 					}
 				</script>
-					<td>
-						<select id="type" name="type"  onclick='select_dept()' required>
+					<td align="center">
+						<select  align="center" id="type" name="type"  onclick='select_dept()' required>
 						<option selected="true" disabled>--Choose Position--</option>
  						<option value="custodian">Custodian</option>
 					  	<option value="department head">Department Head</option>
@@ -61,8 +61,7 @@
 					 </td>
 				</tr>	
 				<tr>
-				<td></td>
-				<td>
+				<td align="center">
 					<select  id="dment" name="dment" style="display:none;">
 						<option selected="true" disabled>--Choose Department--</option>
           				<?php foreach ($departments as $dept): ?>
@@ -72,8 +71,10 @@
         		</td>
 				</tr>
 				<tr>
-					<td><input type="button" class="btn btn-primary btn-block btn-small" name="cancel" value="Cancel" onclick=" relocate_home()"></td>
 					<td><input type="submit" class="btn btn-primary btn-block btn-small" name="createaccount" value="Register" ></td>
+					</tr>
+				<tr>
+					<td><input type="button" class="btn btn-primary btn-block btn-small" name="cancel" value="Cancel" onclick=" relocate_home()"></td>
 				</tr>
 				
 			</table>
