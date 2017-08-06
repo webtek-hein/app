@@ -480,10 +480,9 @@ $this->db->order_by('del_date');
 
     public function count_rec_items_per_dept($deptid)
      {
-        $this->db->select('dept_id, quantity');
+        $this->db->select('COUNT(*) as quantity');
         $this->db->from('distribution');
         $this->db->where('dept_id', $deptid);
-        $this->db->group_by('dept_id,quantity');
         $query = $this->db->get();
         return $query->result_array();
     }
