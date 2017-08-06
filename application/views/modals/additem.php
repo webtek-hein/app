@@ -23,7 +23,7 @@
         </tr>
         <tr>
           <td>Item Description</td>
-          <td><input type="text" class="InputBox" name="Description" value="" required="required"></td>
+          <td><input class="InputBox" name="Description" value="" required="required"></td>
         </tr>
 
 
