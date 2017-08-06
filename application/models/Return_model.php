@@ -108,14 +108,39 @@ class Return_model extends CI_Model {
             $this->db->insert('distribution', $data);
             $distid = $this->db->insert_id();
             //update item_detail
+            $this->db->select('dist_id')
+                ->where('dept_id',$data['dept_id']);
+            $query = $this->db->get('distribution');
+
+            $temp = array();
+            foreach ($query->result_array() as $dist) {
+                $temp[] = $dist['dist_id'];
+            }
+
+            $this->db->select('dist_id')
+                ->where('item_status','returned')
+                ->where_in('dist_id',$temp);
+            $query = $this->db->get('item_detail');
+
+            $dist_id = array();
+            foreach ($query->result_array() as $list) {
+                $dist_id[] = $list['dist_id'];
+            }
             $this->db->where('item_detail.item_id',$itemid);
-            $this->db->where('item_detail.dist_id',null,false);
-            $this->db->where('serial !=',null,false);
-            $this->db->where('item_status !=','defective');
-            $this->db->where('exp_date >','NOW()', false);
+            $this->db->where('serial is not null');
+            $this->db->where('exp_date > now()');
+            $this->db->group_start();
+            $this->db->where('item_detail.dist_id',null, false);
+            $this->db->or_group_start();
+            $this->db->where('item_status !=', 'in_stock');
+            if(count($dist_id)>0){
+                $this->db->where_not_in('dist_id', $dist_id);
+            }
+            $this->db->group_end();
+            $this->db->group_end();
             $this->db->limit(1);
             $this->db->set('item_detail.dist_id',$distid);
-            $this->db->update('inventory.item_detail');
+            $this->db->update('item_detail');
             $this->db->join('logs.decrease_log','item_detail.item_det_id = logs.decrease_log.item_id');
             //update user in decrease_log
             $this->db->where('user_id', null,false);
