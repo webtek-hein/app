@@ -24,8 +24,8 @@ class InventoryModel extends CI_Model {
     {
 
 
-        $query = $this->db->select('item_description,item_type,item_name,sum(quantity) as quantity,unit,sum(cost) as unit_cost,item_id')
-            ->from('(SELECT unit, item_type,item_description,item_name,item_detail.item_id,count(unit_cost) as quantity,count(unit_cost)*unit_cost as cost FROM `item_detail`
+        $query = $this->db->select('item_description,item_type,item_name,quantity,unit,sum(cost) as unit_cost,item_id')
+            ->from('(SELECT unit, item_type,item_description,item_name,item_detail.item_id,quantity,count(unit_cost)*unit_cost as cost FROM `item_detail`
 left join item on item.item_id = item_detail.item_id
 group by unit_cost,item_id,item_name,item_description,item_type) as a')
             ->group_by('item_id')
@@ -43,7 +43,6 @@ group by unit_cost,item_id) as a')
                     ->get();
                 return $query->result_array();
             }
-
         }
     }
 
