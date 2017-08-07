@@ -45,16 +45,16 @@ class Returnlog extends CI_Controller {
             }
             $date = strtotime($list['date']);
             $milliseconds = $date * 1000;
-            $row[] = " <button class=\"btn btn-info open-modal-action fa fa-info\" onclick=\"get_return_details($list[log_dept_id],$milliseconds,$list[log_dist_id])\"></button>";
+            $row[] = " <button class=\"btn btn-info open-modal-action fa fa-info\" onclick=\"get_return_details($list[log_dept_id],$milliseconds)\"></button>";
             $data[] = $row;
         }
         $list = array('data'=>$data);
         echo json_encode($list);
     }
-    public function returnlog_details($dept_id, $date, $dist_id){
+    public function returnlog_details($dept_id, $date){
         $datemilli = $date/1000;
         $newdate = date('Y-m-d H:i:s', $datemilli);
-        $details = $this->log_model->return_log_details($dept_id, $newdate, $dist_id);
+        $details = $this->log_model->return_log_details($dept_id, $newdate);
         $data = array();
         foreach ($details as $list) {
             $row = array();
