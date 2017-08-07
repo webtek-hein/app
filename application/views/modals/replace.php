@@ -25,7 +25,7 @@
                         <td>Account Code</td>
                         <td>
                             <!-- Display description, option value is account id eg. 1-07-01-010 for land -->
-                            <select name="AccountCode" class="accountcode" required="required">
+                            <select name="AccountCode" class="accountcode" required>
                                 <?php foreach ($accountcodes as $ac_record): ?>
                                     <option value="<?php echo $ac_record['ac_id']; ?>"><?php echo $ac_record['account_code']," ", $ac_record['description']; ?></option>
                                 <?php endforeach; ?>

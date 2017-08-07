@@ -9,8 +9,6 @@ class Returnlog extends CI_Controller {
     }
 	public function index()
 	{
-        $position = $this->session->userdata['logged_in']['position'];
-
         $this->load->view('templates/header');
 		$this->load->view('returnlog');
         $this->load->view('modals/return_details');

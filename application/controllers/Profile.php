@@ -18,7 +18,6 @@ class Profile extends CI_Controller
 
     public function index()
     {
-        $position = $this->session->userdata['logged_in']['position'];
         $userid = ($this->session->userdata['logged_in']['userid']);
         $data['image'] = $this->user_db->get_image($userid);
         $this->load->view('templates/header');
@@ -93,7 +92,6 @@ class Profile extends CI_Controller
 
           if ( ! $this->upload->do_upload('userfile'))
           {
-              $error =  $this->upload->display_errors();
               header('Location: '. base_url() . 'profile');
           }
           else

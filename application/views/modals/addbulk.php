@@ -1,4 +1,5 @@
 
+<!--suppress XmlDefaultAttributeValue, XmlDefaultAttributeValue -->lDefaultAttributeValue -->lDefaultAttributeValue -->lDefaultAttributeValue -->lDefaultAttributeValue -->lDefaultAttributeValue -->
 <script src="<?php echo base_url() ?>assets/js/addbulk.js"></script>
 <?php $position = ($this->session->userdata['logged_in']['position']); ?>
 <!-- Modal -->
@@ -32,24 +33,24 @@
 
                         <tr>
                             <td><input type="button" class="btn btn-success" onclick="add_row();" value="Add Row"></td>
-                            <td><input type="text" id="new_itemname" name="Item_Name[]" required="required" style="width:150px;"></td>
-                            <td><input id="new_description" name="Item_Description[]" required="required" style="width:150px;"></td>
-                            <td><input id="new_or" name="Item_OfficialReceipt[]" required="required" style="width:150px;"></td>
-                            <td><input type="text" id="new_receivedby" name="Item_Receivedby[]" required="required" style="width:150px;"></td>
-                            <td><input type="number" min=0 id="new_qty" name="Item_Quantity[]" required="required" style="width:80px;"></td>
-                            <td><input type="text" id="new_supplier" name="Item_Supplier[]" required="required" style="width:150px;"></td>
-                            <td><input type="text" id="new_type"  list="typelist" name="Item_Type[]" required="required" style="width:80px;" pattern="CO|MOOE" title="Type must Be 'CO' or 'MOOE'">
+                            <td><input type="text" id="new_itemname" name="Item_Name[]" required style="width:150px;"></td>
+                            <td><input id="new_description" name="Item_Description[]" required style="width:150px;"></td>
+                            <td><input id="new_or" name="Item_OfficialReceipt[]" required style="width:150px;"></td>
+                            <td><input type="text" id="new_receivedby" name="Item_Receivedby[]" required style="width:150px;"></td>
+                            <td><input type="number" min=0 id="new_qty" name="Item_Quantity[]" required style="width:80px;"></td>
+                            <td><input type="text" id="new_supplier" name="Item_Supplier[]" required style="width:150px;"></td>
+                            <td><input type="text" id="new_type"  list="typelist" name="Item_Type[]" required style="width:80px;" pattern="CO|MOOE" title="Type must Be 'CO' or 'MOOE'">
                                 <span id="error"></span>
                                 <datalist id="typelist" >
                                     <option value="CO">CO</option>
                                     <option value="MOOE">MOOE</option>
                                 </datalist>
                             </td>
-                            <td><input type="date"  id="new_deldate" value="" name="Item_Deliverydate[]" required="required" style="width:140px;"></td>
-                            <td><input type="date"  id="new_datereceived" value="" name="Item_Datereceived[]" required="required" style="width:140px;"></td>
+                            <td><input type="date"  id="new_deldate" value="" name="Item_Deliverydate[]" required style="width:140px;"></td>
+                            <td><input type="date"  id="new_datereceived" value="" name="Item_Datereceived[]" required style="width:140px;"></td>
                             <td>
 
-                                <input type="text" id="new_unit" name="Item_Unit[]" list="list" required="required" style="width:80px; height: 25px;">
+                                <input type="text" id="new_unit" name="Item_Unit[]" list="list" required style="width:80px; height: 25px;">
                                 <datalist id="list">
                                     <option value="piece">piece</option>
                                     <option value="box">box</option>
@@ -61,8 +62,8 @@
                                     <option value="others">others</option>
                                 </datalist>
                             </td>
-                            <td><input type="number" min="0"step='any' id="new_cost" name="Item_Cost[]" required="required" style="width:80px;"></td>
-                            <td><input type="date"  id="new_expdate" value="" name="Item_Expirationdate[]" required="required" style="width:140px;"></td>
+                            <td><input type="number" min="0"step='any' id="new_cost" name="Item_Cost[]" required style="width:80px;"></td>
+                            <td><input type="date"  id="new_expdate" value="" name="Item_Expirationdate[]" required style="width:140px;"></td>
                         </tr>
 
                     </table>

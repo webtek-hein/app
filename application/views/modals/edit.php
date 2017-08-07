@@ -13,19 +13,19 @@
                                         <div class="form-group">
                                             <label class="control-label col-md-3">Item Name</label>
                                             <div class="col-md-9">
-                                                <input name="item_name"  placeholder="Item Name" class="form-control" type="text" required="required">
+                                                <input name="item_name"  placeholder="Item Name" class="form-control" type="text" required>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-md-3">Description</label>
                                             <div class="col-md-9">
-                                                <input name="desc" placeholder="Description" class="form-control" type="text" required="required">
+                                                <input name="desc" placeholder="Description" class="form-control" type="text" required>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-md-3">Unit</label>
                                             <div class="col-md-9">
-                                                <input name="unit" placeholder="Unit" class="form-control" type="text"  list="list" required="required">
+                                                <input name="unit" placeholder="Unit" class="form-control" type="text"  list="list" required>
                                                 <datalist id="list">
                                                     <option value="piece">piece</option>
                                                     <option value="box">box</option>
@@ -42,7 +42,7 @@
                                         <div class="form-group">
                                             <label class="control-label col-md-3">Quantity</label>
                                             <div class="col-md-9">
-                                                <input name="qty" placeholder="Quantity" class="form-control" type="number" min="0" required="required">
+                                                <input name="qty" placeholder="Quantity" class="form-control" type="number" min="0" required>
 
                                             </div>
                                         </div>-->

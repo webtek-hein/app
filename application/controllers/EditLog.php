@@ -14,9 +14,6 @@ class EditLog extends CI_Controller {
         $this->load->view('editlog');
         $this->load->view('templates/footer');
 
-        $position = $this->session->userdata['logged_in']['position'];
-        $dept_id = $this->session->userdata['logged_in']['dept_id'];
-
     }
         public function get_edit_log()
     {

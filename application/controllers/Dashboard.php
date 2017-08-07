@@ -48,7 +48,6 @@ class Dashboard extends CI_Controller
             $row[] = $list['item_type'];
             $data[] = $row;
         }
-        $list = array('data'=>$data);
         echo json_encode($data);
 
     }
@@ -148,7 +147,6 @@ class Dashboard extends CI_Controller
             $row[] = (int)$list['quantity'];
             $data[] = $row;
         }
-        $list = array('data'=>$data);
         echo json_encode($data);
     }
 
@@ -170,7 +168,6 @@ class Dashboard extends CI_Controller
             $row[] = (int)$list['quantity'];
             $data[] = $row;
         }
-        $list = array('data'=>$data);
         echo json_encode($data);
     }
 }

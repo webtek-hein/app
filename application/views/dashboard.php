@@ -1,3 +1,4 @@
+<!--suppress ALL -->
 <section class="content-header">
     <h1>
         Dashboard

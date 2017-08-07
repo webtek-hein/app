@@ -3,11 +3,11 @@
         <div class="col-xs-12">
             <div class="box" style="overflow-x:auto; width:auto;">
                 <div class="box-header">
-                    <h3 style="margin: 5px 0px 5px 25px" class="box-title">Inventory</h3><br>
+                    <h3 style="margin: 5px 0 5px 25px" class="box-title">Inventory</h3><br>
                    <?php
                    $position = $this->session->userdata['logged_in']['position'];
                         if ($position === 'custodian') {
-                            echo '<button style="margin: 5px 0px 5px 25px" type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Add item</button>';
+                            echo '<button style="margin: 5px 0 5px 25px" type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Add item</button>';
                             echo '<button style="margin: 5px 5px 5px 5px" type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal1">Add Bulk Items</button>';
                         }
                         ?>

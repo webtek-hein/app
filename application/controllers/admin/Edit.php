@@ -12,19 +12,6 @@ class Edit extends CI_Controller
 
         $this->load->model('InventoryModel');
     }
-    public function index()
-    {
-
-        $data['accountcodes'] = $this->InventoryModel->get_ac_list();
-        $data['item'] = $this->InventoryModel->get_inventory_list();
-        $data['department'] = $this->InventoryModel->get_department_list();
-
-        $this->load->view('templates/header');
-        $this->load->view('edit_view',$data);
-        $this->load->view('templates/footer');
-    }
-
-
     public function edit($id)
     {
         $data = $this->Edit_model->get_by_id($id);

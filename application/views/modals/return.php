@@ -19,11 +19,12 @@
                           <table border="0" width="500" align="center" class="table">
                             <tr>
                               <td>Reason</td>
-                              <td><textarea rows="4" cols="50" type="text" class="InputBox" id="reason" name="reason" value="" required="required" ></textarea></td>
+                              <td><textarea rows="4" cols="50" type="text" class="InputBox" id="reason" name="reason"
+                                            required ></textarea></td>
                             </tr>
                             <tr>
                               <td>Return Person</td>
-                              <td><input type="text" class="InputBox" name="person" value="" required="required"></td>
+                              <td><input type="text" class="InputBox" name="person" value="" required></td>
                             </tr>
                           </table>
                         </div>

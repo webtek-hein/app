@@ -19,38 +19,39 @@
       <table border="0" width="500" align="center" class="table">
         <tr>
           <td>Item Name</td>
-          <td><input type="text"  class="InputBox" name="Item_Name" value="" required="required"></td>
+          <td><!--suppress XmlDefaultAttributeValue -->
+              <input type="text"  class="InputBox" name="Item_Name" value="" required></td>
         </tr>
         <tr>
           <td>Item Description</td>
-          <td><input class="InputBox" name="Description" value="" required="required"></td>
+          <td><input class="InputBox" name="Description" value="" required></td>
         </tr>
 
 
         <tr>
           <td>Official Receipt</td>
-          <td><input class="InputBox" name="OfficialReceipt" value="" required="required"></td>
+          <td><input class="InputBox" name="OfficialReceipt" value="" required></td>
         </tr>
 	<tr>
           <td>Received By</td>
-          <td><input type="text" class="InputBox" name="ReceivedBy" value="" required="required"></td>
+          <td><input type="text" class="InputBox" name="ReceivedBy" value="" required></td>
         </tr>
 
         <tr>
           <td>Quantity</td>
-          <td><input type="number" class="InputBox" min = 0 name="Item_Quantity" value="" required="required"></td>
+          <td><input type="number" class="InputBox" min = 0 name="Item_Quantity" value="" required></td>
         </tr>
 
 
       <tr>
           <td>Supplier</td>
-          <td><input class="InputBox" name="Supplier_Name" value="" required="required"></td>
+          <td><input class="InputBox" name="Supplier_Name" value="" required></td>
         </tr>
 
         <tr>
            <td>Type</td>
           <td>
-            <select id="type" list="typelist" name="Type" required="required">
+            <select id="type" list="typelist" name="Type" required>
               <option selected="true" value="CO">CO</option>
               <option value="MOOE">MOOE</option>
             </select>   
@@ -59,16 +60,16 @@
 
         <tr>
           <td>Delivery Date</td>
-          <td><input type="date" name="datedelivered" required="required"></td>
+          <td><input type="date" name="datedelivered" required></td>
         </tr>
         <tr>
           <td>Date Received</td>
-          <td><input type="date" name="datereceived" required="required"></td>
+          <td><input type="date" name="datereceived" required></td>
         </tr>
         <tr>
           <td>Unit</td>
           <td>
-              <input name="Unit" class="unit" list="list" required="required">
+              <input name="Unit" class="unit" list="list" required>
               <datalist id="list">
                   <option value="piece">piece</option>
                   <option value="box">box</option>
@@ -83,11 +84,11 @@
         </tr>
         <tr>
           <td>Cost per Unit</td>
-          <td><input type="number" min='0' step='any' class="InputBox" name="Cost" value="" required="required"></td>
+          <td><input type="number" min='0' step='any' class="InputBox" name="Cost" value="" required></td>
         </tr>
         <tr>
           <td>Expiration Date</td>
-          <td><input type="date" class=""  name="ExpirationDate"  required="required"></td>
+          <td><input type="date" class=""  name="ExpirationDate"  required></td>
         </tr>
       </table> 
         </div>

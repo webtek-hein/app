@@ -15,11 +15,9 @@ class User_db extends CI_Model {
         if ($q == true) {
             if (password_verify($password, $q->password)) {
                 return true;
-            } else {
-                return false;
             }
-
         }
+            return false;
     }
 
 
@@ -75,14 +73,6 @@ class User_db extends CI_Model {
             ->where('user_id',$id)
             ->update('user');
     }    
-
-    public function get_info($id)
-    {
-        $this->db->select('SELECT CONCAT(first_name, , last_name," is registering as a(n) ",position) as info')
-            ->where('user_id',$id);
-        $query = $this->db->get('user');
-    }
-
     public function edit_profile($data, $userid)
     {
         $this->db->where('user_id', $userid);

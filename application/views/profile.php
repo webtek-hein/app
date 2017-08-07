@@ -10,16 +10,9 @@
     $image = ($this->session->userdata['image_in']['image']);
 ?>
 
-    <link rel="stylesheet" type="text/css" href="assets/css/profile.css">
+    <!--suppress ALL -->
 
-
-<script>
-function relocate_home()
-{
-     location.href = "index.php";
-}
-</script>
-
+<link rel="stylesheet" type="text/css" href="assets/css/profile.css">
   <div class="content-wrapper">
     <!-- Main content -->
     <section class="content">
@@ -70,7 +63,7 @@ function relocate_home()
                     <label for="inputName" class="col-sm-2 control-label">First Name</label>
 
                     <div class="col-sm-9">
-                      <input type="text" required="required" class="form-control" id="inputName" name="first_name" value="<?php echo $firstname ?>">
+                      <input type="text" required class="form-control" id="inputName" name="first_name" value="<?php echo $firstname ?>">
                     </div>
                   </div>
 
@@ -78,7 +71,7 @@ function relocate_home()
                     <label for="inputName" class="col-sm-2 control-label">Last Name</label>
 
                     <div class="col-sm-9">
-                      <input type="text" required="required" class="form-control" id="inputName" name="last_name" value="<?php echo $lastname ?>">
+                      <input type="text" required class="form-control" id="inputName" name="last_name" value="<?php echo $lastname ?>">
                     </div>
                   </div>
 
@@ -86,14 +79,14 @@ function relocate_home()
                     <label for="inputEmail" class="col-sm-2 control-label">Email</label>
 
                     <div class="col-sm-9">
-                      <input type="email" required="required" class="form-control" id="inputEmail" name="email" value="<?php echo $email ?>">
+                      <input type="email" required class="form-control" id="inputEmail" name="email" value="<?php echo $email ?>">
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="inputName" class="col-sm-2 control-label" >Contact no</label>
 
                     <div class="col-sm-9">
-                      <input type="number" required="required" pattern="^(09|\+639)\d{9}$" class="form-control" id="inputName" name="contact_no" value="<?php echo $contact_no ?>">
+                      <input type="number" required pattern="^(09|\+639)\d{9}$" class="form-control" id="inputName" name="contact_no" value="<?php echo $contact_no ?>">
                     </div>
                   </div>
     <div class="form-group">
@@ -126,19 +119,19 @@ function relocate_home()
 				           <div class="form-group">
                     <label for="inputName" class="col-sm-2 control-label">Old Password</label>
                     <div class="col-sm-9">
-                      <input type="password" required="required" class="form-control" name="old_password" placeholder="old password">
+                      <input type="password" required class="form-control" name="old_password" placeholder="old password">
                     </div>
                   </div>
                     <div class="form-group">
                         <label for="inputName" class="col-sm-2 control-label">New Password</label>
                         <div class="col-sm-9">
-                            <input type="password"  required=required class="form-control" name="new_password" placeholder="password">
+                            <input type="password"  required class="form-control" name="new_password" placeholder="password">
                         </div>
                     </div>
                     <div class="form-group">
                     <label for="inputName" class="col-sm-2 control-label">Confirm New Password</label>
                     <div class="col-sm-9">
-                      <input type="password" required="required" class="form-control" id="inputPasswordAgain" name="con_new_password" placeholder="password">
+                      <input type="password" required class="form-control" id="inputPasswordAgain" name="con_new_password" placeholder="password">
                     </div>
                   </div>
 

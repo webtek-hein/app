@@ -1,12 +1,6 @@
 <?php
 class Log_model extends CI_Model {
 
-    public function __construct()
-    {
-        $this->load->database();
-
-    }
-
     //get all increase records from db
      public function get_increase_log()
     {

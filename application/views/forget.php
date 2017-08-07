@@ -6,11 +6,11 @@
     <?php echo form_open('Forget/doforget'); ?>
     <form>
 			<fieldset>
-	          <legend style="text-decoration:none; font-family:Calibri;">Reset password</legend>
+	          <legend style="text-decoration:none; font-family:Calibri,Arial, Helvetica, sans-serif;">Reset password</legend>
 
 				<div class="control-group">
 					<label for="email" style="text-decoration:none; font-family:sans-serif;"> Email</label>
-					<input class="box" type="text" id="email" name="email" required="required"/>
+					<input class="box" type="text" id="email" name="email" required/>
 				</div>
                 <br>
 				<div class="form-actions">
@@ -26,9 +26,10 @@
                 echo validation_errors();
                 echo "</div>";
                 ?>
-                <a href="<?php echo base_url() ?>login" style="text-decoration:none; font-family:sans-serif;"><center>Sign In</center></a>
+                <a href="<?php echo base_url() ?>login" style="text-decoration:none; font-family:sans-serif; text-align: center;">Sign In</a>
                 <br>
-                <a href="<?php echo base_url() ?>signup" style="text-decoration:none; font-family:sans-serif;"><center>Click Here To Sign Up</center> </a>
+                <a href="<?php echo base_url() ?>signup" style="text-decoration:none; font-family:sans-serif;"><div
+                            style="text-align: center;">Click Here To Sign Up</div> </a>
 
 
 </fieldset>

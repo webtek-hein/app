@@ -23,20 +23,20 @@
                           <table border="0" width="500" align="center" class="table">
                             <tr>
                               <td>Official Receipt</td>
-                              <td><input  class="InputBox" name="Official_Receipt1" value="" required="required"></td>
+                              <td><input  class="InputBox" name="Official_Receipt1" value="" required></td>
                             </tr>
                             <tr>
                               <td>Received By</td>
-                              <td><input type="text" class="InputBox" name="Received_By1" value="" required="required"></td>
+                              <td><input type="text" class="InputBox" name="Received_By1" value="" required></td>
                             </tr>
 
                             <tr>
                               <td>Quantity</td>
-                              <td><input type="number" min = 0 class="InputBox" name="Item_Quantity1" value="" required="required"></td>
+                              <td><input type="number" min = 0 class="InputBox" name="Item_Quantity1" value="" required></td>
                             </tr>
                             <tr>
                               <td>Supplier</td>
-                              <td><input type="text" class="InputBox" name="Supplier_Name1" value="" required="required"></td>
+                              <td><input type="text" class="InputBox" name="Supplier_Name1" value="" required></td>
                             </tr>
                             <tr>
                               <td>Delivery Date</td>
@@ -44,15 +44,15 @@
                             </tr>
                             <tr>
                               <td>Date Received</td>
-                              <td><input type="date" class="datereceived" name="datereceived1" value="" required="required"></td>
+                              <td><input type="date" class="datereceived" name="datereceived1" value="" required></td>
                             </tr>
                             <tr>
                               <td>Expiration Date</td>
-                              <td><input type="date" class="expdate" name="Expiration_Date1" value="" required="required"></td>
+                              <td><input type="date" class="expdate" name="Expiration_Date1" value="" required></td>
                             </tr>
                                <tr>
                                 <td>Cost</td>
-                                <td><input type="number" min='0' step='any' class="InputBox" name="Unit_Cost1" value="" required="required"></td>
+                                <td><input type="number" min='0' step='any' class="InputBox" name="Unit_Cost1" value="" required></td>
                               </tr>
                           </table>
                         </div>

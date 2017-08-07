@@ -10,7 +10,6 @@ class Returned extends CI_Controller {
     }
 	public function index()
 	{
-        $position = $this->session->userdata['logged_in']['position'];
         $data['accountcodes'] = $this->InventoryModel->get_ac_list();
 
 

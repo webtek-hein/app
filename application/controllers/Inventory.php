@@ -1,7 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Inventory extends CI_Controller {
+class Inventory extends CI_Controller
+{
     public function __construct()
     {
         parent::__construct();
@@ -9,6 +10,7 @@ class Inventory extends CI_Controller {
         $this->load->model('department_model');
 
     }
+
     public function index()
     {
         $position = $this->session->userdata['logged_in']['position'];
@@ -22,8 +24,8 @@ class Inventory extends CI_Controller {
         $this->load->view('modals/additem', $data);
         $this->load->view('modals/addquantity', $data);
         $this->load->view('modals/subtractquantity', $data);
-        if($position === 'admin' ){
-            $this->load->view('modals/edit',$data);
+        if ($position === 'admin') {
+            $this->load->view('modals/edit', $data);
         }
         $this->load->view('modals/addbulk');
         $this->load->view('modals/details');
@@ -32,22 +34,21 @@ class Inventory extends CI_Controller {
 
 
     }
+
     public function inventory_list()
     {
         $data = array();
-        $button = ' ';
 
         $position = $this->session->userdata['logged_in']['position'];
         $dept_id = $this->session->userdata['logged_in']['dept_id'];
 
 
-        if($position === 'receiver' || $position === 'department head')
-        {
+        if ($position === 'receiver' || $position === 'department head') {
             $inventory = $this->department_model->get_distributed_per_department($dept_id);
-        }else{
+        } else {
             $inventory = $this->InventoryModel->get_inventory_list();
         }
-        if(isset($inventory)) {
+        if (isset($inventory)) {
             foreach ($inventory as $list) {
                 $row = array();
                 $row[] = $list['item_name'];
@@ -56,9 +57,9 @@ class Inventory extends CI_Controller {
                 $row[] = $list['unit'];
                 $row[] = $list['item_type'];
                 $cost = (int)$list['unit_cost'];
-                if($cost>=1000000000000) $row[] = "&#8369; ".round(($cost/1000000000000),2).' trillion';
-                else if($cost>=1000000000) $row[] = "&#8369; ".round(($cost/1000000000),2).' billion';
-                else if($cost>=1000000) $row[] = "&#8369; ".round(($cost/1000000),2).' million';
+                if ($cost >= 1000000000000) $row[] = "&#8369; " . round(($cost / 1000000000000), 2) . ' trillion';
+                else if ($cost >= 1000000000) $row[] = "&#8369; " . round(($cost / 1000000000), 2) . ' billion';
+                else if ($cost >= 1000000) $row[] = "&#8369; " . round(($cost / 1000000), 2) . ' million';
                 else $row[] = "&#8369; " . number_format($cost, 2) . "<br>";
                 if ($position === 'admin') {
                     $button = "<button style=\"margin-left: 5px\" type=\"button\" class=\"btn btn-primary open-modal-action fa fa-plus\" data-type='$list[item_type]' data-id='$list[item_id]' data-toggle=\"modal\" data-target=\"#addqty\"></button>" .
@@ -77,8 +78,8 @@ class Inventory extends CI_Controller {
 
             }
             $list = array('data' => $data);
-        }else{
-            $list = array('data'=>[]);
+        } else {
+            $list = array('data' => []);
         }
         echo json_encode($list);
 
@@ -89,7 +90,7 @@ class Inventory extends CI_Controller {
         $data = $this->InventoryModel->get_by_id($id);
         echo json_encode($data);
     }
-    
+
     public function item_update()
     {
         $data = array(
@@ -122,13 +123,13 @@ class Inventory extends CI_Controller {
         );
         print_r($data2);
         $data3 = array('user_id' => $this->session->userdata['logged_in']['userid']);
-        $this->InventoryModel->add_item($data1,$data2,$data3);
-        header('Location: '. base_url() . 'inventory');
+        $this->InventoryModel->add_item($data1, $data2, $data3);
+        header('Location: ' . base_url() . 'inventory');
     }
 
     public function addbulk()
     {
-        for($i = 0;$i < count($this->input->post('Item_Name')); $i++) {
+        for ($i = 0; $i < count($this->input->post('Item_Name')); $i++) {
 
             $data1 = array(
                 'item_name' => $this->input->post('Item_Name')[$i],
@@ -140,8 +141,8 @@ class Inventory extends CI_Controller {
             $data2 = array(
                 'official_receipt_no' => $this->input->post('Item_OfficialReceipt')[$i],
                 'receivedby' => $this->input->post('Item_Receivedby')[$i],
-                'exp_date' =>  $this->input->post('Item_Expirationdate')[$i],
-                'del_date' =>  $this->input->post('Item_Deliverydate')[$i],
+                'exp_date' => $this->input->post('Item_Expirationdate')[$i],
+                'del_date' => $this->input->post('Item_Deliverydate')[$i],
                 'date_rec' => $this->input->post('Item_Datereceived')[$i],
                 'supplier' => $this->input->post('Item_Supplier')[$i],
                 'unit_cost' => $this->input->post('Item_Cost')[$i]
@@ -149,13 +150,13 @@ class Inventory extends CI_Controller {
             $data3 = array('user_id' => $this->session->userdata['logged_in']['userid']);
             $this->InventoryModel->add_bulk($data1, $data2, $data3);
         }
-        header('Location: '. base_url() . 'inventory');
+        header('Location: ' . base_url() . 'inventory');
     }
 
 
     public function addquantity()
     {
-        $item_id=$this->input->POST('item_id');
+        $item_id = $this->input->POST('item_id');
         $data1 = $this->input->POST('Item_Quantity1');
         $item_type = $this->input->post('item_type');
         $data2 = array(
@@ -168,17 +169,19 @@ class Inventory extends CI_Controller {
             'unit_cost' => $this->input->post('Unit_Cost1'),
             'item_id' => $this->input->post('item_id'),
         );
-        if($item_type === 'CO'){
-            $item_details = array_fill(1,$data1,$data2);
-        }else{
+        if ($item_type === 'CO') {
+            $item_details = array_fill(1, $data1, $data2);
+        } else {
             $item_details = $data2;
         }
         $data3 = array('user_id' => $this->session->userdata['logged_in']['userid']);
-        $this->InventoryModel->add_quantity($data1,$item_details,$item_id,$data3,$item_type);
+        $this->InventoryModel->add_quantity($data1, $item_details, $item_id, $data3, $item_type);
 
-        header('Location:'.base_url() . 'inventory');
+        header('Location:' . base_url() . 'inventory');
     }
-    public function subtractquantity(){
+
+    public function subtractquantity()
+    {
         $firstname = ($this->session->userdata['user_in']['firstname']);
         $lastname = ($this->session->userdata['user_in']['lastname']);
         $data['department'] = $this->InventoryModel->get_department_list();
@@ -186,7 +189,7 @@ class Inventory extends CI_Controller {
         $item_id = $this->input->post('item_id');
         $data['quantitycount'] = $this->InventoryModel->get_item_quantity($item_id);
         $data1 = $this->input->post('Quantity');
-        $data2 =array(
+        $data2 = array(
             'quantity' => $data1,
             'distrib_date' => $this->input->post('date'),
             'dept_id' => $this->input->post('department'),
@@ -196,7 +199,7 @@ class Inventory extends CI_Controller {
             'item_usage' => $this->input->post('usage'),
         );
         $uid = array('user_id' => $this->session->userdata['logged_in']['userid']);
-        $this->InventoryModel->subtract_quantity($data1, $data2, $item_id, $data1,$uid);
+        $this->InventoryModel->subtract_quantity($data1, $data2, $item_id, $data1, $uid);
         header('Location:' . base_url() . 'inventory');
 
     }
@@ -206,16 +209,16 @@ class Inventory extends CI_Controller {
         $position = $this->session->userdata['logged_in']['position'];
         $dept_id = $this->session->userdata['logged_in']['dept_id'];
 
-        if($position === 'receiver' || $position === 'department head'){
-            $details = $this->department_model->get_distributed_details($dept_id,$id);
-        }else{
+        if ($position === 'receiver' || $position === 'department head') {
+            $details = $this->department_model->get_distributed_details($dept_id, $id);
+        } else {
             $details = $this->InventoryModel->get_distrib_item_details($id);
         }
         $data = array();
         foreach ($details as $list) {
             $row = array();
-            if($position === 'custodian' || $position === 'receiver'){
-                $row[] = ' <input type="checkbox" name="item-det" id="item_detail" value='.$list['item_det_id'].'>';
+            if ($position === 'custodian' || $position === 'receiver') {
+                $row[] = ' <input type="checkbox" name="item-det" id="item_detail" value=' . $list['item_det_id'] . '>';
             }
             $row[] = $list['serial'];
             $row[] = $list['exp_date'];
@@ -224,17 +227,17 @@ class Inventory extends CI_Controller {
             $row[] = $list['del_date'];
             $row[] = $list['date_rec'];
             $row[] = $list['receivedby'];
-            $row[] =  "&#8369; ".number_format((int)$list['unit_cost'],2)."<br>";
+            $row[] = "&#8369; " . number_format((int)$list['unit_cost'], 2) . "<br>";
             if ($list['item_status'] == 'in_stock') {
                 $row[] = 'In Stock';
             } else if ($list['item_status'] == 'returned') {
                 $row[] = 'Returned';
-            }else{
+            } else {
                 $row[] = $list['item_status'];
             }
             $data[] = $row;
         }
-        $list = array('data'=>$data);
+        $list = array('data' => $data);
         echo json_encode($list);
     }
 
@@ -247,7 +250,7 @@ class Inventory extends CI_Controller {
             $row[] = $list['quantity'];
             $data[] = $row;
         }
-        $list = array('data'=>$data);
+        $list = array('data' => $data);
         echo json_encode($list);
     }
 
@@ -259,4 +262,3 @@ class Inventory extends CI_Controller {
 
     }
 }
-?>

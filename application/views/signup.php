@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 
         <title>Sign Up</title>
-        <link rel="stylesheet" <?php echo base_url() ?>assets/js/normalize.min.css">
+        <link rel="stylesheet" href="<?php echo base_url() ?>assets/js/normalize.min.css">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/signup.css">
         <link rel="icon" href="<?php echo base_url() ?>assets/css/logo.png">
 		<script>
@@ -20,30 +20,30 @@
 		<?php echo form_open('signup'); ?>
 			<table border="0" width="500" align="center" class="table">
 				<tr>
-                    <td align="center"><input type="text" class="InputBox" name="FirstName" required="required" value="<?php echo isset($_POST["FirstName"]) ? $_POST["FirstName"] : ''; ?>" placeholder= "First Name"></td>
+                    <td align="center"><input type="text" class="InputBox" name="FirstName" required value="<?php echo isset($_POST["FirstName"]) ? $_POST["FirstName"] : ''; ?>" placeholder= "First Name"></td>
 				</tr>
 				<tr>
-					<td align="center"><input type="text" class="InputBox" name="LastName" required="required" value="<?php echo isset($_POST["LastName"]) ? $_POST["LastName"] : ''; ?>" placeholder= "Last Name"></td>
+					<td align="center"><input type="text" class="InputBox" name="LastName" required value="<?php echo isset($_POST["LastName"]) ? $_POST["LastName"] : ''; ?>" placeholder= "Last Name"></td>
 				</tr>
 				<tr>
-					<td align="center"><input type="email" class="InputBox" name="Email" required="required" value="<?php echo isset($_POST["Email"]) ? $_POST["Email"] : ''; ?>" placeholder= "Email"></td>
+					<td align="center"><input type="email" class="InputBox" name="Email" required value="<?php echo isset($_POST["Email"]) ? $_POST["Email"] : ''; ?>" placeholder= "Email"></td>
 				</tr>
 				<tr>
-					<td align="center"><input type="text" class="InputBox" pattern="^(09|\+639)\d{9}$" title="ex 09xxxxxxxxx" name="contactno" required="required" value="<?php echo isset($_POST["contactno"]) ? $_POST["contactno"] : ''; ?>" placeholder= "Contact No."></td>
+					<td align="center"><input type="text" class="InputBox" pattern="^(09|\+639)\d{9}$" title="ex 09xxxxxxxxx" name="contactno" required value="<?php echo isset($_POST["contactno"]) ? $_POST["contactno"] : ''; ?>" placeholder= "Contact No."></td>
 				</tr>
 				<tr>
-					<td align="center"><input type="text" pattern="^[A-Za-z0-9_-]{4,15}$" title="Username must be more than 4 characters and not more than 15 characters." class="InputBox" name="Username" required="required" value="<?php echo isset($_POST["Username"]) ? $_POST["Username"] : ''; ?>" placeholder= "Username"></td>
+					<td align="center"><input type="text" pattern="^[A-Za-z0-9_-]{4,15}$" title="Username must be more than 4 characters and not more than 15 characters." class="InputBox" name="Username" required value="<?php echo isset($_POST["Username"]) ? $_POST["Username"] : ''; ?>" placeholder= "Username"></td>
 				</tr>
 				<tr>
-					<td align="center"><input type="password" class="InputBox" name="Password" value="" required="required" placeholder= "Password"></td>
+					<td align="center"><input type="password" class="InputBox" name="Password" value="" required placeholder= "Password"></td>
 				</tr>
 				<tr>
-					<td align="center"><input type="password" class="InputBox" name="confirm_password" value="" required="required" placeholder= "Repeat password"></td>
+					<td align="center"><input type="password" class="InputBox" name="confirm_password" value="" required placeholder= "Repeat password"></td>
 				</tr>
 				<tr>
 				<script>
 					function select_dept() {
-    					if (document.getElementById('type').value == 'department head' || document.getElementById('type').value == 'receiver') {
+    					if (document.getElementById('type').value === 'department head' || document.getElementById('type').value === 'receiver') {
         					document.getElementById('dment').style.display  = 'block';
     					} else {
         					document.getElementById('dment').style.display = 'none';
