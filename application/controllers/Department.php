@@ -83,7 +83,7 @@ class Department extends CI_Controller {
         foreach ($details as $list) {
             $row = array();
             if($position === 'receiver'){
-                $row[] = ' <input type="checkbox" name ="item-det" id="item_detail" value='.$list['item_det_id'].'>';
+                $row[] = "<input type=\"checkbox\" name =\"item-det\" id=\"item_detail\" value=\"" .$list['item_det_id']."\">";
             }
             $row[] = $list['serial'];
             $row[] = $list['exp_date'];

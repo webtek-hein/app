@@ -43,7 +43,7 @@ class Return_model extends CI_Model {
         {
             $data[] = array('reason'=>$reason,
                 'dept_id' => $dept_ids[$index],
-                'item_det_id' =>$item_det_id['item_det_id'],
+                'item_det_id' =>$item_det_id,
                 'return_person' => $person,
                 'dist_id' => $dist_ids[$index],
                 'user_id' => $userid);

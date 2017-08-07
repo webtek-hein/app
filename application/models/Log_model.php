@@ -117,13 +117,13 @@ class Log_model extends CI_Model {
     }
 public function get_return_log_per_dept($id)
     {
-        $this->db->Select ('item_detail.item_id,distribution.dist_id,department,item_name, item_description,count(*) as quantity,unit,date,concat(inventory.user.first_name," ",inventory.user.last_name) as user,return_person, distribution.dept_id');
+        $this->db->Select ('item_detail.item_id,distribution.dist_id,department,item_name, item_description,count(*) as quantity,unit,date,concat(inventory.user.first_name," ",inventory.user.last_name) as user,return_person, distribution.dept_id, return_log.item_det_id as log_item_det_id, return_log.dept_id as log_dept_id, return_log.dist_id as log_dist_id');
         $this->db->join('inventory.item_detail','item_detail.item_det_id = return_log.item_det_id','left');
         $this->db->join('inventory.item','item_detail.item_id = item.item_id','left');
         $this->db->join('inventory.distribution','distribution.dist_id = item_detail.dist_id','left');
         $this->db->join('inventory.department','logs.return_log.dept_id = department.dept_id','left');
         $this->db->join('inventory.user','user.user_id = return_log.user_id','left');
-        $this->db->group_by('department,logs.return_log.return_person,item_detail.item_id,distribution.dist_id,date,inventory.item.item_name,inventory.user.user_id,inventory.item.item_description');
+        $this->db->group_by('department,logs.return_log.return_person,item_detail.item_id,distribution.dist_id,date,inventory.item.item_name,inventory.user.user_id,inventory.item.item_description, log_item_det_id, log_dept_id, log_dist_id');
         $this->db->where('return_log.dept_id',$id);
         $query = $this->db->get('logs.return_log');
         return $query->result_array();
