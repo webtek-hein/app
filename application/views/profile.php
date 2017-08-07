@@ -9,9 +9,6 @@
     $password = ($this->session->userdata['logged_in']['password']);
     $image = ($this->session->userdata['image_in']['image']);
 ?>
-
-    <!--suppress ALL -->
-
 <link rel="stylesheet" type="text/css" href="assets/css/profile.css">
   <div class="content-wrapper">
     <!-- Main content -->
@@ -90,7 +87,7 @@
                     </div>
                   </div>
     <div class="form-group">
-        <div style="padding: 0 10px 10px 90px;"class="col-sm-offset-8 col-sm-9">
+        <div style="padding: 0 10px 10px 90px;" class="col-sm-offset-8 col-sm-9">
             <button type="submit" name="bts-submit" id="bts-submit" class="btn btn-success" disabled>Save</button>
         </div>
     </div>

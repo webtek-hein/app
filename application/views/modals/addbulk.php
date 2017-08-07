@@ -1,5 +1,4 @@
 
-<!--suppress XmlDefaultAttributeValue, XmlDefaultAttributeValue -->lDefaultAttributeValue -->lDefaultAttributeValue -->lDefaultAttributeValue -->lDefaultAttributeValue -->lDefaultAttributeValue -->
 <script src="<?php echo base_url() ?>assets/js/addbulk.js"></script>
 <?php $position = ($this->session->userdata['logged_in']['position']); ?>
 <!-- Modal -->
@@ -62,7 +61,7 @@
                                     <option value="others">others</option>
                                 </datalist>
                             </td>
-                            <td><input type="number" min="0"step='any' id="new_cost" name="Item_Cost[]" required style="width:80px;"></td>
+                            <td><input type="number" min="0" step='any' id="new_cost" name="Item_Cost[]" required style="width:80px;"></td>
                             <td><input type="date"  id="new_expdate" value="" name="Item_Expirationdate[]" required style="width:140px;"></td>
                         </tr>
 

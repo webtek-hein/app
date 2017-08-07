@@ -19,8 +19,7 @@
       <table border="0" width="500" align="center" class="table">
         <tr>
           <td>Item Name</td>
-          <td><!--suppress XmlDefaultAttributeValue -->
-              <input type="text"  class="InputBox" name="Item_Name" value="" required></td>
+          <td><input type="text"  class="InputBox" name="Item_Name" value="" required></td>
         </tr>
         <tr>
           <td>Item Description</td>
