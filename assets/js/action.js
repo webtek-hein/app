@@ -340,12 +340,12 @@ function get_decreaselog_details(dist_id) {
 
     $('#decrease').modal('show');
 }
-function get_return_details(item_det_id,dept_id,dateinput,dist_id) {
+function get_return_details(dept_id,dateinput,dist_id) {
     $('#return').DataTable({
         responsive: true,
         "destroy": true,
            "ajax": {
-         "url": 'returnlog/returnlog_details/'+item_det_id+'/'+dept_id+'/'+dateinput+'/'+dist_id,
+         "url": 'returnlog/returnlog_details/'+dept_id+'/'+dateinput+'/'+dist_id,
          "type": "POST",
          },
     });
