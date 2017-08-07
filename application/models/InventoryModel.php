@@ -501,6 +501,8 @@ $this->db->order_by('del_date');
         $this->db->select('COUNT(*) as quantity');
         $this->db->from('distribution');
         $this->db->where('dept_id', $deptid);
+        $this->db->where('quantity != 0');
+        $this->db->where ('DATE(distrib_date) = DATE(NOW())');
         $query = $this->db->get();
         return $query->result_array();
     }
@@ -569,9 +571,10 @@ $this->db->order_by('del_date');
     }
 
      public function total_item_per_dept($deptid){
-        $this->db->select('sum(quantity) as item');
+        $this->db->select('COUNT(*) as item');
         $this->db->from('distribution');
         $this->db->where('dept_id', $deptid);
+        $this->db->where('quantity != 0');
         $query = $this->db->get();
         return $query->result_array();
     }
