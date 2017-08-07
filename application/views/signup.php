@@ -20,7 +20,7 @@
 		<?php echo form_open('signup'); ?>
 			<table border="0" width="500" align="center" class="table">
 				<tr>
-					<td align="center"><input type="text" class="InputBox" name="FirstName" required="required" value="<?php echo isset($_POST["FirstName"]) ? $_POST["FirstName"] : ''; ?>" placeholder= "First Name"></td>
+                    <td align="center"><input type="text" class="InputBox" name="FirstName" required="required" value="<?php echo isset($_POST["FirstName"]) ? $_POST["FirstName"] : ''; ?>" placeholder= "First Name"></td>
 				</tr>
 				<tr>
 					<td align="center"><input type="text" class="InputBox" name="LastName" required="required" value="<?php echo isset($_POST["LastName"]) ? $_POST["LastName"] : ''; ?>" placeholder= "Last Name"></td>
