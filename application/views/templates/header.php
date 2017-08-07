@@ -9,7 +9,7 @@ if (isset($this->session->userdata['logged_in'])) {
     $department = ($this->session->userdata['logged_in']['department']);
     $image = ($this->session->userdata['image_in']['image']);
 } else {
-    header("location: login");
+    redirect("logout");
 }
 ?>
 <head>
