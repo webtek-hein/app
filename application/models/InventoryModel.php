@@ -516,6 +516,14 @@ $this->db->order_by('del_date');
     public function total_unit_cost(){
         $this->db->select('sum(unit_cost) as cost');
         $this->db->from('item_detail');
+        $this->db->where('date_rec >= DATE_SUB(NOW(),INTERVAL 1 YEAR)');
+        $this->db->group_start();
+        $this->db->group_start();
+        $this->db->where('dist_id IS NULL');
+        $this->db->where("item_status = 'in_stock'");
+        $this->db->group_end();
+        $this->db->or_where("item_status = 'returned'");
+        $this->db->group_end();
         $query = $this->db->get();
         return $query->result_array();
     }
