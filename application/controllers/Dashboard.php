@@ -109,9 +109,9 @@ class Dashboard extends CI_Controller
         }
         foreach ($data as $unit_cost) {
             $cost = (int)$unit_cost['cost'];
-            if($cost>1000000000000) echo "&#8369; ".round(($cost/1000000000000),2).' trillion';
-            else if($cost>1000000000) echo "&#8369; ".round(($cost/1000000000),2).' billion';
-            else if($cost>1000000) echo "&#8369; ".round(($cost/1000000),1).' million';
+            if($cost>= 1000000000000) echo "&#8369; ".round(($cost/1000000000000),2).' trillion';
+            else if($cost>=1000000000) echo "&#8369; ".round(($cost/1000000000),2).' billion';
+            else if($cost>=1000000) echo "&#8369; ".round(($cost/1000000),2).' million';
             else echo "&#8369; ".number_format($cost,2);
         }
     }
