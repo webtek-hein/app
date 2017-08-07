@@ -140,9 +140,9 @@ class Inventory extends CI_Controller {
             $data2 = array(
                 'official_receipt_no' => $this->input->post('Item_OfficialReceipt')[$i],
                 'receivedby' => $this->input->post('Item_Receivedby')[$i],
-                'exp_date' =>  date('Y-m-d', strtotime($this->input->post('Item_Expirationdate')))[$i],
-                'del_date' =>  date('Y-m-d', strtotime($this->input->post('Item_Deliverydate')))[$i],
-                'date_rec' => date('Y-m-d', strtotime($this->input->post('Item_Datereceived')))[$i],
+                'exp_date' =>  $this->input->post('Item_Expirationdate')[$i],
+                'del_date' =>  $this->input->post('Item_Deliverydate')[$i],
+                'date_rec' => $this->input->post('Item_Datereceived')[$i],
                 'supplier' => $this->input->post('Item_Supplier')[$i],
                 'unit_cost' => $this->input->post('Item_Cost')[$i]
             );
