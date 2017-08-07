@@ -34,7 +34,14 @@ class Return_model extends CI_Model {
         $this->db->where_in('item_det_id',$item);
         $this->db->update('item_detail');
         
+        $this->db->select('item_id')
+            ->where_in('item_det_id', $item);
+        $query22 = $this->db->get('item_detail');
+        $row22 = $query22->row_array();
+        $itemid = $row22['item_id'];
+
         $this->db->set('quantity','quantity+'.$quant,FALSE);
+        $this->db->where('item_id',$itemid);
         $this->db->update('item');
 
         $data = array();
