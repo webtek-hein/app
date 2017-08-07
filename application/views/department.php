@@ -5,7 +5,7 @@
                 <div class="box-header">
                     <select class="selectdept" name="department" id="depts">
                         <option class="option" value="none"> Departments</option>
-                        <?php /** @noinspection PhpUndefinedVariableInspection */
+                        <?php
                         foreach ($departments as $dept): ?>
                             <option class="option" value="<?php echo $dept['dept_id'] ?>"><?php echo $dept['res_center_code'] . ' ' . $dept['department'] ?></option>
                         <?php endforeach; ?>

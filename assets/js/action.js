@@ -37,8 +37,8 @@ $(document).ready(function() {
         responsive: true,
         "ajax": {
             "url": 'inventory/inventory_list',
-            "type": "POST",
-        },
+            "type": "POST"
+        }
     });
 
 
@@ -48,8 +48,8 @@ $(document).ready(function() {
         responsive: true,
         "ajax": {
             "url":'department/get_all_dept_list',
-            "type": "POST",
-        },
+            "type": "POST"
+        }
     });
 
 
@@ -62,10 +62,10 @@ $(document).ready(function() {
             "destroy": true,
             "ajax": {
                 "url":'department/get_dept_list/'+id,
-                "type": "POST",
-            },
+                "type": "POST"
+            }
         });
-        if (id == 'none') {
+        if (id === 'none') {
             department.column( 0 ).visible( true );
         } else {
             department.column( 0 ).visible( false );
@@ -87,8 +87,8 @@ $(document).ready(function() {
         responsive: true,
         "ajax": {
             "url": 'increaselog/increase_log_list',
-            "type": "POST",
-        },
+            "type": "POST"
+        }
     });
 
 
@@ -107,8 +107,8 @@ $(document).ready(function() {
         "destroy":true,
         "ajax": {
             "url": 'decreaselog/decrease_log_list',
-            "type": "POST",
-        },
+            "type": "POST"
+        }
     });
 
     returnlog = $('#return_log').DataTable({
@@ -124,8 +124,8 @@ $(document).ready(function() {
         "destroy":true,
         "ajax": {
             "url": 'returnlog/return_log_list',
-            "type": "POST",
-        },
+            "type": "POST"
+        }
     });
 
     returned_items = $('#returned_items').DataTable({
@@ -133,8 +133,8 @@ $(document).ready(function() {
         "destroy":true,
         "ajax": {
             "url": 'returned/returned_list',
-            "type": "POST",
-        },
+            "type": "POST"
+        }
     });
 
     pending = $('#pending').DataTable({
@@ -142,8 +142,8 @@ $(document).ready(function() {
         "destroy":true,
         "ajax": {
             "url": 'users/display_pending_users',
-            "type": "POST",
-        },
+            "type": "POST"
+        }
     });
 
     setInterval(function () {
@@ -165,14 +165,11 @@ function summary() {
         "destroy": true,
         "ajax": {
             "url": 'department/summary_items',
-            "type": "POST",
-        },
+            "type": "POST"
+        }
     });
     $('#summary').modal('show');
 }
-
-
-
 function subtract_quantity(id) {
     $('.modal').on('hidden.bs.modal', function(){
         document.getElementById('quant').style.display  = 'none';
@@ -181,7 +178,7 @@ function subtract_quantity(id) {
     $('#subqty').modal('show');
     $('select[name="department"]').change(function() {
         var deptid = $(this).val();
-        if (deptid != 'none') {
+        if (deptid !== 'none') {
             $('input[name="Quantity"]').val(0);
             $.ajax({
                 url: 'inventory/get_quantity/' + id + '/' + deptid,
@@ -190,7 +187,7 @@ function subtract_quantity(id) {
                 success: function(data){
                     $('input[name="Quantity"]').prop('max', data.data);
                     document.getElementById('quant').style.display  = 'block';
-                },
+                }
             });
         } else {
             document.getElementById('quant').style.display  = 'none';
@@ -243,7 +240,7 @@ function replace(id) {
                     });
                 }
             });
-        },
+        }
     });
 }
 
@@ -255,7 +252,6 @@ $(document).ready(function () {
 });
 function get_item_details(id) {
     var serial;
-    var item_det_id = [];
     var oldData;
     //detail list
     details = $('#details').DataTable({
@@ -263,11 +259,9 @@ function get_item_details(id) {
         "destroy": true,
         "ajax": {
             "url": 'inventory/itemdetail/' + id,
-            "type": "GET",
-        },
+            "type": "GET"
+        }
     });
-
-
     //multiple serial input
    $('#details ').on( 'change',  function () {
            $('#details tr :nth-child(2)').attr('contentEditable', 'true');
@@ -308,7 +302,7 @@ function get_item_details(id) {
            });
     $(this).off('blur focusout').on('blur focusout',function () {
                serial = $(this).text();
-               if(oldData != serial) {
+               if(oldData !== serial) {
                    $.ajax({
                        type: "POST",
                        url: 'inventory/set_serial/',
@@ -327,15 +321,14 @@ function get_item_details(id) {
 
     $('#view').modal('show');
 }
-
 function get_decreaselog_details(dist_id) {
    $('#decreasedet').DataTable({
         responsive: true,
         "destroy": true,
          "ajax": {
             "url": 'decreaselog/decreaselog_details/' + dist_id,
-            "type": "POST",
-        },
+            "type": "POST"
+        }
     });
 
     $('#decrease').modal('show');
@@ -346,8 +339,8 @@ function get_return_details(dept_id,dateinput) {
         "destroy": true,
            "ajax": {
          "url": 'returnlog/returnlog_details/'+dept_id+'/'+dateinput,
-         "type": "POST",
-         },
+         "type": "POST"
+         }
     });
     $('#return_det').modal('show');
 }
@@ -358,8 +351,8 @@ function get_distribution_details(item_id,id) {
         "destroy": true,
         "ajax": {
             "url": 'department/dist_details/' + item_id +'/'+id,
-            "type": "POST",
-        },
+            "type": "POST"
+        }
     });
     $('#view').modal('show');
 }
@@ -377,7 +370,7 @@ function edit_inventory(id)
         dataType: "JSON",
         success: function(data)
         {
-            $.each(data, function(i, item) {
+            $.each(data, function(i) {
                 $('[name="item_id"]').val(data[i].item_id);
                 $('[name="item_name"]').val(data[i].item_name);
                 $('[name="desc"]').val(data[i].item_description);
@@ -387,7 +380,7 @@ function edit_inventory(id)
             $('#edit').modal('show'); // show bootstrap modal when complete loaded
 
         },
-        error: function (jqXHR, textStatus, errorThrown)
+        error: function ()
         {
             alert('Error get data from ajax');
         }
@@ -407,13 +400,13 @@ function save()
         type: "POST",
         data: $('#form').serialize(),
         dataType: "JSON",
-        success: function(data)
+        success: function()
         {
             //if success close modal and reload ajax table
             $('#edit').modal('hide');
             location.reload();// for reload a page
         },
-        error: function (jqXHR, textStatus, errorThrown)
+        error: function ()
         {
             alert('Error adding / update data');
         }
@@ -469,17 +462,15 @@ function save()
         });
         $('input[type=text]').keypress(function () {
             var x = event.charCode;
-            if(x >= 0 && x <= 64 && x != 32){
+            if(x >= 0 && x <= 64 && x !== 32){
                 return false;
             }
         });
 
     });
-//return items
-
 function return_selected_items() {
     var item_det_id = [];
-   
+
     $('#item_detail:checked').each(function () {
         item_det_id.push($(this).val());
     });
@@ -510,14 +501,11 @@ function return_selected_items() {
                 url : 'department/return_items',
                 type: "POST",
                 data: item_data,
-                dataType: "JSON",
+                dataType: "JSON"
             });
         }
     });   
 }
-
-
-
 function dashboard_custodian_items_remaining(){
         $.ajax({
         method: "POST",
@@ -543,8 +531,6 @@ $(document).ready(function () {
 });
 
     $(function () {
-    var chart;
-    
     $(document).ready(function () {
          $.ajax({
             url: 'dashboard/view_pie_graph_co',
@@ -621,8 +607,8 @@ $(document).ready(function() {
         responsive: true,
         "ajax": {
             "url": 'EditLog/get_edit_log',
-            "type": "POST",
-        },
+            "type": "POST"
+        }
     });
 });
 
@@ -635,7 +621,7 @@ $(document).ready(function() {
              .on('change input', function(){
                  $(this)
                      .find(' button:submit')
-                     .attr('disabled', $(this).serialize() == $(this).data('serialized'))
+                     .attr('disabled', $(this).serialize() === $(this).data('serialized'))
                  ;
              })
              .find('button:submit')

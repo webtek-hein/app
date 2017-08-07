@@ -26,7 +26,7 @@
 
                     <table id="details" class="table table-bordered table-striped" width="100%">
                         <thead>
-                        <tr>
+                        <tr id =>
                     <?php $position = $this->session->userdata['logged_in']['position'];
                         if($position === 'custodian' || $position === 'receiver'){
                             echo '<th><input type="checkbox" name="select-all" ><label> Check all</label></th>';
