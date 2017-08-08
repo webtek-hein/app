@@ -406,10 +406,6 @@ function save()
             //if success close modal and reload ajax table
             $('#edit').modal('hide');
             location.reload();// for reload a page
-        },
-        error: function ()
-        {
-            alert('Error adding / update data');
         }
     });
 }
@@ -621,7 +617,7 @@ $(document).ready(function() {
              })
              .on('change input', function(){
                  $(this)
-                     .find(' button:submit')
+                     .find('button:submit')
                      .attr('disabled', $(this).serialize() === $(this).data('serialized'))
                  ;
              })

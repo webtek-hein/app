@@ -39,9 +39,10 @@ group by unit_cost,item_id,item_name,item_description,item_type) as a')
                 $query = $this->db->select('item_description,item_type,item_name,sum(quantity) as quantity,unit,sum(cost) as unit_cost,item_id')
                     ->from('(SELECT unit, item_type,item_description,item_name,item_detail.item_id,quantity,quantity*unit_cost as cost FROM `item_detail`
 left join item on item.item_id = item_detail.item_id
-group by unit_cost,item_id) as a')
+) as a')
                     ->group_by('item_id')
                     ->get();
+                return $query->result_array();
             }
         }
         return $query->result_array();
