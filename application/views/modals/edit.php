@@ -25,7 +25,7 @@
                                         <div class="form-group">
                                             <label class="control-label col-md-3">Type</label>
                                             <div class="col-md-9">
-                                                <input name="type" placeholder="Type" class="form-control" type="text" required>
+                                                <input name="type" placeholder="Type" class="form-control" type="text" required pattern="CO|MOOE" title="Type must Be 'CO' or 'MOOE'">
                                             </div>
                                         </div>
                                         <div class="form-group">
