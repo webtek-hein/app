@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 21, 2017 at 01:48 PM
+-- Generation Time: Aug 08, 2017 at 01:20 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -191,10 +191,11 @@ DROP TABLE IF EXISTS `distribution`;
 CREATE TABLE `distribution` (
   `dist_id` int(11) NOT NULL,
   `quantity` varchar(45) NOT NULL,
-  `distrib_date` datetime NOT NULL,
+  `distrib_date` date DEFAULT NULL,
   `dept_id` int(11) NOT NULL,
-  `receivedby` varchar(45) NOT NULL,
+  `receivedby` varchar(45) DEFAULT NULL,
   `user_distribute` varchar(45) NOT NULL,
+  `item_usage` varchar(60) DEFAULT NULL,
   `account_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -214,7 +215,7 @@ CREATE TABLE `item` (
   `item_id` int(11) NOT NULL,
   `item_name` varchar(45) NOT NULL,
   `quantity` bigint(20) NOT NULL,
-  `item_description` varchar(45) NOT NULL,
+  `item_description` text NOT NULL,
   `unit` varchar(11) NOT NULL,
   `item_type` enum('CO','MOOE') DEFAULT 'CO'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -232,10 +233,14 @@ DELIMITER $$
 CREATE TRIGGER `item_detail` AFTER INSERT ON `item` FOR EACH ROW BEGIN
 		
         SET @counter = 0;
+  		if (new.item_type = 'CO') then
          while @counter < new.quantity do
          	INSERT INTO item_detail (item_id) VALUES (NEW.item_id);
 		set @counter=@counter+1;
     	end while ;
+        ELSE
+        INSERT INTO item_detail (item_id) VALUES (NEW.item_id);
+        end if;
   END
 $$
 DELIMITER ;
@@ -249,17 +254,17 @@ DELIMITER ;
 DROP TABLE IF EXISTS `item_detail`;
 CREATE TABLE `item_detail` (
   `item_det_id` int(11) NOT NULL,
-  `serial` int(11) DEFAULT NULL,
+  `serial` varchar(30) DEFAULT NULL,
   `exp_date` date DEFAULT NULL,
   `supplier` varchar(60) DEFAULT NULL,
   `official_receipt_no` varchar(60) DEFAULT NULL,
-  `del_date` datetime DEFAULT NULL,
-  `date_rec` datetime DEFAULT NULL,
+  `del_date` date DEFAULT NULL,
+  `date_rec` date DEFAULT NULL,
   `receivedby` varchar(60) DEFAULT NULL,
   `unit_cost` double DEFAULT NULL,
-  `item_status` enum('defective','in_stock') NOT NULL DEFAULT 'in_stock',
   `item_id` int(11) NOT NULL DEFAULT '1',
-  `dist_id` int(11) DEFAULT NULL
+  `dist_id` int(11) DEFAULT NULL,
+  `item_status` enum('returned','in_stock','expired') NOT NULL DEFAULT 'in_stock'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -290,7 +295,7 @@ DELIMITER ;
 DROP TRIGGER IF EXISTS `item_detail_delete`;
 DELIMITER $$
 CREATE TRIGGER `item_detail_delete` BEFORE DELETE ON `item_detail` FOR EACH ROW BEGIN
-	UPDATE logs.increase_log set serial = old.serial, exp_date = old.exp_date, official_receipt_no = old.official_receipt_no, del_date = old.del_date, date_rec = old.date_rec, receivedby = old.receivedby, unit_cost = old.unit_cost, item_status = old.item_status	;	
+	UPDATE logs.increase_log set serial = old.serial, exp_date = old.exp_date, official_receipt_no = old.official_receipt_no, del_date = old.del_date, date_rec = old.date_rec, receivedby = old.receivedby, unit_cost = old.unit_cost, item_status = old.item_status, item_id = old.item_id, dist_id = old.dist_id where item_det_id = old.item_det_id;	
   END
 $$
 DELIMITER ;
@@ -309,10 +314,11 @@ CREATE TABLE `user` (
   `email` varchar(45) NOT NULL,
   `contact_no` varchar(12) NOT NULL,
   `username` varchar(45) NOT NULL,
-  `password` varchar(45) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `position` varchar(45) NOT NULL,
+  `image` varchar(255) NOT NULL DEFAULT 'default.png',
   `dept_id` int(11) DEFAULT NULL,
-  `status` enum('pending','accepted','declined') NOT NULL DEFAULT 'pending'
+  `status` enum('pending','accepted','declined','deactivated') NOT NULL DEFAULT 'pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -324,19 +330,24 @@ TRUNCATE TABLE `user`;
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`user_id`, `first_name`, `last_name`, `email`, `contact_no`, `username`, `password`, `position`, `dept_id`, `status`) VALUES
-(1, 'admin', 'admin', 'Joy_Cabildo24@yahoo.com', '09053983127', 'admin', 'admin', 'admin', NULL, 'accepted'),
-(221, 'Lovelace ', 'Oliva', 'lv@gmail.com', '+6392588845', 'love', 'password', 'admin', NULL, 'accepted'),
-(222, 'Lyra ', 'Ronquillo', 'lyra@yahoo.com', '09254785639', 'lyra', 'password', 'custodian', NULL, 'accepted'),
-(223, 'Joy', 'Cabildo', 'Joy@yahoo.com', '09554287136', 'joy', 'password', 'department head', 13, 'accepted'),
-(225, 'Heinrich', 'Bangui', 'hein@yahoo.com', '09235987452', 'hein', 'password', 'admin', NULL, 'accepted'),
-(226, 'Mark', 'Andawi', 'Mark@yahoo.com', '09854732156', 'Mark', 'password', 'custodian', NULL, 'accepted'),
-(227, 'Ryan', 'Castillo', 'Rye@yahoo.com', '09852145778', 'Ryan', 'password', 'admin', NULL, 'accepted'),
-(228, 'Glo', 'Goyo', 'Glo@yahoo.com', '09582145877', 'Glo', 'password', 'department head', 22, 'accepted'),
-(229, 'russel', 'Bayote', 'Russel@yahoo.com', '09854731251', 'Russ', 'password', 'admin', NULL, 'accepted'),
-(2210, 'Ian', 'Alinso', 'Ian@yahoo.com', '09854564521', 'Ian', 'password', 'custodian', NULL, 'accepted'),
-(2211, 'Christian', 'Beltran', 'Chris@yahoo.com', '09855472364', 'Chris', 'password', 'admin', NULL, 'accepted'),
-(2214, 'Kasima', 'Katuhr', 'kasima@gmail.com', '09164146566', 'kasima', 'password', 'department head', 12, 'accepted');
+INSERT INTO `user` (`user_id`, `first_name`, `last_name`, `email`, `contact_no`, `username`, `password`, `position`, `image`, `dept_id`, `status`) VALUES
+(2217, 'Heinrich', 'Bangui', 'heinrichbangui@gmail.com', '09082853679', 'admin', '$2y$12$LUMc84hMTjzlEcB09gBgRemdSBF1.jTN0PoypmHsDWQ3Sk8E.Pob.', 'admin', '18698771_1605242482854556_663850444_o.jpg', NULL, 'accepted'),
+(2218, 'George', 'Bangui', 'heinrichbangui@gmail.com', '09082853679', 'heinrich', '$2y$12$uvIqn78uh/0/H6KzwW8s9Ot.Z6E8JBPYONBinkz2A9g0knHyVXMLe', 'receiver', 'IMG_20140122_110053.jpg', 18, 'accepted'),
+(2220, 'Lyra', 'Ronquillo', 'lj@gmail.com', '09885468384', 'lyra', '$2y$12$JCT9E1LHGO2Q4JmTNqNnSe3bpFhK/HSCKY1n64PdWOUJxTZDVJdie', 'custodian', 'logo.png', NULL, 'accepted'),
+(2221, 'Joy', 'Cabildo', 'jc@gmail.com', '09073456679', 'joyc', '$2y$12$G19I/IbI1ixK./jm7RGa2ORINHkt9sj1u0YCvrJRnR7r8lXUWYPoG', 'department head', 'aww134_.jpg', 18, 'accepted'),
+(2222, 'rock', 'rock', 'rock@gmail.com', '09876556789', 'rock', '$2y$12$hVtiHK7k1V4lM5qi7aXlb.FIxfJt/7liTo70/j6gTKu8oY1FuUsxu', 'receiver', '', 26, 'accepted'),
+(2223, 'Heinrich', 'Bangui', 'heinrichbangui@gmail.com', '09082853679', 'rayls', '$2y$12$iwTOcjI8QOurSX1Rqknw0.HdkMSQp8pLpeHUI27.NdsA5xfQUvZqK', 'custodian', 'aww134_.jpg', NULL, 'accepted'),
+(2224, 'mark', 'test', 'sample@yahoo.com', '09215478763', 'mark', '$2y$12$UCaZiEqESztI6uVn5DzYxOrYbNFNusXOtVM89Pn1b6Qt4PLzGWwem', 'custodian', 'default.png', NULL, 'accepted'),
+(2225, 'Christine', 'Cabildo', 'joy@yahoo.com', '09053983127', 'recsample', '$2y$12$bYn.ctUKZvHSTuCoSPAyzuetp9pMTGH/8CLRa436Zg3Y5c3bz.Bje', 'receiver', 'default.png', 11, 'accepted'),
+(2226, 'sampl', 'sample', 'marck.carrera@yahoo.com.ph', '09053983127', 'joycabildo', '$2y$12$S3QJGkBDOxiGmppGMP1iOO.L0c9bNt7uhStHuH8YgO3NjE78X847.', 'receiver', 'default.png', 22, 'accepted'),
+(2227, 'sample', 'sample', 'sample@yahoo.com', '09547863214', 'depthead', '$2y$12$cPxXj2j/I73kZXbpqHwAC.TsN/TjhQzOH9GO3AX706Tc0gt5HRxlW', 'department head', 'default.png', 20, 'accepted'),
+(2228, 'sample', ' sampe', 'sample@yahoo.com', '09053983127', 'custodian', '$2y$12$BLKsjlpRb4q/l3i6R3buWOv3lGxfHocWI3c3d9Yb49kcrkKstU/9C', 'department head', 'default.png', 25, 'accepted'),
+(2229, 'sam', 'sam', 'sample@yahoo.com', '09053983127', 'depthead1', '$2y$12$lXidbuwnz8lpAMezmqBPnetQ5KSSEPhiTKtiBffqgGbkibXVUvvKO', 'department head', 'default.png', 11, 'accepted'),
+(2230, 'sample', 'sam', 'sample@yahoo.com', '09053983127', 'receiver1', '$2y$12$QC8hLOxP/a9vehWxNpn8wO6S8t4B0dR4dyHgHz/5WoOl68vN5bZES', 'receiver', 'default.png', 11, 'pending'),
+(2231, 'Lucky Jiyan', 'Gulan', 'Lucky@yahoo.com', '09124578932', 'Lucky', '$2y$12$WcsXTQLB18jFlAwRjQoUce7.i9kovA6GEfxxdYG3vk9pmnwMtFhNy', 'department head', 'default.png', 18, 'accepted'),
+(2232, 'Karen ', 'Isidro', 'Kmarga@yahoo.com', '09214536589', 'Karen', '$2y$12$eDwIeqdR1NwFCAvcmjq9EeypY9cqV8F2s4pa5epjjF2VKlGPPczW.', 'receiver', 'default.png', 18, 'accepted'),
+(2233, 'Lean', 'Dalin', 'Lean@yahoo.com', '09051246975', 'Lean', '$2y$12$hepSTKKJ2SHMd69dzATp4.8fzayVHcveAjAkYBPhP3G46yU7uTcFe', 'custodian', 'default.png', NULL, 'accepted'),
+(2234, 'Heinrich', 'Bangui', '2151287@slu.edu.ph', '09082853679', 'hein', '$2y$12$UaP1QeRMIGM6r2qEBxPecOExEKZGllhHOpgx7AGqcM/hfZ60Od59i', 'receiver', 'default.png', 18, 'accepted');
 
 --
 -- Indexes for dumped tables
@@ -420,7 +431,7 @@ ALTER TABLE `item_detail`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2215;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2235;
 --
 -- Constraints for dumped tables
 --
@@ -431,13 +442,6 @@ ALTER TABLE `user`
 ALTER TABLE `distribution`
   ADD CONSTRAINT `account_idx` FOREIGN KEY (`account_id`) REFERENCES `account_code` (`ac_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `depid` FOREIGN KEY (`dept_id`) REFERENCES `department` (`dept_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `item_detail`
---
-ALTER TABLE `item_detail`
-  ADD CONSTRAINT `dist` FOREIGN KEY (`dist_id`) REFERENCES `distribution` (`dist_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `itemid` FOREIGN KEY (`item_id`) REFERENCES `item` (`item_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
