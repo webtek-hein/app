@@ -23,6 +23,12 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
+                                            <label class="control-label col-md-3">Type</label>
+                                            <div class="col-md-9">
+                                                <input name="type" placeholder="Type" class="form-control" type="text" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
                                             <label class="control-label col-md-3">Unit</label>
                                             <div class="col-md-9">
                                                 <input name="unit" placeholder="Unit" class="form-control" type="text"  list="list" required>

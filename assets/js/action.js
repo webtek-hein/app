@@ -374,8 +374,9 @@ function edit_inventory(id)
                 $('[name="item_id"]').val(data[i].item_id);
                 $('[name="item_name"]').val(data[i].item_name);
                 $('[name="desc"]').val(data[i].item_description);
+                $('[name="type"]').val(data[i].item_type);
                 $('[name="unit"]').val(data[i].unit);
-                $('[name="qty"]').val(data[i].quantity);
+                //$('[name="qty"]').val(data[i].quantity);
             });
             $('#edit').modal('show'); // show bootstrap modal when complete loaded
 

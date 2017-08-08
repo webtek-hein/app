@@ -26,14 +26,17 @@ class Edit extends CI_Controller
         $data = array(
             'item_name' => $this->input->post('item_name'),
             'item_description' => $this->input->post('desc'),
+            'item_type' => $this->input->post('type'),
             'unit' => $this->input->post('unit'),
-         //   'quantity' => $this->input->post('qty'),
+         // 'quantity' => $this->input->post('qty'),
         );
         $log = array(
             'before_item_name' => $data1[0]['item_name'],
             'after_item_name' => $this->input->post('item_name'),
             'before_description' => $data1[0]['item_description'],
             'after_description' => $this->input->post('desc'),
+            'item_type' => $data[0]['item_type'],
+            'after_item_type' => $this->input->post('type'),
             'before_unit' => $data1[0]['unit'],
             'after_unit' => $this->input->post('unit'),
             'user_id' => $user_id,
