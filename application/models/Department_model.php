@@ -40,14 +40,14 @@ class Department_model extends CI_Model {
 
     public function get_distributed_details($item_id,$dept_id)
     {
-         $where = "item_detail.dist_id IS NOT NULL AND item_detail.item_status = 'in_stock' AND item_detail.item_id = $item_id AND distribution.dept_id = $dept_id";
-        $this->db->select("distribution.quantity,item_det_id, serial, exp_date, supplier, item_description, official_receipt_no, del_date, date_rec, distribution.receivedby, unit_cost, if(exp_date <= DATE(now()),'Expired',item_status) as item_status")
-                   ->join('item','item_detail.item_id = item.item_id','left')
-                   ->join('distribution','item_detail.dist_id = distribution.dist_id')
-                   ->join('department','distribution.dept_id = department.dept_id')
-                   ->WHERE($where);
-        $query = $this->db->get('item_detail');
-        return $query->result_array();
+            $where = "item_detail.dist_id IS NOT NULL AND item_detail.item_status = 'in_stock' AND item_detail.item_id = $item_id AND distribution.dept_id = $dept_id";
+            $this->db->select("distribution.quantity,item_det_id, serial, exp_date, supplier, item_description, official_receipt_no, del_date, date_rec, distribution.receivedby, unit_cost, if(exp_date <= DATE(now()),'Expired',item_status) as item_status")
+                ->join('item','item_detail.item_id = item.item_id','left')
+                ->join('distribution','item_detail.dist_id = distribution.dist_id')
+                ->join('department','distribution.dept_id = department.dept_id')
+                ->WHERE($where);
+            $query = $this->db->get('item_detail');
+            return $query->result_array();
     }
     public function department_inventory_list($id)
     {

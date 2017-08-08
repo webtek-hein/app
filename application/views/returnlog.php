@@ -12,7 +12,11 @@
               <table id="return_log" class="table table-bordered table-striped" width="100%">
                 <thead>
                 <tr>
-                    <th> Department</th>
+                    <?php $position = $this->session->userdata['logged_in']['position'];
+                    if($position === 'admin' || $position === 'custodian'){
+                        echo '<th> Department</th>';
+                    }
+                    ?>
                     <th> Item name</th>
                     <th> Description</th>
                     <th> Quantity</th>
@@ -31,7 +35,11 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                    <th> Department</th>
+                    <?php $position = $this->session->userdata['logged_in']['position'];
+                    if($position === 'admin' || $position === 'custodian'){
+                        echo '<th> Department</th>';
+                    }
+                    ?>
                     <th> Item name</th>
                     <th> Quantity</th>
                     <th> Date</th>
