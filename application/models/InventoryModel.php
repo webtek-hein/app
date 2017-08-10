@@ -555,6 +555,7 @@ left join item on item.item_id = item_detail.item_id
         $this->db->join('distribution', 'item_detail.dist_id = distribution.dist_id', 'left');
         $this->db->where('distribution.dept_id', $dept_id);
         $this->db->where('distrib_date >= DATE_SUB(NOW(),INTERVAL 1 YEAR)');
+        $this->db->where('item_status !=','returned');
         $query = $this->db->get('item_detail');
         return $query->result_array();
     }
