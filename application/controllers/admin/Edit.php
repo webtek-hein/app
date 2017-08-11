@@ -26,7 +26,8 @@ class Edit extends CI_Controller
         $data = array(
             'item_name' => $this->input->post('item_name'),
             'item_description' => $this->input->post('desc'),
-            'item_type' => $this->input->post('type'),
+            'item_name' => $this->input->post('item_name'),
+            'item_type' => $this->input->post('Type'),
             'unit' => $this->input->post('unit')
         );
         $log = array(

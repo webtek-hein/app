@@ -362,7 +362,6 @@ var save_method; //for save method string
 function edit_inventory(id)
 {
     save_method = 'update';
-
     //Ajax Load data from ajax
     $.ajax({
         url : 'inventory/edit/' + id,
@@ -377,6 +376,13 @@ function edit_inventory(id)
                 $('[name="type"]').val(data[i].item_type);
                 $('[name="unit"]').val(data[i].unit);
                 //$('[name="qty"]').val(data[i].quantity);
+                if(data[i].item_type == 'CO') {
+                    $("<option></option>", {value: data[i].item_type, text: data[i].item_type}).appendTo('.type');
+                    $("<option></option>", {value: 'MOOE', text: 'MOOE'}).appendTo('.type');
+                }else{
+                    $("<option></option>", {value: data[i].item_type, text: data[i].item_type}).appendTo('.type');
+                    $("<option></option>", {value: 'CO', text: 'CO'}).appendTo('.type');
+                }
             });
             $('#edit').modal('show'); // show bootstrap modal when complete loaded
 
